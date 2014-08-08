@@ -1,0 +1,392 @@
+   @font-face {
+    font-family: "Proximanovabold";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/proximanova-bold-webfont.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/proximanova-bold-webfont.woff") format("woff"),
+        url("../fonts/proximanova-bold-webfont.ttf") format("truetype"),
+        url("../fonts/proximanova-bold-webfont.svg#webfontFLOUcFt7") format("svg");
+}
+@font-face {
+    font-family: "Proximanovaregular";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/proximanova-regular-webfont.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/proximanova-regular-webfont.woff") format("woff"),
+        url("../fonts/proximanova-regular-webfont.ttf") format("truetype"),
+        url("../fonts/proximanova-regular-webfont.svg#webfontFLOUcFt7") format("svg");
+}
+
+@font-face {
+    font-family: "Proximanovaregularitalic";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/proximanova-regitalic-webfont.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/proximanova-regitalic-webfont.woff") format("woff"),
+        url("../fonts/proximanova-regitalic-webfont.ttf") format("truetype"),
+        url("../fonts/proximanova-regitalic-webfont.svg#webfontFLOUcFt7") format("svg");
+}
+
+@font-face {
+    font-family: "ProximanovaitalicBold";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/proximanova-boldit-webfont.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/proximanova-boldit-webfont.woff") format("woff"),
+        url("../fonts/proximanova-boldit-webfont.ttf") format("truetype"),
+        url("../fonts/proximanova-boldit-webfont.svg#webfontFLOUcFt7") format("svg");
+}
+
+@font-face {
+    font-family: "ProximanovaSemiBold";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/proximanova-semibold-webfont.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/proximanova-semibold-webfont.woff") format("woff"),
+        url("../fonts/proximanova-semibold-webfont.ttf") format("truetype"),
+        url("../fonts/proximanova-semibold-webfont.svg#webfontFLOUcFt7") format("svg");
+}
+
+@font-face {
+    font-family: "ProximanovaSemiBoldItalic";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/proximanova-semibolditalic-webfont.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/proximanova-semibolditalic-webfont.woff") format("woff"),
+        url("../fonts/proximanova-semibolditalic-webfont.ttf") format("truetype"),
+        url("../fonts/proximanova-semibolditalic-webfont.svg#webfontFLOUcFt7") format("svg");
+}
+@font-face {
+    font-family: 'proxima_novalight';
+    src: url('../fonts/proximanova-light-webfont.eot');
+    src: url('../fonts/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/proximanova-light-webfont.woff') format('woff'),
+         url('../fonts/proximanova-light-webfont.ttf') format('truetype'),
+         url('../fonts/proximanova-light-webfont.svg#proxima_novalight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+} 
+
+@font-face {
+    font-family: 'clear_sansbd';
+    src: url('../fonts/positype_-_clearsans-bd-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-bd-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-bd-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-bd-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-bd-webfont.svg#clear_sansbd') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'clear_sansbd';
+    src: url('../fonts/positype_-_clearsans-bd-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-bd-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-bd-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-bd-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-bd-webfont.svg#clear_sansbd') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansbd_it';
+    src: url('../fonts/positype_-_clearsans-bdit-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-bdit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-bdit-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-bdit-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-bdit-webfont.svg#clear_sansbd_it') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansbk';
+    src: url('../fonts/positype_-_clearsans-bk-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-bk-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-bk-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-bk-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-bk-webfont.svg#clear_sansbk') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansbk_it';
+    src: url('../fonts/positype_-_clearsans-bkit-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-bkit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-bkit-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-bkit-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-bkit-webfont.svg#clear_sansbk_it') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansbl';
+    src: url('../fonts/positype_-_clearsans-bl-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-bl-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-bl-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-bl-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-bl-webfont.svg#clear_sansbl') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansbl_it';
+    src: url('../fonts/positype_-_clearsans-blit-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-blit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-blit-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-blit-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-blit-webfont.svg#clear_sansbl_it') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sanslt';
+    src: url('../fonts/positype_-_clearsans-lt-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-lt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-lt-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-lt-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-lt-webfont.svg#clear_sanslt') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sanslt_it';
+    src: url('../fonts/positype_-_clearsans-ltit-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-ltit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-ltit-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-ltit-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-ltit-webfont.svg#clear_sanslt_it') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansmd';
+    src: url('../fonts/positype_-_clearsans-md-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-md-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-md-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-md-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-md-webfont.svg#clear_sansmd') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sanssbd';
+    src: url('../fonts/positype_-_clearsans-sbd-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-sbd-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-sbd-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-sbd-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-sbd-webfont.svg#clear_sanssbd') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansmd_it';
+    src: url('../fonts/positype_-_clearsans-mdit-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-mdit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-mdit-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-mdit-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-mdit-webfont.svg#clear_sansmd_it') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sanssbd';
+    src: url('../fonts/positype_-_clearsans-sbd-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-sbd-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-sbd-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-sbd-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-sbd-webfont.svg#clear_sanssbd') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sanssbd_it';
+    src: url('../fonts/positype_-_clearsans-sbdit-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-sbdit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-sbdit-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-sbdit-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-sbdit-webfont.svg#clear_sanssbd_it') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansth';
+    src: url('../fonts/positype_-_clearsans-th-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-th-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-th-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-th-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-th-webfont.svg#clear_sansth') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansth_it';
+    src: url('../fonts/positype_-_clearsans-thit-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-thit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-thit-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-thit-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-thit-webfont.svg#clear_sansth_it') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansul';
+    src: url('../fonts/positype_-_clearsans-ul-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-ul-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-ul-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-ul-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-ul-webfont.svg#clear_sansul') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansul_it';
+    src: url('../fonts/positype_-_clearsans-ulit-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-ulit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-ulit-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-ulit-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-ulit-webfont.svg#clear_sansul_it') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansxlt';
+    src: url('../fonts/positype_-_clearsans-xlt-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-xlt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-xlt-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-xlt-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-xlt-webfont.svg#clear_sansxlt') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansxlt_it';
+    src: url('../fonts/positype_-_clearsans-xltit-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-xltit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-xltit-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-xltit-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-xltit-webfont.svg#clear_sansxlt_it') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansxth';
+    src: url('../fonts/positype_-_clearsans-xth-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-xth-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-xth-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-xth-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-xth-webfont.svg#clear_sansxth') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'clear_sansxth_it';
+    src: url('../fonts/positype_-_clearsans-xthit-webfont.eot');
+    src: url('../fonts/positype_-_clearsans-xthit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/positype_-_clearsans-xthit-webfont.woff') format('woff'),
+         url('../fonts/positype_-_clearsans-xthit-webfont.ttf') format('truetype'),
+         url('../fonts/positype_-_clearsans-xthit-webfont.svg#clear_sansxth_it') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

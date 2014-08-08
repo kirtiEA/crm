@@ -1,0 +1,12 @@
+RewriteEngine on
+
+# if a directory or a file exists, use it directl
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteBase /eatads
+
+# otherwise forward it to index.php
+RewriteRule . index.php
+
+#RedirectMatch 301 listing/location-search/(.+)$ http://localhost/eatads/app/listing/area?countryid=$1
+#RedirectMatch 301 account/profile/(.+)$ http://localhost/eatads/app/company/$1
