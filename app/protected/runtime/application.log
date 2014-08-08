@@ -2167,3 +2167,689 @@ Stack trace:
 REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
 HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
 ---
+2014/08/08 08:25:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-sbd-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-sbd-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 08:25:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 08:25:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-sbd-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-sbd-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 08:25:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:00:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:00:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:33:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api
+---
+2014/08/08 09:33:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:33:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:36:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 09:36:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:36:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:41:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 09:41:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:41:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:41:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 09:41:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:41:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:41:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/default/list
+---
+2014/08/08 09:41:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:41:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:41:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 09:41:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:41:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:42:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 09:42:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:42:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:46:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 09:46:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:46:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:46:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 09:46:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:46:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 09:53:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/default/view
+---
+2014/08/08 09:53:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/view".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/view')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/view
+---
+2014/08/08 09:53:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:05:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/default/list
+---
+2014/08/08 10:05:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:05:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:05:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:05:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:05:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:06:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:06:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:06:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:06:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:06:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:06:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:06:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:06:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:07:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:07:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:07:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:50:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:50:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/default/list
+---
+2014/08/08 10:50:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:50:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:50:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:50:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:50:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:50:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:50:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:50:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:51:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/list".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 10:51:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.woff
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 10:51:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.ttf".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/positype_...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/fonts/positype_-_clearsans-bk-webfont.ttf
+HTTP_REFERER=http://localhost/monitorly/app/css/fonts.css
+---
+2014/08/08 11:01:57 [error] [exception.CException] exception 'CException' with message 'Alias "api.ApiModule" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\xampp\htdocs\monitorly\framework\YiiBase.php:322
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\YiiBase.php(196): YiiBase::import('api.ApiModule', true)
+#1 C:\xampp\htdocs\monitorly\framework\base\CModule.php(282): YiiBase::createComponent('api.ApiModule', 'api', NULL, Array)
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(337): CModule->getModule('api')
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(276): CWebApplication->createController('api/list')
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 11:02:09 [error] [exception.CException] exception 'CException' with message 'Alias "api.ApiModule" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\xampp\htdocs\monitorly\framework\YiiBase.php:322
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\YiiBase.php(196): YiiBase::import('api.ApiModule', true)
+#1 C:\xampp\htdocs\monitorly\framework\base\CModule.php(282): YiiBase::createComponent('api.ApiModule', 'api', NULL, Array)
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(337): CModule->getModule('api')
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(276): CWebApplication->createController('api/list')
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 11:02:42 [error] [exception.CException] exception 'CException' with message 'Alias "api.ApiModule" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\xampp\htdocs\monitorly\framework\YiiBase.php:322
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\YiiBase.php(196): YiiBase::import('api.ApiModule', true)
+#1 C:\xampp\htdocs\monitorly\framework\base\CModule.php(282): YiiBase::createComponent('api.ApiModule', 'api', NULL, Array)
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(337): CModule->getModule('api')
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(276): CWebApplication->createController('api/list')
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/monitorly/app/api/list
+---
+2014/08/08 11:13:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api
+---
+2014/08/08 11:21:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api
+---
+2014/08/08 11:21:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "post".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('post')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('post')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/post')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/post
+---
+2014/08/08 11:24:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "posts".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('posts')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('posts')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/posts')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/posts
+---
+2014/08/08 11:36:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "user".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/user')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/user
+---
+2014/08/08 11:41:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "user".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/user')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/user
+---
+2014/08/08 11:46:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "user".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/user')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/user
+---
+2014/08/08 11:46:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "user".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/user')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/user
+---
