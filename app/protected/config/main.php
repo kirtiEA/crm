@@ -14,6 +14,7 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
+        'application.extensions.PasswordHash',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool        
@@ -34,20 +35,21 @@ return array(
         'urlManager' => array(
             'showScriptName'=>false,
             'urlFormat' => 'path',            
-            'rules' => array(
-                //'<controller:\w+>/<id:\d+>' => '<controller>/view',
-                //'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            'rules'=>array(
+                /*
+                'post/<id:\d+>/<title:.*?>'=>'post/view',                
+                'posts/<tag:.*?>'=>'post/index',                 
+                */
                 
-                /*'post/<id:\d+>/<title:.*?>'=>'post/view',
-                'posts/<tag:.*?>'=>'post/index',*/
-                
-                // RESTful API
+                // REST patterns
                 array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
                 array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
                 array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),
                 array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
-                array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST')
+                array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
+                
+                // Other controllers
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
             ),
         ),
         /*
@@ -87,5 +89,11 @@ return array(
     'params' => array(
         // this is used in contact page
         'adminEmail' => 'amit@eatads.com',
+        
+        // for password protection extension
+        'phpass' => array(
+            'iteration_count_log2' => 8,
+            'portable_hashes' => false,
+        ),
     ),
 );

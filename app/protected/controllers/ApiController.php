@@ -1,8 +1,16 @@
 <?php
 
 class ApiController extends Controller {
-
     // Members
+    // http://www.yiiframework.com/wiki/175/how-to-create-a-rest-api/
+    /*
+      View all posts: index.php/api/posts (HTTP method GET)
+      View a single posts: index.php/api/posts/123 (also GET )
+      Create a new post: index.php/api/posts (POST)
+      Update a post: index.php/api/posts/123 (PUT)
+      Delete a post: index.php/api/posts/123 (DELETE)
+     */
+
     /**
      * Key which has to be in HTTP USERNAME and PASSWORD headers 
      */
@@ -23,16 +31,44 @@ class ApiController extends Controller {
 
     // Actions
     public function actionList() {
+
         // Get the respective model instance
         switch ($_GET['model']) {
             case 'user':
                 $models = User::model()->findAll();
                 break;
+            case 'auth':
+                // AUTHENTICATION
+                // check the usrn and password
+                $uname = Yii::app()->getRequest()->getQuery('uname');
+                $pwd = Yii::app()->getRequest()->getQuery('pwd');
+                $user = User::model()->find('LOWER(username)=?', array(strtolower($uname)));
+                if ($user === null) {
+                    // Error: Unauthorized
+                    $this->_sendResponse(401, 'Error: User Name is invalid');
+                } else {
+                    // check useridentity file in components
+                    $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
+                    $result = $ph->CheckPassword($pwd, $user->password);
+                    if ($result) {
+                        $userInfo = array(
+                            'id' => $user->id,
+                            'name' => $user->fname . ' ' . $user->lname
+                        );
+                        // Authorized
+                        $this->_sendResponse(200, CJSON::encode($userInfo));
+                    } else {
+                        // Error: Unauthorized
+                        $this->_sendResponse(401, 'Error: User Password is invalid');
+                    }
+                }
+                Yii::app()->end();
             default:
                 // Model not implemented error
                 $this->_sendResponse(501, sprintf('Error: Mode <b>list</b> is not implemented for model <b>%s</b>', $_GET['model']));
                 Yii::app()->end();
         }
+
         // Did we get some results?
         if (empty($models)) {
             // No
@@ -45,11 +81,27 @@ class ApiController extends Controller {
             // Send the response
             $this->_sendResponse(200, CJSON::encode($rows));
         }
-        echo json_encode('list');
     }
 
     public function actionView() {
-        echo json_encode('view');
+        // Check if id was submitted via GET
+        if (!isset($_GET['id']))
+            $this->_sendResponse(500, 'Error: Parameter <b>id</b> is missing');
+
+        switch ($_GET['model']) {
+            // Find respective model    
+            case 'user':
+                $model = User::model()->findByPk($_GET['id']);
+                break;
+            default:
+                $this->_sendResponse(501, sprintf('Mode <b>view</b> is not implemented for model <b>%s</b>', $_GET['model']));
+                Yii::app()->end();
+        }
+        // Did we find the requested model? If not, raise an error
+        if (is_null($model))
+            $this->_sendResponse(404, 'No Item found with id ' . $_GET['id']);
+        else
+            $this->_sendResponse(200, CJSON::encode($model));
     }
 
     public function actionCreate() {
@@ -88,7 +140,6 @@ class ApiController extends Controller {
             $msg .= "</ul>";
             $this->_sendResponse(500, $msg);
         }
-        echo json_encode('create');
     }
 
     public function actionUpdate() {
@@ -126,8 +177,6 @@ class ApiController extends Controller {
         // see actionCreate
         // ...
             $this->_sendResponse(500, $msg);
-
-        echo json_encode('update');
     }
 
     public function actionDelete() {
@@ -150,6 +199,81 @@ class ApiController extends Controller {
             $this->_sendResponse(200, $num);    //this is the only way to work with backbone
         else
             $this->_sendResponse(500, sprintf("Error: Couldn't delete model <b>%s</b> with ID <b>%s</b>.", $_GET['model'], $_GET['id']));
+    }
+
+    private function _sendResponse($status = 200, $body = '', $content_type = 'text/html') {
+        // set the status
+        $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
+        header($status_header);
+        // and the content type
+        header('Content-type: ' . $content_type);
+
+        // pages with body are easy
+        if ($body != '') {
+            // send the body
+            echo $body;
+        }
+        // we need to create the body if none is passed
+        else {
+            // create some body messages
+            $message = '';
+
+            // this is purely optional, but makes the pages a little nicer to read
+            // for your users.  Since you won't likely send a lot of different status codes,
+            // this also shouldn't be too ponderous to maintain
+            switch ($status) {
+                case 401:
+                    $message = 'You must be authorized to view this page.';
+                    break;
+                case 404:
+                    $message = 'The requested URL ' . $_SERVER['REQUEST_URI'] . ' was not found.';
+                    break;
+                case 500:
+                    $message = 'The server encountered an error processing your request.';
+                    break;
+                case 501:
+                    $message = 'The requested method is not implemented.';
+                    break;
+            }
+
+            // servers don't always have a signature turned on 
+            // (this is an apache directive "ServerSignature On")
+            $signature = ($_SERVER['SERVER_SIGNATURE'] == '') ? $_SERVER['SERVER_SOFTWARE'] . ' Server at ' . $_SERVER['SERVER_NAME'] . ' Port ' . $_SERVER['SERVER_PORT'] : $_SERVER['SERVER_SIGNATURE'];
+
+            // this should be templated in a real-world solution
+            $body = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+                    <html>
+                    <head>
+                        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+                        <title>' . $status . ' ' . $this->_getStatusCodeMessage($status) . '</title>
+                    </head>
+                    <body>
+                        <h1>' . $this->_getStatusCodeMessage($status) . '</h1>
+                        <p>' . $message . '</p>
+                        <hr />
+                        <address>' . $signature . '</address>
+                    </body>
+                    </html>';
+            echo $body;
+        }
+        Yii::app()->end();
+    }
+
+    private function _getStatusCodeMessage($status) {
+        // these could be stored in a .ini file and loaded
+        // via parse_ini_file()... however, this will suffice
+        // for an example
+        $codes = Array(
+            200 => 'OK',
+            400 => 'Bad Request',
+            401 => 'Unauthorized',
+            402 => 'Payment Required',
+            403 => 'Forbidden',
+            404 => 'Not Found',
+            500 => 'Internal Server Error',
+            501 => 'Not Implemented',
+        );
+        return (isset($codes[$status])) ? $codes[$status] : '';
     }
 
 }

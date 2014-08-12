@@ -2853,3 +2853,218 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/monitorly/app/api/user
 ---
+2014/08/08 12:02:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "user".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/user')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/user
+---
+2014/08/08 12:06:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "user".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/user')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/user
+---
+2014/08/08 12:10:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "user".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/user')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/user
+---
+2014/08/08 12:10:33 [error] [exception.CException] exception 'CException' with message 'ApiController and its behaviors do not have a method or closure named "_sendResponse".' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(47): CComponent->__call('_sendResponse', Array)
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(47): ApiController->_sendResponse(200, '[{"id":"1","fna...')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('list')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/user
+---
+2014/08/11 07:13:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "auth".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('auth')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('auth')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/auth/uname/...')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/auth/uname/amit
+---
+2014/08/11 07:13:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "auth".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('auth')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('auth')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/auth/uname=...')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/auth/uname=amit
+---
+2014/08/11 07:14:35 [error] [exception.CException] exception 'CException' with message 'CWebApplication and its behaviors do not have a method or closure named "request".' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(43): CComponent->__call('request', Array)
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(43): CWebApplication->request()
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('list')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/auth?uname=amit&pwd=pass123
+---
+2014/08/11 07:25:15 [error] [php] Undefined variable: password (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:49)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(13): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/auth?uname=ea.admin&pwd=pass123
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (49)
+in C:\xampp\htdocs\monitorly\app\index.php (13)
+2014/08/11 07:25:40 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "validatePassword".' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(227): CComponent->__call('validatePasswor...', Array)
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(49): CActiveRecord->__call('validatePasswor...', Array)
+#2 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(49): User->validatePassword('pass123')
+#3 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('list')
+#8 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#9 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/monitorly/app/api/auth?uname=ea.admin&pwd=pass123
+---
+2014/08/11 07:26:28 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "validatePassword".' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(227): CComponent->__call('validatePasswor...', Array)
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(49): CActiveRecord->__call('validatePasswor...', Array)
+#2 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(49): User->validatePassword('pass123')
+#3 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('list')
+#8 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#9 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/monitorly/app/api/auth?uname=ea.admin&pwd=pass123
+---
+2014/08/11 07:27:09 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "validatePassword".' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(227): CComponent->__call('validatePasswor...', Array)
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(49): CActiveRecord->__call('validatePasswor...', Array)
+#2 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(49): User->validatePassword('pass123')
+#3 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('list')
+#8 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#9 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/monitorly/app/api/auth?uname=admin&pwd=pass123
+---
+2014/08/11 08:28:47 [error] [php] include(PasswordHash.php): failed to open stream: No such file or directory (C:\xampp\htdocs\monitorly\framework\YiiBase.php:427)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(50): spl_autoload_call()
+#1 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#5 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\monitorly\app\index.php(13): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/auth?uname=admin&pwd=pass123
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (50)
+in C:\xampp\htdocs\monitorly\app\index.php (13)
+2014/08/11 08:45:59 [error] [exception.CException] exception 'CException' with message 'Property "User.name" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(55): CActiveRecord->__get('name')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('list')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/auth?uname=admin&pwd=pass123
+---
+2014/08/11 08:46:57 [error] [exception.CException] exception 'CException' with message 'Property "User.name" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\xampp\htdocs\monitorly\framework\base\CModel.php(596): CActiveRecord->__get('name')
+#2 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(55): CModel->offsetGet('name')
+#3 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('list')
+#8 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#9 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/monitorly/app/api/auth?uname=admin&pwd=pass123
+---
+2014/08/11 08:47:23 [error] [exception.CException] exception 'CException' with message 'Property "User.name" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\xampp\htdocs\monitorly\framework\base\CModel.php(596): CActiveRecord->__get('name')
+#2 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(55): CModel->offsetGet('name')
+#3 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('list')
+#8 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#9 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/monitorly/app/api/auth?uname=admin&pwd=pass123
+---
+2014/08/11 08:47:51 [error] [exception.CException] exception 'CException' with message 'Property "User.name" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(55): CActiveRecord->__get('name')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionList()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('list')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/list')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/auth?uname=admin&pwd=pass123
+---
