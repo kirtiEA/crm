@@ -37,11 +37,13 @@ class ApiController extends Controller {
             case 'user':
                 $models = User::model()->findAll();
                 break;
+            
             case 'auth':
                 // AUTHENTICATION
                 // check the usrn and password
                 $uname = Yii::app()->getRequest()->getQuery('uname');
                 $pwd = Yii::app()->getRequest()->getQuery('pwd');
+                // check STATUS, USER ROLE & MONITORLY flag
                 $user = User::model()->find('LOWER(username)=?', array(strtolower($uname)));
                 if ($user === null) {
                     // Error: Unauthorized
@@ -63,6 +65,52 @@ class ApiController extends Controller {
                     }
                 }
                 Yii::app()->end();
+                
+            case 'tasks':
+                // fetch user tasks
+                $uId   = Yii::app()->getRequest()->getQuery('uid');
+                $sDate = Yii::app()->getRequest()->getQuery('sdate');
+                $eDate = Yii::app()->getRequest()->getQuery('edate');
+                $tDone = Yii::app()->getRequest()->getQuery('tdone');
+                $start = Yii::app()->getRequest()->getQuery('start');
+                $limit = Yii::app()->getRequest()->getQuery('limit');
+                // check if the uid is a valid user
+                $user = User::model()->findByPk($uId);
+                if($user === null) {
+                    // Error: Unauthorized
+                    $this->_sendResponse(401, 'Error: User is invalid');
+                } else {
+                    // Valid User
+                    // fetch all the task
+                    
+                    $start = ($start >0) ? $start : 0;                    
+                    if($tDone == 'true'){
+                        $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng, COUNT( pp.id ) as photocount "
+                            . "FROM task t "
+                            . "LEFT JOIN campaign c ON c.id = t.campaignid "
+                            . "LEFT JOIN monitorlylisting ml ON ml.id = t.siteid "
+                            . "LEFT JOIN photoproof pp ON pp.taskid = t.id "
+                            . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
+                            . "WHERE t.taskDone=1 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
+                            . "GROUP BY t.id "
+                            . "LIMIT {$start}, {$limit}";                    
+                    } else {
+                        $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng "
+                            . "FROM task t "
+                            . "LEFT JOIN campaign c ON c.id = t.campaignid "
+                            . "LEFT JOIN monitorlylisting ml ON ml.id = t.siteid "                            
+                            . "WHERE t.taskDone=0 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
+                            . "GROUP BY t.id "
+                            . "LIMIT {$start}, {$limit}";                    
+                    }
+                    
+                    
+                    $tasks = Yii::app()->db->createCommand($sql)->queryAll();
+                                        
+                    $this->_sendResponse(200, CJSON::encode($tasks));
+                }
+                Yii::app()->end();
+                
             default:
                 // Model not implemented error
                 $this->_sendResponse(501, sprintf('Error: Mode <b>list</b> is not implemented for model <b>%s</b>', $_GET['model']));
