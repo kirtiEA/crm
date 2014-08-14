@@ -20,7 +20,7 @@ class Mediatype extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'mediatype';
+		return 'MediaType';
 	}
 
 	/**

@@ -28,7 +28,7 @@ class Task extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'task';
+		return 'Task';
 	}
 
 	/**

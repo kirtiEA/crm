@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'TaskProblemDetails':
  * @property integer $id
- * @property string $installations
+ * @property string $installation
  * @property string $lighting
  * @property string $obstruction
  * @property string $comments
@@ -22,7 +22,7 @@ class TaskProblemDetails extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'taskproblemdetails';
+		return 'TaskProblemDetails';
 	}
 
 	/**
@@ -33,13 +33,13 @@ class TaskProblemDetails extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('installations, lighting', 'length', 'max'=>255),
+			array('installation, lighting', 'length', 'max'=>255),
 			array('obstruction', 'length', 'max'=>245),
 			array('comments', 'length', 'max'=>225),
 			array('createdDate, modifiedDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, installations, lighting, obstruction, comments, createdDate, modifiedDate', 'safe', 'on'=>'search'),
+			array('id, installation, lighting, obstruction, comments, createdDate, modifiedDate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,7 +62,7 @@ class TaskProblemDetails extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'installations' => 'Installations',
+			'installation' => 'Installation',
 			'lighting' => 'Lighting',
 			'obstruction' => 'Obstruction',
 			'comments' => 'Comments',
@@ -90,7 +90,7 @@ class TaskProblemDetails extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('installations',$this->installations,true);
+		$criteria->compare('installation',$this->installation,true);
 		$criteria->compare('lighting',$this->lighting,true);
 		$criteria->compare('obstruction',$this->obstruction,true);
 		$criteria->compare('comments',$this->comments,true);

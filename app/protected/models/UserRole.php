@@ -19,7 +19,7 @@ class UserRole extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'userrole';
+		return 'UserRole';
 	}
 
 	/**

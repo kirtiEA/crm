@@ -22,7 +22,7 @@ class ListingImage extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'listingimage';
+		return 'ListingImage';
 	}
 
 	/**

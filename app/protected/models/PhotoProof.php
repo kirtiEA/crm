@@ -27,7 +27,7 @@ class PhotoProof extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'photoproof';
+		return 'PhotoProof';
 	}
 
 	/**

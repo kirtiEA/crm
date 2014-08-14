@@ -3288,3 +3288,58 @@ Stack trace:
 #10 {main}
 REQUEST_URI=/monitorly/app/api/tasks?uid=552&sdate=2014-08-10T00:00:00&edate=2014-08-23T23:59:59&tdone=false&start=1&limit=5
 ---
+2014/08/13 13:15:28 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:167)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(13): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (167)
+in C:\xampp\htdocs\monitorly\app\index.php (13)
+2014/08/13 13:26:41 [error] [php] Undefined index: lightings (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:166)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(13): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (166)
+in C:\xampp\htdocs\monitorly\app\index.php (13)
+2014/08/13 13:32:36 [error] [php] Undefined index: lightings (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:167)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(13): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (167)
+in C:\xampp\htdocs\monitorly\app\index.php (13)
+2014/08/13 13:32:45 [error] [php] Undefined index: comments (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:169)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(13): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (169)
+in C:\xampp\htdocs\monitorly\app\index.php (13)
+2014/08/13 13:33:19 [error] [php] Undefined index: comments (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:169)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(13): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (169)
+in C:\xampp\htdocs\monitorly\app\index.php (13)

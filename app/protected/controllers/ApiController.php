@@ -86,19 +86,19 @@ class ApiController extends Controller {
                     $start = ($start >0) ? $start : 0;                    
                     if($tDone == 'true'){
                         $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng, COUNT( pp.id ) as photocount "
-                            . "FROM task t "
-                            . "LEFT JOIN campaign c ON c.id = t.campaignid "
-                            . "LEFT JOIN monitorlylisting ml ON ml.id = t.siteid "
-                            . "LEFT JOIN photoproof pp ON pp.taskid = t.id "
+                            . "FROM Task t "
+                            . "LEFT JOIN Campaign c ON c.id = t.campaignid "
+                            . "LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid "
+                            . "LEFT JOIN PhotoProof pp ON pp.taskid = t.id "
                             . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
                             . "WHERE t.taskDone=1 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
                             . "GROUP BY t.id "
                             . "LIMIT {$start}, {$limit}";                    
                     } else {
                         $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng "
-                            . "FROM task t "
-                            . "LEFT JOIN campaign c ON c.id = t.campaignid "
-                            . "LEFT JOIN monitorlylisting ml ON ml.id = t.siteid "                            
+                            . "FROM Task t "
+                            . "LEFT JOIN Campaign c ON c.id = t.campaignid "
+                            . "LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid "                            
                             . "WHERE t.taskDone=0 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
                             . "GROUP BY t.id "
                             . "LIMIT {$start}, {$limit}";                    
@@ -155,8 +155,52 @@ class ApiController extends Controller {
     public function actionCreate() {
         switch ($_GET['model']) {
             // Get an instance of the respective model
-            case 'posts':
-                $model = new Post;
+            // tid, tdone, problemFlag, lat, lng, timestamp, clickedby, photoname, problems:{installation, lightings, obstruction, comments}
+            
+            case 'task':
+                $currDateTime = date("Y-m-d H:i:s");
+                $tpdModel = new TaskProblemDetails;
+                // TASKPROBLEMDETAILS
+                $problems = CJSON::decode($_POST['problems']);                
+                $installationProblem = trim($problems['installation']);
+                $lightingProblem = trim($problems['lighting']);
+                $obstructionProblem = trim($problems['obstruction']);
+                $commentProblem = trim($problems['comments']);
+                if(strlen($installationProblem) || strlen($lightingProblem) || strlen($obstructionProblem || strlen($commentProblem))) {                    
+                    // insert into 
+                    $tpdModel->installation = $installationProblem;
+                    $tpdModel->lighting = $lightingProblem;
+                    $tpdModel->obstruction = $obstructionProblem;
+                    $tpdModel->createdDate = $currDateTime;
+                    $tpdModel->modifiedDate = $currDateTime;
+                    if($tpdModel->save()) {
+                        $problemId = $tpdModel->getPrimaryKey();
+                    } else {
+                        $this->_sendResponse(500, sprintf('Error: Unable to save problems'));
+                        Yii::app()->end();
+                    }                    
+                } else {
+                    $problemId = NULL;
+                }                
+                
+                // PHOTOPROOF
+                $ppModel = new PhotoProof;                
+                $ppModel->taskid = $_POST['tid'];
+                $ppModel->imageName = trim($_POST['photoname']);
+                $ppModel->clickedDateTime = $_POST['timestamp'];
+                $ppModel->clickedby = $_POST['clickedby'];
+                $ppModel->clickedLat = $_POST['lat'];
+                $ppModel->clickedLng = $_POST['lng'];
+                $ppModel->siteProblemId = $problemId;
+                $ppModel->createdDate = $currDateTime;
+                $ppModel->modifiedDate = $currDateTime;
+                
+                // check all scenarios
+                // chirag to get all the possible test data for this service
+                $this->_sendResponse(200, CJSON::encode($problemId));
+                // TASK
+                
+                Yii::app()->end();
                 break;
             default:
                 $this->_sendResponse(501, sprintf('Mode <b>create</b> is not implemented for model <b>%s</b>', $_GET['model']));
