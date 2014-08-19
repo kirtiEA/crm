@@ -3890,3 +3890,5 @@ REQUEST_URI=/monitorly/app/api/task/5
 in C:\xampp\htdocs\monitorly\app\index.php (24)
 2014/08/19 18:30:35 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eatads.mediaplan' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `mediaplan`.
 in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 18:34:41 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eatads.mediaplan' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `mediaplan`.
+in C:\xampp\htdocs\monitorly\app\index.php (24)

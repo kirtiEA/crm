@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This is the model class for table "PhotoProof".
+ * This is the model class for table "photoproof".
  *
  * The followings are the available columns in table 'photoproof':
  * @property integer $id
@@ -16,9 +16,9 @@
  * @property string $modifiedDate
  *
  * The followings are the available model relations:
- * @property TaskProblemDetails $siteProblem
+ * @property Taskproblemdetails $siteProblem
  * @property Task $task
- * @property User $clickedBy0
+ * @property User $clickedby
  */
 class PhotoProof extends CActiveRecord
 {
@@ -27,7 +27,7 @@ class PhotoProof extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'PhotoProof';
+		return 'photoproof';
 	}
 
 	/**
@@ -58,7 +58,7 @@ class PhotoProof extends CActiveRecord
 		return array(
 			'siteProblem' => array(self::BELONGS_TO, 'Taskproblemdetails', 'siteProblemId'),
 			'task' => array(self::BELONGS_TO, 'Task', 'taskid'),
-			'clickedBy0' => array(self::BELONGS_TO, 'User', 'clickedBy'),
+			'clickedby' => array(self::BELONGS_TO, 'User', 'clickedby'),
 		);
 	}
 
@@ -75,7 +75,7 @@ class PhotoProof extends CActiveRecord
 			'clickedLat' => 'Clicked Lat',
 			'clickedLng' => 'Clicked Lng',
 			'siteProblemId' => 'Site Problem',
-			'clickedBy' => 'ClickedBy',
+			'clickedBy' => 'Clicked By',
 			'createdDate' => 'Created Date',
 			'modifiedDate' => 'Modified Date',
 		);
