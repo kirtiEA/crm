@@ -11,14 +11,14 @@
  * @property double $clickedLat
  * @property double $clickedLng
  * @property integer $siteProblemId
- * @property integer $clickedby
+ * @property integer $clickedBy
  * @property string $createdDate
  * @property string $modifiedDate
  *
  * The followings are the available model relations:
  * @property TaskProblemDetails $siteProblem
  * @property Task $task
- * @property User $clickedby0
+ * @property User $clickedBy0
  */
 class PhotoProof extends CActiveRecord
 {
@@ -38,13 +38,13 @@ class PhotoProof extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('taskid, siteProblemId, clickedby', 'numerical', 'integerOnly'=>true),
+			array('taskid, siteProblemId, clickedBy', 'numerical', 'integerOnly'=>true),
 			array('clickedLat, clickedLng', 'numerical'),
 			array('imageName', 'length', 'max'=>45),
 			array('clickedDateTime, createdDate, modifiedDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, taskid, imageName, clickedDateTime, clickedLat, clickedLng, siteProblemId, clickedby, createdDate, modifiedDate', 'safe', 'on'=>'search'),
+			array('id, taskid, imageName, clickedDateTime, clickedLat, clickedLng, siteProblemId, clickedBy, createdDate, modifiedDate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,7 +58,7 @@ class PhotoProof extends CActiveRecord
 		return array(
 			'siteProblem' => array(self::BELONGS_TO, 'Taskproblemdetails', 'siteProblemId'),
 			'task' => array(self::BELONGS_TO, 'Task', 'taskid'),
-			'clickedby0' => array(self::BELONGS_TO, 'User', 'clickedby'),
+			'clickedBy0' => array(self::BELONGS_TO, 'User', 'clickedBy'),
 		);
 	}
 
@@ -75,7 +75,7 @@ class PhotoProof extends CActiveRecord
 			'clickedLat' => 'Clicked Lat',
 			'clickedLng' => 'Clicked Lng',
 			'siteProblemId' => 'Site Problem',
-			'clickedby' => 'Clickedby',
+			'clickedBy' => 'ClickedBy',
 			'createdDate' => 'Created Date',
 			'modifiedDate' => 'Modified Date',
 		);
@@ -106,7 +106,7 @@ class PhotoProof extends CActiveRecord
 		$criteria->compare('clickedLat',$this->clickedLat);
 		$criteria->compare('clickedLng',$this->clickedLng);
 		$criteria->compare('siteProblemId',$this->siteProblemId);
-		$criteria->compare('clickedby',$this->clickedby);
+		$criteria->compare('clickedBy',$this->clickedBy);
 		$criteria->compare('createdDate',$this->createdDate,true);
 		$criteria->compare('modifiedDate',$this->modifiedDate,true);
 

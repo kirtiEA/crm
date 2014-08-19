@@ -10,7 +10,8 @@ class ApiController extends Controller {
       Update a post: index.php/api/posts/123 (PUT)
       Delete a post: index.php/api/posts/123 (DELETE)
      */
-
+    
+    
     /**
      * Key which has to be in HTTP USERNAME and PASSWORD headers 
      */
@@ -27,8 +28,26 @@ class ApiController extends Controller {
      */
     public function filters() {
         return array();
+        /*return array(
+            'accessControl', // perform access control for CRUD operations
+            'postOnly + delete, postOnly + update', // we only allow deletion via POST request
+        );*/
     }
 
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    /*public function accessRules() {
+        return array(
+            array('allow', // allow all users to perform actions
+                'actions' => array('index'),
+                'users' => array('*'),                
+            ),            
+        );
+    }*/
+    
     // Actions
     public function actionList() {
 
@@ -233,7 +252,7 @@ class ApiController extends Controller {
                 $ppModel->taskid = $taskId;
                 $ppModel->imageName = trim($put_vars['photoname']);
                 $ppModel->clickedDateTime = $put_vars['timestamp'];
-                $ppModel->clickedby = $put_vars['clickedby'];
+                $ppModel->clickedBy = $put_vars['clickedby'];
                 $ppModel->clickedLat = $put_vars['lat'];
                 $ppModel->clickedLng = $put_vars['lng'];
                 $ppModel->siteProblemId = $problemId;
