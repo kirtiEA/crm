@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "task".
+ * This is the model class for table "Task".
  *
- * The followings are the available columns in table 'task':
+ * The followings are the available columns in table 'Task':
  * @property integer $id
  * @property integer $campaignid
  * @property integer $assigneduserid
@@ -16,9 +16,9 @@
  * @property integer $status
  *
  * The followings are the available model relations:
- * @property Photoproof[] $photoproofs
+ * @property PhotoProof[] $photoProofs
  * @property Campaign $campaign
- * @property Monitorlylisting $site
+ * @property MonitorlyListing $site
  * @property User $assigneduser
  */
 class Task extends CActiveRecord
@@ -28,7 +28,7 @@ class Task extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'task';
+		return 'Task';
 	}
 
 	/**
@@ -55,9 +55,9 @@ class Task extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'photoproofs' => array(self::HAS_MANY, 'Photoproof', 'taskid'),
+			'photoProofs' => array(self::HAS_MANY, 'PhotoProof', 'taskid'),
 			'campaign' => array(self::BELONGS_TO, 'Campaign', 'campaignid'),
-			'site' => array(self::BELONGS_TO, 'Monitorlylisting', 'siteid'),
+			'site' => array(self::BELONGS_TO, 'MonitorlyListing', 'siteid'),
 			'assigneduser' => array(self::BELONGS_TO, 'User', 'assigneduserid'),
 		);
 	}

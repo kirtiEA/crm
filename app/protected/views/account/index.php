@@ -69,16 +69,37 @@
             <div class="modal fade bs-modal-sm" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">  
-                        <div class="container">
-                            <form role="form" class="form-signin" style="padding-bottom:32px;" id="loginForm">
+                        <div class="container form-signin" style="padding-bottom:32px;" >
+<!--                            <form role="form" name="LoginForm" class="form-signin" style="padding-bottom:32px;" id="loginForm">-->
+                                
+                               <?php $form=$this->beginWidget('CActiveForm', array(
+                                'id'=>'login-form',
+                                //'action' => Yii::app()->getBaseUrl() .  '/account/login',   
+                                'enableClientValidation'=>true,
+                                'clientOptions'=>array(
+                                        'validateOnSubmit'=>true,
+                                ),
+                        )); ?>   
+                                
                                 <h2 class="form-signin-heading">Please Sign In</h2>
-                                <input type="text" autofocus="" required="" placeholder="Username" id="username" class="form-control"><br>
-                                <input type="password" required="" placeholder="Password" id="password" class="form-control">
+                                
+                                <?php echo $form->textField($model,'email', array('class' => 'form-control')); ?>
+                		<?php echo $form->error($model,'email'); ?>
+                                
+                                
+<!--                                <input type="text" autofocus="" required="" placeholder="Username" id="username" name="username" class="form-control">-->
+                                <br>
+                                <?php echo $form->passwordField($model,'password',array('class' => 'form-control', 'placeholder'=>'Password')); ?>
+		<?php echo $form->error($model,'password'); ?>
+<!--                                <input type="password" required="" placeholder="Password" id="password" name="password" class="form-control">-->
                                 <label class="checkbox">
                                     <input type="checkbox" value="remember-me"> Remember me
                                 </label>
-                                <button type="submit" class="btn btn-primary" id="authSignIn">Sign In</button>
-                            </form>
+<!--                                <button type="submit" class="btn btn-primary" id="authSignIn">Sign In</button>-->
+                            <?php echo CHtml::submitButton('Sign In', array('class'=>'btn btn-primary', 'id'=>'_submit')); ?>
+                            <?php $this->endWidget(); ?>
+                            
+<!--                            </form>-->
                         </div>
                     </div>
                 </div>
@@ -181,31 +202,31 @@
                     $('#LoginModal').modal('show');
                 });
 
-                $('#loginForm').submit(function(e) {
-                    e.preventDefault();
-                    var usrn = $("#username").val();
-                    var pass = $("#password").val();
-                    $.ajax({
-                        url: "<?php echo Yii::app()->urlManager->createUrl('ajax/login'); ?>",
-                        data: {
-                            usrn: usrn,
-                            pass: pass
-                        },
-                        async: false,
-                        beforeSend: function() {
-                            if(usrn && pass) {
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        },
-                        success: function(data) {                            
-                            obj = JSON.parse(data);
-                            console.log('succ' + obj);
-                        }
-                    });
-                    console.log(loginData);
-                });
+//                $('#loginForm').submit(function(e) {
+//                    e.preventDefault();
+//                    var usrn = $("#username").val();
+//                    var pass = $("#password").val();
+//                    $.ajax({
+//                        url: "<?php //echo Yii::app()->urlManager->createUrl('ajax/login'); ?>",
+//                        data: {
+//                            usrn: usrn,
+//                            pass: pass
+//                        },
+//                        async: false,
+//                        beforeSend: function() {
+//                            if(usrn && pass) {
+//                                return true;
+//                            } else {
+//                                return false;
+//                            }
+//                        },
+//                        success: function(data) {                            
+//                            obj = JSON.parse(data);
+//                            console.log('succ' + obj);
+//                        }
+//                    });
+//                    console.log(loginData);
+//                });
 
             });
 

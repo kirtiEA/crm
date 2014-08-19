@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'TaskProblemDetails':
  * @property integer $id
- * @property string $installations
+ * @property string $installation
  * @property string $lighting
  * @property string $obstruction
  * @property string $comments
@@ -13,7 +13,7 @@
  * @property string $modifiedDate
  *
  * The followings are the available model relations:
- * @property Photoproof[] $photoproofs
+ * @property PhotoProof[] $photoProofs
  */
 class TaskProblemDetails extends CActiveRecord
 {
@@ -22,7 +22,7 @@ class TaskProblemDetails extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'taskproblemdetails';
+		return 'TaskProblemDetails';
 	}
 
 	/**
@@ -33,13 +33,13 @@ class TaskProblemDetails extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('installations, lighting', 'length', 'max'=>255),
+			array('installation, lighting', 'length', 'max'=>255),
 			array('obstruction', 'length', 'max'=>245),
 			array('comments', 'length', 'max'=>225),
 			array('createdDate, modifiedDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, installations, lighting, obstruction, comments, createdDate, modifiedDate', 'safe', 'on'=>'search'),
+			array('id, installation, lighting, obstruction, comments, createdDate, modifiedDate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,7 +51,7 @@ class TaskProblemDetails extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'photoproofs' => array(self::HAS_MANY, 'Photoproof', 'siteProblemId'),
+			'photoProofs' => array(self::HAS_MANY, 'PhotoProof', 'siteProblemId'),
 		);
 	}
 
@@ -62,7 +62,7 @@ class TaskProblemDetails extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'installations' => 'Installations',
+			'installation' => 'Installation',
 			'lighting' => 'Lighting',
 			'obstruction' => 'Obstruction',
 			'comments' => 'Comments',
@@ -90,7 +90,7 @@ class TaskProblemDetails extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('installations',$this->installations,true);
+		$criteria->compare('installation',$this->installation,true);
 		$criteria->compare('lighting',$this->lighting,true);
 		$criteria->compare('obstruction',$this->obstruction,true);
 		$criteria->compare('comments',$this->comments,true);
@@ -106,7 +106,7 @@ class TaskProblemDetails extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Taskproblemdetails the static model class
+	 * @return TaskProblemDetails the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
