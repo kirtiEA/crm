@@ -153,54 +153,9 @@ class ApiController extends Controller {
     }
 
     public function actionCreate() {
-        switch ($_GET['model']) {
-            // Get an instance of the respective model
-            // tid, tdone, problemFlag, lat, lng, timestamp, clickedby, photoname, problems:{installation, lightings, obstruction, comments}
-            
+        switch ($_GET['model']) {            
             case 'task':
-                $currDateTime = date("Y-m-d H:i:s");
-                $tpdModel = new TaskProblemDetails;
-                // TASKPROBLEMDETAILS
-                $problems = CJSON::decode($_POST['problems']);                
-                $installationProblem = trim($problems['installation']);
-                $lightingProblem = trim($problems['lighting']);
-                $obstructionProblem = trim($problems['obstruction']);
-                $commentProblem = trim($problems['comments']);
-                if(strlen($installationProblem) || strlen($lightingProblem) || strlen($obstructionProblem || strlen($commentProblem))) {                    
-                    // insert into 
-                    $tpdModel->installation = $installationProblem;
-                    $tpdModel->lighting = $lightingProblem;
-                    $tpdModel->obstruction = $obstructionProblem;
-                    $tpdModel->createdDate = $currDateTime;
-                    $tpdModel->modifiedDate = $currDateTime;
-                    if($tpdModel->save()) {
-                        $problemId = $tpdModel->getPrimaryKey();
-                    } else {
-                        $this->_sendResponse(500, sprintf('Error: Unable to save problems'));
-                        Yii::app()->end();
-                    }                    
-                } else {
-                    $problemId = NULL;
-                }                
-                
-                // PHOTOPROOF
-                $ppModel = new PhotoProof;                
-                $ppModel->taskid = $_POST['tid'];
-                $ppModel->imageName = trim($_POST['photoname']);
-                $ppModel->clickedDateTime = $_POST['timestamp'];
-                $ppModel->clickedby = $_POST['clickedby'];
-                $ppModel->clickedLat = $_POST['lat'];
-                $ppModel->clickedLng = $_POST['lng'];
-                $ppModel->siteProblemId = $problemId;
-                $ppModel->createdDate = $currDateTime;
-                $ppModel->modifiedDate = $currDateTime;
-                
-                // check all scenarios
-                // chirag to get all the possible test data for this service
-                $this->_sendResponse(200, CJSON::encode($problemId));
-                // TASK
-                
-                Yii::app()->end();
+                $this->_sendResponse(500, sprintf(json_encode($_REQUEST)));
                 break;
             default:
                 $this->_sendResponse(501, sprintf('Mode <b>create</b> is not implemented for model <b>%s</b>', $_GET['model']));
@@ -234,13 +189,79 @@ class ApiController extends Controller {
         }
     }
 
-    public function actionUpdate() {
+    public function actionUpdate() {        
         // Parse the PUT parameters. This didn't work: parse_str(file_get_contents('php://input'), $put_vars);
         $json = file_get_contents('php://input'); //$GLOBALS['HTTP_RAW_POST_DATA'] is not preferred: http://www.php.net/manual/en/ini.core.php#ini.always-populate-raw-post-data
         $put_vars = CJSON::decode($json, true);  //true means use associative array
 
         switch ($_GET['model']) {
             // Find respective model
+            // tid, tdone, problemFlag, lat, lng, timestamp, clickedby, photoname, problems:{installation, lighting, obstruction, comments}
+            // CREATE TASK
+            case 'task':
+                $taskId = $_GET['id'];
+                                
+
+                $currDateTime = date("Y-m-d H:i:s");
+                $tpdModel = new TaskProblemDetails;
+                // TASKPROBLEMDETAILS
+                $problems = $put_vars['problems'];
+                $installationProblem = trim($problems['installation']);
+                $lightingProblem = trim($problems['lighting']);
+                $obstructionProblem = trim($problems['obstruction']);
+                $commentProblem = trim($problems['comments']);
+                if(strlen($installationProblem) || strlen($lightingProblem) || strlen($obstructionProblem || strlen($commentProblem))) {
+                    // insert into
+                    $tpdModel->installation = $installationProblem;
+                    $tpdModel->lighting = $lightingProblem;
+                    $tpdModel->obstruction = $obstructionProblem;
+                    $tpdModel->comments = $commentProblem;
+                    $tpdModel->createdDate = $currDateTime;
+                    $tpdModel->modifiedDate = $currDateTime;
+                    if($tpdModel->save()) {
+                        $problemId = $tpdModel->getPrimaryKey();
+                    } else {
+                        $this->_sendResponse(500, sprintf('Error: Unable to save problems'));
+                        Yii::app()->end();
+                    }
+                } else {
+                    $problemId = NULL;
+                }
+                
+                // PHOTOPROOF
+                $ppModel = new PhotoProof();
+                $ppModel->taskid = $taskId;
+                $ppModel->imageName = trim($put_vars['photoname']);
+                $ppModel->clickedDateTime = $put_vars['timestamp'];
+                $ppModel->clickedby = $put_vars['clickedby'];
+                $ppModel->clickedLat = $put_vars['lat'];
+                $ppModel->clickedLng = $put_vars['lng'];
+                $ppModel->siteProblemId = $problemId;
+                $ppModel->createdDate = $currDateTime;
+                $ppModel->modifiedDate = $currDateTime;
+                $ppModel->save();               
+                
+                // TASK
+                // if any problem then problemFlag will be true
+                // if photoclicked then taskDone will be true
+                $taskDoneFlag = 0;
+                $problemFlag = 0;
+                if($ppModel->getPrimaryKey()) {
+                    $taskDoneFlag = 1;
+                }                
+                if($problemId!= NULL){
+                    $problemFlag = 1;
+                }
+                $taskModel = Task::model()->findByPk($taskId);
+                $taskModel->taskDone = $taskDoneFlag;
+                $taskModel->problem = $problemFlag;
+                if($taskModel->save()) {
+                    $this->_sendResponse(200, CJSON::encode(true));
+                } else {
+                    $this->_sendResponse(200, CJSON::encode(false));
+                }
+                Yii::app()->end();
+                break;
             case 'posts':
                 $model = Post::model()->findByPk($_GET['id']);
                 break;

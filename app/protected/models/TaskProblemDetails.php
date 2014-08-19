@@ -51,7 +51,7 @@ class TaskProblemDetails extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'photoproofs' => array(self::HAS_MANY, 'Photoproof', 'siteProblemId'),
+			'photoproofs' => array(self::HAS_MANY, 'PhotoProof', 'siteProblemId'),
 		);
 	}
 

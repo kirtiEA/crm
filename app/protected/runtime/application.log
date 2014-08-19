@@ -3343,3 +3343,512 @@ Stack trace:
 REQUEST_URI=/monitorly/app/api/task
 in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (169)
 in C:\xampp\htdocs\monitorly\app\index.php (13)
+2014/08/19 10:42:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "task".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('task')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('task')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/task')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/task?id=5
+---
+2014/08/19 10:42:37 [error] [php] Undefined variable: model (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:173)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task?id=5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (173)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 10:42:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "task".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('task')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('task')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/task/5')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 10:43:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "task".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('task')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('task')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/task/5')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 10:46:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "task".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('task')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('task')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/task/5')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 10:46:54 [error] [php] Undefined variable: model (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:167)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (167)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 10:47:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "task".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('task')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('task')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/task')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/task
+---
+2014/08/19 10:48:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "task".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('task')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('task')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/task')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/task
+---
+2014/08/19 10:48:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "task".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('task')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('task')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/task')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/task
+---
+2014/08/19 10:49:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "task".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('task')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('task')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/task')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/api/task
+---
+2014/08/19 12:13:27 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:14:23 [error] [php] Undefined index: installation (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:14:37 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:14:49 [error] [php] Undefined index: installation (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:15:25 [error] [php] Array to string conversion (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:15:34 [error] [php] Array to string conversion (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:15:49 [error] [php] Array to string conversion (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:16:02 [error] [php] Array to string conversion (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:16:16 [error] [php] Array to string conversion (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:16:44 [error] [php] Undefined index: installation (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:17:39 [error] [php] Undefined index: lighting (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:23:50 [error] [php] json_decode() expects parameter 1 to be string, array given (C:\xampp\htdocs\monitorly\framework\web\helpers\CJSON.php:327)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#5 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (209)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:25:00 [error] [php] json_decode() expects parameter 1 to be string, array given (C:\xampp\htdocs\monitorly\framework\web\helpers\CJSON.php:327)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#5 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (209)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:26:08 [error] [php] json_decode() expects parameter 1 to be string, array given (C:\xampp\htdocs\monitorly\framework\web\helpers\CJSON.php:327)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#5 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (209)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:26:54 [error] [php] Array to string conversion (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:327)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (327)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:27:52 [error] [php] Array to string conversion (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:327)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (327)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:29:44 [error] [php] Array to string conversion (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:327)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (327)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:29:47 [error] [php] Array to string conversion (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:327)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (327)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:30:13 [error] [php] json_decode() expects parameter 1 to be string, array given (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:31:01 [error] [php] Array to string conversion (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#2 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#4 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (203)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 12:33:30 [error] [exception.CException] exception 'CException' with message 'Property "PhotoProof.clickedLng" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(161): CComponent->__set('clickedLng', '72.123456')
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(237): CActiveRecord->__set('clickedLng', '72.123456')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 12:42:42 [error] [exception.CException] exception 'CException' with message 'Property "PhotoProof.clickedLng" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(161): CComponent->__set('clickedLng', '72.123456')
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(238): CActiveRecord->__set('clickedLng', '72.123456')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 12:53:59 [error] [exception.CException] exception 'CException' with message 'Property "PhotoProof.clickedLng" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(161): CComponent->__set('clickedLng', '72.123456')
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(238): CActiveRecord->__set('clickedLng', '72.123456')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 12:59:04 [error] [exception.CException] exception 'CException' with message 'Property "PhotoProof.clickedLng" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(161): CComponent->__set('clickedLng', '72.123456')
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(238): CActiveRecord->__set('clickedLng', '72.123456')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 12:59:28 [error] [exception.CException] exception 'CException' with message 'Property "PhotoProof.clickedLng" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(161): CComponent->__set('clickedLng', '72.123456')
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(238): CActiveRecord->__set('clickedLng', '72.123456')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 13:00:07 [error] [exception.CException] exception 'CException' with message 'Property "PhotoProof.clickedLng" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(161): CComponent->__set('clickedLng', '72.123456')
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(238): CActiveRecord->__set('clickedLng', '72.123456')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 13:49:58 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eatads.mediaplan' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `mediaplan`.
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 13:50:12 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eatads.mediaplan' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `mediaplan`.
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 13:50:17 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'eatads.mediaplan' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `mediaplan`.
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/08/19 13:50:35 [error] [exception.CException] exception 'CException' with message 'Property "PhotoProof.clickedLng" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(161): CComponent->__set('clickedLng', '72.123456')
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(238): CActiveRecord->__set('clickedLng', '72.123456')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 13:50:56 [error] [exception.CException] exception 'CException' with message 'Property "PhotoProof.clickedLng" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(161): CComponent->__set('clickedLng', '72.123456')
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(238): CActiveRecord->__set('clickedLng', '72.123456')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 13:55:10 [error] [exception.CException] exception 'CException' with message 'Property "PhotoProof.clickedLng" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(161): CComponent->__set('clickedLng', '72.123456')
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(238): CActiveRecord->__set('clickedLng', '72.123456')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 13:56:04 [error] [exception.CException] exception 'CException' with message 'Property "PhotoProof.clickedLng" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(161): CComponent->__set('clickedLng', '72.123456')
+#1 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(238): CActiveRecord->__set('clickedLng', '72.123456')
+#2 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#3 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#8 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#10 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/08/19 13:58:24 [error] [php] Undefined variable: problemId (C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php:239)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): ApiController->runAction()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): ApiController->run()
+#3 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\monitorly\app\index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly/app/api/task/5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (239)
+in C:\xampp\htdocs\monitorly\app\index.php (24)

@@ -6,7 +6,7 @@ $yii=dirname(__FILE__).'/../framework/yii.php';
 if($_SERVER['SERVER_NAME']=="localhost") {                          // LOCALHOST    
     $config=dirname(__FILE__).'/protected/config/main.php';    
     defined('YII_DEBUG') or define('YII_DEBUG',true);    
-} elseif($_SERVER['SERVER_NAME']=="monitorly.staging.eatads.com") {
+} elseif($_SERVER['SERVER_NAME']=="nwmonitorly.staging.eatads.com") {
     $config=dirname(__FILE__).'/protected/config/main_stag.php';    
     defined('YII_DEBUG') or define('YII_DEBUG',false);
 } else {
