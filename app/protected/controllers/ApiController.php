@@ -239,7 +239,7 @@ class ApiController extends Controller {
                 $ppModel->siteProblemId = $problemId;
                 $ppModel->createdDate = $currDateTime;
                 $ppModel->modifiedDate = $currDateTime;
-                $ppModel->save();               
+                $ppModel->save();
                 
                 // TASK
                 // if any problem then problemFlag will be true
@@ -256,9 +256,9 @@ class ApiController extends Controller {
                 $taskModel->taskDone = $taskDoneFlag;
                 $taskModel->problem = $problemFlag;
                 if($taskModel->save()) {
-                    $this->_sendResponse(200, CJSON::encode(true));
+                    $this->_sendResponse(200, CJSON::encode(array("success"=>true)));
                 } else {
-                    $this->_sendResponse(200, CJSON::encode(false));
+                    $this->_sendResponse(200, CJSON::encode(array("success"=>false)));
                 }
                 Yii::app()->end();
                 break;
