@@ -10,13 +10,15 @@
  * @property string $clickedDateTime
  * @property double $clickedLat
  * @property double $clickedLng
- * @property integer $siteProblemId
+ * @property string $installation
+ * @property string $lighting
+ * @property string $obstruction
+ * @property string $comments
  * @property integer $clickedBy
  * @property string $createdDate
  * @property string $modifiedDate
  *
  * The followings are the available model relations:
- * @property Taskproblemdetails $siteProblem
  * @property Task $task
  * @property User $clickedby
  */
@@ -38,13 +40,14 @@ class PhotoProof extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('taskid, siteProblemId, clickedBy', 'numerical', 'integerOnly'=>true),
+			array('taskid, clickedBy', 'numerical', 'integerOnly'=>true),
 			array('clickedLat, clickedLng', 'numerical'),
 			array('imageName', 'length', 'max'=>45),
+			array('installation, lighting, obstruction, comments', 'length', 'max'=>255),
 			array('clickedDateTime, createdDate, modifiedDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, taskid, imageName, clickedDateTime, clickedLat, clickedLng, siteProblemId, clickedBy, createdDate, modifiedDate', 'safe', 'on'=>'search'),
+			array('id, taskid, imageName, clickedDateTime, clickedLat, clickedLng, installation, lighting, obstruction, comments, clickedBy, createdDate, modifiedDate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,7 +59,6 @@ class PhotoProof extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'siteProblem' => array(self::BELONGS_TO, 'Taskproblemdetails', 'siteProblemId'),
 			'task' => array(self::BELONGS_TO, 'Task', 'taskid'),
 			'clickedby' => array(self::BELONGS_TO, 'User', 'clickedby'),
 		);
@@ -74,7 +76,10 @@ class PhotoProof extends CActiveRecord
 			'clickedDateTime' => 'Clicked Date Time',
 			'clickedLat' => 'Clicked Lat',
 			'clickedLng' => 'Clicked Lng',
-			'siteProblemId' => 'Site Problem',
+			'installation' => 'Installation',
+			'lighting' => 'Lighting',
+			'obstruction' => 'Obstruction',
+			'comments' => 'Comments',
 			'clickedBy' => 'Clicked By',
 			'createdDate' => 'Created Date',
 			'modifiedDate' => 'Modified Date',
@@ -105,7 +110,10 @@ class PhotoProof extends CActiveRecord
 		$criteria->compare('clickedDateTime',$this->clickedDateTime,true);
 		$criteria->compare('clickedLat',$this->clickedLat);
 		$criteria->compare('clickedLng',$this->clickedLng);
-		$criteria->compare('siteProblemId',$this->siteProblemId);
+		$criteria->compare('installation',$this->installation,true);
+		$criteria->compare('lighting',$this->lighting,true);
+		$criteria->compare('obstruction',$this->obstruction,true);
+		$criteria->compare('comments',$this->comments,true);
 		$criteria->compare('clickedBy',$this->clickedBy);
 		$criteria->compare('createdDate',$this->createdDate,true);
 		$criteria->compare('modifiedDate',$this->modifiedDate,true);

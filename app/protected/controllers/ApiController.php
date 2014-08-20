@@ -121,8 +121,7 @@ class ApiController extends Controller {
                             . "WHERE t.taskDone=0 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
                             . "GROUP BY t.id "
                             . "LIMIT {$start}, {$limit}";                    
-                    }
-                    
+                    }                    
                     
                     $tasks = Yii::app()->db->createCommand($sql)->queryAll();
                                         
@@ -219,34 +218,13 @@ class ApiController extends Controller {
             // CREATE TASK
             case 'task':
                 $taskId = $_GET['id'];
-                                
-
                 $currDateTime = date("Y-m-d H:i:s");
-                $tpdModel = new TaskProblemDetails;
-                // TASKPROBLEMDETAILS
-                $problems = $put_vars['problems'];
-                $installationProblem = trim($problems['installation']);
-                $lightingProblem = trim($problems['lighting']);
-                $obstructionProblem = trim($problems['obstruction']);
-                $commentProblem = trim($problems['comments']);
-                if(strlen($installationProblem) || strlen($lightingProblem) || strlen($obstructionProblem || strlen($commentProblem))) {
-                    // insert into
-                    $tpdModel->installation = $installationProblem;
-                    $tpdModel->lighting = $lightingProblem;
-                    $tpdModel->obstruction = $obstructionProblem;
-                    $tpdModel->comments = $commentProblem;
-                    $tpdModel->createdDate = $currDateTime;
-                    $tpdModel->modifiedDate = $currDateTime;
-                    if($tpdModel->save()) {
-                        $problemId = $tpdModel->getPrimaryKey();
-                    } else {
-                        $this->_sendResponse(500, sprintf('Error: Unable to save problems'));
-                        Yii::app()->end();
-                    }
-                } else {
-                    $problemId = NULL;
-                }
                 
+                $installationProblem = ($put_vars['problems']['installation']=='') ? NULL : trim($put_vars['problems']['installation']);
+                $lightingProblem = ($put_vars['problems']['lighting']=='') ? NULL : trim($put_vars['problems']['lighting']);
+                $obstructionProblem = ($put_vars['problems']['obstruction']=='') ? NULL : trim($put_vars['problems']['obstruction']);
+                $commentProblem = ($put_vars['problems']['comments']=='') ? NULL : trim($put_vars['problems']['comments']);                
+                                
                 // PHOTOPROOF
                 $ppModel = new PhotoProof();
                 $ppModel->taskid = $taskId;
@@ -255,11 +233,14 @@ class ApiController extends Controller {
                 $ppModel->clickedBy = $put_vars['clickedby'];
                 $ppModel->clickedLat = $put_vars['lat'];
                 $ppModel->clickedLng = $put_vars['lng'];
-                $ppModel->siteProblemId = $problemId;
+                $ppModel->installation = $installationProblem;
+                $ppModel->lighting = $lightingProblem;
+                $ppModel->obstruction = $obstructionProblem;
+                $ppModel->comments = $commentProblem;                
                 $ppModel->createdDate = $currDateTime;
-                $ppModel->modifiedDate = $currDateTime;
+                $ppModel->modifiedDate = $currDateTime;                
                 $ppModel->save();
-                
+                                
                 // TASK
                 // if any problem then problemFlag will be true
                 // if photoclicked then taskDone will be true
@@ -268,7 +249,7 @@ class ApiController extends Controller {
                 if($ppModel->getPrimaryKey()) {
                     $taskDoneFlag = 1;
                 }                
-                if($problemId!= NULL){
+                if(!is_null($installationProblem) || !is_null($lightingProblem) || !is_null($obstructionProblem) || !is_null($commentProblem) ){
                     $problemFlag = 1;
                 }
                 $taskModel = Task::model()->findByPk($taskId);
