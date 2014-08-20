@@ -24,7 +24,7 @@ class Campaign extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'campaign';
+		return 'Campaign';
 	}
 
 	/**

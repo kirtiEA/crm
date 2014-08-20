@@ -28,7 +28,7 @@ class Monitorlylisting extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'monitorlylisting';
+		return 'MonitorlyListing';
 	}
 
 	/**

@@ -59,11 +59,11 @@ return array(
          */
         // uncomment the following to use a MySQL database
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=eatads',
+            'connectionString' => 'mysql:host=localhost;dbname=eatadskell',
             'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => 'root',
-            'charset' => 'utf8',
+            'username' => 'eatadskell',
+            'password' => 'ssf989tga',
+            'charset' => 'utf8',                       
         ),
         'errorHandler' => array(
             // use 'site/error' action to display errors

@@ -23,7 +23,7 @@ class UserZoneAssignment extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'userzoneassignment';
+		return 'UserZoneAssignment';
 	}
 
 	/**
