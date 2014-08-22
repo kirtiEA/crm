@@ -1,19 +1,17 @@
 <?php
-/* @var $this UserController */
-/* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Users',
-);
-
-$this->menu=array(
-        array('label'=>'Test User List', 'url'=>array('test')),
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+    $this->menu=array(
+        array('label'=>'List User', 'url'=>array('index')),
         array('label'=>'Create User', 'url'=>array('create')),
 	array('label'=>'Manage User', 'url'=>array('admin')),
 );
 ?>
-
-<h1>Users</h1>
+<h1>Inactive Users</h1>
 
 <?php 
 /*$this->widget('zii.widgets.CListView', array(
