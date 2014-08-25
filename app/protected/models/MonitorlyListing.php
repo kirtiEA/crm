@@ -21,7 +21,7 @@
  * @property User $addedBy0
  * @property Task[] $tasks
  */
-class Monitorlylisting extends CActiveRecord
+class MonitorlyListing extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -122,7 +122,7 @@ class Monitorlylisting extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Monitorlylisting the static model class
+	 * @return MonitorlyListing the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
