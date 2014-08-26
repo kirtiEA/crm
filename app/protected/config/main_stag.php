@@ -59,11 +59,11 @@ return array(
          */
         // uncomment the following to use a MySQL database
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=eatads',
+            'connectionString' => 'mysql:host=localhost;dbname=eatadskell',
             'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => '',
-            'charset' => 'utf8',
+            'username' => 'eatadskell',
+            'password' => 'ssf989tga',
+            'charset' => 'utf8',                       
         ),
         'errorHandler' => array(
             // use 'site/error' action to display errors
@@ -89,6 +89,8 @@ return array(
     'params' => array(
         // this is used in contact page
         'adminEmail' => 'amit@eatads.com',
+        
+        // for password protection extension
         'phpass' => array(
             'iteration_count_log2' => 8,
             'portable_hashes' => false,

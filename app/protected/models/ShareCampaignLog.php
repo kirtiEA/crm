@@ -19,7 +19,7 @@ class ShareCampaignLog extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'sharecampaignlog';
+		return 'ShareCampaignLog';
 	}
 
 	/**

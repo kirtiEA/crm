@@ -42,7 +42,7 @@ class UserCompany extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'usercompany';
+		return 'UserCompany';
 	}
 
 	/**
