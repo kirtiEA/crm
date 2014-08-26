@@ -14,6 +14,8 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
+        'application.components.JOY.*',
+        'application.extensions.PasswordHash',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
@@ -77,5 +79,9 @@ return array(
     'params' => array(
         // this is used in contact page
         'adminEmail' => 'amit@eatads.com',
+        'phpass' => array(
+            'iteration_count_log2' => 8,
+            'portable_hashes' => false,
+        ),
     ),
 );
