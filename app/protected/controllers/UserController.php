@@ -2,7 +2,9 @@
 
 class UserController extends Controller
 {
-	/**
+    
+    protected $userroleid;
+    /**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
@@ -44,18 +46,24 @@ class UserController extends Controller
 			),
 		);
 	}
-
-	/**
+        
+        /**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	public function actionNew($id)
 	{
+                $row=Userrole::model()->findByPk($id);
+                $role=  Role::model()->findByPk($row->roleid);
+                //echo '<pre>';                print_r($row); die();
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+                        'selected'=>$role->name,
+                    
 		));
 	}
 
+        
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -63,7 +71,11 @@ class UserController extends Controller
 	public function actionCreate()
 	{
 		$model=new User;
-
+                $role = CHtml::listData(Role::model()->findAll(), 'id', 'name'); 
+                $model->datecreated=date("Y-m-d H:i:s");
+                $model->datemodified=date("Y-m-d H:i:s");
+                //print_r($today);die();
+                //$userRole = Userrole::model()->insertRoles();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -71,11 +83,32 @@ class UserController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+                        {
+                            $selected=$_POST['User']['userroleid'];
+                            Userrole::model()->insertRoles($model->id,$selected);
+                            $this->redirect(array('new','id'=>$model->id));
+                        }
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'role'=>$role,
+		));
+	}
+
+        /**
+	 * Displays a particular model.
+	 * @param integer $id the ID of the model to be displayed
+	 */
+	public function actionView($id)
+	{
+                $row=Userrole::model()->findByPk($id);
+                $role=  Role::model()->findByPk($row->roleid);
+                //echo '<pre>';                print_r($row); die();
+		$this->render('view',array(
+			'model'=>$this->loadModel($id),
+                        'selected'=>$role->name,
+                    
 		));
 	}
 
@@ -87,23 +120,45 @@ class UserController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-                //$criteria = new CDbCriteria();
-                //$criteria->select = 'name';
-                $findAll = Role::model()->findAll();
-                //echo '<pre>';print_r($findAll); die();
+                $userRole = Userrole::model()->findByAttributes(array('userid' => $id));
+                $model->userroleid=$userRole->roleid;
+                $role = CHtml::listData(Role::model()->findAll(), 'id', 'name');
+                //echo '<pre>';print_r($role); die();
+                
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+                
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
+                        //print_r($model->getAttributes());
+                        $pwd=$_POST['User']['password'];
+                        $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
+                        $result = $ph->CheckPassword($pwd, $model->password);
+                        //echo '<pre>';                            print_r($result);die();
+                        $model->password = $ph->HashPassword($pwd);
+                        if ($result) {
+                            // Authorized
+                        } else {
+                            // Error: Unauthorized
+
+                            }
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			{	
+                            
+                            //print_r($_POST['User']['userroleid']);
+                            $selected=$_POST['User']['userroleid'];
+                            Userrole::model()->updateRoles($id,$selected);
+                            
+                            $this->redirect(Yii::app()->createUrl('user/view?id='.$model->id));
+
+                        }
+                
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
-                        'role'=>$findAll,
+                        'role'=>$role,
 		));
 	}
 

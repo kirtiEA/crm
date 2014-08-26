@@ -33,7 +33,6 @@
 	<?php echo CHtml::encode($data->phonenumber); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('active')); ?>:</b>
 	<?php echo CHtml::encode($data->active); ?>
 	<br />
@@ -62,6 +61,5 @@
 	<?php echo CHtml::encode($data->dateactivated); ?>
 	<br />
 
-	*/ ?>
 
 </div>

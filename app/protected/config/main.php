@@ -14,6 +14,7 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
+        'application.extensions.PasswordHash'
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
@@ -47,7 +48,7 @@ return array(
          */
         // uncomment the following to use a MySQL database
         'db' => array(
-            'connectionString' => 'mysql:host=localhost:3308;dbname=eatads',
+            'connectionString' => 'mysql:host=localhost:3306;dbname=eatads',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => '',
@@ -77,5 +78,8 @@ return array(
     'params' => array(
         // this is used in contact page
         'adminEmail' => 'amit@eatads.com',
+        'phpass' => array(
+'iteration_count_log2' => 8,
+'portable_hashes' => false,
     ),
-);
+));

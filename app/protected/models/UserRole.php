@@ -100,4 +100,32 @@ class Userrole extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+       
+        /*
+         * update the Userrole table in database according to the
+         * userId on which updation operation is being performed.
+         */
+        public static function updateRoles($id,$role)
+        {
+            //do something to update user roles table
+            $cmd = Yii::app()->db->createCommand();
+
+            $cmd = $cmd->update('userrole', array(
+                       'userid'=> $id, 'roleid'=>$role),
+                       'userid=:uid',
+                        array(':uid'=>$id));
+
+        }
+     
+        /*
+         * insert new value in the Userrole table in database
+         * for the new user being created
+         */
+        public function insertRoles($id,$role) {
+            $cmd = Yii::app()->db->createCommand();
+            $cmd = $cmd->insert('userrole', array(
+                        'userid'=>$id,
+                        'roleid'=>$role 
+            ));
+        }
 }

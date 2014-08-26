@@ -25,16 +25,16 @@
 		<?php echo $form->error($model,'fname'); ?>
 	</div>
         
-        <div class="row">
-		<?php echo $form->labelEx($role,'name'); ?>
-		<?php echo $form->textField($role,'name',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($role,'name'); ?>
-	</div>
-        
 	<div class="row">
 		<?php echo $form->labelEx($model,'lname'); ?>
 		<?php echo $form->textField($model,'lname',array('size'=>20,'maxlength'=>20)); ?>
 		<?php echo $form->error($model,'lname'); ?>
+	</div>
+        
+        <div class="row">
+                <label>Role</label>
+		<?php echo $form->dropDownList($model, 'userroleid', $role, array('empty'=>'Select Role')); ?>
+		<?php //echo $form->error($role,'fname'); ?>
 	</div>
 
 	<div class="row">
@@ -73,33 +73,6 @@
 		<?php echo $form->error($model,'status'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'subscribe'); ?>
-		<?php echo $form->textField($model,'subscribe'); ?>
-		<?php echo $form->error($model,'subscribe'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'lastlogin'); ?>
-		<?php echo $form->textField($model,'lastlogin'); ?>
-		<?php echo $form->error($model,'lastlogin'); ?>
-	</div>
-        <div class="row">
-		<?php echo $form->labelEx($model,'datecreated'); ?>
-		<?php echo $form->textField($model,'datecreated'); ?>
-		<?php echo $form->error($model,'datecreated'); ?>
-	</div>
-        <div class="row">
-		<?php echo $form->labelEx($model,'datemodified'); ?>
-		<?php echo $form->textField($model,'datemodified'); ?>
-		<?php echo $form->error($model,'datemodified'); ?>
-	</div>
-        
-        <div class="row">
-		<?php echo $form->labelEx($model,'dateactivated'); ?>
-		<?php echo $form->textField($model,'dateactivated'); ?>
-		<?php echo $form->error($model,'dateactivated'); ?>
-	</div>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

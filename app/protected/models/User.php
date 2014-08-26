@@ -18,6 +18,7 @@
  * @property string $datecreated
  * @property string $datemodified
  * @property string $dateactivated
+ * 
  *
  * The followings are the available model relations:
  * @property Campaign[] $campaigns
@@ -44,7 +45,8 @@
  */
 class User extends CActiveRecord
 {
-	/**
+    public $userroleid;
+    /**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -124,6 +126,7 @@ class User extends CActiveRecord
 			'datecreated' => 'Datecreated',
 			'datemodified' => 'Datemodified',
 			'dateactivated' => 'Dateactivated',
+                        'userroleid' => 'UserRoleId',
 		);
 	}
 
@@ -207,4 +210,7 @@ class User extends CActiveRecord
             return $model;
         }
         
+        public function getUserRoleId() {
+            return $this->userroleid;
+        }
 }

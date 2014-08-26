@@ -1,11 +1,8 @@
 <?php
+
 /* @var $this UserController */
 /* @var $model User */
 
-$this->breadcrumbs=array(
-	'Users'=>array('index'),
-	$model->id,
-);
 
 $this->menu=array(
 	array('label'=>'List User', 'url'=>array('index')),
@@ -16,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>View User #<?php echo $model->id; ?></h1>
+<h1>User #<?php echo $model->id; ?></h1>
 <?php 
 /*$this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
@@ -42,3 +39,5 @@ $this->menu=array(
     
 
 ?>
+
+
