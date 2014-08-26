@@ -1,139 +1,182 @@
-<?php
-/* @var $this SiteController */
+<!-- tabs -->    
+<ul class="nav nav-tabs" id="sites-tabs" role="tablist">
+    <li class="active"><a href="sites_vendorssites.html" role="tab" data-toggle="tab">Vendors Sites</a></li>
+    <li><a href="#" role="tab" data-toggle="tab">My Sites</a></li>
+    <li><a href="sites_mypendingsites.html" role="tab" data-toggle="tab">My Pending Sites</a></li>
+</ul>
 
-$this->pageTitle = Yii::app()->name;
-?>
-<div class="row controls clear">
-    <div>
-        <button class="btn btn-success" id="add">Add new sites </button>
-        <button class="btn btn-success" id="manageSites"  onClick="location.href = 'monitorly_managesite.html'">Manage Sites</button>
-    </div>
-    <div class="add_campaign">
-        <form action="" method="post">
-            <input type="text" placeholder="Name of the Site" id="newSiteName" name="site-name" value="" class="form-control" />        
-            <?php echo CHtml::dropDownList('site-mediatypeid', 'id', $mediaTypes, array('empty' => 'Select Media Type', 'class' => 'form-control')); ?>            
-            <input type="text" placeholder="Locality" id="newSiteLocality" name="site-locality" value="" class="form-control" />
-            <input type="text" placeholder="Latitude" id="newSiteLat" value="" name="site-lat" class="form-control" style="display:none;" />
-            <input type="text" placeholder="Longitude" id="newSiteLng" value="" name="site-lng" class="form-control" style="display:none;" />
-            <input type="text" placeholder="Vendor" id="newSiteVendor" value="" name="site-vendor" class="form-control"/>
-            <input type="text" placeholder="VendorId" id="newSiteVendorId" name="site-vendorId" value="" class="form-control" style="display:none;" />
-            <input type="submit" class="box btn-success" id="newSiteAdd" value="Add" name="site-submit" />
-            <a href="#">Cancel</a>
-        </form>
-    </div>
+<!-- end of tabs --> 
+
+<!--map and list -->  
+
+<div class="container-fluid content-wrapper map-view">
+    <div class="row"> 
+
+        <!-- map -->
+        <div class="col-md-8" id="map">
+            <div class="map-container" id="map_canvas">
+            </div>
+        </div>
+        <!-- end of map -->
+
+        <!--list-->
+        <div class="col-md-4">
+            <div class="list-container">
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="add-vendors-sites">Add Vendors Sites</button>
+                </div>
+                <div class="list-tools">
+                    <ul>
+                        <li>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                    Sort
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Price</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Date Added</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Popularity</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <input type="text" placeholder="Search">
+                        </li>
+                        <li class="map-view-icon active pull-right"></li>
+                        <li class="spreadsheet-view-icon pull-right"></li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <ul>
+                        <li class="list-item">
+                            <div class="pull-left site-thumb"></div>
+                            <div class="site-details">
+                                <h3>Kalindi Kunj Road FTC Delhi</h3>
+                                <h5><span>Non-lit </span><span>Billboard </span>&nbsp;&nbsp;<span>3.5x5.5 ft2</span></h5>
+                                <h4>Pioneer</h4>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li class="list-item">
+                            <div class="pull-left site-thumb"></div>
+                            <div class="site-details">
+                                <h3>Kalindi Kunj Road FTC Delhi</h3>
+                                <h5><span>Non-lit </span><span>Billboard </span>&nbsp;&nbsp;<span>3.5x5.5 ft2</span></h5>
+                                <h4>Bright Outdoors</h4>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li class="list-item">
+                            <div class="pull-left site-thumb"></div>
+                            <div class="site-details">
+                                <h3>Kalindi Kunj Road FTC Delhi</h3>
+                                <h5><span>Non-lit </span><span>Billboard </span>&nbsp;&nbsp;<span>3.5x5.5 ft2</span></h5>
+                                <h4>Pioneer</h4>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li class="list-item">
+                            <div class="pull-left site-thumb"></div>
+                            <div class="site-details">
+                                <h3>Kalindi Kunj Road FTC Delhi</h3>
+                                <h5><span>Non-lit </span><span>Billboard </span>&nbsp;&nbsp;<span>3.5x5.5 ft2</span></h5>
+                                <h4>Graphisads</h4>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end of list-->
+
+    </div> 
+
 </div>
-<div class="row addons details detailview hr">
-    <!--<div class="viewNavigation">
-        <ul>
-            <li rel="mosaic"><a href="#">Mosaic</a></li>
-            <li class="active" rel="map"><a href="#">Map</a></li>
 
-        </ul>
-    </div>
-    <button class="box btn-success editsite inverse">Edit</button>
-    <div class="clear"></div> -->
-    <div id="map"></div>
+<!-- end of map and list -->    
 
-    <div class="item" id="mosaic">
-    </div>
-</div>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.geocomplete.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>-->
 <script type="text/javascript">
-            function initialize() {
-                var myLatlng = new google.maps.LatLng(19, 72);
-                var mapOptions = {
-                    zoom: 4,
-                    center: myLatlng
-                };
-                map = new google.maps.Map(document.getElementById('map'), mapOptions);
-            }
-            function call_geocomplete() {
-                $("#newSiteLocality").geocomplete()
-                        .bind("geocode:result", function(event, result) {
+    function initialize() {
+        var myLatlng = new google.maps.LatLng(19, 72);
+        var mapOptions = {
+            zoom: 4,
+            center: myLatlng
+        };
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    }
+    /*function call_geocomplete() {
+     $("#newSiteLocality").geocomplete()
+     .bind("geocode:result", function(event, result) {
+     
+     $('#geomsg').html("Result: " + result.formatted_address);
+     var lat = parseFloat(result.geometry.location.lat()).toFixed(6);
+     var lng = parseFloat(result.geometry.location.lng()).toFixed(6);
+     map.fitBounds(result.geometry.viewport);
+     $('#newSiteLat').val(lat);
+     $('#newSiteLng').val(lng);
+     var location = lat + "," + lng;
+     //console.log('location - ' + location);
+     //console.log($(this).val());
+     
+     var siteLatlng = new google.maps.LatLng(lat, lng);
+     var marker = new google.maps.Marker({
+     position: siteLatlng,
+     map: map,
+     //icon: 'img/marker.png'
+     });
+     marker.setMap(map);
+     marker.setDraggable(true);
+     
+     google.maps.event.addListener(marker, 'drag', function(event) {
+     // Pan to this position (doesn't work!)
+     map.panTo(marker.getPosition());
+     var c = marker.getPosition();
+     lat = (c.lat()).toFixed(6);
+     lng = (c.lng()).toFixed(6);
+     $('#newSiteLat').val(lat);
+     $('#newSiteLng').val(lng);
+     });
+     })
+     .bind("geocode:error", function(event, status) {
+     $('#geomsg').html("ERROR: " + status);
+     })
+     .bind("geocode:multiple", function(event, results) {
+     $('#geomsg').html("Multiple: " + results.length + " results found");
+     });
+     }*/
+    $(function() {
 
-                            $('#geomsg').html("Result: " + result.formatted_address);
-                            var lat = parseFloat(result.geometry.location.lat()).toFixed(6);
-                            var lng = parseFloat(result.geometry.location.lng()).toFixed(6);
-                            map.fitBounds(result.geometry.viewport);
-                            $('#newSiteLat').val(lat);
-                            $('#newSiteLng').val(lng);
-                            var location = lat + "," + lng;
-                            //console.log('location - ' + location);
-                            //console.log($(this).val());
+        /*var allVendorsJson = JSON.parse('<?php //echo $vendorList; ?>');
+        //console.log(allVendorsJson);        
+        $('#newSiteVendor').autocomplete({
+            source: allVendorsJson,
+            select: function(event, ui) {
+                $('#newSiteVendor').val(ui.item.value);
+                $('#newSiteVendorId').val(ui.item.id);
+            },
+            change: function(event, ui) {
+                if (ui.item == null) {
+                    $("#newSiteVendor").val('');
+                    $("#newSiteVendor").focus();
+                }
+            },
+            messages: {
+                noResults: '',
+                results: function() {
+                }
+            },
+        });*/
 
-                            var siteLatlng = new google.maps.LatLng(lat, lng);
-                            var marker = new google.maps.Marker({
-                                position: siteLatlng,
-                                map: map,
-                                //icon: 'img/marker.png'
-                            });
-                            marker.setMap(map);
-                            marker.setDraggable(true);
+        $('.mon_menu').each(function() {
+            $(this).removeClass('active');
+            console.log('removed');
+        });
+        $('.menu_site').addClass('active');
 
-                            google.maps.event.addListener(marker, 'drag', function(event) {
-                                // Pan to this position (doesn't work!)
-                                map.panTo(marker.getPosition());
-                                var c = marker.getPosition();
-                                lat = (c.lat()).toFixed(6);
-                                lng = (c.lng()).toFixed(6);
-                                $('#newSiteLat').val(lat);
-                                $('#newSiteLng').val(lng);
-                            });
-                        })
-                        .bind("geocode:error", function(event, status) {
-                            $('#geomsg').html("ERROR: " + status);
-                        })
-                        .bind("geocode:multiple", function(event, results) {
-                            $('#geomsg').html("Multiple: " + results.length + " results found");
-                        });
-            }
-            $(function() {
-
-                var allVendorsJson = JSON.parse('<?php echo $vendorList; ?>');
-                //console.log(allVendorsJson);        
-                $('#newSiteVendor').autocomplete({
-                    source: allVendorsJson,
-                    select: function(event, ui) {
-                        $('#newSiteVendor').val(ui.item.value);
-                        $('#newSiteVendorId').val(ui.item.id);
-                    },
-                    change: function(event,ui) {
-                        if (ui.item==null) {
-                            $("#newSiteVendor").val('');
-                            $("#newSiteVendor").focus();
-                        }
-                    },
-                    messages: {
-                        noResults: '',
-                        results: function() {
-                        }
-                    },
-                });
-
-
-                $('.mon_menu').each(function() {
-                    $(this).removeClass('active');
-                });
-                $('.menu_site').addClass('active');
-
-                $('#add').click(function(e) {
-                    if (!$(this).hasClass('edit')) {
-                        $('.add_campaign').show();
-                        $(this).addClass('edit');
-                    }
-                    else {
-                        $('.add_campaign').hide();
-                        $(this).removeClass('edit');
-                    }
-                });
-
-                $('.add_campaign a').click(function(e) {
-                    $('.add_campaign').hide();
-                    $('#add').removeClass('edit');
-                });
-
-                initialize();
-                call_geocomplete();
-            });
+        //initialize();
+        //call_geocomplete();
+    });
 </script>
