@@ -1,25 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "userrole".
+ * This is the model class for table "role".
  *
- * The followings are the available columns in table 'userrole':
+ * The followings are the available columns in table 'role':
  * @property integer $id
- * @property integer $userid
- * @property integer $roleid
+ * @property string $name
  *
  * The followings are the available model relations:
- * @property Role $role
- * @property User $user
+ * @property Userrole[] $userroles
  */
-class Userrole extends CActiveRecord
+class Role extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'UserRole';
+		return 'role';
 	}
 
 	/**
@@ -30,11 +28,11 @@ class Userrole extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('userid, roleid', 'required'),
-			array('userid, roleid', 'numerical', 'integerOnly'=>true),
+			array('name', 'required'),
+			array('name', 'length', 'max'=>64),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, userid, roleid', 'safe', 'on'=>'search'),
+			array('id, name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,8 +44,7 @@ class Userrole extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'role' => array(self::BELONGS_TO, 'Role', 'roleid'),
-			'user' => array(self::BELONGS_TO, 'User', 'userid'),
+			'userroles' => array(self::HAS_MANY, 'Userrole', 'roleid'),
 		);
 	}
 
@@ -58,8 +55,7 @@ class Userrole extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'userid' => 'Userid',
-			'roleid' => 'Roleid',
+			'name' => 'Name',
 		);
 	}
 
@@ -82,8 +78,7 @@ class Userrole extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('userid',$this->userid);
-		$criteria->compare('roleid',$this->roleid);
+		$criteria->compare('name',$this->name,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -94,38 +89,16 @@ class Userrole extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Userrole the static model class
+	 * @return Role the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-       
-        /*
-         * update the Userrole table in database according to the
-         * userId on which updation operation is being performed.
-         */
-        public static function updateRoles($id,$role)
+        
+        public static function getRole()
         {
-            //do something to update user roles table
-            $cmd = Yii::app()->db->createCommand();
-
-            $cmd = $cmd->update('userrole', array(
-                       'userid'=> $id, 'roleid'=>$role),
-                       'userid=:uid',
-                        array(':uid'=>$id));
-
-        }
-     
-        /*
-         * insert new value in the Userrole table in database
-         * for the new user being created
-         */
-        public function insertRoles($id,$role) {
-            $cmd = Yii::app()->db->createCommand();
-            $cmd = $cmd->insert('userrole', array(
-                        'userid'=>$id,
-                        'roleid'=>$role 
-            ));
+            $model= Role::model()->findAll();
+            return $model;
         }
 }

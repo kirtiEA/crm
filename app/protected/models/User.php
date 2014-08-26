@@ -18,6 +18,7 @@
  * @property string $datecreated
  * @property string $datemodified
  * @property string $dateactivated
+ * 
  *
  * The followings are the available model relations:
  * @property Campaign[] $campaigns
@@ -44,7 +45,8 @@
  */
 class User extends CActiveRecord
 {
-	/**
+    public $userroleid;
+    /**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -124,6 +126,7 @@ class User extends CActiveRecord
 			'datecreated' => 'Datecreated',
 			'datemodified' => 'Datemodified',
 			'dateactivated' => 'Dateactivated',
+                        'userroleid' => 'UserRoleId',
 		);
 	}
 
@@ -175,4 +178,39 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        //public function getFullName() { return $this->name.' '.$this->surname; }
+        
+        /*
+         * returns the model selected of user table.
+         * the model has sql run over it
+         * sql query-> select fname,lname,email,phonenumber from user where active=1 AND status=1
+         */
+        public static function fetchUserDetails() {
+            $criteria = new CDbCriteria();
+            //$criteria->concat = 'fname, lname as name';
+            $criteria->select = 'id, fname, lname, email, phonenumber';
+            $criteria->condition = 'active=:active AND status=:status';
+            $criteria->params = array(':active'=>1, ':status'=>1);
+            $model = User::model()->findAll($criteria);
+            return $model;
+        }
+        
+        /*
+         * Remove this function when testing has been done
+         * and it has been verified that only active user are displayed
+         */
+        public static function fetchNonActiveUsers() {
+            $criteria = new CDbCriteria();
+            //$criteria->concat = 'fname, lname as name';
+            $criteria->select = 'id, fname, lname, email, phonenumber';
+            $criteria->condition = 'active=:active ';
+            $criteria->params = array(':active'=>0);
+            $model = User::model()->findAll($criteria);
+            return $model;
+        }
+        
+        public function getUserRoleId() {
+            return $this->userroleid;
+        }
 }
