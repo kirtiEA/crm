@@ -66,21 +66,21 @@ class ApiController extends Controller {
                 $user = User::model()->find('LOWER(username)=?', array(strtolower($uname)));
                 if ($user === null) {
                     // Error: Unauthorized
-                    $this->_sendResponse(401, 'Error: User Name is invalid');
+                    $this->_sendResponse(401, 'User is invalid');
                 } else {
                     // check useridentity file in components
                     $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
                     $result = $ph->CheckPassword($pwd, $user->password);
-                    if ($result) {
-                        $userInfo = array(
+                    if ($result) {                        
+                        $data = array(
                             'id' => $user->id,
                             'name' => $user->fname . ' ' . $user->lname
-                        );
+                        );                                            
                         // Authorized
-                        $this->_sendResponse(200, CJSON::encode($userInfo));
-                    } else {
+                        $this->_sendResponse(200, $data);
+                    } else {                        
                         // Error: Unauthorized
-                        $this->_sendResponse(401, 'Error: User Password is invalid');
+                        $this->_sendResponse(401, 'User Password is invalid');
                     }
                 }
                 Yii::app()->end();
@@ -97,7 +97,7 @@ class ApiController extends Controller {
                 $user = User::model()->findByPk($uId);
                 if($user === null) {
                     // Error: Unauthorized
-                    $this->_sendResponse(401, 'Error: User is invalid');
+                    $this->_sendResponse(401, 'User is invalid');
                 } else {
                     // Valid User
                     // fetch all the task
@@ -123,15 +123,14 @@ class ApiController extends Controller {
                             . "LIMIT {$start}, {$limit}";                    
                     }                    
                     
-                    $tasks = Yii::app()->db->createCommand($sql)->queryAll();
-                                        
-                    $this->_sendResponse(200, CJSON::encode($tasks));
+                    $tasks = Yii::app()->db->createCommand($sql)->queryAll();                    
+                    $this->_sendResponse(200, $tasks);
                 }
                 Yii::app()->end();
                 
             default:
-                // Model not implemented error
-                $this->_sendResponse(501, sprintf('Error: Mode <b>list</b> is not implemented for model <b>%s</b>', $_GET['model']));
+                // Model not implemented error              
+                $this->_sendResponse(501, 'Mode <b>list</b> is not implemented for model '.$_GET['model']);
                 Yii::app()->end();
         }
 
@@ -256,9 +255,9 @@ class ApiController extends Controller {
                 $taskModel->taskDone = $taskDoneFlag;
                 $taskModel->problem = $problemFlag;
                 if($taskModel->save()) {
-                    $this->_sendResponse(200, CJSON::encode(array("success"=>true)));
+                    $this->_sendResponse(200, array("success"=>true));
                 } else {
-                    $this->_sendResponse(200, CJSON::encode(array("success"=>false)));
+                    $this->_sendResponse(200, array("success"=>false));
                 }
                 Yii::app()->end();
                 break;
@@ -324,7 +323,20 @@ class ApiController extends Controller {
         // pages with body are easy
         if ($body != '') {
             // send the body
-            echo $body;
+            if($status == 200) {
+                $response = array(
+                    'status' => $status,
+                    'error' => null,
+                    'data' => $body
+                );
+            } else {
+                $response = array(
+                    'status' => $status,
+                    'error' => $body,
+                    'data' => null
+                );
+            }            
+            echo CJSON::encode($response);
         }
         // we need to create the body if none is passed
         else {
