@@ -199,7 +199,22 @@
 <!-- end of tasks list --> 
 <script type="text/javascript">
     function fetchSites(vendorid) {
+        console.clear();
         console.log(vendorid);
+        $.ajax({
+            url: "<?php echo Yii::app()->urlManager->createUrl('ajax/fetchvendorsites'); ?>",
+            type: "POST",
+            data: {
+                vendorid: vendorid
+            },
+            async: false,
+            beforeSend: function() {
+                //console.log('before');                
+            },
+            success: function(data) {
+                console.log(data);
+            }
+        });
     }
     $(function() {
         $('.mon_menu').each(function() {
@@ -207,7 +222,7 @@
         });
         $('.menu_site').addClass('active');
 
-        var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');        
+        var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
         $('#vendor-ac').autocomplete({
             source: allVendorJson,
             select: function(event, ui) {

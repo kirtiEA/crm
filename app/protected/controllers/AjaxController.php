@@ -42,6 +42,33 @@ class AjaxController extends Controller {
         echo $returnUrl;
     }
 
+    public function actionFetchVendorSites() {
+        $vendorId = Yii::app()->request->getParam('vendorid');    
+        $result = Listing::model()->findAllByAttributes(array('companyId' => $vendorId));
+        
+        //print_r($result);
+        if ($result) {
+            $listArray = array();
+            foreach ($result as $value) {
+                $list = array(
+                    'id' => $value->id,
+                    'name' => $value->name,
+                    'location' => $value->locality,
+                    'mediaTypeId' => $value->mediaTypeId,
+                    'vendorId' => $vendorId,
+                    'modifiedDate' => $value->modifiedDate
+                );
+                array_push($listArray, $list);
+            }
+            if (count($listArray))
+                echo json_encode($listArray);
+            else
+                echo json_encode(NULL);
+        } else {
+            echo json_encode(NULL);
+        }
+    }
+
     public function actionAddsitetocampaign() {
         $this->render('addsitetocampaign');
     }
