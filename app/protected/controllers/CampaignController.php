@@ -4,14 +4,52 @@ class CampaignController extends Controller
 {        
 	public function actionIndex()
 	{
-		$this->render('index');
+                $model = new Campaign();
+                /*
+                 * fetch campaigns of the Company
+                 */
+                $campaigns = Campaign::fetchCompanyCampaignsName(Yii::app()->user->cid);
+                $finalCampaigns = array();
+                foreach ($campaigns as $key => $value) {
+                    $sDate = new DateTime($value['startDate']);
+                    $eDate = new DateTime($value['endDate']);
+                    $val = array('name' => $value['name'],
+                        'startDate' => $sDate->format('d M Y'),
+                        'endDate' => $eDate->format('d M Y'),
+                        'count' => $value['count']
+                        );
+                        array_push($finalCampaigns, $val);
+                }
+		$this->render('index', array('model' => $model, 'campaigns' => json_encode($finalCampaigns)));
 	}
 
 	public function actionFetchcampaign()
 	{
 		$this->render('fetchcampaign');
 	}
-
+        
+        public function actionCreate() {
+            $model = new Campaign();
+            $model->setScenario('insert');
+            if(isset($_POST['Campaign']))
+            {
+               $model->attributes = $_POST['Campaign'];
+               //print_r($model->validate());
+               if ($model->validate()) {
+                 $model->createdBy = Yii::app()->user->id;
+                 $model->companyid = Yii::app()->user->cid;
+                 $model->createdDate = date("Y-m-d H:i:s");
+                 $model->startDate = date("Y-m-d H:i:s", strtotime($model->startDate)) ;
+                 $model->endDate = date("Y-m-d H:i:s", strtotime($model->endDate));
+                 $model->save();
+               }
+               /*
+                * Add flash message for success
+                */
+               $this->redirect(Yii::app()->getBaseUrl() .  '/campaign');
+            }
+        }
+        
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

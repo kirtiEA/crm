@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "user".
+ * This is the model class for table "User".
  *
- * The followings are the available columns in table 'user':
+ * The followings are the available columns in table 'User':
  * @property integer $id
  * @property string $fname
  * @property string $lname
@@ -18,29 +18,31 @@
  * @property string $datecreated
  * @property string $datemodified
  * @property string $dateactivated
+ * @property integer $companyid
  *
  * The followings are the available model relations:
  * @property Campaign[] $campaigns
- * @property Emaileventlog[] $emaileventlogs
- * @property Favouritelisting[] $favouritelistings
+ * @property EmailEventLog[] $emailEventLogs
+ * @property FavouriteListing[] $favouriteListings
  * @property Link[] $links
  * @property Listing[] $listings
  * @property Listing[] $listings1
- * @property Listingdraft[] $listingdrafts
- * @property Listingdraft[] $listingdrafts1
- * @property Monitorlylisting[] $monitorlylistings
- * @property Photoproof[] $photoproofs
+ * @property ListingDraft[] $listingDrafts
+ * @property ListingDraft[] $listingDrafts1
+ * @property MonitorlyListing[] $monitorlyListings
+ * @property PhotoProof[] $photoProofs
  * @property Plan[] $plans
  * @property Rfp[] $rfps
  * @property Rfp[] $rfps1
- * @property Sharecampaignlog[] $sharecampaignlogs
+ * @property ShareCampaignLog[] $shareCampaignLogs
  * @property Task[] $tasks
- * @property Useraudiencetag[] $useraudiencetags
- * @property Usercompany[] $usercompanies
- * @property Usercontacts[] $usercontacts
+ * @property UserCompany $company
+ * @property UserAudienceTag[] $userAudienceTags
+ * @property UserCompany[] $userCompanies
+ * @property UserContacts[] $userContacts
+ * @property UserRole[] $userRoles
+ * @property UserZoneAssignment[] $userZoneAssignments
  * @property Userproduct[] $userproducts
- * @property Userrole[] $userroles
- * @property Userzoneassignment[] $userzoneassignments
  */
 class User extends CActiveRecord
 {
@@ -61,14 +63,14 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('fname, lname, email, password, phonenumber, active, datecreated, datemodified', 'required'),
-			array('active, status, subscribe', 'numerical', 'integerOnly'=>true),
+			array('active, status, subscribe, companyid', 'numerical', 'integerOnly'=>true),
 			array('fname, lname, username, phonenumber', 'length', 'max'=>20),
 			array('email', 'length', 'max'=>50),
 			array('password', 'length', 'max'=>60),
 			array('lastlogin, dateactivated', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, fname, lname, email, username, password, phonenumber, active, status, subscribe, lastlogin, datecreated, datemodified, dateactivated', 'safe', 'on'=>'search'),
+			array('id, fname, lname, email, username, password, phonenumber, active, status, subscribe, lastlogin, datecreated, datemodified, dateactivated, companyid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -81,26 +83,27 @@ class User extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'campaigns' => array(self::HAS_MANY, 'Campaign', 'createdBy'),
-			'emaileventlogs' => array(self::HAS_MANY, 'Emaileventlog', 'userid'),
-			'favouritelistings' => array(self::HAS_MANY, 'Favouritelisting', 'userid'),
+			'emailEventLogs' => array(self::HAS_MANY, 'EmailEventLog', 'userid'),
+			'favouriteListings' => array(self::HAS_MANY, 'FavouriteListing', 'userid'),
 			'links' => array(self::HAS_MANY, 'Link', 'userid'),
 			'listings' => array(self::HAS_MANY, 'Listing', 'byuserid'),
 			'listings1' => array(self::HAS_MANY, 'Listing', 'foruserid'),
-			'listingdrafts' => array(self::HAS_MANY, 'Listingdraft', 'byuserid'),
-			'listingdrafts1' => array(self::HAS_MANY, 'Listingdraft', 'foruserid'),
-			'monitorlylistings' => array(self::HAS_MANY, 'Monitorlylisting', 'addedBy'),
-			'photoproofs' => array(self::HAS_MANY, 'Photoproof', 'clickedby'),
+			'listingDrafts' => array(self::HAS_MANY, 'ListingDraft', 'byuserid'),
+			'listingDrafts1' => array(self::HAS_MANY, 'ListingDraft', 'foruserid'),
+			'monitorlyListings' => array(self::HAS_MANY, 'MonitorlyListing', 'addedBy'),
+			'photoProofs' => array(self::HAS_MANY, 'PhotoProof', 'clickedby'),
 			'plans' => array(self::HAS_MANY, 'Plan', 'userid'),
 			'rfps' => array(self::HAS_MANY, 'Rfp', 'byuserid'),
 			'rfps1' => array(self::HAS_MANY, 'Rfp', 'foruserid'),
-			'sharecampaignlogs' => array(self::HAS_MANY, 'Sharecampaignlog', 'userid'),
+			'shareCampaignLogs' => array(self::HAS_MANY, 'ShareCampaignLog', 'userid'),
 			'tasks' => array(self::HAS_MANY, 'Task', 'assigneduserid'),
-			'useraudiencetags' => array(self::HAS_MANY, 'Useraudiencetag', 'userid'),
-			'usercompanies' => array(self::HAS_MANY, 'Usercompany', 'userid'),
-			'usercontacts' => array(self::HAS_MANY, 'Usercontacts', 'linkedUserId'),
+			'company' => array(self::BELONGS_TO, 'UserCompany', 'companyid'),
+			'userAudienceTags' => array(self::HAS_MANY, 'UserAudienceTag', 'userid'),
+			'userCompanies' => array(self::HAS_MANY, 'UserCompany', 'userid'),
+			'userContacts' => array(self::HAS_MANY, 'UserContacts', 'linkedUserId'),
+			'userRoles' => array(self::HAS_MANY, 'UserRole', 'userid'),
+			'userZoneAssignments' => array(self::HAS_MANY, 'UserZoneAssignment', 'userid'),
 			'userproducts' => array(self::HAS_MANY, 'Userproduct', 'userid'),
-			'userroles' => array(self::HAS_MANY, 'Userrole', 'userid'),
-			'userzoneassignments' => array(self::HAS_MANY, 'Userzoneassignment', 'userid'),
 		);
 	}
 
@@ -124,6 +127,7 @@ class User extends CActiveRecord
 			'datecreated' => 'Datecreated',
 			'datemodified' => 'Datemodified',
 			'dateactivated' => 'Dateactivated',
+			'companyid' => 'Companyid',
 		);
 	}
 
@@ -159,6 +163,7 @@ class User extends CActiveRecord
 		$criteria->compare('datecreated',$this->datecreated,true);
 		$criteria->compare('datemodified',$this->datemodified,true);
 		$criteria->compare('dateactivated',$this->dateactivated,true);
+		$criteria->compare('companyid',$this->companyid);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
