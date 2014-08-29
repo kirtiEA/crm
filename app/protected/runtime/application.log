@@ -7365,6 +7365,7 @@ Stack trace:
 REQUEST_URI=/monitorly/app/images/ui-bg_glass_100_fdf5ce_1x400.png
 HTTP_REFERER=http://localhost/monitorly/app/css/application.css
 ---
+<<<<<<< HEAD
 =======
 2014/08/20 07:22:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/positype_-_clearsans-bk-webfont.woff".' in C:\xampp\htdocs\monitorly_webapp_new\framework\web\CWebApplication.php:286
 Stack trace:
@@ -14478,3 +14479,410 @@ in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
 2014/08/29 09:50:18 [warning] [application] Failed to set unsafe attribute "phonenumber" of "User".
 in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\UserController.php (84)
 in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+=======
+2014/08/26 14:12:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/landing/bootstrap.min.css".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('css/landing/boo...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/css/landing/bootstrap.min.css
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/08/26 14:12:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/landing/vendor/modernizr-2.6.2-respond-1.1.0.min.js".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('js/landing/vend...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/js/landing/vendor/modernizr-2.6.2-respond-1.1.0.min.js
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/08/26 14:12:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/landing/main.css".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('css/landing/mai...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/css/landing/main.css
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/08/26 14:12:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/landing/bootstrap-theme.min.css".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('css/landing/boo...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/css/landing/bootstrap-theme.min.css
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/08/26 14:12:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-4.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/img/landing/promise-icon-4.png
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/08/26 14:12:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-1.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/img/landing/promise-icon-1.png
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/08/26 14:12:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/facebook.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('img/landing/fac...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/img/landing/facebook.png
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/08/26 14:12:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/landing/vendor/bootstrap.min.js".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('js/landing/vend...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/js/landing/vendor/bootstrap.min.js
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/08/26 14:12:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/linkedin.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('img/landing/lin...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/img/landing/linkedin.png
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/08/26 14:12:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-2.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/img/landing/promise-icon-2.png
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/08/26 14:12:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-3.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/img/landing/promise-icon-3.png
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/08/26 14:12:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/landing/vendor/jquery-1.11.0.min.js".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('js/landing/vend...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/js/landing/vendor/jquery-1.11.0.min.js
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/08/26 15:03:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "add-vendors-sites.html".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('add-vendors-sit...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/add-vendors-sites.html
+HTTP_REFERER=http://localhost/monitorly/app/site
+---
+2014/08/26 17:36:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:36:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:37:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:37:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:37:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_glass_100_fdf5ce_1x400.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_gl...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_glass_100_fdf5ce_1x400.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:40:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:43:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:43:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:44:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:44:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:46:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:50:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:51:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:52:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:52:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_glass_100_fdf5ce_1x400.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_gl...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_glass_100_fdf5ce_1x400.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:55:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:56:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_glass_100_fdf5ce_1x400.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_gl...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_glass_100_fdf5ce_1x400.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:57:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 17:57:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_glass_100_fdf5ce_1x400.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_gl...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_glass_100_fdf5ce_1x400.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:00:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:01:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:01:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:06:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:06:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:06:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_glass_100_fdf5ce_1x400.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_gl...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_glass_100_fdf5ce_1x400.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:07:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:07:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_glass_100_fdf5ce_1x400.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_gl...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_glass_100_fdf5ce_1x400.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:07:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:07:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_glass_100_fdf5ce_1x400.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_gl...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_glass_100_fdf5ce_1x400.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:15:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_glass_100_fdf5ce_1x400.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_gl...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_glass_100_fdf5ce_1x400.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+2014/08/26 18:18:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly/app/css/application.css
+---
+>>>>>>> d0471c5c5607921cd0448aef5897b5fd57e64803

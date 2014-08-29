@@ -1,11 +1,6 @@
 
 
-$(document).ready(function() {
-
-    //click on Add Vendors Sites button
-    $('#add-vendors-sites').click(function(e) {
-        location.href = "add-vendors-sites.html";
-    });
+$(document).ready(function() {   
 
     //initializing multiselect dropdown
     $('.multiselect').multiselect({

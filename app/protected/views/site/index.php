@@ -23,7 +23,7 @@
         <div class="col-md-4">
             <div class="list-container">
                 <div class="action-buttons">
-                    <button class="btn btn-primary" id="add-vendors-sites">Add Vendors Sites</button>
+                    <button class="btn btn-primary" onclick="location.href='<?php echo Yii::app()->urlManager->createUrl('site/addvendor'); ?>'">Add Vendors Sites</button>
                 </div>
                 <div class="list-tools">
                     <ul>
@@ -171,8 +171,7 @@
         });*/
 
         $('.mon_menu').each(function() {
-            $(this).removeClass('active');
-            console.log('removed');
+            $(this).removeClass('active');            
         });
         $('.menu_site').addClass('active');
 
