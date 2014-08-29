@@ -13,7 +13,7 @@
  * @property Listing[] $listings
  * @property Monitorlylisting[] $monitorlylistings
  */
-class Mediatype extends CActiveRecord
+class BaseMediatype extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name

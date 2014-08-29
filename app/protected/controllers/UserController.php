@@ -70,10 +70,10 @@ class UserController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new User;
-                $role = CHtml::listData(Role::model()->findAll(), 'id', 'name'); 
-                $model->datecreated=date("Y-m-d H:i:s");
-                $model->datemodified=date("Y-m-d H:i:s");
+                //echo 'dfdfsfsd';die();
+		$model=new User();
+                $model->setscenario('create'); //create scenario for rules validation
+                
                 //print_r($today);die();
                 //$userRole = Userrole::model()->insertRoles();
 		// Uncomment the following line if AJAX validation is needed
@@ -81,19 +81,41 @@ class UserController extends Controller
 
 		if(isset($_POST['User']))
 		{
-			$model->attributes=$_POST['User'];
-			if($model->save())
-                        {
-                            $selected=$_POST['User']['userroleid'];
-                            Userrole::model()->insertRoles($model->id,$selected);
-                            $this->redirect(array('new','id'=>$model->id));
-                        }
+                    $model->attributes = $_POST['User'];
+                    //print_r($_POST['User']['username']);die();
+                    $role = Role::model()->findByPk(5);
+                $model->username = $_POST['User']['username'];
+                $model->email = 'dummy' . $model->username . '@eatads.com';
+                $model->phonenumber = $_POST['User']['phonenumber'];
+                $model->datecreated=date("Y-m-d H:i:s");
+                $model->datemodified=date("Y-m-d H:i:s");
+                    $pwd=$_POST['User']['password'];
+                    $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
+                    $password = $ph->HashPassword($pwd);
+                    //User::model()->insertUser($model);
+                    $result = $ph->CheckPassword($pwd, $model->password);   
+                    //echo $result;
+                    if ($result) {
+                        // Authorized
+                    } else {
+                        // Error: Unauthorized
+                    }
+                    $model->password=$password;
+                    
+                    if ($model->validate())
+                    {
+                       // print_r($model->attributes);
+                        $model->save();
+                        Userrole::model()->insertRoles($model->id,$role->id);
+                        $this->redirect(Yii::app()->getBaseUrl() . '/user');
+                    }
+
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
-                        'role'=>$role,
-		));
+//		$this->render('create',array(
+//			'model'=>$model,
+//                        'role'=>$role,
+//		));
 	}
 
         /**
@@ -117,7 +139,7 @@ class UserController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	/*public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
                 $userRole = Userrole::model()->findByAttributes(array('userid' => $id));
@@ -160,7 +182,7 @@ class UserController extends Controller
 			'model'=>$model,
                         'role'=>$role,
 		));
-	}
+	}*/
 
 	/**
 	 * Deletes a particular model.
@@ -181,16 +203,13 @@ class UserController extends Controller
 	 */
 	public function actionIndex()
 	{
-            $model=User::model()->fetchUserDetails();
+            $users=User::model()->fetchUserDetails();
+            $model= new User();
             //echo '<pre>';print_r($model); die();
             $this->render('index',array(
-                'model'=>  $model
+                'users'=>  $users,
+                'model' =>$model
             ));
-        	//$dataProvider=new CActiveDataProvider('User');
-		/*$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));*/
-                
 	}
         
         /**

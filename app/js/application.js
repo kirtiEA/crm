@@ -98,6 +98,52 @@ $(document).ready(function() {
         $(this).parent().remove();
     });
 
-
+    //change user password 
+    $('.change-pwd').click(function() {
+        $(this).hide();
+        $(this).parent(".pull-right").append($('#hidden-change-pwd').html());
+    });
+    
+    //save new password
+    jQuery(document.body).on('click', '.save', function() {
+        var saveBtn = $(this);
+        var pwdTxt = $(this).siblings('.password');
+        
+        var id = $(this).parent().attr('id');
+        var pwd = $(this).siblings('.password').val();
+        console.log(id);
+        $.ajax({
+            type: 'POST',
+            url: $('#base-url').val() + 'ajax/Updatepassword',
+            data: {'id': id,
+                'pwd': pwd},
+            success: function(data) {
+                alert("Password updated successfully" + data);
+                //$(this).siblings('.password').remove();
+                saveBtn.siblings('.change-pwd').show();
+                saveBtn.remove();
+                pwdTxt.remove();
+                
+            }
+        });
+    });
+    
+    //cancel updating new password
+    jQuery(document.body).on('click', '.cancel', function() {
+        var cancelBtn =$(this);
+        var pwdTxt = $(this).siblings('.password');
+        cancelBtn.siblings('.change-pwd').show();
+        cancelBtn.siblings('.save').hide();
+        cancelBtn.remove();
+        pwdTxt.remove();
+        
+    });
+    
+    
+    
+//    //add newuser 
+//    $('.add').click(function (){
+//        alert("User Created Succesfully");
+//    });
 
 });

@@ -14,11 +14,7 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
-<<<<<<< HEAD
-        'application.extensions.PasswordHash',
-=======
         'application.extensions.PasswordHash'
->>>>>>> origin/user
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool        
@@ -93,17 +89,8 @@ return array(
     'params' => array(
         // this is used in contact page
         'adminEmail' => 'amit@eatads.com',
-<<<<<<< HEAD
-        
-        // for password protection extension
-        'phpass' => array(
-            'iteration_count_log2' => 8,
-            'portable_hashes' => false,
-        ),
-=======
         'phpass' => array(
 'iteration_count_log2' => 8,
 'portable_hashes' => false,
->>>>>>> origin/user
     ),
 ));
