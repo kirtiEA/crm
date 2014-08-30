@@ -60,7 +60,7 @@ return array(
          */
         // uncomment the following to use a MySQL database
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=eatads',
+            'connectionString' => 'mysql:host=localhost:3306;dbname=eatads',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => 'root',
@@ -91,8 +91,7 @@ return array(
         // this is used in contact page
         'adminEmail' => 'amit@eatads.com',
         'phpass' => array(
-            'iteration_count_log2' => 8,
-            'portable_hashes' => false,
-        ),
+'iteration_count_log2' => 8,
+'portable_hashes' => false,
     ),
-);
+));

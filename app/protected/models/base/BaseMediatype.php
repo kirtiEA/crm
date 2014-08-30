@@ -1,25 +1,26 @@
 <?php
 
 /**
- * This is the model class for table "userrole".
+ * This is the model class for table "mediatype".
  *
- * The followings are the available columns in table 'userrole':
+ * The followings are the available columns in table 'mediatype':
  * @property integer $id
- * @property integer $userid
- * @property integer $roleid
+ * @property string $name
+ * @property string $logopath
+ * @property integer $status
  *
  * The followings are the available model relations:
- * @property Role $role
- * @property User $user
+ * @property Listing[] $listings
+ * @property Monitorlylisting[] $monitorlylistings
  */
-class Userrole extends CActiveRecord
+class BaseMediatype extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'UserRole';
+		return 'MediaType';
 	}
 
 	/**
@@ -30,11 +31,12 @@ class Userrole extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('userid, roleid', 'required'),
-			array('userid, roleid', 'numerical', 'integerOnly'=>true),
+			array('name, logopath', 'required'),
+			array('status', 'numerical', 'integerOnly'=>true),
+			array('name, logopath', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, userid, roleid', 'safe', 'on'=>'search'),
+			array('id, name, logopath, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,8 +48,8 @@ class Userrole extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'role' => array(self::BELONGS_TO, 'Role', 'roleid'),
-			'user' => array(self::BELONGS_TO, 'User', 'userid'),
+			'listings' => array(self::HAS_MANY, 'Listing', 'mediatypeid'),
+			'monitorlylistings' => array(self::HAS_MANY, 'Monitorlylisting', 'mediaTypeId'),
 		);
 	}
 
@@ -58,8 +60,9 @@ class Userrole extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'userid' => 'Userid',
-			'roleid' => 'Roleid',
+			'name' => 'Name',
+			'logopath' => 'Logopath',
+			'status' => 'Status',
 		);
 	}
 
@@ -82,8 +85,9 @@ class Userrole extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('userid',$this->userid);
-		$criteria->compare('roleid',$this->roleid);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('logopath',$this->logopath,true);
+		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -94,38 +98,10 @@ class Userrole extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Userrole the static model class
+	 * @return Mediatype the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-       
-        /*
-         * update the Userrole table in database according to the
-         * userId on which updation operation is being performed.
-         */
-        public static function updateRoles($id,$role)
-        {
-            //do something to update user roles table
-            $cmd = Yii::app()->db->createCommand();
-
-            $cmd = $cmd->update('userrole', array(
-                       'userid'=> $id, 'roleid'=>$role),
-                       'userid=:uid',
-                        array(':uid'=>$id));
-
-        }
-     
-        /*
-         * insert new value in the Userrole table in database
-         * for the new user being created
-         */
-        public function insertRoles($id,$role) {
-            $cmd = Yii::app()->db->createCommand();
-            $cmd = $cmd->insert('userrole', array(
-                        'userid'=>$id,
-                        'roleid'=>$role 
-            ));
-        }
 }
