@@ -35,7 +35,7 @@
  * @property User $user
  * @property Usercontacts[] $usercontacts
  */
-class UserCompany extends CActiveRecord
+class BaseUserCompany extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name

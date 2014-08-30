@@ -32,6 +32,80 @@
     
 </script>
 
+<!-- Add Site Large Modal -->
+    <div class="modal fade" id="add-site-modal" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-extra-large">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h2 class="modal-title"><b>Add Sites</b> to Amul</h2>
+          </div>
+          <div class="modal-body">
+              <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 left-content">
+                        <div class="search-box-wrapper">
+                            <input type="text" placeholder="Search Vendor">
+                        </div>
+                        <ul>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li class="selected">Vendor (2)</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                            <li>Vendor</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9 right-content">
+                        <div class="search-box-wrapper">
+                            <input type="text" placeholder="Search Sites">
+                        </div>
+                        <ul>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li class="selected">Site<span class="glyphicon glyphicon-remove pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li class="selected">Site<span class="glyphicon glyphicon-remove pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                            <li>Site<span class="glyphicon glyphicon-plus pull-right"></span></li>
+                        </ul>
+                    </div>
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" data-dismiss="modal">Cancel&nbsp;</a>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 <!-- add new user sub-header -->    
 
 <div class="container-fluid sub-header">

@@ -13,12 +13,10 @@ class Campaign extends BaseCampaign {
      * The rules state that username and password are required,
      * and password needs to be authenticated.
      */
-    public function rules()
-    {
-            return array(
-                
-                array('name, startDate, endDate', 'required', 'on' => 'insert', 'message' => 'All Fields are required' ),
-            );
+    public function rules() {
+        return array(
+            array('name, startDate, endDate', 'required', 'on' => 'insert', 'message' => 'All Fields are required'),
+        );
     }
     
     /*
