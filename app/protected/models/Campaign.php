@@ -21,10 +21,10 @@ class Campaign extends BaseCampaign {
     
     /*
      * fetch campaigns for the company based on active/upcoming/expired
-     * pass active=>1, upcoming=>2, expired=>3
+     * pass active=>1, upcoming=>2, expired=>3, active/upcoming =>4
      */
     public static function fetchCompanyCampaignsName($companyid, $type=1) {
-        $sql = 'select name, startDate, endDate, (select count(t.id) from Task t where t.campaignid  = c.id) as count from Campaign c where c.companyid = ' . $companyid;
+        $sql = 'select c.id, name, startDate, endDate, (select count(distinct tt.siteid) from Task tt where tt.campaignid  = c.id and tt.status = 1) as count from Campaign c where c.companyid = ' . $companyid;
         switch ($type) {
             case 1:
                 $sql = $sql . ' and endDate >= \'' . date("Y-m-d H:i:s") . '\' and startDate <= \'' . date("Y-m-d H:i:s") . '\'';
@@ -35,6 +35,9 @@ class Campaign extends BaseCampaign {
             case 3:
                 $sql = $sql . ' and endDate <= \'' . date("Y-m-d H:i:s") . '\' and startDate <= \'' . date("Y-m-d H:i:s") . '\'';
                  break;   
+            case 4:
+                $sql = $sql . ' and ((endDate >= \'' . date("Y-m-d H:i:s") . '\' and startDate <= \'' . date("Y-m-d H:i:s") . '\') ' . ' or (endDate >= \'' . date("Y-m-d H:i:s") . '\' and startDate >= \'' . date("Y-m-d H:i:s") . '\'))';
+                break;
             default:
                 break;
         }

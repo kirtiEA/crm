@@ -13,13 +13,18 @@ class CampaignController extends Controller
                 foreach ($campaigns as $key => $value) {
                     $sDate = new DateTime($value['startDate']);
                     $eDate = new DateTime($value['endDate']);
-                    $val = array('name' => $value['name'],
+                    $val = array(
+                        'id' => $value['id'],
+                        'name' => $value['name'],
                         'startDate' => $sDate->format('d M Y'),
                         'endDate' => $eDate->format('d M Y'),
                         'count' => $value['count']
                         );
                         array_push($finalCampaigns, $val);
                 }
+                /*
+                 * fetch Vendors list that needs to be published
+                 */
 		$this->render('index', array('model' => $model, 'campaigns' => json_encode($finalCampaigns)));
 	}
 

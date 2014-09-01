@@ -89,6 +89,7 @@ class UserController extends Controller
                 $model->phonenumber = $_POST['User']['phonenumber'];
                 $model->datecreated=date("Y-m-d H:i:s");
                 $model->datemodified=date("Y-m-d H:i:s");
+                $model->companyid = Yii::app()->user->cid;
                     $pwd=$_POST['User']['password'];
                     $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
                     $password = $ph->HashPassword($pwd);

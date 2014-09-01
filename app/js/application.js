@@ -135,9 +135,7 @@ $(document).ready(function() {
         pwdTxt.remove();
         
     });
-    
-    
-    
+   
 //    //add newuser 
 //    $('.add').click(function (){
 //        alert("User Created Succesfully");

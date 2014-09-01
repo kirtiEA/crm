@@ -63,4 +63,11 @@ class User extends BaseUser
                         array(':id'=>$id));
             
         }
+        
+        public static function fetchCompanyUsers($companyid,$roleid=null) {
+            $sql = 'select u.id, u.username as name from User u '
+                    . 'where companyid = '. $companyid;
+            return Yii::app()->db->createCommand($sql)->queryAll();
+                    
+        } 
 }
