@@ -1,5 +1,137 @@
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+<style>
+    .site_marked_fav {
+        background-color: #F58707;
+        color: white;
+        border: none;
+    }
+     .selectedSite {
+                background-color: bisque;
+            }
+            
+            #loading-image {
+	background-color: #333;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	z-index: 9999;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px; /* future proofing */
+	-khtml-border-radius: 10px;
+        opacity: 0.7;
+}
+</style>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-full-2.2.0.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-helpers-1.1.1.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/listings.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/map.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+<script>
+        var icons, map, centerLatLng, legend, circle, mcOptions;
+    var userid = 418;
+    var companyid;
+    var listingIdForPlan =0;
+        var centerPointArr = [];
+        var allMarkers = [];
+        
+     var listings = '';   
+     var zoomLevel;
+     var new_boundary;
+    function fetchListings() {
+        var chk = [];
+        
+       // console.log("this is the price slider " + $('.tooltip-inner').text());
+        
+//        $("input:checkbox[name=type]:checked").each(function()
+//        {
+//           chk.push($(this).val());
+//        });
+//        
+//        var light = [];
+//        $("input:checkbox[name=lighting]:checked").each(function()
+//        {
+//           light.push($(this).val());
+//        });
+        var filter = $("#filter_group .active").data("value");
+      //  console.log('filter :' + filter + ' light : ' + light + ' mt: ' + chk );
+        
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo Yii::app()->urlManager->createUrl('ajax/getlisting/'); ?>',
+            data:{'type': companyid,
+                   'sort':filter,
+//                   'userid' : userid
+//                   ,
+//                   'priceslider':$('.tooltip-inner').text()
+                    },
+         success:function(data){
+             //console.log("data " + data);
+                var currList = JSON.parse(data);
+                listings += JSON.parse(data);
+                var len = JSON.parse(data);
+                for (var i =0 ; i < len.length; i++) {
+                    listings += len[i];
+         //   console.log(listings);
+                }    
+                dust.render("listings", JSON.parse(data), function(err, out) {
+               // console.log("this is test out from ajax11111 : " + out +"err "+ err);    
+                $('#site-list').html(out);
+                
+//                $('#site-list  ').jscroll({
+//                    loadingHtml: '<img src="loading.gif" alt="Loading" /> Loading...',
+//                    padding: 20,
+//                    nextSelector: 'a.jscroll-next:last',
+//                    contentSelector: 'li'
+//                });
+
+//listings.SiteListing.push(currList);
+             //   console.log(listings + " listings length" + JSON.parse(data).SiteListing.length );
+                });
+                  //$('#site-list  ').jscroll();
+                  
+                  $('#site-list').scroll(function()
+{
+    if($('#site-list').scrollTop() == $(document).height() - $('#site-list').height())
+    {
+        //$('div#loadmoreajaxloader').show();
+        console.log('this is is tst');
+        $.ajax({
+        url: "loadmore.php",
+        success: function(html)
+        {
+            if(html)
+            {
+                $("#postswrapper").append(html);
+                $('div#loadmoreajaxloader').hide();
+            }else
+            {
+                $('div#loadmoreajaxloader').html('<center>No more posts to show.</center>');
+            }
+        }
+        });
+    }
+});
+                $(".plus").popover({
+                    html : true, 
+                    content: function() {
+                      return $(".popover-content-custom").html();
+                    },
+                    title: function() {
+                      return $(".popover-title-custom").html();
+                    }
+                });
+                
+            },
+            error: function(data) { // if error occured
+                  alert("Error occured.please try again");
+                  alert(data);
+             }
+           });
+    }
+</script>    
 <!-- tabs -->    
 <ul class="nav nav-tabs" id="sites-tabs" role="tablist">
     <li class="active"><a href="sites_vendorssites.html" role="tab" data-toggle="tab">Vendors Sites</a></li>

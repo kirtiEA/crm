@@ -326,6 +326,19 @@ class AjaxController extends Controller {
     public function actionfilterTask() {
         
     }
+    
+//    public function actiongetlisting() {
+//        $type = $_POST['type'];
+//        
+//    }
+    
+    public function actionGetListing() {
+
+        echo json_encode($data);
+    }
+    
+    
+    
     /*
      * Create new user
      */
