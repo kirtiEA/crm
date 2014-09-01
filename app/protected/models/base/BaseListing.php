@@ -27,6 +27,7 @@
  * @property integer $lightingid
  * @property integer $mediatypeid
  * @property string $description
+ * @property integer $approved
  * @property integer $status
  * @property integer $pscore
  * @property integer $reach
@@ -89,7 +90,7 @@ class BaseListing extends CActiveRecord
         // will receive user inputs.
         return array(
             array('byuserid, foruserid, name, length, width, sizeunitid, basecurrencyid, price, weeklyprice, pricedurationid, otherdata, countryid, stateid, cityid, locality, zoomlevel, lightingid, mediatypeid, pscore, datecreated, datemodified, companyId,parent_listing_id', 'required'),
-            array('byuserid, foruserid, sizeunitid, basecurrencyid, pricedurationid, countryid, stateid, cityid, accurate_geoloc, zoomlevel, lightingid, mediatypeid, status, pscore, reach, solr, min_period_num, min_period_unit, rate_per_unit, area_code, loop_length, daily_spots, dwell_time,companyId, parent_listing_id', 'numerical', 'integerOnly'=>true),
+            array('byuserid, foruserid, sizeunitid, basecurrencyid, pricedurationid, countryid, stateid, cityid, accurate_geoloc, zoomlevel, lightingid, mediatypeid, approved, status, pscore, reach, solr, min_period_num, min_period_unit, rate_per_unit, area_code, loop_length, daily_spots, dwell_time,companyId, parent_listing_id', 'numerical', 'integerOnly'=>true),
             array('name, tag1, tag2, tag3, contact_name, contact_phone, contact_email, postal, operating_hours, screen_size, other_type', 'length', 'max'=>255),
             array('length, width, price', 'length', 'max'=>10),
             array('weeklyprice', 'length', 'max'=>20),
@@ -99,7 +100,7 @@ class BaseListing extends CActiveRecord
             array('description, availability_start, availability_end, search_keywords', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, byuserid, foruserid, name, length, width, sizeunitid, basecurrencyid, price, weeklyprice, pricedurationid, otherdata, countryid, stateid, cityid, locality, geolat, geolng, accurate_geoloc, zoomlevel, lightingid, mediatypeid, description, status, pscore, reach, solr, datecreated, datemodified, tag1, tag2, tag3, availability_start, availability_end, min_period_num, min_period_unit, contact_name, contact_phone, contact_email, rate_per_unit, search_keywords, area_code, postal, loop_length, daily_spots, operating_hours, screen_size, dwell_time, other_type, companyId, availabilitydate', 'safe', 'on'=>'search'),
+            array('id, byuserid, foruserid, name, length, width, sizeunitid, basecurrencyid, price, weeklyprice, pricedurationid, otherdata, countryid, stateid, cityid, locality, geolat, geolng, accurate_geoloc, zoomlevel, lightingid, mediatypeid, description, approved, status, pscore, reach, solr, datecreated, datemodified, tag1, tag2, tag3, availability_start, availability_end, min_period_num, min_period_unit, contact_name, contact_phone, contact_email, rate_per_unit, search_keywords, area_code, postal, loop_length, daily_spots, operating_hours, screen_size, dwell_time, other_type, companyId, availabilitydate', 'safe', 'on'=>'search'),
         );
     }
 
@@ -155,6 +156,7 @@ class BaseListing extends CActiveRecord
             'lightingid' => 'Lightingid',
             'mediatypeid' => 'Mediatypeid',
             'description' => 'Description',
+            'approved' => 'Approved',
             'status' => 'Status',
             'pscore' => 'Pscore',
             'reach' => 'Reach',
@@ -228,6 +230,7 @@ class BaseListing extends CActiveRecord
         $criteria->compare('lightingid',$this->lightingid);
         $criteria->compare('mediatypeid',$this->mediatypeid);
         $criteria->compare('description',$this->description,true);
+        $criteria->compare('approved',$this->approved);
         $criteria->compare('status',$this->status);
         $criteria->compare('pscore',$this->pscore);
         $criteria->compare('reach',$this->reach);

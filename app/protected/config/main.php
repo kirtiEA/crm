@@ -4,6 +4,9 @@
 // Yii::setPathOfAlias('local','path/to/local-folder');
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+
+$protocol = 'http://';     // https:// or http://
+
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'Monitorly',
@@ -88,6 +91,7 @@ return array(
     // application-level parameters that can be accessed
     // using Yii::app()->params['paramName']
     'params' => array(
+        'protocol' => $protocol,    // goto top
         // this is used in contact page
         'adminEmail' => 'amit@eatads.com',
         'phpass' => array(

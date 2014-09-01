@@ -1,26 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "mediatype".
+ * This is the model class for table "role".
  *
- * The followings are the available columns in table 'mediatype':
+ * The followings are the available columns in table 'role':
  * @property integer $id
  * @property string $name
- * @property string $logopath
- * @property integer $status
  *
  * The followings are the available model relations:
- * @property Listing[] $listings
- * @property Monitorlylisting[] $monitorlylistings
+ * @property Userrole[] $userroles
  */
-class BaseMediatype extends CActiveRecord
+class BaseRole extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'MediaType';
+		return 'Role';
 	}
 
 	/**
@@ -31,12 +28,11 @@ class BaseMediatype extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, logopath', 'required'),
-			array('status', 'numerical', 'integerOnly'=>true),
-			array('name, logopath', 'length', 'max'=>50),
+			array('name', 'required'),
+			array('name', 'length', 'max'=>64),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, logopath, status', 'safe', 'on'=>'search'),
+			array('id, name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,8 +44,7 @@ class BaseMediatype extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'listings' => array(self::HAS_MANY, 'Listing', 'mediatypeid'),
-			'monitorlylistings' => array(self::HAS_MANY, 'Monitorlylisting', 'mediaTypeId'),
+			'userroles' => array(self::HAS_MANY, 'Userrole', 'roleid'),
 		);
 	}
 
@@ -61,8 +56,6 @@ class BaseMediatype extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => 'Name',
-			'logopath' => 'Logopath',
-			'status' => 'Status',
 		);
 	}
 
@@ -86,8 +79,6 @@ class BaseMediatype extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('logopath',$this->logopath,true);
-		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -98,10 +89,16 @@ class BaseMediatype extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Mediatype the static model class
+	 * @return Role the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
+        
+        public static function getRole()
+        {
+            $model= Role::model()->findAll();
+            return $model;
+        }
 }

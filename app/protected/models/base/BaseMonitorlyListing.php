@@ -1,15 +1,34 @@
 <?php
 
-Yii::import('application.models.base.BasePhotoProof');
-
-class PhotoProof extends BasePhotoProof
+/**
+ * This is the model class for table "MonitorlyListing".
+ *
+ * The followings are the available columns in table 'MonitorlyListing':
+ * @property integer $id
+ * @property string $name
+ * @property string $geoLat
+ * @property string $geoLng
+ * @property integer $mediaTypeId
+ * @property string $zone
+ * @property integer $vendorId
+ * @property integer $addedBy
+ * @property string $createdDate
+ * @property string $modifiedDate
+ * @property string $locality
+ *
+ * The followings are the available model relations:
+ * @property Mediatype $mediaType
+ * @property User $addedBy0
+ * @property Task[] $tasks
+ */
+class BaseMonitorlyListing extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'PhotoProof';
+		return 'MonitorlyListing';
 	}
 
 	/**
@@ -20,14 +39,13 @@ class PhotoProof extends BasePhotoProof
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('taskid, clickedBy', 'numerical', 'integerOnly'=>true),
-			array('clickedLat, clickedLng', 'numerical'),
-			array('imageName', 'length', 'max'=>45),
-			array('installation, lighting, obstruction, comments', 'length', 'max'=>255),
-			array('clickedDateTime, createdDate, modifiedDate', 'safe'),
+			array('mediaTypeId, vendorId, addedBy', 'numerical', 'integerOnly'=>true),
+			array('name, zone, locality', 'length', 'max'=>245),
+			array('geoLat, geoLng', 'length', 'max'=>9),
+			array('createdDate, modifiedDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, taskid, imageName, clickedDateTime, clickedLat, clickedLng, installation, lighting, obstruction, comments, clickedBy, createdDate, modifiedDate', 'safe', 'on'=>'search'),
+			array('id, name, geoLat, geoLng, mediaTypeId, zone, vendorId, addedBy, createdDate, modifiedDate, locality', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -39,8 +57,9 @@ class PhotoProof extends BasePhotoProof
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'task' => array(self::BELONGS_TO, 'Task', 'taskid'),
-			'clickedby' => array(self::BELONGS_TO, 'User', 'clickedby'),
+			'mediaType' => array(self::BELONGS_TO, 'Mediatype', 'mediaTypeId'),
+			'addedBy0' => array(self::BELONGS_TO, 'User', 'addedBy'),
+			'tasks' => array(self::HAS_MANY, 'Task', 'siteid'),
 		);
 	}
 
@@ -51,18 +70,16 @@ class PhotoProof extends BasePhotoProof
 	{
 		return array(
 			'id' => 'ID',
-			'taskid' => 'Taskid',
-			'imageName' => 'Image Name',
-			'clickedDateTime' => 'Clicked Date Time',
-			'clickedLat' => 'Clicked Lat',
-			'clickedLng' => 'Clicked Lng',
-			'installation' => 'Installation',
-			'lighting' => 'Lighting',
-			'obstruction' => 'Obstruction',
-			'comments' => 'Comments',
-			'clickedBy' => 'Clicked By',
+			'name' => 'Name',
+			'geoLat' => 'Geo Lat',
+			'geoLng' => 'Geo Lng',
+			'mediaTypeId' => 'Media Type',
+			'zone' => 'Zone',
+			'vendorId' => 'Vendor',
+			'addedBy' => 'Added By',
 			'createdDate' => 'Created Date',
 			'modifiedDate' => 'Modified Date',
+			'locality' => 'Locality',
 		);
 	}
 
@@ -85,18 +102,16 @@ class PhotoProof extends BasePhotoProof
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('taskid',$this->taskid);
-		$criteria->compare('imageName',$this->imageName,true);
-		$criteria->compare('clickedDateTime',$this->clickedDateTime,true);
-		$criteria->compare('clickedLat',$this->clickedLat);
-		$criteria->compare('clickedLng',$this->clickedLng);
-		$criteria->compare('installation',$this->installation,true);
-		$criteria->compare('lighting',$this->lighting,true);
-		$criteria->compare('obstruction',$this->obstruction,true);
-		$criteria->compare('comments',$this->comments,true);
-		$criteria->compare('clickedBy',$this->clickedBy);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('geoLat',$this->geoLat,true);
+		$criteria->compare('geoLng',$this->geoLng,true);
+		$criteria->compare('mediaTypeId',$this->mediaTypeId);
+		$criteria->compare('zone',$this->zone,true);
+		$criteria->compare('vendorId',$this->vendorId);
+		$criteria->compare('addedBy',$this->addedBy);
 		$criteria->compare('createdDate',$this->createdDate,true);
 		$criteria->compare('modifiedDate',$this->modifiedDate,true);
+		$criteria->compare('locality',$this->locality,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -107,7 +122,7 @@ class PhotoProof extends BasePhotoProof
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return PhotoProof the static model class
+	 * @return MonitorlyListing the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

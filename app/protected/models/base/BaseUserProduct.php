@@ -1,15 +1,24 @@
 <?php
 
-Yii::import('application.models.base.BasePhotoProof');
-
-class PhotoProof extends BasePhotoProof
+/**
+ * This is the model class for table "userproduct".
+ *
+ * The followings are the available columns in table 'userproduct':
+ * @property integer $id
+ * @property integer $userid
+ * @property integer $productid
+ *
+ * The followings are the available model relations:
+ * @property User $user
+ */
+class BaseUserProduct extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'PhotoProof';
+		return 'UserProduct';
 	}
 
 	/**
@@ -20,14 +29,11 @@ class PhotoProof extends BasePhotoProof
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('taskid, clickedBy', 'numerical', 'integerOnly'=>true),
-			array('clickedLat, clickedLng', 'numerical'),
-			array('imageName', 'length', 'max'=>45),
-			array('installation, lighting, obstruction, comments', 'length', 'max'=>255),
-			array('clickedDateTime, createdDate, modifiedDate', 'safe'),
+			array('userid, productid', 'required'),
+			array('userid, productid', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, taskid, imageName, clickedDateTime, clickedLat, clickedLng, installation, lighting, obstruction, comments, clickedBy, createdDate, modifiedDate', 'safe', 'on'=>'search'),
+			array('id, userid, productid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -39,8 +45,7 @@ class PhotoProof extends BasePhotoProof
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'task' => array(self::BELONGS_TO, 'Task', 'taskid'),
-			'clickedby' => array(self::BELONGS_TO, 'User', 'clickedby'),
+			'user' => array(self::BELONGS_TO, 'User', 'userid'),
 		);
 	}
 
@@ -51,18 +56,8 @@ class PhotoProof extends BasePhotoProof
 	{
 		return array(
 			'id' => 'ID',
-			'taskid' => 'Taskid',
-			'imageName' => 'Image Name',
-			'clickedDateTime' => 'Clicked Date Time',
-			'clickedLat' => 'Clicked Lat',
-			'clickedLng' => 'Clicked Lng',
-			'installation' => 'Installation',
-			'lighting' => 'Lighting',
-			'obstruction' => 'Obstruction',
-			'comments' => 'Comments',
-			'clickedBy' => 'Clicked By',
-			'createdDate' => 'Created Date',
-			'modifiedDate' => 'Modified Date',
+			'userid' => 'Userid',
+			'productid' => 'Productid',
 		);
 	}
 
@@ -85,18 +80,8 @@ class PhotoProof extends BasePhotoProof
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('taskid',$this->taskid);
-		$criteria->compare('imageName',$this->imageName,true);
-		$criteria->compare('clickedDateTime',$this->clickedDateTime,true);
-		$criteria->compare('clickedLat',$this->clickedLat);
-		$criteria->compare('clickedLng',$this->clickedLng);
-		$criteria->compare('installation',$this->installation,true);
-		$criteria->compare('lighting',$this->lighting,true);
-		$criteria->compare('obstruction',$this->obstruction,true);
-		$criteria->compare('comments',$this->comments,true);
-		$criteria->compare('clickedBy',$this->clickedBy);
-		$criteria->compare('createdDate',$this->createdDate,true);
-		$criteria->compare('modifiedDate',$this->modifiedDate,true);
+		$criteria->compare('userid',$this->userid);
+		$criteria->compare('productid',$this->productid);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -107,7 +92,7 @@ class PhotoProof extends BasePhotoProof
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return PhotoProof the static model class
+	 * @return Userproduct the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

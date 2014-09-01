@@ -1,15 +1,28 @@
 <?php
 
-Yii::import('application.models.base.BasePhotoProof');
-
-class PhotoProof extends BasePhotoProof
+/**
+ * This is the model class for table "ListingImage".
+ *
+ * The followings are the available columns in table 'ListingImage':
+ * @property integer $id
+ * @property integer $listingid
+ * @property integer $status
+ * @property string $filename
+ * @property string $filename_old
+ * @property string $caption
+ * @property integer $new_status
+ *
+ * The followings are the available model relations:
+ * @property Listing $listing
+ */
+class BaseListingImage extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'PhotoProof';
+		return 'ListingImage';
 	}
 
 	/**
@@ -20,14 +33,13 @@ class PhotoProof extends BasePhotoProof
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('taskid, clickedBy', 'numerical', 'integerOnly'=>true),
-			array('clickedLat, clickedLng', 'numerical'),
-			array('imageName', 'length', 'max'=>45),
-			array('installation, lighting, obstruction, comments', 'length', 'max'=>255),
-			array('clickedDateTime, createdDate, modifiedDate', 'safe'),
+			array('listingid, filename, filename_old', 'required'),
+			array('listingid, status, new_status', 'numerical', 'integerOnly'=>true),
+			array('filename', 'length', 'max'=>50),
+			array('caption', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, taskid, imageName, clickedDateTime, clickedLat, clickedLng, installation, lighting, obstruction, comments, clickedBy, createdDate, modifiedDate', 'safe', 'on'=>'search'),
+			array('id, listingid, status, filename, filename_old, caption, new_status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -39,8 +51,7 @@ class PhotoProof extends BasePhotoProof
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'task' => array(self::BELONGS_TO, 'Task', 'taskid'),
-			'clickedby' => array(self::BELONGS_TO, 'User', 'clickedby'),
+			'listing' => array(self::BELONGS_TO, 'Listing', 'listingid'),
 		);
 	}
 
@@ -51,18 +62,12 @@ class PhotoProof extends BasePhotoProof
 	{
 		return array(
 			'id' => 'ID',
-			'taskid' => 'Taskid',
-			'imageName' => 'Image Name',
-			'clickedDateTime' => 'Clicked Date Time',
-			'clickedLat' => 'Clicked Lat',
-			'clickedLng' => 'Clicked Lng',
-			'installation' => 'Installation',
-			'lighting' => 'Lighting',
-			'obstruction' => 'Obstruction',
-			'comments' => 'Comments',
-			'clickedBy' => 'Clicked By',
-			'createdDate' => 'Created Date',
-			'modifiedDate' => 'Modified Date',
+			'listingid' => 'Listingid',
+			'status' => 'Status',
+			'filename' => 'Filename',
+			'filename_old' => 'Filename Old',
+			'caption' => 'Caption',
+			'new_status' => 'New Status',
 		);
 	}
 
@@ -85,18 +90,12 @@ class PhotoProof extends BasePhotoProof
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('taskid',$this->taskid);
-		$criteria->compare('imageName',$this->imageName,true);
-		$criteria->compare('clickedDateTime',$this->clickedDateTime,true);
-		$criteria->compare('clickedLat',$this->clickedLat);
-		$criteria->compare('clickedLng',$this->clickedLng);
-		$criteria->compare('installation',$this->installation,true);
-		$criteria->compare('lighting',$this->lighting,true);
-		$criteria->compare('obstruction',$this->obstruction,true);
-		$criteria->compare('comments',$this->comments,true);
-		$criteria->compare('clickedBy',$this->clickedBy);
-		$criteria->compare('createdDate',$this->createdDate,true);
-		$criteria->compare('modifiedDate',$this->modifiedDate,true);
+		$criteria->compare('listingid',$this->listingid);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('filename',$this->filename,true);
+		$criteria->compare('filename_old',$this->filename_old,true);
+		$criteria->compare('caption',$this->caption,true);
+		$criteria->compare('new_status',$this->new_status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -107,7 +106,7 @@ class PhotoProof extends BasePhotoProof
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return PhotoProof the static model class
+	 * @return ListingImage the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
