@@ -54,10 +54,9 @@
             },
             success: function(data) {
                 var parsedData = JSON.parse(data);
+                handsontable.loadData(parsedData);
                 if(parsedData)
                     console.log(parsedData.length);
-                handsontable.loadData(parsedData);
-                console.log('Data loaded');
             }
         });
     }
@@ -134,24 +133,27 @@
         //console.log('data of ' + dump, JSON.stringify($container.handsontable('getData')));        
         
         //console.log(JSON.stringify(handsontableData));
-        var foruserid = $('#vendor-ac-id').val();
+        var vendorid = $('#vendor-ac-id').val();
         var byuserid = 1;//'<?php echo Yii::app()->user->id; ?>';
-        console.log(foruserid + " - " + byuserid + " - " + cleanData.length);
+        console.log(vendorid + " - " + byuserid + " - " + cleanData.length);
         console.log(cleanData);
         
-        if (foruserid && byuserid && cleanData.length) {
+        if (vendorid && byuserid && cleanData.length) {
             console.log('inside if');
             $.ajax({
                 type: 'POST',
                 url: '<?php echo Yii::app()->urlManager->createUrl('ajax/massuploadsite'); ?>',
                 data: {
-                    'foruserid': foruserid,
+                    'vendorid': vendorid,
                     'byuserid': byuserid,
                     'data': JSON.stringify(cleanData)
                 },
                 success: function(data) {
                     //var json = JSON.parse(data);
-                    console.log(data);
+                    if(data == true)
+                        alert('Data saved.')
+                    else 
+                        alert('Failed to save data.')
                 },
                 error: function(data) { // if error occured
                     alert("Error occured.please try again");
@@ -174,7 +176,7 @@
         $('#vendor-ac').autocomplete({
             source: allVendorJson,
             select: function(event, ui) {
-                //console.log(ui.item.value + ', ' + ui.item.id);
+                console.log(ui.item.value + ', ' + ui.item.id);
                 $("#vendor-ac-id").val(ui.item.id);
                 fetchSites(ui.item.id);                
             },
