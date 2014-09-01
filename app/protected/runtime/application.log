@@ -5080,3 +5080,12 @@ Stack trace:
 REQUEST_URI=/monitorly_webapp_new/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
 HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/task
 ---
+2014/09/01 16:20:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site/addvendor
+---

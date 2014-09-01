@@ -47,8 +47,8 @@
                         <li class="spreadsheet-view-icon pull-right"></li>
                     </ul>
                 </div>
-                <div class="list">
-                    <ul>
+                <div class="list" >
+                    <ul id="site-list">
                         <li class="list-item">
                             <div class="pull-left site-thumb"></div>
                             <div class="site-details">
