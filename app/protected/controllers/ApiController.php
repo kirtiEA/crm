@@ -112,18 +112,18 @@ class ApiController extends Controller {
                             . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
                             . "WHERE t.taskDone=1 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
                             . "GROUP BY t.id "
-                            . "LIMIT {$start}, {$limit}";                    
+                            . "LIMIT {$start}, {$limit}";
                     } else {
                         $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng "
                             . "FROM Task t "
                             . "LEFT JOIN Campaign c ON c.id = t.campaignid "
-                            . "LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid "                            
+                            . "LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid "
                             . "WHERE t.taskDone=0 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
                             . "GROUP BY t.id "
-                            . "LIMIT {$start}, {$limit}";                    
-                    }                    
+                            . "LIMIT {$start}, {$limit}";
+                    }
                     
-                    $tasks = Yii::app()->db->createCommand($sql)->queryAll();                    
+                    $tasks = Yii::app()->db->createCommand($sql)->queryAll();
                     $this->_sendResponse(200, $tasks);
                 }
                 Yii::app()->end();

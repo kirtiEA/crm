@@ -1,3 +1,5 @@
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/map.js"></script>
 <!-- tabs -->    
 <ul class="nav nav-tabs" id="sites-tabs" role="tablist">
     <li class="active"><a href="sites_vendorssites.html" role="tab" data-toggle="tab">Vendors Sites</a></li>

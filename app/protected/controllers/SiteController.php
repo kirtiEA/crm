@@ -35,7 +35,18 @@ class SiteController extends Controller {
             //array_push($vendorList, array('name'=>$value->name));
         }
         
-        $this->render('addvendor', array('vendorList'=>json_encode($vendorList)));
+        // fetch media types
+        $mtResult = Mediatype::model()->findAll();
+        $mediaType = array();
+        foreach($mtResult as $value) {
+            array_push($mediaType, $value->name);
+        }
+        
+        $this->render('addvendor', array(
+                        'vendorList'=>json_encode($vendorList),
+                        'mediaType'=>json_encode($mediaType),
+                        'lightingType'=>  json_encode(array_values(Listing::getLighting()))
+                    ));
     }
 
     /**
