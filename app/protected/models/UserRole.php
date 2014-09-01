@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "UserRole".
+ * This is the model class for table "userrole".
  *
- * The followings are the available columns in table 'UserRole':
+ * The followings are the available columns in table 'userrole':
  * @property integer $id
  * @property integer $userid
  * @property integer $roleid
@@ -12,7 +12,7 @@
  * @property Role $role
  * @property User $user
  */
-class UserRole extends CActiveRecord
+class Userrole extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -94,10 +94,38 @@ class UserRole extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return UserRole the static model class
+	 * @return Userrole the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
+       
+        /*
+         * update the Userrole table in database according to the
+         * userId on which updation operation is being performed.
+         */
+        public static function updateRoles($id,$role)
+        {
+            //do something to update user roles table
+            $cmd = Yii::app()->db->createCommand();
+
+            $cmd = $cmd->update('userrole', array(
+                       'userid'=> $id, 'roleid'=>$role),
+                       'userid=:uid',
+                        array(':uid'=>$id));
+
+        }
+     
+        /*
+         * insert new value in the Userrole table in database
+         * for the new user being created
+         */
+        public function insertRoles($id,$role) {
+            $cmd = Yii::app()->db->createCommand();
+            $cmd = $cmd->insert('userrole', array(
+                        'userid'=>$id,
+                        'roleid'=>$role 
+            ));
+        }
 }

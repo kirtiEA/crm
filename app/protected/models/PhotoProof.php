@@ -1,28 +1,8 @@
 <?php
 
-/**
- * This is the model class for table "photoproof".
- *
- * The followings are the available columns in table 'photoproof':
- * @property integer $id
- * @property integer $taskid
- * @property string $imageName
- * @property string $clickedDateTime
- * @property double $clickedLat
- * @property double $clickedLng
- * @property string $installation
- * @property string $lighting
- * @property string $obstruction
- * @property string $comments
- * @property integer $clickedBy
- * @property string $createdDate
- * @property string $modifiedDate
- *
- * The followings are the available model relations:
- * @property Task $task
- * @property User $clickedby
- */
-class PhotoProof extends CActiveRecord
+Yii::import('application.models.base.BasePhotoProof');
+
+class PhotoProof extends BasePhotoProof
 {
 	/**
 	 * @return string the associated database table name

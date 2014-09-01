@@ -1,0 +1,17 @@
+{#.}
+<li>
+    <h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;{name} ({count}) &nbsp;
+    </h3>
+    <div class="assign-dropdown">Assigned to
+        <select>
+            <option value="{id}">{name}</option>
+            <option value="0">Myself</option>
+        </select>
+    </div>
+    <ul class="sub-sub-list show-hide-content">
+        {#listings}
+        <li>{name}, {mediatype}, {locality} &nbsp;<span onclick="removeListingFromCampaign('{id}')" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_{id}"></span></li>
+        {/listings}
+    </ul>
+</li>
+{/.}

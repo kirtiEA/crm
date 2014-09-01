@@ -1,0 +1,12 @@
+{#.}
+{?is_onCampaign}
+<li class="selected" id="listing_{id}">{name}, {mediatype}, {locality}
+    <span class="glyphicon glyphicon-remove pull-right" onclick="removeFromCampaign('{id}');"></span>
+</li>
+{/is_onCampaign}
+{^is_onCampaign}
+<li id="listing_{id}">{name}, {mediatype}, {locality}
+    <span class="glyphicon glyphicon-plus pull-right" onclick="addToCampaign('{id}');"></span>
+</li>    
+{/is_onCampaign}
+{/.}

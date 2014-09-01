@@ -1,178 +1,316 @@
 <?php
 
-/**
- * This is the model class for table "user".
- *
- * The followings are the available columns in table 'user':
- * @property integer $id
- * @property string $fname
- * @property string $lname
- * @property string $email
- * @property string $username
- * @property string $password
- * @property string $phonenumber
- * @property integer $active
- * @property integer $status
- * @property integer $subscribe
- * @property string $lastlogin
- * @property string $datecreated
- * @property string $datemodified
- * @property string $dateactivated
- *
- * The followings are the available model relations:
- * @property Campaign[] $campaigns
- * @property Emaileventlog[] $emaileventlogs
- * @property Favouritelisting[] $favouritelistings
- * @property Link[] $links
- * @property Listing[] $listings
- * @property Listing[] $listings1
- * @property Listingdraft[] $listingdrafts
- * @property Listingdraft[] $listingdrafts1
- * @property Monitorlylisting[] $monitorlylistings
- * @property Photoproof[] $photoproofs
- * @property Plan[] $plans
- * @property Rfp[] $rfps
- * @property Rfp[] $rfps1
- * @property Sharecampaignlog[] $sharecampaignlogs
- * @property Task[] $tasks
- * @property Useraudiencetag[] $useraudiencetags
- * @property Usercompany[] $usercompanies
- * @property Usercontacts[] $usercontacts
- * @property Userproduct[] $userproducts
- * @property Userrole[] $userroles
- * @property Userzoneassignment[] $userzoneassignments
- */
-class User extends CActiveRecord
+Yii::import('application.models.base.BaseUser');
+
+class User extends BaseUser
 {
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'User';
-	}
+    public $confirmPassword;
+    public $id;
+    public $email;
+        
+    public static function model($className=__CLASS__)
+    {
+        return parent::model($className);
+    }
+        
+        /**
+     * Declares the validation rules.
+     * The rules state that username and password are required,
+     * and password needs to be authenticated.
+     */
+    public function rules()
+    {
+            return array(
+                
+                array('email', 'required', 'on' => 'signupScenario' ),
+                                array('email', 'email', 'on' => 'signupScenario', 'message' => 'Email address is not valid.'),
+                array('email', 'unique', 'attributeName'=>'email', 'caseSensitive' => 'false', 'className'=>'User', 'on' => 'signupScenario', 'message'=>'Email address already exists.'),
+                array('email', 'match', 'pattern' => '/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/', 'on' => 'signupScenario','message' => 'Email address is not valid.'),
+                // username and password are required
+                array('fname, lname, phonenumber', 'required', 'on' => 'editProfile' ),
+                array('phonenumber', 'numerical', 'integerOnly'=>true, 'on' => 'editProfile'),
+                array('fname', 'match', 'pattern'=>'/^([a-zA-Z ])+$/', 'message' => Yii::t("signup", "First name must contains letters only"), 'on' => 'editProfile'),
+                array('lname', 'match', 'pattern'=>'/^([a-zA-Z ])+$/', 'message' => Yii::t("signup", "Last name must contains letters only"), 'on' => 'editProfile'),                        
+                array('fname, lname', 'length', 'max' => 20, 'min' => 2, 'on' => 'editProfile'),
+                
+                // pattern match with allow empty is not working so add js validtion on min length
+                array('password', 'length', 'min' => 6, 'allowEmpty' => true,  'on' => 'editProfile'),
+                array('confirmPassword', 'length', 'min' => 6, 'allowEmpty' => true, 'on' => 'editProfile'),
+                array('confirmPassword', 'compare', 'compareAttribute' => 'password', 'allowEmpty' => true, 'message' => Yii::t("signup", "Passwords do not match."), 'on' => 'editProfile'),
+                array('password', 'validatePassword', 'on' => 'editProfile'),
+                array('confirmPassword', 'validateConfirmPassword', 'on' => 'editProfile'),
+                
+                
+                array('fname, lname, email, phonenumber, password, confirmPassword', 'required', 'on' => 'createProfile'),
+                array('phonenumber', 'numerical', 'integerOnly'=>true, 'on' => 'createProfile'),
+                array('fname', 'match', 'pattern'=>'/^([a-zA-Z ])+$/', 'message' => Yii::t("signup", "First name must contains letters only"), 'on' => 'createProfile'),
+                array('lname', 'match', 'pattern'=>'/^([a-zA-Z ])+$/', 'message' => Yii::t("signup", "Last name must contains letters only"), 'on' => 'createProfile'),                        
+                //array('username', 'length', 'max' => 20, 'min' => 6, 'on' => 'createProfile'),
+                //array('username', 'match', 'pattern'=>'/^([a-zA-Z0-9_.])+$/', 'message' => Yii::t("signup", "Please use only letters (a-z), numbers, periods and underscores"), 'on' => 'createProfile'),                
+                //array('username', 'match', 'pattern'=>'/^[a-zA-Z]([a-zA-Z0-9_.])+$/', 'message' => Yii::t("signup", "Username must start with letters (a-z)"), 'on' => 'createProfile'),                
+                //array('username', 'match', 'pattern'=>'/^[a-zA-Z](?!_*\_{2})(?!.*\.{2})([a-zA-Z0-9_.](?!_*\_{2})(?!.*\.{2}))+$/', 'message' => Yii::t("signup", "Username cannot have continuous dots and underscores"), 'on' => 'createProfile'),                                
+                array('fname, lname', 'length', 'max' => 20, 'min' => 2, 'on' => 'createProfile'),
+                array('email', 'email', 'on' => 'createProfile', 'message' => 'Email address is not valid.'),
+                array('email', 'unique', 'attributeName'=>'email', 'caseSensitive' => 'false', 'className'=>'User', 'on' => 'createProfile', 'message'=>'Email address already exists.'),
+                array('email', 'match', 'pattern' => '/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/', 'message' => 'Email address is not valid.'),
+                //array('username', 'unique', 'attributeName'=>'username', 'caseSensitive' => 'false', 'className'=>'User', 'on' => 'createProfile'),
+                array('password', 'length', 'min' => 6, 'on' => 'createProfile'),
+                array('password', 'match', 'pattern' => '/^([A-Za-z])+([0-9])+|([0-9])+([A-Za-z])+$/', 'message' => Yii::t("signup", "Password must be alphanumeric"), 'on' => 'createProfile'),
+                array('confirmPassword', 'length', 'min' => 6, 'on' => 'createProfile'),
+                array('confirmPassword', 'compare', 'compareAttribute' => 'password', 'message' => Yii::t("signup", "Passwords do not match"), 'on' => 'createProfile'),
+                // subscribe needs to be a boolean
+                array('subscribe', 'boolean'),
+            );
+    }
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('fname, lname, email, password, phonenumber, active, datecreated, datemodified', 'required'),
-			array('active, status, subscribe', 'numerical', 'integerOnly'=>true),
-			array('fname, lname, username, phonenumber', 'length', 'max'=>20),
-			array('email', 'length', 'max'=>50),
-			array('password', 'length', 'max'=>60),
-			array('lastlogin, dateactivated', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, fname, lname, email, username, password, phonenumber, active, status, subscribe, lastlogin, datecreated, datemodified, dateactivated', 'safe', 'on'=>'search'),
-		);
-	}
+        public function validatePassword($attribute, $params) {
+            if( $_POST['User']['password'] != '' && strlen($_POST['User']['password']) < 6) {
+                $this->addError($attribute, 'Password is too short (minimum is 6 characters).');
+                return;
+            }
+            if($_POST['User']['password'] != '' && !preg_match('/^([A-Za-z])+([0-9])+|([0-9])+([A-Za-z])+$/', $_POST['User']['password'])) {
+                $this->addError($attribute, 'Password must be alphanumeric.');
+            }
+        }
+        
+        public function validateConfirmPassword($attribute, $params) {
+            if( $_POST['User']['password'] != '' && $_POST['User']['confirmPassword'] == '' && strlen($_POST['User']['confirmPassword']) < 6 ) {
+                $this->addError($attribute, 'Confirm Password is too short (minimum is 6 characters).');
+                return;
+            }
+            if(($_POST['User']['password'] != '' && $_POST['User']['confirmPassword'] == '') || ($_POST['User']['password'] == '' && $_POST['User']['confirmPassword'] != '')) {
+                $this->addError($attribute, 'Passwords do not match.');
+            }
+        }
+        
+        /**
+     * @return array customized attribute labels (name=>label)
+     */
+    public function attributeLabels()
+    {
+        return array(
+            'id' => 'ID',
+            'fname' => 'First name',
+            'lname' => 'Last name',
+            'email' => 'Email',
+            'username' => 'Username',
+            'password' => 'Password',
+            'phonenumber' => 'Phone number',
+            'active' => 'Active',
+            'status' => 'Status',
+            'subscribe' => 'Subscribe',
+            'lastlogin' => 'Last login',
+            'datecreated' => 'Date created',
+            'datemodified' => 'Date modified',
+        );
+    }
+        
+    /**
+     * This method will return the user data with specified columns
+     * @param int $id     
+     * @param string $columns (optional)
+     * @return array
+     */
+    public static function getUserAttributeById($id, $columns = '') {
+        $criteria = new CDbCriteria();
+        if (strlen($columns)) {
+            $criteria->select = $columns;
+        } else {
+            $criteria->select = '*';
+        }
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'campaigns' => array(self::HAS_MANY, 'Campaign', 'createdBy'),
-			'emaileventlogs' => array(self::HAS_MANY, 'Emaileventlog', 'userid'),
-			'favouritelistings' => array(self::HAS_MANY, 'Favouritelisting', 'userid'),
-			'links' => array(self::HAS_MANY, 'Link', 'userid'),
-			'listings' => array(self::HAS_MANY, 'Listing', 'byuserid'),
-			'listings1' => array(self::HAS_MANY, 'Listing', 'foruserid'),
-			'listingdrafts' => array(self::HAS_MANY, 'Listingdraft', 'byuserid'),
-			'listingdrafts1' => array(self::HAS_MANY, 'Listingdraft', 'foruserid'),
-			'monitorlylistings' => array(self::HAS_MANY, 'Monitorlylisting', 'addedBy'),
-			'photoproofs' => array(self::HAS_MANY, 'Photoproof', 'clickedby'),
-			'plans' => array(self::HAS_MANY, 'Plan', 'userid'),
-			'rfps' => array(self::HAS_MANY, 'Rfp', 'byuserid'),
-			'rfps1' => array(self::HAS_MANY, 'Rfp', 'foruserid'),
-			'sharecampaignlogs' => array(self::HAS_MANY, 'Sharecampaignlog', 'userid'),
-			'tasks' => array(self::HAS_MANY, 'Task', 'assigneduserid'),
-			'useraudiencetags' => array(self::HAS_MANY, 'Useraudiencetag', 'userid'),
-			'usercompanies' => array(self::HAS_MANY, 'Usercompany', 'userid'),
-			'usercontacts' => array(self::HAS_MANY, 'Usercontacts', 'linkedUserId'),
-			'userproducts' => array(self::HAS_MANY, 'Userproduct', 'userid'),
-			'userroles' => array(self::HAS_MANY, 'Userrole', 'userid'),
-			'userzoneassignments' => array(self::HAS_MANY, 'Userzoneassignment', 'userid'),
-		);
-	}
+        $criteria->condition = 'id=:id';
+        $criteria->params = array(':id' => $id);
+        $data = self::model()->find($criteria);
+        return $data;
+    }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'id' => 'ID',
-			'fname' => 'Fname',
-			'lname' => 'Lname',
-			'email' => 'Email',
-			'username' => 'Username',
-			'password' => 'Password',
-			'phonenumber' => 'Phonenumber',
-			'active' => 'Active',
-			'status' => 'Status',
-			'subscribe' => 'Subscribe',
-			'lastlogin' => 'Lastlogin',
-			'datecreated' => 'Datecreated',
-			'datemodified' => 'Datemodified',
-			'dateactivated' => 'Dateactivated',
-		);
-	}
+    public static function getUserProduct($userData) {
+        $email = $userData['email'];
+        $productId = $userData['productid'];
+        
+        $criteria = new CDbCriteria();
+        $criteria->condition = 'email=:email';
+        $criteria->params = array(':email' => $email);
+        $data = self::model()->find($criteria);
+        return $data;
+    }
+    
+    // Admin Dashboard Function
+    public static function getRoleIdBasedCountByDateRange($startDate, $endDate, $roleId) {
+        $criteria = new CDbCriteria();
+        $criteria->select = 'id';
+        $criteria->with = 'userRoles';
+        $criteria->condition = "datecreated BETWEEN :startDate AND :endDate AND roleid = :roleId";
+        $criteria->params = array(':startDate' => $startDate, ':endDate' => $endDate, ':roleId' => $roleId);        
+        return $result = self::model()->count($criteria);        
+    }
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 *
-	 * Typical usecase:
-	 * - Initialize the model fields with values from filter form.
-	 * - Execute this method to get CActiveDataProvider instance which will filter
-	 * models according to data in model fields.
-	 * - Pass data provider to CGridView, CListView or any similar widget.
-	 *
-	 * @return CActiveDataProvider the data provider that can return the models
-	 * based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
+    public static function getRolebasedChartData($startDate, $endDate, $duration, $roleId){
+        if($duration == "1") { // Weekly
+            return User::getRoleBasedCountWeeklyByDateRange($startDate, $endDate, $roleId);
+        } elseif($duration == "2") { // Monthly
+            return User::getRoleBasedCountMonthlyByDateRange($startDate, $endDate, $roleId);
+        } elseif($duration == "3") { // Yearly
+            return User::getRoleBasedCountYearlyByDateRange($startDate, $endDate, $roleId);
+        }
+    }
 
-		$criteria=new CDbCriteria;
+    // Admin Dashboard function Chart
+    public static function getRoleBasedCountWeeklyByDateRange($startDate, $endDate, $roleId) {
+        $weeklyData = Yii::app()->db->createCommand("CALL userWeeklySignup ($roleId, '$startDate', '$endDate')")->queryAll();
+        
+        $weekArr = JoyUtilities::getNoOfWeek($startDate, $endDate);
+        $weekListingData = JoyUtilities::formatAdminGraphData($weeklyData, $weekArr);
+                
+        return $weekListingData;
+    }    
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('fname',$this->fname,true);
-		$criteria->compare('lname',$this->lname,true);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('phonenumber',$this->phonenumber,true);
-		$criteria->compare('active',$this->active);
-		$criteria->compare('status',$this->status);
-		$criteria->compare('subscribe',$this->subscribe);
-		$criteria->compare('lastlogin',$this->lastlogin,true);
-		$criteria->compare('datecreated',$this->datecreated,true);
-		$criteria->compare('datemodified',$this->datemodified,true);
-		$criteria->compare('dateactivated',$this->dateactivated,true);
+    public static function getRoleBasedCountMonthlyByDateRange($startDate, $endDate, $roleId) {
+        $monthlyData = Yii::app()->db->createCommand("CALL userMonthlySingup ($roleId, '$startDate', '$endDate')")->queryAll();
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
+        $monthArr = JoyUtilities::getNoOfMonth($startDate, $endDate);
+        $monthlyListingData = JoyUtilities::formatAdminGraphData($monthlyData, $monthArr);
+                
+        return $monthlyListingData;
+    }    
 
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return User the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}                
+    public static function getRoleBasedCountYearlyByDateRange($startDate, $endDate, $roleId) {
+        $yearlyData = Yii::app()->db->createCommand("CALL userYearlySignup ($roleId, '$startDate', '$endDate')")->queryAll();
+        
+        $yearArr = JoyUtilities::getNoOfYear($startDate, $endDate);
+        $yearlyListingData = JoyUtilities::formatAdminGraphData($yearlyData, $yearArr);
+        
+        return $yearlyListingData;
+    }      
+    
+    
+    // Admin Dashboard Function
+    public static function getSignUpCountByDateRange($startDate, $endDate) {
+        $criteria = new CDbCriteria();
+        $criteria->select = 'id';
+        $criteria->condition = "datecreated BETWEEN :startDate AND :endDate";
+        $criteria->params = array(':startDate' => $startDate, ':endDate' => $endDate);        
+        return $result = self::model()->count($criteria);        
+    }
+
+    public static function getSignupChartData($startDate, $endDate, $duration){
+        if($duration == "1") { // Weekly
+            return User::getSignupCountWeeklyByDateRange($startDate, $endDate);
+        } elseif($duration == "2") { // Monthly
+            return User::getSignupCountMonthlyByDateRange($startDate, $endDate);
+        } elseif($duration == "3") { // Yearly
+            return User::getSignupCountYearlyByDateRange($startDate, $endDate);
+        }
+    }
+        
+    
+    // Admin Dashboard function Chart
+    public static function getSignupCountWeeklyByDateRange($startDate, $endDate) {
+        $weeklyData = Yii::app()->db->createCommand("CALL allUserWeeklySignup ('$startDate', '$endDate')")->queryAll();
+        
+        $weekArr = JoyUtilities::getNoOfWeek($startDate, $endDate);
+        $weekListingData = JoyUtilities::formatAdminGraphData($weeklyData, $weekArr);
+                
+        return $weekListingData;
+    }    
+
+    public static function getSignupCountMonthlyByDateRange($startDate, $endDate) {
+        $monthlyData = Yii::app()->db->createCommand("CALL allUserMonthlySignup ('$startDate', '$endDate')")->queryAll();
+
+        $monthArr = JoyUtilities::getNoOfMonth($startDate, $endDate);
+        $monthlyListingData = JoyUtilities::formatAdminGraphData($monthlyData, $monthArr);
+                
+        return $monthlyListingData;
+    }    
+
+    public static function getSignupCountYearlyByDateRange($startDate, $endDate) {
+        $yearlyData = Yii::app()->db->createCommand("CALL allUserYearlySignup ('$startDate', '$endDate')")->queryAll();
+        
+        $yearArr = JoyUtilities::getNoOfYear($startDate, $endDate);
+        $yearlyListingData = JoyUtilities::formatAdminGraphData($yearlyData, $yearArr);
+        
+        return $yearlyListingData;
+    }     
+    
+    
+    
+    // Admin Dashboard Function
+    public static function getActiveUserCountByDateRange($startDate, $endDate) {
+        $criteria = new CDbCriteria();
+        $criteria->select = 'id';
+        $criteria->condition = "lastlogin BETWEEN :startDate AND :endDate AND active = 1";
+        $criteria->params = array(':startDate' => $startDate, ':endDate' => $endDate);        
+        return $result = self::model()->count($criteria);        
+    }    
+    
+    public static function getLoggedinUserChartData($startDate, $endDate, $duration){
+        if($duration == "1") { // Weekly
+            return User::getLoggedinUserCountWeeklyByDateRange($startDate, $endDate);
+        } elseif($duration == "2") { // Monthly
+            return User::getLoggedinUserCountMonthlyByDateRange($startDate, $endDate);
+        } elseif($duration == "3") { // Yearly
+            return User::getLoggedinUserCountYearlyByDateRange($startDate, $endDate);
+        }
+    }
+    
+    
+    // Admin Dashboard function Chart
+    public static function getLoggedinUserCountWeeklyByDateRange($startDate, $endDate) {
+        $weeklyData = Yii::app()->db->createCommand("CALL getWeeklyActiveUser ('$startDate', '$endDate')")->queryAll();
+        
+        $weekArr = JoyUtilities::getNoOfWeek($startDate, $endDate);
+        $weekLoggedinUserData = JoyUtilities::formatAdminGraphData($weeklyData, $weekArr);
+                
+        return $weekLoggedinUserData;
+    }    
+
+    public static function getLoggedinUserCountMonthlyByDateRange($startDate, $endDate) {
+        $monthlyData = Yii::app()->db->createCommand("CALL getMonthlyActiveUser ('$startDate', '$endDate')")->queryAll();
+
+        $monthArr = JoyUtilities::getNoOfMonth($startDate, $endDate);
+        $monthlyLoggedinUserData = JoyUtilities::formatAdminGraphData($monthlyData, $monthArr);
+                
+        return $monthlyLoggedinUserData;
+    }    
+
+    public static function getLoggedinUserCountYearlyByDateRange($startDate, $endDate) {
+        $yearlyData = Yii::app()->db->createCommand("CALL getYearlyActiveUser ('$startDate', '$endDate')")->queryAll();
+        
+        $yearArr = JoyUtilities::getNoOfYear($startDate, $endDate);
+        $yearlyLoggedinUserData = JoyUtilities::formatAdminGraphData($yearlyData, $yearArr);
+        
+        return $yearlyLoggedinUserData;
+    } 
+    
+    // Admin Dashboard Function
+    public static function getInactiveUserCountByDefault($startDate, $endDate) {
+        $inactiveUserData = Yii::app()->db->createCommand("SELECT (SELECT COUNT(*) FROM `User` WHERE active = 1) - (SELECT COUNT(*) FROM `User` WHERE lastlogin BETWEEN '". $startDate ."' AND '". $endDate ."' AND active = 1) AS cnt")->queryRow();        
+        return $inactiveUserData['cnt'];        
+    }
+
+    // Admin Dashboard Function
+    public static function getInactiveUserCountByDateRange($startDate, $endDate) {
+        $inactiveUserData = Yii::app()->db->createCommand("SELECT (SELECT COUNT(*) FROM `User` WHERE active = 1 AND dateactivated <= '". $endDate ."') - (SELECT COUNT(*) FROM `User` WHERE lastlogin BETWEEN '". $startDate ."' AND '". $endDate ."' AND active = 1) AS cnt")->queryRow();        
+        return $inactiveUserData['cnt'];        
+    }    
+    
+    // used in massupload - admin
+    public static function getOwnerEmail()
+    {
+        $criteria = new CDbCriteria();
+        $criteria->select = 'id,email';
+        $criteria->with = 'userRoles';
+        $criteria->condition = "status= :status AND roleid = :roleId";
+        $criteria->params = array(':status' => 1, ':roleId' => 3);        
+        return $result = CHtml::listData(self::model()->findAll($criteria), 'id', 'email');
+    }
+    
+    public static function getResetPasswordMail() {
+        $criteria = new CDbCriteria();
+        $criteria->select = 'id, email';
+        $criteria->condition = "password = '' AND resetpassword = 0";
+        return $result = self::model()->findAll($criteria);
+    }
+    
 }
