@@ -95,7 +95,7 @@ return array(
         // this is used in contact page
         'adminEmail' => 'amit@eatads.com',
         'phpass' => array(
-'iteration_count_log2' => 8,
-'portable_hashes' => false,
+            'iteration_count_log2' => 8,
+            'portable_hashes' => false,
     ),
 ));

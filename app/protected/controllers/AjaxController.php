@@ -20,7 +20,7 @@ class AjaxController extends Controller {
         return array(
             array('allow', // allow all users to perform actions
                 'actions' => array('signup' ,'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting','getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
-                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor'),
+                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite'),
                 'users' => array('*'),
             ),
         );
@@ -62,7 +62,7 @@ class AjaxController extends Controller {
         echo $returnUrl;
     }
 
-    public function actionFetchVendorSites() {
+    public function actionFetchvendorsites() {        
         $vendorId = Yii::app()->request->getParam('vendorid');
         $sql = "SELECT l.id, l.site_code, mt.name as mediatype, a.name as city, l.locality, l.name, l.length, l.width, l.lightingid "
                 . "FROM Listing l "
@@ -109,75 +109,79 @@ class AjaxController extends Controller {
             $mediaTypes[$value->id] = strtolower($value->name);
         }
         // fetch all lighting
-        $lightings = array_map('strtolower', Listing::getLighting()); ;
+        $lightings = array_map('strtolower', Listing::getLighting());        
         //print_r($lightings); die();
         
         
-        $forUserId = Yii::app()->request->getParam('foruserid');
+        $vendorId = Yii::app()->request->getParam('vendorid');
         $byUserId = Yii::app()->request->getParam('byuserid');
         $data = json_decode(Yii::app()->request->getParam('data'));
+        
+        $companyResult = UserCompany::model()->findByPk($vendorId, array('select'=>'userid'));        
+        $forUserId = $companyResult->userid;
         
         foreach($data as $value) {
             //echo $value->mediatype;
             $mediaTypeId = array_search(strtolower($value->mediatype), $mediaTypes);            
             $lightingId = array_search(strtolower($value->lighting), $lightings);
-            $productType = UserProduct::getUserProductType(552);//$forUserId);
+            //$productType = UserProduct::getUserProductType(552);//$forUserId);
             
             $address = $value->locality . ',' . $value->city;
             $addressGeocode = JoyUtilities::geocode($address);
+            //print_r($addressGeocode); die();
             if($addressGeocode) {
                 // check if country exists        
                 if ($addressGeocode['country'] != '' && $addressGeocode['country'] != null) {
                     $countryId = Area::checkAreaExists($addressGeocode['country'], 'c', null, $addressGeocode['countryCode']);
                 }
-                echo $countryId; die();
+                
                 // check if state exists
                 if (is_numeric($countryId) && $addressGeocode['state'] != '' && $addressGeocode['state'] != null) {
                     $stateId = Area::checkAreaExists($addressGeocode['state'], 's', $countryId);
                 }
+                
                 // check if city exists
                 if (is_numeric($stateId) && $addressGeocode['city'] != '' && $addressGeocode['city'] != null) {
                     $cityId = Area::checkAreaExists($addressGeocode['city'], 'ci', $stateId);
                 }                
             }
             
-            die();
-            
             $listingModel = new Listing;
+            $listingModel->byuserid = (int)$byUserId;
+            $listingModel->foruserid = (int)$forUserId;
+            $listingModel->companyId = (int)$vendorId;
+            
+            
             $listingModel->name = $value->name;
             $listingModel->site_code = $value->site_code;
-            $listingModel->length = $value->length;
-            $listingModel->width = $value->width;
-            $listingModel->area = $value->length * $value->width;
+            $listingModel->length = (int)$value->length;
+            $listingModel->width = (int)$value->width;
+            $listingModel->area = (int)($value->length * $value->width);
             
-            $listingModel->product_type = $productType;
+            $listingModel->product_type = 2;
             $listingModel->status = 0;
             $listingModel->approved = 0;
             
-            $listingModel->locality = '?';
-            $listingModel->country = '?';
-            $listingModel->state = '?';
-            $listingModel->city = '?';
+            $listingModel->locality = $value->locality;
+            $listingModel->countryid = (int)$countryId;
+            $listingModel->stateid = (int)$stateId;
+            $listingModel->cityid = (int)$cityId;
             
-            $listingModel->geolat = '?';
-            $listingModel->geolng = '?';
-            $listingModel->accurate_geoloc = '?';
+            $listingModel->geolat = $addressGeocode['lat'];
+            $listingModel->geolng = $addressGeocode['lng'];
+            $listingModel->accurate_geoloc = 0;
             
-            $listingModel->lightingid = $lightingId;
-            $listingModel->mediatypeid = $mediaTypeId;
+            $listingModel->lightingid = (int)$lightingId;
+            $listingModel->mediatypeid = (int)$mediaTypeId;
+            
+            $listingModel->basecurrencyid = 11;   // 11 for India
             
             $listingModel->datemodified = date('Y-m-d H:i:s');
             $listingModel->datecreated = date('Y-m-d H:i:s');
+            $listingModel->save();
             
-            
-            
-            
-            
-            
-            
-            die();
         }
-        
+        echo true;        
     }
 
     public function actionAddsitetocampaign() {
