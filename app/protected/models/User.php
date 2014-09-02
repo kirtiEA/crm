@@ -322,7 +322,7 @@ class User extends BaseUser {
     public static function changePassword($id,$pwd) {
             
             $cmd = Yii::app()->db->createCommand("Select ");
-            $cmd = $cmd->update('user', array(
+            $cmd = $cmd->update('User', array(
                        'password'=> $pwd,),
                        'id=:id',
                         array(':id'=>$id));
