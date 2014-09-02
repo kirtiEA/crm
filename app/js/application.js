@@ -118,6 +118,7 @@ $(document).ready(function() {
                 alert("Password updated successfully" + data);
                 //$(this).siblings('.password').remove();
                 saveBtn.siblings('.change-pwd').show();
+                saveBtn.siblings('.cancel').remove();
                 saveBtn.remove();
                 pwdTxt.remove();
                 
