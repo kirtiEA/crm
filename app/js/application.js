@@ -1,6 +1,6 @@
 
 
-$(document).ready(function() {   
+$(document).ready(function() {
 
     //initializing multiselect dropdown
     $('.multiselect').multiselect({
@@ -13,7 +13,7 @@ $(document).ready(function() {
         //changeMonth: true,
         numberOfMonths: 1,
         minDate: 0,
-        dateFormat : 'dd M yy',
+        dateFormat: 'dd M yy',
         onClose: function(selectedDate) {
             if (selectedDate)
                 $("#edate").datepicker("option", "minDate", selectedDate);
@@ -23,7 +23,7 @@ $(document).ready(function() {
         minDate: 0,
         //changeMonth: true,
         numberOfMonths: 1,
-        dateFormat : 'dd M yy',
+        dateFormat: 'dd M yy',
         onClose: function(selectedDate) {
             $("#sdate").datepicker("option", "maxDate", selectedDate);
         }
@@ -100,43 +100,68 @@ $(document).ready(function() {
         $(this).hide();
         $(this).parent(".pull-right").append($('#hidden-change-pwd').html());
     });
-    
+
     //save new password
     jQuery(document.body).on('click', '.save', function() {
         var saveBtn = $(this);
         var pwdTxt = $(this).siblings('.password');
-        
+
         var id = $(this).parent().attr('id');
         var pwd = $(this).siblings('.password').val();
         //console.log(id);
         $.ajax({
             type: 'POST',
-            url: $('#base-url').val() + 'ajax/Updatepassword',
+            url: $('#completePath').text() + '/ajax/UpdatePassword',
             data: {'id': id,
                 'pwd': pwd},
             success: function(data) {
-                alert("Password updated successfully" + data);
+                alert("Password updated successfully");
                 //$(this).siblings('.password').remove();
                 saveBtn.siblings('.change-pwd').show();
                 saveBtn.siblings('.cancel').remove();
                 saveBtn.remove();
                 pwdTxt.remove();
-                
+
             }
         });
     });
-    
+
     //cancel updating new password
     jQuery(document.body).on('click', '.cancel', function() {
-        var cancelBtn =$(this);
+        var cancelBtn = $(this);
         var pwdTxt = $(this).siblings('.password');
         cancelBtn.siblings('.change-pwd').show();
         cancelBtn.siblings('.save').hide();
         cancelBtn.remove();
         pwdTxt.remove();
-        
+
     });
-   
+
+    //invite vendor by sending an email
+    $('.invite').click(function() {
+        //code to mail vendor goes here
+        var email = $(this).parent().siblings('.modal-body').children('.email').val();
+        console.log(email);
+        var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+        //if it's valid email
+        if (filter.test(email)) {
+            $.ajax({
+                type: 'POST',
+                url: $('#completePath').text() + '/ajax/invitevendor',
+                data: {'email': email, },
+                success: function(data) {
+                    alert("Vendor invited successfully" + data);
+                }
+            });
+        }
+        else {
+            alert('Please enter correct email address in the format abc@xyz.pq');
+        }
+        $('#invite-vendor-modal').modal('hide');
+
+    });
+
+
 //    //add newuser 
 //    $('.add').click(function (){
 //        alert("User Created Succesfully");
