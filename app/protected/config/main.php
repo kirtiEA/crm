@@ -120,5 +120,6 @@ return array(
             's3Bucket' => 'eatads-media',
             'accessKey' => 'AKIAIW62GKSH4I5LIEXQ',
             'secretKey' => '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'
+
         ),
         ));
