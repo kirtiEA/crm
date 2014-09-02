@@ -44,6 +44,8 @@ class UserController extends Controller
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
+                        array('username,password,phonenumber', // allows to a create a new user
+                            'required', 'on' => 'createScenario','message' => 'User Name is Required' ),
 		);
 	}
         
@@ -204,7 +206,7 @@ class UserController extends Controller
 	 */
 	public function actionIndex()
 	{
-            $users=User::model()->fetchUserDetails();
+            $users=User::model()->showActiveUsers();
             $model= new User();
             //echo '<pre>';print_r($model); die();
             $this->render('index',array(
