@@ -313,12 +313,7 @@ class ApiController extends Controller {
             $this->_sendResponse(500, sprintf("Error: Couldn't delete model <b>%s</b> with ID <b>%s</b>.", $_GET['model'], $_GET['id']));
     }
 
-    private function _sendResponse($status = 200, $body = '', $content_type = 'text/html') {
-        // set the status
-        $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
-        header($status_header);
-        // and the content type
-        header('Content-type: ' . $content_type);
+    private function _sendResponse($status = 200, $body = '', $content_type = 'application/json') {
 
         // pages with body are easy
         if ($body != '') {
@@ -335,11 +330,23 @@ class ApiController extends Controller {
                     'error' => $body,
                     'data' => null
                 );
-            }            
+            }
+            $status = 200;  // so that APP can read them as successful response
+            // set the status
+            $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
+            header($status_header);
+            // and the content type
+            header('Content-type: ' . $content_type);
             echo CJSON::encode($response);
         }
         // we need to create the body if none is passed
         else {
+            // set the status
+            $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
+            header($status_header);
+            // and the content type
+            header('Content-type: ' . $content_type);
+
             // create some body messages
             $message = '';
 
