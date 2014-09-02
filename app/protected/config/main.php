@@ -66,7 +66,7 @@ return array(
             'connectionString' => 'mysql:host=localhost;dbname=eatads',
             'emulatePrepare' => true,
             'username' => 'root',
-            'password' => '',
+            'password' => 'root',
             'charset' => 'utf8',
         ),
         'errorHandler' => array(
@@ -98,4 +98,12 @@ return array(
             'iteration_count_log2' => 8,
             'portable_hashes' => false,
     ),
+        'init_markers' => 1000,
+        'load_markers' => 3000,
+        'solrCurl'=>  'http://eataddsolr.eatads.com:8080/solr/listing/select?',
+        'awss3' => array(           // amazon s3 details
+            's3Bucket'=>'eatads-media',
+            'accessKey'=>'AKIAIW62GKSH4I5LIEXQ',
+            'secretKey'=>'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'
+        ),
 ));

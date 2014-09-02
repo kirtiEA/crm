@@ -7625,3 +7625,2145 @@ Stack trace:
 REQUEST_URI=/monitorly/app/images/ui-bg_glass_100_fdf5ce_1x400.png
 HTTP_REFERER=http://localhost/monitorly/app/css/application.css
 ---
+2014/09/01 22:40:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:40:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:41:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:44:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:47:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:47:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:47:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:49:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:49:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:50:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:50:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:50:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:50:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+---
+2014/09/01 22:50:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:50:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:50:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:53:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:53:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:53:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:55:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:55:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:55:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:58:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:58:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:58:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:58:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:58:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:58:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:58:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:58:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:58:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:58:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:58:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 22:58:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:00:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:00:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:00:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:05:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:05:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:05:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:05:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:05:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:05:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:06:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:06:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:06:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "retriveplan".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(270): CController->missingAction('retriveplan')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(282): CController->run('retriveplan')
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/retrivepla...')
+#3 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly_webapp_new/app/ajax/retriveplan/
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:06:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:06:50 [error] [php] Trying to get property of non-object (/Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php:488)
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/filters/CFilterChain.php(133): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/filters/CInlineFilter.php(58): AjaxController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(282): AjaxController->run()
+#8 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly_webapp_new/app/ajax/getlisting/
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (488)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/01 23:09:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:09:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:09:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:09:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:09:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "retriveplan".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(270): CController->missingAction('retriveplan')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(282): CController->run('retriveplan')
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/retrivepla...')
+#3 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly_webapp_new/app/ajax/retriveplan/
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:09:19 [error] [php] include(EatadsS3.php): failed to open stream: No such file or directory (/Applications/MAMP/htdocs/monitorly_webapp_new/framework/YiiBase.php:427)
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/components/JOY/JoyUtilities.php(233): spl_autoload_call()
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php(490): getAwsFileUrl()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/actions/CInlineAction.php(49): AjaxController->actiongetListing()
+#3 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/filters/CFilterChain.php(133): AjaxController->runAction()
+#5 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#7 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/filters/CInlineFilter.php(58): AjaxController->filterAccessControl()
+#8 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#9 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(291): CFilterChain->run()
+#10 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#11 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(282): AjaxController->run()
+#12 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CWebApplication->run()
+REQUEST_URI=/monitorly_webapp_new/app/ajax/getlisting/
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/components/JOY/JoyUtilities.php (233)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (490)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/01 23:09:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:13:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:13:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:13:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:13:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "retriveplan".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(270): CController->missingAction('retriveplan')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(282): CController->run('retriveplan')
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/retrivepla...')
+#3 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly_webapp_new/app/ajax/retriveplan/
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:14:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:14:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:14:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "retriveplan".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(270): CController->missingAction('retriveplan')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(282): CController->run('retriveplan')
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/retrivepla...')
+#3 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly_webapp_new/app/ajax/retriveplan/
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:14:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:18:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getsitedetails".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(270): CController->missingAction('getsitedetails')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(282): CController->run('getsitedetails')
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/getsitedet...')
+#3 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly_webapp_new/app/ajax/getsitedetails/
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:18:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getsitedetails".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(270): CController->missingAction('getsitedetails')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(282): CController->run('getsitedetails')
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/getsitedet...')
+#3 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly_webapp_new/app/ajax/getsitedetails/
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:18:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:18:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:18:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "retriveplan".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(270): CController->missingAction('retriveplan')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(282): CController->run('retriveplan')
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/retrivepla...')
+#3 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly_webapp_new/app/ajax/retriveplan/
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:18:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:19:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:19:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:19:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "retriveplan".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(270): CController->missingAction('retriveplan')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(282): CController->run('retriveplan')
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/retrivepla...')
+#3 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly_webapp_new/app/ajax/retriveplan/
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:19:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/bootstrap/glyphicons-halflings-regular.woff".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('css/bootstrap/g...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/css/bootstrap/glyphicons-halflings-regular.woff
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/bootstrap/glyphicons-halflings-regular.ttf".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('css/bootstrap/g...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/css/bootstrap/glyphicons-halflings-regular.ttf
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/bootstrap/glyphicons-halflings-regular.svg".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('css/bootstrap/g...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/css/bootstrap/glyphicons-halflings-regular.svg
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:20:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:26:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:26:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:26:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:26:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:26:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:27:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:27:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:27:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:27:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:27:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:27:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:27:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:27:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:27:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:27:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:27:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:34:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getsitedetails".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(270): CController->missingAction('getsitedetails')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(282): CController->run('getsitedetails')
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/getsitedet...')
+#3 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly_webapp_new/app/ajax/getsitedetails/
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:34:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:34:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:35:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:37:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:37:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:37:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:37:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:37:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:37:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:37:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:37:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:37:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:37:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:39:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:39:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:39:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:39:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:39:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/vendorProfileDemo/loader.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/vendorPr...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/vendorProfileDemo/loader.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:39:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:52:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:52:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:52:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:52:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:54:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:54:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:57:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:57:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:57:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:57:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:57:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:57:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.11.0.min".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.11....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.11.0.min
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.11.0.min".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.11....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.11.0.min
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.11.0.min".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.11....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.11.0.min
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.11.0.min".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.11....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.11.0.min
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/01 23:59:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:04:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:04:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:04:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:04:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:05:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:05:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:05:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:05:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:05:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:06:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:06:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:06:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:06:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:10:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:10:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:10:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:10:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:10:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:10:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:10:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:10:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:10:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "{{pics}}".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('{{pics}}')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/%7B%7Bpics%7D%7D
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:10:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:10:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:11:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:11:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:12:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:12:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:13:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "  /images/vendorProfileDemo/x.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('  /images/vendo...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/+%20/images/vendorProfileDemo/x.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:13:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "  /images/vendorProfileDemo/x.gif".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('  /images/vendo...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/+%20/images/vendorProfileDemo/x.gif
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:13:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:13:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:15:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:15:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 00:15:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:36:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:36:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:37:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:37:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:37:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:37:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:41:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:41:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:41:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:41:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:42:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery-1.10.2.min.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery-1.10....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/jquery-1.10.2.min.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:42:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 10:47:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 11:07:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/logo.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/logo.png')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/logo.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/landing/vendor/modernizr-2.6.2-respond-1.1.0.min.js".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/landing/vend...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/landing/vendor/modernizr-2.6.2-respond-1.1.0.min.js
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/landing/main.css".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('css/landing/mai...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/css/landing/main.css
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-1.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/promise-icon-1.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/landing/bootstrap-theme.min.css".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('css/landing/boo...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/css/landing/bootstrap-theme.min.css
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/landing/bootstrap.min.css".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('css/landing/boo...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/css/landing/bootstrap.min.css
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/landing/vendor/bootstrap.min.js".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/landing/vend...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/landing/vendor/bootstrap.min.js
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-2.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/promise-icon-2.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-3.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/promise-icon-3.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-4.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/promise-icon-4.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/facebook.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/fac...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/facebook.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/linkedin.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/lin...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/linkedin.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-1.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/promise-icon-1.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/logo.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/logo.png')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/logo.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:07:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/db/ar/CActiveRecord.php(1428): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/db/ar/CActiveRecord.php(1517): CActiveRecord->getTableAlias(true)
+#7 /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/components/UserIdentity.php(25): CActiveRecord->findByAttributes(Array)
+#8 /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/LoginForm.php(110): UserIdentity->authenticate()
+#9 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#10 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#11 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#12 /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php(27): CModel->validate()
+#13 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/actions/CInlineAction.php(49): AccountController->actionIndex()
+#14 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#16 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(282): CController->run('index')
+#18 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#19 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#21 {main}
+REQUEST_URI=/monitorly_webapp_new/app/
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/logo.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/logo.png')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/logo.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/landing/main.css".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('css/landing/mai...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/css/landing/main.css
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/landing/vendor/modernizr-2.6.2-respond-1.1.0.min.js".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/landing/vend...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/landing/vendor/modernizr-2.6.2-respond-1.1.0.min.js
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/landing/bootstrap-theme.min.css".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('css/landing/boo...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/css/landing/bootstrap-theme.min.css
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-1.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/promise-icon-1.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/landing/bootstrap.min.css".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('css/landing/boo...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/css/landing/bootstrap.min.css
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/landing/vendor/bootstrap.min.js".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/landing/vend...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/landing/vendor/bootstrap.min.js
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-2.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/promise-icon-2.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-4.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/promise-icon-4.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-3.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/promise-icon-3.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/linkedin.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/lin...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/linkedin.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/facebook.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/fac...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/facebook.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/logo.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/logo.png')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/logo.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/landing/promise-icon-1.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('img/landing/pro...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/img/landing/promise-icon-1.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/
+---
+2014/09/02 11:08:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/campaign
+---
+2014/09/02 11:26:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 11:28:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 11:34:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 11:36:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 11:37:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
+2014/09/02 11:37:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/angular.min.js.map".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('js/angular.min....')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/js/angular.min.js.map
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/site
+---
