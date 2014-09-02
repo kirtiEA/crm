@@ -467,4 +467,8 @@ where t.status =1 and t.campaignid = ' . $campaignid)->queryAll();
         return $listings;
     }
     
+    
+    public static function getListings($type) {
+        
+    }
 }

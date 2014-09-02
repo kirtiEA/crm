@@ -330,77 +330,337 @@ class AjaxController extends Controller {
     public function actionfilterTask() {
         
     }
-    /*
-     * Create new user
-     */
-    /*public function actionCreate()
-	{
-		$model=new User;
-                print_r($model); die();
-                $role = Role::model()->findByPk(5);
-                $model->datecreated=date("Y-m-d H:i:s");
-                $model->datemodified=date("Y-m-d H:i:s");
-                
-                //print_r($today);die();
-                //$userRole = Userrole::model()->insertRoles();
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+    
+//    public function actiongetlisting() {
+//        $type = $_POST['type'];
+//        
+//    }
+    
+//    public function actionGetListing() {
+//
+//        echo json_encode($data);
+//    }
+    
+    public function actiongetListing() {
 
-		if((isset($_POST['uname'])) && (isset($_POST['pwd'])) && (isset($_POST['phn'])))
-		{
-                    $uname=$_POST['uname'];
-                    $pwd=$_POST['pwd'];
-                    $phn=$_POST['phn'];
-                    $name= strtok($name, " ");
-                    $fname=$name[0];
-                    $lname=$name[1];
-                    $model->fname=$fname;
-                    $model->lname=$lname;
-                    $model->phonenumber=$phn;
-                    $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
-                    $password = $ph->HashPassword($pwd);
-                    //User::model()->insertUser($model);
-                    $result = $ph->CheckPassword($pwd, $model->password);   
-                    //echo $result;
-                    if ($result) {
-                        // Authorized
-                    } else {
-                        // Error: Unauthorized
-                    }
-                    $model->password=$password;
-                    Userrole::model()->insertRoles($model->id,$role);
+        $metaKeyword = $pageTitle = '';
+        // default solrUrl
+        $solrParams = array('fq' => '');
+        //companyId
+        $companyid = $_POST['companyid'];
+        //echo $companyid;die();
+        // filter media type 
+
+        $mediaTypeParam = '';
+        if (!empty($_POST['mediatypeid'])) {
+            $mediaTypeParam = $_POST['mediatypeid'];
+            $mediaTypeId = null;
+            if (!empty($mediaTypeParam) && is_array($mediaTypeId = explode(",", $mediaTypeParam))) {
+                //$solrParams['fq'] .= (!empty($solrParams['fq'])) ? ' AND ' : '';
+                $solrParams['fq'] .= '(';
+                foreach ($mediaTypeId as $mt) {
+                    if (is_numeric($mt))     // to remove 'multiselect-all'
+                        $solrParams['fq'] .= ' mediatypeid:' . $mt . ' OR';
                 }
+                $solrParams['fq'] = rtrim($solrParams['fq'], 'OR');
+                $solrParams['fq'] .= ')';
+            }
+        }
 
-		$this->render('create',array(
-			'model'=>$model,
-                        'role'=>$role,
-		));
-	}
-    */
-    // Uncomment the following methods and override them if needed
-    /*
-      public function filters()
-      {
-      // return the filter configuration for this controller, e.g.:
-      return array(
-      'inlineFilterName',
-      array(
-      'class'=>'path.to.FilterClass',
-      'propertyName'=>'propertyValue',
-      ),
-      );
-      }
 
-      public function actions()
-      {
-      // return external action classes, e.g.:
-      return array(
-      'action1'=>'path.to.ActionClass',
-      'action2'=>array(
-      'class'=>'path.to.AnotherActionClass',
-      'propertyName'=>'propertyValue',
-      ),
-      );
-      }
-     */
+
+        //companyid
+        $solrParams['fq'] .= (!empty($solrParams['fq'])) ? ' AND ' : '';
+        $solrParams['fq'] .= ' companyid:' . $companyid;
+
+        //lightingid
+        $lightTypeParam = '';
+        if (!empty($_POST['lightingid'])) {
+            $lightTypeParam = $_POST['lightingid'];
+            $lightTypeId = null;
+            if (!empty($lightTypeParam) && is_array($lightTypeId = explode(",", $lightTypeParam))) {
+                //$solrParams['fq'] .= (!empty($solrParams['fq'])) ? ' AND ' : '';
+                $solrParams['fq'] .= ' AND (';
+                foreach ($lightTypeId as $mt) {
+                    if (is_numeric($mt))     // to remove 'multiselect-all'
+                        $solrParams['fq'] .= ' lightingid:' . $mt . ' OR';
+                }
+                $solrParams['fq'] = rtrim($solrParams['fq'], 'OR');
+                $solrParams['fq'] .= ')';
+            }
+        }
+
+
+        // filter price slider 
+        $priceSlider = '';
+        if (!empty($_POST['priceslider'])) {
+            $priceSlider = explode(':', $_POST['priceslider']);
+            if (count($priceSlider) > 1) {
+                // base on currency selected conv to usd to compare weeklyprice
+                $newMinPrice = round(Yii::app()->openexchanger->convertCurrency($priceSlider[0], $this->ipCurrencyCode, 'INR'));
+                $newMaxPrice = round(Yii::app()->openexchanger->convertCurrency($priceSlider[1], $this->ipCurrencyCode, 'INR'));
+                //$criteria['condition']  .= ' AND weeklyprice between '.$priceSlider[0]. ' AND '. $priceSlider[1];
+                $solrParams['fq'] .= (!empty($solrParams['fq'])) ? ' AND ' : '';
+                $solrParams['fq'] .= 'weeklyprice:[' . $newMinPrice . ' TO ' . $newMaxPrice . ']';
+                //print_r($solrParams);die();
+            }
+        }
+
+
+        // proximity
+        $proximity = is_numeric(Yii::app()->request->getQuery('proximity')) ? (int) Yii::app()->request->getQuery('proximity') : Yii::app()->params['proximity'];
+        // geoloc
+        if (!empty($_POST['Lat']) && !empty($_POST['Lng'])) {
+            $geoloc = $_POST['Lat'] . ',' . $_POST['Lng'];
+            if (!empty($geoloc)) {
+                $solrParams['fq'] .= " AND {!geofilt pt=$geoloc sfield=geoloc d=$proximity}";
+            }
+        }
+
+
+
+//Sorting
+        if (!empty($_POST['sort'])) {
+            $filter = '';
+            if ($_POST['sort'] === 'Price') {
+                $filter = 'weeklyprice asc';
+            } else if ($_POST['sort'] === 'Popularity') {
+                $filter = 'pscore desc';
+            } else if ($_POST['sort'] === 'Most Recent') {
+                $filter = 'datemodified desc';
+            }
+            $solrParams['sort'] = $filter;
+        }
+
+        // solr query 
+        $textSearch = '';
+        $solrQuery = '';
+        if (!empty($_POST['textsearch'])) {
+            $textSearch = $_POST['textsearch'];
+            if (!empty($textSearch)) {
+                $solrQuery = "name:*{$textSearch}* OR description:*{$textSearch}* OR mediatype:*{$textSearch}* OR audiencetag:*{$textSearch}*";
+            } else {
+                $solrQuery = '*:*';
+            }
+        } else {
+            $solrQuery = '*:*';
+        }
+
+
+        //$solrParams['rows'] = 5;
+        // get listing from Solr                
+        //$result = Yii::app()->listingSearch->get($solrQuery, 0, 50000, $solrParams);
+        // load from 0 if markers already loaded is not in $_GET
+        $marker_loaded = (int) Yii::app()->request->getQuery('marker_loaded');
+        $marker_loaded = ($marker_loaded > 0) ? $marker_loaded : 0;
+
+        // how many to load - next_toload_count not there then default load count
+        $next_toload_count = (int) Yii::app()->request->getQuery('next_toload_count');
+        $init_markers = ($next_toload_count > 0) ? $next_toload_count : Yii::app()->params['init_markers'];
+
+
+        $solrParams['wt'] = 'json';
+        //$params['json.nl'] = 'map';
+        //$solrParams['fl'] = 'id,lat,lng,ea';
+        $solrParams['q'] = $solrQuery;
+        if (!empty($_POST['start'])) {
+            $solrParams['start'] =  $_POST['start'];
+        } else {
+            $solrParams['start'] =  0;
+        }
+         // $marker_loaded; //0;
+        $solrParams['rows'] = 30; // $init_markers; //50000;
+
+        $qp = http_build_query($solrParams, null, '&');
+
+        // >>> curl query
+        $ch = curl_init();
+        $url = Yii::app()->params['solrCurl'] . $qp;
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);            // Include header in result? (0 = yes, 1 = no)            
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Should cURL return or print out the data? (true = return, false = print)
+        //curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $res = json_decode($result);
+        $finalresult = array();
+        $data = array();
+        foreach ($res->response->docs as $doc) {
+            $singleDocs = array();
+            $doc->thumbnail = JoyUtilities::getAwsFileUrl('small_' . $doc->filename, 'listing');
+            $doc->type = $doc->mediatype;
+
+            if (!empty($_POST['userid'])) {
+                $favListModal = FavouriteListing::model()->findByAttributes(array('userid' => $_POST['userid'], 'listingid' => '' . $doc->id));
+                if ($favListModal) {
+                    $doc->is_favByUser = 1;
+                }
+            }
+
+            $singleDocs = (array) $doc;
+            array_push($data, $singleDocs);
+        }
+
+        $finalresult['SiteListing'] = $data;
+        echo json_encode($data);
+    }
+    
+    
+    public function actiongetmarkers() {
+        $metaKeyword = $pageTitle = '';
+        // default solrUrl
+        $solrParams = array('fq' => '');
+        //companyId
+        $companyid = $_POST['companyid'];
+
+        // filter media type 
+
+        $mediaTypeParam = '';
+        if (!empty($_POST['mediatypeid'])) {
+            $mediaTypeParam = $_POST['mediatypeid'];
+            $mediaTypeId = null;
+            if (!empty($mediaTypeParam) && is_array($mediaTypeId = explode(",", $mediaTypeParam))) {
+                //$solrParams['fq'] .= (!empty($solrParams['fq'])) ? ' AND ' : '';
+                $solrParams['fq'] .= '(';
+                foreach ($mediaTypeId as $mt) {
+                    if (is_numeric($mt))     // to remove 'multiselect-all'
+                        $solrParams['fq'] .= ' mediatypeid:' . $mt . ' OR';
+                }
+                $solrParams['fq'] = rtrim($solrParams['fq'], 'OR');
+                $solrParams['fq'] .= ')';
+            }
+        }
+
+
+
+        //companyid
+        $solrParams['fq'] .= (!empty($solrParams['fq'])) ? ' AND ' : '';
+        $solrParams['fq'] .= ' companyid:' . $companyid;
+
+        //lightingid
+        $lightTypeParam = '';
+        if (!empty($_POST['lightingid'])) {
+            $lightTypeParam = $_POST['lightingid'];
+            $lightTypeId = null;
+            if (!empty($lightTypeParam) && is_array($lightTypeId = explode(",", $lightTypeParam))) {
+                //$solrParams['fq'] .= (!empty($solrParams['fq'])) ? ' AND ' : '';
+                $solrParams['fq'] .= ' AND (';
+                foreach ($lightTypeId as $mt) {
+                    if (is_numeric($mt))     // to remove 'multiselect-all'
+                        $solrParams['fq'] .= ' lightingid:' . $mt . ' OR';
+                }
+                $solrParams['fq'] = rtrim($solrParams['fq'], 'OR');
+                $solrParams['fq'] .= ')';
+            }
+        }
+
+
+        // filter price slider 
+        $priceSlider = '';
+        if (!empty($_POST['priceslider'])) {
+            $priceSlider = explode('-', $_POST['priceslider']);
+            if (count($priceSlider) > 1) {
+                // base on currency selected conv to usd to compare weeklyprice
+                $newMinPrice = round(Yii::app()->openexchanger->convertCurrency($priceSlider[0], $this->ipCurrencyCode, 'USD'));
+                $newMaxPrice = round(Yii::app()->openexchanger->convertCurrency($priceSlider[1], $this->ipCurrencyCode, 'USD'));
+                //$criteria['condition']  .= ' AND weeklyprice between '.$priceSlider[0]. ' AND '. $priceSlider[1];
+                $solrParams['fq'] .= (!empty($solrParams['fq'])) ? ' AND ' : '';
+                $solrParams['fq'] .= 'weeklyprice:[' . $newMinPrice . ' TO ' . $newMaxPrice . ']';
+            }
+        }
+
+
+        // proximity
+        $proximity = is_numeric(Yii::app()->request->getQuery('proximity')) ? (int) Yii::app()->request->getQuery('proximity') : Yii::app()->params['proximity'];
+
+        // geoloc
+        if (!empty($_POST['Lat']) && !empty($_POST['Lng'])) {
+            $geoloc = $_POST['Lat'] . ',' . $_POST['Lng'];
+            if (!empty($geoloc)) {
+                $solrParams['fq'] .= " AND {!geofilt pt=$geoloc sfield=geoloc d=$proximity}";
+            }
+        }
+
+
+//Sorting
+        if (!empty($_POST['sort'])) {
+            $filter = '';
+            if ($_POST['sort'] === 'Price') {
+                $filter = 'weeklyprice asc';
+            } else if ($_POST['sort'] === 'Popularity') {
+                $filter = 'pscore desc';
+            } else if ($_POST['sort'] === 'Most Recent') {
+                $filter = 'datemodified desc';
+            }
+            $solrParams['sort'] = $filter;
+        }
+
+        // solr query 
+        $textSearch = '';
+        $solrQuery = '';
+        if (!empty($_POST['textsearch'])) {
+            $textSearch = $_POST['textsearch'];
+            if (!empty($textSearch)) {
+                $solrQuery = "name:*{$textSearch}* OR description:*{$textSearch}* OR mediatype:*{$textSearch}* OR audiencetag:*{$textSearch}*";
+            } else {
+                $solrQuery = '*:*';
+            }
+        } else {
+            $solrQuery = '*:*';
+        }
+
+
+        //$solrParams['rows'] = 5;
+        // get listing from Solr                
+        //$result = Yii::app()->listingSearch->get($solrQuery, 0, 50000, $solrParams);
+        // load from 0 if markers already loaded is not in $_GET
+        $marker_loaded = (int) Yii::app()->request->getQuery('marker_loaded');
+        $marker_loaded = ($marker_loaded > 0) ? $marker_loaded : 0;
+
+        // how many to load - next_toload_count not there then default load count
+        $next_toload_count = (int) Yii::app()->request->getQuery('next_toload_count');
+        $init_markers = ($next_toload_count > 0) ? $next_toload_count : Yii::app()->params['init_markers'];
+
+
+        $solrParams['wt'] = 'json';
+        //$params['json.nl'] = 'map';
+        $solrParams['fl'] = 'id,lat,lng,ea';
+        $solrParams['q'] = $solrQuery;
+        $solrParams['start'] = 0; // $marker_loaded; //0;
+        $solrParams['rows'] = 500000; // $init_markers; //50000;
+
+        $qp = http_build_query($solrParams, null, '&');
+
+        // >>> curl query
+        $ch = curl_init();
+        $url = Yii::app()->params['solrCurl'] . $qp;
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);            // Include header in result? (0 = yes, 1 = no)            
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Should cURL return or print out the data? (true = return, false = print)
+        //curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $res = json_decode($result);
+        $markerlist = array();
+
+    //        $markerlist['Markerslist'] = $res->response->docs;
+        $cnt = json_encode(count($res->response->docs));
+        //Change the result json  into array
+
+        for ($i=0; $i < $cnt; $i++) {
+            //echo "json_encode();die()";
+             $tempResponse = $res->response->docs[$i];
+            // //print_r($tempResponse['id']);die();
+             //echo json_encode($tempResponse);
+            $arr = array();
+            $arr[0] = $tempResponse->id;
+            $arr[1] = $tempResponse->lat;
+            $arr[2] = $tempResponse->lng;
+            $arr[3] = $tempResponse->ea;
+
+            array_push($markerlist, $arr);
+        }
+        echo json_encode($markerlist);
+    }
+    
 }

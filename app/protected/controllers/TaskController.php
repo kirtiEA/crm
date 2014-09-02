@@ -24,6 +24,7 @@ class TaskController extends Controller
                 if (!empty($uids) && $uids != 'null') {
                     $userids = implode(',', json_decode(str_replace('"', '', $uids)));
                 }
+                
                 $tasks = Task::fetchTaskList($campaigns, $userids);
             } else {
                 $tasks = Task::fetchTaskList();
