@@ -108,7 +108,7 @@ $(document).ready(function() {
         
         var id = $(this).parent().attr('id');
         var pwd = $(this).siblings('.password').val();
-        console.log(id);
+        //console.log(id);
         $.ajax({
             type: 'POST',
             url: $('#base-url').val() + 'ajax/Updatepassword',
