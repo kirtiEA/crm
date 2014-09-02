@@ -98,6 +98,7 @@ return array(
             'iteration_count_log2' => 8,
             'portable_hashes' => false,
         ),
+
         'mandrill' => array(
             'api_key' => 'wtWRc4QXlHhoMyK6nzHUqQ'
         ),
