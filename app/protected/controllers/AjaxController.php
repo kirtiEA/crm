@@ -109,7 +109,7 @@ class AjaxController extends Controller {
             $mediaTypes[$value->id] = strtolower($value->name);
         }
         // fetch all lighting
-        $lightings = array_map('strtolower', Listing::getLighting());        
+        $lightings = array_map('strtolower', Listing::getLighting());
         //print_r($lightings); die();
         
         

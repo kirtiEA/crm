@@ -218,6 +218,58 @@ class ApiController extends Controller {
             case 'task':
                 $taskId = $_GET['id'];
                 $currDateTime = date("Y-m-d H:i:s");
+                $imageName = trim($put_vars['photoname']);
+                $imageData = base64_decode($$put_vars['photo']);
+                $source = imagecreatefromstring($imageData);
+                //$rotate = imagerotate($source, $angle, 0); // if want to rotate the image
+                $uploadedFile = imagejpeg($source,$imageName,100);
+                imagedestroy($source);
+                
+                // send them to aws s3
+                $s3Obj = new EatadsS3();
+                $ext = 'jpg';   //pathinfo($uploadedFileName, PATHINFO_EXTENSION);
+                $newFileName = time().'_'. mt_rand() . '.' . $ext;
+                $uploadFilePath = Yii::app()->params['fileUpload']['path'] . 'listing/';
+                $originalFileWithPath = $uploadFilePath . $uploadedFile;
+
+//                $imageThumb = new EasyImage($originalFileWithPath);
+//
+//                $imageThumb->resize(1280, 1024);
+//                $newFileThumbName = $uploadFilePath . $newFileName;
+//                $imageThumb->save($newFileThumbName);
+//                $s3Obj->uploadFile($newFileThumbName, 'listing/' . $newFileName);
+//                @unlink($newFileThumbName);
+
+                $imageThumb = new EasyImage($originalFileWithPath);
+
+                $newFileThumbName = $uploadFilePath . $newFileName;
+
+                copy($originalFileWithPath, $newFileThumbName);
+                $s3Obj->uploadFile($newFileThumbName, 'listing/' . $newFileName);
+                @unlink($newFileThumbName);                
+
+                $imageThumb->resize(487, 310);
+                $newFileThumbName = $uploadFilePath . 'big_' . $newFileName;
+                $imageThumb->save($newFileThumbName);
+                $s3Obj->uploadFile($newFileThumbName, 'listing/big_' . $newFileName);
+                @unlink($newFileThumbName);
+
+                $imageThumb->resize(212, 160);
+                $newFileThumbName = $uploadFilePath . 'small_' . $newFileName;
+                $imageThumb->save($newFileThumbName);
+                $s3Obj->uploadFile($newFileThumbName, 'listing/small_' . $newFileName);
+                @unlink($newFileThumbName);
+
+                $imageThumb->resize(102, 74);
+                $newFileThumbName = $uploadFilePath . 'tiny_' . $newFileName;
+                $imageThumb->save($newFileThumbName);
+                $s3Obj->uploadFile($newFileThumbName, 'listing/tiny_' . $newFileName);
+                @unlink($newFileThumbName);
+                //@unlink($originalFileWithPath);
+
+                
+                $this->_sendResponse(200, array($newFileName));
+                Yii::app()->end();
                 
                 $installationProblem = ($put_vars['problems']['installation']=='') ? NULL : trim($put_vars['problems']['installation']);
                 $lightingProblem = ($put_vars['problems']['lighting']=='') ? NULL : trim($put_vars['problems']['lighting']);
@@ -235,9 +287,9 @@ class ApiController extends Controller {
                 $ppModel->installation = $installationProblem;
                 $ppModel->lighting = $lightingProblem;
                 $ppModel->obstruction = $obstructionProblem;
-                $ppModel->comments = $commentProblem;                
+                $ppModel->comments = $commentProblem;
                 $ppModel->createdDate = $currDateTime;
-                $ppModel->modifiedDate = $currDateTime;                
+                $ppModel->modifiedDate = $currDateTime;
                 $ppModel->save();
                                 
                 // TASK
