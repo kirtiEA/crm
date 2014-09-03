@@ -1,58 +1,55 @@
 <?php
 
-class VendorController extends Controller
-{
-	public function actionAddsitetocampaign()
-	{
-		$this->render('addsitetocampaign');
-	}
+class VendorController extends Controller {
 
-	public function actionAssignzonetouser()
-	{
-		$this->render('assignzonetouser');
-	}
+    public function actionAddsitetocampaign() {
+        $this->render('addsitetocampaign');
+    }
 
-	public function actionManagesites()
-	{
-		$this->render('managesites');
-	}
+    public function actionAssignzonetouser() {
+        $this->render('assignzonetouser');
+    }
 
-	public function actionSiteautocomplete()
-	{
-		$this->render('siteautocomplete');
-	}
+    public function actionManagesites() {
+        $this->render('managesites');
+    }
 
-	public function actionUpdatetaskassignment()
-	{
-		$this->render('updatetaskassignment');
-	}
+    public function actionSiteautocomplete() {
+        $this->render('siteautocomplete');
+    }
 
-        
-        
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
+    public function actionUpdatetaskassignment() {
+        $this->render('updatetaskassignment');
+    }
 
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
+    public function actionIndex() {
+        $this->render('index');
+    }
+
+    // Uncomment the following methods and override them if needed
+    /*
+      public function filters()
+      {
+      // return the filter configuration for this controller, e.g.:
+      return array(
+      'inlineFilterName',
+      array(
+      'class'=>'path.to.FilterClass',
+      'propertyName'=>'propertyValue',
+      ),
+      );
+      }
+
+      public function actions()
+      {
+      // return external action classes, e.g.:
+      return array(
+      'action1'=>'path.to.ActionClass',
+      'action2'=>array(
+      'class'=>'path.to.AnotherActionClass',
+      'propertyName'=>'propertyValue',
+      ),
+      );
+      }
+     */
 }

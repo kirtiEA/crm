@@ -20,6 +20,7 @@ return array(
         'application.components.JOY.*',
         'ext.easyimage.EasyImage',
         'application.extensions.PasswordHash',
+        'ext.YiiMailer.EatadsMailer', // Wrapper of YiiMailer
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool        
@@ -102,6 +103,23 @@ return array(
             'portable_hashes' => false,
         ),
         'fileUploadPath' => $_SERVER['DOCUMENT_ROOT'] .  '/nw_monitorly/app/uploads/',
+        'mandrill' => array(
+            'api_key' => 'wtWRc4QXlHhoMyK6nzHUqQ'
+        ),
+        'mailChimp' => array(       // mail chimp api key and id
+            'api_key' => '76d05ba87b150c382677a19da6f4be91-us3',
+            'id' => 'c3657884d3'
+        ),
+        'mailChimpBrief' => array(       // mail chimp api key and id for brief
+            'api_key' => '76d05ba87b150c382677a19da6f4be91-us3',
+            'id' => 'c3657884d3'
+        ),       
+        // for gmail api
+        'gmapApiKey' => 'AIzaSyD9ycb1xXwLT6Wh5HrRb1YbUcBCw7_UHic', //'AIzaSyCtfa3XFporc1yBA7Z16T_FmhMfxNJ6WcQ',
+        // for password protection extension
+        'init_markers' => 1000,
+        'load_markers' => 3000,
+        'solrCurl' => 'http://eataddsolr.eatads.com:8080/solr/listing/select?',
         'awss3' => array(           // amazon s3 details
             's3Bucket'=>'monitorly-localhost-media',
             'accessKey'=>'AKIAIW62GKSH4I5LIEXQ',

@@ -20,7 +20,7 @@ class AjaxController extends Controller {
         return array(
             array('allow', // allow all users to perform actions
                 'actions' => array('signup' ,'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting','getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
-                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite'),
+                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite','updatepassword','invitevendor'),
                 'users' => array('*'),
             ),
         );
@@ -207,7 +207,7 @@ class AjaxController extends Controller {
     /*
      * update user password
      */
-    public function actionUpdatepassword() {
+    public function actionUpdatePassword() {
         if(isset($_POST['id']) && isset($_POST['pwd']))
 	{
             //echo 'entered here';
@@ -661,6 +661,33 @@ class AjaxController extends Controller {
             array_push($markerlist, $arr);
         }
         echo json_encode($markerlist);
+    }
+    
+    /*
+     * invite vendor
+     */
+    public function actionInviteVendor() {
+        $email = Yii::app()->request->getParam('email');
+        //print_r($_POST); die();
+        
+        if(strlen($email) && filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
+            
+            $id=Yii::app()->user->id;
+            //$mail=  Yii::app()->user->email;  
+            $invite= new Monitorlynotification();
+            $resetLink="subscription page url";
+            $invite->attributes = array('typeid'=>1,'createddate'=>date("Y-m-d H:i:s"),'createdby'=>$id,'emailtypeid'=>1);
+            $mail = new EatadsMailer('invite', $email, array('resetLink'=>$resetLink), array('shruti@eatads.com'));
+            $mail->eatadsSend();
+            $invite->save();
+            //print_r($invite->getErrors());
+            
+        }
+        else{
+            echo 0;
+            //wrong email address den do something
+        }
     }
     
 }
