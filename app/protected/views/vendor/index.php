@@ -20,13 +20,14 @@
           <div class="modal-body">
             <label>Vendor Email</label>&nbsp;
             <input class="email" type="email">
+            
           </div>
           <div class="modal-footer">
             <a href="#" id="cancel">Cancel</a>&nbsp;
             <button class="invite btn btn-primary">Invite</button>
           </div>
         </div>
-        <input id="base-url" type="hidden" value="<?php Yii::app()->getBaseUrl(); ?>" style="display:none;"/>
+        
       </div>
     </div>
     <!-- end of invite vendor modal -->
