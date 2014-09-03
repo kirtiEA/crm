@@ -18,6 +18,7 @@ return array(
         'application.models.*',
         'application.components.*',
         'application.components.JOY.*',
+        'ext.easyimage.EasyImage',
         'application.extensions.PasswordHash',
         'ext.YiiMailer.EatadsMailer', // Wrapper of YiiMailer
     ),
@@ -78,7 +79,7 @@ return array(
             'routes' => array(
                 array(
                     'class' => 'CFileLogRoute',
-                    'levels' => 'error, warning',
+                    'levels' => 'error, warning, trace, info, vardump',
                 ),
             // uncomment the following to show log messages on web pages
 
@@ -98,19 +99,18 @@ return array(
             'iteration_count_log2' => 8,
             'portable_hashes' => false,
         ),
-
+        'fileUploadPath' => $_SERVER['DOCUMENT_ROOT'] . '/monitorly/app/uploads/',
         'mandrill' => array(
             'api_key' => 'wtWRc4QXlHhoMyK6nzHUqQ'
         ),
-        'mailChimp' => array(       // mail chimp api key and id
+        'mailChimp' => array(// mail chimp api key and id
             'api_key' => '76d05ba87b150c382677a19da6f4be91-us3',
             'id' => 'c3657884d3'
         ),
-        'mailChimpBrief' => array(       // mail chimp api key and id for brief
+        'mailChimpBrief' => array(// mail chimp api key and id for brief
             'api_key' => '76d05ba87b150c382677a19da6f4be91-us3',
             'id' => 'c3657884d3'
         ),
-       
         // for gmail api
         'gmapApiKey' => 'AIzaSyD9ycb1xXwLT6Wh5HrRb1YbUcBCw7_UHic', //'AIzaSyCtfa3XFporc1yBA7Z16T_FmhMfxNJ6WcQ',
         // for password protection extension
@@ -118,9 +118,8 @@ return array(
         'load_markers' => 3000,
         'solrCurl' => 'http://eataddsolr.eatads.com:8080/solr/listing/select?',
         'awss3' => array(// amazon s3 details
-            's3Bucket' => 'eatads-media',
+            's3Bucket' => 'monitorly-localhost-media',
             'accessKey' => 'AKIAIW62GKSH4I5LIEXQ',
             'secretKey' => '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'
-
         ),
         ));
