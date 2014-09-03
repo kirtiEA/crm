@@ -114,6 +114,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
     }
     function removeFromCampaign(id) {
         removefromcampaign.push(id);
+        $('#listing_' + id).removeClass('selected');
     }
     
     function saveCampaign(id) {
@@ -261,9 +262,9 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
     });
     $('.menu_campaign').addClass('active');
     $(document).ready(function() {
-            dust.render("campaigns", <?php echo $campaigns;?>, function(err, out) {
+            dust.render("campaigns", <?php //echo $campaigns;?>, function(err, out) {
                 $('#campaigns').html(out);
-            var cnt = <?php echo $campaigns;?>;
+            var cnt = <?php //echo $campaigns;?>;
             //console.log(cnt.length + " sdfsfsdfsfsddsfdsfsd") ;
             $('.cnt').html(cnt.length);
             console.log(err);
@@ -311,19 +312,12 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                             </tr>
                         </table>
                     </div>
-<!--                    <div class="col-md-9 right-content">
-                        <div class="search-box-wrapper">
-                            <input type="text" placeholder="Search Sites">
-                        </div>
-                        <ul id="campaignListings">
-                        </ul>
-                    </div>-->
                 </div>
               </div>
           </div>
           <div class="modal-footer">
             <a href="#" data-dismiss="modal">Cancel&nbsp;</a>
-            <button type="button" class="btn btn-primary" onclick="updateCampaign();">Save</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateCampaign();">Save</button>
           </div>
         </div>
       </div>
@@ -361,7 +355,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
           </div>
           <div class="modal-footer">
             <a href="#" data-dismiss="modal">Cancel&nbsp;</a>
-            <button type="button" class="btn btn-primary" >Add Sites</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="" data-target="#add-campaign-modal">Add Sites</button>
           </div>
         </div>
       </div>
@@ -422,13 +416,49 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
     <div class="row">
         <div class="col-md-12">
             <div class="btn-group">
-                <button type="button" class="btn btn-default active" onclick="fetchCampaigns('1');">Active <span class="cnt1"></span></button>
-                <button type="button" class="btn btn-default" onclick="fetchCampaigns('2');">Upcoming <span class="cnt2"></span></button>
-                <button type="button" class="btn btn-default" onclick="fetchCampaigns('3');">Expired <span class="cnt3"></span></button>
+                <a href="<?php echo Yii::app()->createUrl('myCampaigns'); ?>"><button type="button" class="btn btn-default" >Active <span class="cnt1"></span></button></a>
+                <a href="#"><button type="button" class="btn btn-default active" >Upcoming <span class="cnt2"></span></button></a>
+                <a href="<?php echo Yii::app()->createUrl('myCampaigns/expired'); ?>"><button type="button" class="btn btn-default " > Expired <span class="cnt3"></span></button></a> 
             </div>
-            <h1 class="list-heading">Campaign List (<span class="cnt"></span>)</h1>
-            <ul class="list" id="campaigns">
+            <h1 class="list-heading">Campaign List (<?php echo count($campaigns)?>)</h1>
+            <ul class="list">
+            <?php 
+                $html = '';
+                foreach ($campaigns as $value) {
+                    $html = $html . '            <li class="list-item">
+                <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
+                 . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3>' .
+                  '<div class="pull-right">
+                    <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
+                    &nbsp;
+                        <button class="btn btn-secondary" data-toggle="modal" data-target="#add-site-modal" onclick="fetchvendors("name", "{id}");"><span class="glyphicon glyphicon-plus"></span> Add Sites</button>
+                        &nbsp;
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#add-campaign-modal" onclick="saveCampaign("{id}");">Save Campaign</button>
+                </div>' .
+                  '<div class="list-item-content show-hide-content">
+                    <ul class="sub-list">';
+                    foreach ($value['sites'] as $site) {
+                        $html = $html . '<li>
+                            <h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $site['name'] .'('.$site['count'] . ') &nbsp;</h3>'
+                            . '<div class="assign-dropdown">Assigned to 
+                                <select>
+                                    <option value="0" selected="true">Myself</option>
+                                    <option value="' .$site['id'] .'">' . $site['name'] .'</option>
+                                </select></div>'
+                                
+                            . '<ul class="sub-sub-list show-hide-content">';
+                        foreach ($site['listings'] as $list) {
+                            $html = $html . '<li>' . $list['name'] . ', ' . $list['mediatype'] . ', '
+                                    . $list['locality'] . '&nbsp;</li>';
+                        }
+                        $html = $html . '</ul></li>';
+                    }
+                    $html = $html . '</ul></div></li>';
+                }        
                 
+                        
+            echo $html;
+            ?>    
             </ul>
         </div>
     </div>

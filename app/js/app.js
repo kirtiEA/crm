@@ -89,7 +89,10 @@ $scope.setit = function() {
   $rootScope.$broadcast('PullSlider', $scope.message);  
   };
 
-
+  $scope.mysites = function() {
+      console.log("this is fun");
+  }; 
+      
 });
 
 app.directive('customPopover', function ($compile) {
@@ -122,16 +125,18 @@ app.factory('Reddit', function($http) {
 
   };
 
-  Reddit.prototype.nextPage = function() {
+  Reddit.prototype.nextPage = function(id) {  
+      console.log(id);
         var that = this;
 
      if (this.busy) return;
      this.busy = true;
 
   var param4 = $.param({companyid: "533", start:srt});
+  var param5 = $.param({companyid: "11", start:srt});
     srt = srt+30
-
-    $http({
+    if(id == 1) {
+        $http({
              method: 'POST',
              url: link + '/ajax/getlisting/',
              data: param4,
@@ -146,6 +151,26 @@ app.factory('Reddit', function($http) {
          }).error(function(data, status, headers, config){
 
          }.bind(this));
+    } else if (id == 2) {
+        console.log('this is 2');
+        $http({
+             method: 'POST',
+             url: link + '/ajax/getlisting/',
+             data: param4,
+             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+          }).success(function(data){        
+          var items = data;
+
+     for (var i = 0; i < items.length; i++) {
+         this.products = [];
+        that.products.push(items[i]);
+      }
+      that.busy = false;
+         }).error(function(data, status, headers, config){
+
+         }.bind(this));
+    }
+    
   };
 
 this.order = function(predicate, reverse) {

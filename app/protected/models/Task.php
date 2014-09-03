@@ -42,4 +42,12 @@ class Task extends BaseTask {
         $tasks = Yii::app()->db->createCommand($sql)->queryRow();
         return $tasks;
     }
+    
+    public static function updateTasksForPop($campaignid,$companyid) {
+        $sql = 'Update Task as task, (select tt.id from Task tt
+inner join Listing l on l.id = tt.siteid and l.companyid ='. $companyid . '
+where tt.status = 1 and tt.campaignid = ' . $campaignid . ') as t
+set assignedCompanyId =  ' . $companyid . ' where task.id = t.id';
+        return Yii::app()->db->createCommand($sql)->execute();
+    }
 }

@@ -249,20 +249,46 @@ class AjaxController extends Controller {
              */
             $campaign = Campaign::model()->findByPk($_POST['cid']);
             $diff = strtotime($campaign->attributes['endDate']) - strtotime($campaign->attributes['startDate']);
-            echo floor($diff/(60*60*24));
-            for ($i=0; $i < count($add); $i++) {
-                $date = strtotime($campaign->attributes['startDate']);
-                while ((strtotime($campaign->attributes['endDate']) - $date) >= 0) {
+            
+            if ($_POST['type'] == 1) {
+                $vendorIds = json_decode($_POST['pop']);
+                for ($i=0; $i < count($add); $i++) {
+                    $date = strtotime($campaign->attributes['startDate']);
                     $task = new Task();
-                    $task->assignedCompanyId = Yii::app()->user->cid;
+                    //$task->assignedCompanyId = Yii::app()->user->cid;
+                    $task->pop = 1;
+                    $task->createdBy = Yii::app()->user->id;
                     $task->campaignid = $_POST['cid'];
                     $task->siteid = $add[$i];
                     $task->status = 1;
                     $task->dueDate = date("Y-m-d H:i:s", $date);
                     $task->save();
-                    $date = strtotime('+1 day', $date);
+                }
+                for ($i=0; $i < count($vendorIds); $i++) {
+                    $companyid;
+                    if (strcasecmp($vendorIds[$i], '0') == 0) {
+                        $companyid = Yii::app()->user->cid;
+                    } else {
+                        $companyid = $vendorIds[$i];
+                    }
+                    Task::updateTasksForPop($_POST['cid'], $companyid);
+                }
+            } else if ($_POST['type'] == 2) {
+                for ($i=0; $i < count($add); $i++) {
+                    $date = strtotime($campaign->attributes['startDate']);
+                    while ((strtotime($campaign->attributes['endDate']) - $date) >= 0) {
+                        $task = new Task();
+                        $task->assignedCompanyId = Yii::app()->user->cid;
+                        $task->campaignid = $_POST['cid'];
+                        $task->siteid = $add[$i];
+                        $task->status = 1;
+                        $task->dueDate = date("Y-m-d H:i:s", $date);
+                        $task->save();
+                        $date = strtotime('+1 day', $date);
+                    }
                 }
             }
+            
             
             /*
              * remove sites from  campaign
@@ -274,18 +300,27 @@ class AjaxController extends Controller {
             }
             
         }
+        //$this->redirect(Yii::app()->createUrl('/campaign'));
     }
     
     public function actionCampaignDetails() {
         if ($_POST['cid']) {
             $vendors = UserCompany::fetchVendorsInCampaign($_POST['cid']);
-           // echo count($vendors);
+            //echo count($vendors);
             $result = array();
             for($i =0; $i < count($vendors) ; $i++) {
                 //echo $vendors[$i]['name'] . ' ww ' . $vendors[$i]['id'];
                 $listings = Listing::getListingsForCampaign($vendors[$i]['id'], $_POST['cid']);
                 $temp = $vendors[$i];
-                $temp['listings'] = $listings;
+                $finalListings = array();
+                //$temp['listings'] = $listings;
+                foreach ($listings as $key => $value) {
+                    if($value['assignedCompanyId'] && (strcasecmp($value['assignedCompanyId'], Yii::app()->user->cid) == 0)) {
+                        $value['selfassigned'] = '1sdfds';
+                    }
+                     array_push($finalListings, $value);
+                }
+                $temp['listings'] = $finalListings;
                 array_push($result, $temp);
             }
             echo json_encode($result);
@@ -342,7 +377,12 @@ class AjaxController extends Controller {
 //    }
     
     public function actiongetListing() {
-
+        
+        if ($_POST['type'] == 2) {
+            
+        } else if ($_POST['type'] == 3) {
+            
+        } 
         $metaKeyword = $pageTitle = '';
         // default solrUrl
         $solrParams = array('fq' => '');
@@ -663,4 +703,20 @@ class AjaxController extends Controller {
         echo json_encode($markerlist);
     }
     
+    
+    public function actionFetchListingsForCompany() {
+        $cid = Yii::app()->user->cid;
+        
+                
+    }
+    
+      public function actiongetsitedetails() {
+        $id = $_POST['siteid'];
+        $userid = '';
+        if (!empty($_POST['userid'])) {
+            $userid = $_POST['userid'];
+        }
+        //echo $id;die();
+        echo Listing::getListingDetails($id, $userid);
+    }
 }

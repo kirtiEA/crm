@@ -115,4 +115,7 @@ class SiteController extends Controller {
         $this->redirect(Yii::app()->homeUrl);
     }
 
+    public function actionPending() {
+        
+    }
 }

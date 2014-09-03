@@ -154,7 +154,7 @@ console.log("called");
       marker = new google.maps.Marker({
           position: position,
           map: map,
-          icon: $('#compaletePath').text() + '/images/marker.png',
+          icon: $('#completePath').text() + '/images/marker.png',
           title: markers[i][0]
       });
  
