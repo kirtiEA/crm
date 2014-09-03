@@ -3134,3 +3134,375 @@ Stack trace:
 REQUEST_URI=/monitorly_webapp_new/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
 HTTP_REFERER=http://localhost/monitorly_webapp_new/app/site/addvendor
 ---
+2014/09/03 15:43:42 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:43:42 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:43:42 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:43:46 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:43:46 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:43:52 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:43:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:43:54 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:43:54 [trace] [system.db.ar.CActiveRecord] Task.findByPk()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:43:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `Task`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:43:54 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `Task`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:43:54 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `Task` `t` WHERE `t`.`id`=5 LIMIT 1
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:43:54 [error] [exception.CException] exception 'CException' with message 'Property "Task.assignedCompanyId" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(145): CComponent->__get('assignedCompany...')
+#1 C:\xampp\htdocs\monitorly\framework\validators\CNumberValidator.php(78): CActiveRecord->__get('assignedCompany...')
+#2 C:\xampp\htdocs\monitorly\framework\validators\CValidator.php(213): CNumberValidator->validateAttribute(Object(Task), 'assignedCompany...')
+#3 C:\xampp\htdocs\monitorly\framework\base\CModel.php(159): CValidator->validate(Object(Task), NULL)
+#4 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(805): CModel->validate(NULL)
+#5 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(307): CActiveRecord->save()
+#6 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#7 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#11 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#12 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#14 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/09/03 15:43:54 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/03 15:49:38 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:49:38 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:49:38 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:49:42 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:49:42 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:49:43 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:49:43 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:49:43 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:58:42 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:58:42 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:58:42 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:58:49 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:58:49 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:58:50 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:58:50 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 15:58:50 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:46 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:46 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:46 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:53 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:53 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:53 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:53 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:53 [trace] [system.db.ar.CActiveRecord] PhotoProof.insert()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:53 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `PhotoProof` (`taskid`, `imageName`, `clickedDateTime`, `clickedBy`, `clickedLat`, `clickedLng`, `installation`, `lighting`, `obstruction`, `comments`, `createdDate`, `modifiedDate`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:55 [trace] [system.db.ar.CActiveRecord] Task.findByPk()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:55 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `Task`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:55 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `Task`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:55 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `Task` `t` WHERE `t`.`id`=5 LIMIT 1
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:55 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (307)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:02:55 [error] [exception.CException] exception 'CException' with message 'Property "Task.assignedCompanyId" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(145): CComponent->__get('assignedCompany...')
+#1 C:\xampp\htdocs\monitorly\framework\validators\CNumberValidator.php(78): CActiveRecord->__get('assignedCompany...')
+#2 C:\xampp\htdocs\monitorly\framework\validators\CValidator.php(213): CNumberValidator->validateAttribute(Object(Task), 'assignedCompany...')
+#3 C:\xampp\htdocs\monitorly\framework\base\CModel.php(159): CValidator->validate(Object(Task), NULL)
+#4 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(805): CModel->validate(NULL)
+#5 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(307): CActiveRecord->save()
+#6 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#7 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#11 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#12 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#14 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/09/03 16:02:55 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/03 16:06:01 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:06:01 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:06:01 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:06:05 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:06:05 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:06:05 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:06:05 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:06:05 [trace] [system.db.ar.CActiveRecord] PhotoProof.insert()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:06:05 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `PhotoProof` (`taskid`, `imageName`, `clickedDateTime`, `clickedBy`, `clickedLat`, `clickedLng`, `installation`, `lighting`, `obstruction`, `comments`, `createdDate`, `modifiedDate`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:15 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:15 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:15 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:23 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:23 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:23 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:23 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:23 [trace] [system.db.ar.CActiveRecord] PhotoProof.insert()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:23 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `PhotoProof` (`taskid`, `imageName`, `clickedDateTime`, `clickedBy`, `clickedLat`, `clickedLng`, `installation`, `lighting`, `obstruction`, `comments`, `createdDate`, `modifiedDate`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:24 [trace] [system.db.ar.CActiveRecord] Task.findByPk()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:24 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `Task`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:24 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `Task`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:24 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `Task` `t` WHERE `t`.`id`=5 LIMIT 1
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:24 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (308)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:09:24 [error] [exception.CException] exception 'CException' with message 'Property "Task.assignedCompanyId" is not defined.' in C:\xampp\htdocs\monitorly\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(145): CComponent->__get('assignedCompany...')
+#1 C:\xampp\htdocs\monitorly\framework\validators\CNumberValidator.php(78): CActiveRecord->__get('assignedCompany...')
+#2 C:\xampp\htdocs\monitorly\framework\validators\CValidator.php(213): CNumberValidator->validateAttribute(Object(Task), 'assignedCompany...')
+#3 C:\xampp\htdocs\monitorly\framework\base\CModel.php(159): CValidator->validate(Object(Task), NULL)
+#4 C:\xampp\htdocs\monitorly\framework\db\ar\CActiveRecord.php(805): CModel->validate(NULL)
+#5 C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php(308): CActiveRecord->save()
+#6 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): ApiController->actionUpdate()
+#7 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('update')
+#11 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('api/update')
+#12 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\monitorly\app\index.php(24): CApplication->run()
+#14 {main}
+REQUEST_URI=/monitorly/app/api/task/5
+---
+2014/09/03 16:09:24 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/03 16:27:54 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:54 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:54 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.db.ar.CActiveRecord] PhotoProof.insert()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `PhotoProof` (`taskid`, `imageName`, `clickedDateTime`, `clickedBy`, `clickedLat`, `clickedLng`, `installation`, `lighting`, `obstruction`, `comments`, `createdDate`, `modifiedDate`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.db.ar.CActiveRecord] Task.findByPk()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `Task`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `Task`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `Task` `t` WHERE `t`.`id`=5 LIMIT 1
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.db.ar.CActiveRecord] Task.update()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (308)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.db.ar.CActiveRecord] Task.updateByPk()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (308)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:27:58 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `Task` SET `id`=:yp0, `campaignid`=:yp1, `assigneduserid`=:yp2, `assignedCompanyId`=:yp3, `siteid`=:yp4, `dueDate`=:yp5, `taskDone`=:yp6, `problem`=:yp7, `createdDate`=:yp8, `modifiedDate`=:yp9, `status`=:yp10, `pop`=:yp11, `createdBy`=:yp12 WHERE `Task`.`id`=5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (308)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:28:56 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:28:56 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:28:56 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:00 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:00 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:00 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:00 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (278)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:00 [trace] [system.db.ar.CActiveRecord] PhotoProof.insert()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:00 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `PhotoProof` (`taskid`, `imageName`, `clickedDateTime`, `clickedBy`, `clickedLat`, `clickedLng`, `installation`, `lighting`, `obstruction`, `comments`, `createdDate`, `modifiedDate`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (291)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:00 [trace] [system.db.ar.CActiveRecord] Task.findByPk()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:00 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `Task`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:00 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `Task`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:02 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `Task` `t` WHERE `t`.`id`=5 LIMIT 1
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (304)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:02 [trace] [system.db.ar.CActiveRecord] Task.update()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (309)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:02 [trace] [system.db.ar.CActiveRecord] Task.updateByPk()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (309)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:29:02 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `Task` SET `id`=:yp0, `campaignid`=:yp1, `assigneduserid`=:yp2, `assignedCompanyId`=:yp3, `siteid`=:yp4, `dueDate`=:yp5, `taskDone`=:yp6, `problem`=:yp7, `createdDate`=:yp8, `modifiedDate`=:yp9, `status`=:yp10, `pop`=:yp11, `createdBy`=:yp12 WHERE `Task`.`id`=5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (309)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:00 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:00 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:00 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:05 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (269)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:05 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (269)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:05 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (269)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:05 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `PhotoProof`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (269)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:05 [trace] [system.db.ar.CActiveRecord] PhotoProof.insert()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (282)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:05 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `PhotoProof` (`taskid`, `imageName`, `clickedDateTime`, `clickedBy`, `clickedLat`, `clickedLng`, `installation`, `lighting`, `obstruction`, `comments`, `createdDate`, `modifiedDate`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (282)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:06 [trace] [system.db.ar.CActiveRecord] Task.findByPk()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (295)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:06 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `Task`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (295)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:06 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `Task`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (295)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:08 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `Task` `t` WHERE `t`.`id`=5 LIMIT 1
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (295)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:08 [trace] [system.db.ar.CActiveRecord] Task.update()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (300)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:08 [trace] [system.db.ar.CActiveRecord] Task.updateByPk()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (300)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/03 16:31:08 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `Task` SET `id`=:yp0, `campaignid`=:yp1, `assigneduserid`=:yp2, `assignedCompanyId`=:yp3, `siteid`=:yp4, `dueDate`=:yp5, `taskDone`=:yp6, `problem`=:yp7, `createdDate`=:yp8, `modifiedDate`=:yp9, `status`=:yp10, `pop`=:yp11, `createdBy`=:yp12 WHERE `Task`.`id`=5
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (300)
+in C:\xampp\htdocs\monitorly\app\index.php (24)

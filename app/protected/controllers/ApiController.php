@@ -223,22 +223,13 @@ class ApiController extends Controller {
                 $imageData = base64_decode($put_vars['photo']);
                 $imageName = trim($put_vars['photoname']);                
                 $source = imagecreatefromstring($imageData);
-
-                                             
-                //$uploadedFile = imagejpeg($source, $imageName, 100);
+                
                 $uploadedFile = imagejpeg($source, "uploads/listing/".$imageName, 100);
-
-                //header("Content-Type: image/jpeg");
-                //readfile( $uploadedFile);
-                //Yii::app()->end();
-                //imagedestroy($source);
-                //file_put_contents($imageName, $imageData);
-
 
                 // send them to aws s3
                 $s3Obj = new EatadsS3();
                 $ext = pathinfo($imageName, PATHINFO_EXTENSION);
-                $newFileName = time() . '_' . mt_rand() . '.' . $ext;
+                $newFileName = 'mon_'.time() . '_' . mt_rand() . '.' . $ext;
                 $uploadFilePath = Yii::app()->params['fileUploadPath'] . 'listing/';
                 $originalFileWithPath = $uploadFilePath . $imageName;                                
                 
@@ -246,25 +237,25 @@ class ApiController extends Controller {
                 $newFileThumbName = $uploadFilePath . $newFileName;
 
                 copy($originalFileWithPath, $newFileThumbName);
-                $s3Obj->uploadFile($newFileThumbName, 'listing/mon_' . $newFileName);
+                $s3Obj->uploadFile($newFileThumbName, 'listing/' . $newFileName);
                 @unlink($newFileThumbName);             
 
                 $imageThumb->resize(487, 310);
                 $newFileThumbName = $uploadFilePath . 'big_' . $newFileName;
                 $imageThumb->save($newFileThumbName);
-                $s3Obj->uploadFile($newFileThumbName, 'listing/mon_big_' . $newFileName);
+                $s3Obj->uploadFile($newFileThumbName, 'listing/big_' . $newFileName);
                 @unlink($newFileThumbName);
 
                 $imageThumb->resize(212, 160);
                 $newFileThumbName = $uploadFilePath . 'small_' . $newFileName;
                 $imageThumb->save($newFileThumbName);
-                $s3Obj->uploadFile($newFileThumbName, 'listing/mon_small_' . $newFileName);
+                $s3Obj->uploadFile($newFileThumbName, 'listing/small_' . $newFileName);
                 @unlink($newFileThumbName);
 
                 $imageThumb->resize(102, 74);
                 $newFileThumbName = $uploadFilePath . 'tiny_' . $newFileName;
                 $imageThumb->save($newFileThumbName);
-                $s3Obj->uploadFile($newFileThumbName, 'listing/mon_tiny_' . $newFileName);
+                $s3Obj->uploadFile($newFileThumbName, 'listing/tiny_' . $newFileName);
                 @unlink($newFileThumbName);
                 @unlink($originalFileWithPath);
 
@@ -277,7 +268,7 @@ class ApiController extends Controller {
                 // PHOTOPROOF
                 $ppModel = new PhotoProof();
                 $ppModel->taskid = $taskId;
-                $ppModel->imageName = trim($put_vars['photoname']);
+                $ppModel->imageName = $newFileName;
                 $ppModel->clickedDateTime = $put_vars['timestamp'];
                 $ppModel->clickedBy = $put_vars['clickedby'];
                 $ppModel->clickedLat = $put_vars['lat'];
@@ -289,7 +280,7 @@ class ApiController extends Controller {
                 $ppModel->createdDate = $currDateTime;
                 $ppModel->modifiedDate = $currDateTime;
                 $ppModel->save();
-
+                
                 // TASK
                 // if any problem then problemFlag will be true
                 // if photoclicked then taskDone will be true
@@ -304,7 +295,10 @@ class ApiController extends Controller {
                 $taskModel = Task::model()->findByPk($taskId);
                 $taskModel->taskDone = $taskDoneFlag;
                 $taskModel->problem = $problemFlag;
+                $taskModel->modifiedDate = $currDateTime;
+                
                 if ($taskModel->save()) {
+                    
                     $this->_sendResponse(200, array("success" => true));
                 } else {
                     $this->_sendResponse(200, array("success" => false));
