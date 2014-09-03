@@ -18,6 +18,7 @@ return array(
         'application.models.*',
         'application.components.*',
         'application.components.JOY.*',
+        'ext.easyimage.EasyImage',
         'application.extensions.PasswordHash',
     ),
     'modules' => array(
@@ -78,7 +79,7 @@ return array(
             'routes' => array(
                 array(
                     'class' => 'CFileLogRoute',
-                    'levels' => 'error, warning',
+                    'levels' => 'error, warning, trace, info, vardump',
                 ),
             // uncomment the following to show log messages on web pages
 
@@ -99,7 +100,8 @@ return array(
         'phpass' => array(
             'iteration_count_log2' => 8,
             'portable_hashes' => false,
-        ),        
+        ),
+        'fileUploadPath' => $_SERVER['DOCUMENT_ROOT'] .  '/nw_monitorly/app/uploads/',
         'awss3' => array(           // amazon s3 details
             's3Bucket'=>'monitorly-localhost-media',
             'accessKey'=>'AKIAIW62GKSH4I5LIEXQ',

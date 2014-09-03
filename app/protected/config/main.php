@@ -18,6 +18,7 @@ return array(
         'application.models.*',
         'application.components.*',
         'application.components.JOY.*',
+        'ext.easyimage.EasyImage',
         'application.extensions.PasswordHash',
     ),
     'modules' => array(
@@ -78,7 +79,7 @@ return array(
             'routes' => array(
                 array(
                     'class' => 'CFileLogRoute',
-                    'levels' => 'error, warning',
+                    'levels' => 'error, warning, trace, info, vardump',
                 ),
             // uncomment the following to show log messages on web pages
 
@@ -98,6 +99,7 @@ return array(
             'iteration_count_log2' => 8,
             'portable_hashes' => false,
         ),
+        'fileUploadPath' => $_SERVER['DOCUMENT_ROOT'] .  '/monitorly/app/uploads/',
         'init_markers' => 1000,
         'load_markers' => 3000,
         'solrCurl'=>  'http://eataddsolr.eatads.com:8080/solr/listing/select?',
