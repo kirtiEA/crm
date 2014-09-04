@@ -70,28 +70,39 @@
                 </h1>
                 <button class="btn btn-primary pull-right table-control">Remind All</button>
                 <table class="table table-hover" id="vendors-list">
-                    <tr>
-                        <td>Selvel</td>
-                        <td>admin@selvel.com</td>
-                        <td>Invited on 12/09/2014</td>
-                        <td><span class="glyphicon glyphicon-ok"></span> Accepted</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Pioneer</td>
-                        <td>admin@pioneer.com</td>
-                        <td>Invited on 12/09/2014</td>
-                        <td><span class="glyphicon glyphicon-ok"></span> Accepted</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Bright Outdoor</td>
-                        <td>admin@brightoutdoor.com</td>
-                        <td>Invited on 12/09/2014</td>
-                        <td><span class="glyphicon glyphicon-warning-sign"></span> Pending</td>
-                        <td><button class="btn btn-secondary">Remind</button>
-                        </td>
-                    </tr>
+
+                    <?php foreach ($model as $value): ?>
+                        <tr>
+                            <td><?php echo $value['name']; ?></td>
+                            <td><?php echo $value['vendoradmin']; ?></td>
+                            <td>Invited on <?php echo $value['createddate']; ?></td>
+                            <td><?php
+                                $html = "";
+                                if ($value['accepteddate'] !== NULL) {
+                                    $html = $html . '<span class="glyphicon glyphicon-ok"></span>Accepted';
+                                } else
+                                    $html = $html . '<span class="glyphicon glyphicon-warning-sign"></span> Pending';
+                                echo $html;
+                                ?>
+                            </td>
+
+                        </tr>
+                    <?php endforeach; ?>
+<!--                    <tr>
+                <td>Pioneer</td>
+                <td>admin@pioneer.com</td>
+                <td>Invited on 12/09/2014</td>
+                <td><span class="glyphicon glyphicon-ok"></span> Accepted</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Bright Outdoor</td>
+                <td>admin@brightoutdoor.com</td>
+                <td>Invited on 12/09/2014</td>
+                <td><span class="glyphicon glyphicon-warning-sign"></span> Pending</td>
+                <td><button class="btn btn-secondary">Remind</button>
+                </td>
+            </tr>-->
                 </table>
             </div>
         </div>
@@ -147,6 +158,6 @@
             }
         });
     });
-    
+
 </script>
 

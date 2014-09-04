@@ -9,9 +9,9 @@ class VendorController extends Controller {
         }
         $id = Yii::app()->user->id;
         //echo $id;
-        $model = Requestedcompanyvendor::model()->showRequestedVendors($id);
-        echo '<pre>';
-        print_r($model);
+        $model = Requestedcompanyvendor::showRequestedVendors($id);
+//        echo '<pre>';
+//        print_r($model);die();
         $this->render('index', array(
             'vendorList' => json_encode($vendorList),
             'model' => $model,
