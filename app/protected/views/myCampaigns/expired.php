@@ -48,8 +48,8 @@ $('.mon_menu').each(function() {
 <!-- end of add new user sub-header --> 
 
 <ul class="nav nav-tabs" role="tablist">
-    <li class="active"><a href="#home" role="tab" data-toggle="tab">Created by Me</a></li>
-    <li><a href="<?php echo Yii::app()->createUrl('assignedCampaigns');?>" role="tab" data-toggle="tab">Assigned to Me</a></li>
+    <li class="active"><a href="#home" >Created by Me</a></li>
+    <li><a href="<?php echo Yii::app()->createUrl('assignedCampaigns');?>" >Assigned to Me</a></li>
 </ul>
 
 <!-- campaigns list --> 

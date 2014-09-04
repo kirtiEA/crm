@@ -25,13 +25,15 @@ class TaskController extends Controller
                     $userids = implode(',', json_decode(str_replace('"', '', $uids)));
                 }
                 
-                $tasks = Task::fetchTaskList($campaigns, $userids);
+                $tasks = Task::fetchTaskList(Yii::app()->user->cid,$campaigns, $userids);
             } else {
-                $tasks = Task::fetchTaskList();
+                $tasks = Task::fetchTaskList(Yii::app()->user->cid);
             }
-            $campaigns = Campaign::fetchCompanyCampaignsName(Yii::app()->user->cid, 4);
             
+            $campaigns = Campaign::fetchCompanyCampaignsName(Yii::app()->user->cid, 4);
+            //print_r(Yii::app()->user->cid);
             $users = User::fetchCompanyUsers(Yii::app()->user->cid);
+            
             $this->render('index', array('tasks' => $tasks, 'campaigns' => $campaigns,'users'=> $users, 'model' => $model ));
 	}
 

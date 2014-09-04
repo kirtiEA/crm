@@ -22,7 +22,7 @@ class AccountController extends Controller {
                     $this->redirect($returnUrlParam);
                 } else {
                     JoyUtilities::redirectUser(Yii::app()->user->id);
-                    $this->redirect(Yii::app()->getBaseUrl() . '/campaign');
+                    $this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');
                 }
             }
         }

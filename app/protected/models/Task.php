@@ -12,14 +12,14 @@ class Task extends BaseTask {
         return $listings;
     }
     
-    public static function fetchTaskList($campaignId = null, $assignedUserId = null, $startDate = null, $endDate = null ) {
+    public static function fetchTaskList($companyid, $campaignId = null, $assignedUserId = null, $startDate = null, $endDate = null ) {
         $sql = 'select l.name, length, width,mt.name as mediatype, locality, t.id, DATE_FORMAT(t.dueDate,\'%d %M %Y\') as dueDate, c.name as campaignname, 
         u.id as assigneduserid, u.username as assignedusername from Task t 
         inner join Campaign c on c.id = t.campaignid
         inner join Listing l on l.id = t.siteid 
         inner join MediaType mt on mt.id = l.mediatypeid
         left outer join User u on u.id = t.assigneduserid
-        where t.status =1';
+        where t.status =1 and assignedCompanyId = ' . $companyid;
         if ($campaignId) {
             $sql = $sql . ' and  campaignid in (' . $campaignId . ')';
         }
