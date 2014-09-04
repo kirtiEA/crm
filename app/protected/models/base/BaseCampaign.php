@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "campaign".
+ * This is the model class for table "Campaign".
  *
- * The followings are the available columns in table 'campaign':
+ * The followings are the available columns in table 'Campaign':
  * @property integer $id
  * @property string $name
  * @property string $startDate
@@ -12,6 +12,7 @@
  * @property string $modifiedDate
  * @property integer $createdBy
  * @property integer $companyid
+ * @property integer $type
  *
  * The followings are the available model relations:
  * @property User $createdBy0
@@ -35,12 +36,12 @@ class BaseCampaign extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('createdBy, companyid', 'numerical', 'integerOnly'=>true),
+			array('createdBy, companyid, type', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>45),
 			array('startDate, endDate, createdDate, modifiedDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, startDate, endDate, createdDate, modifiedDate, createdBy, companyid', 'safe', 'on'=>'search'),
+			array('id, name, startDate, endDate, createdDate, modifiedDate, createdBy, companyid, type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,6 +72,7 @@ class BaseCampaign extends CActiveRecord
 			'modifiedDate' => 'Modified Date',
 			'createdBy' => 'Created By',
 			'companyid' => 'Companyid',
+			'type' => '1=>POP only; 2=> Daily Monitorling only; 3=> POP and Daily Monitoring',
 		);
 	}
 
@@ -100,6 +102,7 @@ class BaseCampaign extends CActiveRecord
 		$criteria->compare('modifiedDate',$this->modifiedDate,true);
 		$criteria->compare('createdBy',$this->createdBy);
 		$criteria->compare('companyid',$this->companyid);
+		$criteria->compare('type',$this->type);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -110,7 +113,7 @@ class BaseCampaign extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Campaign the static model class
+	 * @return BaseCampaign the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

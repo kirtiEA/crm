@@ -1,27 +1,30 @@
 
-<!--<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-full-2.2.0.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-full-2.2.0.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-helpers-1.1.1.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/listings.js"></script>-->
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/listings.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/angular.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/ng-infinite-scroll.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/angular.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/map.js"></script>
+<div ng-app="siteListing">
 <!-- tabs -->    
-<ul class="nav nav-tabs" id="sites-tabs" role="tablist">
-    <li class="active"><a href="sites_vendorssites.html" role="tab" data-toggle="tab">Vendors Sites</a></li>
-    <li><a href="#" role="tab" data-toggle="tab">My Sites</a></li>
-    <li><a href="sites_mypendingsites.html" role="tab" data-toggle="tab">My Pending Sites</a></li>
+<ul class="nav nav-tabs" id="sites-tabs" role="tablist" ng-controller="DemoController">
+    <li class="active"><a href="#" role="tab" data-toggle="tab">Vendors Sites</a></li>
+    <li><a href="#" role="tab" data-toggle="tab" ng-click="reddit.nextPage(2)">My Sites</a></li>
+    <li><a href="sites_mypendingsites.html" role="tab" data-toggle="tab" ng-click="reddit.nextPage(3)">My Pending Sites</a></li>
 </ul>
 
 <!-- end of tabs --> 
 
 <!--map and list -->  
 
-<div class="container-fluid content-wrapper map-view" ng-app="siteListing">
+<div class="container-fluid content-wrapper map-view" >
     <div class="row"> 
 
         <!-- map -->
-       <div class="col-md-8" id="map">
+        <div class="col-md-8" id="map" style="height: 700px;">
 <!--            <div id="clearoption" style="display:none" ><img src="<?php //echo Yii::app()->getBaseUrl();?> + /images/vendorProfileDemo/x.gif">Clear Slection</div>-->
       
 <!--      <nav id="social-sidebar">
@@ -50,7 +53,7 @@
 
       </nav>-->
       
-            <div class="map-container" id="map_canvas"></div>
+            <div class="map-container" id="map_canvas" style="height: 700px;"></div>
             
             <!-- detailed-view -->
             <div id="detailed-view" ng-show="visible" ng-controller="DetailController">
@@ -132,7 +135,7 @@
         <!-- end of map -->
 
         <!--list-->
-<div class="col-md-4" id="site-list-container" ng-controller = "DemoController">
+<div class="col-md-4" id="site-list-container" style="height: 700px;" ng-controller = "DemoController">
     <div class="list-container">
                 <div class="action-buttons">
                     <button class="btn btn-primary" onclick="location.href='<?php echo Yii::app()->urlManager->createUrl('site/addvendor'); ?>'">Add Vendors Sites</button>
@@ -153,14 +156,14 @@
                             </div>
                         </li>
                         <li>
-                            <input type="text" placeholder="Search">
+                            <input type="text" placeholder="Search" ng-model="search">
                         </li>
                         <li class="map-view-icon active pull-right"></li>
                         <li class="spreadsheet-view-icon pull-right"></li>
                     </ul>
                 </div>
                 <div class="list" >
-                    <ul id="site-list" infinite-scroll='reddit.nextPage()' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='9'>
+                    <ul id="site-list" infinite-scroll='reddit.nextPage(2)' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='9'>
                         <li class="list-item" data-ng-repeat="banner in reddit.products | filter:search" ng-animate="'animate'">
                             <div class="pull-left site-thumb" style="background-image: {{banner.thumbnail}}"></div>
                             <div class="site-details">
@@ -185,7 +188,7 @@
     </div> 
 
 </div>
-
+</div>
 <!-- end of map and list -->    
 
 <script>

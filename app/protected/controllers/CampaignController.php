@@ -51,7 +51,7 @@ class CampaignController extends Controller
                /*
                 * Add flash message for success
                 */
-               $this->redirect(Yii::app()->getBaseUrl() .  '/campaign');
+               $this->redirect(Yii::app()->getBaseUrl() .  '/myCampaigns/upcoming');
             }
         }
         

@@ -42,4 +42,30 @@ class Task extends BaseTask {
         $tasks = Yii::app()->db->createCommand($sql)->queryRow();
         return $tasks;
     }
+    
+    public static function updateTasksForPop($campaignid,$companyid, $assignedCompanyId, $date = null) {
+        $sql = 'Update Task as task, (select tt.id from Task tt
+inner join Listing l on l.id = tt.siteid and l.companyid ='. $companyid . '
+where tt.status = 1 and tt.campaignid = ' . $campaignid . ') as t
+set assignedCompanyId =  ' . $assignedCompanyId . ' where task.id = t.id';
+if ($date != null) {
+    $sql = $sql . ' and task.dueDate = ' . $date;
+}        
+        return Yii::app()->db->createCommand($sql)->execute();
+    }
+    
+    public static function updateTaskPopWhenNoVendorSelected($cid, $campaignId) {
+        $sql = 'Update Task set assignedCompanyId =' . $cid . ' where campaignid=' . $campaignId . ' and  pop = 1';
+        return Yii::app()->db->createCommand($sql)->execute();
+    }
+    
+    public static function deleteAllTaskForCampaign($cid) {
+        $sql = 'Delete from Task where campaignid = '. $cid;
+        return Yii::app()->db->createCommand($sql)->execute();
+    }
+    
+    public static function fetchAllSitesInCampaign($cid) {
+        $sql = 'Select siteid from Task where status = 1 and campaignid = ' . $cid;
+        return Yii::app()->db->createCommand($sql)->queryAll();
+    }
 }
