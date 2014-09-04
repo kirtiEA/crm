@@ -141,16 +141,16 @@ $(document).ready(function() {
     $('.invite').click(function() {
         //code to mail vendor goes here
         var email = $(this).parent().siblings('.modal-body').children('.email').val();
-        console.log(email);
         var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
         //if it's valid email
         if (filter.test(email)) {
             $.ajax({
                 type: 'POST',
                 url: $('#completePath').text() + '/ajax/invitevendor',
-                data: {'email': email, },
+                data: {'email': email,
+                        },
                 success: function(data) {
-                    alert("Vendor invited successfully" + data);
+                    alert("Vendor invited successfully ");
                 }
             });
         }
@@ -161,10 +161,5 @@ $(document).ready(function() {
 
     });
 
-
-//    //add newuser 
-//    $('.add').click(function (){
-//        alert("User Created Succesfully");
-//    });
 
 });

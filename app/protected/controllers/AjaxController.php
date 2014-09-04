@@ -668,20 +668,17 @@ class AjaxController extends Controller {
      */
     public function actionInviteVendor() {
         $email = Yii::app()->request->getParam('email');
-        //print_r($_POST); die();
-        
+//      print_r($_POST); 
         if(strlen($email) && filter_var($email, FILTER_VALIDATE_EMAIL))
         {
-            
             $id=Yii::app()->user->id;
             //$mail=  Yii::app()->user->email;  
             $invite= new Monitorlynotification();
-            $resetLink="subscription page url";
             $invite->attributes = array('typeid'=>1,'createddate'=>date("Y-m-d H:i:s"),'createdby'=>$id,'emailtypeid'=>1);
-            $mail = new EatadsMailer('invite', $email, array('resetLink'=>$resetLink), array('shruti@eatads.com'));
-            $mail->eatadsSend();
             $invite->save();
-            //print_r($invite->getErrors());
+            $resetLink= Yii::app()->getBaseUrl(true).'/subscription?nid='.$invite->id;
+            $mail = new EatadsMailer('invite', $email, array('resetLink'=>$resetLink), array('sales@eatads.com'));
+            $mail->eatadsSend();
             
         }
         else{

@@ -54,6 +54,8 @@ class User extends BaseUser {
             array('confirmPassword', 'compare', 'compareAttribute' => 'password', 'message' => Yii::t("signup", "Passwords do not match"), 'on' => 'createProfile'),
             // subscribe needs to be a boolean
             array('subscribe', 'boolean'),
+            array('username,password,phonenumber', // allows to a create a new user
+                'required', 'on' => 'createScenario', 'message' => 'All fileds are Required'),
         );
     }
 

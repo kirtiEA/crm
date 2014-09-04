@@ -1,6 +1,7 @@
 app/assets/*
 !app/assets/.gitignore
 /nbproject/private/
-/app/protected/runtime/
+app/protected/runtime/
 app/uploads/listing/*
 !app/uploads/listing
+app/protected/runtime/application.log
