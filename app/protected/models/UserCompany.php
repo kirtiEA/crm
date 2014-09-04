@@ -13,7 +13,7 @@ class UserCompany extends BaseUserCompany {
             inner join UserCompany uc on uc.id = companyid 
             where companyid is not null and companyid != 0
             and status = 1 and solr = 1
-            group by companyid;' ;
+            group by companyid' ;
         $command = Yii::app()->db->createCommand($sql);
             $data = $command->queryAll();
         return $data;

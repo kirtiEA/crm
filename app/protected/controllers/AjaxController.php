@@ -20,9 +20,9 @@ class AjaxController extends Controller {
         return array(
         array('allow', // allow all users to perform actions
         'actions' => array('signup', 'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting', 'getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
-        'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword', 'invitevendor', 'removeListingFromCampaign', 'updateCampaign'), ),
+        'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword', 'invitevendor', 'removeListingFromCampaign', 'updateCampaign'),
         'users' => array('*'),
-        ),
+        )
         );
     }
  
@@ -244,12 +244,6 @@ class AjaxController extends Controller {
         if ($_POST['cid']) {
 //echo $_POST['add'] . ' -- --- ' . $_POST['rm'];
             $add = json_decode($_POST['add']);
- 
-//            array_merge($add,json_decode($_POST['add']));
-            /*
-                           * find out the number of days the  campaign will run
-                           * for each day add each of the listing id and save
-                           */
             $campaign = Campaign::model()->findByPk($_POST['cid']);
  
 // print_r($add);
@@ -292,12 +286,13 @@ class AjaxController extends Controller {
                 for ($i = 0; $i < count($vendorIds); $i++) {
                     $companyid;
                     $assignedcompanyid;
-                    if (strcasecmp(explode('_',$vendorIds[$i])[1], '0') == 0) {
-                        $companyid = explode('_', $vendorIds[$i])[0];
+                    $inputVendorIds = explode('_', $vendorIds[$i]);
+                    if (strcasecmp($inputVendorIds[1] , '0') == 0) {
+                        $companyid = $inputVendorIds[0];
                         $assignedcompanyid = Yii::app()->user->cid;
                     } else {
-                        $companyid = explode('_', $vendorIds[$i])[0];
-                        $assignedcompanyid = explode('_', $vendorIds[$i])[1];
+                        $companyid = $inputVendorIds[0];
+                        $assignedcompanyid = $inputVendorIds[1];
                     }
 // print_r($companyid);
                     Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid);
@@ -352,12 +347,13 @@ class AjaxController extends Controller {
                     $date = strtotime($campaign->attributes['startDate']);
                     $companyid;
                     $assignedcompanyid;
-                    if (strcasecmp(explode('_', $vendorIds[$i])[1], '0') == 0) {
-                        $companyid = explode('_', $vendorIds[$i])[0];
+                    $inputVendorIds = explode('_', $vendorIds[$i]);
+                    if (strcasecmp($inputVendorIds[1], '0') == 0) {
+                        $companyid = $inputVendorIds[0];
                         $assignedcompanyid = Yii::app()->user->cid;
                     } else {
-                        $companyid = explode('_', $vendorIds[$i])[0];
-                        $assignedcompanyid = explode('_', $vendorIds[$i])[1];
+                        $companyid = $inputVendorIds[0];
+                        $assignedcompanyid = $inputVendorIds[1];
                     }
  
                     Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid, $date);
@@ -365,15 +361,9 @@ class AjaxController extends Controller {
                 echo '200';
             }
  
- 
-            /*
-             * remove sites from  campaign
-             * 
-             */
             $rem = json_decode($_POST['rm']);
             for ($i = 0; $i < count($rem); $i++) {
                 Task::removeListingFromCampaign($_POST['cid'], $rem[$i]);
-                  
             }
  
         }
