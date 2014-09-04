@@ -674,7 +674,11 @@ class AjaxController extends Controller {
             $id=Yii::app()->user->id;
             //$mail=  Yii::app()->user->email;  
             $invite= new Monitorlynotification();
-            $invite->attributes = array('typeid'=>1,'createddate'=>date("Y-m-d H:i:s"),'createdby'=>$id,'emailtypeid'=>1);
+            $invite->attributes = array(
+                'typeid'=>1,
+                'createddate'=>date("Y-m-d H:i:s"),
+                'createdby'=>$id,'emailtypeid'=>1,
+                );
             $invite->save();
             $resetLink= Yii::app()->getBaseUrl(true).'/subscription?nid='.$invite->id;
             $mail = new EatadsMailer('invite', $email, array('resetLink'=>$resetLink), array('sales@eatads.com'));
@@ -685,6 +689,22 @@ class AjaxController extends Controller {
             echo 0;
             //wrong email address den do something
         }
+    }
+    
+    public function actionRequestedVendor() {
+        if(isset($_POST['vendorid']) && isset($_POST['companyid'])){
+            $companyid = $_POST['companyid'];
+            $vendorcompanyid = $_POST['vendorid'];
+            $model = new Requestedcompanyvendor();
+            $model->attributes = array(
+                'companyid'=>$companyid,
+                'createdby'=>1,
+                'createddate'=>date("Y-m-d H:i:s"),
+                'vendorcompanyid'=>$vendorcompanyid,
+                );
+            $model->save();
+        }
+        
     }
     
 }

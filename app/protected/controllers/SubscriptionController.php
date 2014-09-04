@@ -9,25 +9,6 @@ class SubscriptionController extends Controller {
      * @return array access control rules
      */
 
-    public function actionAddsitetocampaign() {
-        $this->render('addsitetocampaign');
-    }
-
-    public function actionAssignzonetouser() {
-        $this->render('assignzonetouser');
-    }
-
-    public function actionManagesites() {
-        $this->render('managesites');
-    }
-
-    public function actionSiteautocomplete() {
-        $this->render('siteautocomplete');
-    }
-
-    public function actionUpdatetaskassignment() {
-        $this->render('updatetaskassignment');
-    }
 
     public function actionIndex() {
         $model = new Monitorlysubscription();

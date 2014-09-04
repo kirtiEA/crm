@@ -148,7 +148,7 @@ $(document).ready(function() {
                 type: 'POST',
                 url: $('#completePath').text() + '/ajax/invitevendor',
                 data: {'email': email,
-                        },
+                },
                 success: function(data) {
                     alert("Vendor invited successfully ");
                 }
@@ -160,6 +160,5 @@ $(document).ready(function() {
         $('#invite-vendor-modal').modal('hide');
 
     });
-
 
 });

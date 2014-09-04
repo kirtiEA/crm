@@ -2,28 +2,21 @@
 
 class VendorController extends Controller {
 
-    public function actionAddsitetocampaign() {
-        $this->render('addsitetocampaign');
-    }
-
-    public function actionAssignzonetouser() {
-        $this->render('assignzonetouser');
-    }
-
-    public function actionManagesites() {
-        $this->render('managesites');
-    }
-
-    public function actionSiteautocomplete() {
-        $this->render('siteautocomplete');
-    }
-
-    public function actionUpdatetaskassignment() {
-        $this->render('updatetaskassignment');
-    }
-
     public function actionIndex() {
-        $this->render('index');
+        $vendorList = array();
+        foreach (UserCompany::model()->findAll() as $value) {
+            array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
+        }
+        $id = Yii::app()->user->id;
+        //echo $id;
+        $model = Requestedcompanyvendor::model()->showRequestedVendors($id);
+        echo '<pre>';
+        print_r($model);
+        $this->render('index', array(
+            'vendorList' => json_encode($vendorList),
+            'model' => $model,
+            'id' => $id,
+        ));
     }
 
     // Uncomment the following methods and override them if needed

@@ -14,8 +14,8 @@ $form = $this->beginWidget('CActiveForm', array(
 <div>
     <h3>Subscription Form</h3>
     <div>
-        <label class="cname">Company Name</label>
-        <?php echo $form->textField($model, 'companyname'); ?> 
+        <label>Company Name</label>
+        <?php echo $form->textField($model, 'companyname',array('class' =>'companyname')); ?> 
         <input type="hidden" value="" id="vendor-ac-id">
         <?php echo $form->error($model, 'companyname'); ?>
     </div>
@@ -39,7 +39,7 @@ $form = $this->beginWidget('CActiveForm', array(
         //autocomplete for company name in vendor subscription form
         var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
         //console.log(allVendorJson);
-        $('.cname').autocomplete({
+        $('.companyname').autocomplete({
             source: allVendorJson,
             select: function(event, ui) {
                 console.log(ui.item.value + ', ' + ui.item.id);
@@ -48,9 +48,9 @@ $form = $this->beginWidget('CActiveForm', array(
             },
             change: function(event, ui) {
                 if (ui.item == null) {
-                    $(".cname").val('');
+                    $(".companyname").val('');
                     $("#vendor-ac-id").val('');
-                    $(".cname").focus();
+                    $(".companyname").focus();
                 }
             },
             messages: {
