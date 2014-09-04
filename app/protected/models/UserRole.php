@@ -12,7 +12,7 @@
  * @property Role $role
  * @property User $user
  */
-class Userrole extends CActiveRecord
+class UserRole extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name

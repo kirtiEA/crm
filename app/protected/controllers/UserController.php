@@ -83,6 +83,8 @@ class UserController extends Controller {
                 $model->phonenumber = $_POST['User']['phonenumber'];
                 $model->datecreated = date("Y-m-d H:i:s");
                 $model->datemodified = date("Y-m-d H:i:s");
+                $model->active = 1;
+                $model->fname = $_POST['User']['username'];
                 $model->companyid = Yii::app()->user->cid;
                 $pwd = $_POST['User']['password'];
                 $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
@@ -100,7 +102,7 @@ class UserController extends Controller {
             if ($model->validate()) {
                 // print_r($model->attributes);
                 $model->save();
-                Userrole::model()->insertRoles($model->id, $role->id);
+                UserRole::model()->insertRoles($model->id, $role->id);
                 $this->redirect(Yii::app()->getBaseUrl() . '/user');
             }
         }
@@ -142,7 +144,7 @@ class UserController extends Controller {
      * Lists all user model where ative=1 and status=1
      */
     public function actionIndex() {
-        $users = User::model()->showActiveUsers();
+        $users = User::fetchCompanyUsersModel(Yii::app()->user->cid);
         $model = new User();
         //echo '<pre>';print_r($model); die();
         $this->render('index', array(

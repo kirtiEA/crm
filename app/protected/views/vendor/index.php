@@ -65,7 +65,7 @@
                 <h1 class="list-heading pull-left">Vendors List
                     <?php
                     $no = count($model);
-                    echo $no;
+                    echo '('. $no . ')';
                     ?> 
                 </h1>
                 <button class="btn btn-primary pull-right table-control">Remind All</button>

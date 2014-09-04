@@ -355,5 +355,13 @@ class User extends BaseUser {
                     
         } 
 
-        
+        public static function fetchCompanyUsersModel($cid) {
+            $criteria = new CDbCriteria();
+        //$criteria->concat = 'fname, lname as name';
+        $criteria->select = 'id, fname, lname, email, phonenumber';
+        $criteria->condition = 'active=:active AND status=:status AND companyid =:companyid';
+        $criteria->params = array(':active' => 1, ':status' => 1, ':companyid' => $cid);
+        $model = User::model()->findAll($criteria);
+        return $model;
+        }
 }

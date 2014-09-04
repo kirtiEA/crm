@@ -83,13 +83,13 @@
                                 
                                 <h2 class="form-signin-heading">Please Sign In</h2>
                                 
-                                <?php echo $form->textField($model,'email', array('class' => 'form-control')); ?>
+                                <?php echo $form->textField($model,'email', array('class' => 'form-control', 'id' => 'username')); ?>
                 		<?php echo $form->error($model,'email'); ?>
                                 
                                 
 <!--                                <input type="text" autofocus="" required="" placeholder="Username" id="username" name="username" class="form-control">-->
                                 <br>
-                                <?php echo $form->passwordField($model,'password',array('class' => 'form-control', 'placeholder'=>'Password')); ?>
+                                <?php echo $form->passwordField($model,'password',array('class' => 'form-control', 'placeholder'=>'Password', 'id' => 'password')); ?>
 		<?php echo $form->error($model,'password'); ?>
 <!--                                <input type="password" required="" placeholder="Password" id="password" name="password" class="form-control">-->
                                 <label class="checkbox">

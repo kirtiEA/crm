@@ -42,7 +42,7 @@
                     <ul class="nav navbar-nav tabs">
                         <li class="mon_menu menu_campaign"><a href="<?php echo Yii::app()->urlManager->createUrl('myCampaigns'); ?>">Campaigns</a></li>
                         <li class="mon_menu menu_site"><a href="<?php echo Yii::app()->urlManager->createUrl('site'); ?>">Sites</a></li>
-                        <li class="mon_menu menu_vendor"><a href="<?php echo Yii::app()->urlManager->createUrl(''); ?>">Vendors</a></li>
+                        <li class="mon_menu menu_vendor"><a href="<?php echo Yii::app()->urlManager->createUrl('vendor'); ?>">Vendors</a></li>
                         <li class="mon_menu menu_user"><a href="<?php echo Yii::app()->urlManager->createUrl('user'); ?>">Users</a></li>
                         <li class="mon_menu menu_task"><a href="<?php echo Yii::app()->urlManager->createUrl('task'); ?>">Tasks</a></li>
                         <li class="mon_menu menu_report"><a href="<?php echo Yii::app()->urlManager->createUrl('reports'); ?>">Reports</a></li>
