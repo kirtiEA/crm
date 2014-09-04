@@ -1,5 +1,10 @@
 <!-- add new user sub-header -->    
-
+<script>
+$('.mon_menu').each(function() {
+        $(this).removeClass('active');
+    });
+    $('.menu_campaign').addClass('active');
+</script>
 <div class="container-fluid sub-header">
     <div class="row">
         <div class="col-md-12">
@@ -44,7 +49,7 @@
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="active"><a href="#home" role="tab" data-toggle="tab">Created by Me</a></li>
-    <li><a href="#profile" role="tab" data-toggle="tab">Assigned to Me</a></li>
+    <li><a href="<?php echo Yii::app()->createUrl('assignedCampaigns');?>" role="tab" data-toggle="tab">Assigned to Me</a></li>
 </ul>
 
 <!-- campaigns list --> 

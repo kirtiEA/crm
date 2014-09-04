@@ -54,6 +54,8 @@ class User extends BaseUser {
             array('confirmPassword', 'compare', 'compareAttribute' => 'password', 'message' => Yii::t("signup", "Passwords do not match"), 'on' => 'createProfile'),
             // subscribe needs to be a boolean
             array('subscribe', 'boolean'),
+            array('username,password,phonenumber', // allows to a create a new user
+                'required', 'on' => 'createScenario', 'message' => 'All fileds are Required'),
         );
     }
 
@@ -322,7 +324,7 @@ class User extends BaseUser {
     public static function changePassword($id,$pwd) {
             
             $cmd = Yii::app()->db->createCommand("Select ");
-            $cmd = $cmd->update('user', array(
+            $cmd = $cmd->update('User', array(
                        'password'=> $pwd,),
                        'id=:id',
                         array(':id'=>$id));

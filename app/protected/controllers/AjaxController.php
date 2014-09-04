@@ -20,7 +20,8 @@ class AjaxController extends Controller {
         return array(
             array('allow', // allow all users to perform actions
                 'actions' => array('signup' ,'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting','getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
-                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite'),
+                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite','updatepassword','invitevendor',
+                    'removeListingFromCampaign', 'updateCampaign'),
                 'users' => array('*'),
             ),
         );
@@ -109,7 +110,7 @@ class AjaxController extends Controller {
             $mediaTypes[$value->id] = strtolower($value->name);
         }
         // fetch all lighting
-        $lightings = array_map('strtolower', Listing::getLighting());        
+        $lightings = array_map('strtolower', Listing::getLighting());
         //print_r($lightings); die();
         
         
@@ -207,7 +208,7 @@ class AjaxController extends Controller {
     /*
      * update user password
      */
-    public function actionUpdatepassword() {
+    public function actionUpdatePassword() {
         if(isset($_POST['id']) && isset($_POST['pwd']))
 	{
             //echo 'entered here';
@@ -239,54 +240,129 @@ class AjaxController extends Controller {
        }
     }
     
-    public function actionUpdateCampaign() {
+  public function actionUpdateCampaign() {
         if($_POST['cid']) {
             //echo $_POST['add'] . ' -- --- ' . $_POST['rm'];
             $add = json_decode($_POST['add']);
+            
+//            array_merge($add,json_decode($_POST['add']));
             /*
              * find out the number of days the  campaign will run
              * for each day add each of the listing id and save
              */
             $campaign = Campaign::model()->findByPk($_POST['cid']);
+            
+           // print_r($add);
+            
             $diff = strtotime($campaign->attributes['endDate']) - strtotime($campaign->attributes['startDate']);
+            if ($campaign['type'] != $_POST['type']) {
+                $tasks = Task::fetchAllSitesInCampaign($_POST['cid']);
+                for ($i=0 ; $i < count($tasks); $i++) {
+                    array_push($add, $tasks[$i]['siteid']);
+                }
+                $add = array_unique($add);
+                
+                Task::deleteAllTaskForCampaign($_POST['cid']);
+                Campaign::model()->updateByPk($campaign['id'], array('type' => $_POST['type']));
+            }
             
             if ($_POST['type'] == 1) {
                 $vendorIds = json_decode($_POST['pop']);
-                for ($i=0; $i < count($add); $i++) {
-                    $date = strtotime($campaign->attributes['startDate']);
-                    $task = new Task();
-                    //$task->assignedCompanyId = Yii::app()->user->cid;
-                    $task->pop = 1;
-                    $task->createdBy = Yii::app()->user->id;
-                    $task->campaignid = $_POST['cid'];
-                    $task->siteid = $add[$i];
-                    $task->status = 1;
-                    $task->dueDate = date("Y-m-d H:i:s", $date);
-                    $task->save();
-                }
-                for ($i=0; $i < count($vendorIds); $i++) {
-                    $companyid;
-                    if (strcasecmp($vendorIds[$i], '0') == 0) {
-                        $companyid = Yii::app()->user->cid;
-                    } else {
-                        $companyid = $vendorIds[$i];
-                    }
-                    Task::updateTasksForPop($_POST['cid'], $companyid);
-                }
-            } else if ($_POST['type'] == 2) {
-                for ($i=0; $i < count($add); $i++) {
-                    $date = strtotime($campaign->attributes['startDate']);
-                    while ((strtotime($campaign->attributes['endDate']) - $date) >= 0) {
+                if (count($add) > 0) {
+                        for ($i=0; $i < count($add); $i++) {
+                        $date = strtotime($campaign->attributes['startDate']);
+
                         $task = new Task();
-                        $task->assignedCompanyId = Yii::app()->user->cid;
+                        //$task->assignedCompanyId = Yii::app()->user->cid;
+                        $task->pop = 1;
+                        $task->createdBy = Yii::app()->user->id;
                         $task->campaignid = $_POST['cid'];
                         $task->siteid = $add[$i];
                         $task->status = 1;
                         $task->dueDate = date("Y-m-d H:i:s", $date);
                         $task->save();
-                        $date = strtotime('+1 day', $date);
                     }
                 }
+                
+                if ($vendorIds || count($vendorIds) == 0) {
+                   // array_push($vendorIds, '0');
+                   Task::updateTaskPopWhenNoVendorSelected(Yii::app()->user->cid, $_POST['cid']);
+                }
+                
+                for ($i=0; $i < count($vendorIds); $i++) {
+                    $companyid;
+                    $assignedcompanyid;
+                    if (strcasecmp(explode('_', $vendorIds[$i])[1], '0') == 0) {
+                        $companyid = explode('_', $vendorIds[$i])[0];
+                        $assignedcompanyid =Yii::app()->user->cid;
+                    } else {
+                        $companyid = explode('_', $vendorIds[$i])[0];
+                        $assignedcompanyid =explode('_', $vendorIds[$i])[1];
+                    }
+                   // print_r($companyid);
+                    Task::updateTasksForPop($_POST['cid'], $companyid,$assignedcompanyid);
+                }
+                echo '200';
+            } else if ($_POST['type'] == 2) {
+                //print_r($add);
+                if (count($add) > 0) {
+                    for ($i=0; $i < count($add); $i++) {
+                        $date = strtotime($campaign->attributes['startDate']);
+                        while ((strtotime($campaign->attributes['endDate']) - $date) >= 0) {
+                            $task = new Task();
+                            $task->assignedCompanyId = Yii::app()->user->cid;
+                            $task->campaignid = $_POST['cid'];
+                            $task->siteid = $add[$i];
+                            $task->status = 1;
+                            $task->dueDate = date("Y-m-d H:i:s", $date);
+                            $task->pop = 0;
+                            $task->save();
+                            $date = strtotime('+1 day', $date);
+                        }
+                    }
+                }
+
+                echo '200';
+            } else if ($_POST['type'] == 3) {
+                //print_r($add);
+                $vendorIds = json_decode($_POST['pop']);
+                if ($vendorIds || count($vendorIds) == 0) {
+                   // array_push($vendorIds, '0');
+                   Task::updateTaskPopWhenNoVendorSelected(Yii::app()->user->cid, $_POST['cid']);
+                }
+                if (count($add) > 0) {
+                    for ($i=0; $i < count($add); $i++) {
+                        $date = strtotime($campaign->attributes['startDate']);
+                        while ((strtotime($campaign->attributes['endDate']) - $date) >= 0) {
+                            $task = new Task();
+                            $task->assignedCompanyId = Yii::app()->user->cid;
+                            $task->campaignid = $_POST['cid'];
+                            $task->siteid = $add[$i];
+                            $task->status = 1;
+                            $task->dueDate = date("Y-m-d H:i:s", $date);
+                            $task->pop = 0;
+                            $task->save();
+                            $date = strtotime('+1 day', $date);
+                        }
+                    }
+                }
+                
+                
+                 for ($i=0; $i < count($vendorIds); $i++) {
+                     $date = strtotime($campaign->attributes['startDate']);
+                    $companyid;
+                    $assignedcompanyid;
+                    if (strcasecmp(explode('_', $vendorIds[$i])[1], '0') == 0) {
+                        $companyid = explode('_', $vendorIds[$i])[0];
+                        $assignedcompanyid =Yii::app()->user->cid;
+                    } else {
+                        $companyid = explode('_', $vendorIds[$i])[0];
+                        $assignedcompanyid =explode('_', $vendorIds[$i])[1];
+                    }
+
+                    Task::updateTasksForPop($_POST['cid'], $companyid,$assignedcompanyid, $date);
+                }
+                echo '200';
             }
             
             
@@ -306,21 +382,13 @@ class AjaxController extends Controller {
     public function actionCampaignDetails() {
         if ($_POST['cid']) {
             $vendors = UserCompany::fetchVendorsInCampaign($_POST['cid']);
-            //echo count($vendors);
+           // echo count($vendors);
             $result = array();
             for($i =0; $i < count($vendors) ; $i++) {
                 //echo $vendors[$i]['name'] . ' ww ' . $vendors[$i]['id'];
                 $listings = Listing::getListingsForCampaign($vendors[$i]['id'], $_POST['cid']);
                 $temp = $vendors[$i];
-                $finalListings = array();
-                //$temp['listings'] = $listings;
-                foreach ($listings as $key => $value) {
-                    if($value['assignedCompanyId'] && (strcasecmp($value['assignedCompanyId'], Yii::app()->user->cid) == 0)) {
-                        $value['selfassigned'] = '1sdfds';
-                    }
-                     array_push($finalListings, $value);
-                }
-                $temp['listings'] = $finalListings;
+                $temp['listings'] = $listings;
                 array_push($result, $temp);
             }
             echo json_encode($result);
@@ -377,12 +445,7 @@ class AjaxController extends Controller {
 //    }
     
     public function actiongetListing() {
-        
-        if ($_POST['type'] == 2) {
-            
-        } else if ($_POST['type'] == 3) {
-            
-        } 
+
         $metaKeyword = $pageTitle = '';
         // default solrUrl
         $solrParams = array('fq' => '');
@@ -703,20 +766,28 @@ class AjaxController extends Controller {
         echo json_encode($markerlist);
     }
     
-    
-    public function actionFetchListingsForCompany() {
-        $cid = Yii::app()->user->cid;
-        
-                
-    }
-    
-      public function actiongetsitedetails() {
-        $id = $_POST['siteid'];
-        $userid = '';
-        if (!empty($_POST['userid'])) {
-            $userid = $_POST['userid'];
+    /*
+     * invite vendor
+     */
+    public function actionInviteVendor() {
+        $email = Yii::app()->request->getParam('email');
+//      print_r($_POST); 
+        if(strlen($email) && filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
+            $id=Yii::app()->user->id;
+            //$mail=  Yii::app()->user->email;  
+            $invite= new Monitorlynotification();
+            $invite->attributes = array('typeid'=>1,'createddate'=>date("Y-m-d H:i:s"),'createdby'=>$id,'emailtypeid'=>1);
+            $invite->save();
+            $resetLink= Yii::app()->getBaseUrl(true).'/subscription?nid='.$invite->id;
+            $mail = new EatadsMailer('invite', $email, array('resetLink'=>$resetLink), array('sales@eatads.com'));
+            $mail->eatadsSend();
+            
         }
-        //echo $id;die();
-        echo Listing::getListingDetails($id, $userid);
+        else{
+            echo 0;
+            //wrong email address den do something
+        }
     }
+    
 }

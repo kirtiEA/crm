@@ -1,31 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "Campaign".
+ * This is the model class for table "EmailTemplate".
  *
- * The followings are the available columns in table 'Campaign':
+ * The followings are the available columns in table 'EmailTemplate':
  * @property integer $id
- * @property string $name
- * @property string $startDate
- * @property string $endDate
- * @property string $createdDate
- * @property string $modifiedDate
- * @property integer $createdBy
- * @property integer $companyid
- * @property integer $type
- *
- * The followings are the available model relations:
- * @property User $createdBy0
- * @property Task[] $tasks
+ * @property string $subject
+ * @property string $content
+ * @property string $title
+ * @property integer $status
+ * @property string $slug
+ * @property string $uservariables
+ * @property string $datecreated
+ * @property string $datemodified
  */
-class BaseCampaign extends CActiveRecord
+class BaseEmailTemplate extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'Campaign';
+		return 'EmailTemplate';
 	}
 
 	/**
@@ -36,12 +32,13 @@ class BaseCampaign extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('createdBy, companyid, type', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>45),
-			array('startDate, endDate, createdDate, modifiedDate', 'safe'),
+			array('subject, content, title, slug, datecreated, datemodified', 'required'),
+			array('status', 'numerical', 'integerOnly'=>true),
+			array('subject, title, uservariables', 'length', 'max'=>100),
+			array('slug', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, startDate, endDate, createdDate, modifiedDate, createdBy, companyid, type', 'safe', 'on'=>'search'),
+			array('id, subject, content, title, status, slug, uservariables, datecreated, datemodified', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,8 +50,6 @@ class BaseCampaign extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'createdBy0' => array(self::BELONGS_TO, 'User', 'createdBy'),
-			'tasks' => array(self::HAS_MANY, 'Task', 'campaignid'),
 		);
 	}
 
@@ -65,14 +60,14 @@ class BaseCampaign extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'startDate' => 'Start Date',
-			'endDate' => 'End Date',
-			'createdDate' => 'Created Date',
-			'modifiedDate' => 'Modified Date',
-			'createdBy' => 'Created By',
-			'companyid' => 'Companyid',
-			'type' => '1=>POP only; 2=> Daily Monitorling only; 3=> POP and Daily Monitoring',
+			'subject' => 'Subject',
+			'content' => 'Content',
+			'title' => 'Title',
+			'status' => 'Status',
+			'slug' => 'Slug',
+			'uservariables' => 'Uservariables',
+			'datecreated' => 'Datecreated',
+			'datemodified' => 'Datemodified',
 		);
 	}
 
@@ -95,14 +90,14 @@ class BaseCampaign extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('startDate',$this->startDate,true);
-		$criteria->compare('endDate',$this->endDate,true);
-		$criteria->compare('createdDate',$this->createdDate,true);
-		$criteria->compare('modifiedDate',$this->modifiedDate,true);
-		$criteria->compare('createdBy',$this->createdBy);
-		$criteria->compare('companyid',$this->companyid);
-		$criteria->compare('type',$this->type);
+		$criteria->compare('subject',$this->subject,true);
+		$criteria->compare('content',$this->content,true);
+		$criteria->compare('title',$this->title,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('slug',$this->slug,true);
+		$criteria->compare('uservariables',$this->uservariables,true);
+		$criteria->compare('datecreated',$this->datecreated,true);
+		$criteria->compare('datemodified',$this->datemodified,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -113,7 +108,7 @@ class BaseCampaign extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return BaseCampaign the static model class
+	 * @return EmailTemplate the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

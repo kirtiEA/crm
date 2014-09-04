@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-app/assets/*
-!app/assets/.gitignore
-=======
 app/assets/*
 !app/assets/.gitignore
 /nbproject/private/
->>>>>>> 0c4978cd31041513b9a6552a9c47c40f84843ba5
 /app/protected/runtime/
+app/uploads/listing/*
+!app/uploads/listing

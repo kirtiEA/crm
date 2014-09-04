@@ -10,8 +10,7 @@ class ApiController extends Controller {
       Update a post: index.php/api/posts/123 (PUT)
       Delete a post: index.php/api/posts/123 (DELETE)
      */
-    
-    
+
     /**
      * Key which has to be in HTTP USERNAME and PASSWORD headers 
      */
@@ -28,10 +27,10 @@ class ApiController extends Controller {
      */
     public function filters() {
         return array();
-        /*return array(
-            'accessControl', // perform access control for CRUD operations
-            'postOnly + delete, postOnly + update', // we only allow deletion via POST request
-        );*/
+        /* return array(
+          'accessControl', // perform access control for CRUD operations
+          'postOnly + delete, postOnly + update', // we only allow deletion via POST request
+          ); */
     }
 
     /**
@@ -39,15 +38,15 @@ class ApiController extends Controller {
      * This method is used by the 'accessControl' filter.
      * @return array access control rules
      */
-    /*public function accessRules() {
-        return array(
-            array('allow', // allow all users to perform actions
-                'actions' => array('index'),
-                'users' => array('*'),                
-            ),            
-        );
-    }*/
-    
+    /* public function accessRules() {
+      return array(
+      array('allow', // allow all users to perform actions
+      'actions' => array('index'),
+      'users' => array('*'),
+      ),
+      );
+      } */
+
     // Actions
     public function actionList() {
 
@@ -56,7 +55,7 @@ class ApiController extends Controller {
             case 'user':
                 $models = User::model()->findAll();
                 break;
-            
+
             case 'auth':
                 // AUTHENTICATION
                 // check the usrn and password
@@ -71,23 +70,23 @@ class ApiController extends Controller {
                     // check useridentity file in components
                     $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
                     $result = $ph->CheckPassword($pwd, $user->password);
-                    if ($result) {                        
+                    if ($result) {
                         $data = array(
                             'id' => $user->id,
                             'name' => $user->fname . ' ' . $user->lname
-                        );                                            
+                        );
                         // Authorized
                         $this->_sendResponse(200, $data);
-                    } else {                        
+                    } else {
                         // Error: Unauthorized
                         $this->_sendResponse(401, 'User Password is invalid');
                     }
                 }
                 Yii::app()->end();
-                
+
             case 'tasks':
                 // fetch user tasks
-                $uId   = Yii::app()->getRequest()->getQuery('uid');
+                $uId = Yii::app()->getRequest()->getQuery('uid');
                 $sDate = Yii::app()->getRequest()->getQuery('sdate');
                 $eDate = Yii::app()->getRequest()->getQuery('edate');
                 $tDone = Yii::app()->getRequest()->getQuery('tdone');
@@ -95,42 +94,42 @@ class ApiController extends Controller {
                 $limit = Yii::app()->getRequest()->getQuery('limit');
                 // check if the uid is a valid user
                 $user = User::model()->findByPk($uId);
-                if($user === null) {
+                if ($user === null) {
                     // Error: Unauthorized
                     $this->_sendResponse(401, 'User is invalid');
                 } else {
                     // Valid User
                     // fetch all the task
-                    
-                    $start = ($start >0) ? $start : 0;                    
-                    if($tDone == 'true'){
+
+                    $start = ($start > 0) ? $start : 0;
+                    if ($tDone == 'true') {
                         $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng, COUNT( pp.id ) as photocount "
-                            . "FROM Task t "
-                            . "LEFT JOIN Campaign c ON c.id = t.campaignid "
-                            . "LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid "
-                            . "LEFT JOIN PhotoProof pp ON pp.taskid = t.id "
-                            . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
-                            . "WHERE t.taskDone=1 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
-                            . "GROUP BY t.id "
-                            . "LIMIT {$start}, {$limit}";
+                                . "FROM Task t "
+                                . "LEFT JOIN Campaign c ON c.id = t.campaignid "
+                                . "LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid "
+                                . "LEFT JOIN PhotoProof pp ON pp.taskid = t.id "
+                                . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
+                                . "WHERE t.taskDone=1 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
+                                . "GROUP BY t.id "
+                                . "LIMIT {$start}, {$limit}";
                     } else {
                         $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng "
-                            . "FROM Task t "
-                            . "LEFT JOIN Campaign c ON c.id = t.campaignid "
-                            . "LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid "
-                            . "WHERE t.taskDone=0 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
-                            . "GROUP BY t.id "
-                            . "LIMIT {$start}, {$limit}";
+                                . "FROM Task t "
+                                . "LEFT JOIN Campaign c ON c.id = t.campaignid "
+                                . "LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid "
+                                . "WHERE t.taskDone=0 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
+                                . "GROUP BY t.id "
+                                . "LIMIT {$start}, {$limit}";
                     }
-                    
+
                     $tasks = Yii::app()->db->createCommand($sql)->queryAll();
                     $this->_sendResponse(200, $tasks);
                 }
                 Yii::app()->end();
-                
+
             default:
                 // Model not implemented error              
-                $this->_sendResponse(501, 'Mode <b>list</b> is not implemented for model '.$_GET['model']);
+                $this->_sendResponse(501, 'Mode <b>list</b> is not implemented for model ' . $_GET['model']);
                 Yii::app()->end();
         }
 
@@ -170,9 +169,11 @@ class ApiController extends Controller {
     }
 
     public function actionCreate() {
-        switch ($_GET['model']) {            
+        switch ($_GET['model']) {
             case 'task':
-                $this->_sendResponse(500, sprintf(json_encode($_REQUEST)));
+            case 'task':
+                $this->_sendResponse(200, array("success" => true));
+                Yii::app()->end();
                 break;
             default:
                 $this->_sendResponse(501, sprintf('Mode <b>create</b> is not implemented for model <b>%s</b>', $_GET['model']));
@@ -206,7 +207,7 @@ class ApiController extends Controller {
         }
     }
 
-    public function actionUpdate() {        
+    public function actionUpdate() {
         // Parse the PUT parameters. This didn't work: parse_str(file_get_contents('php://input'), $put_vars);
         $json = file_get_contents('php://input'); //$GLOBALS['HTTP_RAW_POST_DATA'] is not preferred: http://www.php.net/manual/en/ini.core.php#ini.always-populate-raw-post-data
         $put_vars = CJSON::decode($json, true);  //true means use associative array
@@ -218,16 +219,56 @@ class ApiController extends Controller {
             case 'task':
                 $taskId = $_GET['id'];
                 $currDateTime = date("Y-m-d H:i:s");
+               
+                $imageData = base64_decode($put_vars['photo']);
+                $imageName = trim($put_vars['photoname']);                
+                $source = imagecreatefromstring($imageData);
                 
-                $installationProblem = ($put_vars['problems']['installation']=='') ? NULL : trim($put_vars['problems']['installation']);
-                $lightingProblem = ($put_vars['problems']['lighting']=='') ? NULL : trim($put_vars['problems']['lighting']);
-                $obstructionProblem = ($put_vars['problems']['obstruction']=='') ? NULL : trim($put_vars['problems']['obstruction']);
-                $commentProblem = ($put_vars['problems']['comments']=='') ? NULL : trim($put_vars['problems']['comments']);                
-                                
+                $uploadedFile = imagejpeg($source, "uploads/listing/".$imageName, 100);
+
+                // send them to aws s3
+                $s3Obj = new EatadsS3();
+                $ext = pathinfo($imageName, PATHINFO_EXTENSION);
+                $newFileName = 'mon_'.time() . '_' . mt_rand() . '.' . $ext;
+                $uploadFilePath = Yii::app()->params['fileUploadPath'] . 'listing/';
+                $originalFileWithPath = $uploadFilePath . $imageName;                                
+                
+                $imageThumb = new EasyImage($originalFileWithPath);
+                $newFileThumbName = $uploadFilePath . $newFileName;
+
+                copy($originalFileWithPath, $newFileThumbName);
+                $s3Obj->uploadFile($newFileThumbName, 'listing/' . $newFileName);
+                @unlink($newFileThumbName);             
+
+                $imageThumb->resize(487, 310);
+                $newFileThumbName = $uploadFilePath . 'big_' . $newFileName;
+                $imageThumb->save($newFileThumbName);
+                $s3Obj->uploadFile($newFileThumbName, 'listing/big_' . $newFileName);
+                @unlink($newFileThumbName);
+
+                $imageThumb->resize(212, 160);
+                $newFileThumbName = $uploadFilePath . 'small_' . $newFileName;
+                $imageThumb->save($newFileThumbName);
+                $s3Obj->uploadFile($newFileThumbName, 'listing/small_' . $newFileName);
+                @unlink($newFileThumbName);
+
+                $imageThumb->resize(102, 74);
+                $newFileThumbName = $uploadFilePath . 'tiny_' . $newFileName;
+                $imageThumb->save($newFileThumbName);
+                $s3Obj->uploadFile($newFileThumbName, 'listing/tiny_' . $newFileName);
+                @unlink($newFileThumbName);
+                @unlink($originalFileWithPath);
+
+
+                $installationProblem = ($put_vars['problems']['installation'] == '') ? NULL : trim($put_vars['problems']['installation']);
+                $lightingProblem = ($put_vars['problems']['lighting'] == '') ? NULL : trim($put_vars['problems']['lighting']);
+                $obstructionProblem = ($put_vars['problems']['obstruction'] == '') ? NULL : trim($put_vars['problems']['obstruction']);
+                $commentProblem = ($put_vars['problems']['comments'] == '') ? NULL : trim($put_vars['problems']['comments']);
+
                 // PHOTOPROOF
                 $ppModel = new PhotoProof();
                 $ppModel->taskid = $taskId;
-                $ppModel->imageName = trim($put_vars['photoname']);
+                $ppModel->imageName = $newFileName;
                 $ppModel->clickedDateTime = $put_vars['timestamp'];
                 $ppModel->clickedBy = $put_vars['clickedby'];
                 $ppModel->clickedLat = $put_vars['lat'];
@@ -235,29 +276,32 @@ class ApiController extends Controller {
                 $ppModel->installation = $installationProblem;
                 $ppModel->lighting = $lightingProblem;
                 $ppModel->obstruction = $obstructionProblem;
-                $ppModel->comments = $commentProblem;                
+                $ppModel->comments = $commentProblem;
                 $ppModel->createdDate = $currDateTime;
-                $ppModel->modifiedDate = $currDateTime;                
+                $ppModel->modifiedDate = $currDateTime;
                 $ppModel->save();
-                                
+                
                 // TASK
                 // if any problem then problemFlag will be true
                 // if photoclicked then taskDone will be true
                 $taskDoneFlag = 0;
                 $problemFlag = 0;
-                if($ppModel->getPrimaryKey()) {
+                if ($ppModel->getPrimaryKey()) {
                     $taskDoneFlag = 1;
-                }                
-                if(!is_null($installationProblem) || !is_null($lightingProblem) || !is_null($obstructionProblem) || !is_null($commentProblem) ){
+                }
+                if (!is_null($installationProblem) || !is_null($lightingProblem) || !is_null($obstructionProblem) || !is_null($commentProblem)) {
                     $problemFlag = 1;
                 }
                 $taskModel = Task::model()->findByPk($taskId);
                 $taskModel->taskDone = $taskDoneFlag;
                 $taskModel->problem = $problemFlag;
-                if($taskModel->save()) {
-                    $this->_sendResponse(200, array("success"=>true));
+                $taskModel->modifiedDate = $currDateTime;
+                
+                if ($taskModel->save()) {
+                    
+                    $this->_sendResponse(200, array("success" => true));
                 } else {
-                    $this->_sendResponse(200, array("success"=>false));
+                    $this->_sendResponse(200, array("success" => false));
                 }
                 Yii::app()->end();
                 break;
@@ -313,17 +357,12 @@ class ApiController extends Controller {
             $this->_sendResponse(500, sprintf("Error: Couldn't delete model <b>%s</b> with ID <b>%s</b>.", $_GET['model'], $_GET['id']));
     }
 
-    private function _sendResponse($status = 200, $body = '', $content_type = 'text/html') {
-        // set the status
-        $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
-        header($status_header);
-        // and the content type
-        header('Content-type: ' . $content_type);
+    private function _sendResponse($status = 200, $body = '', $content_type = 'application/json') {
 
         // pages with body are easy
         if ($body != '') {
             // send the body
-            if($status == 200) {
+            if ($status == 200) {
                 $response = array(
                     'status' => $status,
                     'error' => null,
@@ -335,11 +374,23 @@ class ApiController extends Controller {
                     'error' => $body,
                     'data' => null
                 );
-            }            
+            }
+            $status = 200;  // so that APP can read them as successful response
+            // set the status
+            $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
+            header($status_header);
+            // and the content type
+            header('Content-type: ' . $content_type);
             echo CJSON::encode($response);
         }
         // we need to create the body if none is passed
         else {
+            // set the status
+            $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
+            header($status_header);
+            // and the content type
+            header('Content-type: ' . $content_type);
+
             // create some body messages
             $message = '';
 

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> d18e7717a0b808010f0eb966212e0c7c1c9d9bef
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery.handsontable.full.css" />
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.handsontable.full.js"></script>
 
@@ -5,6 +9,26 @@
     <link rel="stylesheet" media="screen" href="http://handsontable.com/lib/jquery-ui/css/ui-bootstrap/jquery-ui.custom.css">
     <script src="http://handsontable.com/lib/jquery-ui/js/jquery-ui.custom.min.js"></script>
 -->
+
+  <!-- invite vendor modal -->
+    <div class="modal fade" id="invite-vendor-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-sm-custom">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3><b>Invite Vendor</b></h3>
+          </div>
+          <div class="modal-body">
+            <label>Vendor Email</label>&nbsp;
+            <input class="email" type="email">
+          </div>
+          <div class="modal-footer">
+            <a href="#" id="cancel">Cancel</a>&nbsp;
+            <button class="invite btn btn-primary">Invite</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of invite vendor modal -->
 
 <!-- tasks list --> 
 <div class="container-fluid content-wrapper content-wrapper-custom">
@@ -14,7 +38,7 @@
             <label>Select Vendor </label>
             <input type="text" placeholder="Enter a Vendor Name" id="vendor-ac">
             <input type="hidden" value="" id="vendor-ac-id">
-            <a href="#">Can't find a vendor? <b>Invite him</b></a>
+            <a href="#" data-toggle="modal" data-target="#invite-vendor-modal">Can't find a vendor? <b>Invite him</b></a>
             <br><br>
             <div class="row">
                 <div class="col-md-12">
