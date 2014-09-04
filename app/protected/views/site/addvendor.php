@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> d18e7717a0b808010f0eb966212e0c7c1c9d9bef
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery.handsontable.full.css" />
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.handsontable.full.js"></script>
 

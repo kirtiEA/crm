@@ -135,6 +135,7 @@ $(document).ready(function() {
         cancelBtn.remove();
         pwdTxt.remove();
 
+<<<<<<< HEAD
     });
 
     //invite vendor by sending an email
@@ -160,6 +161,34 @@ $(document).ready(function() {
         $('#invite-vendor-modal').modal('hide');
 
     });
+=======
+    });
+
+    //invite vendor by sending an email
+    $('.invite').click(function() {
+        //code to mail vendor goes here
+        var email = $(this).parent().siblings('.modal-body').children('.email').val();
+        var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+        //if it's valid email
+        if (filter.test(email)) {
+            $.ajax({
+                type: 'POST',
+                url: $('#completePath').text() + '/ajax/invitevendor',
+                data: {'email': email,
+                        },
+                success: function(data) {
+                    alert("Vendor invited successfully ");
+                }
+            });
+        }
+        else {
+            alert('Please enter correct email address in the format abc@xyz.pq');
+        }
+        $('#invite-vendor-modal').modal('hide');
+
+    });
+
+>>>>>>> 8ba69f3df224204ae4caad16a7f3c859b29b1185
 
 });
 

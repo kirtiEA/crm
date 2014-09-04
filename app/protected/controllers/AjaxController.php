@@ -1,11 +1,11 @@
 <?php
-
+ 
 class AjaxController extends Controller {
-
+ 
     private function fetchUserReturnUrl() {
         
     }
-
+ 
     /**
      * @return array action filters
      */
@@ -20,8 +20,8 @@ class AjaxController extends Controller {
         return array(
             array('allow', // allow all users to perform actions
                 'actions' => array('signup' ,'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting','getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
-                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite','updatepassword','invitevendor',
-                    'removeListingFromCampaign', 'updateCampaign'),
+                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite','updatepassword','invitevendor','removeListingFromCampaign', 'updateCampaign'),),
+ 
                 'users' => array('*'),
             ),
         );
@@ -30,8 +30,8 @@ class AjaxController extends Controller {
     public function actionLogin() {
         $username = Yii::app()->request->getParam('usrn');
         $password = Yii::app()->request->getParam('pass');
-
-
+ 
+ 
         if (!Yii::app()->user->isGuest) {
             $returnUrl = fetchUserReturnUrl();
         } else {
@@ -42,7 +42,7 @@ class AjaxController extends Controller {
                 echo CActiveForm::validate($model);
                 Yii::app()->end();
             }
-
+ 
             // collect user input data
             if (isset($_POST['LoginForm'])) {
                 $_POST['LoginForm'] = JoyUtilities::cleanInput($_POST['LoginForm']);
@@ -58,11 +58,11 @@ class AjaxController extends Controller {
                 }
             }
         }
-
+ 
         // return after login url
         echo $returnUrl;
     }
-
+ 
     public function actionFetchvendorsites() {        
         $vendorId = Yii::app()->request->getParam('vendorid');
         $sql = "SELECT l.id, l.site_code, mt.name as mediatype, a.name as city, l.locality, l.name, l.length, l.width, l.lightingid "
@@ -101,7 +101,7 @@ class AjaxController extends Controller {
             echo json_encode(NULL);
         }
     }
-
+ 
     public function actionMassuploadsite() {
         // fetch all media types to match
         $mtResult = Mediatype::model()->findAll();
@@ -184,33 +184,33 @@ class AjaxController extends Controller {
         }
         echo true;        
     }
-
+ 
     public function actionAddsitetocampaign() {
         $this->render('addsitetocampaign');
     }
-
+ 
     public function actionAssignzonetouser() {
         $this->render('assignzonetouser');
     }
-
+ 
     public function actionManagesites() {
         $this->render('managesites');
     }
-
+ 
     public function actionSiteautocomplete() {
         $this->render('siteautocomplete');
     }
-
+ 
     public function actionUpdatetaskassignment() {
         $this->render('updatetaskassignment');
     }
-
+ 
     /*
      * update user password
      */
     public function actionUpdatePassword() {
         if(isset($_POST['id']) && isset($_POST['pwd']))
-	{
+    {
             //echo 'entered here';
                 $id=$_POST['id'];
                 $pwd=$_POST['pwd'];
@@ -225,7 +225,7 @@ class AjaxController extends Controller {
                 } else {
                     // Error: Unauthorized
                 }
-		User::model()->changePassword($id, $password);
+        User::model()->changePassword($id, $password);
         }
         
     }
@@ -240,7 +240,7 @@ class AjaxController extends Controller {
        }
     }
     
-  public function actionUpdateCampaign() {
+    public function actionUpdateCampaign() {
         if($_POST['cid']) {
             //echo $_POST['add'] . ' -- --- ' . $_POST['rm'];
             $add = json_decode($_POST['add']);
@@ -271,7 +271,7 @@ class AjaxController extends Controller {
                 if (count($add) > 0) {
                         for ($i=0; $i < count($add); $i++) {
                         $date = strtotime($campaign->attributes['startDate']);
-
+ 
                         $task = new Task();
                         //$task->assignedCompanyId = Yii::app()->user->cid;
                         $task->pop = 1;
@@ -321,7 +321,7 @@ class AjaxController extends Controller {
                         }
                     }
                 }
-
+ 
                 echo '200';
             } else if ($_POST['type'] == 3) {
                 //print_r($add);
@@ -359,7 +359,7 @@ class AjaxController extends Controller {
                         $companyid = explode('_', $vendorIds[$i])[0];
                         $assignedcompanyid =explode('_', $vendorIds[$i])[1];
                     }
-
+ 
                     Task::updateTasksForPop($_POST['cid'], $companyid,$assignedcompanyid, $date);
                 }
                 echo '200';
@@ -378,7 +378,7 @@ class AjaxController extends Controller {
         }
         //$this->redirect(Yii::app()->createUrl('/campaign'));
     }
-    
+
     public function actionCampaignDetails() {
         if ($_POST['cid']) {
             $vendors = UserCompany::fetchVendorsInCampaign($_POST['cid']);
@@ -445,7 +445,7 @@ class AjaxController extends Controller {
 //    }
     
     public function actiongetListing() {
-
+ 
         $metaKeyword = $pageTitle = '';
         // default solrUrl
         $solrParams = array('fq' => '');
@@ -453,7 +453,7 @@ class AjaxController extends Controller {
         $companyid = $_POST['companyid'];
         //echo $companyid;die();
         // filter media type 
-
+ 
         $mediaTypeParam = '';
         if (!empty($_POST['mediatypeid'])) {
             $mediaTypeParam = $_POST['mediatypeid'];
@@ -469,13 +469,13 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= ')';
             }
         }
-
-
-
+ 
+ 
+ 
         //companyid
         $solrParams['fq'] .= (!empty($solrParams['fq'])) ? ' AND ' : '';
         $solrParams['fq'] .= ' companyid:' . $companyid;
-
+ 
         //lightingid
         $lightTypeParam = '';
         if (!empty($_POST['lightingid'])) {
@@ -492,8 +492,8 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= ')';
             }
         }
-
-
+ 
+ 
         // filter price slider 
         $priceSlider = '';
         if (!empty($_POST['priceslider'])) {
@@ -508,8 +508,8 @@ class AjaxController extends Controller {
                 //print_r($solrParams);die();
             }
         }
-
-
+ 
+ 
         // proximity
         $proximity = is_numeric(Yii::app()->request->getQuery('proximity')) ? (int) Yii::app()->request->getQuery('proximity') : Yii::app()->params['proximity'];
         // geoloc
@@ -519,9 +519,9 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= " AND {!geofilt pt=$geoloc sfield=geoloc d=$proximity}";
             }
         }
-
-
-
+ 
+ 
+ 
 //Sorting
         if (!empty($_POST['sort'])) {
             $filter = '';
@@ -534,7 +534,7 @@ class AjaxController extends Controller {
             }
             $solrParams['sort'] = $filter;
         }
-
+ 
         // solr query 
         $textSearch = '';
         $solrQuery = '';
@@ -548,20 +548,20 @@ class AjaxController extends Controller {
         } else {
             $solrQuery = '*:*';
         }
-
-
+ 
+ 
         //$solrParams['rows'] = 5;
         // get listing from Solr                
         //$result = Yii::app()->listingSearch->get($solrQuery, 0, 50000, $solrParams);
         // load from 0 if markers already loaded is not in $_GET
         $marker_loaded = (int) Yii::app()->request->getQuery('marker_loaded');
         $marker_loaded = ($marker_loaded > 0) ? $marker_loaded : 0;
-
+ 
         // how many to load - next_toload_count not there then default load count
         $next_toload_count = (int) Yii::app()->request->getQuery('next_toload_count');
         $init_markers = ($next_toload_count > 0) ? $next_toload_count : Yii::app()->params['init_markers'];
-
-
+ 
+ 
         $solrParams['wt'] = 'json';
         //$params['json.nl'] = 'map';
         //$solrParams['fl'] = 'id,lat,lng,ea';
@@ -573,9 +573,9 @@ class AjaxController extends Controller {
         }
          // $marker_loaded; //0;
         $solrParams['rows'] = 30; // $init_markers; //50000;
-
+ 
         $qp = http_build_query($solrParams, null, '&');
-
+ 
         // >>> curl query
         $ch = curl_init();
         $url = Yii::app()->params['solrCurl'] . $qp;
@@ -592,18 +592,18 @@ class AjaxController extends Controller {
             $singleDocs = array();
             $doc->thumbnail = JoyUtilities::getAwsFileUrl('small_' . $doc->filename, 'listing');
             $doc->type = $doc->mediatype;
-
+ 
             if (!empty($_POST['userid'])) {
                 $favListModal = FavouriteListing::model()->findByAttributes(array('userid' => $_POST['userid'], 'listingid' => '' . $doc->id));
                 if ($favListModal) {
                     $doc->is_favByUser = 1;
                 }
             }
-
+ 
             $singleDocs = (array) $doc;
             array_push($data, $singleDocs);
         }
-
+ 
         $finalresult['SiteListing'] = $data;
         echo json_encode($data);
     }
@@ -615,9 +615,9 @@ class AjaxController extends Controller {
         $solrParams = array('fq' => '');
         //companyId
         $companyid = $_POST['companyid'];
-
+ 
         // filter media type 
-
+ 
         $mediaTypeParam = '';
         if (!empty($_POST['mediatypeid'])) {
             $mediaTypeParam = $_POST['mediatypeid'];
@@ -633,13 +633,13 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= ')';
             }
         }
-
-
-
+ 
+ 
+ 
         //companyid
         $solrParams['fq'] .= (!empty($solrParams['fq'])) ? ' AND ' : '';
         $solrParams['fq'] .= ' companyid:' . $companyid;
-
+ 
         //lightingid
         $lightTypeParam = '';
         if (!empty($_POST['lightingid'])) {
@@ -656,8 +656,8 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= ')';
             }
         }
-
-
+ 
+ 
         // filter price slider 
         $priceSlider = '';
         if (!empty($_POST['priceslider'])) {
@@ -671,11 +671,11 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= 'weeklyprice:[' . $newMinPrice . ' TO ' . $newMaxPrice . ']';
             }
         }
-
-
+ 
+ 
         // proximity
         $proximity = is_numeric(Yii::app()->request->getQuery('proximity')) ? (int) Yii::app()->request->getQuery('proximity') : Yii::app()->params['proximity'];
-
+ 
         // geoloc
         if (!empty($_POST['Lat']) && !empty($_POST['Lng'])) {
             $geoloc = $_POST['Lat'] . ',' . $_POST['Lng'];
@@ -683,8 +683,8 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= " AND {!geofilt pt=$geoloc sfield=geoloc d=$proximity}";
             }
         }
-
-
+ 
+ 
 //Sorting
         if (!empty($_POST['sort'])) {
             $filter = '';
@@ -697,7 +697,7 @@ class AjaxController extends Controller {
             }
             $solrParams['sort'] = $filter;
         }
-
+ 
         // solr query 
         $textSearch = '';
         $solrQuery = '';
@@ -711,29 +711,29 @@ class AjaxController extends Controller {
         } else {
             $solrQuery = '*:*';
         }
-
-
+ 
+ 
         //$solrParams['rows'] = 5;
         // get listing from Solr                
         //$result = Yii::app()->listingSearch->get($solrQuery, 0, 50000, $solrParams);
         // load from 0 if markers already loaded is not in $_GET
         $marker_loaded = (int) Yii::app()->request->getQuery('marker_loaded');
         $marker_loaded = ($marker_loaded > 0) ? $marker_loaded : 0;
-
+ 
         // how many to load - next_toload_count not there then default load count
         $next_toload_count = (int) Yii::app()->request->getQuery('next_toload_count');
         $init_markers = ($next_toload_count > 0) ? $next_toload_count : Yii::app()->params['init_markers'];
-
-
+ 
+ 
         $solrParams['wt'] = 'json';
         //$params['json.nl'] = 'map';
         $solrParams['fl'] = 'id,lat,lng,ea';
         $solrParams['q'] = $solrQuery;
         $solrParams['start'] = 0; // $marker_loaded; //0;
         $solrParams['rows'] = 500000; // $init_markers; //50000;
-
+ 
         $qp = http_build_query($solrParams, null, '&');
-
+ 
         // >>> curl query
         $ch = curl_init();
         $url = Yii::app()->params['solrCurl'] . $qp;
@@ -745,11 +745,11 @@ class AjaxController extends Controller {
         curl_close($ch);
         $res = json_decode($result);
         $markerlist = array();
-
+ 
     //        $markerlist['Markerslist'] = $res->response->docs;
         $cnt = json_encode(count($res->response->docs));
         //Change the result json  into array
-
+ 
         for ($i=0; $i < $cnt; $i++) {
             //echo "json_encode();die()";
              $tempResponse = $res->response->docs[$i];
@@ -760,7 +760,7 @@ class AjaxController extends Controller {
             $arr[1] = $tempResponse->lat;
             $arr[2] = $tempResponse->lng;
             $arr[3] = $tempResponse->ea;
-
+ 
             array_push($markerlist, $arr);
         }
         echo json_encode($markerlist);

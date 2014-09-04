@@ -34,7 +34,7 @@
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo.png" class="eatads-logo"></a>
+                    <a class="navbar-brand" href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" class="eatads-logo"></a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#" id="home_login">Login</a></li>
@@ -109,22 +109,22 @@
             <div class="row promises">
                 <div class="col-md-3 col-sm-3 divider-vertical">
                     <h2>Monitoring Made Easy</h2>
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/landing/promise-icon-1.png">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/landing/promise-icon-1.png">
                     <p>Monitoring sites has never been easier with our simple to use Android App and Web dashboard. No more cumbersome digital cameras.</p>
                 </div>
                 <div class="col-md-3 col-sm-3 divider-vertical">
                     <h2>User Assignment</h2>
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/landing/promise-icon-2.png">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/landing/promise-icon-2.png">
                     <p>Organize your field staff to get only the sites they need to monitor with our intuitive User Assignment feature on the Web Dashboard. No more confusion on who is responsible for which site.</p>
                 </div>
                 <div class="col-md-3 col-sm-3 divider-vertical">
                     <h2>Instant Alerts</h2>
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/landing/promise-icon-3.png">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/landing/promise-icon-3.png">
                     <p>Get instant alerts via Email and SMS when problems are reported. Instant alerts now alerts the relevant party when sites have problems so that they can be rectified swiftly.</p>
                 </div>
                 <div class="col-md-3 col-sm-3">
                     <h2>Reporting</h2>
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/landing/promise-icon-4.png">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/landing/promise-icon-4.png">
                     <p> With a click of a button generate reports of your field staff activity and identify constant problem sites.</p>
                 </div>
             </div>
