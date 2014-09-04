@@ -1,9 +1,10 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-full-2.2.0.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-helpers-1.1.1.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/campaigns.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/vendors.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/campaignListings.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/addedListingsToCampaign.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/vendors.js"></script>
+
+<!--<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/campaigns.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/addedListingsToCampaign.js"></script>-->
 
 <script type="text/javascript">
     function fetchCampaigns(type){
@@ -47,26 +48,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                   });
          
     }
-    function removeListingFromCampaign(id) {
-        
-        var cid = $('#addedlistings_' +id).parent().parent().parent().parent().attr('id').split('_')[1];
-        $.ajax({
-                   type: 'POST',
-                   url: '<?php echo Yii::app()->urlManager->createUrl('ajax/removeListingFromCampaign'); ?>',
-                   data: {
-                       'sid': id,
-                       'cid' : cid
-                   },
-                success:function(data){
-              $('#addedlistings_' + id).parent().remove();
-                    console.log(data);  
-                   },
-                   error: function(data) { // if error occured
-                         alert("Error occured.please try again");
-                         alert(data);
-                    }
-                  });
-    }
+    
     function fetchCampaignDetails(id) {
         $.ajax({
                    type: 'POST',
@@ -108,12 +90,13 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
             var index = addtocampaign.indexOf(id);
             if (index > -1) {
                 $('#listing_' + id).removeClass('selected');
-           $('#listing_' + id + ' span').removeClass('glyphicon-remove').addClass('glyphicon-plus').attr('onclick', 'addToCampaign(\'' + id + '\')');
+                $('#listing_' + id + ' span').removeClass('glyphicon-remove').addClass('glyphicon-plus').attr('onclick', 'addToCampaign(\'' + id + '\')');
                 addtocampaign.splice(index, 1);
             }
     }
     function removeFromCampaign(id) {
         removefromcampaign.push(id);
+        $('#listing_' + id).removeClass('selected');
     }
     
     function saveCampaign(id) {
@@ -146,30 +129,17 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                         'pop' : pop
                     },
                  success:function(data){
-                     //selectedCampaignId campaignListings to be removed
-                            $.ajax({
-                           type: 'POST',
-                           url: '<?php echo Yii::app()->urlManager->createUrl('ajax/campaignDetails'); ?>',
-                           data: {
-                               'cid': $('.selectedCampaignId').html()
-                           },
-                        success:function(data){
-                            $('#add-site-modal').modal('hide');
+                     
+                     
+                     
+                     $('#add-site-modal').modal('hide');
                             //$('.selectedCampaignId').html('');
                             $('#campaignListings').html('');
-                             dust.render("vendors", JSON.parse(data), function(err, out) {
-                            $('#vendors').html(out);
-                                console.log(err);
-                            });    
-                            //console.log(data);  
-                           },
-                           error: function(data) { // if error occured
-                                 alert("Error occured.please try again");
-                                 alert(data);
-                            }
-                          });
-
-                     //console.log(data);  
+                            console.log(data);
+                        if (data === '200') {
+                            location.reload();
+                        }    
+                        
                     },
                     error: function(data) { // if error occured
                           alert("Error occured.please try again");
@@ -248,6 +218,19 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
              dust.render("campaignListings", JSON.parse(data), function(err, out) {
                  $('#campaignListings').html(out);
                  console.log(err);
+                 var arr = $('#campaignListings > li').map(function(){ return $(this).attr('id').split('_')[1];
+            }).get();
+            
+            
+            for (var i=0; i < addtocampaign.length; i++) {
+                for (var j=0; j<arr.length;j++) {
+                    if (addtocampaign[i] == arr[j]) {
+                        $('#listing_' + arr[j]).addClass('selected');
+                        $('#listing_' + arr[j] + ' span').addClass('glyphicon-remove').removeClass('glyphicon-plus').attr('onclick', 'removeFromArrayAddToCampaign(\'' + arr[j] + '\')');
+                    }    
+                }    
+            }   
+                 
              });    
             },
             error: function(data) { // if error occured
@@ -260,32 +243,6 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
         $(this).removeClass('active');
     });
     $('.menu_campaign').addClass('active');
-    $(document).ready(function() {
-            dust.render("campaigns", <?php echo $campaigns;?>, function(err, out) {
-                $('#campaigns').html(out);
-            var cnt = <?php echo $campaigns;?>;
-            //console.log(cnt.length + " sdfsfsdfsfsddsfdsfsd") ;
-            $('.cnt').html(cnt.length);
-            console.log(err);
-            //expand collapse content  
-            $('.clickfor-show-hide').click(function(e) {
-//                $(this).toggle();
-
-                $(this).siblings('.show-hide-content').each(function() {
-                    $(this).toggle();
-                });
-
-                //switch plus minus icons
-                if ($(this).find('span').hasClass('glyphicon-plus')) {
-                    $(this).find('span').removeClass('glyphicon-plus').addClass('glyphicon-minus');
-                }
-                else {
-                    $(this).find('span').removeClass('glyphicon-minus').addClass('glyphicon-plus');
-                }
-
-            });
-        });
-    });
 </script>
 <span class="selectedCampaignId" style="display: none;"></span>
 <!-- Campaign Confirmation Modal -->
@@ -311,19 +268,12 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                             </tr>
                         </table>
                     </div>
-<!--                    <div class="col-md-9 right-content">
-                        <div class="search-box-wrapper">
-                            <input type="text" placeholder="Search Sites">
-                        </div>
-                        <ul id="campaignListings">
-                        </ul>
-                    </div>-->
                 </div>
               </div>
           </div>
           <div class="modal-footer">
             <a href="#" data-dismiss="modal">Cancel&nbsp;</a>
-            <button type="button" class="btn btn-primary" onclick="updateCampaign();">Save</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateCampaign();">Save</button>
           </div>
         </div>
       </div>
@@ -349,7 +299,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                             
                         </ul>
                     </div>
-                    <div class="col-md-9 right-content">
+                    <div class="col-md-9 right-content" style="height: 700px;">
                         <div class="search-box-wrapper">
                             <input type="text" placeholder="Search Sites">
                         </div>
@@ -361,7 +311,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
           </div>
           <div class="modal-footer">
             <a href="#" data-dismiss="modal">Cancel&nbsp;</a>
-            <button type="button" class="btn btn-primary" >Add Sites</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="$('#')" >Add Sites</button>
           </div>
         </div>
       </div>
@@ -414,7 +364,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="active"><a href="#home" role="tab" data-toggle="tab">Created by Me</a></li>
-    <li><a href="#profile" role="tab" data-toggle="tab">Assigned to Me</a></li>
+    <li><a href="<?php echo Yii::app()->createUrl('assignedCampaigns');?>" role="tab" data-toggle="tab">Assigned to Me</a></li>
 </ul>
 
 <!-- campaigns list --> 
@@ -422,13 +372,49 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
     <div class="row">
         <div class="col-md-12">
             <div class="btn-group">
-                <button type="button" class="btn btn-default active" onclick="fetchCampaigns('1');">Active <span class="cnt1"></span></button>
-                <button type="button" class="btn btn-default" onclick="fetchCampaigns('2');">Upcoming <span class="cnt2"></span></button>
-                <button type="button" class="btn btn-default" onclick="fetchCampaigns('3');">Expired <span class="cnt3"></span></button>
+                <a href="<?php echo Yii::app()->createUrl('myCampaigns'); ?>"><button type="button" class="btn btn-default" >Active <span class="cnt1"></span></button></a>
+                <a href="#"><button type="button" class="btn btn-default active" >Upcoming <span class="cnt2"></span></button></a>
+                <a href="<?php echo Yii::app()->createUrl('myCampaigns/expired'); ?>"><button type="button" class="btn btn-default " > Expired <span class="cnt3"></span></button></a> 
             </div>
-            <h1 class="list-heading">Campaign List (<span class="cnt"></span>)</h1>
-            <ul class="list" id="campaigns">
+            <h1 class="list-heading">Campaign List (<?php echo count($campaigns)?>)</h1>
+            <ul class="list">
+            <?php 
+                $html = '';
+                foreach ($campaigns as $value) {
+                    $html = $html . '            <li class="list-item">
+                <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
+                 . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3>' .
+                  '<div class="pull-right">
+                    <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
+                    &nbsp;
+                        <button class="btn btn-secondary" data-toggle="modal" data-target="#add-site-modal" onclick="fetchvendors(\''. $value['name'] .'\', \''.$value['id'] .'\');"><span class="glyphicon glyphicon-plus"></span> Add Sites</button>
+                        &nbsp;
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#add-campaign-modal" onclick="saveCampaign(\'' .$value['id'] . '\');">Save Campaign</button>
+                </div>' .
+                  '<div class="list-item-content show-hide-content">
+                    <ul class="sub-list" id="campaign_'. $value['id'].'">';
+                    foreach ($value['sites'] as $site) {
+                        $html = $html . '<li>
+                            <h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $site['name'] .'('.$site['count'] . ') &nbsp;</h3>'
+                            . '<div class="assign-dropdown">Assigned to 
+                                <select>
+                                    <option value="'. $site['id'].'_0" selected="true">Myself</option>
+                                    <option value="'.$site['id']. '_' .$site['id'] .'">' . $site['name'] .'</option>
+                                </select></div>'
+                                
+                            . '<ul class="sub-sub-list show-hide-content">';
+                        foreach ($site['listings'] as $list) {
+                            $html = $html . '<li>' . $list['name'] . ', ' . $list['mediatype'] . ', '
+                                    . $list['locality'] . '&nbsp; <span onclick="removeListingFromCampaignd(\'' . $list['id'] .'\', \'' . $value['id'] .'\');" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_'.$list['id'].'"></span></li>';
+                        }
+                        $html = $html . '</ul></li>';
+                    }
+                    $html = $html . '</ul></div></li>';
+                }        
                 
+                        
+            echo $html;
+            ?>    
             </ul>
         </div>
     </div>

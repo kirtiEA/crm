@@ -12,6 +12,7 @@ class AccountController extends Controller {
             Yii::app()->end();
         }
 
+
         // collect user input data
         if (isset($_POST['LoginForm'])) {
             $model->attributes = $_POST['LoginForm'];

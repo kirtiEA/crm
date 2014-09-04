@@ -1,19 +1,21 @@
-
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-full-2.2.0.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-helpers-1.1.1.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/listings.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/angular.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/ng-infinite-scroll.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/angular.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/map.js"></script>
-<div ng-app="siteListing">
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/map.js"></script>
+<script>
+    $(document).ready(function(){
+        
+    });
+</script>        
+        
+<div>
 <!-- tabs -->    
-<ul class="nav nav-tabs" id="sites-tabs" role="tablist" ng-controller="DemoController">
+<ul class="nav nav-tabs" id="sites-tabs" role="tablist" >
     <li class="active"><a href="#" role="tab" data-toggle="tab">Vendors Sites</a></li>
-    <li><a href="#" role="tab" data-toggle="tab" ng-click="reddit.nextPage(2)">My Sites</a></li>
-    <li><a href="sites_mypendingsites.html" role="tab" data-toggle="tab" ng-click="reddit.nextPage(3)">My Pending Sites</a></li>
+    <li><a href="#" role="tab" data-toggle="tab" >My Sites</a></li>
+    <li><a href="sites_mypendingsites.html" role="tab" data-toggle="tab" >My Pending Sites</a></li>
 </ul>
 
 <!-- end of tabs --> 

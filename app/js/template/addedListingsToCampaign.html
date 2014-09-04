@@ -2,10 +2,17 @@
 <li>
     <h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;{name} ({count}) &nbsp;
     </h3>
-    <div class="assign-dropdown">Assigned to
+    <div class="assign-dropdown">Assigned to 
         <select>
+            {^selfassigned}
+            <option value="0" selected="true">Myself</option>
             <option value="{id}">{name}</option>
-            <option value="0">Myself</option>
+            {/selfassigned}
+            {?selfassigned}
+            <option value="0" >Myself</option>
+            <option value="{id}" selected="true">{name}</option>
+            {/selfassigned}
+            
         </select>
     </div>
     <ul class="sub-sub-list show-hide-content">

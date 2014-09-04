@@ -15,11 +15,14 @@
  * @property string $createdDate
  * @property string $modifiedDate
  * @property integer $status
+ * @property integer $pop
+ * @property integer $createdBy
  *
  * The followings are the available model relations:
  * @property PhotoProof[] $photoProofs
+ * @property User $createdBy0
  * @property Campaign $campaign
- * @property MonitorlyListing $site
+ * @property Listing $site
  * @property User $assigneduser
  */
 class BaseTask extends CActiveRecord
@@ -40,11 +43,12 @@ class BaseTask extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('campaignid, assigneduserid, assignedCompanyId, siteid, taskDone, problem, status', 'numerical', 'integerOnly'=>true),
+			array('pop', 'required'),
+			array('campaignid, assigneduserid, assignedCompanyId, siteid, taskDone, problem, status, pop, createdBy', 'numerical', 'integerOnly'=>true),
 			array('dueDate, createdDate, modifiedDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, campaignid, assigneduserid, assignedCompanyId, siteid, dueDate, taskDone, problem, createdDate, modifiedDate, status', 'safe', 'on'=>'search'),
+			array('id, campaignid, assigneduserid, assignedCompanyId, siteid, dueDate, taskDone, problem, createdDate, modifiedDate, status, pop, createdBy', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,8 +61,9 @@ class BaseTask extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'photoProofs' => array(self::HAS_MANY, 'PhotoProof', 'taskid'),
+			'createdBy0' => array(self::BELONGS_TO, 'User', 'createdBy'),
 			'campaign' => array(self::BELONGS_TO, 'Campaign', 'campaignid'),
-			'site' => array(self::BELONGS_TO, 'MonitorlyListing', 'siteid'),
+			'site' => array(self::BELONGS_TO, 'Listing', 'siteid'),
 			'assigneduser' => array(self::BELONGS_TO, 'User', 'assigneduserid'),
 		);
 	}
@@ -80,6 +85,8 @@ class BaseTask extends CActiveRecord
 			'createdDate' => 'Created Date',
 			'modifiedDate' => 'Modified Date',
 			'status' => 'Status',
+			'pop' => 'Pop',
+			'createdBy' => 'Created By',
 		);
 	}
 
@@ -112,6 +119,8 @@ class BaseTask extends CActiveRecord
 		$criteria->compare('createdDate',$this->createdDate,true);
 		$criteria->compare('modifiedDate',$this->modifiedDate,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('pop',$this->pop);
+		$criteria->compare('createdBy',$this->createdBy);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -122,7 +131,7 @@ class BaseTask extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Task the static model class
+	 * @return BaseTask the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
