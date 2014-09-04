@@ -102,7 +102,7 @@ return array(
             'iteration_count_log2' => 8,
             'portable_hashes' => false,
         ),
-        'fileUploadPath' => $_SERVER['DOCUMENT_ROOT'] .  '/nw_monitorly/app/uploads/',
+        'fileUploadPath' => $_SERVER['DOCUMENT_ROOT'] .  '/uploads/',
         'mandrill' => array(
             'api_key' => 'wtWRc4QXlHhoMyK6nzHUqQ'
         ),

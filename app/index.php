@@ -10,7 +10,7 @@ if($_SERVER['SERVER_NAME']=="localhost") {                          // LOCALHOST
     $config=dirname(__FILE__).'/protected/config/main_stag.php';    
     defined('YII_DEBUG') or define('YII_DEBUG',false);
 } else {
-    $config=dirname(__FILE__).'/protected/config/main_live.php';    
+    $config=dirname(__FILE__).'/protected/config/main.php';    
     defined('YII_DEBUG') or define('YII_DEBUG',false);
 }
 

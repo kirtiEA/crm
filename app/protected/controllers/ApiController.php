@@ -220,16 +220,18 @@ class ApiController extends Controller {
                 $taskId = $_GET['id'];
                 $currDateTime = date("Y-m-d H:i:s");
                
+               
                 $imageData = base64_decode($put_vars['photo']);
                 $imageName = trim($put_vars['photoname']);                
                 $source = imagecreatefromstring($imageData);
+                
                 
                 $uploadedFile = imagejpeg($source, "uploads/listing/".$imageName, 100);
 
                 // send them to aws s3
                 $s3Obj = new EatadsS3();
                 $ext = pathinfo($imageName, PATHINFO_EXTENSION);
-                $newFileName = 'mon_'.time() . '_' . mt_rand() . '.' . $ext;
+                $newFileName = 'mon_'.$taskId.'_'.time() . '_' . mt_rand() . '.' . $ext;
                 $uploadFilePath = Yii::app()->params['fileUploadPath'] . 'listing/';
                 $originalFileWithPath = $uploadFilePath . $imageName;                                
                 
@@ -238,8 +240,8 @@ class ApiController extends Controller {
 
                 copy($originalFileWithPath, $newFileThumbName);
                 $s3Obj->uploadFile($newFileThumbName, 'listing/' . $newFileName);
-                @unlink($newFileThumbName);             
-
+                @unlink($newFileThumbName);                                          
+                
                 $imageThumb->resize(487, 310);
                 $newFileThumbName = $uploadFilePath . 'big_' . $newFileName;
                 $imageThumb->save($newFileThumbName);
@@ -258,8 +260,7 @@ class ApiController extends Controller {
                 $s3Obj->uploadFile($newFileThumbName, 'listing/tiny_' . $newFileName);
                 @unlink($newFileThumbName);
                 @unlink($originalFileWithPath);
-
-
+               
                 $installationProblem = ($put_vars['problems']['installation'] == '') ? NULL : trim($put_vars['problems']['installation']);
                 $lightingProblem = ($put_vars['problems']['lighting'] == '') ? NULL : trim($put_vars['problems']['lighting']);
                 $obstructionProblem = ($put_vars['problems']['obstruction'] == '') ? NULL : trim($put_vars['problems']['obstruction']);
