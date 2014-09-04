@@ -1,0 +1,54 @@
+2014/09/04 11:03:39 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:03:39 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:03:39 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:03:39 [trace] [system.db.ar.CActiveRecord] User.findByPk()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (96)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:03:39 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (96)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:03:39 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (96)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:03:41 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `User`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (96)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:03:42 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `User`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (96)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:03:42 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `User` `t` WHERE `t`.`id`=552 LIMIT 1
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (96)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:03:42 [trace] [system.db.CDbCommand] Querying SQL: SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng FROM Task t LEFT JOIN Campaign c ON c.id = t.campaignid LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid WHERE t.taskDone=0 AND t.status=1 AND t.dueDate BETWEEN '2014-08-10T01:01:01' AND '2014-08-24T01:01:01' GROUP BY t.id LIMIT 0, 1000
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (125)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:04:18 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:04:18 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:04:18 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:04:18 [trace] [system.db.ar.CActiveRecord] User.findByPk()
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (96)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:04:18 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (96)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:04:18 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (96)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:04:18 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `User`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (96)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:04:18 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `User`
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (96)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:04:18 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `User` `t` WHERE `t`.`id`=552 LIMIT 1
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (96)
+in C:\xampp\htdocs\monitorly\app\index.php (24)
+2014/09/04 11:04:18 [trace] [system.db.CDbCommand] Querying SQL: SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng, dueDate as duedate FROM Task t LEFT JOIN Campaign c ON c.id = t.campaignid LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid WHERE t.taskDone=0 AND t.status=1 AND t.dueDate BETWEEN '2014-08-10T01:01:01' AND '2014-08-24T01:01:01' GROUP BY t.id LIMIT 0, 1000
+in C:\xampp\htdocs\monitorly\app\protected\controllers\ApiController.php (125)
+in C:\xampp\htdocs\monitorly\app\index.php (24)

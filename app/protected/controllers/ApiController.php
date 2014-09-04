@@ -103,7 +103,7 @@ class ApiController extends Controller {
 
                     $start = ($start > 0) ? $start : 0;
                     if ($tDone == 'true') {
-                        $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng, COUNT( pp.id ) as photocount "
+                        $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng, COUNT( pp.id ) as photocount, dueDate as duedate "
                                 . "FROM Task t "
                                 . "LEFT JOIN Campaign c ON c.id = t.campaignid "
                                 . "LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid "
@@ -113,7 +113,7 @@ class ApiController extends Controller {
                                 . "GROUP BY t.id "
                                 . "LIMIT {$start}, {$limit}";
                     } else {
-                        $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng "
+                        $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng, dueDate as duedate "
                                 . "FROM Task t "
                                 . "LEFT JOIN Campaign c ON c.id = t.campaignid "
                                 . "LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid "
