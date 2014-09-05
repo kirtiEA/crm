@@ -10,6 +10,7 @@
 
 <body>
 
+
     <!-- invite vendor modal -->
     <div class="modal fade" id="invite-vendor-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-sm-custom">
@@ -57,6 +58,14 @@
     </div>
     <!-- end of subheader --> 
 
+    <!-- tabs -->    
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#home" >Requested Vendor</a></li>
+        <li><a href="<?php echo Yii::app()->createUrl('waitingApproval'); ?>" >Waiting for Approval</a></li>
+    </ul>
+    <!-- end of tabs --> 
+
+    
     <!-- vendor list --> 
 
     <div class="container-fluid content-wrapper">
@@ -65,7 +74,7 @@
                 <h1 class="list-heading pull-left">Vendors List
                     <?php
                     $no = count($model);
-                    echo '('. $no . ')';
+                    echo '(' . $no . ')';
                     ?> 
                 </h1>
                 <button class="btn btn-primary pull-right table-control">Remind All</button>
@@ -85,24 +94,8 @@
                                 echo $html;
                                 ?>
                             </td>
-
                         </tr>
                     <?php endforeach; ?>
-<!--                    <tr>
-                <td>Pioneer</td>
-                <td>admin@pioneer.com</td>
-                <td>Invited on 12/09/2014</td>
-                <td><span class="glyphicon glyphicon-ok"></span> Accepted</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Bright Outdoor</td>
-                <td>admin@brightoutdoor.com</td>
-                <td>Invited on 12/09/2014</td>
-                <td><span class="glyphicon glyphicon-warning-sign"></span> Pending</td>
-                <td><button class="btn btn-secondary">Remind</button>
-                </td>
-            </tr>-->
                 </table>
             </div>
         </div>

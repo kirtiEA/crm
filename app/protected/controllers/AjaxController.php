@@ -1,11 +1,11 @@
 <?php
- 
+
 class AjaxController extends Controller {
- 
+
     private function fetchUserReturnUrl() {
         
     }
- 
+
     /**
      * @return array action filters
      */
@@ -15,22 +15,22 @@ class AjaxController extends Controller {
             'postOnly + delete', // we only allow deletion via POST request
         );
     }
- 
+
     public function accessRules() {
         return array(
-        array('allow', // allow all users to perform actions
-        'actions' => array('signup', 'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting', 'getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
-        'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword', 'invitevendor', 'removeListingFromCampaign', 'updateCampaign'),
-        'users' => array('*'),
-        )
+            array('allow', // allow all users to perform actions
+                'actions' => array('signup', 'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting', 'getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
+                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword', 'invitevendor', 'removeListingFromCampaign', 'updateCampaign'),
+                'users' => array('*'),
+            )
         );
     }
- 
+
     public function actionLogin() {
         $username = Yii::app()->request->getParam('usrn');
         $password = Yii::app()->request->getParam('pass');
- 
- 
+
+
         if (!Yii::app()->user->isGuest) {
             $returnUrl = fetchUserReturnUrl();
         } else {
@@ -41,7 +41,7 @@ class AjaxController extends Controller {
                 echo CActiveForm::validate($model);
                 Yii::app()->end();
             }
- 
+
             // collect user input data
             if (isset($_POST['LoginForm'])) {
                 $_POST['LoginForm'] = JoyUtilities::cleanInput($_POST['LoginForm']);
@@ -57,11 +57,11 @@ class AjaxController extends Controller {
                 }
             }
         }
- 
+
         // return after login url
         echo $returnUrl;
     }
- 
+
     public function actionFetchvendorsites() {
         $vendorId = Yii::app()->request->getParam('vendorid');
         $sql = "SELECT l.id, l.site_code, mt.name as mediatype, a.name as city, l.locality, l.name, l.length, l.width, l.lightingid "
@@ -72,7 +72,6 @@ class AjaxController extends Controller {
         $result = Yii::app()->db->createCommand($sql)->queryAll();
         //echo json_encode($result); die();
         //$result = Listing::model()->findAllByAttributes(array('companyId' => $vendorId));
- 
         //print_r($result);
         if ($result) {
             $listArray = array();
@@ -100,7 +99,7 @@ class AjaxController extends Controller {
             echo json_encode(NULL);
         }
     }
- 
+
     public function actionMassuploadsite() {
         // fetch all media types to match
         $mtResult = Mediatype::model()->findAll();
@@ -111,21 +110,21 @@ class AjaxController extends Controller {
         // fetch all lighting
         $lightings = array_map('strtolower', Listing::getLighting());
         //print_r($lightings); die();
- 
- 
+
+
         $vendorId = Yii::app()->request->getParam('vendorid');
         $byUserId = Yii::app()->request->getParam('byuserid');
         $data = json_decode(Yii::app()->request->getParam('data'));
- 
+
         $companyResult = UserCompany::model()->findByPk($vendorId, array('select' => 'userid'));
         $forUserId = $companyResult->userid;
- 
+
         foreach ($data as $value) {
             //echo $value->mediatype;
             $mediaTypeId = array_search(strtolower($value->mediatype), $mediaTypes);
             $lightingId = array_search(strtolower($value->lighting), $lightings);
             //$productType = UserProduct::getUserProductType(552);//$forUserId);
- 
+
             $address = $value->locality . ',' . $value->city;
             $addressGeocode = JoyUtilities::geocode($address);
             //print_r($addressGeocode); die();
@@ -134,83 +133,82 @@ class AjaxController extends Controller {
                 if ($addressGeocode['country'] != '' && $addressGeocode['country'] != null) {
                     $countryId = Area::checkAreaExists($addressGeocode['country'], 'c', null, $addressGeocode['countryCode']);
                 }
- 
+
                 // check if state exists
                 if (is_numeric($countryId) && $addressGeocode['state'] != '' && $addressGeocode['state'] != null) {
                     $stateId = Area::checkAreaExists($addressGeocode['state'], 's', $countryId);
                 }
- 
+
                 // check if city exists
                 if (is_numeric($stateId) && $addressGeocode['city'] != '' && $addressGeocode['city'] != null) {
                     $cityId = Area::checkAreaExists($addressGeocode['city'], 'ci', $stateId);
                 }
             }
- 
+
             $listingModel = new Listing;
             $listingModel->byuserid = (int) $byUserId;
             $listingModel->foruserid = (int) $forUserId;
             $listingModel->companyId = (int) $vendorId;
- 
- 
+
+
             $listingModel->name = $value->name;
             $listingModel->site_code = $value->site_code;
             $listingModel->length = (int) $value->length;
             $listingModel->width = (int) $value->width;
             $listingModel->area = (int) ($value->length * $value->width);
- 
+
             $listingModel->product_type = 2;
             $listingModel->status = 0;
             $listingModel->approved = 0;
- 
+
             $listingModel->locality = $value->locality;
             $listingModel->countryid = (int) $countryId;
             $listingModel->stateid = (int) $stateId;
             $listingModel->cityid = (int) $cityId;
- 
+
             $listingModel->geolat = $addressGeocode['lat'];
             $listingModel->geolng = $addressGeocode['lng'];
             $listingModel->accurate_geoloc = 0;
- 
+
             $listingModel->lightingid = (int) $lightingId;
             $listingModel->mediatypeid = (int) $mediaTypeId;
- 
+
             $listingModel->basecurrencyid = 11;   // 11 for India
- 
+
             $listingModel->datemodified = date('Y-m-d H:i:s');
             $listingModel->datecreated = date('Y-m-d H:i:s');
             $listingModel->save();
- 
         }
         echo true;
     }
- 
+
     public function actionAddsitetocampaign() {
         $this->render('addsitetocampaign');
     }
- 
+
     public function actionAssignzonetouser() {
         $this->render('assignzonetouser');
     }
- 
+
     public function actionManagesites() {
         $this->render('managesites');
     }
- 
+
     public function actionSiteautocomplete() {
         $this->render('siteautocomplete');
     }
- 
+
     public function actionUpdatetaskassignment() {
         $this->render('updatetaskassignment');
     }
- 
+
     /*
      * update user password
      */
- 
+
     public function actionUpdatePassword() {
         if (isset($_POST['id']) && isset($_POST['pwd'])) {
- 
+
             //echo 'entered here';
             $id = $_POST['id'];
             $pwd = $_POST['pwd'];
@@ -227,27 +225,26 @@ class AjaxController extends Controller {
             }
             User::model()->changePassword($id, $password);
         }
- 
     }
- 
+
     public function actionVendorsList() {
         echo json_encode(UserCompany::fetchVendorsList());
     }
- 
+
     public function actionFetchVendorListing() {
         if ($_POST['cid'] && $_POST['id']) {
             echo json_encode(Listing::getListingsForCompany($_POST['id'], $_POST['cid']));
         }
     }
- 
+
     public function actionUpdateCampaign() {
         if ($_POST['cid']) {
 //echo $_POST['add'] . ' -- --- ' . $_POST['rm'];
             $add = json_decode($_POST['add']);
             $campaign = Campaign::model()->findByPk($_POST['cid']);
- 
+
 // print_r($add);
- 
+
             $diff = strtotime($campaign->attributes['endDate']) - strtotime($campaign->attributes['startDate']);
             if ($campaign['type'] != $_POST['type']) {
                 $tasks = Task::fetchAllSitesInCampaign($_POST['cid']);
@@ -255,17 +252,17 @@ class AjaxController extends Controller {
                     array_push($add, $tasks[$i]['siteid']);
                 }
                 $add = array_unique($add);
- 
+
                 Task::deleteAllTaskForCampaign($_POST['cid']);
                 Campaign::model()->updateByPk($campaign['id'], array('type' => $_POST['type']));
             }
- 
+
             if ($_POST['type'] == 1) {
                 $vendorIds = json_decode($_POST['pop']);
                 if (count($add) > 0) {
                     for ($i = 0; $i < count($add); $i++) {
                         $date = strtotime($campaign->attributes['startDate']);
- 
+
                         $task = new Task();
 //$task->assignedCompanyId = Yii::app()->user->cid;
                         $task->pop = 1;
@@ -277,17 +274,17 @@ class AjaxController extends Controller {
                         $task->save();
                     }
                 }
- 
+
                 if ($vendorIds || count($vendorIds) == 0) {
 // array_push($vendorIds, '0');
                     Task::updateTaskPopWhenNoVendorSelected(Yii::app()->user->cid, $_POST['cid']);
                 }
- 
+
                 for ($i = 0; $i < count($vendorIds); $i++) {
                     $companyid;
                     $assignedcompanyid;
                     $inputVendorIds = explode('_', $vendorIds[$i]);
-                    if (strcasecmp($inputVendorIds[1] , '0') == 0) {
+                    if (strcasecmp($inputVendorIds[1], '0') == 0) {
                         $companyid = $inputVendorIds[0];
                         $assignedcompanyid = Yii::app()->user->cid;
                     } else {
@@ -316,7 +313,7 @@ class AjaxController extends Controller {
                         }
                     }
                 }
- 
+
                 echo '200';
             } else if ($_POST['type'] == 3) {
 //print_r($add);
@@ -341,8 +338,8 @@ class AjaxController extends Controller {
                         }
                     }
                 }
- 
- 
+
+
                 for ($i = 0; $i < count($vendorIds); $i++) {
                     $date = strtotime($campaign->attributes['startDate']);
                     $companyid;
@@ -355,21 +352,20 @@ class AjaxController extends Controller {
                         $companyid = $inputVendorIds[0];
                         $assignedcompanyid = $inputVendorIds[1];
                     }
- 
+
                     Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid, $date);
                 }
                 echo '200';
             }
- 
+
             $rem = json_decode($_POST['rm']);
             for ($i = 0; $i < count($rem); $i++) {
                 Task::removeListingFromCampaign($_POST['cid'], $rem[$i]);
             }
- 
         }
 //$this->redirect(Yii::app()->createUrl('/campaign'));
     }
- 
+
     public function actionCampaignDetails() {
         if ($_POST['cid']) {
             $vendors = UserCompany::fetchVendorsInCampaign($_POST['cid']);
@@ -385,13 +381,13 @@ class AjaxController extends Controller {
             echo json_encode($result);
         }
     }
- 
+
     public function actionRemoveListingFromCampaign() {
         if ($_POST['cid'] && $_POST['sid']) {
             echo Task::removeListingFromCampaign($_POST['cid'], $_POST['sid']);
         }
     }
- 
+
     public function actionfetchCampaigns() {
         if ($_POST['type']) {
             $campaigns = Campaign::fetchCompanyCampaignsName(Yii::app()->user->cid, $_POST['type']);
@@ -411,7 +407,7 @@ class AjaxController extends Controller {
             echo json_encode($finalCampaigns);
         }
     }
- 
+
     public function actionassignTaskToUser() {
         if ($_POST['uid'] && $_POST['tid']) {
             $flag = Task::model()->updateByPk($_POST['tid'], array("assigneduserid" => $_POST['uid']));
@@ -420,23 +416,22 @@ class AjaxController extends Controller {
             }
         }
     }
- 
+
     public function actionfilterTask() {
         
     }
- 
+
 //    public function actiongetlisting() {
 //        $type = $_POST['type'];
 //        
 //    }
- 
 //    public function actionGetListing() {
 //
 //        echo json_encode($data);
 //    }
- 
+
     public function actiongetListing() {
- 
+
         $metaKeyword = $pageTitle = '';
         // default solrUrl
         $solrParams = array('fq' => '');
@@ -444,7 +439,7 @@ class AjaxController extends Controller {
         $companyid = $_POST['companyid'];
         //echo $companyid;die();
         // filter media type 
- 
+
         $mediaTypeParam = '';
         if (!empty($_POST['mediatypeid'])) {
             $mediaTypeParam = $_POST['mediatypeid'];
@@ -460,13 +455,13 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= ')';
             }
         }
- 
- 
- 
+
+
+
         //companyid
         $solrParams['fq'] .= (!empty($solrParams['fq'])) ? ' AND ' : '';
         $solrParams['fq'] .= ' companyid:' . $companyid;
- 
+
         //lightingid
         $lightTypeParam = '';
         if (!empty($_POST['lightingid'])) {
@@ -483,8 +478,8 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= ')';
             }
         }
- 
- 
+
+
         // filter price slider 
         $priceSlider = '';
         if (!empty($_POST['priceslider'])) {
@@ -499,8 +494,8 @@ class AjaxController extends Controller {
                 //print_r($solrParams);die();
             }
         }
- 
- 
+
+
         // proximity
         $proximity = is_numeric(Yii::app()->request->getQuery('proximity')) ? (int) Yii::app()->request->getQuery('proximity') : Yii::app()->params['proximity'];
         // geoloc
@@ -510,9 +505,9 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= " AND {!geofilt pt=$geoloc sfield=geoloc d=$proximity}";
             }
         }
- 
- 
- 
+
+
+
 //Sorting
         if (!empty($_POST['sort'])) {
             $filter = '';
@@ -525,7 +520,7 @@ class AjaxController extends Controller {
             }
             $solrParams['sort'] = $filter;
         }
- 
+
         // solr query 
         $textSearch = '';
         $solrQuery = '';
@@ -539,20 +534,20 @@ class AjaxController extends Controller {
         } else {
             $solrQuery = '*:*';
         }
- 
- 
+
+
         //$solrParams['rows'] = 5;
         // get listing from Solr                
         //$result = Yii::app()->listingSearch->get($solrQuery, 0, 50000, $solrParams);
         // load from 0 if markers already loaded is not in $_GET
         $marker_loaded = (int) Yii::app()->request->getQuery('marker_loaded');
         $marker_loaded = ($marker_loaded > 0) ? $marker_loaded : 0;
- 
+
         // how many to load - next_toload_count not there then default load count
         $next_toload_count = (int) Yii::app()->request->getQuery('next_toload_count');
         $init_markers = ($next_toload_count > 0) ? $next_toload_count : Yii::app()->params['init_markers'];
- 
- 
+
+
         $solrParams['wt'] = 'json';
         //$params['json.nl'] = 'map';
         //$solrParams['fl'] = 'id,lat,lng,ea';
@@ -564,9 +559,9 @@ class AjaxController extends Controller {
         }
         // $marker_loaded; //0;
         $solrParams['rows'] = 30; // $init_markers; //50000;
- 
+
         $qp = http_build_query($solrParams, null, '&');
- 
+
         // >>> curl query
         $ch = curl_init();
         $url = Yii::app()->params['solrCurl'] . $qp;
@@ -583,32 +578,31 @@ class AjaxController extends Controller {
             $singleDocs = array();
             $doc->thumbnail = JoyUtilities::getAwsFileUrl('small_' . $doc->filename, 'listing');
             $doc->type = $doc->mediatype;
- 
+
             if (!empty($_POST['userid'])) {
                 $favListModal = FavouriteListing::model()->findByAttributes(array('userid' => $_POST['userid'], 'listingid' => '' . $doc->id));
                 if ($favListModal) {
                     $doc->is_favByUser = 1;
                 }
             }
- 
+
             $singleDocs = (array) $doc;
             array_push($data, $singleDocs);
         }
- 
+
         $finalresult['SiteListing'] = $data;
         echo json_encode($data);
     }
- 
- 
+
     public function actiongetmarkers() {
         $metaKeyword = $pageTitle = '';
         // default solrUrl
         $solrParams = array('fq' => '');
         //companyId
         $companyid = $_POST['companyid'];
- 
+
         // filter media type 
- 
+
         $mediaTypeParam = '';
         if (!empty($_POST['mediatypeid'])) {
             $mediaTypeParam = $_POST['mediatypeid'];
@@ -624,13 +618,13 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= ')';
             }
         }
- 
- 
- 
+
+
+
         //companyid
         $solrParams['fq'] .= (!empty($solrParams['fq'])) ? ' AND ' : '';
         $solrParams['fq'] .= ' companyid:' . $companyid;
- 
+
         //lightingid
         $lightTypeParam = '';
         if (!empty($_POST['lightingid'])) {
@@ -647,8 +641,8 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= ')';
             }
         }
- 
- 
+
+
         // filter price slider 
         $priceSlider = '';
         if (!empty($_POST['priceslider'])) {
@@ -662,11 +656,11 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= 'weeklyprice:[' . $newMinPrice . ' TO ' . $newMaxPrice . ']';
             }
         }
- 
- 
+
+
         // proximity
         $proximity = is_numeric(Yii::app()->request->getQuery('proximity')) ? (int) Yii::app()->request->getQuery('proximity') : Yii::app()->params['proximity'];
- 
+
         // geoloc
         if (!empty($_POST['Lat']) && !empty($_POST['Lng'])) {
             $geoloc = $_POST['Lat'] . ',' . $_POST['Lng'];
@@ -674,8 +668,8 @@ class AjaxController extends Controller {
                 $solrParams['fq'] .= " AND {!geofilt pt=$geoloc sfield=geoloc d=$proximity}";
             }
         }
- 
- 
+
+
 //Sorting
         if (!empty($_POST['sort'])) {
             $filter = '';
@@ -688,7 +682,7 @@ class AjaxController extends Controller {
             }
             $solrParams['sort'] = $filter;
         }
- 
+
         // solr query 
         $textSearch = '';
         $solrQuery = '';
@@ -702,29 +696,29 @@ class AjaxController extends Controller {
         } else {
             $solrQuery = '*:*';
         }
- 
- 
+
+
         //$solrParams['rows'] = 5;
         // get listing from Solr                
         //$result = Yii::app()->listingSearch->get($solrQuery, 0, 50000, $solrParams);
         // load from 0 if markers already loaded is not in $_GET
         $marker_loaded = (int) Yii::app()->request->getQuery('marker_loaded');
         $marker_loaded = ($marker_loaded > 0) ? $marker_loaded : 0;
- 
+
         // how many to load - next_toload_count not there then default load count
         $next_toload_count = (int) Yii::app()->request->getQuery('next_toload_count');
         $init_markers = ($next_toload_count > 0) ? $next_toload_count : Yii::app()->params['init_markers'];
- 
- 
+
+
         $solrParams['wt'] = 'json';
         //$params['json.nl'] = 'map';
         $solrParams['fl'] = 'id,lat,lng,ea';
         $solrParams['q'] = $solrQuery;
         $solrParams['start'] = 0; // $marker_loaded; //0;
         $solrParams['rows'] = 500000; // $init_markers; //50000;
- 
+
         $qp = http_build_query($solrParams, null, '&');
- 
+
         // >>> curl query
         $ch = curl_init();
         $url = Yii::app()->params['solrCurl'] . $qp;
@@ -736,11 +730,11 @@ class AjaxController extends Controller {
         curl_close($ch);
         $res = json_decode($result);
         $markerlist = array();
- 
+
         //        $markerlist['Markerslist'] = $res->response->docs;
         $cnt = json_encode(count($res->response->docs));
         //Change the result json  into array
- 
+
         for ($i = 0; $i < $cnt; $i++) {
             //echo "json_encode();die()";
             $tempResponse = $res->response->docs[$i];
@@ -751,57 +745,65 @@ class AjaxController extends Controller {
             $arr[1] = $tempResponse->lat;
             $arr[2] = $tempResponse->lng;
             $arr[3] = $tempResponse->ea;
- 
+
             array_push($markerlist, $arr);
         }
         echo json_encode($markerlist);
     }
- 
+
     /*
      * invite vendor
      */
- 
+
     public function actionInviteVendor() {
         $email = Yii::app()->request->getParam('email');
 //      print_r($_POST); 
         if (strlen($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
- 
+
             $id = Yii::app()->user->id;
             //$mail=  Yii::app()->user->email;  
             $invite = new Monitorlynotification();
             $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1);
- 
- 
- 
- 
+
+
+
+
             $invite->save();
             $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;
             $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink), array('sales@eatads.com'));
             $mail->eatadsSend();
- 
- 
         } else {
             echo 0;
             //wrong email address den do something
-  
         }
- 
     }
 
- public function actionRequestedVendor() {
-        if(isset($_POST['vendorid']) && isset($_POST['companyid'])){
+    public function actionRequestedVendor() {
+        if (isset($_POST['vendorid']) && isset($_POST['companyid'])) {
             $companyid = $_POST['companyid'];
             $vendorcompanyid = $_POST['vendorid'];
             $model = new Requestedcompanyvendor();
             $model->attributes = array(
-                'companyid'=>$companyid,
-                'createdby'=>1,
-                'createddate'=>date("Y-m-d H:i:s"),
-                'vendorcompanyid'=>$vendorcompanyid,
-                );
+                'companyid' => $companyid,
+                'createdby' => 1,
+                'createddate' => date("Y-m-d H:i:s"),
+                'vendorcompanyid' => $vendorcompanyid,
+            );
             $model->save();
         }
-        
     }
- 
+
+    public function actionAcceptRequest() {
+        if (isset($_POST['vendorcompanyid']) && isset($_POST['id'])) {
+            $vcid = $_POST['vendorcompanyid'];
+            $id = $_POST['id'];
+            
+            $model = Requestedcompanyvendor::model()->findByPk($id);
+            $model->acceptedby = $vcid;
+            $model->accepteddate = date("Y-m-d H:i:s");
+            $model->save();
+            echo 200;
+        }
+    }
+
 }

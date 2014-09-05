@@ -43,7 +43,6 @@ class UserController extends Controller {
             array('deny', // deny all users
                 'users' => array('*'),
             ),
-            
         );
     }
 
@@ -78,17 +77,23 @@ class UserController extends Controller {
             $model->attributes = $_POST['User'];
             //print_r($_POST['User']['username']);die();
             $role = Role::model()->findByPk(5);
-                $model->username = $_POST['User']['username'];
-                $model->email = 'dummy' . $model->username . '@eatads.com';
-                $model->phonenumber = $_POST['User']['phonenumber'];
-                $model->datecreated = date("Y-m-d H:i:s");
-                $model->datemodified = date("Y-m-d H:i:s");
-                $model->active = 1;
-                $model->fname = $_POST['User']['username'];
-                $model->companyid = Yii::app()->user->cid;
-                $pwd = $_POST['User']['password'];
-                $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
-                $password = $ph->HashPassword($pwd);
+            $check=  User::checkUniqueUsername(Yii::app()->user->id, strtolower($_POST['User']['username']));
+            //echo '<pre>'; print_r(strcasecmp($check['cnt'], '0')); die();
+            if(strcasecmp($check['cnt'], '0')==0){
+                echo 'hi';
+            $model->username = strtolower($_POST['User']['username']);
+            //echo $model->username;            die();
+            $model->email = 'dummy' . $model->username . '@eatads.com';
+            $model->phonenumber = $_POST['User']['phonenumber'];
+            $model->datecreated = date("Y-m-d H:i:s");
+            $model->datemodified = date("Y-m-d H:i:s");
+            $model->active = 1;
+            $model->fname = $_POST['User']['username'];
+            $model->companyid = Yii::app()->user->cid;
+            
+            $pwd = $_POST['User']['password'];
+            $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
+            $password = $ph->HashPassword($pwd);
             //User::model()->insertUser($model);
             $result = $ph->CheckPassword($pwd, $model->password);
             //echo $result;
@@ -98,12 +103,19 @@ class UserController extends Controller {
                 // Error: Unauthorized
             }
             $model->password = $password;
-
+            //echo '<pre>'; print_r($model); die();
             if ($model->validate()) {
                 // print_r($model->attributes);
                 $model->save();
                 UserRole::model()->insertRoles($model->id, $role->id);
                 $this->redirect(Yii::app()->getBaseUrl() . '/user');
+            }
+            }
+            else{
+                /*
+                 * flash a message if the username already exists
+                 */
+                
             }
         }
 
