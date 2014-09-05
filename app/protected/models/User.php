@@ -303,12 +303,23 @@ class User extends BaseUser {
     }
 
     /*
+     * 
+     */
+
+    public static function changePassword($id, $pwd) {
+
+        $cmd = Yii::app()->db->createCommand("Select ");
+        $cmd = $cmd->update('User', array(
+            'password' => $pwd,), 'id=:id', array(':id' => $id));
+    }
+
+    /*
      * returns the model selected of user table.
      * the model has sql run over it
      * sql query-> select fname,lname,email,phonenumber from user where active=1 AND status=1
      */
 
-    public static function showActiveUsers() {
+    public static function fetchUserDetails() {
         $criteria = new CDbCriteria();
         //$criteria->concat = 'fname, lname as name';
         $criteria->select = 'id, fname, lname, email, phonenumber';
@@ -318,50 +329,24 @@ class User extends BaseUser {
         return $model;
     }
 
-    /*
-     * 
-     */
-    public static function changePassword($id,$pwd) {
-            
-            $cmd = Yii::app()->db->createCommand("Select ");
-            $cmd = $cmd->update('User', array(
-                       'password'=> $pwd,),
-                       'id=:id',
-                        array(':id'=>$id));
-            
-        }
-        
-        
-          /*
-         * returns the model selected of user table.
-         * the model has sql run over it
-         * sql query-> select fname,lname,email,phonenumber from user where active=1 AND status=1
-         */
-        public static function fetchUserDetails() {
-            $criteria = new CDbCriteria();
-            //$criteria->concat = 'fname, lname as name';
-            $criteria->select = 'id, fname, lname, email, phonenumber';
-            $criteria->condition = 'active=:active AND status=:status';
-            $criteria->params = array(':active'=>1, ':status'=>1);
-            $model = User::model()->findAll($criteria);
-            return $model;
-        }
+    public static function fetchCompanyUsers($companyid, $roleid = null) {
+        $sql = 'select u.id, u.username as name from User u '
+                . 'where companyid = ' . $companyid;
+        return Yii::app()->db->createCommand($sql)->queryAll();
+    }
 
-        
-         public static function fetchCompanyUsers($companyid,$roleid=null) {
-            $sql = 'select u.id, u.username as name from User u '
-                    . 'where companyid = '. $companyid;
-            return Yii::app()->db->createCommand($sql)->queryAll();
-                    
-        } 
-
-        public static function fetchCompanyUsersModel($cid) {
-            $criteria = new CDbCriteria();
+    public static function fetchCompanyUsersModel($cid) {
+        $criteria = new CDbCriteria();
         //$criteria->concat = 'fname, lname as name';
         $criteria->select = 'id, fname, lname, email, phonenumber';
         $criteria->condition = 'active=:active AND status=:status AND companyid =:companyid';
         $criteria->params = array(':active' => 1, ':status' => 1, ':companyid' => $cid);
         $model = User::model()->findAll($criteria);
         return $model;
-        }
+    }
+
+    public static function checkUniqueUsername($id, $username) {
+        $sql= 'SELECT count(*) as cnt from user where username like \'' . $username . '\' and companyid = ' . $id;
+        return Yii::app()->db->createCommand($sql)->queryRow();
+    }
 }

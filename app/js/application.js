@@ -181,23 +181,23 @@ $(document).ready(function() {
 
 });
 
-    function removeListingFromCampaignd(id, cid) {
+function removeListingFromCampaignd(id, cid) {
 //        console.log('ffsdsdfsfss');
-        //var cid = $('#addedlistings_' +id).parent().parent().parent().parent().attr('id').split('_')[1];
-        $.ajax({
-                   type: 'POST',
-                   url: $('#completePath').text() + '/ajax/removeListingFromCampaign',
-                   data: {
-                       'sid': id,
-                       'cid' : cid
-                   },
-                success:function(data){
-              $('#addedlistings_' + id).parent().remove();
-                    console.log(data);  
-                   },
-                   error: function(data) { // if error occured
-                         alert("Error occured.please try again");
-                         alert(data);
-                    }
-                  });
-    }
+    //var cid = $('#addedlistings_' +id).parent().parent().parent().parent().attr('id').split('_')[1];
+    $.ajax({
+        type: 'POST',
+        url: $('#completePath').text() + '/ajax/removeListingFromCampaign',
+        data: {
+            'sid': id,
+            'cid': cid
+        },
+        success: function(data) {
+            $('#addedlistings_' + id).parent().remove();
+            console.log(data);
+        },
+        error: function(data) { // if error occured
+            alert("Error occured.please try again");
+            alert(data);
+        }
+    });
+}
