@@ -104,10 +104,10 @@ class ApiController extends Controller {
                     $start = ($start > 0) ? $start : 0;
                     if ($tDone == 'true') {
 
-                        $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng, COUNT( pp.id ) as photocount, dueDate as duedate "
+                        $sql = "SELECT t.id, c.name AS campaign, l.name AS site, l.geoLat AS lat, l.geoLng AS lng, COUNT( pp.id ) as photocount, dueDate as duedate "
                                 . "FROM Task t "
                                 . "LEFT JOIN Campaign c ON c.id = t.campaignid "
-                                . "LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid "
+                                . "LEFT JOIN Listing l ON l.id = t.siteid "
                                 . "LEFT JOIN PhotoProof pp ON pp.taskid = t.id "
                                 . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
                                 . "WHERE t.taskDone=1 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
@@ -115,10 +115,10 @@ class ApiController extends Controller {
                                 . "LIMIT {$start}, {$limit}";
                     } else {
 
-                        $sql = "SELECT t.id, c.name AS campaign, ml.name AS site, ml.geoLat AS lat, ml.geoLng AS lng, dueDate as duedate "
+                        $sql = "SELECT t.id, c.name AS campaign, l.name AS site, l.geoLat AS lat, l.geoLng AS lng, dueDate as duedate "
                                 . "FROM Task t "
                                 . "LEFT JOIN Campaign c ON c.id = t.campaignid "
-                                . "LEFT JOIN MonitorlyListing ml ON ml.id = t.siteid "
+                                . "LEFT JOIN Listing l ON l.id = t.siteid "
                                 . "WHERE t.taskDone=0 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
                                 . "GROUP BY t.id "
                                 . "LIMIT {$start}, {$limit}";
