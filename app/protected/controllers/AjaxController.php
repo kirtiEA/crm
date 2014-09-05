@@ -62,6 +62,37 @@ class AjaxController extends Controller {
         echo $returnUrl;
     }
  
+    public function actionFetchppimages() {
+        $taskId = Yii::app()->request->getParam('taskid');
+        $dueDate = Yii::app()->request->getParam('duedate');
+        $sql = "SELECT pp.id, pp.imageName, pp.clickedDateTime, pp.clickedLat, pp.clickedLng, CONCAT(u.fname, u.lname) as clickedBy, pp.installation, "
+                . "pp.lighting, pp.obstruction, pp.comments "
+                . "FROM PhotoProof pp "
+                . "LEFT JOIN User u ON u.id=pp.clickedBy "
+                . "WHERE pp.taskid = '$taskId' "
+                . "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";
+        $photoProofResult = Yii::app()->db->createCommand($sql)->queryAll();
+        $photoProofArr = array();
+        foreach($photoProofResult as $pp) {
+            $photoProof = array(
+                'id' => $pp['id'],
+                'imageName' => JoyUtilities::getAwsFileUrl('big_'.$pp['imageName'], 'listing'),
+                'clickedDateTime' => $pp['clickedDateTime'],
+                'clickedLat' => $pp['clickedLat'],
+                'clickedLng' => $pp['clickedLng'],
+                'clickedBy' => $pp['clickedBy'],
+                'installation' => $pp['installation'],
+                'lighting' => $pp['lighting'],
+                'obstruction' => $pp['obstruction'],
+                'comments' => $pp['comments'],
+            );
+            array_push($photoProofArr, $photoProof);
+        }
+        
+        //$imagePath = JoyUtilities::getAwsFileUrl('tiny_'.$data->filename, 'listing');
+        echo json_encode($photoProofArr);
+    }
+    
     public function actionFetchvendorsites() {
         $vendorId = Yii::app()->request->getParam('vendorid');
         $sql = "SELECT l.id, l.site_code, mt.name as mediatype, a.name as city, l.locality, l.name, l.length, l.width, l.lightingid "

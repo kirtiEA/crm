@@ -43,8 +43,13 @@ class UserController extends Controller {
             array('deny', // deny all users
                 'users' => array('*'),
             ),
-            
         );
+    }
+
+    public function init() {
+        if (Yii::app()->user->isGuest) {
+            $this->redirect(Yii::app()->createUrl('account'));
+        }
     }
 
     /**
@@ -78,17 +83,17 @@ class UserController extends Controller {
             $model->attributes = $_POST['User'];
             //print_r($_POST['User']['username']);die();
             $role = Role::model()->findByPk(5);
-                $model->username = $_POST['User']['username'];
-                $model->email = 'dummy' . $model->username . '@eatads.com';
-                $model->phonenumber = $_POST['User']['phonenumber'];
-                $model->datecreated = date("Y-m-d H:i:s");
-                $model->datemodified = date("Y-m-d H:i:s");
-                $model->active = 1;
-                $model->fname = $_POST['User']['username'];
-                $model->companyid = Yii::app()->user->cid;
-                $pwd = $_POST['User']['password'];
-                $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
-                $password = $ph->HashPassword($pwd);
+            $model->username = $_POST['User']['username'];
+            $model->email = 'dummy' . $model->username . '@eatads.com';
+            $model->phonenumber = $_POST['User']['phonenumber'];
+            $model->datecreated = date("Y-m-d H:i:s");
+            $model->datemodified = date("Y-m-d H:i:s");
+            $model->active = 1;
+            $model->fname = $_POST['User']['username'];
+            $model->companyid = Yii::app()->user->cid;
+            $pwd = $_POST['User']['password'];
+            $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
+            $password = $ph->HashPassword($pwd);
             //User::model()->insertUser($model);
             $result = $ph->CheckPassword($pwd, $model->password);
             //echo $result;
