@@ -80,17 +80,23 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
         }
     var addtocampaign = [];
     var removefromcampaign = [];
+
     function addToCampaign(id) {
         addtocampaign.push(id);
         $('#listing_' + id).addClass('selected');
         $('#listing_' + id + ' span').removeClass('glyphicon-plus').addClass('glyphicon-remove').attr('onclick', 'removeFromArrayAddToCampaign(\'' + id + '\')');
-        
+        var cid = $('#selectedvendorid').val();
+        var details = $('#listing_'+id).text();
+        var html = '<li id="justadded_' + id +'">' + details +'<span onclick="removeFromArrayAddToCampaign(\'' + id + '\')" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_1"></span></li>';
+        console.log('cid ' + cid + ' html ' + html);
+        $('#vendorselected_'+cid + ' > ul').append(html);
     }
     function removeFromArrayAddToCampaign(id) {
             var index = addtocampaign.indexOf(id);
             if (index > -1) {
                 $('#listing_' + id).removeClass('selected');
                 $('#listing_' + id + ' span').removeClass('glyphicon-remove').addClass('glyphicon-plus').attr('onclick', 'addToCampaign(\'' + id + '\')');
+                $('#justadded_' + id).remove();
                 addtocampaign.splice(index, 1);
             }
     }
@@ -217,6 +223,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
          success:function(data){
              dust.render("campaignListings", JSON.parse(data), function(err, out) {
                  $('#campaignListings').html(out);
+                 $('#selectedvendorid').val(id);
                  console.log(err);
                  var arr = $('#campaignListings > li').map(function(){ return $(this).attr('id').split('_')[1];
             }).get();
@@ -293,6 +300,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                 <div class="row">
                     <div class="col-md-3 left-content">
                         <div class="search-box-wrapper">
+                            <input id="selectedvendorid" type="hidden">
                             <input type="text" placeholder="Search Vendor">
                         </div>
                         <ul id="vendors">
@@ -394,7 +402,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                   '<div class="list-item-content show-hide-content">
                     <ul class="sub-list" id="campaign_'. $value['id'].'">';
                     foreach ($value['sites'] as $site) {
-                        $html = $html . '<li>
+                        $html = $html . '<li id="vendorselected_'. $site['id'] .'">
                             <h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $site['name'] .'('.$site['count'] . ') &nbsp;</h3>'
                             . '<div class="assign-dropdown">Assigned to 
                                 <select>

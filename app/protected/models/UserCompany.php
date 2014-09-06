@@ -8,10 +8,11 @@ class UserCompany extends BaseUserCompany {
         return parent::model($className);
     }
     
-    public static function fetchVendorsList() {
+    public static function fetchVendorsList($cid) {
          $sql = 'select count(*) as cnt, companyid as id, uc.name from Listing  
-            inner join UserCompany uc on uc.id = companyid 
-            where companyid is not null and companyid != 0
+            inner join UserCompany uc on uc.id = companyid and uc.id in ( select vendorcompanyid from requestedcompanyvendor where companyid ='. $cid .' and accepteddate is not null)' .
+            'where companyid is not null and companyid != 0
+
             and status = 1 and solr = 1
             group by companyid' ;
         $command = Yii::app()->db->createCommand($sql);

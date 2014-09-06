@@ -261,7 +261,7 @@ class AjaxController extends Controller {
     }
 
     public function actionVendorsList() {
-        echo json_encode(UserCompany::fetchVendorsList());
+        echo json_encode(UserCompany::fetchVendorsList(Yii::app()->user->cid));
     }
 
     public function actionFetchVendorListing() {
