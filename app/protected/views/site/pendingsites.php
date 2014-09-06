@@ -10,10 +10,23 @@
     });
     
     function approvelisting(id) {
-        
+        $.ajax({
+                   type: 'POST',
+                   url: '<?php echo Yii::app()->urlManager->createUrl('ajax/ApproveListingRequest'); ?>',
+                   data: {
+                       'id': id
+                   },
+                success:function(data){
+                    $('#listing_'+id).remove();
+                   },
+                   error: function(data) { // if error occured
+                         alert("Error occured.please try again");
+                         alert(data);
+                    }
+                  });
     }
 </script>        
-        
+     <input id="sitetypeid" value="3" style="display: none">   
 <div>
 <!-- tabs -->    
 <ul class="nav nav-tabs" id="sites-tabs" role="tablist" >
@@ -97,7 +110,7 @@
                         <?php 
                             $html = '';
                             foreach ($lists as $list) {
-                                $html = $html . '<li class="list-item">';
+                                $html = $html . '<li class="list-item" id="listing_'.$list['id'].'">';
                              
                              if(!empty($list['thumbnail'])) {
                                  $html = $html . '<div class="pull-left site-thumb" style="background-image:url(\'' . $list['thumbnail'] . '\')"</div>'; 

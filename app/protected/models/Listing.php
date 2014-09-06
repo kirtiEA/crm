@@ -499,4 +499,29 @@ where t.status =1 and t.campaignid = ' . $campaignid)->queryAll();
         $data = Yii::app()->db->createCommand($sql)->queryAll();
         return $data;
     }
+    
+    public static function updateListing($id) {
+        $sql  ='Update Listing set status = 1, approved = 1 where id = '. $id;
+        return Yii::app()->db->createCommand($sql)->execute();
+    }
+    
+    public static function getListingsForAcceptedVendorsMarkers($cid,$start=null) {
+        $sql = 'SELECT l.id, geolat as lat, geolng as lng
+        FROM Listing l 
+        inner join UserCompany uc on uc.id = l.companyid and uc.id in (';
+        
+        $sql = $sql . 'select vendorcompanyid from requestedcompanyvendor where companyid ='. $cid .' and accepteddate is not null)';
+        $sql = $sql . ' where l.status = 1 limit ' . $start . ',30';
+        $data = Yii::app()->db->createCommand($sql)->queryAll();        
+        return $data;
+    }
+    
+    public static function getSitesTobeApprovedMarkers($cid, $start = 0) {
+        $sql = 'SELECT l.id, geolat as lat, geolng as lng        
+        FROM Listing l 
+        inner join UserCompany uc on uc.id = l.companyid 
+        where l.approved = 0 and  l.status =0 and l.companyid = ' .$cid ;
+        $data = Yii::app()->db->createCommand($sql)->queryAll();
+        return $data;
+    }
 }
