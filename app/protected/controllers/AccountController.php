@@ -12,11 +12,12 @@ class AccountController extends Controller {
             Yii::app()->end();
         }
 
-
+        $status = 200;
         // collect user input data
         if (isset($_POST['LoginForm'])) {
             $model->attributes = $_POST['LoginForm'];
             // validate user input and redirect to the previous page if valid
+            
             if ($model->validate() && $model->login()) {
                 if (!empty($returnUrlParam)) {
                     $this->redirect($returnUrlParam);
@@ -24,9 +25,11 @@ class AccountController extends Controller {
                     JoyUtilities::redirectUser(Yii::app()->user->id);
                     $this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');
                 }
+            } else {
+                $status = 101;
             }
         }
-        $this->renderPartial('index', array('model' => $model));
+        $this->renderPartial('index', array('model' => $model, 'status' => $status));
     }
 
     // Uncomment the following methods and override them if needed

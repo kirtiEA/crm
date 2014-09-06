@@ -18,7 +18,7 @@ class SubscriptionController extends Controller {
         foreach (UserCompany::model()->findAll() as $value) {
             array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
         }
-        $this->render('index', array(
+        $this->renderPartial('index', array(
             'model' => $model,
             'vendorList' => json_encode($vendorList),
             'nid' => $nid,

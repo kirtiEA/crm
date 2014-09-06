@@ -11,15 +11,15 @@
 <div ng-app="siteListing">
 <!-- tabs -->    
 <ul class="nav nav-tabs" id="sites-tabs" role="tablist" ng-controller="DemoController">
-    <li class="active"><a href="#" role="tab" data-toggle="tab">Vendors Sites</a></li>
-    <li><a href="#" role="tab" data-toggle="tab" ng-click="reddit.nextPage(2)">My Sites</a></li>
-    <li><a href="sites_mypendingsites.html" role="tab" data-toggle="tab" ng-click="reddit.nextPage(3)">My Pending Sites</a></li>
+    <li class="active"><a href="#" role="tab" data-toggle="tab" onclick="$('#sitetypeid').val(1);">Vendors Sites</a></li>
+<!--    <li><a href="#" role="tab" data-toggle="tab" ng-click="reddit.nextPage(2)">My Sites</a></li>-->
+<li><a href="<?php echo Yii::app()->createUrl('site/myPendingSites')?>" >My Pending Sites</a></li>
 </ul>
 
 <!-- end of tabs --> 
 
 <!--map and list -->  
-
+<input id="sitetypeid" value="1" style="display: none">
 <div class="container-fluid content-wrapper map-view" >
     <div class="row"> 
 
@@ -163,13 +163,16 @@
                     </ul>
                 </div>
                 <div class="list" >
-                    <ul id="site-list" infinite-scroll='reddit.nextPage(2)' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='9'>
+                    <ul id="site-list" infinite-scroll='reddit.nextPage(1)' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='9'>
                         <li class="list-item" data-ng-repeat="banner in reddit.products | filter:search" ng-animate="'animate'">
                             <div class="pull-left site-thumb" style="background-image: {{banner.thumbnail}}"></div>
                             <div class="site-details">
                                 <h3>{{banner.name}}</h3>
-                                <h5><span>Non-lit </span>{{banner.type}} &nbsp; &nbsp; {{banner.width}} x {{banner.height}} ft</span></h5>
-                                <h4>Pioneer</h4>
+                                <h5><span>{{banner.lighting}} </span>{{banner.mediatype}} &nbsp; &nbsp; {{banner.width}} x {{banner.height}} {{banner.sizeunit}}</h5>
+                                <h4>{{banner.companyname}}</h4>
+                            </div>
+                            <div ng-switch on="{{banner.accepted}}" class="pull-right list-item-buttons">
+                                <div ng-switch-when="1" class="btn btn-secondary" onclick="approvelisting({{banner.id}});">Approve</div>
                             </div>
                             <div class="clearfix"></div>
                         </li>

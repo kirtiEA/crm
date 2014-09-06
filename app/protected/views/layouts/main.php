@@ -32,8 +32,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
-                        <div id="logo"></div>
+                    <a class="navbar-brand" href="#">                        
+                        <div id="logo" style="background-image: url(<?php echo Yii::app()->getBaseUrl() . '/images/logo.png';?>)"></div>
                     </a>
                 </div>
 
