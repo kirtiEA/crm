@@ -14,20 +14,23 @@ class Requestedcompanyvendor extends BaseRequestedcompanyvendor {
     }
 
     public static function showRequestedVendors($companyid) {
-//        $cmd = Yii::app()->db->createCommand();
-//        $cmd->select('usercompany.id, user.email, rv.createddate, rv.accepeteddate');
-//        $cmd->from('requestedcompanyvendor rv');
-//        $cmd->join('usercompany uc', 'uc.id = rv.vendorcompanyid');
-//        $cmd->join('user u', 'u.id = uc.id');
-//        $cmd->where('$companyid=:companyid', array(':companyid' => $companyid));
+
         $query = 'select uc.name as name, u.email as vendoradmin,  DATE_FORMAT(rv.createddate,\'%d %M %Y\') as createddate, rv.accepteddate 
             from requestedcompanyvendor rv
             inner join UserCompany uc on uc.id = rv.vendorcompanyid
             inner join User u on u.id = uc.userid
             and rv.companyid = ' . $companyid;
-        
-                
+
+
         return Yii::app()->db->createCommand($query)->queryAll();
     }
 
+    public static function showWaitingRequests($vendorcompanyid) {
+        $query = 'select rv.id as id, uc.name as name, u.email as vendoradmin, DATE_FORMAT(rv.createddate,\'%d %M %Y\') as createddate, rv.accepteddate 
+                    from requestedcompanyvendor rv 
+                    inner join UserCompany uc on uc.id = rv.companyid 
+                    inner join User u on u.id = uc.userid and rv.vendorcompanyid =' . $vendorcompanyid . ' and rv.acceptedby is NULL';
+
+        return Yii::app()->db->createCommand($query)->queryAll();
+    }
 }

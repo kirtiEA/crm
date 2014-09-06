@@ -6,9 +6,9 @@ $(document).ready(function() {
     $('.multiselect').multiselect({
         nonSelectedText: 'Select',
         enableFiltering: true
-    });
+    });   
 
-    //start and end date behavior
+    // start and end date behavior    
     $("#sdate").datepicker({
         //changeMonth: true,
         numberOfMonths: 1,
@@ -26,6 +26,24 @@ $(document).ready(function() {
         dateFormat: 'dd M yy',
         onClose: function(selectedDate) {
             $("#sdate").datepicker("option", "maxDate", selectedDate);
+        }
+    });
+    // start date for campaign
+    $("#scdate").datepicker({
+        //changeMonth: true,
+        numberOfMonths: 1,        
+        dateFormat: 'dd M yy',
+        onClose: function(selectedDate) {
+            if (selectedDate)
+                $("#ecdate").datepicker("option", "minDate", selectedDate);
+        }
+    });
+    $("#ecdate").datepicker({        
+        //changeMonth: true,
+        numberOfMonths: 1,
+        dateFormat: 'dd M yy',
+        onClose: function(selectedDate) {
+            $("#scdate").datepicker("option", "maxDate", selectedDate);
         }
     });
 
@@ -63,9 +81,9 @@ $(document).ready(function() {
 
 
     //modal
-    $('#lightbox-btn').click(function() {
+    /*$('#lightbox-btn').click(function() {
         $('div#img-gallery a:first-child').ekkoLightbox();
-    });
+    });*/
 
     //invite vendor modal, close on clicking cancel
     $('#cancel').click(function(e) {
@@ -163,23 +181,23 @@ $(document).ready(function() {
 
 });
 
-    function removeListingFromCampaignd(id, cid) {
+function removeListingFromCampaignd(id, cid) {
 //        console.log('ffsdsdfsfss');
-        //var cid = $('#addedlistings_' +id).parent().parent().parent().parent().attr('id').split('_')[1];
-        $.ajax({
-                   type: 'POST',
-                   url: $('#completePath').text() + '/ajax/removeListingFromCampaign',
-                   data: {
-                       'sid': id,
-                       'cid' : cid
-                   },
-                success:function(data){
-              $('#addedlistings_' + id).parent().remove();
-                    console.log(data);  
-                   },
-                   error: function(data) { // if error occured
-                         alert("Error occured.please try again");
-                         alert(data);
-                    }
-                  });
-    }
+    //var cid = $('#addedlistings_' +id).parent().parent().parent().parent().attr('id').split('_')[1];
+    $.ajax({
+        type: 'POST',
+        url: $('#completePath').text() + '/ajax/removeListingFromCampaign',
+        data: {
+            'sid': id,
+            'cid': cid
+        },
+        success: function(data) {
+            $('#addedlistings_' + id).parent().remove();
+            console.log(data);
+        },
+        error: function(data) { // if error occured
+            alert("Error occured.please try again");
+            alert(data);
+        }
+    });
+}

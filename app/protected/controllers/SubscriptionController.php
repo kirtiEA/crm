@@ -8,7 +8,11 @@ class SubscriptionController extends Controller {
      * This method is used by the 'accessControl' filter.
      * @return array access control rules
      */
-
+    public function init() {
+        if (Yii::app()->user->isGuest) {
+            $this->redirect(Yii::app()->createUrl('account'));
+        }
+    }
 
     public function actionIndex() {
         $model = new Monitorlysubscription();
@@ -39,10 +43,11 @@ class SubscriptionController extends Controller {
                 //print_r($model->attributes);
                 //print_r($_POST);
                 //if($model->validate())
-                echo $model->save(FALSE);die();
+                echo $model->save(FALSE);
+                die();
 //                echo "id=".$model->id ;
                 //echo '<pre>';
-  //              print_r($model->attributes);
+                //              print_r($model->attributes);
             }
         }
     }
@@ -74,4 +79,3 @@ class SubscriptionController extends Controller {
       }
      */
 }
-    

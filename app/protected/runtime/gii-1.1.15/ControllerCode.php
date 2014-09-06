@@ -2,5 +2,5 @@
 return array (
   'template' => 'default',
   'baseClass' => 'Controller',
-  'actions' => 'index,upcoming,expired',
+  'actions' => 'index',
 );
