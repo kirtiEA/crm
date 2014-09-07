@@ -13,8 +13,11 @@ class UserCompany extends BaseUserCompany {
             inner join UserCompany uc on uc.id = companyid and uc.id in ( select vendorcompanyid from requestedcompanyvendor where companyid ='. $cid .' and accepteddate is not null)' .
             'where companyid is not null and companyid != 0
 
-            and status = 1 and solr = 1
-            group by companyid' ;
+            and status = 1 
+            group by companyid 
+            union  select count(*) as cnt, companyid as id, uc.name 
+from Listing  
+            inner join UserCompany uc on uc.id = companyid and uc.id = '.$cid ;
         $command = Yii::app()->db->createCommand($sql);
             $data = $command->queryAll();
         return $data;
