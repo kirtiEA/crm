@@ -88,7 +88,13 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
         var details = $('#listing_'+id).text();
         var html = '<li id="justadded_' + id +'">' + details +'<span onclick="removeFromArrayAddToCampaign(\'' + id + '\')" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_1"></span></li>';
         console.log('cid ' + cid + ' html ' + html);
-        $('#vendorselected_'+cid + ' > ul').append(html);
+        console.log($('#vendorselected_'+cid).length);
+        if ($('#vendorselected_'+cid).length  ==0) {
+            console.log("no vendor added");
+        } else {
+            $('#vendorselected_'+cid + ' > ul').append(html);
+        }    
+        
     }
     function removeFromArrayAddToCampaign(id) {
             var index = addtocampaign.indexOf(id);
@@ -388,7 +394,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
             <?php 
                 $html = '';
                 foreach ($campaigns as $value) {
-                    $html = $html . '            <li class="list-item">
+                $html = $html . '            <li class="list-item" id="camp_'. $value['id'] .'">
                 <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
                  . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3>' .
                   '<div class="pull-right">

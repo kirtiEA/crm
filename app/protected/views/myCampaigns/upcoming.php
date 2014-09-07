@@ -85,11 +85,28 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
         addtocampaign.push(id);
         $('#listing_' + id).addClass('selected');
         $('#listing_' + id + ' span').removeClass('glyphicon-plus').addClass('glyphicon-remove').attr('onclick', 'removeFromArrayAddToCampaign(\'' + id + '\')');
+        var campid = $('.selectedCampaignId').text();
         var cid = $('#selectedvendorid').val();
+        var cname = $('#selectedvendorname').val()
         var details = $('#listing_'+id).text();
         var html = '<li id="justadded_' + id +'">' + details +'<span onclick="removeFromArrayAddToCampaign(\'' + id + '\')" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_1"></span></li>';
-        console.log('cid ' + cid + ' html ' + html);
-        $('#vendorselected_'+cid + ' > ul').append(html);
+        console.log('cid ' + cid + ' html ' + html + ' cname ' + cname + ' camp ' + campid);
+        if ($('#vendorselected_'+cid).length  ==0) {
+            console.log("no vendor added");
+            var htm = '<li id="vendorselected_'+ cid +'">' +
+                            '<h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' + cname +'&nbsp;</h3><div class="assign-dropdown">Assigned to' + 
+                                '<select>' +
+                                    '<option value="' + cid +'_0" selected="true">Myself</option>'+
+                                    '<option value="' + cid+ '_' + cid+ '">Live Media</option>'+
+                                    '</select></div><ul class="sub-sub-list show-hide-content">'
+                                    +'</ul></li>';
+                            
+           console.log("no vendor added  >> "+ htm); 
+            $('#campaign_'+campid).append(htm);
+            $('#vendorselected_'+cid + ' > ul').append(html);
+        } else {
+            $('#vendorselected_'+cid + ' > ul').append(html);
+        }    
     }
     function removeFromArrayAddToCampaign(id) {
             var index = addtocampaign.indexOf(id);
@@ -137,13 +154,14 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                  success:function(data){
                      
                      
-                     
+                     addtocampaign = [];
+                     removefromcampaign = [];
                      $('#add-site-modal').modal('hide');
                             //$('.selectedCampaignId').html('');
                             $('#campaignListings').html('');
                             console.log(data);
                         if (data === '200') {
-                            location.reload();
+                            //location.reload();
                         }    
                         
                     },
@@ -224,6 +242,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
              dust.render("campaignListings", JSON.parse(data), function(err, out) {
                  $('#campaignListings').html(out);
                  $('#selectedvendorid').val(id);
+                 $('#selectedvendorname').val($('#vendor_'+id).text());
                  console.log(err);
                  var arr = $('#campaignListings > li').map(function(){ return $(this).attr('id').split('_')[1];
             }).get();
@@ -301,6 +320,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                     <div class="col-md-3 left-content">
                         <div class="search-box-wrapper">
                             <input id="selectedvendorid" type="hidden">
+                            <input id="selectedvendorname" type="hidden">
                             <input type="text" placeholder="Search Vendor">
                         </div>
                         <ul id="vendors">
@@ -389,7 +409,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
             <?php 
                 $html = '';
                 foreach ($campaigns as $value) {
-                    $html = $html . '            <li class="list-item">
+                $html = $html . '            <li class="list-item" id="camp_'. $value['id'] .'">
                 <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
                  . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3>' .
                   '<div class="pull-right">

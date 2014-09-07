@@ -322,8 +322,8 @@ class AjaxController extends Controller {
                         $companyid = $inputVendorIds[0];
                         $assignedcompanyid = $inputVendorIds[1];
                     }
-// print_r($companyid);
-                    Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid);
+ print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ');
+ print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid));
                 }
                 echo '200';
             } else if ($_POST['type'] == 2) {
@@ -349,10 +349,7 @@ class AjaxController extends Controller {
             } else if ($_POST['type'] == 3) {
 //print_r($add);
                 $vendorIds = json_decode($_POST['pop']);
-                if ($vendorIds || count($vendorIds) == 0) {
-// array_push($vendorIds, '0');
-                    Task::updateTaskPopWhenNoVendorSelected(Yii::app()->user->cid, $_POST['cid']);
-                }
+
                 if (count($add) > 0) {
                     for ($i = 0; $i < count($add); $i++) {
                         $date = strtotime($campaign->attributes['startDate']);
@@ -370,7 +367,10 @@ class AjaxController extends Controller {
                     }
                 }
 
-
+                if ($vendorIds || count($vendorIds) == 0) {
+// array_push($vendorIds, '0');
+                    Task::updateTaskPopWhenNoVendorSelected(Yii::app()->user->cid, $_POST['cid']);
+                }
                 for ($i = 0; $i < count($vendorIds); $i++) {
                     $date = strtotime($campaign->attributes['startDate']);
                     $companyid;
@@ -383,8 +383,8 @@ class AjaxController extends Controller {
                         $companyid = $inputVendorIds[0];
                         $assignedcompanyid = $inputVendorIds[1];
                     }
-
-                    Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid, $date);
+ print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ' . $date . ' ');
+                 print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid, date("Y-m-d H:i:s",$date)));
                 }
                 echo '200';
             }
