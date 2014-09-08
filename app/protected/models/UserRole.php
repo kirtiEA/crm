@@ -110,7 +110,7 @@ class UserRole extends CActiveRecord
             //do something to update user roles table
             $cmd = Yii::app()->db->createCommand();
 
-            $cmd = $cmd->update('userrole', array(
+            $cmd = $cmd->update('UserRole', array(
                        'userid'=> $id, 'roleid'=>$role),
                        'userid=:uid',
                         array(':uid'=>$id));
@@ -123,7 +123,7 @@ class UserRole extends CActiveRecord
          */
         public function insertRoles($id,$role) {
             $cmd = Yii::app()->db->createCommand();
-            $cmd = $cmd->insert('userrole', array(
+            $cmd = $cmd->insert('UserRole', array(
                         'userid'=>$id,
                         'roleid'=>$role 
             ));
