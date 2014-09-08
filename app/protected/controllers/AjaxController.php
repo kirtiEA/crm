@@ -178,6 +178,15 @@ class AjaxController extends Controller {
                 }
             }
 
+            if(Yii::app()->user->cid == $vendorId) {
+                $status = 1;
+                $approved = 1;
+            } else {
+                $status = 0;
+                $approved = 0;
+            }
+                
+                
             $listingModel = new Listing;
             $listingModel->byuserid = (int) $byUserId;
             $listingModel->foruserid = (int) $forUserId;
@@ -191,8 +200,8 @@ class AjaxController extends Controller {
             $listingModel->area = (int) ($value->length * $value->width);
 
             $listingModel->product_type = 2;
-            $listingModel->status = 0;
-            $listingModel->approved = 0;
+            $listingModel->status = $status;
+            $listingModel->approved = $approved;
 
             $listingModel->locality = $value->locality;
             $listingModel->countryid = (int) $countryId;

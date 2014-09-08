@@ -7,9 +7,9 @@ class ReportsController extends Controller
 		$this->render('fetchreport');
 	}
         public function init() {
-//            if(Yii::app()->user->isGuest) {           
-//                $this->redirect(Yii::app()->createUrl('account'));
-//            }
+            if(Yii::app()->user->isGuest) {           
+                $this->redirect(Yii::app()->createUrl('account'));
+            }
         }
         public function actionIndex()
 	{

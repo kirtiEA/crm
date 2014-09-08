@@ -55,7 +55,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::app()->user->name;?> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#">Settings</a></li>
-                                <li><a href="#">Logout</a></li>
+                                <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
                             </ul>
                         </li>
                         <li>
