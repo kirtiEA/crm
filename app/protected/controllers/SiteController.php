@@ -35,9 +35,9 @@ class SiteController extends Controller {
 
     public function actionAddVendor() {
         $vendorList = array();
-        foreach(UserCompany::model()->findAll() as $value) {
-            array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
-            //array_push($vendorList, array('name'=>$value->name));
+        $result = UserCompany::fetchVendorsList(Yii::app()->user->cid);
+        foreach($result as $value) {
+            array_push($vendorList, array('id' => $value['id'], 'value' => $value['name'] . ' (' . $value['cnt'] .')'));
         }
         
         // fetch media types
