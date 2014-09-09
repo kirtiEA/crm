@@ -97,7 +97,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                             '<h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' + cname +'&nbsp;</h3><div class="assign-dropdown">Assigned to' + 
                                 '<select>' +
                                     '<option value="' + cid +'_0" selected="true">Myself</option>'+
-                                    '<option value="' + cid+ '_' + cid+ '">Live Media</option>'+
+                                    '<option value="' + cid+ '_' + cid+ '">' + cname+'</option>'+
                                     '</select></div><ul class="sub-sub-list show-hide-content">'
                                     +'</ul></li>';
                             

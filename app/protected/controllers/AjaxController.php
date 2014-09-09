@@ -151,16 +151,18 @@ class AjaxController extends Controller {
 
         $companyResult = UserCompany::model()->findByPk($vendorId, array('select' => 'userid'));
         $forUserId = $companyResult->userid;
-
         foreach ($data as $value) {
-            //echo $value->mediatype;
+          //  echo $value->id . ',' . strcmp($vendorId, Yii::app()->user->cid);
             $mediaTypeId = array_search(strtolower($value->mediatype), $mediaTypes);
             $lightingId = array_search(strtolower($value->lighting), $lightings);
             //$productType = UserProduct::getUserProductType(552);//$forUserId);
 
             $address = $value->locality . ',' . $value->city;
             $addressGeocode = JoyUtilities::geocode($address);
-            //print_r($addressGeocode); die();
+            $countryId = 1;
+            $stateId = 1;
+            $cityId = 1;
+            //echo (json_encode($addressGeocode)) . '<pre>'; 
             if ($addressGeocode) {
                 // check if country exists        
                 if ($addressGeocode['country'] != '' && $addressGeocode['country'] != null) {
@@ -178,6 +180,15 @@ class AjaxController extends Controller {
                 }
             }
 
+            if(Yii::app()->user->cid == $vendorId) {
+                $status = 1;
+                $approved = 1;
+            } else {
+                $status = 0;
+                $approved = 0;
+            }
+                
+                
             $listingModel = new Listing;
             $listingModel->byuserid = (int) $byUserId;
             $listingModel->foruserid = (int) $forUserId;
@@ -191,14 +202,20 @@ class AjaxController extends Controller {
             $listingModel->area = (int) ($value->length * $value->width);
 
             $listingModel->product_type = 2;
-            $listingModel->status = 0;
-            $listingModel->approved = 0;
+            $listingModel->status = $status;
+            $listingModel->approved = $approved;
 
             $listingModel->locality = $value->locality;
             $listingModel->countryid = (int) $countryId;
             $listingModel->stateid = (int) $stateId;
             $listingModel->cityid = (int) $cityId;
-
+            
+            if (!array_key_exists('lat', $addressGeocode)) {
+                $addressGeocode['lat'] = 0.0;
+            }
+            if (!array_key_exists('lng', $addressGeocode)) {
+                $addressGeocode['lng'] = 0.0;
+            }
             $listingModel->geolat = $addressGeocode['lat'];
             $listingModel->geolng = $addressGeocode['lng'];
             $listingModel->accurate_geoloc = 0;
@@ -209,8 +226,56 @@ class AjaxController extends Controller {
             $listingModel->basecurrencyid = 11;   // 11 for India
 
             $listingModel->datemodified = date('Y-m-d H:i:s');
-            $listingModel->datecreated = date('Y-m-d H:i:s');
-            $listingModel->save();
+            
+            if (empty($value->id)) {
+                $listingModel->datecreated = date('Y-m-d H:i:s');
+                $listingModel->save();
+            } else if (!empty($value->id) && strcmp($listingModel->companyId, Yii::app()->user->cid) ==0){
+                //$listingModel->id = $value->id;
+               // $model = Listing::model()->findByPk($value->id);
+//                 $model->byuserid = (int) $byUserId;
+//                $model->foruserid = (int) $forUserId;
+//                $model->companyId = (int) $vendorId;
+
+                $model = array();
+                $model['name'] = $value->name;
+                $model['site_code'] = $value->site_code;
+                $model['length'] = (int) $value->length;
+                $model['width'] = (int) $value->width;
+                $model['area'] = (int) ($value->length * $value->width);
+
+                $model['product_type'] = 2;
+//                $model->status = $status;
+//                $model->approved = $approved;
+
+                $model['locality'] = $value->locality;
+                if ($countryId != 0) {
+                    $model['countryid'] = (int) $countryId;
+                }
+                if ($stateId != 0) {
+                    $model['stateid'] = (int) $stateId;
+                }
+                if ($cityId != 0) {
+                    $model['cityid'] = (int) $cityId;
+                }
+
+                
+                
+                $model['geolat'] = $addressGeocode['lat'];
+                $model['geolng'] = $addressGeocode['lng'];
+       //         $model['accurate_geoloc'] = 0;
+
+                $model['lightingid'] = (int) $lightingId;
+                $model['mediatypeid'] = (int) $mediaTypeId;
+
+//                $model->basecurrencyid = 11;   // 11 for India
+
+                $model['datemodified'] = date('Y-m-d H:i:s');
+                
+//                $model->update();
+                Listing::model()->updateByPk($value->id, $model);
+            }
+//            usleep(250000);
         }
         echo true;
     }

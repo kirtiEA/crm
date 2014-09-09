@@ -32,6 +32,14 @@ class AccountController extends Controller {
         $this->renderPartial('index', array('model' => $model, 'status' => $status));
     }
 
+    /**
+     * Logs out the current user and redirect to homepage.
+     */
+    public function actionLogout() {
+        Yii::app()->user->logout();        
+        $this->redirect(Yii::app()->homeUrl);
+    }
+    
     // Uncomment the following methods and override them if needed
     /*
       public function filters()

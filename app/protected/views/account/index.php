@@ -210,7 +210,7 @@
             $(function() {
 
                 $('#home_login').click(function(e) {
-                    console.log('clicked');
+                    //console.log('clicked');
                     e.preventDefault();
                     $('#LoginModal').modal('show');
                 });

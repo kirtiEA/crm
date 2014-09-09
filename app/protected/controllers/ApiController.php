@@ -110,7 +110,7 @@ class ApiController extends Controller {
                                 . "LEFT JOIN Listing l ON l.id = t.siteid "
                                 . "LEFT JOIN PhotoProof pp ON pp.taskid = t.id "
                                 . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
-                                . "WHERE t.taskDone=1 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
+                                . "WHERE t.taskDone=1 AND t.status=1 AND t.assigneduserid=$uid AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
                                 . "GROUP BY t.id "
                                 . "LIMIT {$start}, {$limit}";
                     } else {
@@ -119,7 +119,7 @@ class ApiController extends Controller {
                                 . "FROM Task t "
                                 . "LEFT JOIN Campaign c ON c.id = t.campaignid "
                                 . "LEFT JOIN Listing l ON l.id = t.siteid "
-                                . "WHERE t.taskDone=0 AND t.status=1 AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
+                                . "WHERE t.taskDone=0 AND t.status=1 AND t.assigneduserid=$uid AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
                                 . "GROUP BY t.id "
                                 . "LIMIT {$start}, {$limit}";
                     }
