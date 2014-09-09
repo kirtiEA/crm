@@ -53,20 +53,6 @@ class UserController extends Controller {
     }
 
     /**
-     * Displays a particular model.
-     * @param integer $id the ID of the model to be displayed
-     */
-    public function actionNew($id) {
-        $row = Userrole::model()->findByPk($id);
-        $role = Role::model()->findByPk($row->roleid);
-        //echo '<pre>';                print_r($row); die();
-        $this->render('view', array(
-            'model' => $this->loadModel($id),
-            'selected' => $role->name,
-        ));
-    }
-
-    /**
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
@@ -84,45 +70,45 @@ class UserController extends Controller {
             //print_r($_POST['User']['username']);die();
             $role = Role::model()->findByPk(5);
 
-            $check=  User::checkUniqueUsername(Yii::app()->user->id, strtolower($_POST['User']['username']));
+            $check = User::checkUniqueUsername(Yii::app()->user->id, strtolower($_POST['User']['username']));
             //echo '<pre>'; print_r(strcasecmp($check['cnt'], '0')); die();
-            if(strcasecmp($check['cnt'], '0')==0){
-                echo 'hi';
-            $model->username = strtolower($_POST['User']['username']);
-            //echo $model->username;            die();
-            $model->email = 'dummy' . $model->username . '@eatads.com';
-            $model->phonenumber = $_POST['User']['phonenumber'];
-            $model->datecreated = date("Y-m-d H:i:s");
-            $model->datemodified = date("Y-m-d H:i:s");
-            $model->active = 1;
-            $model->fname = $_POST['User']['username'];
-            $model->companyid = Yii::app()->user->cid;
+            if (strcasecmp($check['cnt'], '0') == 0) {
+                //echo 'hi';
+                $model->username = strtolower($_POST['User']['username']);
+                //echo $model->username;            die();
+                $model->email = 'dummy' . $model->username . '@eatads.com';
+                $model->phonenumber = $_POST['User']['phonenumber'];
+                $model->datecreated = date("Y-m-d H:i:s");
+                $model->datemodified = date("Y-m-d H:i:s");
+                $model->active = 1;
+                $model->fname = $_POST['User']['username'];
+                $model->companyid = Yii::app()->user->cid;
 
-            $pwd = $_POST['User']['password'];
-            $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
-            $password = $ph->HashPassword($pwd);
-            //User::model()->insertUser($model);
-            $result = $ph->CheckPassword($pwd, $model->password);
-            //echo $result;
-            if ($result) {
-                // Authorized
+                $pwd = $_POST['User']['password'];
+                $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
+                $password = $ph->HashPassword($pwd);
+                //User::model()->insertUser($model);
+                $result = $ph->CheckPassword($pwd, $model->password);
+                //echo $result;
+                if ($result) {
+                    // Authorized
+                } else {
+                    // Error: Unauthorized
+                }
+                $model->password = $password;
+                //echo '<pre>'; print_r($model); die();
+                if ($model->validate()) {
+                    // print_r($model->attributes);
+                    $model->save();
+                    UserRole::model()->insertRoles($model->id, $role->id);
+                    $this->redirect(Yii::app()->getBaseUrl() . '/user');
+                }
             } else {
-                // Error: Unauthorized
-            }
-            $model->password = $password;
-            //echo '<pre>'; print_r($model); die();
-            if ($model->validate()) {
-                // print_r($model->attributes);
-                $model->save();
-                UserRole::model()->insertRoles($model->id, $role->id);
-                $this->redirect(Yii::app()->getBaseUrl() . '/user');
-            }
-            }
-            else{
                 /*
                  * flash a message if the username already exists
                  */
-                
+                echo 'User already exists. Choose a diiferent username';
+                $this->redirect(Yii::app()->getBaseUrl() . '/user');
             }
         }
 
@@ -170,22 +156,6 @@ class UserController extends Controller {
             'users' => $users,
             'model' => $model
         ));
-    }
-
-    /**
-     * Lists user models where active=0
-     * remove this function after testing has been done
-     */
-    public function actionTest() {
-        $model = User::model()->fetchNonActiveUsers();
-        //echo '<pre>';print_r($model); die();
-        $this->render('test', array(
-            'model' => $model
-        ));
-        //$dataProvider=new CActiveDataProvider('User');
-        /* $this->render('index',array(
-          'dataProvider'=>$dataProvider,
-          )); */
     }
 
     /**

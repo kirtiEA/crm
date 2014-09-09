@@ -44,7 +44,6 @@ $form = $this->beginWidget('CActiveForm', array(
             select: function(event, ui) {
                 console.log(ui.item.value + ', ' + ui.item.id);
                 $("#vendor-ac-id").val(ui.item.id);
-                fetchSites(ui.item.id);
             },
             change: function(event, ui) {
                 if (ui.item == null) {

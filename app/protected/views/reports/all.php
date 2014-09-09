@@ -105,8 +105,7 @@
 
             </table>
         </div>
-        <div id="img-gallery" style="display:block;">Hi
-        </div>
+        <div id="img-gallery" style="display:block;"></div>
     </div>
 </div>
 <!-- end of tasks list --> 

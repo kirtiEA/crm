@@ -19,12 +19,13 @@ class SiteController extends Controller {
             ),
         );
     }
-    
+
     public function init() {
-        if(Yii::app()->user->isGuest) {           
+        if (Yii::app()->user->isGuest) {
             $this->redirect(Yii::app()->createUrl('account'));
         }
     }
+
     /**
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
@@ -43,6 +44,7 @@ class SiteController extends Controller {
             }
 //            echo json_encode($result);
         $this->render('index', array('markers' => json_encode($arr)));
+
     }
 
     public function actionAddVendor() {
@@ -50,20 +52,21 @@ class SiteController extends Controller {
         $result = UserCompany::fetchVendorsList(Yii::app()->user->cid);
         foreach($result as $value) {
             array_push($vendorList, array('id' => $value['id'], 'value' => $value['name'] . ' (' . $value['cnt'] .')'));
+
         }
-        
+
         // fetch media types
         $mtResult = Mediatype::model()->findAll();
         $mediaType = array();
-        foreach($mtResult as $value) {
+        foreach ($mtResult as $value) {
             array_push($mediaType, $value->name);
         }
-        
+
         $this->render('addvendor', array(
-                        'vendorList'=>json_encode($vendorList),
-                        'mediaType'=>json_encode($mediaType),
-                        'lightingType'=>  json_encode(array_values(Listing::getLighting()))
-                    ));
+            'vendorList' => json_encode($vendorList),
+            'mediaType' => json_encode($mediaType),
+            'lightingType' => json_encode(array_values(Listing::getLighting()))
+        ));
     }
 
     /**
@@ -135,21 +138,21 @@ class SiteController extends Controller {
     public function actionPending() {
         
     }
-    
+
     public function actionMyPendingSites() {
         $data = Listing::getSitesTobeApproved(Yii::app()->user->cid);
         $result = array();
         foreach ($data as $key => $value) {
-              $value['lighting'] = Listing::getLighting($value['lightingid']);
-              if ($value['sizeunitid'] == 0) {
-                  $value['sizeunit'] = Listing::getSizeUnit(1);
-              } else {
-                  $value['sizeunit'] = Listing::getSizeUnit($value['sizeunitid']);
-              }
-              
-              $value['thumbnail'] = null;
-              array_push($result, $value);
-          }
+            $value['lighting'] = Listing::getLighting($value['lightingid']);
+            if ($value['sizeunitid'] == 0) {
+                $value['sizeunit'] = Listing::getSizeUnit(1);
+            } else {
+                $value['sizeunit'] = Listing::getSizeUnit($value['sizeunitid']);
+            }
+
+            $value['thumbnail'] = null;
+            array_push($result, $value);
+        }
         //  print_r($result);die();
           $arr = array();
             foreach ($data as $key => $value) {
@@ -163,4 +166,5 @@ class SiteController extends Controller {
             }
         $this->render('pendingsites', array('lists' => $result, 'markers' => json_encode($arr)));
     }
+
 }
