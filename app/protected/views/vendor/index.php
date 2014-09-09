@@ -140,10 +140,11 @@
     });
 
     //request vendor
-    $('.request').click(function() {
+    $('.request').click(function(e) {
+        e.preventDefault();
         var vendorid = $(this).siblings('.x').children('.vendor-ac-id').val();
         var companyid = $(this).siblings('.x').children('.companyid').val();
-        console.log('shruti:' + vendorid + ' , ' + companyid);
+        //console.log('shruti:' + vendorid + ' , ' + companyid);
         $.ajax({
             type: 'POST',
             url: $('#completePath').text() + '/ajax/RequestedVendor',
@@ -151,7 +152,10 @@
                 'companyid': companyid,
             },
             success: function(data) {
-                alert("Request sent successfully");
+                if (data == null)
+                    alert("Request sent successfully ");
+                else
+                    alert(data);
             }
         });
     });

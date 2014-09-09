@@ -33,4 +33,9 @@ class Requestedcompanyvendor extends BaseRequestedcompanyvendor {
 
         return Yii::app()->db->createCommand($query)->queryAll();
     }
+    
+    public static function checkUniqueVendor($cid,$cvid) {
+        $sql= 'SELECT count(*) as cnt from Requestedcompanyvendor where createdby = ' . $cid . ' and vendorcompanyid = ' . $cvid;
+        return Yii::app()->db->createCommand($sql)->queryRow();
+    }
 }

@@ -532,14 +532,19 @@ class AjaxController extends Controller {
         if (isset($_POST['vendorid']) && isset($_POST['companyid'])) {
             $companyid = $_POST['companyid'];
             $vendorcompanyid = $_POST['vendorid'];
-            $model = new Requestedcompanyvendor();
-            $model->attributes = array(
-                'companyid' => $companyid,
-                'createdby' => 1,
-                'createddate' => date("Y-m-d H:i:s"),
-                'vendorcompanyid' => $vendorcompanyid,
-            );
-            $model->save();
+            $check = Requestedcompanyvendor::checkUniqueVendor($companyid, $vendorcompanyid);
+            if (strcasecmp($check['cnt'], '0') == 0) {
+                $model = new Requestedcompanyvendor();
+                $model->attributes = array(
+                    'companyid' => $companyid,
+                    'createdby' => $companyid,
+                    'createddate' => date("Y-m-d H:i:s"),
+                    'vendorcompanyid' => $vendorcompanyid,
+                );
+                $model->save();
+            } else {
+                echo 'Vendor already invited';
+            }
         }
     }
 
