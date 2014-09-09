@@ -19,39 +19,40 @@ class SiteController extends Controller {
             ),
         );
     }
-    
+
     public function init() {
-        if(Yii::app()->user->isGuest) {           
+        if (Yii::app()->user->isGuest) {
             $this->redirect(Yii::app()->createUrl('account'));
         }
     }
+
     /**
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
      */
-    public function actionIndex() {        
+    public function actionIndex() {
         $this->render('index');
     }
 
     public function actionAddVendor() {
         $vendorList = array();
-        foreach(UserCompany::model()->findAll() as $value) {
+        foreach (UserCompany::model()->findAll() as $value) {
             array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
             //array_push($vendorList, array('name'=>$value->name));
         }
-        
+
         // fetch media types
         $mtResult = Mediatype::model()->findAll();
         $mediaType = array();
-        foreach($mtResult as $value) {
+        foreach ($mtResult as $value) {
             array_push($mediaType, $value->name);
         }
-        
+
         $this->render('addvendor', array(
-                        'vendorList'=>json_encode($vendorList),
-                        'mediaType'=>json_encode($mediaType),
-                        'lightingType'=>  json_encode(array_values(Listing::getLighting()))
-                    ));
+            'vendorList' => json_encode($vendorList),
+            'mediaType' => json_encode($mediaType),
+            'lightingType' => json_encode(array_values(Listing::getLighting()))
+        ));
     }
 
     /**
@@ -123,22 +124,23 @@ class SiteController extends Controller {
     public function actionPending() {
         
     }
-    
+
     public function actionMyPendingSites() {
         $data = Listing::getSitesTobeApproved(Yii::app()->user->cid);
         $result = array();
         foreach ($data as $key => $value) {
-              $value['lighting'] = Listing::getLighting($value['lightingid']);
-              if ($value['sizeunitid'] == 0) {
-                  $value['sizeunit'] = Listing::getSizeUnit(1);
-              } else {
-                  $value['sizeunit'] = Listing::getSizeUnit($value['sizeunitid']);
-              }
-              
-              $value['thumbnail'] = null;
-              array_push($result, $value);
-          }
+            $value['lighting'] = Listing::getLighting($value['lightingid']);
+            if ($value['sizeunitid'] == 0) {
+                $value['sizeunit'] = Listing::getSizeUnit(1);
+            } else {
+                $value['sizeunit'] = Listing::getSizeUnit($value['sizeunitid']);
+            }
+
+            $value['thumbnail'] = null;
+            array_push($result, $value);
+        }
         //  print_r($result);die();
         $this->render('pendingsites', array('lists' => $result));
     }
+
 }

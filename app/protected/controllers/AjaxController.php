@@ -62,7 +62,6 @@ class AjaxController extends Controller {
         echo $returnUrl;
     }
 
- 
     public function actionFetchppimages() {
         $taskId = Yii::app()->request->getParam('taskid');
         $dueDate = Yii::app()->request->getParam('duedate');
@@ -74,10 +73,10 @@ class AjaxController extends Controller {
                 . "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";
         $photoProofResult = Yii::app()->db->createCommand($sql)->queryAll();
         $photoProofArr = array();
-        foreach($photoProofResult as $pp) {
+        foreach ($photoProofResult as $pp) {
             $photoProof = array(
                 'id' => $pp['id'],
-                'imageName' => JoyUtilities::getAwsFileUrl('big_'.$pp['imageName'], 'listing'),
+                'imageName' => JoyUtilities::getAwsFileUrl('big_' . $pp['imageName'], 'listing'),
                 'clickedDateTime' => $pp['clickedDateTime'],
                 'clickedLat' => $pp['clickedLat'],
                 'clickedLng' => $pp['clickedLng'],
@@ -89,12 +88,11 @@ class AjaxController extends Controller {
             );
             array_push($photoProofArr, $photoProof);
         }
-        
+
         //$imagePath = JoyUtilities::getAwsFileUrl('tiny_'.$data->filename, 'listing');
         echo json_encode($photoProofArr);
     }
-    
-    
+
     public function actionFetchvendorsites() {
         $vendorId = Yii::app()->request->getParam('vendorid');
         $sql = "SELECT l.id, l.site_code, mt.name as mediatype, a.name as city, l.locality, l.name, l.length, l.width, l.lightingid "
@@ -178,15 +176,22 @@ class AjaxController extends Controller {
                 }
             }
 
-            if(Yii::app()->user->cid == $vendorId) {
+            if (Yii::app()->user->cid == $vendorId) {
                 $status = 1;
                 $approved = 1;
             } else {
                 $status = 0;
                 $approved = 0;
+                $invite = new Monitorlynotification();
+                $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $vendorId, 'emailtypeid' => 3);
+                $invite->save();
+                $email = UserCompany::fetchVendorEmail($vendorId);
+                echo $email;               //    die();
+                $mail = new EatadsMailer('approve-sites', $email, array('resetLink' => ""), array('sales@eatads.com'));
+                $mail->eatadsSend();
             }
-                
-                
+
+
             $listingModel = new Listing;
             $listingModel->byuserid = (int) $byUserId;
             $listingModel->foruserid = (int) $forUserId;
@@ -220,7 +225,6 @@ class AjaxController extends Controller {
             $listingModel->datemodified = date('Y-m-d H:i:s');
             $listingModel->datecreated = date('Y-m-d H:i:s');
             $listingModel->save();
-            
         }
         echo true;
     }
@@ -332,8 +336,8 @@ class AjaxController extends Controller {
                         $companyid = $inputVendorIds[0];
                         $assignedcompanyid = $inputVendorIds[1];
                     }
- print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ');
- print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid));
+                    print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ');
+                    print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid));
                 }
                 echo '200';
             } else if ($_POST['type'] == 2) {
@@ -393,8 +397,8 @@ class AjaxController extends Controller {
                         $companyid = $inputVendorIds[0];
                         $assignedcompanyid = $inputVendorIds[1];
                     }
- print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ' . $date . ' ');
-                 print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid, date("Y-m-d H:i:s",$date)));
+                    print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ' . $date . ' ');
+                    print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid, date("Y-m-d H:i:s", $date)));
                 }
                 echo '200';
             }
@@ -457,32 +461,32 @@ class AjaxController extends Controller {
             }
         }
     }
- 
+
     public function actiongetListing() {
         $type = $_POST['type'];
         $start = $_POST['start'];
-        
+
         //$rows = $_POST['rows'];
         if ($type == 1) {
             //for all my accepted vendors listings
             $data = Listing::getListingsForAcceptedVendors(Yii::app()->user->cid, $start);
-           $result = array();
+            $result = array();
             foreach ($data as $key => $value) {
-              $value['lighting'] = Listing::getLighting($value['lightingid']);
-              $value['sizeunit'] = Listing::getSizeUnit($value['sizeunitid']);
-              array_push($result, $value);
-             }
+                $value['lighting'] = Listing::getLighting($value['lightingid']);
+                $value['sizeunit'] = Listing::getSizeUnit($value['sizeunitid']);
+                array_push($result, $value);
+            }
             echo json_encode($result);
         } else if ($type == 3) {
-
+            
         }
     }
 
     public function actiongetmarkers() {
-        $type  = $_POST['type'];
+        $type = $_POST['type'];
         if ($type == 1) {
             $data = Listing::getListingsForAcceptedVendors(Yii::app()->user->cid, 0);
-           $result = array();
+            $result = array();
             foreach ($data as $key => $value) {
                 $result[0] = $value['id'];
                 $result[1] = $value['lat'];
@@ -491,7 +495,7 @@ class AjaxController extends Controller {
             echo json_encode($result);
         } else if ($type == 3) {
             $data = Listing::getSitesTobeApprovedMarkers(Yii::app()->user->cid, null);
-           $result = array();
+            $result = array();
             foreach ($data as $key => $value) {
                 $result[0] = $value['id'];
                 $result[1] = $value['lat'];
@@ -537,7 +541,6 @@ class AjaxController extends Controller {
             );
             $model->save();
         }
-
     }
 
     public function actionAcceptRequest() {
@@ -552,12 +555,11 @@ class AjaxController extends Controller {
             echo 200;
         }
     }
-    
+
     public function actionApproveListingRequest() {
         if ($_POST['id']) {
-            Listing::updateListing($_POST['id']);   
+            Listing::updateListing($_POST['id']);
         }
     }
 
 }
-

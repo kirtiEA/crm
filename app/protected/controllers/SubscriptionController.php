@@ -66,13 +66,13 @@ class SubscriptionController extends Controller {
                 //if($model->validate())
                 echo $model->save(FALSE);
 
-                $id = Yii::app()->user->id;
-                $email = Yii::app()->user->emailid;
-                $invite = new Monitorlynotification();
-                $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 2);
-                $invite->save();
-                $mail = new EatadsMailer('accepted-invite', $email, array('resetLink' => ""), array('shruti@eatads.com'));
-                $mail->eatadsSend();
+//                $id = Yii::app()->user->id;
+//                $email = Yii::app()->user->emailid;
+//                $invite = new Monitorlynotification();
+//                $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 2);
+//                $invite->save();
+//                $mail = new EatadsMailer('accepted-invite', $email, array('resetLink' => ""), array('shruti@eatads.com'));
+//                $mail->eatadsSend();
 
 //                echo "id=".$model->id ;
                 //echo '<pre>';
