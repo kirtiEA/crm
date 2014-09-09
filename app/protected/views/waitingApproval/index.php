@@ -88,6 +88,7 @@
                                 <button class="accept btn-secondary">Accept</button>
                                 <input type="hidden" value='<?php echo $id; ?>' class="vendorcompanyid">
                                 <input type="hidden" value='<?php echo $value['id']; ?>' class="id">
+                                <input type="hidden" value='<?php echo $value['vendoradmin']; ?>' class="emailid">
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -152,12 +153,14 @@
     $('.accept').click(function() {
         var vcid = $(this).siblings('.vendorcompanyid').val();
         var id = $(this).siblings('.id').val();
+        var email = $(this).siblings('.emailid').val();
         console.log(vcid + ' ' + id);
         $.ajax({
             type: 'POST',
             url: $('#completePath').text() + '/ajax/AcceptRequest',
             data: {'vendorcompanyid': vcid,
                 'id': id,
+                'emailid':email
             },
             success: function(data) {
                 if (data == 200)

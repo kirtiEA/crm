@@ -542,6 +542,13 @@ class AjaxController extends Controller {
                     'vendorcompanyid' => $vendorcompanyid,
                 );
                 $model->save();
+                $invite = new Monitorlynotification();
+                $email = UserCompany::fetchVendorEmail($vendorcompanyid);
+                $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
+                $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
+                $invite->save();
+                $mail = new EatadsMailer('request-vendor', $email, array('resetLink' => $resetlink), array('shruti@eatads.com'));
+                $mail->eatadsSend();
             } else {
                 echo 'Vendor already invited';
             }
@@ -549,14 +556,21 @@ class AjaxController extends Controller {
     }
 
     public function actionAcceptRequest() {
-        if (isset($_POST['vendorcompanyid']) && isset($_POST['id'])) {
+        if (isset($_POST['vendorcompanyid']) && isset($_POST['id']) && isset($_POST['emailid'])) {
             $vcid = $_POST['vendorcompanyid'];
             $id = $_POST['id'];
-
+            $email = $_POST['emailid'];
             $model = Requestedcompanyvendor::model()->findByPk($id);
             $model->acceptedby = $vcid;
             $model->accepteddate = date("Y-m-d H:i:s");
             $model->save();
+            $invite = new Monitorlynotification();
+            //$email = UserCompany::fetchVendorEmail($vendorcompanyid);
+            //$resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
+            $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
+            $invite->save();
+            $mail = new EatadsMailer('invite-accepted', $email, array('resetLink' => ""), array('shruti@eatads.com'));
+            $mail->eatadsSend();
             echo 200;
         }
     }
