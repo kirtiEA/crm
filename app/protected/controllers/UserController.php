@@ -47,20 +47,6 @@ class UserController extends Controller {
     }
 
     /**
-     * Displays a particular model.
-     * @param integer $id the ID of the model to be displayed
-     */
-    public function actionNew($id) {
-        $row = Userrole::model()->findByPk($id);
-        $role = Role::model()->findByPk($row->roleid);
-        //echo '<pre>';                print_r($row); die();
-        $this->render('view', array(
-            'model' => $this->loadModel($id),
-            'selected' => $role->name,
-        ));
-    }
-
-    /**
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
@@ -80,7 +66,7 @@ class UserController extends Controller {
             $check=  User::checkUniqueUsername(Yii::app()->user->id, strtolower($_POST['User']['username']));
             //echo '<pre>'; print_r(strcasecmp($check['cnt'], '0')); die();
             if(strcasecmp($check['cnt'], '0')==0){
-                echo 'hi';
+                //echo 'hi';
             $model->username = strtolower($_POST['User']['username']);
             //echo $model->username;            die();
             $model->email = 'dummy' . $model->username . '@eatads.com';
@@ -115,7 +101,7 @@ class UserController extends Controller {
                 /*
                  * flash a message if the username already exists
                  */
-                
+                $this->redirect(Yii::app()->getBaseUrl() . '/user');
             }
         }
 
@@ -165,22 +151,7 @@ class UserController extends Controller {
         ));
     }
 
-    /**
-     * Lists user models where active=0
-     * remove this function after testing has been done
-     */
-    public function actionTest() {
-        $model = User::model()->fetchNonActiveUsers();
-        //echo '<pre>';print_r($model); die();
-        $this->render('test', array(
-            'model' => $model
-        ));
-        //$dataProvider=new CActiveDataProvider('User');
-        /* $this->render('index',array(
-          'dataProvider'=>$dataProvider,
-          )); */
-    }
-
+    
     /**
      * Manages all models.
      */

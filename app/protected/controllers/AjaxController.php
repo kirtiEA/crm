@@ -178,6 +178,7 @@ class AjaxController extends Controller {
             $listingModel->datemodified = date('Y-m-d H:i:s');
             $listingModel->datecreated = date('Y-m-d H:i:s');
             $listingModel->save();
+            
         }
         echo true;
     }
@@ -764,10 +765,6 @@ class AjaxController extends Controller {
             //$mail=  Yii::app()->user->email;  
             $invite = new Monitorlynotification();
             $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1);
-
-
-
-
             $invite->save();
             $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;
             $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink), array('sales@eatads.com'));
@@ -797,7 +794,7 @@ class AjaxController extends Controller {
         if (isset($_POST['vendorcompanyid']) && isset($_POST['id'])) {
             $vcid = $_POST['vendorcompanyid'];
             $id = $_POST['id'];
-            
+
             $model = Requestedcompanyvendor::model()->findByPk($id);
             $model->acceptedby = $vcid;
             $model->accepteddate = date("Y-m-d H:i:s");

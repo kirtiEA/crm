@@ -1,6 +1,7 @@
 <?php
 
 class SubscriptionController extends Controller {
+    
     //private $nid;
 
     /**
@@ -8,8 +9,6 @@ class SubscriptionController extends Controller {
      * This method is used by the 'accessControl' filter.
      * @return array access control rules
      */
-
-
     public function actionIndex() {
         $model = new Monitorlysubscription();
         $vendorList = array();
@@ -39,10 +38,17 @@ class SubscriptionController extends Controller {
                 //print_r($model->attributes);
                 //print_r($_POST);
                 //if($model->validate())
-                echo $model->save(FALSE);die();
+                echo $model->save(FALSE);
+                $id = Yii::app()->user->id;
+                $email = Yii::app()->user->emailid;
+                $invite = new Monitorlynotification();
+                $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 2);
+                $invite->save();
+                $mail = new EatadsMailer('accepted-invite', $email, array('resetLink' => ""), array('shruti@eatads.com'));
+                $mail->eatadsSend();
 //                echo "id=".$model->id ;
                 //echo '<pre>';
-  //              print_r($model->attributes);
+                //              print_r($model->attributes);
             }
         }
     }
@@ -74,4 +80,3 @@ class SubscriptionController extends Controller {
       }
      */
 }
-    

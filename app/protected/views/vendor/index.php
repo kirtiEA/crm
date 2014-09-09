@@ -65,7 +65,7 @@
     </ul>
     <!-- end of tabs --> 
 
-    
+
     <!-- vendor list --> 
 
     <div class="container-fluid content-wrapper">
@@ -110,6 +110,10 @@
 <script type="text/javascript">
     $(function() {
 
+        $('.mon_menu').each(function() {
+            $(this).removeClass('active');
+        });
+        $('.menu_vendor').addClass('active');
         //autocomplete for company name in vendor subscription form
         var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
         //console.log($id);
