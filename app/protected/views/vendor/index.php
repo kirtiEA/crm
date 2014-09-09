@@ -65,7 +65,7 @@
     </ul>
     <!-- end of tabs --> 
 
-    
+
     <!-- vendor list --> 
 
     <div class="container-fluid content-wrapper">
@@ -110,6 +110,10 @@
 <script type="text/javascript">
     $(function() {
 
+        $('.mon_menu').each(function() {
+            $(this).removeClass('active');
+        });
+        $('.menu_vendor').addClass('active');
         //autocomplete for company name in vendor subscription form
         var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
         //console.log($id);
@@ -136,10 +140,11 @@
     });
 
     //request vendor
-    $('.request').click(function() {
+    $('.request').click(function(e) {
+        e.preventDefault();
         var vendorid = $(this).siblings('.x').children('.vendor-ac-id').val();
         var companyid = $(this).siblings('.x').children('.companyid').val();
-        console.log('shruti:' + vendorid + ' , ' + companyid);
+        //console.log('shruti:' + vendorid + ' , ' + companyid);
         $.ajax({
             type: 'POST',
             url: $('#completePath').text() + '/ajax/RequestedVendor',
@@ -147,7 +152,10 @@
                 'companyid': companyid,
             },
             success: function(data) {
-                alert("Request sent successfully");
+                if (data == null)
+                    alert("Request sent successfully ");
+                else
+                    alert(data);
             }
         });
     });

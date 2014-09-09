@@ -503,6 +503,12 @@ where t.status =1 and t.campaignid = ' . $campaignid)->queryAll();
     public static function updateListing($id) {
         $sql  ='Update Listing set status = 1, approved = 1 where id = '. $id;
         return Yii::app()->db->createCommand($sql)->execute();
+//        $invite = new Monitorlynotification();
+//        $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => Yii::app()->user->cid, 'emailtypeid' => 4);
+//        $invite->save();
+//        $email = "ENTER EMAIL OF AGENCY WHOSE SITE HAS BEEN ACCEPTED"
+//        $mail = new EatadsMailer('site-accepted', $email, array('resetLink' => ""), array('sales@eatads.com'));
+//        $mail->eatadsSend();
     }
     
     public static function getListingsForAcceptedVendorsMarkers($cid,$start=null) {
