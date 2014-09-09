@@ -9,6 +9,32 @@ class SubscriptionController extends Controller {
      * This method is used by the 'accessControl' filter.
      * @return array access control rules
      */
+
+//    public function init() {
+//        if (Yii::app()->user->isGuest) {
+//            $this->redirect(Yii::app()->createUrl('account'));
+//        }
+//    }
+
+    /**
+     * @return array action filters
+     
+    public function filters() {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+            'postOnly + delete', // we only allow deletion via POST request
+        );
+    }*/
+
+    public function accessRules() {
+        return array(
+            array('allow', // allow all users to perform actions
+                'actions' => array('index', 'createvendor'),
+                'users' => array('*'),
+            )
+        );
+    }
+    
     public function actionIndex() {
         $model = new Monitorlysubscription();
         $vendorList = array();
@@ -17,7 +43,7 @@ class SubscriptionController extends Controller {
         foreach (UserCompany::model()->findAll() as $value) {
             array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
         }
-        $this->render('index', array(
+        $this->renderPartial('index', array(
             'model' => $model,
             'vendorList' => json_encode($vendorList),
             'nid' => $nid,
@@ -39,6 +65,7 @@ class SubscriptionController extends Controller {
                 //print_r($_POST);
                 //if($model->validate())
                 echo $model->save(FALSE);
+
                 $id = Yii::app()->user->id;
                 $email = Yii::app()->user->emailid;
                 $invite = new Monitorlynotification();
@@ -46,6 +73,7 @@ class SubscriptionController extends Controller {
                 $invite->save();
                 $mail = new EatadsMailer('accepted-invite', $email, array('resetLink' => ""), array('shruti@eatads.com'));
                 $mail->eatadsSend();
+
 //                echo "id=".$model->id ;
                 //echo '<pre>';
                 //              print_r($model->attributes);

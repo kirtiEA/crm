@@ -25,6 +25,9 @@
                 width: 300px;
             }
         </style>
+        <script>
+            
+        </script>
     </head>
     <body>
 
@@ -81,8 +84,9 @@
                                 ),
                         )); ?>   
                                 
-                                <h2 class="form-signin-heading">Please Sign In</h2>
-                                
+                                <h2 class="form-signin-heading">Please Sign In</h2><br/>
+    
+                                <h2 class="form-signin-heading" id="errormsg" style="display: none;">Incorrect username or password</h2>
                                 <?php echo $form->textField($model,'email', array('class' => 'form-control', 'id' => 'username')); ?>
                 		<?php echo $form->error($model,'email'); ?>
                                 
@@ -90,7 +94,7 @@
 <!--                                <input type="text" autofocus="" required="" placeholder="Username" id="username" name="username" class="form-control">-->
                                 <br>
                                 <?php echo $form->passwordField($model,'password',array('class' => 'form-control', 'placeholder'=>'Password', 'id' => 'password')); ?>
-		<?php echo $form->error($model,'password'); ?>
+                                <?php echo $form->error($model,'password'); ?>
 <!--                                <input type="password" required="" placeholder="Password" id="password" name="password" class="form-control">-->
                                 <label class="checkbox">
                                     <input type="checkbox" value="remember-me"> Remember me
@@ -194,10 +198,19 @@
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
+            $(document).ready(function() {
+               var status = <?php echo $status;?>;
+               if (status != 200) {
+                   $('#LoginModal').modal('show');
+                   $('#errormsg').show();
+               } else {
+                   $('#errormsg').hide();
+                }    
+            });
             $(function() {
 
                 $('#home_login').click(function(e) {
-                    console.log('clicked');
+                    //console.log('clicked');
                     e.preventDefault();
                     $('#LoginModal').modal('show');
                 });

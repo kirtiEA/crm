@@ -92,6 +92,10 @@ $scope.setit = function() {
   $scope.mysites = function() {
       console.log("this is fun");
   }; 
+  
+  $scope.$on("updateItems",function(d){
+  $scope.items = d;
+});
       
 });
 
@@ -116,7 +120,7 @@ app.directive('customPopover', function ($compile) {
 
 
 // Reddit constructor function to encapsulate HTTP and pagination logic
-app.factory('Reddit', function($http) {
+app.factory('Reddit', function($http,$rootScope) {
   var Reddit = function() {
     this.items = [];
     this.products = [];
@@ -126,50 +130,35 @@ app.factory('Reddit', function($http) {
   };
 
   Reddit.prototype.nextPage = function(id) {  
-      console.log(id);
+//      console.log(id);
         var that = this;
 
      if (this.busy) return;
      this.busy = true;
 
-  var param4 = $.param({companyid: "533", start:srt});
-  var param5 = $.param({companyid: "11", start:srt});
+  var param = $.param({companyid: "533", start:srt});
+  var param5 = $.param({type : $('#sitetypeid').val(), start:srt});
     srt = srt+30
-    if(id == 1) {
-        $http({
+    $http({
              method: 'POST',
              url: link + '/ajax/getlisting/',
-             data: param4,
+             data: param5,
              headers: {'Content-Type': 'application/x-www-form-urlencoded'}
           }).success(function(data){        
           var items = data;
-
-     for (var i = 0; i < items.length; i++) {
-        that.products.push(items[i]);
-      }
-      that.busy = false;
+          
+            if (id !== $('#sitetypeid').val()) {
+                that.products = [];
+                console.log(id + ' sdfsdfsdffffff111 ' + $('#sitetypeid').val());
+            }
+            for (var i = 0; i < items.length; i++) {
+               that.products.push(items[i]);
+             }
+             that.busy = false;
+             $rootScope.$broadcast('updateItems', data);
          }).error(function(data, status, headers, config){
 
          }.bind(this));
-    } else if (id == 2) {
-        console.log('this is 2');
-        $http({
-             method: 'POST',
-             url: link + '/ajax/getlisting/',
-             data: param4,
-             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-          }).success(function(data){        
-          var items = data;
-
-     for (var i = 0; i < items.length; i++) {
-         this.products = [];
-        that.products.push(items[i]);
-      }
-      that.busy = false;
-         }).error(function(data, status, headers, config){
-
-         }.bind(this));
-    }
     
   };
 
@@ -205,7 +194,8 @@ this.order = function(predicate, reverse) {
      $http({
          method: 'POST',
          url: link + '/ajax/getlisting/',
-         data: param,
+         data: {'type' : $('#sitetypeid').val(),
+            'start' : srt},
          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       }).success(function(data){
          // With the data succesfully returned, call our callback

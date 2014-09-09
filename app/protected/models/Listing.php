@@ -469,7 +469,59 @@ where t.status =1 and t.campaignid = ' . $campaignid)->queryAll();
     }
     
     
-    public static function getListings($type) {
+    public static function getListingsForAcceptedVendors($cid, $start =0) {
+        $sql = 'SELECT l.id, l.name as name, length as height, width as width, 
+        price as price, locality as address, geolat as lat, geolng as lng, lightingid,  sizeunitid,
+        lbc.currency_code as basecurrency, mt.name as mediatype,
+        uc.name as companyname, IFNULL(l.approved,0)  as accepted
+        FROM Listing l 
+        inner join LookupBaseCurrency lbc on lbc.id = l.basecurrencyid
+        inner join MediaType mt on mt.id = l.mediatypeid
+        inner join UserCompany uc on uc.id = l.companyid and uc.id in (';
         
+        $sql = $sql . 'select vendorcompanyid from requestedcompanyvendor where companyid ='. $cid .' and accepteddate is not null)';
+        $sql = $sql . ' where l.status = 1 limit ' . $start . ',30';
+        $data = Yii::app()->db->createCommand($sql)->queryAll();        
+        return $data;
+    }
+    
+    public static function getSitesTobeApproved($cid, $start = 0) {
+        $sql = 'SELECT l.id, l.name as name, length as height, width as width, 
+        price as price, locality as address, geolat as lat, geolng as lng, lightingid,  sizeunitid,
+        lbc.currency_code as basecurrency, mt.name as mediatype,
+        uc.name as companyname, IFNULL(l.approved,1) as accepted
+        
+        FROM Listing l 
+        inner join LookupBaseCurrency lbc on lbc.id = l.basecurrencyid
+        inner join MediaType mt on mt.id = l.mediatypeid
+        inner join UserCompany uc on uc.id = l.companyid 
+        where l.approved = 0 and  l.status =0 and l.companyid = ' .$cid ;
+        $data = Yii::app()->db->createCommand($sql)->queryAll();
+        return $data;
+    }
+    
+    public static function updateListing($id) {
+        $sql  ='Update Listing set status = 1, approved = 1 where id = '. $id;
+        return Yii::app()->db->createCommand($sql)->execute();
+    }
+    
+    public static function getListingsForAcceptedVendorsMarkers($cid,$start=null) {
+        $sql = 'SELECT l.id, geolat as lat, geolng as lng
+        FROM Listing l 
+        inner join UserCompany uc on uc.id = l.companyid and uc.id in (';
+        
+        $sql = $sql . 'select vendorcompanyid from requestedcompanyvendor where companyid ='. $cid .' and accepteddate is not null)';
+        $sql = $sql . ' where l.status = 1 limit ' . $start . ',30';
+        $data = Yii::app()->db->createCommand($sql)->queryAll();        
+        return $data;
+    }
+    
+    public static function getSitesTobeApprovedMarkers($cid, $start = 0) {
+        $sql = 'SELECT l.id, geolat as lat, geolng as lng        
+        FROM Listing l 
+        inner join UserCompany uc on uc.id = l.companyid 
+        where l.approved = 0 and  l.status =0 and l.companyid = ' .$cid ;
+        $data = Yii::app()->db->createCommand($sql)->queryAll();
+        return $data;
     }
 }

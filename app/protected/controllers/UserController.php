@@ -46,6 +46,12 @@ class UserController extends Controller {
         );
     }
 
+    public function init() {
+        if (Yii::app()->user->isGuest) {
+            $this->redirect(Yii::app()->createUrl('account'));
+        }
+    }
+
     /**
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -63,6 +69,7 @@ class UserController extends Controller {
             $model->attributes = $_POST['User'];
             //print_r($_POST['User']['username']);die();
             $role = Role::model()->findByPk(5);
+
             $check=  User::checkUniqueUsername(Yii::app()->user->id, strtolower($_POST['User']['username']));
             //echo '<pre>'; print_r(strcasecmp($check['cnt'], '0')); die();
             if(strcasecmp($check['cnt'], '0')==0){
@@ -76,7 +83,7 @@ class UserController extends Controller {
             $model->active = 1;
             $model->fname = $_POST['User']['username'];
             $model->companyid = Yii::app()->user->cid;
-            
+
             $pwd = $_POST['User']['password'];
             $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
             $password = $ph->HashPassword($pwd);

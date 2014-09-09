@@ -19,7 +19,12 @@ class SiteController extends Controller {
             ),
         );
     }
-
+    
+    public function init() {
+        if(Yii::app()->user->isGuest) {           
+            $this->redirect(Yii::app()->createUrl('account'));
+        }
+    }
     /**
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
@@ -117,5 +122,23 @@ class SiteController extends Controller {
 
     public function actionPending() {
         
+    }
+    
+    public function actionMyPendingSites() {
+        $data = Listing::getSitesTobeApproved(Yii::app()->user->cid);
+        $result = array();
+        foreach ($data as $key => $value) {
+              $value['lighting'] = Listing::getLighting($value['lightingid']);
+              if ($value['sizeunitid'] == 0) {
+                  $value['sizeunit'] = Listing::getSizeUnit(1);
+              } else {
+                  $value['sizeunit'] = Listing::getSizeUnit($value['sizeunitid']);
+              }
+              
+              $value['thumbnail'] = null;
+              array_push($result, $value);
+          }
+        //  print_r($result);die();
+        $this->render('pendingsites', array('lists' => $result));
     }
 }

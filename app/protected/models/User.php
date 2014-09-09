@@ -346,7 +346,7 @@ class User extends BaseUser {
     }
 
     public static function checkUniqueUsername($id, $username) {
-        $sql= 'SELECT count(*) as cnt from user where username like \'' . $username . '\' and companyid = ' . $id;
+        $sql= 'SELECT count(*) as cnt from User where username like \'' . $username . '\' and companyid = ' . $id;
         return Yii::app()->db->createCommand($sql)->queryRow();
     }
 }

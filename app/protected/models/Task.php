@@ -47,9 +47,9 @@ class Task extends BaseTask {
         $sql = 'Update Task as task, (select tt.id from Task tt
 inner join Listing l on l.id = tt.siteid and l.companyid ='. $companyid . '
 where tt.status = 1 and tt.campaignid = ' . $campaignid . ') as t
-set assignedCompanyId =  ' . $assignedCompanyId . ' where task.id = t.id';
+set pop = 1 , assignedCompanyId =  ' . $assignedCompanyId . ' where task.id = t.id';
 if ($date != null) {
-    $sql = $sql . ' and task.dueDate = ' . $date;
+    $sql = $sql . ' and task.dueDate = \'' . $date .'\'';
 }        
         return Yii::app()->db->createCommand($sql)->execute();
     }
