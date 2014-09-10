@@ -13,7 +13,7 @@ class VendorController extends Controller {
         foreach (UserCompany::model()->findAll() as $value) {
             array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
         }
-        $id = Yii::app()->user->id;
+        $id = Yii::app()->user->cid;
         //echo $id;
         $model = RequestedCompanyVendor::showRequestedVendors($id);
 //        echo '<pre>';
