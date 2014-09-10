@@ -64,18 +64,9 @@ var changedata = [];
 }
 
     function fetchSites(vendorid) {
-  //      console.clear();
+        console.clear();
   changedata = [];
-        console.log(vendorid);
-//        var hooks = Handsontable.hooks.getRegistered();
-//hooks.forEach(function(hook) {
-//    if(hook == 'onchange') {
-//        config[hook] = function() {
-//            console.log('hook :  ' + hook + ' arguments ' + arguments );
-//        }
-//
-//    }
-//});
+
         var handsontable = $('#listings').data('handsontable');
         $.ajax({
             url: "<?php echo Yii::app()->urlManager->createUrl('ajax/fetchvendorsites'); ?>",
@@ -242,7 +233,9 @@ var changedata = [];
                 }
             });
         } else {
-            alert("Please select Media Vendor's Email Address");
+            alert("Please select Media Vendor from the drop down");
+            $(window).scrollTop(0);
+            $('#vendor-ac').focus();
         }
 
 
@@ -254,6 +247,7 @@ var changedata = [];
         $('.menu_site').addClass('active');
 
         var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
+        
         $('#vendor-ac').autocomplete({
             source: allVendorJson,
             select: function(event, ui) {

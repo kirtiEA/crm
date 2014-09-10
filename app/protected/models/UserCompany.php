@@ -15,7 +15,7 @@ class UserCompany extends BaseUserCompany {
 
             and status = 1 
             group by companyid 
-            union  select count(*) as cnt, companyid as id, uc.name 
+            union  select count(*) as cnt, uc.id as id, uc.name 
 from Listing  
             inner join UserCompany uc on uc.id = companyid and uc.id = ' . $cid;
         $command = Yii::app()->db->createCommand($sql);
@@ -35,6 +35,6 @@ from Listing
 
     public static function fetchVendorEmail($param) {
         $sql = 'SELECT u.email FROM UserCompany uc inner join User u on u.id =uc.userid where uc.id = '.$param;
-        return Yii::app()->db->createCommand($sql)->queryAll();
+        return Yii::app()->db->createCommand($sql)->queryRow();
     }
 }

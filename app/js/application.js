@@ -32,7 +32,7 @@ $(document).ready(function() {
     $("#scdate").datepicker({
         //changeMonth: true,
         numberOfMonths: 1,        
-        dateFormat: 'dd M yy',
+        dateFormat: 'dd/mm/yy',
         onClose: function(selectedDate) {
             if (selectedDate)
                 $("#ecdate").datepicker("option", "minDate", selectedDate);
@@ -41,7 +41,7 @@ $(document).ready(function() {
     $("#ecdate").datepicker({        
         //changeMonth: true,
         numberOfMonths: 1,
-        dateFormat: 'dd M yy',
+        dateFormat: 'dd/mm/yy',
         onClose: function(selectedDate) {
             $("#scdate").datepicker("option", "maxDate", selectedDate);
         }

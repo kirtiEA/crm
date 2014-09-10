@@ -60,8 +60,8 @@
 
     <!-- tabs -->    
     <ul class="nav nav-tabs" role="tablist">
-        <li><a href="<?php echo Yii::app()->createUrl('vendor'); ?>" >Requested Vendor</a></li>
-        <li class="active"><a href="#home" >Waiting for Approval</a></li>
+        <li><a href="<?php echo Yii::app()->createUrl('vendor'); ?>" >My Invitations</a></li>
+        <li class="active"><a href="#home" >Invitations for Me</a></li>
     </ul>
     <!-- end of tabs --> 
 
@@ -136,7 +136,7 @@
     $('.request').click(function() {
         var vendorid = $(this).siblings('.x').children('.vendor-ac-id').val();
         var companyid = $(this).siblings('.x').children('.companyid').val();
-        console.log('shruti:' + vendorid + ' , ' + companyid);
+        //console.log('shruti:' + vendorid + ' , ' + companyid);
         $.ajax({
             type: 'POST',
             url: $('#completePath').text() + '/ajax/RequestedVendor',
@@ -144,7 +144,11 @@
                 'companyid': companyid,
             },
             success: function(data) {
-                alert("Request sent successfully");
+                if (data == '200')
+                    //alert("Request sent successfully ");
+                    location.reload();    
+                else
+                    alert(data);
             }
         });
     });
@@ -154,7 +158,7 @@
         var vcid = $(this).siblings('.vendorcompanyid').val();
         var id = $(this).siblings('.id').val();
         var email = $(this).siblings('.emailid').val();
-        console.log(vcid + ' ' + id);
+        console.log(vcid + ' ' + id+' '+email);
         $.ajax({
             type: 'POST',
             url: $('#completePath').text() + '/ajax/AcceptRequest',

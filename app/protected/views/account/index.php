@@ -182,8 +182,8 @@
                             <span class="footer-links pull-right">
                                 <a href="https://www.eatads.com/about-us">About</a>
                                 <a href="https://www.eatads.com/contact-us">Contact</a>
-                                <a href="https://www.facebook.com/EatAds?ref=br_tf"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/landing/facebook.png"></a>
-                                <a href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/landing/linkedin.png"></a>
+                                <a href="https://www.facebook.com/EatAds?ref=br_tf"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/landing/facebook.png"></a>
+                                <a href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/landing/linkedin.png"></a>
                             </span>
                         </p>
                     </footer>
@@ -199,12 +199,12 @@
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             $(document).ready(function() {
-               var status = <?php echo $status;?>;
+             //  var status = <?php //echo $status;?>;
                if (status != 200) {
                    $('#LoginModal').modal('show');
-                   $('#errormsg').show();
+                 //  $('#errormsg').show();
                } else {
-                   $('#errormsg').hide();
+                  // $('#errormsg').hide();
                 }    
             });
             $(function() {

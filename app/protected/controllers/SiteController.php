@@ -141,6 +141,7 @@ class SiteController extends Controller {
 
     public function actionMyPendingSites() {
         $data = Listing::getSitesTobeApproved(Yii::app()->user->cid);
+        
         $result = array();
         foreach ($data as $key => $value) {
             $value['lighting'] = Listing::getLighting($value['lightingid']);
@@ -156,14 +157,15 @@ class SiteController extends Controller {
         //  print_r($result);die();
           $arr = array();
             foreach ($data as $key => $value) {
-                $result = array();
-                $result[0] = $value['name'];
-                $result[1] = $value['lat'];
-                $result[2] = $value['lng'];
-                $result[3] = $value['id'];
-                array_push($arr, $result);
+                $result1 = array();
+                $result1[0] = $value['name'];
+                $result1[1] = $value['lat'];
+                $result1[2] = $value['lng'];
+                $result1[3] = $value['id'];
+                array_push($arr, $result1);
                 
             }
+
         $this->render('pendingsites', array('lists' => $result, 'markers' => json_encode($arr)));
     }
 
