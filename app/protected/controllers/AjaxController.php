@@ -588,9 +588,9 @@ class AjaxController extends Controller {
         if (isset($_POST['vendorid']) && isset($_POST['companyid'])) {
             $companyid = $_POST['companyid'];
             $vendorcompanyid = $_POST['vendorid'];
-            $check = Requestedcompanyvendor::checkUniqueVendor($companyid, $vendorcompanyid);
+            $check = RequestedCompanyVendor::checkUniqueVendor($companyid, $vendorcompanyid);
             if (strcasecmp($check['cnt'], '0') == 0) {
-                $model = new Requestedcompanyvendor();
+                $model = new RequestedCompanyVendor();
                 $model->attributes = array(
                     'companyid' => $companyid,
                     'createdby' => $companyid,
