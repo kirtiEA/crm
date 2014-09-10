@@ -65,6 +65,14 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
+        <?php if (Yii::app()->user->hasFlash('success')) { ?>
+            <div class="navbar navbar-inverse navbar-fixed-top" style="position:relative; z-index:999999;background-color: bisque; ">
+                <div class="container">
+                    <p><?php echo Yii::app()->user->getFlash('success'); ?></p>
+                </div>
+            </div>
+        <?php } ?>
+        
         <div style="display: none" id="completePath"><?php echo Yii::app()->getBaseUrl(true); ?></div>
         <?php echo $content; ?>        
 
