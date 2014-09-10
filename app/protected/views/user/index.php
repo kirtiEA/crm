@@ -41,10 +41,10 @@
                     </div>
                     <div class="control">
                         <label class="control-label">Mobile No.</label>
-                        <select>
+<!--                        <select>
                             <option>+91</option>
                             <option>+01</option>
-                        </select>
+                        </select>-->
                         <?php echo $form->textField($model,'phonenumber');?>                            
                         <?php echo $form->error($model,'phonenumber'); ?>
                     </div>
@@ -60,11 +60,10 @@
 <div class="container-fluid content-wrapper">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="list-heading">Users List 
-                <?php
+            <h1 class="list-heading">Users List (<?php
                     $no=  count($users);
                     echo $no;
-                ?> 
+                ?>)
             </h1>
             <ul class="list">
                 <?php foreach ($users as $value):?>

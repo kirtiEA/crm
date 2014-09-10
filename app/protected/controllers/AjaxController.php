@@ -602,10 +602,11 @@ class AjaxController extends Controller {
                 $invite = new MonitorlyNotification();
                 $email = UserCompany::fetchVendorEmail($vendorcompanyid);
                 //print_r($email['email']); die();
+                //$email = "root@localhost.com";
                 $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
                 $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
                 $invite->save();
-                $mail = new EatadsMailer('request-vendor', $email['email'], array('resetLink' => $resetlink), array('shruti@eatads.com'));
+                $mail = new EatadsMailer('request-vendor', $email['email'], array('resetLink' => $resetlink), array('sales@eatads.com'));
                 $mail->eatadsSend();
                 echo '200';
             } else {
@@ -619,6 +620,7 @@ class AjaxController extends Controller {
             $vcid = $_POST['vendorcompanyid'];
             $id = $_POST['id'];
             $email = $_POST['emailid'];
+            //echo $email; die();
             $model = RequestedCompanyVendor::model()->findByPk($id);
             $model->acceptedby = $vcid;
             $model->accepteddate = date("Y-m-d H:i:s");
@@ -626,7 +628,7 @@ class AjaxController extends Controller {
             $invite = new MonitorlyNotification();
             //$email = UserCompany::fetchVendorEmail($vendorcompanyid);
             //$resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
-            $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
+            $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => Yii::app()->user->id, 'emailtypeid' => 2);
             $invite->save();
             $mail = new EatadsMailer('invite-accepted', $email, array('resetLink' => ""), array('shruti@eatads.com'));
             $mail->eatadsSend();
