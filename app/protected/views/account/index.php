@@ -182,8 +182,8 @@
                             <span class="footer-links pull-right">
                                 <a href="https://www.eatads.com/about-us">About</a>
                                 <a href="https://www.eatads.com/contact-us">Contact</a>
-                                <a href="https://www.facebook.com/EatAds?ref=br_tf"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/landing/facebook.png"></a>
-                                <a href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/landing/linkedin.png"></a>
+                                <a href="https://www.facebook.com/EatAds?ref=br_tf"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/landing/facebook.png"></a>
+                                <a href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/landing/linkedin.png"></a>
                             </span>
                         </p>
                     </footer>
