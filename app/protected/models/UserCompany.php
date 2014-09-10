@@ -34,7 +34,7 @@ from Listing
     }
 
     public static function fetchVendorEmail($param) {
-        $sql = 'SELECT u.email FROM UserCompany uc inner join User u on u.id =uc.userid and uc.userid = '.$param;
+        $sql = 'SELECT u.email FROM UserCompany uc inner join User u on u.id =uc.userid where uc.id = '.$param;
         return Yii::app()->db->createCommand($sql)->queryAll();
     }
 }
