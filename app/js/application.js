@@ -13,7 +13,7 @@ $(document).ready(function() {
         //changeMonth: true,
         numberOfMonths: 1,
         minDate: 0,
-        dateFormat: 'dd M yy',
+        dateFormat: 'dd/mm/yy',
         onClose: function(selectedDate) {
             if (selectedDate)
                 $("#edate").datepicker("option", "minDate", selectedDate);
@@ -23,7 +23,7 @@ $(document).ready(function() {
         minDate: 0,
         //changeMonth: true,
         numberOfMonths: 1,
-        dateFormat: 'dd M yy',
+        dateFormat: 'dd/mm/yy',
         onClose: function(selectedDate) {
             $("#sdate").datepicker("option", "maxDate", selectedDate);
         }

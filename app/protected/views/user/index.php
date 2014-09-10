@@ -46,6 +46,7 @@
                             <option>+01</option>
                         </select>-->
                         <?php echo $form->textField($model,'phonenumber', array('maxlength' => '10'));?>                            
+
                         <?php echo $form->error($model,'phonenumber'); ?>
                     </div>
                     <?php echo CHtml::submitButton('Add', array('class'=>'add btn-primary', 'id'=>'_submit')); ?>
