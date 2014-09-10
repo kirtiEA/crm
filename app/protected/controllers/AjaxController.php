@@ -616,7 +616,7 @@ class AjaxController extends Controller {
             $vcid = $_POST['vendorcompanyid'];
             $id = $_POST['id'];
             $email = $_POST['emailid'];
-            $model = Requestedcompanyvendor::model()->findByPk($id);
+            $model = RequestedCompanyVendor::model()->findByPk($id);
             $model->acceptedby = $vcid;
             $model->accepteddate = date("Y-m-d H:i:s");
             $model->save();
