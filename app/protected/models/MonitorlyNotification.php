@@ -5,9 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-Yii::import('application.models.base.BaseMonitorlynotification');
+Yii::import('application.models.base.BaseMonitorlyNotification');
 
-class Monitorlynotification extends BaseMonitorlynotification
+class MonitorlyNotification extends BaseMonitorlyNotification
 {
     public static function model($className=__CLASS__)
     {

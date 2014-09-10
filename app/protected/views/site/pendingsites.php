@@ -2,8 +2,8 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-helpers-1.1.1.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/listings.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/map.js"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
 <script>
     $(document).ready(function(){
         
@@ -150,5 +150,42 @@
             $(this).removeClass('active');            
         });
         $('.menu_site').addClass('active');
+   var locations = <?php echo $markers;?>; 
+    console.log('locations ' + locations);
+    var locations1 = [];
+    for (var i=0; i < locations1.length; i++) {
+        var temp = [];
+        
+    }
+//var locations = [
+//      ['Bondi Beach', -33.890542, 151.274856, 4],
+//      ['Coogee Beach', -33.923036, 151.259052, 5],
+//      ['Cronulla Beach', -34.028249, 151.157507, 3],
+//      ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+//      ['Maroubra Beach', -33.950198, 151.259302, 1]
+//    ];
+    var map = new google.maps.Map(document.getElementById('map_canvas'), {
+      zoom: 5,
+      center: new google.maps.LatLng(19.5403, 75.5463),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
 
+    
+          var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+    for (i = 0; i < locations.length; i++) {
+        console.log('creating a new marker ' + locations[i]);
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(parseFloat(locations[i][1]), parseFloat(locations[i][2])),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
 </script>

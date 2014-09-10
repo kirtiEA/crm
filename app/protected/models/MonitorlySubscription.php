@@ -5,9 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-Yii::import('application.models.base.BaseMonitorlysubscription');
+Yii::import('application.models.base.BaseMonitorlySubscription');
 
-class Monitorlysubscription extends BaseMonitorlysubscription
+class MonitorlySubscription extends BaseMonitorlySubscription
 {
     public static function model($className=__CLASS__)
     {

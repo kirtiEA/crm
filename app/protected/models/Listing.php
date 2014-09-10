@@ -479,7 +479,7 @@ where t.status =1 and t.campaignid = ' . $campaignid)->queryAll();
         inner join MediaType mt on mt.id = l.mediatypeid
         inner join UserCompany uc on uc.id = l.companyid and uc.id in (';
         
-        $sql = $sql . 'select vendorcompanyid from requestedcompanyvendor where companyid ='. $cid .' and accepteddate is not null)';
+        $sql = $sql . 'select vendorcompanyid from RequestedCompanyVendor where companyid ='. $cid .' and accepteddate is not null)';
         $sql = $sql . ' where l.status = 1 limit ' . $start . ',30';
         $data = Yii::app()->db->createCommand($sql)->queryAll();        
         return $data;
@@ -503,7 +503,7 @@ where t.status =1 and t.campaignid = ' . $campaignid)->queryAll();
     public static function updateListing($id) {
         $sql  ='Update Listing set status = 1, approved = 1 where id = '. $id;
         return Yii::app()->db->createCommand($sql)->execute();
-//        $invite = new Monitorlynotification();
+//        $invite = new MonitorlyNotification();
 //        $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => Yii::app()->user->cid, 'emailtypeid' => 4);
 //        $invite->save();
 //        $email = "ENTER EMAIL OF AGENCY WHOSE SITE HAS BEEN ACCEPTED"
@@ -516,7 +516,7 @@ where t.status =1 and t.campaignid = ' . $campaignid)->queryAll();
         FROM Listing l 
         inner join UserCompany uc on uc.id = l.companyid and uc.id in (';
         
-        $sql = $sql . 'select vendorcompanyid from requestedcompanyvendor where companyid ='. $cid .' and accepteddate is not null)';
+        $sql = $sql . 'select vendorcompanyid from RequestedCompanyVendor where companyid ='. $cid .' and accepteddate is not null)';
         $sql = $sql . ' where l.status = 1 limit ' . $start . ',30';
         $data = Yii::app()->db->createCommand($sql)->queryAll();        
         return $data;

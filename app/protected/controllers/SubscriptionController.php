@@ -36,7 +36,7 @@ class SubscriptionController extends Controller {
     }
     
     public function actionIndex() {
-        $model = new Monitorlysubscription();
+        $model = new MonitorlySubscription();
         $vendorList = array();
         $nid = Yii::app()->request->getParam('nid');
         $model->nid = $nid;
@@ -51,15 +51,15 @@ class SubscriptionController extends Controller {
     }
 
     public function actionCreateVendor() {
-        $model = new Monitorlysubscription();
+        $model = new MonitorlySubscription();
         //$model->setScenario('subscribe');
-        if (isset($_POST['Monitorlysubscription'])) {
-            if (strlen($_POST['Monitorlysubscription']['email']) && filter_var($_POST['Monitorlysubscription']['email'], FILTER_VALIDATE_EMAIL)) {
+        if (isset($_POST['MonitorlySubscription'])) {
+            if (strlen($_POST['MonitorlySubscription']['email']) && filter_var($_POST['MonitorlySubscription']['email'], FILTER_VALIDATE_EMAIL)) {
                 //$model->nid = Yii::app()->request->getParam('nid');   
-                $model->companyname = $_POST['Monitorlysubscription']['companyname'];
-                $model->email = $_POST['Monitorlysubscription']['email'];
-                $model->phonenumber = $_POST['Monitorlysubscription']['phonenumber'];
-                $model->nid = $_POST['Monitorlysubscription']['nid'];
+                $model->companyname = $_POST['MonitorlySubscription']['companyname'];
+                $model->email = $_POST['MonitorlySubscription']['email'];
+                $model->phonenumber = $_POST['MonitorlySubscription']['phonenumber'];
+                $model->nid = $_POST['MonitorlySubscription']['nid'];
                 $model->createddate = date("Y-m-d H:i:s");
                 //print_r($model->attributes);
                 //print_r($_POST);
@@ -68,7 +68,7 @@ class SubscriptionController extends Controller {
 
 //                $id = Yii::app()->user->id;
 //                $email = Yii::app()->user->emailid;
-//                $invite = new Monitorlynotification();
+//                $invite = new MonitorlyNotification();
 //                $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 2);
 //                $invite->save();
 //                $mail = new EatadsMailer('accepted-invite', $email, array('resetLink' => ""), array('shruti@eatads.com'));

@@ -11,13 +11,13 @@
  * @property string $phonenumber
  * @property string $createddate
  */
-class BaseMonitorlysubscription extends CActiveRecord {
+class BaseMonitorlySubscription extends CActiveRecord {
 
     /**
      * @return string the associated database table name
      */
     public function tableName() {
-        return 'monitorlysubscription';
+        return 'MonitorlySubscription';
     }
 
     /**
@@ -96,7 +96,7 @@ class BaseMonitorlysubscription extends CActiveRecord {
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!
      * @param string $className active record class name.
-     * @return BaseMonitorlysubscription the static model class
+     * @return BaseMonitorlySubscription the static model class
      */
     public static function model($className = __CLASS__) {
         return parent::model($className);

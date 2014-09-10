@@ -149,16 +149,18 @@ class AjaxController extends Controller {
 
         $companyResult = UserCompany::model()->findByPk($vendorId, array('select' => 'userid'));
         $forUserId = $companyResult->userid;
-
         foreach ($data as $value) {
-            //echo $value->mediatype;
+          //  echo $value->id . ',' . strcmp($vendorId, Yii::app()->user->cid);
             $mediaTypeId = array_search(strtolower($value->mediatype), $mediaTypes);
             $lightingId = array_search(strtolower($value->lighting), $lightings);
             //$productType = UserProduct::getUserProductType(552);//$forUserId);
 
             $address = $value->locality . ',' . $value->city;
             $addressGeocode = JoyUtilities::geocode($address);
-            //print_r($addressGeocode); die();
+            $countryId = 1;
+            $stateId = 1;
+            $cityId = 1;
+            //echo (json_encode($addressGeocode)) . '<pre>'; 
             if ($addressGeocode) {
                 // check if country exists        
                 if ($addressGeocode['country'] != '' && $addressGeocode['country'] != null) {
@@ -176,13 +178,14 @@ class AjaxController extends Controller {
                 }
             }
 
+
             if (Yii::app()->user->cid == $vendorId) {
                 $status = 1;
                 $approved = 1;
             } else {
                 $status = 0;
                 $approved = 0;
-                $invite = new Monitorlynotification();
+                $invite = new MonitorlyNotification();
                 $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $vendorId, 'emailtypeid' => 3);
                 $invite->save();
                 $email = UserCompany::fetchVendorEmail($vendorId);
@@ -190,7 +193,6 @@ class AjaxController extends Controller {
                 $mail = new EatadsMailer('approve-sites', $email, array('resetLink' => ""), array('sales@eatads.com'));
                 $mail->eatadsSend();
             }
-
 
             $listingModel = new Listing;
             $listingModel->byuserid = (int) $byUserId;
@@ -212,7 +214,13 @@ class AjaxController extends Controller {
             $listingModel->countryid = (int) $countryId;
             $listingModel->stateid = (int) $stateId;
             $listingModel->cityid = (int) $cityId;
-
+            
+            if (!array_key_exists('lat', $addressGeocode)) {
+                $addressGeocode['lat'] = 0.0;
+            }
+            if (!array_key_exists('lng', $addressGeocode)) {
+                $addressGeocode['lng'] = 0.0;
+            }
             $listingModel->geolat = $addressGeocode['lat'];
             $listingModel->geolng = $addressGeocode['lng'];
             $listingModel->accurate_geoloc = 0;
@@ -223,8 +231,56 @@ class AjaxController extends Controller {
             $listingModel->basecurrencyid = 11;   // 11 for India
 
             $listingModel->datemodified = date('Y-m-d H:i:s');
-            $listingModel->datecreated = date('Y-m-d H:i:s');
-            $listingModel->save();
+            
+            if (empty($value->id)) {
+                $listingModel->datecreated = date('Y-m-d H:i:s');
+                $listingModel->save();
+            } else if (!empty($value->id) && strcmp($listingModel->companyId, Yii::app()->user->cid) ==0){
+                //$listingModel->id = $value->id;
+               // $model = Listing::model()->findByPk($value->id);
+//                 $model->byuserid = (int) $byUserId;
+//                $model->foruserid = (int) $forUserId;
+//                $model->companyId = (int) $vendorId;
+
+                $model = array();
+                $model['name'] = $value->name;
+                $model['site_code'] = $value->site_code;
+                $model['length'] = (int) $value->length;
+                $model['width'] = (int) $value->width;
+                $model['area'] = (int) ($value->length * $value->width);
+
+                $model['product_type'] = 2;
+//                $model->status = $status;
+//                $model->approved = $approved;
+
+                $model['locality'] = $value->locality;
+                if ($countryId != 0) {
+                    $model['countryid'] = (int) $countryId;
+                }
+                if ($stateId != 0) {
+                    $model['stateid'] = (int) $stateId;
+                }
+                if ($cityId != 0) {
+                    $model['cityid'] = (int) $cityId;
+                }
+
+                
+                
+                $model['geolat'] = $addressGeocode['lat'];
+                $model['geolng'] = $addressGeocode['lng'];
+       //         $model['accurate_geoloc'] = 0;
+
+                $model['lightingid'] = (int) $lightingId;
+                $model['mediatypeid'] = (int) $mediaTypeId;
+
+//                $model->basecurrencyid = 11;   // 11 for India
+
+                $model['datemodified'] = date('Y-m-d H:i:s');
+                
+//                $model->update();
+                Listing::model()->updateByPk($value->id, $model);
+            }
+//            usleep(250000);
         }
         echo true;
     }
@@ -516,7 +572,7 @@ class AjaxController extends Controller {
 
             $id = Yii::app()->user->id;
             //$mail=  Yii::app()->user->email;  
-            $invite = new Monitorlynotification();
+            $invite = new MonitorlyNotification();
             $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1);
             $invite->save();
             $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;
@@ -532,16 +588,26 @@ class AjaxController extends Controller {
         if (isset($_POST['vendorid']) && isset($_POST['companyid'])) {
             $companyid = $_POST['companyid'];
             $vendorcompanyid = $_POST['vendorid'];
-            $check = Requestedcompanyvendor::checkUniqueVendor($companyid, $vendorcompanyid);
+            $check = RequestedCompanyVendor::checkUniqueVendor($companyid, $vendorcompanyid);
             if (strcasecmp($check['cnt'], '0') == 0) {
-                $model = new Requestedcompanyvendor();
+                $model = new RequestedCompanyVendor();
                 $model->attributes = array(
-                    'companyid' => $companyid,
-                    'createdby' => $companyid,
+                    'companyid' => Yii::app()->user->cid,
+                    'createdby' => Yii::app()->user->id,
                     'createddate' => date("Y-m-d H:i:s"),
                     'vendorcompanyid' => $vendorcompanyid,
                 );
                 $model->save();
+                
+                $invite = new MonitorlyNotification();
+                $email = UserCompany::fetchVendorEmail($vendorcompanyid);
+                //print_r($email['email']); die();
+                $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
+                $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
+                $invite->save();
+                $mail = new EatadsMailer('request-vendor', $email['email'], array('resetLink' => $resetlink), array('shruti@eatads.com'));
+                $mail->eatadsSend();
+                echo '200';
             } else {
                 echo 'Vendor already invited';
             }
@@ -549,14 +615,21 @@ class AjaxController extends Controller {
     }
 
     public function actionAcceptRequest() {
-        if (isset($_POST['vendorcompanyid']) && isset($_POST['id'])) {
+        if (isset($_POST['vendorcompanyid']) && isset($_POST['id']) && isset($_POST['emailid'])) {
             $vcid = $_POST['vendorcompanyid'];
             $id = $_POST['id'];
-
-            $model = Requestedcompanyvendor::model()->findByPk($id);
+            $email = $_POST['emailid'];
+            $model = RequestedCompanyVendor::model()->findByPk($id);
             $model->acceptedby = $vcid;
             $model->accepteddate = date("Y-m-d H:i:s");
             $model->save();
+            $invite = new MonitorlyNotification();
+            //$email = UserCompany::fetchVendorEmail($vendorcompanyid);
+            //$resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
+            $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
+            $invite->save();
+            $mail = new EatadsMailer('invite-accepted', $email, array('resetLink' => ""), array('shruti@eatads.com'));
+            $mail->eatadsSend();
             echo 200;
         }
     }
