@@ -163,9 +163,9 @@
                 'emailid':email
             },
             success: function(data) {
-                if (data == 200)
+                if (data == '200')
                 {
-                    alert("Request accepted successfully");
+                    //alert("Request accepted successfully");
                     location.reload();
                 }
             }
