@@ -330,7 +330,7 @@ class JoyUtilities
     }
     
     public static function geocode($address)
-	{		
+	{
         // GEOCODE
         $address = urlencode($address);
         $protocol = Yii::app()->params['protocol'];

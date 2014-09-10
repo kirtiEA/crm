@@ -31,14 +31,28 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        $this->render('index');
+         $data = Listing::getListingsForAcceptedVendors(Yii::app()->user->cid, 0);
+           $arr = array();
+            foreach ($data as $key => $value) {
+                $result = array();
+                $result[0] = $value['name'] . ', ' . $value['address'];
+                $result[1] = $value['lat'];
+                $result[2] = $value['lng'];
+                $result[3] = $value['id'];
+                array_push($arr, $result);
+                
+            }
+//            echo json_encode($result);
+        $this->render('index', array('markers' => json_encode($arr)));
+
     }
 
     public function actionAddVendor() {
         $vendorList = array();
-        foreach (UserCompany::model()->findAll() as $value) {
-            array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
-            //array_push($vendorList, array('name'=>$value->name));
+        $result = UserCompany::fetchVendorsList(Yii::app()->user->cid);
+        foreach($result as $value) {
+            array_push($vendorList, array('id' => $value['id'], 'value' => $value['name'] . ' (' . $value['cnt'] .')'));
+
         }
 
         // fetch media types
@@ -140,7 +154,17 @@ class SiteController extends Controller {
             array_push($result, $value);
         }
         //  print_r($result);die();
-        $this->render('pendingsites', array('lists' => $result));
+          $arr = array();
+            foreach ($data as $key => $value) {
+                $result = array();
+                $result[0] = $value['name'];
+                $result[1] = $value['lat'];
+                $result[2] = $value['lng'];
+                $result[3] = $value['id'];
+                array_push($arr, $result);
+                
+            }
+        $this->render('pendingsites', array('lists' => $result, 'markers' => json_encode($arr)));
     }
 
 }

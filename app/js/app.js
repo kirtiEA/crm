@@ -149,7 +149,7 @@ app.factory('Reddit', function($http,$rootScope) {
           
             if (id !== $('#sitetypeid').val()) {
                 that.products = [];
-                console.log(id + ' sdfsdfsdffffff111 ' + $('#sitetypeid').val());
+//                console.log(id + ' sdfsdfsdffffff111 ' + $('#sitetypeid').val());
             }
             for (var i = 0; i < items.length; i++) {
                that.products.push(items[i]);

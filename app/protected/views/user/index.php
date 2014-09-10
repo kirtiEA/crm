@@ -76,7 +76,7 @@
                     </div>
                     <div class="pull-right" id="<?php echo $value->id; ?>">
                         
-                        <button class="btn btn-secondary">Send Message</button>&nbsp;
+<!--                        <button class="btn btn-secondary">Send Message</button>&nbsp;-->
                         <button class="change-pwd btn btn-secondary">Change Password</button>
                         
                     </div>

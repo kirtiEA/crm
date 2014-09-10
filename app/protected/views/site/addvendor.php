@@ -5,7 +5,9 @@
     <link rel="stylesheet" media="screen" href="http://handsontable.com/lib/jquery-ui/css/ui-bootstrap/jquery-ui.custom.css">
     <script src="http://handsontable.com/lib/jquery-ui/js/jquery-ui.custom.min.js"></script>
 -->
-
+<script>
+var changedata = [];
+</script>
   <!-- invite vendor modal -->
     <div class="modal fade" id="invite-vendor-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-sm modal-sm-custom">
@@ -56,9 +58,24 @@
 </div>
 <!-- end of tasks list --> 
 <script type="text/javascript">    
+
+    function onlyUnique(value, index, self) { 
+    return self.indexOf(value) === index;
+}
+
     function fetchSites(vendorid) {
-        console.clear();
+  //      console.clear();
+  changedata = [];
         console.log(vendorid);
+//        var hooks = Handsontable.hooks.getRegistered();
+//hooks.forEach(function(hook) {
+//    if(hook == 'onchange') {
+//        config[hook] = function() {
+//            console.log('hook :  ' + hook + ' arguments ' + arguments );
+//        }
+//
+//    }
+//});
         var handsontable = $('#listings').data('handsontable');
         $.ajax({
             url: "<?php echo Yii::app()->urlManager->createUrl('ajax/fetchvendorsites'); ?>",
@@ -79,6 +96,7 @@
             }
         });
     }
+    
     $('#listings').handsontable({
         //data: [['','','','']],
         minCols: 20,
@@ -88,6 +106,27 @@
         manualColumnResize: true,
         manualRowResize: true,
         minSpareRows: 50,
+        onChange : function() {
+        console.log('onchanhe' + JSON.stringify(arguments));
+        if (arguments[0] !==  null) {
+        changedata[changedata.length] = arguments[0][0][0];
+//        changedata.push['asd'];
+//        console.log(changedata + ' pushed ' + arguments[0][0][0]);
+        }  else {
+       // console.log('null dda');
+        }   
+//        changedata.push[arguments[0][0][0]];
+//        for (var d = 0; d < arguments.length; d++) {
+//            changedata.push[arguments[0][0][0]];
+//            if (arguments[d] && arguments[d].length > 0) {
+//            changedata.push[arguments[d][0][0]];
+//            console.log('data - ' + JSON.stringify(changedata) + ' sdf '  + arguments[d][0][0]);
+//            //break;
+//            }    
+//            
+//            
+//        }    
+        },    
         columns: [{
                 data: 'site_code',
                 type: 'text'
@@ -122,16 +161,21 @@
                  }*/
     });
 
+
     function validateEmail(email) {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     }
     function cleanTableData(data) {
-        //console.log(data);
+ //        console.log('change data s' + changedata);
         var cleanData = [];
-        data.forEach(function(row){
+        var changedata1 = changedata.filter( onlyUnique );
+//        console.log('change data s' + changedata1);
+        for (var i=0; i < changedata1.length; i++) {
+            var row = data[changedata1[i]];
             if(row.name) {
                 cleanData.push({
+                    id: row.id,
                     site_code: row.site_code,
                     name: row.name,
                     mediatype: row.mediatype,
@@ -142,7 +186,24 @@
                     lighting: row.lighting                    
                 });
             }
-        });
+        }    
+        
+//        data.forEach(function(row){
+//            console.log('index' + i);
+//            if(row.name) {
+//                cleanData.push({
+//                    id: row.id,
+//                    site_code: row.site_code,
+//                    name: row.name,
+//                    mediatype: row.mediatype,
+//                    locality: row.locality,
+//                    city: row.city,
+//                    length: row.length1,
+//                    width: row.width,
+//                    lighting: row.lighting                    
+//                });
+//            }
+//        });
         return cleanData;
     }
     $('body').on('click', 'button[name=save]', function() {
@@ -155,7 +216,7 @@
         var vendorid = $('#vendor-ac-id').val();
         var byuserid = 1;//'<?php echo Yii::app()->user->id; ?>';
         console.log(vendorid + " - " + byuserid + " - " + cleanData.length);
-        console.log(cleanData);
+        console.log(JSON.stringify(cleanData));
         
         if (vendorid && byuserid && cleanData.length) {
             console.log('inside if');
@@ -169,6 +230,7 @@
                 },
                 success: function(data) {
                     //var json = JSON.parse(data);
+                   console.log(data);
                     if(data == true)
                         alert('Data saved.')
                     else 
