@@ -152,8 +152,9 @@
                 'companyid': companyid,
             },
             success: function(data) {
-                if (data == null)
-                    alert("Request sent successfully ");
+                if (data == '200')
+                    //alert("Request sent successfully ");
+                    location.reload();    
                 else
                     alert(data);
             }

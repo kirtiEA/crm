@@ -605,6 +605,7 @@ class AjaxController extends Controller {
                 $invite->save();
                 $mail = new EatadsMailer('request-vendor', $email, array('resetLink' => $resetlink), array('shruti@eatads.com'));
                 $mail->eatadsSend();
+                echo '200';
             } else {
                 echo 'Vendor already invited';
             }
