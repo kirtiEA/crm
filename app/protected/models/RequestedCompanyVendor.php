@@ -25,11 +25,11 @@ class RequestedCompanyVendor extends BaseRequestedCompanyVendor {
         return Yii::app()->db->createCommand($query)->queryAll();
     }
 
-    public static function showWaitingRequests($vendorcompanyid) {
+    public static function showWaitingRequests($cid) {
         $query = 'select rv.id as id, uc.name as name, u.email as vendoradmin, DATE_FORMAT(rv.createddate,\'%d %M %Y\') as createddate, rv.accepteddate 
                     from RequestedCompanyVendor rv 
                     inner join UserCompany uc on uc.id = rv.companyid 
-                    inner join User u on u.id = uc.userid and rv.vendorcompanyid =' . $vendorcompanyid . ' and rv.acceptedby is NULL';
+                    inner join User u on u.id = uc.userid and rv.vendorcompanyid =' . $cid . ' and rv.acceptedby is NULL';
 
         return Yii::app()->db->createCommand($query)->queryAll();
     }

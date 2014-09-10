@@ -592,8 +592,8 @@ class AjaxController extends Controller {
             if (strcasecmp($check['cnt'], '0') == 0) {
                 $model = new RequestedCompanyVendor();
                 $model->attributes = array(
-                    'companyid' => $companyid,
-                    'createdby' => $companyid,
+                    'companyid' => Yii::app()->user->cid,
+                    'createdby' => Yii::app()->user->id,
                     'createddate' => date("Y-m-d H:i:s"),
                     'vendorcompanyid' => $vendorcompanyid,
                 );
