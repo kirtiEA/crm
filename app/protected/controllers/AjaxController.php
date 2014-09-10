@@ -604,11 +604,12 @@ class AjaxController extends Controller {
                 
                 $invite = new MonitorlyNotification();
                 $email = UserCompany::fetchVendorEmail($vendorcompanyid);
-                //print_r($email['email']); die();
+               // print_r($email['email']); die();
                 //$email = "root@localhost.com";
                 $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
                 $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
-
+                $invite->createdby = Yii::app()->user->id;
+                $invite->createddate = date("Y-m-d H:i:s");
                 $invite->save();
                 $mail = new EatadsMailer('request-vendor', $email['email'], array('resetLink' => $resetlink), array('sales@eatads.com'));
                 $mail->eatadsSend();
