@@ -1,31 +1,26 @@
 <?php
 
 /**
- * This is the model class for table "requestedcompanyvendor".
+ * This is the model class for table "MonitorlyNotification".
  *
- * The followings are the available columns in table 'requestedcompanyvendor':
+ * The followings are the available columns in table 'MonitorlyNotification':
  * @property integer $id
- * @property integer $companyid
- * @property integer $createdby
+ * @property integer $typeid
  * @property string $createddate
- * @property integer $vendorcompanyid
- * @property integer $acceptedby
- * @property string $accepteddate
+ * @property integer $createdby
+ * @property integer $emailtypeid
  *
  * The followings are the available model relations:
- * @property User $acceptedby0
- * @property Usercompany $company
- * @property Usercompany $vendorcompany
  * @property User $createdby0
  */
-class BaseRequestedcompanyvendor extends CActiveRecord
+class BaseMonitorlyNotification extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'requestedcompanyvendor';
+		return 'MonitorlyNotification';
 	}
 
 	/**
@@ -36,11 +31,11 @@ class BaseRequestedcompanyvendor extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('companyid, createdby, vendorcompanyid, acceptedby', 'numerical', 'integerOnly'=>true),
-			array('createddate, accepteddate', 'safe'),
+			array('createddate, createdby', 'required'),
+			array('typeid, createdby, emailtypeid', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, companyid, createdby, createddate, vendorcompanyid, acceptedby, accepteddate', 'safe', 'on'=>'search'),
+			array('id, typeid, createddate, createdby, emailtypeid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,9 +47,6 @@ class BaseRequestedcompanyvendor extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'acceptedby0' => array(self::BELONGS_TO, 'User', 'acceptedby'),
-			'company' => array(self::BELONGS_TO, 'Usercompany', 'companyid'),
-			'vendorcompany' => array(self::BELONGS_TO, 'Usercompany', 'vendorcompanyid'),
 			'createdby0' => array(self::BELONGS_TO, 'User', 'createdby'),
 		);
 	}
@@ -66,12 +58,10 @@ class BaseRequestedcompanyvendor extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'companyid' => 'Companyid',
-			'createdby' => 'Createdby',
+			'typeid' => '1-invite vendor, 2-remind vendor',
 			'createddate' => 'Createddate',
-			'vendorcompanyid' => 'Vendorcompanyid',
-			'acceptedby' => 'Acceptedby',
-			'accepteddate' => 'Accepteddate',
+			'createdby' => 'Createdby',
+			'emailtypeid' => 'Emailtypeid',
 		);
 	}
 
@@ -94,12 +84,10 @@ class BaseRequestedcompanyvendor extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('companyid',$this->companyid);
-		$criteria->compare('createdby',$this->createdby);
+		$criteria->compare('typeid',$this->typeid);
 		$criteria->compare('createddate',$this->createddate,true);
-		$criteria->compare('vendorcompanyid',$this->vendorcompanyid);
-		$criteria->compare('acceptedby',$this->acceptedby);
-		$criteria->compare('accepteddate',$this->accepteddate,true);
+		$criteria->compare('createdby',$this->createdby);
+		$criteria->compare('emailtypeid',$this->emailtypeid);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -110,7 +98,7 @@ class BaseRequestedcompanyvendor extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Requestedcompanyvendor the static model class
+	 * @return MonitorlySubscription the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

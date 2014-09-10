@@ -9,7 +9,7 @@ class WaitingApprovalController extends Controller {
         }
         $id = Yii::app()->user->id;
         //echo $id;
-        $model = Requestedcompanyvendor::showWaitingRequests($id);
+        $model = RequestedCompanyVendor::showWaitingRequests($id);
 //        echo '<pre>';
 //        print_r($model);die();
         $this->render('index', array(

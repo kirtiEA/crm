@@ -10,7 +10,7 @@ class UserCompany extends BaseUserCompany {
 
     public static function fetchVendorsList($cid) {
         $sql = 'select count(*) as cnt, companyid as id, uc.name from Listing  
-            inner join UserCompany uc on uc.id = companyid and uc.id in ( select vendorcompanyid from requestedcompanyvendor where companyid =' . $cid . ' and accepteddate is not null)' .
+            inner join UserCompany uc on uc.id = companyid and uc.id in ( select vendorcompanyid from RequestedCompanyVendor where companyid =' . $cid . ' and accepteddate is not null)' .
                 'where companyid is not null and companyid != 0
 
             and status = 1 

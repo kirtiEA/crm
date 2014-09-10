@@ -182,7 +182,7 @@ class AjaxController extends Controller {
             } else {
                 $status = 0;
                 $approved = 0;
-                $invite = new Monitorlynotification();
+                $invite = new MonitorlyNotification();
                 $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $vendorId, 'emailtypeid' => 3);
                 $invite->save();
                 $email = UserCompany::fetchVendorEmail($vendorId);
@@ -516,7 +516,7 @@ class AjaxController extends Controller {
 
             $id = Yii::app()->user->id;
             //$mail=  Yii::app()->user->email;  
-            $invite = new Monitorlynotification();
+            $invite = new MonitorlyNotification();
             $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1);
             $invite->save();
             $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;
@@ -542,7 +542,7 @@ class AjaxController extends Controller {
                     'vendorcompanyid' => $vendorcompanyid,
                 );
                 $model->save();
-                $invite = new Monitorlynotification();
+                $invite = new MonitorlyNotification();
                 $email = UserCompany::fetchVendorEmail($vendorcompanyid);
                 $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
                 $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
@@ -564,7 +564,7 @@ class AjaxController extends Controller {
             $model->acceptedby = $vcid;
             $model->accepteddate = date("Y-m-d H:i:s");
             $model->save();
-            $invite = new Monitorlynotification();
+            $invite = new MonitorlyNotification();
             //$email = UserCompany::fetchVendorEmail($vendorcompanyid);
             //$resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
             $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
