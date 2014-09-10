@@ -529,7 +529,11 @@ class AjaxController extends Controller {
             $result = array();
             foreach ($data as $key => $value) {
                 $value['lighting'] = Listing::getLighting($value['lightingid']);
-                $value['sizeunit'] = Listing::getSizeUnit($value['sizeunitid']);
+                if ($value['sizeunitid'] == 0) {
+                    $value['sizeunit'] = Listing::getSizeUnit(1);
+                } else {
+                    $value['sizeunit'] = Listing::getSizeUnit($value['sizeunitid']);
+                }
                 array_push($result, $value);
             }
             echo json_encode($result);
@@ -597,15 +601,16 @@ class AjaxController extends Controller {
                     'createddate' => date("Y-m-d H:i:s"),
                     'vendorcompanyid' => $vendorcompanyid,
                 );
-                $model->save();
+//              $model->save();
                 $invite = new MonitorlyNotification();
                 $email = UserCompany::fetchVendorEmail($vendorcompanyid);
                 $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
                 $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
-                $invite->save();
+//                $invite->save();
+//                echo '200';
                 $mail = new EatadsMailer('request-vendor', $email, array('resetLink' => $resetlink), array('shruti@eatads.com'));
                 $mail->eatadsSend();
-                echo '200';
+                
             } else {
                 echo 'Vendor already invited';
             }
@@ -624,7 +629,7 @@ class AjaxController extends Controller {
             $invite = new MonitorlyNotification();
             //$email = UserCompany::fetchVendorEmail($vendorcompanyid);
             //$resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
-            $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
+            $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => Yii::app()->user->id, 'emailtypeid' => 2);
             $invite->save();
             $mail = new EatadsMailer('invite-accepted', $email, array('resetLink' => ""), array('shruti@eatads.com'));
             $mail->eatadsSend();

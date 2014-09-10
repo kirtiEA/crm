@@ -97,7 +97,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                             '<h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' + cname +'&nbsp;</h3><div class="assign-dropdown">Assigned to' + 
                                 '<select>' +
                                     '<option value="' + cid +'_0" selected="true">Myself</option>'+
-                                    '<option value="' + cid+ '_' + cid+ '">Live Media</option>'+
+                                    '<option value="' + cid+ '_' + cid+ '">'+ cname +'</option>'+
                                     '</select></div><ul class="sub-sub-list show-hide-content">'
                                     +'</ul></li>';
                             
@@ -206,24 +206,44 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
     }
     
     function fetchvendors(name,id) {
-        $('.campaignName').html(name);
-        $('.selectedCampaignId').html(id);
-         $.ajax({
-            type: 'POST',
-            url: '<?php echo Yii::app()->urlManager->createUrl('ajax/vendorsList'); ?>',
-         success:function(data){
-             dust.render("vendors", JSON.parse(data), function(err, out) {
-                 $('#vendors').html(out);
-                 console.log(err);
-             });    
-            },
-            error: function(data) { // if error occured
-                  alert("Error occured.please try again");
-                  alert(data);
-             }
-           });
+        console.log(addtocampaign);
+        if (addtocampaign.length > 0 || removefromcampaign.length > 0) {
+            var r = confirm("You have unsaved campaigns? Do you want to discard changes to these campaigns - " + $('.campaignName').text());
+            if (r == true) {
+                for (var i=0; i < addtocampaign.length; i++) {
+                    $('#justadded_'+ addtocampaign[i]).remove();
+                }    
+                fetchVendorsPostValidation(name,id);
+            } else {
+                txt = "You pressed Cancel!";
+            }
+        } else if (addtocampaign.length == 0 && removefromcampaign.length == 0) {
+            fetchVendorsPostValidation(name,id);
+        }    
+
     }
-    
+    function fetchVendorsPostValidation(name,id) {
+                    addtocampaign = [];
+                removefromcampaign = [];
+                $('.campaignName').html(name);
+                $('#selectedvendorname').val(name);
+                $('#selectedCampaignId').val(id);
+                $('#campaignListings').children().remove();
+                 $.ajax({
+                    type: 'POST',
+                    url: '<?php echo Yii::app()->urlManager->createUrl('ajax/vendorsList'); ?>',
+                 success:function(data){
+                     dust.render("vendors", JSON.parse(data), function(err, out) {
+                         $('#vendors').html(out);
+                         console.log(err);
+                     });    
+                    },
+                    error: function(data) { // if error occured
+                          alert("Error occured.please try again");
+                          alert(data);
+                     }
+                   });
+    }    
     function fetchCompanyListings(id) {
         
         $('.vendorselection').each(function() {

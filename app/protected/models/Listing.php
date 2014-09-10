@@ -479,7 +479,7 @@ where t.status =1 and t.campaignid = ' . $campaignid)->queryAll();
         inner join MediaType mt on mt.id = l.mediatypeid
         inner join UserCompany uc on uc.id = l.companyid and uc.id in (';
         
-        $sql = $sql . 'select vendorcompanyid from RequestedCompanyVendor where companyid ='. $cid .' and accepteddate is not null)';
+        $sql = $sql . 'select vendorcompanyid from RequestedCompanyVendor where companyid ='. $cid .' and accepteddate is not null union select '. $cid .')';
         $sql = $sql . ' where l.status = 1 limit ' . $start . ',30';
         $data = Yii::app()->db->createCommand($sql)->queryAll();        
         return $data;

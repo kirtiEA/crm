@@ -100,7 +100,7 @@ var changedata = [];
     $('#listings').handsontable({
         //data: [['','','','']],
         minCols: 20,
-        colHeaders: ['SITE CODE', 'MEDIA TYPE', 'CITY', 'LOCALITY', 'NAME', 'LENGTH', 'WIDTH', 'LIGHTING'],
+        colHeaders: ['SITE CODE', 'MEDIA TYPE', 'CITY', 'LOCALITY', 'NAME', 'WIDTH','HEIGHT' ,'LIGHTING'],
         rowHeaders: true,
         colWidths: [100, 150, 150, 250, 250, 100, 100, 100],
         manualColumnResize: true,
@@ -144,10 +144,10 @@ var changedata = [];
                 data: 'name',
                 type: 'text'
             }, {
-                data: 'length1',
+                data: 'width',
                 type: 'numeric'
             }, {
-                data: 'width',
+                data: 'length1',
                 type: 'numeric'
             }, {
                 data: 'lighting',

@@ -28,7 +28,7 @@
                                 )
                     )); ?>
                 <div class="form-group">
-                    <h3 class="subheader-heading">Add New User</h3>
+                    <h3 class="subheader-heading" style="margin-left: 16px;">Add New User</h3>
                     <div class="control">
                         <label class="control-label">Username</label>
                         <?php echo $form->textField($model,'username');?>    
