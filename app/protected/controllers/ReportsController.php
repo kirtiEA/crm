@@ -32,7 +32,7 @@ class ReportsController extends Controller
             if(!is_null($sdate) && !is_null($edate)) {
                 $sql .= " AND dueDate BETWEEN '$sdate' AND '$edate' ";
             }
-            echo $sql;
+         //   echo $sql;
             $tasks = Yii::app()->db->createCommand($sql)->queryAll();
             //$campaignList = array();
             //$userList = array();                        

@@ -391,8 +391,9 @@ class AjaxController extends Controller {
                         $companyid = $inputVendorIds[0];
                         $assignedcompanyid = $inputVendorIds[1];
                     }
-                    print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ');
-                    print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid));
+//                    print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ');
+//                    print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid));
+                    Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid);
                 }
                 echo '200';
             } else if ($_POST['type'] == 2) {
@@ -452,8 +453,9 @@ class AjaxController extends Controller {
                         $companyid = $inputVendorIds[0];
                         $assignedcompanyid = $inputVendorIds[1];
                     }
-                    print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ' . $date . ' ');
-                    print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid, date("Y-m-d H:i:s", $date)));
+//                    print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ' . $date . ' ');
+//                    print_r();
+                    Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid, date("Y-m-d H:i:s", $date));
                 }
                 echo '200';
             }
