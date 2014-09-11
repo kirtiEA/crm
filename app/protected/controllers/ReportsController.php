@@ -13,14 +13,29 @@ class ReportsController extends Controller
         }
         public function actionIndex()
 	{
+            $cId = Yii::app()->user->cid;
             $sdate = null; 
             $edate = null;
-            if(isset($_POST['filter_submit'])) {
-                $sdate = date("Y-m-d G:i:s", strtotime($_POST['sdate']));
-                $edate = date("Y-m-d G:i:s", strtotime($_POST['edate']));
-                //echo '<pre>'; print_r($_POST); die();
+            $campaignIds = null;
+            $assignedTo = null;
+            if(isset($_POST['sdate'])) {
+                $sdate = $_POST['sdate'];
+                $sdate = str_replace('/', '-', $sdate);
+                $sdate = date("Y-m-d", strtotime($sdate));
             }
-            $cId = Yii::app()->user->cid;
+            if(isset($_POST['edate'])) {    
+                $edate = $_POST['edate'];
+                $edate = str_replace('/', '-', $edate);
+                $edate = date("Y-m-d", strtotime($edate));
+            }
+            if(isset($_POST['campaignids'])) {
+                $campaignIds = implode(',', json_decode(str_replace('"', '', $_POST['campaignids'])));
+                //print_r($campaignIds); die();
+            }
+            if(isset($_POST['assignedto'])) {
+                $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));
+                //print_r($assignedTo); die();
+            }  
             $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
                     . "t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop "
                     . "FROM Task t "
@@ -30,41 +45,101 @@ class ReportsController extends Controller
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
                     . "WHERE t.pop=1 AND t.assignedCompanyid=$cId ";
             if(!is_null($sdate) && !is_null($edate)) {
-                $sql .= " AND dueDate BETWEEN '$sdate' AND '$edate' ";
+                $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
             }
-            echo $sql;
+            if(!is_null($campaignIds) && strlen($campaignIds)) {
+                $sql .= " AND c.id IN ($campaignIds) ";
+            }
+            if(!is_null($assignedTo) && strlen($assignedTo)) {
+                $sql .= " AND t.assigneduserid IN ($assignedTo) ";
+            }
+            
             $tasks = Yii::app()->db->createCommand($sql)->queryAll();
-            //$campaignList = array();
-            //$userList = array();                        
-            
-            //echo '<pre>'; print_r($userList); print_r($campaignList); die();
-            
-            $this->render('index', array('tasks'=>$tasks));
+            $campaignIdList = array();
+            $assignedToList = array();
+            $sql2 = "SELECT c.id as cid, c.name as campaign, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto "
+                    . "FROM Task t "
+                    . "LEFT JOIN Campaign c ON c.id=t.campaignid "                    
+                    . "LEFT JOIN User u ON u.id=t.assigneduserid "
+                    . "WHERE t.assignedCompanyid=$cId ";
+            $filters = Yii::app()->db->createCommand($sql2)->queryAll();
+            foreach($filters as $fl) {
+                //echo '<pre>';
+                
+                if(!isset($campaignIdList[$fl['cid']])) {
+                    $campaignIdList[$fl['cid']] = $fl['campaign'];
+                }
+                if(!isset($assignedToList[$fl['uid']])) {
+                    $assignedToList[$fl['uid']] = $fl['assignedto'];
+                }                
+            }            
+            $this->render('index', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList));
 	}
         
         public function actionAll()
 	{
             $cId = Yii::app()->user->cid;
-            $sql = "SELECT t.id, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
-                    . "t.taskDone as status, t.problem, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop "
+            $sdate = null; 
+            $edate = null;
+            $campaignIds = null;
+            $assignedTo = null;
+            
+            if(isset($_POST['sdate']) && $_POST['sdate']!='') {
+                $sdate = $_POST['sdate'];
+                $sdate = str_replace('/', '-', $sdate);
+                $sdate = date("Y-m-d", strtotime($sdate));                
+            }
+            if(isset($_POST['edate']) && $_POST['edate']!='') {    
+                $edate = $_POST['edate'];
+                $edate = str_replace('/', '-', $edate);
+                $edate = date("Y-m-d", strtotime($edate));
+            }
+            if(isset($_POST['campaignids']) && $_POST['campaignids']!='null') {
+                $campaignIds = implode(',', json_decode(str_replace('"', '', $_POST['campaignids'])));                
+            }
+            if(isset($_POST['assignedto']) && $_POST['assignedto']!='null') {                
+                $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));                
+            }           
+            
+            $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
+                    . "t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop "
                     . "FROM Task t "
                     . "LEFT JOIN Campaign c ON c.id=t.campaignid "
                     . "LEFT JOIN Listing l ON l.id=t.siteid "
                     . "LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
                     . "WHERE t.assignedCompanyid=$cId ";
-            if($sdate && $edate) 
-                $sql .= " AND dueDate BETWEEN $sdate AND $edate ";
-            $tasks = Yii::app()->db->createCommand($sql)->queryAll();            
-            $popList = array();
-            
-            foreach($tasks as $t) {
-                
+            if(!is_null($sdate) && !is_null($edate)) {
+                $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
             }
+            if(!is_null($campaignIds) && strlen($campaignIds)) {
+                $sql .= " AND c.id IN ($campaignIds) ";
+            }
+            if(!is_null($assignedTo) && strlen($assignedTo)) {
+                $sql .= " AND t.assigneduserid IN ($assignedTo) ";
+            }
+                        
+            $tasks = Yii::app()->db->createCommand($sql)->queryAll();            
             
-            //echo '<pre>'; print_r($tasks); die();
-            
-            $this->render('all', array('tasks'=>$tasks));
+            $campaignIdList = array();
+            $assignedToList = array();
+            $sql2 = "SELECT c.id as cid, c.name as campaign, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto "
+                    . "FROM Task t "
+                    . "LEFT JOIN Campaign c ON c.id=t.campaignid "                    
+                    . "LEFT JOIN User u ON u.id=t.assigneduserid "
+                    . "WHERE t.assignedCompanyid=$cId ";
+            $filters = Yii::app()->db->createCommand($sql2)->queryAll();
+            foreach($filters as $fl) {
+                //echo '<pre>';
+                
+                if(!isset($campaignIdList[$fl['cid']])) {
+                    $campaignIdList[$fl['cid']] = $fl['campaign'];
+                }
+                if(!isset($assignedToList[$fl['uid']])) {
+                    $assignedToList[$fl['uid']] = $fl['assignedto'];
+                }                
+            }
+            $this->render('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList));
 	}
 	// Uncomment the following methods and override them if needed
 	/*

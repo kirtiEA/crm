@@ -46,6 +46,26 @@ $(document).ready(function() {
             $("#scdate").datepicker("option", "maxDate", selectedDate);
         }
     });
+    // dates for reports
+    $("#srdate").datepicker({
+        //changeMonth: true,
+        numberOfMonths: 1,
+        maxDate: 0,
+        dateFormat: 'dd/mm/yy',
+        onClose: function(selectedDate) {            
+            $("#erdate").datepicker("option", "minDate", selectedDate);
+        }
+    });
+    $("#erdate").datepicker({
+        maxDate: 0,
+        //changeMonth: true,
+        numberOfMonths: 1,
+        dateFormat: 'dd/mm/yy',
+        onClose: function(selectedDate) {
+            if (selectedDate)
+                $("#srdate").datepicker("option", "maxDate", selectedDate);
+        }
+    });
 
     //collapse dropdown layers on clikcing on backdrop
     $(document).mouseup(function(e)
