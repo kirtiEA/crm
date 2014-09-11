@@ -18,24 +18,23 @@ class ReportsController extends Controller
             $edate = null;
             $campaignIds = null;
             $assignedTo = null;
-            if(isset($_POST['sdate'])) {
+            
+            if(isset($_POST['sdate']) && $_POST['sdate']!='') {
                 $sdate = $_POST['sdate'];
-                $sdate = str_replace('/', '-', $sdate);
-                $sdate = date("Y-m-d", strtotime($sdate));
+                //$sdate = str_replace('/', '-', $sdate);
+                $sdate = date("Y-m-d", strtotime($sdate));                
             }
-            if(isset($_POST['edate'])) {    
+            if(isset($_POST['edate']) && $_POST['edate']!='') {    
                 $edate = $_POST['edate'];
-                $edate = str_replace('/', '-', $edate);
+                //$edate = str_replace('/', '-', $edate);
                 $edate = date("Y-m-d", strtotime($edate));
             }
-            if(isset($_POST['campaignids'])) {
-                $campaignIds = implode(',', json_decode(str_replace('"', '', $_POST['campaignids'])));
-                //print_r($campaignIds); die();
+            if(isset($_POST['campaignids']) && $_POST['campaignids']!='null') {
+                $campaignIds = implode(',', json_decode(str_replace('"', '', $_POST['campaignids'])));                
             }
-            if(isset($_POST['assignedto'])) {
-                $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));
-                //print_r($assignedTo); die();
-            }  
+            if(isset($_POST['assignedto']) && $_POST['assignedto']!='null') {                
+                $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));                
+            }
             $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
                     . "t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop "
                     . "FROM Task t "
@@ -86,20 +85,21 @@ class ReportsController extends Controller
             
             if(isset($_POST['sdate']) && $_POST['sdate']!='') {
                 $sdate = $_POST['sdate'];
-                $sdate = str_replace('/', '-', $sdate);
+                //$sdate = str_replace('/', '-', $sdate);
                 $sdate = date("Y-m-d", strtotime($sdate));                
             }
             if(isset($_POST['edate']) && $_POST['edate']!='') {    
                 $edate = $_POST['edate'];
-                $edate = str_replace('/', '-', $edate);
+                //$edate = str_replace('/', '-', $edate);
                 $edate = date("Y-m-d", strtotime($edate));
             }
+            
             if(isset($_POST['campaignids']) && $_POST['campaignids']!='null') {
                 $campaignIds = implode(',', json_decode(str_replace('"', '', $_POST['campaignids'])));                
             }
             if(isset($_POST['assignedto']) && $_POST['assignedto']!='null') {                
                 $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));                
-            }           
+            }
             
             $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
                     . "t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop "

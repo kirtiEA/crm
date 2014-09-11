@@ -51,7 +51,7 @@ $(document).ready(function() {
         //changeMonth: true,
         numberOfMonths: 1,
         maxDate: 0,
-        dateFormat: 'dd/mm/yy',
+        dateFormat: 'dd M yy',
         onClose: function(selectedDate) {            
             $("#erdate").datepicker("option", "minDate", selectedDate);
         }
@@ -60,7 +60,7 @@ $(document).ready(function() {
         maxDate: 0,
         //changeMonth: true,
         numberOfMonths: 1,
-        dateFormat: 'dd/mm/yy',
+        dateFormat: 'dd M yy',
         onClose: function(selectedDate) {
             if (selectedDate)
                 $("#srdate").datepicker("option", "maxDate", selectedDate);

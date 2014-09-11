@@ -3,7 +3,7 @@
 <div class="container-fluid sub-header">
     <div class="row">
         <div class="col-md-12">
-            <form class="form-horizontol" role="form" method="post">
+            <form class="form-horizontol" role="form" method="post" id="filter-form">
                 <div class="form-group">
                     <h3 class="subheader-heading">Filter Tasks</h3>
                     <div class="control">
