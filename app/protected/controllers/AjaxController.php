@@ -645,6 +645,17 @@ class AjaxController extends Controller {
         }
     }
 
+    public function actionRemindAll() {
+        $companyid = Yii::app()->user->cid;
+        $remindAllEmails = RequestedCompanyVendor::showRequestedVendorsEmail($companyid);
+        foreach ($remindAllEmails as $value) {
+            echo $value['vendoradmin'];
+            $mail = new EatadsMailer('request-vendor', $value['vendoradmin'], array('resetLink' => $resetlink), array('sales@eatads.com'));
+            $mail->eatadsSend();
+        //$unsubscribedEmails
+        }
+    }
+
     public function actionApproveListingRequest() {
         if ($_POST['id']) {
             Listing::updateListing($_POST['id']);

@@ -3,36 +3,36 @@
 <div class="container-fluid sub-header">
     <div class="row">
         <div class="col-md-12">
-            <form class="form-horizontol" role="form" method="post">
+            <form class="form-horizontol" role="form" method="post" id="filter-form">
                 <div class="form-group">
                     <h3 class="subheader-heading">Filter Tasks</h3>
                     <div class="control">
                         <label class="control-label">Campaigns</label>
-                        <select class="multiselect" id="multiselect-campaigns" name="campaign" multiple="multiple">
-                            <option value="9">Airtel (9)</option>
-                            <option value="23">Vodafone (23)</option>
-                            <option value="21">Volkswagen (21)</option>
-                            <option value="4">Jockey (4)</option>
+                        <select class="multiselect" id="multiselect-campaigns" multiple="multiple">
+                            <?php foreach($campaignIdList as $key => $value) {
+                                echo "<option value='$key'>$value</option>";                            
+                            } ?>
                         </select>
                     </div>
                     <div class="control">
                         <label class="control-label">Assigned To</label>
-                        <select class="multiselect" id="multiselect-assignedto" name="assignedto" multiple="multiple">
-                            <option value="9">Shyam (9)</option>
-                            <option value="23">Ram (23)</option>
-                            <option value="21">Mohan (21)</option>
-                            <option value="4">Ramesh (4)</option>
+                        <select class="multiselect" id="multiselect-assignedto" multiple="multiple">
+                            <?php foreach($assignedToList as $key => $value) {
+                                echo "<option value='$key'>$value</option>";                            
+                            } ?>
                         </select>
                     </div>
                     <div class="control">
                         <label class="control-label">Start Date</label>
-                        <input type="text" class="datepicker" name="sdate" id="scdate" />
+                        <input type="text" class="datepicker" name="sdate" id="srdate" />
                     </div>
                     <div class="control">
                         <label class="control-label">End Date</label>
-                        <input type="text" class="datepicker" name="edate" id="ecdate" />
+                        <input type="text" class="datepicker" name="edate" id="erdate" />
                     </div>
-                    <button type="submit" name="filter_submit" class="btn btn-primary">Filter</button>
+                    <input type="hidden" name="campaignids" id="campaignids" />
+                    <input type="hidden" name="assignedto" id="assignedto" />
+                    <button type="submit" name="filter_submit" id="filter_submit" class="btn btn-primary">Filter</button>
                 </div>
             </form>
         </div>
@@ -115,6 +115,13 @@
             $(this).removeClass('active');
         });
         $('.menu_report').addClass('active');
+        
+        $('#filter_submit').click(function(e){
+            e.preventDefault();        
+            $('#campaignids').val(JSON.stringify($('#multiselect-campaigns').val()));
+            $('#assignedto').val(JSON.stringify($('#multiselect-assignedto').val()));
+            $('#filter-form').submit();         
+        });
 
         $('.lightbox-btn').click(function() {
             console.log('clicked');
@@ -134,10 +141,10 @@
                 success: function(data) {
                     $('#img-gallery').html('');
                     var img_gal = JSON.parse(data);
-                    console.log(img_gal);
+                    //console.log(img_gal);
                     img_gal.forEach(function(col){
                         var img_url = '<a href="'+col.imageName+'" data-toggle="lightbox" data-gallery="multiimages"></a>';
-                        console.log(img_url);
+                        //console.log(img_url);
                         $('#img-gallery').append(img_url);
                     });
                     $('div#img-gallery a:first-child').ekkoLightbox();

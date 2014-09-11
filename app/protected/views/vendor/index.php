@@ -48,9 +48,9 @@
                             <input type="hidden" value='<?php echo $id; ?>' class="companyid">
                             <input type="text" class="vendor">
                         </div>
-                        <button class="request btn-primary">Request</button>
+                        <button class="request btn btn-primary">Request</button>
                         &nbsp;
-                        <a href="#" data-toggle="modal" data-target="#invite-vendor-modal">Can't find vendor? <b>Invite him</b></a>
+                        <a href="#" data-toggle="modal" data-target="#invite-vendor-modal">Can't find vendor? <b>Invite them</b></a>
                     </div>
                 </form>
             </div>
@@ -77,7 +77,7 @@
                     echo '(' . $no . ')';
                     ?> 
                 </h1>
-                <button class="btn btn-primary pull-right table-control">Remind All</button>
+                <button class="remind btn btn-primary pull-right table-control">Remind All</button>
                 <table class="table table-hover" id="vendors-list">
 
                     <?php foreach ($model as $value): ?>
@@ -117,7 +117,6 @@
 
 <script type="text/javascript">
     $(function() {
-
         $('.mon_menu').each(function() {
             $(this).removeClass('active');
         });
@@ -168,6 +167,20 @@
             }
         });
     });
+
+    $('.remind').click(function(e) {
+        $.ajax({
+            type: 'POST',
+            url: $('#completePath').text() + '/ajax/RemindAll',
+            success: function(data) {
+                if (data == '200')
+                    //alert("Request sent successfully ");
+                    location.reload();
+                else
+                    alert(data);
+            }
+        })
+    })
 
 </script>
 
