@@ -188,7 +188,7 @@ $(document).ready(function() {
                 data: {'email': email,
                 },
                 success: function(data) {
-                    if(data == 200)
+                    if(data == '200')
                         location.reload();
                 }
             });

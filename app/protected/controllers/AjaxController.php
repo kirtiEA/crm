@@ -583,13 +583,13 @@ class AjaxController extends Controller {
             $id = Yii::app()->user->id;
             //$mail=  Yii::app()->user->email; 
             $invite = new MonitorlyNotification();
-            echo $email;       
+            echo $email;
             $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1, 'miscellaneous' => $email);
             $invite->save();
-            $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;
-            $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink), array('sales@eatads.com'));
-            $mail->eatadsSend();
-            echo 200;
+//            $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;
+//            $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink), array('sales@eatads.com'));
+//            $mail->eatadsSend();
+            echo '200';
         } else {
             echo 0;
             //wrong email address den do something
@@ -652,15 +652,22 @@ class AjaxController extends Controller {
 
     public function actionRemindAll() {
         $companyid = Yii::app()->user->cid;
+        $id = Yii::app()->user->id;
         $remindAllEmails = RequestedCompanyVendor::showRequestedVendorsEmail($companyid);
         foreach ($remindAllEmails as $value) {
             echo $value['vendoradmin'];
+            $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
             $mail = new EatadsMailer('request-vendor', $value['vendoradmin'], array('resetLink' => $resetlink), array('sales@eatads.com'));
             $mail->eatadsSend();
         }
-        $unsubscribedEmails = MonitorlyNotification::showUnsubscribedRequestedVendorsEmail($companyid);
+        $unsubscribedEmails = MonitorlyNotification::showUnsubscribedRequestedVendorsEmail($id);
         foreach ($unsubscribedEmails as $value) {
-            
+            echo $value['miscellaneous'];
+            $nid = MonitorlyNotification::model()->findByAttributes($value['miscellaneous']);
+            print_r($nid);
+            $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $nid;
+            $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink), array('sales@eatads.com'));
+            $mail->eatadsSend();
         }
     }
 
