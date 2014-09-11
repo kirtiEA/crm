@@ -34,7 +34,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">                        
-                        <div id="logo" style="background-image: url(<?php echo Yii::app()->getBaseUrl() . '/images/logo.png';?>)">
+                        <div id="logo">
                             <img src="<?php echo Yii::app()->getBaseUrl() . '/images/logo.png';?>"></img>
                         </div>
                     </a>
@@ -58,13 +58,21 @@
                                 <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
                             </ul>
                         </li>
-                        <li>
+<!--                        <li>
                             <div class="img-circular"></div>
-                        </li>
+                        </li>-->
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
+        <?php if (Yii::app()->user->hasFlash('success')) { ?>
+            <div class="navbar navbar-inverse navbar-fixed-top" style="position:relative; z-index:999999;background-color: bisque; ">
+                <div class="container">
+                    <p><?php echo Yii::app()->user->getFlash('success'); ?></p>
+                </div>
+            </div>
+        <?php } ?>
+        
         <div style="display: none" id="completePath"><?php echo Yii::app()->getBaseUrl(true); ?></div>
         <?php echo $content; ?>        
 

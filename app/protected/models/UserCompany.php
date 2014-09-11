@@ -15,7 +15,7 @@ class UserCompany extends BaseUserCompany {
 
             and status = 1 
             group by companyid 
-            union  select count(*) as cnt, companyid as id, uc.name 
+            union  select count(*) as cnt, uc.id as id, uc.name 
 from Listing  
             inner join UserCompany uc on uc.id = companyid and uc.id = ' . $cid;
         $command = Yii::app()->db->createCommand($sql);

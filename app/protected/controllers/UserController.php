@@ -28,6 +28,7 @@ class UserController extends Controller {
      */
     public function accessRules() {
         return array(
+            
             array('allow', // allow all users to perform 'index' and 'view' actions
                 'actions' => array('index', 'view'),
                 'users' => array('*'),
@@ -76,7 +77,8 @@ class UserController extends Controller {
                 //echo 'hi';
                 $model->username = strtolower($_POST['User']['username']);
                 //echo $model->username;            die();
-                $model->email = 'dummy' . $model->username . '@eatads.com';
+                
+                $model->email = 'dummy' . $model->username . time() . '@eatads.com';
                 $model->phonenumber = $_POST['User']['phonenumber'];
                 $model->datecreated = date("Y-m-d H:i:s");
                 $model->datemodified = date("Y-m-d H:i:s");
@@ -98,24 +100,25 @@ class UserController extends Controller {
                 $model->password = $password;
                 //echo '<pre>'; print_r($model); die();
                 if ($model->validate()) {
-                    // print_r($model->attributes);
+            //         print_r($model->attributes);
                     $model->save();
                     UserRole::model()->insertRoles($model->id, $role->id);
-                    $this->redirect(Yii::app()->getBaseUrl() . '/user');
+                    Yii::app()->user->setFlash('success', 'User Created Successfully');
+                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+                } else {
+                    Yii::app()->user->setFlash('success', 'All Fields are required');
+                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
                 }
             } else {
                 /*
                  * flash a message if the username already exists
                  */
-                echo 'User already exists. Choose a diiferent username';
-                $this->redirect(Yii::app()->getBaseUrl() . '/user');
-            }
-        }
+                Yii::app()->user->setFlash('success', 'User already exists. Choose a diiferent username');
+                   Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+                }
+                                
 
-//		$this->render('create',array(
-//			'model'=>$model,
-//                        'role'=>$role,
-//		));
+        }
     }
 
     /**

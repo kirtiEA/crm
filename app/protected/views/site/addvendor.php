@@ -64,18 +64,9 @@ var changedata = [];
 }
 
     function fetchSites(vendorid) {
-  //      console.clear();
+        console.clear();
   changedata = [];
-        console.log(vendorid);
-//        var hooks = Handsontable.hooks.getRegistered();
-//hooks.forEach(function(hook) {
-//    if(hook == 'onchange') {
-//        config[hook] = function() {
-//            console.log('hook :  ' + hook + ' arguments ' + arguments );
-//        }
-//
-//    }
-//});
+
         var handsontable = $('#listings').data('handsontable');
         $.ajax({
             url: "<?php echo Yii::app()->urlManager->createUrl('ajax/fetchvendorsites'); ?>",
@@ -100,7 +91,7 @@ var changedata = [];
     $('#listings').handsontable({
         //data: [['','','','']],
         minCols: 20,
-        colHeaders: ['SITE CODE', 'MEDIA TYPE', 'CITY', 'LOCALITY', 'NAME', 'LENGTH', 'WIDTH', 'LIGHTING'],
+        colHeaders: ['SITE CODE', 'MEDIA TYPE', 'CITY', 'LOCALITY', 'NAME', 'WIDTH','HEIGHT' ,'LIGHTING'],
         rowHeaders: true,
         colWidths: [100, 150, 150, 250, 250, 100, 100, 100],
         manualColumnResize: true,
@@ -144,10 +135,10 @@ var changedata = [];
                 data: 'name',
                 type: 'text'
             }, {
-                data: 'length1',
+                data: 'width',
                 type: 'numeric'
             }, {
-                data: 'width',
+                data: 'length1',
                 type: 'numeric'
             }, {
                 data: 'lighting',
@@ -242,7 +233,9 @@ var changedata = [];
                 }
             });
         } else {
-            alert("Please select Media Vendor's Email Address");
+            alert("Please select Media Vendor from the drop down");
+            $(window).scrollTop(0);
+            $('#vendor-ac').focus();
         }
 
 
@@ -254,6 +247,7 @@ var changedata = [];
         $('.menu_site').addClass('active');
 
         var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
+        
         $('#vendor-ac').autocomplete({
             source: allVendorJson,
             select: function(event, ui) {

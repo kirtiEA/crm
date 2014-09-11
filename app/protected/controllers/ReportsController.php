@@ -53,7 +53,7 @@ class ReportsController extends Controller
             if(!is_null($assignedTo) && strlen($assignedTo)) {
                 $sql .= " AND t.assigneduserid IN ($assignedTo) ";
             }
-            
+
             $tasks = Yii::app()->db->createCommand($sql)->queryAll();
             $campaignIdList = array();
             $assignedToList = array();

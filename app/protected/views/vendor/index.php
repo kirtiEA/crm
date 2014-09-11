@@ -60,8 +60,8 @@
 
     <!-- tabs -->    
     <ul class="nav nav-tabs" role="tablist">
-        <li class="active"><a href="#home" >Requested Vendor</a></li>
-        <li><a href="<?php echo Yii::app()->createUrl('waitingApproval'); ?>" >Waiting for Approval</a></li>
+        <li class="active"><a href="#home" >My Invitations</a></li>
+        <li><a href="<?php echo Yii::app()->createUrl('waitingApproval'); ?>" >Invitations for Me</a></li>
     </ul>
     <!-- end of tabs --> 
 

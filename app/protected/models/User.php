@@ -19,6 +19,7 @@ class User extends BaseUser {
      */
     public function rules() {
         return array(
+            array('email,phonenumber,password', 'required', 'on' => 'create', 'message' => 'All fields are required'),
             array('email', 'required', 'on' => 'signupScenario'),
             array('email', 'email', 'on' => 'signupScenario', 'message' => 'Email address is not valid.'),
             array('email', 'unique', 'attributeName' => 'email', 'caseSensitive' => 'false', 'className' => 'User', 'on' => 'signupScenario', 'message' => 'Email address already exists.'),

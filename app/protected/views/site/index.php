@@ -150,9 +150,6 @@
                                 <h5><span>{{banner.lighting}} </span>{{banner.mediatype}} &nbsp; &nbsp; {{banner.width}} x {{banner.height}} {{banner.sizeunit}}</h5>
                                 <h4>{{banner.companyname}}</h4>
                             </div>
-                            <div ng-switch on="{{banner.accepted}}" class="pull-right list-item-buttons">
-                                <div ng-switch-when="1" class="btn btn-secondary" onclick="approvelisting({{banner.id}});">Approve</div>
-                            </div>
                             <div class="clearfix"></div>
                         </li>
                     </ul>

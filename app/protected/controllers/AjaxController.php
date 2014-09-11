@@ -144,7 +144,7 @@ class AjaxController extends Controller {
 
 
         $vendorId = Yii::app()->request->getParam('vendorid');
-        $byUserId = Yii::app()->request->getParam('byuserid');
+        $byUserId = Yii::app()->user->id;
         $data = json_decode(Yii::app()->request->getParam('data'));
 
         $companyResult = UserCompany::model()->findByPk($vendorId, array('select' => 'userid'));
@@ -189,8 +189,7 @@ class AjaxController extends Controller {
                 $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $vendorId, 'emailtypeid' => 3);
                 $invite->save();
                 $email = UserCompany::fetchVendorEmail($vendorId);
-                echo $email;               //    die();
-                $mail = new EatadsMailer('approve-sites', $email, array('resetLink' => ""), array('sales@eatads.com'));
+                $mail = new EatadsMailer('approve-sites', $email['email'], array('resetLink' => ""), array('sales@eatads.com'));
                 $mail->eatadsSend();
             }
 
@@ -392,8 +391,9 @@ class AjaxController extends Controller {
                         $companyid = $inputVendorIds[0];
                         $assignedcompanyid = $inputVendorIds[1];
                     }
-                    print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ');
-                    print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid));
+//                    print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ');
+//                    print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid));
+                    Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid);
                 }
                 echo '200';
             } else if ($_POST['type'] == 2) {
@@ -453,8 +453,9 @@ class AjaxController extends Controller {
                         $companyid = $inputVendorIds[0];
                         $assignedcompanyid = $inputVendorIds[1];
                     }
-                    print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ' . $date . ' ');
-                    print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid, date("Y-m-d H:i:s", $date)));
+//                    print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ' . $date . ' ');
+//                    print_r();
+                    Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid, date("Y-m-d H:i:s", $date));
                 }
                 echo '200';
             }
@@ -529,7 +530,11 @@ class AjaxController extends Controller {
             $result = array();
             foreach ($data as $key => $value) {
                 $value['lighting'] = Listing::getLighting($value['lightingid']);
-                $value['sizeunit'] = Listing::getSizeUnit($value['sizeunitid']);
+                if ($value['sizeunitid'] == 0) {
+                    $value['sizeunit'] = Listing::getSizeUnit(1);
+                } else {
+                    $value['sizeunit'] = Listing::getSizeUnit($value['sizeunitid']);
+                }
                 array_push($result, $value);
             }
             echo json_encode($result);
@@ -601,11 +606,14 @@ class AjaxController extends Controller {
                 
                 $invite = new MonitorlyNotification();
                 $email = UserCompany::fetchVendorEmail($vendorcompanyid);
-                //print_r($email['email']); die();
+               // print_r($email['email']); die();
+                //$email = "root@localhost.com";
                 $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
                 $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
+                $invite->createdby = Yii::app()->user->id;
+                $invite->createddate = date("Y-m-d H:i:s");
                 $invite->save();
-                $mail = new EatadsMailer('request-vendor', $email['email'], array('resetLink' => $resetlink), array('shruti@eatads.com'));
+                $mail = new EatadsMailer('request-vendor', $email['email'], array('resetLink' => $resetlink), array('sales@eatads.com'));
                 $mail->eatadsSend();
                 echo '200';
             } else {
@@ -619,6 +627,7 @@ class AjaxController extends Controller {
             $vcid = $_POST['vendorcompanyid'];
             $id = $_POST['id'];
             $email = $_POST['emailid'];
+            //echo $email; die();
             $model = RequestedCompanyVendor::model()->findByPk($id);
             $model->acceptedby = $vcid;
             $model->accepteddate = date("Y-m-d H:i:s");
@@ -626,7 +635,7 @@ class AjaxController extends Controller {
             $invite = new MonitorlyNotification();
             //$email = UserCompany::fetchVendorEmail($vendorcompanyid);
             //$resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
-            $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
+            $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => Yii::app()->user->id, 'emailtypeid' => 2);
             $invite->save();
             $mail = new EatadsMailer('invite-accepted', $email, array('resetLink' => ""), array('shruti@eatads.com'));
             $mail->eatadsSend();

@@ -199,12 +199,12 @@
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             $(document).ready(function() {
-               var status = <?php echo $status;?>;
+             //  var status = <?php //echo $status;?>;
                if (status != 200) {
                    $('#LoginModal').modal('show');
-                   $('#errormsg').show();
+                 //  $('#errormsg').show();
                } else {
-                   $('#errormsg').hide();
+                  // $('#errormsg').hide();
                 }    
             });
             $(function() {
