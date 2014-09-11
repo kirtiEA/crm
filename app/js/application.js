@@ -164,11 +164,12 @@ $(document).ready(function() {
         if (filter.test(email)) {
             $.ajax({
                 type: 'POST',
-                url: $('#completePath').text() + '/ajax/invitevendor',
+                url: $('#completePath').text() + '/ajax/InviteVendor',
                 data: {'email': email,
                 },
                 success: function(data) {
-                    alert("Vendor invited successfully ");
+                    if(data == 200)
+                        location.reload();
                 }
             });
         }

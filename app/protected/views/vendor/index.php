@@ -96,6 +96,14 @@
                             </td>
                         </tr>
                     <?php endforeach; ?>
+                    <?php foreach ($unsubscribedVendors as $value): ?>
+                        <tr>
+                            <td>Unsubscribed User</td>
+                            <td><?php echo $value['miscellaneous']; ?></td>
+                            <td>Invited on <?php echo $value['createddate']; ?></td>
+                            <td><span class="glyphicon glyphicon-warning-sign"></span>Pending</td>
+                        </tr>
+                    <?php endforeach; ?>
                 </table>
             </div>
         </div>
@@ -154,7 +162,7 @@
             success: function(data) {
                 if (data == '200')
                     //alert("Request sent successfully ");
-                    location.reload();    
+                    location.reload();
                 else
                     alert(data);
             }
