@@ -76,7 +76,7 @@
                         <td><?php echo $t['campaign']; ?></td>
                         <td><?php echo $t['site']; ?></td>
                         <td><?php echo $t['mediatype']; ?></td>
-                        <td><?php echo $t['assignedto']; ?></td>
+                        <td><?php echo strlen($t['assignedto']) ? $t['assignedto'] : 'Unassigned'; ?></td>
                         <td><?php echo date('d/m/Y', strtotime($t['duedate'])); ?><input type="hidden" class="duedate" value="<?php echo date('Y-m-d', strtotime($t['duedate'])); ?>" /></td>
                         <td>
                             <?php
