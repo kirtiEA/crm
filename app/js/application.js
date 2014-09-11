@@ -188,6 +188,7 @@ $(document).ready(function() {
                 data: {'email': email,
                 },
                 success: function(data) {
+                    console.log(data);
                     if(data == '200')
                         location.reload();
                 }
