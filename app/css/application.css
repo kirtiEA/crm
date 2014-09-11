@@ -10828,11 +10828,7 @@ li.multiselect-item.filter .input-group input.form-control.multiselect-search {
 
 /* line 357, ../scss/application.scss */
 #logo {
-<<<<<<< HEAD
-  background-image: url(/images/logo.png);
-=======
-  background-image: url(../images/logo.png);
->>>>>>> 981665041984690ff97093b1ff2280147fca2172
+  background-image: url(/assets/images/logo.png);
   width: 50px;
   height: 50px;
   background-size: cover;
@@ -11037,7 +11033,7 @@ li.multiselect-item.filter .input-group input.form-control.multiselect-search {
   margin-top: 7px;
 }
 /* line 548, ../scss/application.scss */
-.content-wrapper .list .list-item .pull-right {
+.content-wrapper .list .list-item .campaign-btn {
   margin-top: -24px;
 }
 /* line 556, ../scss/application.scss */
@@ -11191,62 +11187,58 @@ li.multiselect-item.filter .input-group input.form-control.multiselect-search {
   display: none;
 }
 
-/* line 717, ../scss/application.scss */
-.lightbox-header {
-  display: none;
-}
-/* line 720, ../scss/application.scss */
-.lightbox-header h2 {
+/* line 719, ../scss/application.scss */
+.modal-title h2 {
   margin-bottom: 8px;
 }
-/* line 722, ../scss/application.scss */
-.lightbox-header h2 span {
+/* line 721, ../scss/application.scss */
+.modal-title h2 span {
   font-weight: 600;
 }
-/* line 725, ../scss/application.scss */
-.lightbox-header h3 {
+/* line 724, ../scss/application.scss */
+.modal-title h3 {
   margin-bottom: 8px;
 }
-/* line 727, ../scss/application.scss */
-.lightbox-header h3 span {
+/* line 726, ../scss/application.scss */
+.modal-title h3 span {
   font-weight: 600;
 }
-/* line 730, ../scss/application.scss */
-.lightbox-header .install, .lightbox-header .lighting, .lightbox-header .obstruct {
+/* line 729, ../scss/application.scss */
+.modal-title .install, .modal-title .lighting, .modal-title .obstruct {
   color: white;
   border-radius: 16px;
   padding: 4px 12px;
   margin-right: 4px;
   line-height: 28px;
   font-size: 11px;
+  word-wrap: none;
 }
 /* line 739, ../scss/application.scss */
-.lightbox-header .install {
+.modal-title .install {
   background-color: #D42333;
 }
 /* line 740, ../scss/application.scss */
-.lightbox-header .lighting {
+.modal-title .lighting {
   background-color: #F1890F;
 }
 /* line 741, ../scss/application.scss */
-.lightbox-header .obstruct {
+.modal-title .obstruct {
   background-color: #EBBA09;
 }
 
 /* line 745, ../scss/application.scss */
-.lightbox-footer {
-  display: none;
+.modal-footer {
   font-size: 11px;
 }
 
 /*-- end of lightbox --*/
 /*-- multi level dropdown --*/
-/* line 755, ../scss/application.scss */
+/* line 754, ../scss/application.scss */
 .dropdown-submenu {
   position: relative;
 }
 
-/* line 759, ../scss/application.scss */
+/* line 758, ../scss/application.scss */
 .dropdown-submenu > .dropdown-menu {
   top: 0;
   left: 100%;
@@ -11257,12 +11249,12 @@ li.multiselect-item.filter .input-group input.form-control.multiselect-search {
   border-radius: 0 6px 6px 6px;
 }
 
-/* line 769, ../scss/application.scss */
+/* line 768, ../scss/application.scss */
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
 }
 
-/* line 773, ../scss/application.scss */
+/* line 772, ../scss/application.scss */
 .dropdown-submenu > a:after {
   display: block;
   content: " ";
@@ -11277,17 +11269,17 @@ li.multiselect-item.filter .input-group input.form-control.multiselect-search {
   margin-right: -10px;
 }
 
-/* line 787, ../scss/application.scss */
+/* line 786, ../scss/application.scss */
 .dropdown-submenu:hover > a:after {
   border-left-color: #fff;
 }
 
-/* line 791, ../scss/application.scss */
+/* line 790, ../scss/application.scss */
 .dropdown-submenu.pull-left {
   float: none;
 }
 
-/* line 795, ../scss/application.scss */
+/* line 794, ../scss/application.scss */
 .dropdown-submenu.pull-left > .dropdown-menu {
   left: -100%;
   margin-left: 10px;
@@ -11296,17 +11288,17 @@ li.multiselect-item.filter .input-group input.form-control.multiselect-search {
   border-radius: 6px 0 6px 6px;
 }
 
-/* line 804, ../scss/application.scss */
+/* line 803, ../scss/application.scss */
 .multi-level ul.dropdown-menu li {
   padding-left: 14px;
   margin-bottom: 6px;
 }
-/* line 808, ../scss/application.scss */
+/* line 807, ../scss/application.scss */
 .multi-level ul.dropdown-menu li:hover {
   background-color: #f8f8f8;
 }
 
-/* line 811, ../scss/application.scss */
+/* line 810, ../scss/application.scss */
 .multi-level ul.dropdown-menu li.selected {
   background-color: #feca2f;
 }
