@@ -48,7 +48,7 @@
                             <input type="hidden" value='<?php echo $id; ?>' class="companyid">
                             <input type="text" class="vendor">
                         </div>
-                        <button class="request btn-primary">Request</button>
+                        <button class="request btn btn-primary">Request</button>
                         &nbsp;
                         <a href="#" data-toggle="modal" data-target="#invite-vendor-modal">Can't find vendor? <b>Invite him</b></a>
                     </div>
@@ -77,7 +77,6 @@
                     echo '(' . $no . ')';
                     ?> 
                 </h1>
-                <button class="btn btn-primary pull-right table-control">Remind All</button>
                 <table class="table table-hover" id="vendors-list">
                     <?php foreach ($model as $value): ?>
                         <tr>
@@ -85,7 +84,7 @@
                             <td><?php echo $value['vendoradmin']; ?></td>
                             <td>Invited on <?php echo $value['createddate']; ?></td>
                             <td>
-                                <button class="accept btn-secondary">Accept</button>
+                                <button class="accept btn btn-secondary">Accept</button>
                                 <input type="hidden" value='<?php echo $id; ?>' class="vendorcompanyid">
                                 <input type="hidden" value='<?php echo $value['id']; ?>' class="id">
                                 <input type="hidden" value='<?php echo $value['vendoradmin']; ?>' class="emailid">
@@ -106,7 +105,10 @@
 
 <script type="text/javascript">
     $(function() {
-
+        $('.mon_menu').each(function() {
+            $(this).removeClass('active');
+        });
+        $('.menu_vendor').addClass('active');
         //autocomplete for company name in vendor subscription form
         var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
         //console.log($id);
