@@ -583,7 +583,7 @@ class AjaxController extends Controller {
             $id = Yii::app()->user->id;
             //$mail=  Yii::app()->user->email; 
             $invite = new MonitorlyNotification();
-            //echo $email;       
+            echo $email;       
             $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1, 'miscellaneous' => $email);
             $invite->save();
             $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;

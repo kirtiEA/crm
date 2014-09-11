@@ -14714,3 +14714,129 @@ in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
 in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\RequestedCompanyVendor.php (35)
 in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\AjaxController.php (650)
 in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:54 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:54 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:54 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:55 [trace] [system.web.filters.CFilterChain] Running filter AjaxController.filteraccessControl()
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:55 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:55 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:55 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\AjaxController.php (585)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:55 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\AjaxController.php (585)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:56 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `MonitorlyNotification`
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\AjaxController.php (585)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:56 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `MonitorlyNotification`
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\AjaxController.php (585)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:56 [trace] [system.db.ar.CActiveRecord] MonitorlyNotification.insert()
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\AjaxController.php (588)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:56 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `MonitorlyNotification` (`typeid`, `createddate`, `createdby`, `emailtypeid`, `miscellaneous`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\AjaxController.php (588)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:56 [trace] [system.db.ar.CActiveRecord] EmailTemplate.find()
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\EmailTemplate.php (35)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\extensions\YiiMailer\EatadsMailer.php (57)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\AjaxController.php (591)
+2014/09/11 15:46:56 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `EmailTemplate`
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\EmailTemplate.php (35)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\extensions\YiiMailer\EatadsMailer.php (57)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\AjaxController.php (591)
+2014/09/11 15:46:56 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `EmailTemplate`
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\EmailTemplate.php (35)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\extensions\YiiMailer\EatadsMailer.php (57)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\AjaxController.php (591)
+2014/09/11 15:46:56 [trace] [system.db.CDbCommand] Querying SQL: SELECT id, subject, content, title, status, slug, uservariables FROM `EmailTemplate` `t` WHERE slug = :slug   LIMIT 1
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\EmailTemplate.php (35)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\extensions\YiiMailer\EatadsMailer.php (57)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\AjaxController.php (591)
+2014/09/11 15:46:56 [trace] [system.CModule] Loading "messages" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\config\mail.php (10)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\extensions\YiiMailer\YiiMailer.php (90)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\extensions\YiiMailer\EatadsMailer.php (66)
+2014/09/11 15:46:57 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:57 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:57 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:57 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\VendorController.php (6)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:57 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\VendorController.php (6)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:57 [trace] [system.db.ar.CActiveRecord] UserCompany.findAll()
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\VendorController.php (13)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:57 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\VendorController.php (13)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:57 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\VendorController.php (13)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `UserCompany`
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\VendorController.php (13)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:58 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `UserCompany`
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\VendorController.php (13)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:58 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `UserCompany` `t`
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\VendorController.php (13)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:58 [trace] [system.db.CDbCommand] Querying SQL: select uc.name as name, u.email as vendoradmin,  DATE_FORMAT(rv.createddate,'%d %M %Y') as createddate, rv.accepteddate 
+            from RequestedCompanyVendor rv
+            inner join UserCompany uc on uc.id = rv.vendorcompanyid
+            inner join User u on u.id = uc.userid
+            and rv.companyid = 1
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\RequestedCompanyVendor.php (25)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\VendorController.php (19)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:58 [trace] [system.db.CDbCommand] Querying SQL: SELECT createddate, miscellaneous FROM monitorlynotification WHERE typeid = 1 and createdby = 1
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\MonitorlyNotification.php (20)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\VendorController.php (20)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:58 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\views\layouts\column1.php (2)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\VendorController.php (28)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:46:58 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\VendorController.php (28)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:47:01 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:47:01 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:47:01 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:47:01 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/11 15:47:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly_webapp_new\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly_webapp_new\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly_webapp_new\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly_webapp_new\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly_webapp_new/app/css/application.css
+---
+2014/09/11 15:47:01 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/11 15:47:01 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (24)
+2014/09/11 15:47:01 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (24)
+2014/09/11 15:47:01 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\views\layouts\column1.php (2)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (80)
+2014/09/11 15:47:01 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (80)
