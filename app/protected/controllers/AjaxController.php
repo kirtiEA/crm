@@ -73,7 +73,7 @@ class AjaxController extends Controller {
                 . "LEFT JOIN Campaign c ON c.id=t.campaignid "
                 . "LEFT JOIN Listing l ON l.id=t.siteid "
                 . "WHERE pp.taskid = '$taskId' "
-                . "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";        
+                . "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";
         $photoProofResult = Yii::app()->db->createCommand($sql)->queryAll();
         $photoProofArr = array();
         foreach ($photoProofResult as $pp) {
@@ -87,8 +87,8 @@ class AjaxController extends Controller {
                 'clickedLng' => $pp['clickedLng'],
                 'clickedBy' => $pp['clickedBy'],
                 'installation' => array_filter(explode(',', $pp['installation'])),
-                'lighting' =>  array_filter(explode(',',$pp['lighting'])),
-                'obstruction' => array_filter(explode(',',$pp['obstruction'])),
+                'lighting' => array_filter(explode(',', $pp['lighting'])),
+                'obstruction' => array_filter(explode(',', $pp['obstruction'])),
                 'comments' => $pp['comments'],
             );
             array_push($photoProofArr, $photoProof);
@@ -657,7 +657,10 @@ class AjaxController extends Controller {
             echo $value['vendoradmin'];
             $mail = new EatadsMailer('request-vendor', $value['vendoradmin'], array('resetLink' => $resetlink), array('sales@eatads.com'));
             $mail->eatadsSend();
-        //$unsubscribedEmails
+        }
+        $unsubscribedEmails = MonitorlyNotification::showUnsubscribedRequestedVendorsEmail($companyid);
+        foreach ($unsubscribedEmails as $value) {
+            
         }
     }
 

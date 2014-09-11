@@ -21,7 +21,7 @@ class BaseMonitorlynotification extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'monitorlynotification';
+		return 'MonitorlyNotification';
 	}
 
 	/**

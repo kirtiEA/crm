@@ -20,4 +20,9 @@ class MonitorlyNotification extends BaseMonitorlyNotification
         return Yii::app()->db->createCommand($query)->queryAll();
     }
     
+    public static function showUnsubscribedRequestedVendorsEmail($companyid) {
+        //$query = 'select '
+        $query = 'SELECT miscellaneous FROM monitorlynotification WHERE typeid = 1 and createdby = '.$companyid;
+        return Yii::app()->db->createCommand($query)->queryAll();
+    }
 }
