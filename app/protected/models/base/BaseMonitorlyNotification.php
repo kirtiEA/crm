@@ -14,7 +14,7 @@
  * The followings are the available model relations:
  * @property User $createdby0
  */
-class BaseMonitorlynotification extends CActiveRecord
+class BaseMonitorlyNotification extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
