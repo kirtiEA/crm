@@ -1,14 +1,15 @@
 <?php
 
 /**
- * This is the model class for table "MonitorlyNotification".
+ * This is the model class for table "monitorlynotification".
  *
- * The followings are the available columns in table 'MonitorlyNotification':
+ * The followings are the available columns in table 'monitorlynotification':
  * @property integer $id
  * @property integer $typeid
  * @property string $createddate
  * @property integer $createdby
  * @property integer $emailtypeid
+ * @property string $miscellaneous
  *
  * The followings are the available model relations:
  * @property User $createdby0
@@ -33,9 +34,10 @@ class BaseMonitorlyNotification extends CActiveRecord
 		return array(
 			array('createddate, createdby', 'required'),
 			array('typeid, createdby, emailtypeid', 'numerical', 'integerOnly'=>true),
+			array('miscellaneous', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, typeid, createddate, createdby, emailtypeid', 'safe', 'on'=>'search'),
+			array('id, typeid, createddate, createdby, emailtypeid, miscellaneous', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,7 +63,8 @@ class BaseMonitorlyNotification extends CActiveRecord
 			'typeid' => '1-invite vendor, 2-remind vendor',
 			'createddate' => 'Createddate',
 			'createdby' => 'Createdby',
-			'emailtypeid' => 'Emailtypeid',
+			'emailtypeid' => '1.subscription,2.invitation accepted,3.New sites for approval,4.Site Accepted,5.POP campaign',
+			'miscellaneous' => 'Currently stores emailid of vendors invited',
 		);
 	}
 
@@ -88,6 +91,7 @@ class BaseMonitorlyNotification extends CActiveRecord
 		$criteria->compare('createddate',$this->createddate,true);
 		$criteria->compare('createdby',$this->createdby);
 		$criteria->compare('emailtypeid',$this->emailtypeid);
+		$criteria->compare('miscellaneous',$this->miscellaneous,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -98,7 +102,7 @@ class BaseMonitorlyNotification extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return MonitorlySubscription the static model class
+	 * @return BaseMonitorlynotification the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

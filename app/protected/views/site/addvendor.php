@@ -6,27 +6,27 @@
     <script src="http://handsontable.com/lib/jquery-ui/js/jquery-ui.custom.min.js"></script>
 -->
 <script>
-var changedata = [];
+    var changedata = [];
 </script>
-  <!-- invite vendor modal -->
-    <div class="modal fade" id="invite-vendor-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm modal-sm-custom">
+<!-- invite vendor modal -->
+<div class="modal fade" id="invite-vendor-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-sm-custom">
         <div class="modal-content">
-          <div class="modal-header">
-            <h3><b>Invite Vendor</b></h3>
-          </div>
-          <div class="modal-body">
-            <label>Vendor Email</label>&nbsp;
-            <input class="email" type="email">
-          </div>
-          <div class="modal-footer">
-            <a href="#" id="cancel">Cancel</a>&nbsp;
-            <button class="invite btn btn-primary">Invite</button>
-          </div>
+            <div class="modal-header">
+                <h3><b>Invite Vendor</b></h3>
+            </div>
+            <div class="modal-body">
+                <label>Vendor Email</label>&nbsp;
+                <input class="email" type="email">
+            </div>
+            <div class="modal-footer">
+                <a href="#" id="cancel">Cancel</a>&nbsp;
+                <button class="invite btn btn-primary">Invite</button>
+            </div>
         </div>
-      </div>
     </div>
-    <!-- end of invite vendor modal -->
+</div>
+<!-- end of invite vendor modal -->
 
 <!-- tasks list --> 
 <div class="container-fluid content-wrapper content-wrapper-custom">
@@ -43,29 +43,25 @@ var changedata = [];
                     <div class="upload-holder" id="listings"></div>
                 </div>
             </div>
-            <div class="container-fluid table-control">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="pull-right">
-                            <a href="#" class="disabled">Cancel&nbsp;</a>
-                            <button type="button" name="save" data-dump="#listings" class="btn btn-primary">Save</button>
-                        </div>
-                    </div>
+            <nav class="navbar navbar-default navbar-fixed-bottom table-control">
+                <div class="pull-right">
+                    <a href="#" class="disabled">Cancel&nbsp;</a>
+                    <button type="button" class="btn btn-primary">Save</button>
                 </div>
-            </div>
+            </nav>
         </div>
     </div>
 </div>
 <!-- end of tasks list --> 
-<script type="text/javascript">    
+<script type="text/javascript">
 
-    function onlyUnique(value, index, self) { 
-    return self.indexOf(value) === index;
-}
+    function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+    }
 
     function fetchSites(vendorid) {
         console.clear();
-  changedata = [];
+        changedata = [];
 
         var handsontable = $('#listings').data('handsontable');
         $.ajax({
@@ -82,30 +78,30 @@ var changedata = [];
             success: function(data) {
                 var parsedData = JSON.parse(data);
                 handsontable.loadData(parsedData);
-                if(parsedData)
+                if (parsedData)
                     console.log(parsedData.length);
             }
         });
     }
-    
+
     $('#listings').handsontable({
         //data: [['','','','']],
         minCols: 20,
-        colHeaders: ['SITE CODE', 'MEDIA TYPE', 'CITY', 'LOCALITY', 'NAME', 'WIDTH','HEIGHT' ,'LIGHTING'],
+        colHeaders: ['SITE CODE', 'MEDIA TYPE', 'CITY', 'LOCALITY', 'NAME', 'WIDTH', 'HEIGHT', 'LIGHTING'],
         rowHeaders: true,
         colWidths: [100, 150, 150, 250, 250, 100, 100, 100],
         manualColumnResize: true,
         manualRowResize: true,
         minSpareRows: 50,
-        onChange : function() {
-        console.log('onchanhe' + JSON.stringify(arguments));
-        if (arguments[0] !==  null) {
-        changedata[changedata.length] = arguments[0][0][0];
+        onChange: function() {
+            console.log('onchanhe' + JSON.stringify(arguments));
+            if (arguments[0] !== null) {
+                changedata[changedata.length] = arguments[0][0][0];
 //        changedata.push['asd'];
 //        console.log(changedata + ' pushed ' + arguments[0][0][0]);
-        }  else {
-       // console.log('null dda');
-        }   
+            } else {
+                // console.log('null dda');
+            }
 //        changedata.push[arguments[0][0][0]];
 //        for (var d = 0; d < arguments.length; d++) {
 //            changedata.push[arguments[0][0][0]];
@@ -117,7 +113,7 @@ var changedata = [];
 //            
 //            
 //        }    
-        },    
+        },
         columns: [{
                 data: 'site_code',
                 type: 'text'
@@ -158,13 +154,13 @@ var changedata = [];
         return re.test(email);
     }
     function cleanTableData(data) {
- //        console.log('change data s' + changedata);
+        //        console.log('change data s' + changedata);
         var cleanData = [];
-        var changedata1 = changedata.filter( onlyUnique );
+        var changedata1 = changedata.filter(onlyUnique);
 //        console.log('change data s' + changedata1);
-        for (var i=0; i < changedata1.length; i++) {
+        for (var i = 0; i < changedata1.length; i++) {
             var row = data[changedata1[i]];
-            if(row.name) {
+            if (row.name) {
                 cleanData.push({
                     id: row.id,
                     site_code: row.site_code,
@@ -174,11 +170,11 @@ var changedata = [];
                     city: row.city,
                     length: row.length1,
                     width: row.width,
-                    lighting: row.lighting                    
+                    lighting: row.lighting
                 });
             }
-        }    
-        
+        }
+
 //        data.forEach(function(row){
 //            console.log('index' + i);
 //            if(row.name) {
@@ -202,13 +198,13 @@ var changedata = [];
         var handsontableData = $('#listings').data('handsontable').getData();
         var cleanData = cleanTableData(handsontableData);
         //console.log('data of ' + dump, JSON.stringify($container.handsontable('getData')));        
-        
+
         //console.log(JSON.stringify(handsontableData));
         var vendorid = $('#vendor-ac-id').val();
         var byuserid = 1;//'<?php echo Yii::app()->user->id; ?>';
         console.log(vendorid + " - " + byuserid + " - " + cleanData.length);
         console.log(JSON.stringify(cleanData));
-        
+
         if (vendorid && byuserid && cleanData.length) {
             console.log('inside if');
             $.ajax({
@@ -221,10 +217,10 @@ var changedata = [];
                 },
                 success: function(data) {
                     //var json = JSON.parse(data);
-                   console.log(data);
-                    if(data == true)
+                    console.log(data);
+                    if (data == true)
                         alert('Data saved.')
-                    else 
+                    else
                         alert('Failed to save data.')
                 },
                 error: function(data) { // if error occured
@@ -247,19 +243,19 @@ var changedata = [];
         $('.menu_site').addClass('active');
 
         var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
-        
+
         $('#vendor-ac').autocomplete({
             source: allVendorJson,
             select: function(event, ui) {
                 console.log(ui.item.value + ', ' + ui.item.id);
                 $("#vendor-ac-id").val(ui.item.id);
-                fetchSites(ui.item.id);                
+                fetchSites(ui.item.id);
             },
             change: function(event, ui) {
                 if (ui.item == null) {
                     $("#vendor-ac").val('');
                     $("#vendor-ac-id").val('');
-                    $("#vendor-ac").focus();                    
+                    $("#vendor-ac").focus();
                 }
             },
             messages: {

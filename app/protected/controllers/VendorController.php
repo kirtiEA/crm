@@ -13,15 +13,18 @@ class VendorController extends Controller {
         foreach (UserCompany::model()->findAll() as $value) {
             array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
         }
-        $id = Yii::app()->user->cid;
+        $cid = Yii::app()->user->cid;
+        $id = Yii::app()->user->id;
         //echo $id;
-        $model = RequestedCompanyVendor::showRequestedVendors($id);
+        $model = RequestedCompanyVendor::showRequestedVendors($cid);
+        $unsubscribedVendors = MonitorlyNotification::showUnsubscribedRequestedVendors($cid);
 //        echo '<pre>';
 //        print_r($model);die();
         $this->render('index', array(
             'vendorList' => json_encode($vendorList),
             'model' => $model,
-            'id' => $id,
+            'unsubscribedVendors' => $unsubscribedVendors,
+            'id' => $cid,
         ));
     }
 

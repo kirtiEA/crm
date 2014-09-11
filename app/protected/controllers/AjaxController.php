@@ -73,7 +73,7 @@ class AjaxController extends Controller {
                 . "LEFT JOIN Campaign c ON c.id=t.campaignid "
                 . "LEFT JOIN Listing l ON l.id=t.siteid "
                 . "WHERE pp.taskid = '$taskId' "
-                . "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";        
+                . "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";
         $photoProofResult = Yii::app()->db->createCommand($sql)->queryAll();
         $photoProofArr = array();
         foreach ($photoProofResult as $pp) {
@@ -87,8 +87,8 @@ class AjaxController extends Controller {
                 'clickedLng' => $pp['clickedLng'],
                 'clickedBy' => $pp['clickedBy'],
                 'installation' => array_filter(explode(',', $pp['installation'])),
-                'lighting' =>  array_filter(explode(',',$pp['lighting'])),
-                'obstruction' => array_filter(explode(',',$pp['obstruction'])),
+                'lighting' => array_filter(explode(',', $pp['lighting'])),
+                'obstruction' => array_filter(explode(',', $pp['obstruction'])),
                 'comments' => $pp['comments'],
             );
             array_push($photoProofArr, $photoProof);
@@ -155,7 +155,7 @@ class AjaxController extends Controller {
         $companyResult = UserCompany::model()->findByPk($vendorId, array('select' => 'userid'));
         $forUserId = $companyResult->userid;
         foreach ($data as $value) {
-          //  echo $value->id . ',' . strcmp($vendorId, Yii::app()->user->cid);
+            //  echo $value->id . ',' . strcmp($vendorId, Yii::app()->user->cid);
             $mediaTypeId = array_search(strtolower($value->mediatype), $mediaTypes);
             $lightingId = array_search(strtolower($value->lighting), $lightings);
             //$productType = UserProduct::getUserProductType(552);//$forUserId);
@@ -218,7 +218,7 @@ class AjaxController extends Controller {
             $listingModel->countryid = (int) $countryId;
             $listingModel->stateid = (int) $stateId;
             $listingModel->cityid = (int) $cityId;
-            
+
             if (!array_key_exists('lat', $addressGeocode)) {
                 $addressGeocode['lat'] = 0.0;
             }
@@ -235,13 +235,13 @@ class AjaxController extends Controller {
             $listingModel->basecurrencyid = 11;   // 11 for India
 
             $listingModel->datemodified = date('Y-m-d H:i:s');
-            
+
             if (empty($value->id)) {
                 $listingModel->datecreated = date('Y-m-d H:i:s');
                 $listingModel->save();
-            } else if (!empty($value->id) && strcmp($listingModel->companyId, Yii::app()->user->cid) ==0){
+            } else if (!empty($value->id) && strcmp($listingModel->companyId, Yii::app()->user->cid) == 0) {
                 //$listingModel->id = $value->id;
-               // $model = Listing::model()->findByPk($value->id);
+                // $model = Listing::model()->findByPk($value->id);
 //                 $model->byuserid = (int) $byUserId;
 //                $model->foruserid = (int) $forUserId;
 //                $model->companyId = (int) $vendorId;
@@ -268,11 +268,11 @@ class AjaxController extends Controller {
                     $model['cityid'] = (int) $cityId;
                 }
 
-                
-                
+
+
                 $model['geolat'] = $addressGeocode['lat'];
                 $model['geolng'] = $addressGeocode['lng'];
-       //         $model['accurate_geoloc'] = 0;
+                //         $model['accurate_geoloc'] = 0;
 
                 $model['lightingid'] = (int) $lightingId;
                 $model['mediatypeid'] = (int) $mediaTypeId;
@@ -280,7 +280,7 @@ class AjaxController extends Controller {
 //                $model->basecurrencyid = 11;   // 11 for India
 
                 $model['datemodified'] = date('Y-m-d H:i:s');
-                
+
 //                $model->update();
                 Listing::model()->updateByPk($value->id, $model);
             }
@@ -577,17 +577,19 @@ class AjaxController extends Controller {
 
     public function actionInviteVendor() {
         $email = Yii::app()->request->getParam('email');
-      
+
         if (strlen($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
             $id = Yii::app()->user->id;
-            //$mail=  Yii::app()->user->email;  
+            //$mail=  Yii::app()->user->email; 
             $invite = new MonitorlyNotification();
-            $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1);
+            //echo $email;       
+            $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1, 'miscellaneous' => $email);
             $invite->save();
             $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;
             $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink), array('sales@eatads.com'));
             $mail->eatadsSend();
+            echo 200;
         } else {
             echo 0;
             //wrong email address den do something
@@ -608,10 +610,10 @@ class AjaxController extends Controller {
                     'vendorcompanyid' => $vendorcompanyid,
                 );
                 $model->save();
-                
+
                 $invite = new MonitorlyNotification();
                 $email = UserCompany::fetchVendorEmail($vendorcompanyid);
-               // print_r($email['email']); die();
+                // print_r($email['email']); die();
                 //$email = "root@localhost.com";
                 $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
                 $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
@@ -645,6 +647,20 @@ class AjaxController extends Controller {
             $mail = new EatadsMailer('invite-accepted', $email, array('resetLink' => ""), array('shruti@eatads.com'));
             $mail->eatadsSend();
             echo 200;
+        }
+    }
+
+    public function actionRemindAll() {
+        $companyid = Yii::app()->user->cid;
+        $remindAllEmails = RequestedCompanyVendor::showRequestedVendorsEmail($companyid);
+        foreach ($remindAllEmails as $value) {
+            echo $value['vendoradmin'];
+            $mail = new EatadsMailer('request-vendor', $value['vendoradmin'], array('resetLink' => $resetlink), array('sales@eatads.com'));
+            $mail->eatadsSend();
+        }
+        $unsubscribedEmails = MonitorlyNotification::showUnsubscribedRequestedVendorsEmail($companyid);
+        foreach ($unsubscribedEmails as $value) {
+            
         }
     }
 
