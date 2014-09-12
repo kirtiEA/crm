@@ -73,7 +73,8 @@ class ApiController extends Controller {
                     if ($result) {
                         $data = array(
                             'id' => $user->id,
-                            'name' => $user->fname . ' ' . $user->lname
+                            'name' => $user->fname . ' ' . $user->lname,
+                            'time' => time()
                         );
                         // Authorized
                         $this->_sendResponse(200, $data);
@@ -102,7 +103,7 @@ class ApiController extends Controller {
                     // fetch all the task                           
                     $start = ($start > 0) ? $start : 0;
                                         
-                    if ($tDone == 'true') {
+                    if ($tDone == 1) {
                         $sql = "SELECT t.id, c.name AS campaign, l.name AS site, l.geoLat AS lat, l.geoLng AS lng, COUNT( pp.id ) as photocount, dueDate as duedate "
                                 . "FROM Task t "
                                 . "LEFT JOIN Campaign c ON c.id = t.campaignid "
@@ -114,7 +115,7 @@ class ApiController extends Controller {
 
                                 . "GROUP BY t.id "
                                 . "LIMIT {$start}, {$limit}";
-                    } else {
+                    } else if($tDone == 0) {
                         
                         $sql = "SELECT t.id, c.name AS campaign, l.name AS site, l.geoLat AS lat, l.geoLng AS lng, dueDate as duedate "
                             . "FROM Task t "
@@ -127,13 +128,30 @@ class ApiController extends Controller {
                                 . "FROM Task t "
                                 . "LEFT JOIN Campaign c ON c.id = t.campaignid "
                                 . "LEFT JOIN Listing l ON l.id = t.siteid "
-
                                 . "WHERE t.taskDone=0 AND t.status=1 AND t.pop=0 AND t.assigneduserid='$uId' AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
-
                                 . "GROUP BY t.id "
                                 . "LIMIT {$start}, {$limit}";
+                    } else if($tDone==2) {
+                        $sql = "SELECT t.id, c.name AS campaign, l.name AS site, l.geoLat AS lat, l.geoLng AS lng, COUNT( pp.id ) as photocount, dueDate as duedate "
+                            . "FROM Task t "
+                            . "LEFT JOIN Campaign c ON c.id = t.campaignid "
+                            . "LEFT JOIN Listing l ON l.id = t.siteid "
+                            . "LEFT JOIN PhotoProof pp ON pp.taskid = t.id "
+                            . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
+                            . "WHERE t.pop=1 AND t.status=1 AND t.taskDone=0 AND t.assigneduserid='$uId' "
+                            . "UNION ALL ";
+                                                
+                        $sql .= "SELECT t.id, c.name AS campaign, l.name AS site, l.geoLat AS lat, l.geoLng AS lng, COUNT( pp.id ) as photocount, dueDate as duedate "
+                                . "FROM Task t "
+                                . "LEFT JOIN Campaign c ON c.id = t.campaignid "
+                                . "LEFT JOIN Listing l ON l.id = t.siteid "
+                                . "LEFT JOIN PhotoProof pp ON pp.taskid = t.id "
+                                . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
+                                . "WHERE t.status=1 AND t.pop=0 AND t.assigneduserid='$uId' AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
+                                . "GROUP BY t.id "
+                                . "LIMIT {$start}, {$limit} ";                                
                     }
-                    
+                                        
                     $tasks = Yii::app()->db->createCommand($sql)->queryAll();
                     $this->_sendResponse(200, $tasks);
                 }
