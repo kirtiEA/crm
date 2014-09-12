@@ -41,7 +41,7 @@
             <div class="col-md-12">
                 <form class="form-horizontol" role="form">
                     <div class="form-group">
-                        <h3 class="subheader-heading">Request Approval of Sites</h3>
+                        <h3 class="subheader-heading">Invite Vendor</h3>
                         <div class="x control">
                             <label class="control-label">Vendor Name</label>
                             <input type="hidden" value="" class="vendor-ac-id">
@@ -71,10 +71,10 @@
     <div class="container-fluid content-wrapper">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="list-heading pull-left">Vendors List
-                    <?php
-                    $no = count($model);
-                    echo '(' . $no . ')';
+                <h1 class="list-heading pull-left">Vendors List (<?php
+                    $no1 = count($model);
+                    $no2 = count($unsubscribedVendors);
+                    echo $no1+$no2 . ')';
                     ?> 
                 </h1>
                 <button class="remind btn btn-primary pull-right table-control">Remind All</button>
@@ -98,7 +98,7 @@
                     <?php endforeach; ?>
                     <?php foreach ($unsubscribedVendors as $value): ?>
                         <tr>
-                            <td>Unsubscribed User</td>
+                            <td>Unsubscribed Vendor</td>
                             <td><?php echo $value['miscellaneous']; ?></td>
                             <td>Invited on <?php echo $value['createddate']; ?></td>
                             <td><span class="glyphicon glyphicon-warning-sign"></span>Pending</td>
@@ -162,8 +162,6 @@
                 if (data == '200')
                     //alert("Request sent successfully ");
                     location.reload();
-                else
-                    alert(data);
             }
         });
     });
@@ -176,8 +174,6 @@
                 if (data == '200')
                     //alert("Request sent successfully ");
                     location.reload();
-                else
-                    alert(data);
             }
         })
     })

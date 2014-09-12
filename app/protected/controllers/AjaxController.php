@@ -286,7 +286,10 @@ class AjaxController extends Controller {
             }
 //            usleep(250000);
         }
+        Yii::app()->user->setFlash('success', 'Sites Added Successfully');
+        Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/site/addvendor');
         echo true;
+        
     }
 
     public function actionAddsitetocampaign() {
@@ -584,21 +587,23 @@ class AjaxController extends Controller {
             $invite = new MonitorlyNotification();
             $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1, 'miscellaneous' => $email);
             $invite->save();
+            //echo $email;
             $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;
             $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink), array('sales@eatads.com'));
             $mail->eatadsSend();
+            Yii::app()->user->setFlash('success', 'Vendor Invited Successfully');
             echo '200';
         } else {
-            echo 0;
-            //wrong email address den do something
+            Yii::app()->user->setFlash('error', 'Please enter email in correct format');
+            Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/vendor');
         }
     }
 
     public function actionRequestedVendor() {
         if (isset($_POST['vendorid']) && isset($_POST['companyid'])) {
-            $companyid = $_POST['companyid'];
+            $id = Yii::app()->user->id;
             $vendorcompanyid = $_POST['vendorid'];
-            $check = RequestedCompanyVendor::checkUniqueVendor($companyid, $vendorcompanyid);
+            $check = RequestedCompanyVendor::checkUniqueVendor($id, $vendorcompanyid);
             if (strcasecmp($check['cnt'], '0') == 0) {
                 $model = new RequestedCompanyVendor();
                 $model->attributes = array(
@@ -614,15 +619,17 @@ class AjaxController extends Controller {
                 // print_r($email['email']); die();
                 //$email = "root@localhost.com";
                 $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
-                $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $companyid, 'emailtypeid' => 2);
+                $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 2);
                 $invite->createdby = Yii::app()->user->id;
                 $invite->createddate = date("Y-m-d H:i:s");
                 $invite->save();
                 $mail = new EatadsMailer('request-vendor', $email['email'], array('resetLink' => $resetlink), array('sales@eatads.com'));
                 $mail->eatadsSend();
+                Yii::app()->user->setFlash('success', 'Vendor Requested Successfully');
                 echo '200';
             } else {
-                echo 'Vendor already invited';
+                Yii::app()->user->setFlash('success', 'Vendor already requested');
+                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/vendor');
             }
         }
     }
@@ -644,6 +651,7 @@ class AjaxController extends Controller {
             $invite->save();
             $mail = new EatadsMailer('invite-accepted', $email, array('resetLink' => ""), array('shruti@eatads.com'));
             $mail->eatadsSend();
+            Yii::app()->user->setFlash('success', 'Request accepted Successfully');
             echo 200;
         }
     }
@@ -661,7 +669,7 @@ class AjaxController extends Controller {
         $unsubscribedEmails = MonitorlyNotification::showUnsubscribedRequestedVendorsEmail($id);
         //print_r($unsubscribedEmails);
         foreach ($unsubscribedEmails as $value) {
-           //print_r($value['miscellaneous']);
+            //print_r($value['miscellaneous']);
             $nid = MonitorlyNotification::model()->findByAttributes(array('miscellaneous' => $value['miscellaneous']));
             //print_r($nid['id']);
             $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $nid['id'];

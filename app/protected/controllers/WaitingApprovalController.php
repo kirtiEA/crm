@@ -7,15 +7,17 @@ class WaitingApprovalController extends Controller {
         foreach (UserCompany::model()->findAll() as $value) {
             array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
         }
-        $id = Yii::app()->user->cid;
+        $cid = Yii::app()->user->cid;
         //echo $id;
-        $model = RequestedCompanyVendor::showWaitingRequests($id);
+        $model = RequestedCompanyVendor::showWaitingRequests($cid);
+        $accepted = RequestedCompanyVendor::showAcceptedRequests($cid);
 //        echo '<pre>';
 //        print_r($model);die();
         $this->render('index', array(
             'vendorList' => json_encode($vendorList),
             'model' => $model,
-            'id' => $id,
+            'accepted' => $accepted,
+            'id' => $cid,
         ));
     }
 

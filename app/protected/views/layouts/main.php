@@ -35,7 +35,7 @@
                     </button>
                     <a class="navbar-brand" href="#">                        
                         <div id="logo">
-                            <img src="<?php echo Yii::app()->getBaseUrl() . '/images/logo.png';?>"></img>
+                            <img src="<?php echo Yii::app()->getBaseUrl() . '/images/logo.png'; ?>"></img>
                         </div>
                     </a>
                 </div>
@@ -52,27 +52,33 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::app()->user->name;?> <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::app()->user->name; ?> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#">Settings</a></li>
                                 <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
                             </ul>
                         </li>
-<!--                        <li>
-                            <div class="img-circular"></div>
-                        </li>-->
+                        <!--                        <li>
+                                                    <div class="img-circular"></div>
+                                                </li>-->
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
         <?php if (Yii::app()->user->hasFlash('success')) { ?>
-            <div class="navbar navbar-inverse navbar-fixed-top" style="position:relative; z-index:999999;background-color: bisque; ">
+            <div id="flash-messages" class="navbar navbar-inverse navbar-fixed-top" style="position:relative; z-index:999999;background-color: bisque; ">
                 <div class="container">
                     <p><?php echo Yii::app()->user->getFlash('success'); ?></p>
                 </div>
             </div>
         <?php } ?>
-        
+        <?php if (Yii::app()->user->hasFlash('error')) { ?>
+            <div id="flash-messages" class="navbar navbar-inverse navbar-fixed-top" style="position:relative; z-index:999999;background-color: red; ">
+                <div class="container">
+                    <p><?php echo Yii::app()->user->getFlash('error'); ?></p>
+                </div>
+            </div>
+        <?php } ?>
         <div style="display: none" id="completePath"><?php echo Yii::app()->getBaseUrl(true); ?></div>
         <?php echo $content; ?>        
 

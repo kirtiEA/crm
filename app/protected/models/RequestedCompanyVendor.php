@@ -43,9 +43,18 @@ class RequestedCompanyVendor extends BaseRequestedCompanyVendor {
 
         return Yii::app()->db->createCommand($query)->queryAll();
     }
+    
+    public static function showAcceptedRequests($cid) {
+        $query = 'select rv.id as id, uc.name as name, u.email as vendoradmin, DATE_FORMAT(rv.createddate,\'%d %M %Y\') as createddate, rv.accepteddate 
+                    from RequestedCompanyVendor rv 
+                    inner join UserCompany uc on uc.id = rv.companyid 
+                    inner join User u on u.id = uc.userid and rv.vendorcompanyid =' . $cid ;
 
-    public static function checkUniqueVendor($cid, $cvid) {
-        $sql = 'SELECT count(*) as cnt from RequestedCompanyVendor where createdby = ' . $cid . ' and vendorcompanyid = ' . $cvid;
+        return Yii::app()->db->createCommand($query)->queryAll();
+    }
+
+    public static function checkUniqueVendor($id, $cvid) {
+        $sql = 'SELECT count(*) as cnt from RequestedCompanyVendor where createdby = ' . $id . ' and vendorcompanyid = ' . $cvid;
         return Yii::app()->db->createCommand($sql)->queryRow();
     }
 
