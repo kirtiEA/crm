@@ -139,6 +139,7 @@ class ApiController extends Controller {
                             . "LEFT JOIN PhotoProof pp ON pp.taskid = t.id "
                             . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
                             . "WHERE t.pop=1 AND t.status=1 AND t.taskDone=0 AND t.assigneduserid='$uId' "
+                            . "HAVING t.id <> NULL "
                             . "UNION ALL ";
                                                 
                         $sql .= "SELECT t.id, c.name AS campaign, l.name AS site, l.geoLat AS lat, l.geoLng AS lng, COUNT( pp.id ) as photocount, dueDate as duedate "
@@ -151,7 +152,7 @@ class ApiController extends Controller {
                                 . "GROUP BY t.id "
                                 . "LIMIT {$start}, {$limit} ";                                
                     }
-                                        
+                          //echo $sql;              
                     $tasks = Yii::app()->db->createCommand($sql)->queryAll();
                     $this->_sendResponse(200, $tasks);
                 }
