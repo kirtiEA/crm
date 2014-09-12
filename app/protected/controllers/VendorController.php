@@ -17,7 +17,7 @@ class VendorController extends Controller {
         $id = Yii::app()->user->id;
         //echo $id;
         $model = RequestedCompanyVendor::showRequestedVendors($cid);
-        $unsubscribedVendors = MonitorlyNotification::showUnsubscribedRequestedVendors($cid);
+        $unsubscribedVendors = MonitorlyNotification::showUnsubscribedRequestedVendors($id);
 //        echo '<pre>';
 //        print_r($model);die();
         $this->render('index', array(
