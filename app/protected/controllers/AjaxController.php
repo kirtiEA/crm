@@ -588,8 +588,11 @@ class AjaxController extends Controller {
             $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1, 'miscellaneous' => $email);
             $invite->save();
             //echo $email;
+            $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
+            //echo $getName['name'] ; die();
+            $agencyName = $getName['name'];
             $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;
-            $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink), array('sales@eatads.com'));
+            $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink,'agencyName' => $agencyName), array('sales@eatads.com'));
             $mail->eatadsSend();
             Yii::app()->user->setFlash('success', 'Vendor Invited Successfully');
             echo '200';
