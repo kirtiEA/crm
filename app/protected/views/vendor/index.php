@@ -101,7 +101,7 @@
                             <td>Unsubscribed Vendor</td>
                             <td><?php echo $value['miscellaneous']; ?></td>
                             <td>Invited on <?php echo $value['createddate']; ?></td>
-                            <td><span class="glyphicon glyphicon-warning-sign"></span>Pending</td>
+                            <td><span class="glyphicon glyphicon-warning-sign "></span>Pending</td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
