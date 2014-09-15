@@ -592,7 +592,8 @@ class AjaxController extends Controller {
             //echo $getName['name'] ; die();
             $agencyName = $getName['name'];
             $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;
-            $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink,'agencyName' => $agencyName), array('sales@eatads.com'));
+            $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink,'agencyName' => $agencyName));
+            //echo $mail->; die();
             $mail->eatadsSend();
             Yii::app()->user->setFlash('success', 'Vendor Invited Successfully');
             echo '200';
