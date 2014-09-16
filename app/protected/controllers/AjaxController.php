@@ -648,7 +648,7 @@ class AjaxController extends Controller {
                 // print_r($email['email']); die();
                 //$email = "root@localhost.com";
                 $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
-                $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 2);
+                $invite->attributes = array('typeid' => 2, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 2);
                 $invite->createdby = Yii::app()->user->id;
                 $invite->createddate = date("Y-m-d H:i:s");
                 $invite->save();
@@ -676,7 +676,7 @@ class AjaxController extends Controller {
             $invite = new MonitorlyNotification();
             //$email = UserCompany::fetchVendorEmail($vendorcompanyid);
             //$resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
-            $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => Yii::app()->user->id, 'emailtypeid' => 2);
+            $invite->attributes = array('typeid' => 3, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => Yii::app()->user->id, 'emailtypeid' => 2);
             $invite->save();
             $mail = new EatadsMailer('invite-accepted', $email, array('resetLink' => ""), array('shruti@eatads.com'));
             $mail->eatadsSend();
