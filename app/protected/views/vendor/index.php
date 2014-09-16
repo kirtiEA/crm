@@ -21,9 +21,9 @@
                 <div class="modal-body">
                     <label>Vendor Email</label>&nbsp;
                     <input class="email" type="email">
-
                 </div>
                 <div class="modal-footer">
+                    <div class="alert alert-danger" role="alert" style="display:none;">Please enter correct email id</div>
                     <a href="#" id="cancel">Cancel</a>&nbsp;
                     <button class="invite btn btn-primary">Invite</button>
                 </div>
@@ -101,7 +101,7 @@
                             <td>Unsubscribed Vendor</td>
                             <td><?php echo $value['miscellaneous']; ?></td>
                             <td>Invited on <?php echo $value['createddate']; ?></td>
-                            <td><span class="glyphicon glyphicon-warning-sign "></span>Pending</td>
+                            <td><span class="glyphicon glyphicon-warning-sign "></span> Pending</td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
