@@ -16,15 +16,15 @@
         <div ng-app="siteListing">
 <!-- tabs -->    
 <ul class="nav nav-tabs" id="sites-tabs" role="tablist" ng-controller="DemoController">
-    <li class="active"><a href="#" role="tab" data-toggle="tab" onclick="$('#sitetypeid').val(1);">Vendors Sites</a></li>
-    <li><a href="<?php echo Yii::app()->createUrl('site/mySites')?>" >My Sites</a></li>
+    <li ><a href="<?php echo Yii::app()->createUrl('site')?>">Vendors Sites</a></li>
+    <li class="active"><a href="#" onclick="$('#sitetypeid').val(2);">My Sites</a></li>
 <li><a href="<?php echo Yii::app()->createUrl('site/myPendingSites')?>" >My Pending Sites</a></li>
 </ul>
 
 <!-- end of tabs --> 
 
 <!--map and list -->  
-<input id="sitetypeid" value="1" style="display: none">
+<input id="sitetypeid" value="2" style="display: none">
 <div class="container-fluid content-wrapper map-view" >
     <div class="row"> 
 

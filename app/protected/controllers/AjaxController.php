@@ -544,8 +544,20 @@ class AjaxController extends Controller {
                 array_push($result, $value);
             }
             echo json_encode($result);
-        } else if ($type == 3) {
-            
+        } else if ($type == 2) {
+                        //for all my accepted vendors listings
+            $data = Listing::getListingsForCompany(Yii::app()->user->cid, $start);
+            $result = array();
+            foreach ($data as $key => $value) {
+                $value['lighting'] = Listing::getLighting($value['lightingid']);
+                if ($value['sizeunitid'] == 0) {
+                    $value['sizeunit'] = Listing::getSizeUnit(1);
+                } else {
+                    $value['sizeunit'] = Listing::getSizeUnit($value['sizeunitid']);
+                }
+                array_push($result, $value);
+            }
+            echo json_encode($result);
         }
     }
 
@@ -553,6 +565,15 @@ class AjaxController extends Controller {
         $type = $_POST['type'];
         if ($type == 1) {
             $data = Listing::getListingsForAcceptedVendors(Yii::app()->user->cid, 0);
+            $result = array();
+            foreach ($data as $key => $value) {
+                $result[0] = $value['id'];
+                $result[1] = $value['lat'];
+                $result[2] = $value['lng'];
+            }
+            echo json_encode($result);
+        } else if ($type == 2) {
+            $data = Listing::getListingsForCompanyNew(Yii::app()->user->cid, 0);
             $result = array();
             foreach ($data as $key => $value) {
                 $result[0] = $value['id'];
