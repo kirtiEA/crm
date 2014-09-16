@@ -576,8 +576,8 @@ class AjaxController extends Controller {
      */
 
     public function actionInviteVendor() {
-        $email = Yii::app()->request->getParam('email');
-
+//        $email = Yii::app()->request->getParam('email');
+$email = 'gaurav@eatads.com';
         if (strlen($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
             $id = Yii::app()->user->id;
