@@ -191,7 +191,7 @@ class AjaxController extends Controller {
                 $status = 0;
                 $approved = 0;
                 $invite = new MonitorlyNotification();
-                $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $vendorId, 'emailtypeid' => 3);
+                $invite->attributes = array('typeid' => 4, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $vendorId, 'emailtypeid' => 3);
                 $invite->save();
                 $email = UserCompany::fetchVendorEmail($vendorId);
                 $mail = new EatadsMailer('approve-sites', $email['email'], array('resetLink' => ""), array('sales@eatads.com'));
