@@ -188,13 +188,15 @@ $(document).ready(function() {
                 data: {'email': email,
                 },
                 success: function(data) {
-                   // console.log(data);
                     if (data == '200')
                         location.reload();
                 }
             });
+            $('#invite-vendor-modal').modal('hide');
         }
-        $('#invite-vendor-modal').modal('hide');
+        else{
+            $('.alert').toggle();
+        }
 
     });
 

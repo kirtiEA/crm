@@ -287,7 +287,6 @@ class AjaxController extends Controller {
 //            usleep(250000);
         }
         Yii::app()->user->setFlash('success', 'Sites Added Successfully');
-       // Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/site/addvendor');
         echo true;
     }
 
@@ -621,11 +620,11 @@ class AjaxController extends Controller {
                 echo '200';
             } else {
                 Yii::app()->user->setFlash('error', 'Vendor already invited');
-                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/vendor');
+                echo '200';
             }
         } else {
             Yii::app()->user->setFlash('error', 'Please enter email in correct format');
-            Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/vendor');
+            echo '200';
         }
     }
 
@@ -659,7 +658,7 @@ class AjaxController extends Controller {
                 echo '200';
             } else {
                 Yii::app()->user->setFlash('success', 'Vendor already requested');
-                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/vendor');
+                echo '200';
             }
         }
     }
