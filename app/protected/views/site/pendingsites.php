@@ -31,8 +31,8 @@
 <!-- tabs -->    
 <ul class="nav nav-tabs" id="sites-tabs" role="tablist" >
     <li ><a href="<?php echo Yii::app()->createUrl('site')?>" >Vendors Sites</a></li>
-<!--    <li><a href="" role="tab" data-toggle="tab" >My Sites</a></li>-->
-    <li class="active"><a href="#" role="tab" data-toggle="tab" >My Pending Sites</a></li>
+<li><a href="<?php echo Yii::app()->createUrl('site/mySites')?>" >My Sites</a></li>
+<li class="active"><a href="#" role="tab" data-toggle="tab" >My Pending Sites</a></li>
 </ul>
 
 <!-- end of tabs --> 

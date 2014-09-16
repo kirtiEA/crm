@@ -479,7 +479,7 @@ where t.status =1 and t.campaignid = ' . $campaignid)->queryAll();
         inner join MediaType mt on mt.id = l.mediatypeid
         inner join UserCompany uc on uc.id = l.companyid and uc.id in (';
         
-        $sql = $sql . 'select vendorcompanyid from RequestedCompanyVendor where companyid ='. $cid .' and accepteddate is not null union select '. $cid .')';
+        $sql = $sql . 'select vendorcompanyid from RequestedCompanyVendor where companyid ='. $cid .' and accepteddate is not null )';
         $sql = $sql . ' where l.status = 1 limit ' . $start . ',30';
         $data = Yii::app()->db->createCommand($sql)->queryAll();        
         return $data;
@@ -528,6 +528,20 @@ where t.status =1 and t.campaignid = ' . $campaignid)->queryAll();
         inner join UserCompany uc on uc.id = l.companyid 
         where l.approved = 0 and  l.status =0 and l.companyid = ' .$cid ;
         $data = Yii::app()->db->createCommand($sql)->queryAll();
+        return $data;
+    }
+    
+    public static function getListingsForCompanyNew($cid, $start =0) {
+        $sql = 'SELECT l.id, l.name as name, length as height, width as width, 
+        price as price, locality as address, geolat as lat, geolng as lng, lightingid,  sizeunitid,
+        lbc.currency_code as basecurrency, mt.name as mediatype,
+        uc.name as companyname, IFNULL(l.approved,0)  as accepted
+        FROM Listing l 
+        inner join LookupBaseCurrency lbc on lbc.id = l.basecurrencyid
+        inner join MediaType mt on mt.id = l.mediatypeid
+        inner join UserCompany uc on uc.id = l.companyid and uc.id = ' . $cid;
+        $sql = $sql . ' where l.status = 1 limit ' . $start . ',30';
+        $data = Yii::app()->db->createCommand($sql)->queryAll();        
         return $data;
     }
 }

@@ -46,7 +46,7 @@
             <nav class="navbar navbar-default navbar-fixed-bottom table-control">
                 <div class="pull-right">
                     <a href="#" class="disabled">Cancel&nbsp;</a>
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" name="save" data-dump="#listings" class="btn btn-primary">Save</button>
                 </div>
             </nav>
         </div>
@@ -219,7 +219,7 @@
                     //var json = JSON.parse(data);
                     console.log(data);
                     if (data == true)
-                        alert('Data saved.')
+                        location.reload();
                     else
                         alert('Failed to save data.')
                 },
