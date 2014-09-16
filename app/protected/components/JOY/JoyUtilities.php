@@ -600,4 +600,8 @@ class JoyUtilities
         $sqs = new EatadsSqs();
         return $sqs->generateQueueMessage($arr);
     }
+    
+    public static function findUnseenNotificationsCount($cid) {
+        return MonitorlyNotification::model()->countByAttributes(array('notifiedcompanyid' => $cid, 'lastViewedDate' => null));
+    }
 }

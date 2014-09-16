@@ -10,6 +10,9 @@
  * @property integer $createdby
  * @property integer $emailtypeid
  * @property string $miscellaneous
+ * @property string $lastViewedDate
+ * @property integer $companyid
+ * @property integer $notifiedcompanyid
  *
  * The followings are the available model relations:
  * @property User $createdby0
@@ -33,11 +36,12 @@ class BaseMonitorlyNotification extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('createddate, createdby', 'required'),
-			array('typeid, createdby, emailtypeid', 'numerical', 'integerOnly'=>true),
-			array('miscellaneous', 'length', 'max'=>50),
+			array('typeid, createdby, emailtypeid, companyid, notifiedcompanyid', 'numerical', 'integerOnly'=>true),
+			array('miscellaneous', 'length', 'max'=>255),
+			array('lastViewedDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, typeid, createddate, createdby, emailtypeid, miscellaneous', 'safe', 'on'=>'search'),
+			array('id, typeid, createddate, createdby, emailtypeid, miscellaneous, lastViewedDate, companyid, notifiedcompanyid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,8 +67,11 @@ class BaseMonitorlyNotification extends CActiveRecord
 			'typeid' => '1-invite vendor, 2-remind vendor',
 			'createddate' => 'Createddate',
 			'createdby' => 'Createdby',
-			'emailtypeid' => '1.subscription,2.invitation accepted,3.New sites for approval,4.Site Accepted,5.POP campaign',
-			'miscellaneous' => 'Currently stores emailid of vendors invited',
+			'emailtypeid' => 'Emailtypeid',
+			'miscellaneous' => 'Miscellaneous',
+			'lastViewedDate' => 'Last Viewed Date',
+			'companyid' => 'Companyid',
+			'notifiedcompanyid' => 'Notifiedcompanyid',
 		);
 	}
 
@@ -92,6 +99,9 @@ class BaseMonitorlyNotification extends CActiveRecord
 		$criteria->compare('createdby',$this->createdby);
 		$criteria->compare('emailtypeid',$this->emailtypeid);
 		$criteria->compare('miscellaneous',$this->miscellaneous,true);
+		$criteria->compare('lastViewedDate',$this->lastViewedDate,true);
+		$criteria->compare('companyid',$this->companyid);
+		$criteria->compare('notifiedcompanyid',$this->notifiedcompanyid);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -102,7 +112,7 @@ class BaseMonitorlyNotification extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return BaseMonitorlynotification the static model class
+	 * @return BaseMonitorlyNotification the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

@@ -227,3 +227,19 @@ function removeListingFromCampaignd(id, cid) {
         }
     });
 }
+
+function fetchNotifications() {
+    //$('.dropdown-toggle').dropdown();
+      $.ajax({
+        type: 'POST',
+        url: $('#completePath').text() + '/ajax/fetchNotifications',
+        success: function(data) {
+            console.log('sdf');
+        },
+        error: function(data) { // if error occured
+            alert("Error occured.please try again");
+            alert(data);
+        }
+    });  
+
+}    
