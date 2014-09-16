@@ -33,4 +33,12 @@ class MonitorlyNotification extends BaseMonitorlyNotification {
         return Yii::app()->db->createCommand($query)->queryAll();
     }
 
+    public static function checkUniqueUnsubscribedVendors($id, $email) {
+        $query = 'SELECT count(*)as cnt
+                FROM MonitorlyNotification mn 
+                inner join UserCompany uc on uc.userid = mn.createdby and mn.createdby = ' . $id .
+                ' where typeid = 1 and miscellaneous like \'' . $email . '\'';
+        return Yii::app()->db->createCommand($query)->queryRow();
+    }
+
 }
