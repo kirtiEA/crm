@@ -113,7 +113,7 @@ class UserController extends Controller {
                 /*
                  * flash a message if the username already exists
                  */
-                Yii::app()->user->setFlash('success', 'User already exists. Choose a diiferent username');
+                Yii::app()->user->setFlash('success', 'User already exists. Choose a different username');
                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
                 }
                                 

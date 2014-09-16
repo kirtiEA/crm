@@ -6,7 +6,7 @@ $(document).ready(function() {
     $('.multiselect').multiselect({
         nonSelectedText: 'Select',
         enableFiltering: true
-    });   
+    });
 
     // start and end date behavior    
     $("#sdate").datepicker({
@@ -31,14 +31,14 @@ $(document).ready(function() {
     // start date for campaign
     $("#scdate").datepicker({
         //changeMonth: true,
-        numberOfMonths: 1,        
+        numberOfMonths: 1,
         dateFormat: 'dd/mm/yy',
         onClose: function(selectedDate) {
             if (selectedDate)
                 $("#ecdate").datepicker("option", "minDate", selectedDate);
         }
     });
-    $("#ecdate").datepicker({        
+    $("#ecdate").datepicker({
         //changeMonth: true,
         numberOfMonths: 1,
         dateFormat: 'dd/mm/yy',
@@ -52,7 +52,7 @@ $(document).ready(function() {
         numberOfMonths: 1,
         maxDate: 0,
         dateFormat: 'dd M yy',
-        onClose: function(selectedDate) {            
+        onClose: function(selectedDate) {
             $("#erdate").datepicker("option", "minDate", selectedDate);
         }
     });
@@ -102,8 +102,8 @@ $(document).ready(function() {
 
     //modal
     /*$('#lightbox-btn').click(function() {
-        $('div#img-gallery a:first-child').ekkoLightbox();
-    });*/
+     $('div#img-gallery a:first-child').ekkoLightbox();
+     });*/
 
     //invite vendor modal, close on clicking cancel
     $('#cancel').click(function(e) {
@@ -188,19 +188,22 @@ $(document).ready(function() {
                 data: {'email': email,
                 },
                 success: function(data) {
-                    if(data == 200)
+                   // console.log(data);
+                    if (data == '200')
                         location.reload();
                 }
             });
-        }
-        else {
-            alert('Please enter correct email address in the format abc@xyz.pq');
         }
         $('#invite-vendor-modal').modal('hide');
 
     });
 
 });
+
+//flash messages fade in fade out
+$('#flash-messages').fadeOut('slow',function (){
+    $(this).remove();
+})
 
 function removeListingFromCampaignd(id, cid) {
 //        console.log('ffsdsdfsfss');

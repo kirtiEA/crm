@@ -91,7 +91,18 @@
                             </td>
                         </tr>
                     <?php endforeach; ?>
-
+                        <?php foreach ($accepted as $value): ?>
+                        <tr>
+                            <?php if ($value['accepteddate'] !== NULL): ?>
+                            <td><?php echo $value['name']; ?></td>
+                            <td><?php echo $value['vendoradmin']; ?></td>
+                            <td>Invited on <?php echo $value['createddate']; ?></td>
+                            <td>
+                                <span class="glyphicon glyphicon-ok"></span>Accepted
+                            </td>
+                            <?php endif;?>
+                        </tr>
+                    <?php endforeach; ?>
                 </table>
             </div>
         </div>
@@ -171,7 +182,6 @@
             success: function(data) {
                 if (data == 200)
                 {
-                    alert("Request accepted successfully");
                     location.reload();
                 }
             }
