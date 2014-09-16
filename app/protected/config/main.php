@@ -67,7 +67,7 @@ return array(
             'connectionString' => 'mysql:host=localhost;dbname=eatads',
             'emulatePrepare' => true,
             'username' => 'root',
-            'password' => 'root',
+            'password' => '',
             'charset' => 'utf8',
         ),
         'errorHandler' => array(
@@ -95,6 +95,10 @@ return array(
         'protocol' => $protocol, // goto top
         // this is used in contact page
         'adminEmail' => 'amit@eatads.com',
+        'linkexpiry' => array(
+            'signup' => 48,
+            'forgot' => 24
+        ),
         'phpass' => array(
             'iteration_count_log2' => 8,
             'portable_hashes' => false,

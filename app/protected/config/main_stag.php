@@ -96,7 +96,10 @@ return array(
         'protocol' => $protocol,    // goto top
         // this is used in contact page
         'adminEmail' => 'amit@eatads.com',
-        
+        'linkexpiry' => array(
+            'signup' => 48,
+            'forgot' => 24
+        ),
         // for password protection extension
         'phpass' => array(
             'iteration_count_log2' => 8,

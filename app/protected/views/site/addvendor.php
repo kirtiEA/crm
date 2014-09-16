@@ -245,7 +245,7 @@
         var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
 
         $('#vendor-ac').autocomplete({
-            source: allVendorJson,
+            source: allVendorJson,            
             select: function(event, ui) {
                 console.log(ui.item.value + ', ' + ui.item.id);
                 $("#vendor-ac-id").val(ui.item.id);
