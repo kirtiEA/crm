@@ -15,7 +15,7 @@ class MonitorlyNotification extends BaseMonitorlyNotification {
 
     public static function showUnsubscribedRequestedVendors($id) {
 
-        $query = 'SELECT createddate, miscellaneous 
+        $query = 'SELECT DATE_FORMAT(createddate,\'%d %M %Y\') as createddate, miscellaneous 
                 FROM MonitorlyNotification mn 
                 inner join UserCompany uc on uc.userid = mn.createdby and mn.createdby = ' . $id .
                 ' where typeid = 1';
@@ -31,6 +31,14 @@ class MonitorlyNotification extends BaseMonitorlyNotification {
                 ' where typeid = 1';
 
         return Yii::app()->db->createCommand($query)->queryAll();
+    }
+
+    public static function checkUniqueUnsubscribedVendors($id, $email) {
+        $query = 'SELECT count(*)as cnt
+                FROM MonitorlyNotification mn 
+                inner join UserCompany uc on uc.userid = mn.createdby and mn.createdby = ' . $id .
+                ' where typeid = 1 and miscellaneous like \'' . $email . '\'';
+        return Yii::app()->db->createCommand($query)->queryRow();
     }
 
 }
