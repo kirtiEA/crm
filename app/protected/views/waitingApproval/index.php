@@ -125,6 +125,7 @@
         //console.log($id);
         $('.vendor').autocomplete({
             source: allVendorJson,
+            minLength: 3,
             select: function(event, ui) {
                 console.log(ui.item.value + ', ' + ui.item.id);
                 $(".vendor-ac-id").val(ui.item.id);
