@@ -153,12 +153,14 @@ $(document).ready(function() {
             data: {'id': id,
                 'pwd': pwd},
             success: function(data) {
-                alert("Password updated successfully");
+                
                 //$(this).siblings('.password').remove();
                 saveBtn.siblings('.change-pwd').show();
                 saveBtn.siblings('.cancel').remove();
                 saveBtn.remove();
                 pwdTxt.remove();
+                if (data == '200')
+                    location.reload();
 
             }
         });

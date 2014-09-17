@@ -63,8 +63,8 @@ class AjaxController extends Controller {
     }
 
     public function actionForgotpwd() {
-        $email = Yii::app()->request->getParam('email');        
-                
+        $email = Yii::app()->request->getParam('email');
+
         // get the userid from the entered email
         $userModel = User::model()->find(array('condition' => 'email=:email', 'params' => array(':email' => $model->email), 'select' => 'id'));
 
@@ -82,27 +82,26 @@ class AjaxController extends Controller {
             $model->unsetAttributes();
             // show success message
             echo true;
-
         } else {
             // show error message
             echo "Could not send email to user.";
         }
     }
 
-    public function actionResetpwd() {        
+    public function actionResetpwd() {
         $hash = Yii::app()->request->getParam('hash');
         $password = Yii::app()->request->getParam('password');
         $linkModel = Link::model()->find('hash=:hash AND type=:type', array(':hash' => $hash, ':type' => 0));
 
         // if link not expired
-        if($linkModel) {
-            if($linkModel->expired==0) {                
+        if ($linkModel) {
+            if ($linkModel->expired == 0) {
                 // check if link has not expired
                 $timeDiff = (time() - strtotime($linkModel->datecreated)) / 3600;
                 $linkModel->expired = 1;    // expire the link
                 $linkModel->save();         // save the record
                 // check link expiration time set in config
-                if($timeDiff < Yii::app()->params['linkexpiry']['forgot']) { 
+                if ($timeDiff < Yii::app()->params['linkexpiry']['forgot']) {
                     // update the password for the user
                     $userModel = User::model()->findByPk($linkModel->userid);
                     // CHANGE THE PASSWORD HASHING METHOD
@@ -112,13 +111,13 @@ class AjaxController extends Controller {
                     echo true;
                 } else {
                     echo 'Link expired';
-                }                
+                }
             } else {
                 echo 'Link already used';
             }
         } else {
             echo 'Link invalid';
-        }       
+        }
     }
 
     public function actionFetchppimages() {
@@ -250,10 +249,14 @@ class AjaxController extends Controller {
                 $status = 0;
                 $approved = 0;
                 $invite = new MonitorlyNotification();
+                $getName = UserCompany::model()->findByAttributes(array('userid' => $vendorId));
+                //echo $getName['name'] ; die();
+                $agencyName = $getName['name'];
+                $resetlink = Yii::app()->getBaseUrl(true) . '/site/myPendingSites';
                 $invite->attributes = array('typeid' => 4, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $vendorId, 'emailtypeid' => 4);
                 $invite->save();
                 $email = UserCompany::fetchVendorEmail($vendorId);
-                $mail = new EatadsMailer('approve-sites', $email['email'], array('resetLink' => ""), array('sales@eatads.com'));
+                $mail = new EatadsMailer('approve-sites', $email['email'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'));
                 $mail->eatadsSend();
             }
 
@@ -391,6 +394,8 @@ class AjaxController extends Controller {
                 // Error: Unauthorized
             }
             User::model()->changePassword($id, $password);
+            Yii::app()->user->setFlash('success', 'Password Changed Successfully');
+            echo '200';
         }
     }
 
@@ -703,17 +708,20 @@ class AjaxController extends Controller {
                 $model->save();
                 $invite = new MonitorlyNotification();
                 $email = UserCompany::fetchVendorEmail($vendorcompanyid);
+                $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
+                //echo $getName['name'] ; die();
+                $agencyName = $getName['name'];
                 $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
                 $invite->attributes = array('typeid' => 2, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 2);
                 $invite->createdby = Yii::app()->user->id;
                 $invite->createddate = date("Y-m-d H:i:s");
                 $invite->save();
-                $mail = new EatadsMailer('request-vendor', $email['email'], array('resetLink' => $resetlink), array('sales@eatads.com'));
+                $mail = new EatadsMailer('request-vendor', $email['email'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'));
                 $mail->eatadsSend();
                 Yii::app()->user->setFlash('success', 'Vendor Requested Successfully');
                 echo '200';
             } else {
-                Yii::app()->user->setFlash('success', 'Vendor already requested');
+                Yii::app()->user->setFlash('error', 'Vendor already requested');
                 echo '200';
             }
         }
@@ -732,9 +740,13 @@ class AjaxController extends Controller {
             $invite = new MonitorlyNotification();
             //$email = UserCompany::fetchVendorEmail($vendorcompanyid);
             //$resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
+            $vendorName = UserCompany::model()->findByPk(Yii::app()->user->cid);
+            //print_r($vendorName['name']);
+
+            $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
             $invite->attributes = array('typeid' => 3, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => Yii::app()->user->id, 'emailtypeid' => 3);
             $invite->save();
-            $mail = new EatadsMailer('invite-accepted', $email, array('resetLink' => ""), array('shruti@eatads.com'));
+            $mail = new EatadsMailer('request-accepted', $email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'));
             $mail->eatadsSend();
             Yii::app()->user->setFlash('success', 'Request accepted Successfully');
             echo 200;
@@ -744,24 +756,24 @@ class AjaxController extends Controller {
     public function actionRemindAll() {
         $companyid = Yii::app()->user->cid;
         $id = Yii::app()->user->id;
+        $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
+        $agencyName = $getName['name'];
         $remindAllEmails = RequestedCompanyVendor::showRequestedVendorsEmail($companyid);
         foreach ($remindAllEmails as $value) {
             //echo $value['vendoradmin'];
             $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
-            $mail = new EatadsMailer('request-vendor', $value['vendoradmin'], array('resetLink' => $resetlink), array('sales@eatads.com'));
+            $mail = new EatadsMailer('remind-all', $value['vendoradmin'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'));
             $mail->eatadsSend();
         }
         $unsubscribedEmails = MonitorlyNotification::showUnsubscribedRequestedVendorsEmail($id);
         //print_r($unsubscribedEmails);
         foreach ($unsubscribedEmails as $value) {
             //print_r($value['miscellaneous']);
-            $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
-            //echo $getName['name'] ; die();
-            $agencyName = $getName['name'];
+
             $nid = MonitorlyNotification::model()->findByAttributes(array('miscellaneous' => $value['miscellaneous']));
             //print_r($nid['id']);
             $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $nid['id'];
-            $mail = new EatadsMailer('invite-accepted', $value['miscellaneous'], array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'));
+            $mail = new EatadsMailer('remind-all', $value['miscellaneous'], array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'));
             $mail->eatadsSend();
         }
         echo '200';

@@ -28,7 +28,6 @@ class UserController extends Controller {
      */
     public function accessRules() {
         return array(
-            
             array('allow', // allow all users to perform 'index' and 'view' actions
                 'actions' => array('index', 'view'),
                 'users' => array('*'),
@@ -58,26 +57,18 @@ class UserController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate() {
-        //echo 'dfdfsfsd';die();
         $model = new User();
         $model->setscenario('create'); //create scenario for rules validation
-        //print_r($today);die();
-        //$userRole = Userrole::model()->insertRoles();
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['User'])) {
             $model->attributes = $_POST['User'];
-            //print_r($_POST['User']['username']);die();
             $role = Role::model()->findByPk(5);
-
-            $check = User::checkUniqueUsername(Yii::app()->user->id, strtolower($_POST['User']['username']));
+            $check = User::checkUniqueUsername(Yii::app()->user->cid, strtolower($_POST['User']['username']));
             //echo '<pre>'; print_r(strcasecmp($check['cnt'], '0')); die();
             if (strcasecmp($check['cnt'], '0') == 0) {
-                //echo 'hi';
                 $model->username = strtolower($_POST['User']['username']);
-                //echo $model->username;            die();
-                
                 $model->email = 'dummy' . $model->username . time() . '@eatads.com';
                 $model->phonenumber = $_POST['User']['phonenumber'];
                 $model->datecreated = date("Y-m-d H:i:s");
@@ -89,35 +80,49 @@ class UserController extends Controller {
                 $pwd = $_POST['User']['password'];
                 $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
                 $password = $ph->HashPassword($pwd);
-                //User::model()->insertUser($model);
                 $result = $ph->CheckPassword($pwd, $model->password);
-                //echo $result;
-                if ($result) {
-                    // Authorized
-                } else {
-                    // Error: Unauthorized
-                }
                 $model->password = $password;
-                //echo '<pre>'; print_r($model); die();
+                if (strlen($_POST['User']['password']) == 0 && (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10)) {
+                    Yii::app()->user->setFlash('error', 'Password & 10 digit phone number are required');
+                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+                } else if (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10) {
+                    Yii::app()->user->setFlash('error', '10 digit Phonenumber is required');
+                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+                } elseif (strlen($_POST['User']['password']) == 0) {
+                    Yii::app()->user->setFlash('error', 'Password is required');
+                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+                }
                 if ($model->validate()) {
-            //         print_r($model->attributes);
                     $model->save();
                     UserRole::model()->insertRoles($model->id, $role->id);
                     Yii::app()->user->setFlash('success', 'User Created Successfully');
+                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+                } elseif (strpos($_POST['User']['username'], " ") == TRUE) {
+                    Yii::app()->user->setFlash('error', 'Space is not allowed in User Name');
                     Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
                 } else {
                     Yii::app()->user->setFlash('success', 'All Fields are required');
                     Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
                 }
+            } elseif (strlen($_POST['User']['username']) == 0 && strlen($_POST['User']['password']) == 0 && (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10)) {
+                Yii::app()->user->setFlash('error', 'All Fields are required');
+                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+            } elseif (strlen($_POST['User']['username']) == 0 && strlen($_POST['User']['password']) == 0) {
+                Yii::app()->user->setFlash('error', 'User name & Password are required');
+                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+            } elseif (strlen($_POST['User']['username']) == 0 && (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10)) {
+                Yii::app()->user->setFlash('error', 'User name & 10 digit phone number are required');
+                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+            } elseif (strlen($_POST['User']['username']) == 0) {
+                Yii::app()->user->setFlash('error', 'User Name is required');
+                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+            } else if (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10) {
+                Yii::app()->user->setFlash('error', '10 digit Phonenumber is required');
+                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
             } else {
-                /*
-                 * flash a message if the username already exists
-                 */
-                Yii::app()->user->setFlash('success', 'User already exists. Choose a different username');
-                   Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
-                }
-                                
-
+                Yii::app()->user->setFlash('error', 'User already exists. Choose a different username');
+                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+            }
         }
     }
 
@@ -128,7 +133,7 @@ class UserController extends Controller {
     public function actionView($id) {
         $row = Userrole::model()->findByPk($id);
         $role = Role::model()->findByPk($row->roleid);
-        //echo '<pre>';                print_r($row); die();
+//echo '<pre>';                print_r($row); die();
         $this->render('view', array(
             'model' => $this->loadModel($id),
             'selected' => $role->name,
@@ -143,7 +148,7 @@ class UserController extends Controller {
     public function actionDelete($id) {
         $this->loadModel($id)->delete();
 
-        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
         if (!isset($_GET['ajax']))
             $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
     }
@@ -154,7 +159,7 @@ class UserController extends Controller {
     public function actionIndex() {
         $users = User::fetchCompanyUsersModel(Yii::app()->user->cid);
         $model = new User();
-        //echo '<pre>';print_r($model); die();
+//echo '<pre>';print_r($model); die();
         $this->render('index', array(
             'users' => $users,
             'model' => $model
