@@ -164,9 +164,12 @@
                             <h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $site['name'] .'('.$site['count'] . ') &nbsp;</h3>'
                             . '<div class="assign-dropdown">Assigned to 
                                 <select>
-                                    <option value="'. $site['id'].'_0" selected="true">Myself</option>
-                                    <option value="'.$site['id']. '_' .$site['id'] .'">' . $site['name'] .'</option>
-                                </select></div>'
+                                    <option value="'. $site['id'].'_0" selected="true">Myself</option>';
+if (strcasecmp($site['id'], Yii::app()->user->cid) != 0) {
+                            $html = $html . '<option value="'.$site['id']. '_' .$site['id'] .'">' . $site['name'] .'</option>';
+                        }
+                                    
+                          $html = $html .      '</select></div>' 
                                 
                             . '<ul class="sub-sub-list show-hide-content">';
                         foreach ($site['listings'] as $list) {
