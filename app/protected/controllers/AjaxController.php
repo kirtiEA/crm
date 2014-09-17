@@ -20,7 +20,7 @@ class AjaxController extends Controller {
         return array(
             array('allow', // allow all users to perform actions
                 'actions' => array('signup', 'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting', 'getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
-                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword', 'invitevendor', 'removeListingFromCampaign', 'updateCampaign', 'forgotpwd', 'resetpwd'),
+                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword', 'invitevendor', 'removeListingFromCampaign', 'updateCampaign', 'forgotpwd', 'resetpwd', 'fetchNotifications'),
                 'users' => array('*'),
             )
         );
@@ -254,6 +254,9 @@ class AjaxController extends Controller {
                 $agencyName = $getName['name'];
                 $resetlink = Yii::app()->getBaseUrl(true) . '/site/myPendingSites';
                 $invite->attributes = array('typeid' => 4, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $vendorId, 'emailtypeid' => 4);
+                $invite->companyid = Yii::app()->user->cid;
+                $invite->notifiedcompanyid = $vendorId;
+
                 $invite->save();
                 $email = UserCompany::fetchVendorEmail($vendorId);
                 $mail = new EatadsMailer('approve-sites', $email['email'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'));
@@ -465,6 +468,7 @@ class AjaxController extends Controller {
 //                    print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid));
                     Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid);
                 }
+                Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                 echo '200';
             } else if ($_POST['type'] == 2) {
 //print_r($add);
@@ -484,7 +488,7 @@ class AjaxController extends Controller {
                         }
                     }
                 }
-
+Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                 echo '200';
             } else if ($_POST['type'] == 3) {
 //print_r($add);
@@ -527,6 +531,7 @@ class AjaxController extends Controller {
 //                    print_r();
                     Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid, date("Y-m-d H:i:s", $date));
                 }
+                Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                 echo '200';
             }
 
@@ -671,6 +676,7 @@ class AjaxController extends Controller {
 
                 $invite = new MonitorlyNotification();
                 $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1, 'miscellaneous' => $email);
+                $invite->companyid = Yii::app()->user->cid;
                 $invite->save();
                 //echo $email;
                 $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
@@ -715,6 +721,8 @@ class AjaxController extends Controller {
                 $invite->attributes = array('typeid' => 2, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 2);
                 $invite->createdby = Yii::app()->user->id;
                 $invite->createddate = date("Y-m-d H:i:s");
+                $invite->companyid = Yii::app()->user->cid;
+                $invite->notifiedcompanyid = $vendorcompanyid;
                 $invite->save();
                 $mail = new EatadsMailer('request-vendor', $email['email'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'));
                 $mail->eatadsSend();
@@ -745,6 +753,8 @@ class AjaxController extends Controller {
 
             $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
             $invite->attributes = array('typeid' => 3, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => Yii::app()->user->id, 'emailtypeid' => 3);
+            $invite->companyid = Yii::app()->user->cid;
+            $invite->notifiedcompanyid = $vcid;
             $invite->save();
             $mail = new EatadsMailer('request-accepted', $email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'));
             $mail->eatadsSend();
@@ -783,6 +793,32 @@ class AjaxController extends Controller {
         if ($_POST['id']) {
             Listing::updateListing($_POST['id']);
         }
+    }
+    
+    public function actionfetchNotifications() {
+        $notifications = MonitorlyNotification::fetchNotifications(Yii::app()->user->cid);
+        $result = array();
+        foreach ($notifications as $noti) {
+            switch ($noti['typeid']) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                default:
+                    break;
+            }
+        }
+        echo json_encode($result);
     }
 
 }
