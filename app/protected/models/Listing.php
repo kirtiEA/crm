@@ -408,7 +408,7 @@ class Listing extends BaseListing {
     }
     
     public static function getListingsForCompany($companyid,$campaignid =null) {
-        $listings = Yii::app()->db->createCommand('SELECT l.id, foruserid, l.name, length, width, sizeunitid, basecurrencyid, price, locality, geolat, geolng, accurate_geoloc,  lightingid,  description,  pscore, reach, 
+        $listings = Yii::app()->db->createCommand('SELECT l.id, CONCAT(\'listing_\', l.id) as lid, foruserid, l.name, length, width, sizeunitid, basecurrencyid, price, locality, geolat, geolng, accurate_geoloc,  lightingid,  description,  pscore, reach, 
             l.availabilitydate, lbc.currency_code,c.name as country,s.name as state,city.name as city,mt.name as mediatype
             FROM Listing l inner join LookupBaseCurrency lbc on lbc.id = l.basecurrencyid
             inner join Area c on c.id = l.countryid inner join Area s on s.id = l.stateid
