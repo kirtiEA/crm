@@ -2,6 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
+        
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>Monitorly</title>
@@ -91,17 +92,15 @@ font-size: 1.7em;
             </div><!-- /.container-fluid -->
         </nav>
         <?php if (Yii::app()->user->hasFlash('success')) { ?>
-            <div id="flash-messages" class="navbar navbar-inverse navbar-fixed-top" style="position:relative; z-index:999999;background-color: bisque; ">
-                <div class="container">
-                    <p><?php echo Yii::app()->user->getFlash('success'); ?></p>
-                </div>
+            <div id="flash-messages" class="alert alert-success alert-dismissible">
+                    <?php echo Yii::app()->user->getFlash('success'); ?>
+                
             </div>
         <?php } ?>
         <?php if (Yii::app()->user->hasFlash('error')) { ?>
-            <div id="flash-messages" class="navbar navbar-inverse navbar-fixed-top" style="position:relative; z-index:999999;background-color: red; ">
-                <div class="container">
-                    <p><?php echo Yii::app()->user->getFlash('error'); ?></p>
-                </div>
+            <div id="flash-messages" class="alert alert-success alert-dismissible">
+                    <?php echo Yii::app()->user->getFlash('error'); ?>
+               
             </div>
         <?php } ?>
         <div style="display: none" id="completePath"><?php echo Yii::app()->getBaseUrl(true); ?></div>

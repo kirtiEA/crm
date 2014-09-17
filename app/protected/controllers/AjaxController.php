@@ -259,7 +259,7 @@ class AjaxController extends Controller {
 
                 $invite->save();
                 $email = UserCompany::fetchVendorEmail($vendorId);
-                $mail = new EatadsMailer('approve-sites', $email['email'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'));
+                $mail = new EatadsMailer('approve-sites', $email['email'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
                 $mail->eatadsSend();
             }
 
@@ -678,12 +678,12 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                 $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1, 'miscellaneous' => $email);
                 $invite->companyid = Yii::app()->user->cid;
                 $invite->save();
-                //echo $email;
+                //echo Yii::app()->user->email; die();
                 $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
                 //echo $getName['name'] ; die();
                 $agencyName = $getName['name'];
                 $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;
-                $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'));
+                $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
                 //echo $mail->; die();
                 $mail->eatadsSend();
                 Yii::app()->user->setFlash('success', 'Vendor Invited Successfully');
@@ -724,7 +724,7 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                 $invite->companyid = Yii::app()->user->cid;
                 $invite->notifiedcompanyid = $vendorcompanyid;
                 $invite->save();
-                $mail = new EatadsMailer('request-vendor', $email['email'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'));
+                $mail = new EatadsMailer('request-vendor', $email['email'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
                 $mail->eatadsSend();
                 Yii::app()->user->setFlash('success', 'Vendor Requested Successfully');
                 echo '200';
@@ -756,7 +756,7 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
             $invite->companyid = Yii::app()->user->cid;
             $invite->notifiedcompanyid = $vcid;
             $invite->save();
-            $mail = new EatadsMailer('request-accepted', $email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'));
+            $mail = new EatadsMailer('request-accepted', $email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
             $mail->eatadsSend();
             Yii::app()->user->setFlash('success', 'Request accepted Successfully');
             echo 200;
@@ -772,7 +772,7 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
         foreach ($remindAllEmails as $value) {
             //echo $value['vendoradmin'];
             $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
-            $mail = new EatadsMailer('remind-all', $value['vendoradmin'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'));
+            $mail = new EatadsMailer('remind-all', $value['vendoradmin'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
             $mail->eatadsSend();
         }
         $unsubscribedEmails = MonitorlyNotification::showUnsubscribedRequestedVendorsEmail($id);
@@ -783,7 +783,7 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
             $nid = MonitorlyNotification::model()->findByAttributes(array('miscellaneous' => $value['miscellaneous']));
             //print_r($nid['id']);
             $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $nid['id'];
-            $mail = new EatadsMailer('remind-all', $value['miscellaneous'], array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'));
+            $mail = new EatadsMailer('remind-all', $value['miscellaneous'], array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
             $mail->eatadsSend();
         }
         echo '200';
