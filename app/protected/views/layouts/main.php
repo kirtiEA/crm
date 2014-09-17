@@ -72,20 +72,20 @@ font-size: 1.7em;
                                 <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
+<!--                        <li class="dropdown">
                             <?php 
-                                $cnt = JoyUtilities::findUnseenNotificationsCount(Yii::app()->user->cid);
-                                if($cnt == 0) {
-                                    echo '<div class="notification glyphicon glyphicon-bell"></div>';
-                                } else {
-                                    echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="fetchNotifications();" ><div class="notification glyphicon glyphicon-bell" style="color: coral;" ></div></a>';
-                                }    
+//                                $cnt = JoyUtilities::findUnseenNotificationsCount(Yii::app()->user->cid);
+//                                if($cnt == 0) {
+//                                    echo '<div class="notification glyphicon glyphicon-bell"></div>';
+//                                } else {
+//                                    echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="fetchNotifications();" ><div class="notification glyphicon glyphicon-bell" style="color: coral;" ></div></a>';
+//                                }    
                             ?>
                             <ul class="dropdown-menu" id="notificationCenter">
                                 <li><a href="#">Settings</a></li>
-                                <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
+                                <li><a href="<?php //echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -105,6 +105,7 @@ font-size: 1.7em;
             </div>
         <?php } ?>
         <div style="display: none" id="completePath"><?php echo Yii::app()->getBaseUrl(true); ?></div>
+        <div style="display: none" id="currentCompanyId"><?php echo Yii::app()->user->cid; ?></div>
         <?php echo $content; ?>        
 
     </body>

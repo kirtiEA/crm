@@ -77,6 +77,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
         $('#listing_' + id).addClass('selected');
         $('#listing_' + id + ' span').removeClass('glyphicon-plus').addClass('glyphicon-remove').attr('onclick', 'removeFromArrayAddToCampaign(\'' + id + '\')');
         var campid = $('.selectedCampaignId').text();
+        var currentCompanyId = $('#currentCompanyId').text(); 
         var cid = $('#selectedvendorid').val();
         var cname = $('#selectedvendorname').val()
         var details = $('#listing_'+id).text();
@@ -87,9 +88,13 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
             var htm = '<li id="vendorselected_'+campid+ '_' +cid +'">' +
                             '<h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' + cname +'&nbsp;</h3><div class="assign-dropdown">Assigned to' + 
                                 '<select>' +
-                                    '<option value="' + cid +'_0" selected="true">Myself</option>'+
-                                    '<option value="' + cid+ '_' + cid+ '">'+ cname +'</option>'+
-                                    '</select></div><ul class="sub-sub-list show-hide-content">'
+                                    '<option value="' + cid +'_0" selected="true">Myself</option>';
+                            if (currentCompanyId !== cid) {
+                                htm = htm + '<option value="' + cid+ '_' + cid+ '">'+ cname +'</option>';
+                            } 
+                            
+                                    
+                            htm = htm + '</select></div><ul class="sub-sub-list show-hide-content">'
                                     +'</ul></li>';
                             
            console.log("no vendor added  >> "+ htm); 
@@ -152,7 +157,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                             $('#campaignListings').html('');
                             console.log(data);
                         if (data === '200') {
-                            //location.reload();
+                            location.reload();
                         }    
                         
                     },

@@ -121,7 +121,7 @@
                 </div>
                 <div class="list-tools">
                     <ul>
-                        <li>
+<!--                        <li>
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                                     Sort
@@ -129,11 +129,11 @@
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                     <li role="presentation" ng-click="order('Price',false)"><a role="menuitem" tabindex="-1" href="#">Price</a></li>
-<!--                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Date Added</a></li>-->
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Date Added</a></li>
                                     <li role="presentation" ng-click="order('id',false)"><a role="menuitem" tabindex="-1" href="#">Popularity</a></li>
                                 </ul>
                             </div>
-                        </li>
+                        </li>-->
                         <li>
                             <input type="text" placeholder="Search" ng-model="search">
                         </li>

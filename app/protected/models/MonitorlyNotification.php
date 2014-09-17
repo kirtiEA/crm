@@ -40,5 +40,11 @@ class MonitorlyNotification extends BaseMonitorlyNotification {
                 ' where typeid = 1 and miscellaneous like \'' . $email . '\'';
         return Yii::app()->db->createCommand($query)->queryRow();
     }
-
+    
+    public static function fetchNotifications($cid) {
+        $sql = 'SELECT mn.typeid,uc.name, mn.createddate FROM MonitorlyNotification mn
+inner join UserCompany uc on uc.id = mn.companyid
+where notifiedcompanyid = ' . $cid;
+        return Yii::app()->db->createCommand($query)->queryAll();
+    }
 }
