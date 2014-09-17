@@ -1,3 +1,5 @@
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/angular.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/camp.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-full-2.2.0.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-helpers-1.1.1.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/campaignListings.js"></script>
@@ -44,7 +46,7 @@
 
 
 <!-- Add Site Large Modal -->
-    <div class="modal fade" id="add-site-modal" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div  ng-app="demo" class="modal fade" id="add-site-modal" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-extra-large">
         <div class="modal-content">
           <div class="modal-header">
@@ -60,7 +62,7 @@
                             <input id="selectedvendorname" type="hidden">
                             <input type="text" placeholder="Search Vendor">
                         </div>
-                        <ul id="vendors">
+                        <ul id="vendors" ng-controller="DemoCtrl">
                             
                         </ul>
                     </div>

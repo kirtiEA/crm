@@ -2757,3 +2757,66 @@ in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/layouts/ma
 in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/layouts/column1.php (6)
 2014/09/16 22:34:21 [trace] [system.CModule] Loading "clientScript" application component
 in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
+2014/09/17 11:12:16 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:16 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:16 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:16 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (6)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:16 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (6)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:16 [trace] [system.CModule] Loading "db" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (96)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:16 [trace] [system.db.CDbConnection] Opening DB connection
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (96)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:16 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `Campaign`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (96)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:16 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `Campaign`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (96)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:16 [trace] [system.db.CDbCommand] Querying SQL: select c.id, name, startDate, endDate, (select count(distinct tt.siteid) from Task tt where tt.campaignid  = c.id and tt.status = 1) as count from Campaign c where c.companyid = 1 and endDate >= '2014-09-17 11:12:16' and startDate >= '2014-09-17 11:12:16'
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/Campaign.php (45)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (100)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:16 [trace] [system.CModule] Loading "widgetFactory" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/myCampaigns/upcoming.php (99)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (133)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:16 [trace] [system.CModule] Loading "clientScript" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/myCampaigns/upcoming.php (123)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (133)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:17 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:17 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:17 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:17 [trace] [system.CModule] Loading "coreMessages" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/17 11:12:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/css/application.css
+---
+2014/09/17 11:12:17 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/17 11:12:17 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (24)
+2014/09/17 11:12:17 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (24)
+2014/09/17 11:12:17 [trace] [system.CModule] Loading "widgetFactory" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/layouts/column1.php (2)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
+2014/09/17 11:12:17 [trace] [system.CModule] Loading "clientScript" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
