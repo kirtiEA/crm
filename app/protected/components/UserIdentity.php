@@ -41,7 +41,7 @@ class UserIdentity extends CUserIdentity
             $this->setState('cid', $user->companyid);
             $this->setState('active', $user->active);
             $this->setState('status', $user->status);
-            
+            $this->setState('email', $user->email);
             // set user role id
             $roleId = JoyUtilities::getUserRoleId($user->id);
             $this->setState('roleId', $roleId); 
