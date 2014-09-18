@@ -473,7 +473,6 @@ class AjaxController extends Controller {
                         $date = strtotime($campaign->attributes['startDate']);
 
                         $task = new Task();
-//$task->assignedCompanyId = Yii::app()->user->cid;
                         $task->pop = 1;
                         $task->createdBy = Yii::app()->user->id;
                         $task->campaignid = $_POST['cid'];
@@ -485,7 +484,6 @@ class AjaxController extends Controller {
                 }
 
                 if ($vendorIds || count($vendorIds) == 0) {
-// array_push($vendorIds, '0');
                     Task::updateTaskPopWhenNoVendorSelected(Yii::app()->user->cid, $_POST['cid']);
                 }
 
@@ -500,14 +498,14 @@ class AjaxController extends Controller {
                         $companyid = $inputVendorIds[0];
                         $assignedcompanyid = $inputVendorIds[1];
                     }
-//                    print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ');
-//                    print_r(Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid));
+                    if (strcasecmp(Yii::app()->user->cid, $assignedcompanyid) == 0) {
+                        //trigger a mail
+                    }
                     Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid);
                 }
                 Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                 echo '200';
             } else if ($_POST['type'] == 2) {
-//print_r($add);
                 if (count($add) > 0) {
                     for ($i = 0; $i < count($add); $i++) {
                         $date = strtotime($campaign->attributes['startDate']);
@@ -527,7 +525,6 @@ class AjaxController extends Controller {
 Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                 echo '200';
             } else if ($_POST['type'] == 3) {
-//print_r($add);
                 $vendorIds = json_decode($_POST['pop']);
 
                 if (count($add) > 0) {
@@ -548,7 +545,6 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                 }
 
                 if ($vendorIds || count($vendorIds) == 0) {
-// array_push($vendorIds, '0');
                     Task::updateTaskPopWhenNoVendorSelected(Yii::app()->user->cid, $_POST['cid']);
                 }
                 for ($i = 0; $i < count($vendorIds); $i++) {
@@ -563,8 +559,9 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                         $companyid = $inputVendorIds[0];
                         $assignedcompanyid = $inputVendorIds[1];
                     }
-//                    print_r($companyid . ' SDF ' . $assignedcompanyid . ' sfds ' . $_POST['cid'] . '   ' . $date . ' ');
-//                    print_r();
+                    if (strcasecmp(Yii::app()->user->cid, $assignedcompanyid) == 0) {
+                        //trigger a mail
+                    }
                     Task::updateTasksForPop($_POST['cid'], $companyid, $assignedcompanyid, date("Y-m-d H:i:s", $date));
                 }
                 Yii::app()->user->setFlash('success', 'Campaign updated successfully');
@@ -576,7 +573,6 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                 Task::removeListingFromCampaign($_POST['cid'], $rem[$i]);
             }
         }
-//$this->redirect(Yii::app()->createUrl('/campaign'));
     }
 
     public function actionCampaignDetails() {

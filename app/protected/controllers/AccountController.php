@@ -31,7 +31,20 @@ class AccountController extends Controller {
                 $status = 101;
             }
         }
-        $this->renderPartial('index', array('model' => $model, 'status' => $status, 'forgotPwdCode'=>$forgotPwdCode));
+        
+        $modelSub = new MonitorlySubscription();
+        $vendorList = array();
+        $nid = Yii::app()->request->getParam('nid');
+        $modelSub->nid = $nid;
+//        foreach (UserCompany::model()->findAll() as $value) {
+//            array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
+//        }
+        
+        $this->renderPartial('index', array('modelSub' => $modelSub ,
+            'vendorList' => json_encode($vendorList),
+            'nid' => $nid,
+            'model' => $model, 'status' => $status, 
+            'forgotPwdCode'=>$forgotPwdCode));
     }
 
     /**
@@ -42,6 +55,40 @@ class AccountController extends Controller {
         $this->redirect(Yii::app()->homeUrl);
     }
     
+    
+        public function actionCreateVendor() {
+        $model = new MonitorlySubscription();
+        //$model->setScenario('subscribe');
+        if (isset($_POST['MonitorlySubscription'])) {
+            if (strlen($_POST['MonitorlySubscription']['email']) && filter_var($_POST['MonitorlySubscription']['email'], FILTER_VALIDATE_EMAIL)) {
+                //$model->nid = Yii::app()->request->getParam('nid');   
+                $model->companyname = $_POST['MonitorlySubscription']['companyname'];
+                $model->email = $_POST['MonitorlySubscription']['email'];
+                $model->phonenumber = $_POST['MonitorlySubscription']['phonenumber'];
+                $model->nid = $_POST['MonitorlySubscription']['nid'];
+                $model->createddate = date("Y-m-d H:i:s");
+                //print_r($model->attributes);
+                //print_r($_POST);
+                //if($model->validate())
+                $model->save(FALSE);
+
+//                $id = Yii::app()->user->id;
+//                $email = Yii::app()->user->emailid;
+//                $invite = new MonitorlyNotification();
+//                $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 2);
+//                $invite->save();
+//                $mail = new EatadsMailer('accepted-invite', $email, array('resetLink' => ""), array('shruti@eatads.com'));
+//                $mail->eatadsSend();
+
+//                echo "id=".$model->id ;
+                //echo '<pre>';
+                //              print_r($model->attributes);
+                Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
+                $this->redirect(Yii::app()->getBaseUrl() . '/account');
+//                echo 1;
+            }
+        }
+    }
     // Uncomment the following methods and override them if needed
     /*
       public function filters()

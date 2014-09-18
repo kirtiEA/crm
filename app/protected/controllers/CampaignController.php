@@ -42,6 +42,8 @@ class CampaignController extends Controller {
         $model->setScenario('insert');
         if (isset($_POST['Campaign'])) {
             $model->attributes = $_POST['Campaign'];
+            $sdate = $model->startDate;
+            $edate = $model->endDate;
             //print_r($model->validate());
             if ($model->validate()) {
                 $model->createdBy = Yii::app()->user->id;
@@ -51,6 +53,10 @@ class CampaignController extends Controller {
                 $model->endDate = date("Y-m-d H:i:s", strtotime($model->endDate));
                 $model->save();
             }
+            $link = Yii::app()->getBaseUrl(true) . '/myCampaigns/upcoming';
+            //Send a mail to admin for 
+            $mail = new EatadsMailer('create-campaign', Yii::app()->user->email, array('link' => $link, 'campaignName' => $model->name, 'sdate' => $sdate, 'edate' => $edate));
+            $mail->eatadsSend();
             /*
              * Add flash message for success
              */
