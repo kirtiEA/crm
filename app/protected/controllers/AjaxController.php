@@ -750,13 +750,15 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
             //$resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
             $vendorName = UserCompany::model()->findByPk(Yii::app()->user->cid);
             //print_r($vendorName['name']);
-
             $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
             $invite->attributes = array('typeid' => 3, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => Yii::app()->user->id, 'emailtypeid' => 3);
             $invite->companyid = Yii::app()->user->cid;
             $invite->notifiedcompanyid = $vcid;
             $invite->save();
             $mail = new EatadsMailer('request-accepted', $email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
+            $mail->eatadsSend();
+            $inviteVendors = Yii::app()->getBaseUrl(true) . '/vendor';
+            $mail = new EatadsMailer('invite-accepted', Yii::app()->user->email, array('resetLink' => $inviteVendors, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
             $mail->eatadsSend();
             Yii::app()->user->setFlash('success', 'Request accepted Successfully');
             echo 200;

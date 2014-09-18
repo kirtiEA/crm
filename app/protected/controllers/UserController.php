@@ -86,7 +86,7 @@ class UserController extends Controller {
                     Yii::app()->user->setFlash('error', 'Password & 10 digit phone number are required');
                     Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
                 } else if (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10) {
-                    Yii::app()->user->setFlash('error', '10 digit Phonenumber is required');
+                    Yii::app()->user->setFlash('error', '10 digit phone number is required');
                     Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
                 } elseif (strlen($_POST['User']['password']) == 0) {
                     Yii::app()->user->setFlash('error', 'Password is required');
@@ -108,7 +108,7 @@ class UserController extends Controller {
                 Yii::app()->user->setFlash('error', 'All Fields are required');
                 Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
             } elseif (strlen($_POST['User']['username']) == 0 && strlen($_POST['User']['password']) == 0) {
-                Yii::app()->user->setFlash('error', 'User name & Password are required');
+                Yii::app()->user->setFlash('error', 'User name & password are required');
                 Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
             } elseif (strlen($_POST['User']['username']) == 0 && (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10)) {
                 Yii::app()->user->setFlash('error', 'User name & 10 digit phone number are required');
@@ -117,7 +117,7 @@ class UserController extends Controller {
                 Yii::app()->user->setFlash('error', 'User Name is required');
                 Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
             } else if (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10) {
-                Yii::app()->user->setFlash('error', '10 digit Phonenumber is required');
+                Yii::app()->user->setFlash('error', '10 digit phone number is required');
                 Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
             } else {
                 Yii::app()->user->setFlash('error', 'User already exists. Choose a different username');

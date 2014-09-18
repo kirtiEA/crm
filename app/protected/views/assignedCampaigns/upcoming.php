@@ -1,7 +1,7 @@
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-full-2.2.0.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-helpers-1.1.1.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/campaignListings.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/vendors.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/mustache.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.tinysort.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/filter.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/campaigns.js"></script>
 
 <!--<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/campaigns.js"></script>
@@ -59,7 +59,7 @@
                         <div class="search-box-wrapper">
                             <input id="selectedvendorid" type="hidden">
                             <input id="selectedvendorname" type="hidden">
-                            <input type="text" placeholder="Search Vendor">
+                            <input type="text" placeholder="Search Vendor" id="search_box_vendor">
                         </div>
                         <ul id="vendors">
                             
@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-md-9 right-content" style="height: 460px;">
                         <div class="search-box-wrapper">
-                            <input type="text" placeholder="Search Sites">
+                            <input type="text" placeholder="Search Sites" id="search_box_vendor_sites">
                         </div>
                         <ul id="campaignListings">
                         </ul>
@@ -164,9 +164,12 @@
                             <h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $site['name'] .'('.$site['count'] . ') &nbsp;</h3>'
                             . '<div class="assign-dropdown">Assigned to 
                                 <select>
-                                    <option value="'. $site['id'].'_0" selected="true">Myself</option>
-                                    <option value="'.$site['id']. '_' .$site['id'] .'">' . $site['name'] .'</option>
-                                </select></div>'
+                                    <option value="'. $site['id'].'_0" selected="true">Myself</option>';
+if (strcasecmp($site['id'], Yii::app()->user->cid) != 0) {
+                            $html = $html . '<option value="'.$site['id']. '_' .$site['id'] .'">' . $site['name'] .'</option>';
+                        }
+                                    
+                          $html = $html .      '</select></div>' 
                                 
                             . '<ul class="sub-sub-list show-hide-content">';
                         foreach ($site['listings'] as $list) {
@@ -186,3 +189,19 @@
     </div>
 </div>
 <!-- end of campaigns list --> 
+<script id="vendorlist" type="text/html">
+<li onclick="fetchCompanyListings('{{id}}');" class="vendorselection" id="vendor_{{id}}">{{name}} ({{cnt}}) </li>
+</script>
+
+<script id="vendorsitelist" type="text/html">
+{{#is_onCampaign}}
+<li class="selected" id="listing_{{id}}">{{name}}, {{mediatype}}, {{locality}}
+    <span class="glyphicon glyphicon-remove pull-right" onclick="removeFromCampaign('{{id}}');"></span>
+</li>
+{{/is_onCampaign}}
+{{^is_onCampaign}}
+<li id="listing_{{id}}">{{name}}, {{mediatype}}, {{locality}}
+    <span class="glyphicon glyphicon-plus pull-right" onclick="addToCampaign('{{id}}');"></span>
+</li>    
+{{/is_onCampaign}}
+</script>

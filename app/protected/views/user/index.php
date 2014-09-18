@@ -31,12 +31,12 @@
                     <h3 class="subheader-heading" style="margin-left: 16px;">Add New User</h3>
                     <div class="control">
                         <label class="control-label">Username</label>
-                        <?php echo $form->textField($model,'username');?>    
+                        <?php echo $form->textField($model,'username',array('autocomplete'=>"off"));?>    
                         <?php echo $form->error($model,'username'); ?>
                     </div>
                     <div class="control">
                         <label class="control-label">Password</label>
-                        <?php echo $form->passwordField($model,'password');?>                            
+                        <?php echo $form->passwordField($model,'password',array('autocomplete'=>"off"));?>                            
                         <?php echo $form->error($model,'password'); ?>
                     </div>
                     <div class="control">
@@ -45,7 +45,7 @@
                             <option>+91</option>
                             <option>+01</option>
                         </select>-->
-                        <?php echo $form->textField($model,'phonenumber', array('maxlength' => '10'));?>                            
+                        <?php echo $form->textField($model,'phonenumber', array('maxlength' => '10','autocomplete'=>"off"));?>                            
 
                         <?php echo $form->error($model,'phonenumber'); ?>
                     </div>

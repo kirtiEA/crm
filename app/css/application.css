@@ -10968,7 +10968,7 @@ li.multiselect-item.filter .input-group input.form-control.multiselect-search {
 /* line 485, ../scss/application.scss */
 .content-wrapper {
     background-color: #ebedee;
-    height: 100%;
+    height: 100vh;
     /*-- campaigns page --*/
     /*-- end of campaigns page --*/
 }
