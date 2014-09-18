@@ -201,7 +201,7 @@
                     <hr>
                     <div class="row testimonial">
                         <div class="col-md-2">
-                            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/RonGraham.png">
+                            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/rongraham.png">
                         </div>
                         <div class="col-md-10">
                             <p>"Proof of Posting &amp; Monitoring is a necessity but Monitorly makes it automated and dynamic for media owners and agencies to use and advertisers to review. This is a big step forward."</p>
