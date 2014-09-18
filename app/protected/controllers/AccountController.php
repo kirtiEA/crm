@@ -63,7 +63,13 @@ class AccountController extends Controller {
     }
     
     public function actionSignup() {
-        $this->render('signup');
+        $modelSub = new MonitorlySubscription();
+        $vendorList = array();
+        $nid = Yii::app()->request->getParam('nid');
+        $modelSub->nid = $nid;
+        $this->render('signup',array('modelSub' => $modelSub ,
+            'vendorList' => json_encode($vendorList),
+            'nid' => $nid));
     }
     
     public function actionTerms() {

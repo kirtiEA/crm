@@ -12,6 +12,9 @@
         $theme = Yii::app()->theme;
         $cs = Yii::app()->clientScript;
         $cs->registerCssFile($theme->getBaseUrl() . '/css/application.css');
+        $cs->registerCssFile($theme->getBaseUrl() . '/css/intlTelInput.css');
+        $cs->registerCssFile($theme->getBaseUrl() . '/css/phonenumber.css');
+        
         ?>
         <!--
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -21,11 +24,16 @@
         -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>       
         <?php
-        $cs->registerScriptFile($theme->getBaseUrl() . '/js/jquery-ui.min.js', CClientScript::POS_END);
+        $cs->registerScriptFile($theme->getBaseUrl() . '/js/jquery-ui.min.js', CClientScript::POS_BEGIN);
         $cs->registerScriptFile($theme->getBaseUrl() . '/js/bootstrap.js', CClientScript::POS_END);
         $cs->registerScriptFile($theme->getBaseUrl() . '/js/application.js', CClientScript::POS_END);
+        $cs->registerScriptFile($theme->getBaseUrl() . '/js/intlTelInput.js', CClientScript::POS_BEGIN);
         ?>
-
+        <style>
+            .flag{
+                background-image: url("<?php echo $theme->getBaseUrl() . '/images/flags.png';?>"  )
+            }
+        </style>    
     </head>
     <body>
         <!-- header -->
