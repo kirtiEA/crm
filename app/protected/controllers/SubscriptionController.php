@@ -77,6 +77,8 @@ class SubscriptionController extends Controller {
 //                echo "id=".$model->id ;
                 //echo '<pre>';
                 //              print_r($model->attributes);
+                
+                $this->redirect(Yii::app()->getBaseUrl(true) . '/account');
             }
         }
     }
