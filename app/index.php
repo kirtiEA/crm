@@ -9,6 +9,9 @@ if($_SERVER['SERVER_NAME']=="localhost") {                          // LOCALHOST
 } elseif($_SERVER['SERVER_NAME']=="nwmonitorly.staging.eatads.com") {
     $config=dirname(__FILE__).'/protected/config/main_stag.php';    
     defined('YII_DEBUG') or define('YII_DEBUG',false);
+} elseif($_SERVER['SERVER_NAME']=="monitorly.eatads.com") {
+    $config=dirname(__FILE__).'/protected/config/main_live.php';    
+    defined('YII_DEBUG') or define('YII_DEBUG',true);
 } else {
     $config=dirname(__FILE__).'/protected/config/main.php';    
     defined('YII_DEBUG') or define('YII_DEBUG',false);
