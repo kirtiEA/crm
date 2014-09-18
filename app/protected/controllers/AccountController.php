@@ -2,6 +2,11 @@
 
 class AccountController extends Controller {
 
+    public function init() {
+        Yii::app()->theme = 'static';
+        $this->layout = "//layouts/static_page";
+    }
+    
     public function actionIndex() {
         $returnUrlParam = Yii::app()->request->getQuery('rurl');
         $forgotPwdCode = Yii::app()->request->getQuery('code');
@@ -31,9 +36,25 @@ class AccountController extends Controller {
                 $status = 101;
             }
         }
-        $this->renderPartial('index', array('model' => $model, 'status' => $status, 'forgotPwdCode'=>$forgotPwdCode));
+        $this->render('index', array('model' => $model, 'status' => $status, 'forgotPwdCode'=>$forgotPwdCode));
     }
 
+    public function actionPricing() {
+        $this->render('pricing');
+    }
+    
+    public function actionContactus() {
+        $this->render('contactus');
+    }
+    
+    public function actionSignup() {
+        $this->render('signup');
+    }
+    
+    public function actionTerms() {
+        $this->render('terms');
+    }
+    
     /**
      * Logs out the current user and redirect to homepage.
      */

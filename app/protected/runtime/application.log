@@ -326,3 +326,1940 @@ in C:\xampp\htdocs\monitorly\app\index.php (27)
 in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
 in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (34)
 in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:08 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:09 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:09 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:09 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:09 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:09 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:09 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:11 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:11 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:11 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:11 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/s_application.css".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('css/s_applicati...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/css/s_application.css
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 14:53:11 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:11 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:11 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:11 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/s_application.js".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('js/s_applicatio...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/js/s_application.js
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 14:53:12 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/s_application.css".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('css/s_applicati...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/css/s_application.css
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/s_application.js".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('js/s_applicatio...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/js/s_application.js
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:32:02 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/s_application.css".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('css/s_applicati...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/css/s_application.css
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/s_application.js".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('js/s_applicatio...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/js/s_application.js
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:34 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/s_application.css".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('css/s_applicati...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/css/s_application.css
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/s_application.js".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('js/s_applicatio...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/js/s_application.js
+HTTP_REFERER=http://localhost/monitorly/app/
+---
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:41:37 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:33 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:33 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:33 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:33 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:33 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:33 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:33 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:35 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:35 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:35 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:35 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:35 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:35 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:35 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:37 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:38 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:59 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:59 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:59 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:59 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:59 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:59 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:59 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:45:59 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/static/images/wood.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/static/i...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/themes/static/images/wood.png
+HTTP_REFERER=http://localhost/monitorly/app/themes/static/css/application.css
+---
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/static/images/logo.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/static/i...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/themes/static/images/logo.png
+HTTP_REFERER=http://localhost/monitorly/app/themes/static/css/application.css
+---
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:46:00 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:46:01 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:52 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:52 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:52 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:52 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:52 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:52 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:52 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:52 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:53 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:53 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:53 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/static/images/logo.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/static/i...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/themes/static/images/logo.png
+HTTP_REFERER=http://localhost/monitorly/app/themes/static/css/application.css
+---
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/static/images/wood.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/static/i...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/themes/static/images/wood.png
+HTTP_REFERER=http://localhost/monitorly/app/themes/static/css/application.css
+---
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:48:54 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:48:55 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:55 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:55 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:55 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:55 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:55 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:55 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:48:55 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:50:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/static/images/wood.png".' in C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/static/i...')
+#1 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly/app/themes/static/images/wood.png
+---
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:50:42 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:05 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:51:06 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:43 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:43 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:43 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:43 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:43 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:43 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:43 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:43 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:48 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:48 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:48 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:48 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:48 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 15:56:48 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:48 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:48 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:48 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('assets')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('account/assets/...')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/account/assets/images/linkedin.png
+HTTP_REFERER=http://localhost/monitorly/app/account/pricing
+---
+2014/09/18 15:56:48 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:56:48 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('assets')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('account/assets/...')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/account/assets/images/facebook.png
+HTTP_REFERER=http://localhost/monitorly/app/account/pricing
+---
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:49 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:50 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:50 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:50 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:50 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:50 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:50 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:50 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 15:56:50 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:01:13 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:01:13 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:01:13 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:01:13 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:01:13 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:03:26 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:03:26 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:03:26 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:03:26 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:03:26 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:03:34 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:03:34 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:03:34 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:03:34 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:03:34 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:03:34 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:03:34 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:03:34 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:05:55 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:05:55 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:05:55 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:05:55 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:05:55 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:05:55 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:05:55 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:05:55 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:22 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:22 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:22 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:22 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:22 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:22 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:22 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:22 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:30 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:30 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:30 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:30 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:10:30 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:14:52 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:52 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:52 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:52 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:52 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:14:55 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:55 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:55 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:55 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:55 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:14:56 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:15:11 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:15:11 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:15:11 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:15:11 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:15:11 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:15:44 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:15:44 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:15:44 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:15:44 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:15:44 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:16:31 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:16:31 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:16:31 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:16:31 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:16:31 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:35:23 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:35:24 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:35:24 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:35:24 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:35:24 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:36:20 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:20 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:20 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:20 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:20 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:20 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:20 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:20 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:23 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:23 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:23 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:23 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:23 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:36:57 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:57 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:57 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:57 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:36:57 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 16:44:42 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:42 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:42 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:42 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:42 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+2014/09/18 16:44:42 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:42 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:42 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:42 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('assets')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('account/assets/...')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/account/assets/images/ic-contact.png
+HTTP_REFERER=http://localhost/monitorly/app/account/contactus
+---
+2014/09/18 16:44:43 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 16:44:43 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 16:44:43 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 16:44:46 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:46 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:46 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:46 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:46 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:51 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:51 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:44:52 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:45:27 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:45:27 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:45:27 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:45:27 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:45:27 [error] [php] Undefined variable: theme (C:\xampp\htdocs\monitorly\app\protected\views\account\contactus.php:9)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(869): AccountController->renderFile()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(782): AccountController->renderPartial()
+#2 C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php(47): AccountController->render()
+#3 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): AccountController->actionContactus()
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): AccountController->runAction()
+#6 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): AccountController->runActionWithFilters()
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): AccountController->run()
+#8 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\monitorly\app\index.php(27): CWebApplication->run()
+REQUEST_URI=/monitorly/app/account/contactus
+in C:\xampp\htdocs\monitorly\app\protected\views\account\contactus.php (9)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:45:27 [trace] [system.CModule] Loading "errorHandler" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\contactus.php (9)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:45:43 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:45:43 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:45:43 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:45:43 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:45:43 [error] [php] Undefined variable: theme (C:\xampp\htdocs\monitorly\app\protected\views\account\contactus.php:9)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(869): AccountController->renderFile()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(782): AccountController->renderPartial()
+#2 C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php(47): AccountController->render()
+#3 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): AccountController->actionContactus()
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): AccountController->runAction()
+#6 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): AccountController->runActionWithFilters()
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): AccountController->run()
+#8 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\monitorly\app\index.php(27): CWebApplication->run()
+REQUEST_URI=/monitorly/app/account/contactus
+in C:\xampp\htdocs\monitorly\app\protected\views\account\contactus.php (9)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:45:43 [trace] [system.CModule] Loading "errorHandler" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\contactus.php (9)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:31 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:31 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:31 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:31 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:31 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:31 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:31 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:31 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:40 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:40 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:40 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:40 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:40 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:40 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:40 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:40 [error] [php] Undefined variable: theme (C:\xampp\htdocs\monitorly\app\protected\views\account\index.php:156)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(869): AccountController->renderFile()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(782): AccountController->renderPartial()
+#2 C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php(39): AccountController->render()
+#3 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): AccountController->actionIndex()
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): AccountController->runAction()
+#6 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): AccountController->runActionWithFilters()
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): AccountController->run()
+#8 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\monitorly\app\index.php(27): CWebApplication->run()
+REQUEST_URI=/monitorly/app/account/index
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (156)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:46:40 [trace] [system.CModule] Loading "errorHandler" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (156)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:55:17 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:55:18 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:55:18 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:55:26 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:55:26 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:55:30 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:55:31 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:55:32 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:26 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:26 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:26 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:26 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:26 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:26 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:26 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:26 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:33 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:33 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:33 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:33 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 16:59:33 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 17:05:54 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:05:54 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:05:54 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:05:54 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:05:54 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 17:05:59 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:05:59 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:05:59 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:05:59 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (51)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:05:59 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (51)
+2014/09/18 17:07:26 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:07:26 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:07:26 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:07:26 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (51)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:07:26 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (51)
+2014/09/18 17:09:56 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:09:56 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:09:56 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:09:56 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:09:56 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:09:56 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:09:56 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:09:56 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:10:14 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:10:14 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:10:14 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:10:14 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:10:14 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 17:17:49 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:17:49 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:17:49 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:17:49 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:17:49 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 17:17:54 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:17:54 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:17:54 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:17:54 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:17:54 [error] [php] Undefined variable: theme (C:\xampp\htdocs\monitorly\app\protected\views\account\contactus.php:9)
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(869): AccountController->renderFile()
+#1 C:\xampp\htdocs\monitorly\framework\web\CController.php(782): AccountController->renderPartial()
+#2 C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php(47): AccountController->render()
+#3 C:\xampp\htdocs\monitorly\framework\web\actions\CInlineAction.php(49): AccountController->actionContactus()
+#4 C:\xampp\htdocs\monitorly\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\monitorly\framework\web\CController.php(286): AccountController->runAction()
+#6 C:\xampp\htdocs\monitorly\framework\web\CController.php(265): AccountController->runActionWithFilters()
+#7 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): AccountController->run()
+#8 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\monitorly\app\index.php(27): CWebApplication->run()
+REQUEST_URI=/monitorly/app/account/contactus
+in C:\xampp\htdocs\monitorly\app\protected\views\account\contactus.php (9)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:17:54 [trace] [system.CModule] Loading "errorHandler" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\contactus.php (9)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:18:19 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:18:19 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:18:19 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:18:19 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:18:19 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+2014/09/18 17:20:51 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:20:51 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:20:51 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:20:51 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (51)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:20:51 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (51)
+2014/09/18 17:22:34 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:34 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:34 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:34 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.html".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('index.html')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('index.html')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('account/index.h...')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/account/index.html
+HTTP_REFERER=http://localhost/monitorly/app/account/signup
+---
+2014/09/18 17:22:34 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 17:22:35 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 17:22:35 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 17:22:35 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:35 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:35 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:35 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:35 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:35 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:35 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:35 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:41 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:41 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:41 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:41 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:41 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.html".' in C:\xampp\htdocs\monitorly\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\monitorly\framework\web\CController.php(270): CController->missingAction('index.html')
+#1 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(282): CController->run('index.html')
+#2 C:\xampp\htdocs\monitorly\framework\web\CWebApplication.php(141): CWebApplication->runController('account/index.h...')
+#3 C:\xampp\htdocs\monitorly\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\monitorly\app\index.php(27): CApplication->run()
+#5 {main}
+REQUEST_URI=/monitorly/app/account/index.html
+HTTP_REFERER=http://localhost/monitorly/app/account/pricing
+---
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\SiteController.php (24)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (21)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (25)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (33)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:46 [trace] [system.CModule] Loading "assetManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (39)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:53 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:53 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:53 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:53 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:53 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (43)
+2014/09/18 17:22:57 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:57 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:57 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:57 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:22:57 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (47)
+2014/09/18 17:23:04 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:23:04 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:23:04 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:23:04 [trace] [system.CModule] Loading "themeManager" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (51)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 17:23:04 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\header.php (13)
+in C:\xampp\htdocs\monitorly\app\themes\static\views\layouts\static_page.php (2)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (51)

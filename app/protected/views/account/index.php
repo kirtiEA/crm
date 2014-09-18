@@ -1,28 +1,12 @@
-<!DOCTYPE html5>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Monitorly</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/s_application.css">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.min.js"></script>
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.js"></script>
-        <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/s_application.js"></script>
-    </head>
-
-    <body>
         <!-- login modal -->
-
+        <?php $theme = Yii::app()->theme; ?>
         <div class="modal fade modal-app" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h3 class="modal-title"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/login.png"> &nbsp;Login to Your Monitorly Account</h3>
+                        <h3 class="modal-title"><img src="<?php echo $theme->getBaseUrl(); ?>/images/login.png"> &nbsp;Login to Your Monitorly Account</h3>
                     </div>
                     <div class="modal-body">
                         <div class="form-wrap">
@@ -51,7 +35,7 @@
                     </div>
                     <div class="modal-footer">
                         <a href="#" data-toggle="modal" id="forgotpassword">Forgot Password?</a> 
-                        <a href="signup.html" class="pull-right">Don't have an account? <b>Sign Up</b></a>
+                        <a href="<?php echo Yii::app()->urlManager->createUrl('account/signup'); ?>" class="pull-right">Don't have an account? <b>Sign Up</b></a>
                     </div>
                 </div>
             </div>
@@ -117,7 +101,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">                         
-                        <a href="signup.html" class="pull-right">Don't have an account? <b>Sign Up</b></a>
+                        <a href="<?php echo Yii::app()->urlManager->createUrl('account/signup'); ?>" class="pull-right">Don't have an account? <b>Sign Up</b></a>
                     </div>
                 </div>
             </div>
@@ -126,43 +110,11 @@
 
 
 
-        <!-- header -->
-
-        <nav class="navbar navbar-default navbar-dark" role="navigation">
-            <div class="container-fluid">
-
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">
-                        <div id="logo"></div>
-                    </a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="phone1"><span class="glyphicon glyphicon-phone-alt">&nbsp;</span>+91 11 4132 0334
-                        </li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="contactus.html">Contact Us</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#modal-login">Login</a></li>
-                        <li><a href="signup.html">Sign Up</a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-
-        <!-- end of header -->
+        
 
 
 
-        <div class="container-fluid content-wrapper">
+        
 
             <!-- hero section -->
             <div class="row hero-section">
@@ -179,7 +131,7 @@
                         <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>
                         <br>
                         <h5>No Credit Card required</h5>
-                        <h5>By signing-up you agree to <a href="terms.html" target="_blank">Terms &amp; Conditions</a></h5>
+                        <h5>By signing-up you agree to <a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>" target="_blank">Terms &amp; Conditions</a></h5>
                     </form>
                     <div><a class="pricing-link" href="pricing.html">Know More About Pricing &amp; Plan</a></div>
                 </div>
@@ -190,7 +142,7 @@
             <div class="row process-steps">
                 <div class="col-md-12">
                     <h2>5 Steps to Take All Your Monitoring Pain Away</h2>
-                    <img class="img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/process-steps.png">
+                    <img class="img-responsive" src="<?php echo $theme->getBaseUrl(); ?>/images/process-steps.png">
                 </div>
             </div>
             <!-- end of process steps in monitorly  --> 
@@ -201,7 +153,7 @@
                     <hr>
                     <div class="row testimonial">
                         <div class="col-md-2">
-                            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/rongraham.png">
+                            <img src="<?php echo $theme->getBaseUrl(); ?>/images/rongraham.png">
                         </div>
                         <div class="col-md-10">
                             <p>"Proof of Posting &amp; Monitoring is a necessity but Monitorly makes it automated and dynamic for media owners and agencies to use and advertisers to review. This is a big step forward."</p>
@@ -214,17 +166,17 @@
                         <div class="col-md-5">
                             <ul>
                                 <li>
-                                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/img-dummy.png">
+                                    <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-dummy.png">
                                     <h2>Build Trust</h2>
                                     <p>Get confidence in the campaign photos with timestamped, geo-tagged, certified images</p>
                                 </li>
                                 <li>
-                                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/img-dummy.png">
+                                    <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-dummy.png">
                                     <h2>Manage Monitoring Easily</h2>
                                     <p>Create and manage monitoring plan and assign tasks easily using our online dashboard</p>
                                 </li>
                                 <li>
-                                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/img-dummy.png">
+                                    <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-dummy.png">
                                     <h2>Share Reports</h2>
                                     <p>Share online interactive report or generate a PDF report instantly in our Reports section</p>
                                 </li>
@@ -233,17 +185,17 @@
                         <div class="col-md-5 col-md-offset-2">
                             <ul>
                                 <li>
-                                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/img-dummy.png">
+                                    <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-dummy.png">
                                     <h2>Report in Seconds</h2>
                                     <p>Upload photos from field and auto-generate reports to reduce reporting time to few seconds</p>
                                 </li>
                                 <li>
-                                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/img-dummy.png">
+                                    <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-dummy.png">
                                     <h2>Get Problem Alerts</h2>
                                     <p>Receive instant email alerts with problem details if there’s problem with any site</p>
                                 </li>
                                 <li>
-                                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/img-dummy.png">
+                                    <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-dummy.png">
                                     <h2>Operate Without Internet</h2>
                                     <p>Use the app seamlessly even with no network connectivity using our auto-sync feature</p>
                                 </li>
@@ -255,7 +207,7 @@
                                 <br>
                                 <h4>Get your free 100 photos when you sign-up</h4>
                                 <br>
-                                <h4><a href="pricing.html">Know More About Pricing and Plan</a></h4>
+                                <h4><a href="<?php echo Yii::app()->urlManager->createUrl('account/pricing'); ?>">Know More About Pricing and Plan</a></h4>
                                 <br>
                                 <button class="btn btn-primary btn-primary-lg js-signup-btn-scrolltop">Sign Up for Free</button>
                                 <h5>No Credit Card required</h5>
@@ -265,55 +217,7 @@
                 </div>
             </div>
             <!-- end of benefits  -->
-
-            <!-- contact details -->
-            <div class="row contact-details-wrap">
-                <div class="col-md-12">
-                    <div class="contact-details">
-                        <h2>Even More Curious, Approach Us Anytime.</h2>
-                        <div class="contact-info pull-left">
-                            <span class="glyphicon glyphicon-phone-alt"></span>  +91 11 4132 0334 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:sales@eatads.com"><span class="glyphicon glyphicon-envelope"><span class="contact-info-email">sales@eatads.com</span></a></span>  
-                        </div>
-                        <div class="social-icons pull-right">
-                            <a href="https://www.linkedin.com/company/2128549" target="_blank"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/linkedin.png">&nbsp;</a>
-                            <a href="https://www.facebook.com/pages/EatAds/222452511283884" target="_blank"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/facebook.png"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end of contact details  -->
-
-            <!-- footer -->
-            <nav class="navbar navbar-default footer">
-                <div class="container-fluid">
-
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a href="https://www.eatads.com/">EatAds.com</a></li>
-                            <li><a href="pricing.html">Pricing</a></li>
-                            <li><a href="terms.html">Terms &amp; Conditions</a></li>
-                            <li><a href="contactus.html">Contact Us</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><h5 class="pull-right">Copyright © EatAds, Inc. 2014 Block 71, Ayer Rajah Crescent #01-12 Singapore 139951</h5></li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
-            <!-- footer  -->
-
-        </div>
+            
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             $(function() {
