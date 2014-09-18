@@ -122,17 +122,46 @@
                     <h1>Tamper-proof, Efficient OOH Monitoring</h1>
                     <h3>Save costs and delight clients by sharing certified OOH campaign photos online, instantly using Monitorly mobile app</h3>
                     <h4><span class="dashed-line"></span> First 100 Photos Free <span class="dashed-line"></span></h4>
-                    <form class="form-inline" role="form">
-                        <input type="email" class="form-control" placeholder="Email">
-                        <input type="text" class="form-control" placeholder="Company Name">
-                        <input type="text" class="form-control" placeholder="+91">
-                        <input type="text" class="form-control" placeholder="Mobile">
+                    <?php if (Yii::app()->user->hasFlash('success')) { ?>
+            <div id="flash-messages" class="alert alert-success alert-dismissible">
+                    <?php echo Yii::app()->user->getFlash('success'); ?>
+                
+            </div>
+        <?php } ?>
+                    <?php
+                    $form = $this->beginWidget('CActiveForm', array(
+                        'id' => 'vendor_subscription',
+                        'action' => 'account/createvendor',
+                        //'enableClientValidation' => true,
+                    //    'clientOptions' => array(
+                    //        'validateOnSubmit' => true,
+                    //    ),
+                        'htmlOptions' => array(
+                            'class' => 'form-inline',
+                        ),
+                            ));
+                    ?>
+<!--                        <input type="email" class="form-control" placeholder="Email">-->
+                            <?php echo $form->emailField($modelSub, 'email', array('class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email' )); ?>                            
+                            <?php echo $form->error($modelSub, 'email'); ?>
+<!--                        <input type="text" class="form-control" placeholder="Company Name">-->
+                        <?php echo $form->textField($modelSub, 'companyname',array('class' =>'form-control ', 'placeholder' => 'Company Name')); ?> 
+                        <input type="hidden" value="" id="vendor-ac-id">
+                        <?php echo $form->error($modelSub, 'companyname'); ?>
+<!--                        <input type="text" class="form-control" placeholder="+91">-->
+<!--                        <input  class="form-control intl-tel-input" placeholder="Mobile" id="mobile-number" type="tel">-->
+                        <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number')); ?>                            
+                        <?php echo $form->error($modelSub, 'phonenumber'); ?>
                         <br><br>
-                        <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>
+                        <?php echo $form->hiddenField($modelSub, 'nid',array('value'=>$nid, 'id' =>'nid'));?>
+                        <?php echo CHtml::submitButton('Sign Up for Free', array('class' => 'save btn btn-primary btn-primary-lg', 'id' => '_submit')); ?>
+<!--                        <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>-->
                         <br>
                         <h5>No Credit Card required</h5>
+
                         <h5>By signing-up you agree to <a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>" target="_blank">Terms &amp; Conditions</a></h5>
-                    </form>
+                    <?php $this->endWidget(); ?>
+
                     <div><a class="pricing-link" href="pricing.html">Know More About Pricing &amp; Plan</a></div>
                 </div>
             </div>
@@ -372,6 +401,51 @@
             }(window, document, 'script', 'ga'));
             ga('create', 'UA-XXXXX-X');
             ga('send', 'pageview');
+      $("#mobile-number").intlTelInput({
+        //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do']
+        preferredCountries: ["in","sg", "us"],
+        autoFormat: true,
+        utilsScript: "<?php echo Yii::app()->request->baseUrl; ?>/js/libphonenumber/build/utils.js"
+      });
+      
+      $('#MonitorlySubscription_email').blur(function(){
+          var email = $('#MonitorlySubscription_email').val();
+        var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+        //if it's valid email
+        if (filter.test(email)) {
+            $('#MonitorlySubscription_email').attr('style', 'background-color:white');
+        } else {
+            $('#MonitorlySubscription_email').focus();
+            $('#MonitorlySubscription_email').val('');
+            $('#MonitorlySubscription_email').attr('style', 'background-color:rgb(223, 190, 190)');
+        }    
+      }) 
+      
+      $(function() {
+
+        //autocomplete for company name in vendor subscription form
+        var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
+        //console.log(allVendorJson);
+        $('.companyname').autocomplete({
+            source: allVendorJson,
+            select: function(event, ui) {
+                console.log(ui.item.value + ', ' + ui.item.id);
+                $("#vendor-ac-id").val(ui.item.id);
+            },
+            change: function(event, ui) {
+                if (ui.item == null) {
+                    $(".companyname").val('');
+                    $("#vendor-ac-id").val('');
+                    $(".companyname").focus();
+                }
+            },
+            messages: {
+                noResults: '',
+                results: function() {
+                }
+            },
+        })
+    });
         </script>
     </body>
 </html>

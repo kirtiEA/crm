@@ -1,6 +1,9 @@
 
         
 $(document).ready(function() {
+    setTimeout(function() {
+        $("#flash-messages").hide('blind', {}, 500)
+    }, 4000);
     
     //click on Add Vendors Sites button
     

@@ -181,6 +181,7 @@
                 'emailid':email
             },
             success: function(data) {
+                //console.log(data);
                 if (data == 200)
                 {
                     location.reload();

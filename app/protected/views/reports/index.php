@@ -53,7 +53,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1 class="list-heading pull-left">Report</h1>
-            <button class="btn btn-secondary table-control pull-right"><span class="glyphicon glyphicon-download"></span> Download Report</button>
+            <!--<button class="btn btn-secondary table-control pull-right"><span class="glyphicon glyphicon-download"></span> Download Report</button>-->
             <table class="table table-hover">
                 <tr>
                     <th>Campaign</th>
