@@ -12065,3 +12065,245 @@ in C:\xampp\htdocs\monitorly_webapp_new\app\protected\views\layouts\column1.php 
 in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (77)
 2014/09/18 12:29:11 [trace] [system.CModule] Loading "clientScript" application component
 in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (77)
+2014/09/18 12:30:42 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:42 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:42 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:42 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (6)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:42 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (6)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:42 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (54)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:42 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (54)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:43 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `Campaign`
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (54)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:43 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `Campaign`
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (54)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:43 [trace] [system.db.CDbCommand] Querying SQL: select c.id, name, startDate, endDate, (select count(distinct tt.siteid) from Task tt where tt.campaignid  = c.id and tt.status = 1) as count from Campaign c where c.companyid = 545 and endDate >= '2014-09-18 12:30:43' and startDate <= '2014-09-18 12:30:43'
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\Campaign.php (45)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (58)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:43 [trace] [system.db.CDbCommand] Querying SQL: select count(distinct t.siteid) as count, uc.id, uc.name from Task t
+        inner join Listing l on l.id = t.siteid and l.status =1
+        inner join UserCompany uc on uc.id = l.companyid
+        where t.status =1 and t.campaignid = 4 group by uc.id, uc.name
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\UserCompany.php (32)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (62)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:43 [trace] [system.db.CDbCommand] Querying SQL: select distinct t.siteid,l.id,l.name, length, width,mt.name as mediatype, locality,
+            t.assignedCompanyId
+            from Task t 
+inner join Listing l on l.id = t.siteid and l.status = 1 and companyid = 545
+inner join MediaType mt on mt.id = l.mediatypeid
+where t.status =1 and t.campaignid = 4
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\Listing.php (467)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (68)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:43 [trace] [system.db.CDbCommand] Querying SQL: select count(distinct t.siteid) as count, uc.id, uc.name from Task t
+        inner join Listing l on l.id = t.siteid and l.status =1
+        inner join UserCompany uc on uc.id = l.companyid
+        where t.status =1 and t.campaignid = 5 group by uc.id, uc.name
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\UserCompany.php (32)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (62)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:43 [trace] [system.db.CDbCommand] Querying SQL: select distinct t.siteid,l.id,l.name, length, width,mt.name as mediatype, locality,
+            t.assignedCompanyId
+            from Task t 
+inner join Listing l on l.id = t.siteid and l.status = 1 and companyid = 545
+inner join MediaType mt on mt.id = l.mediatypeid
+where t.status =1 and t.campaignid = 5
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\Listing.php (467)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (68)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:43 [trace] [system.db.CDbCommand] Querying SQL: select count(distinct t.siteid) as count, uc.id, uc.name from Task t
+        inner join Listing l on l.id = t.siteid and l.status =1
+        inner join UserCompany uc on uc.id = l.companyid
+        where t.status =1 and t.campaignid = 6 group by uc.id, uc.name
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\UserCompany.php (32)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (62)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:43 [trace] [system.db.CDbCommand] Querying SQL: select distinct t.siteid,l.id,l.name, length, width,mt.name as mediatype, locality,
+            t.assignedCompanyId
+            from Task t 
+inner join Listing l on l.id = t.siteid and l.status = 1 and companyid = 545
+inner join MediaType mt on mt.id = l.mediatypeid
+where t.status =1 and t.campaignid = 6
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\Listing.php (467)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (68)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:43 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\views\myCampaigns\index.php (19)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (91)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:43 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\views\myCampaigns\index.php (43)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\MyCampaignsController.php (91)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:44 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:44 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:44 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:44 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly_webapp_new\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly_webapp_new\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly_webapp_new\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly_webapp_new\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly_webapp_new/app/css/application.css
+---
+2014/09/18 12:30:44 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 12:30:44 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (24)
+2014/09/18 12:30:44 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (24)
+2014/09/18 12:30:44 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\views\layouts\column1.php (2)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (77)
+2014/09/18 12:30:44 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (77)
+2014/09/18 12:30:45 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:45 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:45 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:45 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\ReportsController.php (10)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:45 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\ReportsController.php (10)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:45 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\ReportsController.php (56)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:45 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\ReportsController.php (56)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:46 [trace] [system.db.CDbCommand] Querying SQL: SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop FROM Task t LEFT JOIN Campaign c ON c.id=t.campaignid LEFT JOIN Listing l ON l.id=t.siteid LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId LEFT JOIN User u ON u.id=t.assigneduserid WHERE t.pop=1 AND t.assignedCompanyid=545 
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\ReportsController.php (56)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:46 [trace] [system.db.CDbCommand] Querying SQL: SELECT c.id as cid, c.name as campaign, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto FROM Task t LEFT JOIN Campaign c ON c.id=t.campaignid LEFT JOIN User u ON u.id=t.assigneduserid WHERE t.assignedCompanyid=545 
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\ReportsController.php (64)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:46 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\views\layouts\column1.php (2)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\ReportsController.php (75)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:46 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\ReportsController.php (75)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:46 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:46 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:46 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:46 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly_webapp_new\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly_webapp_new\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly_webapp_new\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly_webapp_new\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly_webapp_new/app/css/application.css
+---
+2014/09/18 12:30:46 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 12:30:46 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (24)
+2014/09/18 12:30:46 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (24)
+2014/09/18 12:30:46 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\views\layouts\column1.php (2)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (77)
+2014/09/18 12:30:46 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (77)
+2014/09/18 12:30:53 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:53 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:53 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:53 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\TaskController.php (6)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:53 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\TaskController.php (6)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:53 [trace] [system.CModule] Loading "db" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\Task.php (30)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\TaskController.php (34)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:53 [trace] [system.db.CDbConnection] Opening DB connection
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\Task.php (30)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\TaskController.php (34)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:54 [trace] [system.db.CDbCommand] Querying SQL: select l.name, length, width,mt.name as mediatype, locality, t.id, DATE_FORMAT(t.dueDate,'%d %M %Y') as dueDate, c.name as campaignname, 
+        u.id as assigneduserid, u.username as assignedusername from Task t 
+        inner join Campaign c on c.id = t.campaignid
+        inner join Listing l on l.id = t.siteid 
+        inner join MediaType mt on mt.id = l.mediatypeid
+        left outer join User u on u.id = t.assigneduserid
+        where t.status =1 and assignedCompanyId = 545
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\Task.php (30)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\TaskController.php (34)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:54 [trace] [system.db.CDbCommand] Querying SQL: select c.id, name, startDate, endDate, (select count(distinct tt.siteid) from Task tt where tt.campaignid  = c.id and tt.status = 1) as count from Campaign c where c.companyid = 545 and ((endDate >= '2014-09-18 12:30:54' and startDate <= '2014-09-18 12:30:54')  or (endDate >= '2014-09-18 12:30:54' and startDate >= '2014-09-18 12:30:54'))
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\Campaign.php (45)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\TaskController.php (37)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:54 [trace] [system.db.CDbCommand] Querying SQL: select u.id, u.username as name from User u where companyid = 545
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\models\User.php (336)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\TaskController.php (39)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:54 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\views\task\index.php (57)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\TaskController.php (41)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:54 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\views\task\index.php (95)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\TaskController.php (41)
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:55 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:55 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:55 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:55 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
+2014/09/18 12:30:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in C:\xampp\htdocs\monitorly_webapp_new\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\monitorly_webapp_new\framework\web\CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 C:\xampp\htdocs\monitorly_webapp_new\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\monitorly_webapp_new\app\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost/monitorly_webapp_new/app/css/application.css
+---
+2014/09/18 12:30:55 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 12:30:55 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (24)
+2014/09/18 12:30:55 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (24)
+2014/09/18 12:30:55 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\views\layouts\column1.php (2)
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (77)
+2014/09/18 12:30:55 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (77)
