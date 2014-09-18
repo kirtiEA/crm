@@ -74,7 +74,7 @@
                 <h1 class="list-heading pull-left">Vendors List (<?php
                     $no1 = count($model);
                     $no2 = count($unsubscribedVendors);
-                    echo $no1+$no2 . ')';
+                    echo $no1 + $no2 . ')';
                     ?> 
                 </h1>
                 <button class="remind btn btn-primary pull-right table-control">Remind All</button>
@@ -98,7 +98,7 @@
                     <?php endforeach; ?>
                     <?php foreach ($unsubscribedVendors as $value): ?>
                         <tr>
-                            <td>Unsubscribed Vendor</td>
+                            <td><?php echo $value['miscellaneous']; ?></td>
                             <td><?php echo $value['miscellaneous']; ?></td>
                             <td>Invited on <?php echo $value['createddate']; ?></td>
                             <td><span class="glyphicon glyphicon-warning-sign "></span> Pending</td>
@@ -116,8 +116,8 @@
 
 
 <script type="text/javascript">
-    $(function() {
-        $('.mon_menu').each(function() {
+    $(function () {
+        $('.mon_menu').each(function () {
             $(this).removeClass('active');
         });
         $('.menu_vendor').addClass('active');
@@ -127,12 +127,12 @@
         $('.vendor').autocomplete({
             source: allVendorJson,
             minLength: 3,
-            select: function(event, ui) {
+            select: function (event, ui) {
                 console.log(ui.item.value + ', ' + ui.item.id);
                 $(".vendor-ac-id").val(ui.item.id);
 
             },
-            change: function(event, ui) {
+            change: function (event, ui) {
                 if (ui.item == null) {
                     $(".vendor").val('');
                     $(".vendor-ac-id").val('');
@@ -141,14 +141,14 @@
             },
             messages: {
                 noResults: '',
-                results: function() {
+                results: function () {
                 }
             },
         })
     });
 
     //request vendor
-    $('.request').click(function(e) {
+    $('.request').click(function (e) {
         e.preventDefault();
         var vendorid = $(this).siblings('.x').children('.vendor-ac-id').val();
         var companyid = $(this).siblings('.x').children('.companyid').val();
@@ -159,19 +159,19 @@
             data: {'vendorid': vendorid,
                 'companyid': companyid,
             },
-            success: function(data) {
+            success: function (data) {
+                //console.log(data);
                 if (data == '200')
-                    //alert("Request sent successfully ");
                     location.reload();
             }
         });
     });
 
-    $('.remind').click(function(e) {
+    $('.remind').click(function (e) {
         $.ajax({
             type: 'POST',
             url: $('#completePath').text() + '/ajax/RemindAll',
-            success: function(data) {
+            success: function (data) {
                 if (data == '200')
                     //alert("Request sent successfully ");
                     location.reload();

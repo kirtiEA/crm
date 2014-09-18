@@ -1,0 +1,280 @@
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.web.filters.CFilterChain] Running filter AjaxController.filteraccessControl()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Campaign.findByPk()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (419)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "db" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (419)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbConnection] Opening DB connection
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (419)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `Campaign`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (419)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `Campaign`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (419)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `Campaign` `t` WHERE `t`.`id`=20 LIMIT 1
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (419)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: Select siteid from Task where status = 1 and campaignid = 20
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/Task.php (69)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (423)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: Delete from Task where campaignid = 20
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/Task.php (64)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (429)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Campaign.updateByPk()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (430)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: UPDATE `Campaign` SET `type`=:yp0 WHERE `Campaign`.`id`=20
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (430)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `Task`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (501)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `Task`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (501)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.ar.CActiveRecord] Task.insert()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: INSERT INTO `Task` (`taskDone`, `problem`, `assignedCompanyId`, `campaignid`, `siteid`, `status`, `dueDate`, `pop`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (508)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: Update Task set assignedCompanyId =1 where campaignid=20 and  pop = 1
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/Task.php (59)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (516)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: Update Task as task, (select tt.id from Task tt
+inner join Listing l on l.id = tt.siteid and l.companyid =1
+where tt.status = 1 and tt.campaignid = 20) as t
+set pop = 1 , assignedCompanyId =  1 where task.id = t.id and task.dueDate = '2014-09-25 00:00:00'
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/Task.php (54)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (532)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Executing SQL: Update Task as task, (select tt.id from Task tt
+inner join Listing l on l.id = tt.siteid and l.companyid =533
+where tt.status = 1 and tt.campaignid = 20) as t
+set pop = 1 , assignedCompanyId =  1 where task.id = t.id and task.dueDate = '2014-09-25 00:00:00'
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/Task.php (54)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AjaxController.php (532)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (6)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (6)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "db" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (96)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbConnection] Opening DB connection
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (96)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `Campaign`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (96)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `Campaign`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (96)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: select c.id, name, startDate, endDate, (select count(distinct tt.siteid) from Task tt where tt.campaignid  = c.id and tt.status = 1) as count from Campaign c where c.companyid = 1 and endDate >= '2014-09-18 00:59:06' and startDate >= '2014-09-18 00:59:06'
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/Campaign.php (45)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (100)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: select count(distinct t.siteid) as count, uc.id, uc.name from Task t
+        inner join Listing l on l.id = t.siteid and l.status =1
+        inner join UserCompany uc on uc.id = l.companyid
+        where t.status =1 and t.campaignid = 20 group by uc.id, uc.name
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/UserCompany.php (32)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (104)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: select distinct t.siteid,l.id,l.name, length, width,mt.name as mediatype, locality,
+            t.assignedCompanyId
+            from Task t 
+inner join Listing l on l.id = t.siteid and l.status = 1 and companyid = 1
+inner join MediaType mt on mt.id = l.mediatypeid
+where t.status =1 and t.campaignid = 20
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/Listing.php (467)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (110)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: select distinct t.siteid,l.id,l.name, length, width,mt.name as mediatype, locality,
+            t.assignedCompanyId
+            from Task t 
+inner join Listing l on l.id = t.siteid and l.status = 1 and companyid = 533
+inner join MediaType mt on mt.id = l.mediatypeid
+where t.status =1 and t.campaignid = 20
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/Listing.php (467)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (110)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: select count(distinct t.siteid) as count, uc.id, uc.name from Task t
+        inner join Listing l on l.id = t.siteid and l.status =1
+        inner join UserCompany uc on uc.id = l.companyid
+        where t.status =1 and t.campaignid = 21 group by uc.id, uc.name
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/UserCompany.php (32)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (104)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.db.CDbCommand] Querying SQL: select distinct t.siteid,l.id,l.name, length, width,mt.name as mediatype, locality,
+            t.assignedCompanyId
+            from Task t 
+inner join Listing l on l.id = t.siteid and l.status = 1 and companyid = 1
+inner join MediaType mt on mt.id = l.mediatypeid
+where t.status =1 and t.campaignid = 21
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/models/Listing.php (467)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (110)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "widgetFactory" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/myCampaigns/upcoming.php (103)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (133)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:06 [trace] [system.CModule] Loading "clientScript" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/myCampaigns/upcoming.php (127)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/MyCampaignsController.php (133)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:07 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:07 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:07 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:07 [trace] [system.CModule] Loading "coreMessages" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (24)
+2014/09/18 00:59:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('images/ui-bg_hi...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/css/application.css
+---
+2014/09/18 00:59:07 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/18 00:59:07 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (24)
+2014/09/18 00:59:07 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (24)
+2014/09/18 00:59:07 [trace] [system.CModule] Loading "widgetFactory" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/layouts/column1.php (2)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
+2014/09/18 00:59:07 [trace] [system.CModule] Loading "clientScript" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)

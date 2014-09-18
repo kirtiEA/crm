@@ -1,3 +1,4 @@
+    var fJS;
     function fetchCampaigns(type){
         $.ajax({
                    type: 'POST',
@@ -74,12 +75,13 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
 
     function addToCampaign(id) {
         addtocampaign.push(id);
-        $('#listing_' + id).addClass('selected');
-        $('#listing_' + id + ' span').removeClass('glyphicon-plus').addClass('glyphicon-remove').attr('onclick', 'removeFromArrayAddToCampaign(\'' + id + '\')');
+        $('#fjs_listing_' + id).addClass('selected');
+        $('#fjs_listing_' + id + ' span').removeClass('glyphicon-plus').addClass('glyphicon-remove').attr('onclick', 'removeFromArrayAddToCampaign(\'' + id + '\')');
         var campid = $('.selectedCampaignId').text();
+        var currentCompanyId = $('#currentCompanyId').text(); 
         var cid = $('#selectedvendorid').val();
         var cname = $('#selectedvendorname').val()
-        var details = $('#listing_'+id).text();
+        var details = $('#fjs_listing_'+id).text();
         var html = '<li id="justadded_' + id +'">' + details +'<span onclick="removeFromArrayAddToCampaign(\'' + id + '\')" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_1"></span></li>';
         console.log('cid ' + cid + ' html ' + html + ' cname ' + cname + ' camp ' + campid);
         if ($('#vendorselected_'+campid+ '_'+cid).length  ==0) {
@@ -87,9 +89,13 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
             var htm = '<li id="vendorselected_'+campid+ '_' +cid +'">' +
                             '<h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' + cname +'&nbsp;</h3><div class="assign-dropdown">Assigned to' + 
                                 '<select>' +
-                                    '<option value="' + cid +'_0" selected="true">Myself</option>'+
-                                    '<option value="' + cid+ '_' + cid+ '">'+ cname +'</option>'+
-                                    '</select></div><ul class="sub-sub-list show-hide-content">'
+                                    '<option value="' + cid +'_0" selected="true">Myself</option>';
+                            if (currentCompanyId !== cid) {
+                                htm = htm + '<option value="' + cid+ '_' + cid+ '">'+ cname +'</option>';
+                            } 
+                            
+                                    
+                            htm = htm + '</select></div><ul class="sub-sub-list show-hide-content">'
                                     +'</ul></li>';
                             
            console.log("no vendor added  >> "+ htm); 
@@ -102,15 +108,15 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
     function removeFromArrayAddToCampaign(id) {
             var index = addtocampaign.indexOf(id);
             if (index > -1) {
-                $('#listing_' + id).removeClass('selected');
-                $('#listing_' + id + ' span').removeClass('glyphicon-remove').addClass('glyphicon-plus').attr('onclick', 'addToCampaign(\'' + id + '\')');
+                $('#fjs_listing_' + id).removeClass('selected');
+                $('#fjs_listing_' + id + ' span').removeClass('glyphicon-remove').addClass('glyphicon-plus').attr('onclick', 'addToCampaign(\'' + id + '\')');
                 $('#justadded_' + id).remove();
                 addtocampaign.splice(index, 1);
             }
     }
     function removeFromCampaign(id) {
         removefromcampaign.push(id);
-        $('#listing_' + id).removeClass('selected');
+        $('#fjs_listing_' + id).removeClass('selected');
     }
     
     function saveCampaign(id) {
@@ -152,7 +158,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                             $('#campaignListings').html('');
                             console.log(data);
                         if (data === '200') {
-                            //location.reload();
+                            location.reload();
                         }    
                         
                     },
@@ -224,10 +230,27 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                     type: 'POST',
                     url: $('#completePath').text() + '/ajax/vendorsList',
                  success:function(data){
-                     dust.render("vendors", JSON.parse(data), function(err, out) {
-                         $('#vendors').html(out);
-                         console.log(err);
-                     });    
+//                     dust.render("vendors", JSON.parse(data), function(err, out) {
+//                         $('#vendors').html(out);
+//                         console.log(err);
+//                     });    
+
+                var template = Mustache.compile($.trim($("#vendorlist").html()));
+
+                  var view = function(service){
+                    return template(service);
+                  };
+
+                  var settings = {
+                    search: {input: '#search_box_vendor' },
+                    and_filter_on: true,
+                    id_field: 'id' //Default is id. This is only for usecase
+                  };
+
+                  return FilterJS(JSON.parse(data), "#vendors", view, settings);
+
+
+
                     },
                     error: function(data) { // if error occured
                           alert("Error occured.please try again");
@@ -250,11 +273,28 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                 'cid' : $('.selectedCampaignId').text()
             },
          success:function(data){
-             dust.render("campaignListings", JSON.parse(data), function(err, out) {
-                 $('#campaignListings').html(out);
-                 $('#selectedvendorid').val(id);
+//             dust.render("campaignListings", JSON.parse(data), function(err, out) {
+//                 $('#campaignListings').html(out);
+//                 $('#selectedvendorid').val(id);
+//                 $('#selectedvendorname').val($('#vendor_'+id).text());
+//                 console.log(err);
+//                 var arr = $('#campaignListings > li').map(function(){ return $(this).attr('id').split('_')[1];
+//            }).get();
+//            
+//            
+//            for (var i=0; i < addtocampaign.length; i++) {
+//                for (var j=0; j<arr.length;j++) {
+//                    if (addtocampaign[i] == arr[j]) {
+//                        $('#listing_' + arr[j]).addClass('selected');
+//                        $('#listing_' + arr[j] + ' span').addClass('glyphicon-remove').removeClass('glyphicon-plus').attr('onclick', 'removeFromArrayAddToCampaign(\'' + arr[j] + '\')');
+//                    }    
+//                }    
+//            }   
+//                 
+//             });    
+
+             $('#selectedvendorid').val(id);
                  $('#selectedvendorname').val($('#vendor_'+id).text());
-                 console.log(err);
                  var arr = $('#campaignListings > li').map(function(){ return $(this).attr('id').split('_')[1];
             }).get();
             
@@ -262,13 +302,25 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
             for (var i=0; i < addtocampaign.length; i++) {
                 for (var j=0; j<arr.length;j++) {
                     if (addtocampaign[i] == arr[j]) {
-                        $('#listing_' + arr[j]).addClass('selected');
-                        $('#listing_' + arr[j] + ' span').addClass('glyphicon-remove').removeClass('glyphicon-plus').attr('onclick', 'removeFromArrayAddToCampaign(\'' + arr[j] + '\')');
+                        $('#fjs_listing_' + arr[j]).addClass('selected');
+                        $('#fjs_listing_' + arr[j] + ' span').addClass('glyphicon-remove').removeClass('glyphicon-plus').attr('onclick', 'removeFromArrayAddToCampaign(\'' + arr[j] + '\')');
                     }    
-                }    
-            }   
-                 
-             });    
+                }
+            }    
+
+            var template = Mustache.compile($.trim($("#vendorsitelist").html()));
+                  var view = function(service){
+                    return template(service);
+                  };
+
+                  var settings = {
+                      //callbacks: filter_callbacks,
+                    search: {input: '#search_box_vendor_sites' },
+                    and_filter_on: true,
+                    id_field: 'lid' //Default is id. This is only for usecase
+                  };
+
+                  return FilterJS(JSON.parse(data), "#campaignListings", view, settings);
             },
             error: function(data) { // if error occured
                   alert("Error occured.please try again");

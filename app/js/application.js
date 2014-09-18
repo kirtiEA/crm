@@ -1,6 +1,10 @@
 
 
-$(document).ready(function() {
+$(document).ready(function () {
+
+    setTimeout(function() {
+        $("#flash-messages").hide('blind', {}, 500)
+    }, 4000);
 
     //initializing multiselect dropdown
     $('.multiselect').multiselect({
@@ -14,7 +18,7 @@ $(document).ready(function() {
         numberOfMonths: 1,
         minDate: 0,
         dateFormat: 'dd M yy',
-        onClose: function(selectedDate) {
+        onClose: function (selectedDate) {
             if (selectedDate)
                 $("#edate").datepicker("option", "minDate", selectedDate);
         }
@@ -24,7 +28,7 @@ $(document).ready(function() {
         //changeMonth: true,
         numberOfMonths: 1,
         dateFormat: 'dd M yy',
-        onClose: function(selectedDate) {
+        onClose: function (selectedDate) {
             $("#sdate").datepicker("option", "maxDate", selectedDate);
         }
     });
@@ -33,7 +37,7 @@ $(document).ready(function() {
         //changeMonth: true,
         numberOfMonths: 1,
         dateFormat: 'dd/mm/yy',
-        onClose: function(selectedDate) {
+        onClose: function (selectedDate) {
             if (selectedDate)
                 $("#ecdate").datepicker("option", "minDate", selectedDate);
         }
@@ -42,7 +46,7 @@ $(document).ready(function() {
         //changeMonth: true,
         numberOfMonths: 1,
         dateFormat: 'dd/mm/yy',
-        onClose: function(selectedDate) {
+        onClose: function (selectedDate) {
             $("#scdate").datepicker("option", "maxDate", selectedDate);
         }
     });
@@ -52,7 +56,7 @@ $(document).ready(function() {
         numberOfMonths: 1,
         maxDate: 0,
         dateFormat: 'dd M yy',
-        onClose: function(selectedDate) {
+        onClose: function (selectedDate) {
             $("#erdate").datepicker("option", "minDate", selectedDate);
         }
     });
@@ -61,14 +65,14 @@ $(document).ready(function() {
         //changeMonth: true,
         numberOfMonths: 1,
         dateFormat: 'dd M yy',
-        onClose: function(selectedDate) {
+        onClose: function (selectedDate) {
             if (selectedDate)
                 $("#srdate").datepicker("option", "maxDate", selectedDate);
         }
     });
 
     //collapse dropdown layers on clikcing on backdrop
-    $(document).mouseup(function(e)
+    $(document).mouseup(function (e)
     {
         var container = $("#add-site-dropdown");
 
@@ -80,7 +84,7 @@ $(document).ready(function() {
     });
 
     //dropdown remains open
-    $(".multi-level-select").on("click", function(e) {
+    $(".multi-level-select").on("click", function (e) {
         if ($(this).hasClass("open")) {
             //$(e.currentTarget).toggleClass("open",false);
         } else {
@@ -106,15 +110,15 @@ $(document).ready(function() {
      });*/
 
     //invite vendor modal, close on clicking cancel
-    $('#cancel').click(function(e) {
+    $('#cancel').click(function (e) {
         console.log('text');
         $('#invite-vendor-modal').modal('hide');
     });
 
     //expand collapse content  
-    $('.clickfor-show-hide').click(function(e) {
+    $('.clickfor-show-hide').click(function (e) {
 
-        $(this).siblings('.show-hide-content').each(function() {
+        $(this).siblings('.show-hide-content').each(function () {
             $(this).toggle();
         });
 
@@ -134,13 +138,13 @@ $(document).ready(function() {
 //    });
 
     //change user password 
-    $('.change-pwd').click(function() {
+    $('.change-pwd').click(function () {
         $(this).hide();
         $(this).parent(".pull-right").append($('#hidden-change-pwd').html());
     });
 
     //save new password
-    jQuery(document.body).on('click', '.save', function() {
+    jQuery(document.body).on('click', '.save', function () {
         var saveBtn = $(this);
         var pwdTxt = $(this).siblings('.password');
 
@@ -152,20 +156,22 @@ $(document).ready(function() {
             url: $('#completePath').text() + '/ajax/UpdatePassword',
             data: {'id': id,
                 'pwd': pwd},
-            success: function(data) {
-                alert("Password updated successfully");
+            success: function (data) {
+
                 //$(this).siblings('.password').remove();
                 saveBtn.siblings('.change-pwd').show();
                 saveBtn.siblings('.cancel').remove();
                 saveBtn.remove();
                 pwdTxt.remove();
+                if (data == '200')
+                    location.reload();
 
             }
         });
     });
 
     //cancel updating new password
-    jQuery(document.body).on('click', '.cancel', function() {
+    jQuery(document.body).on('click', '.cancel', function () {
         var cancelBtn = $(this);
         var pwdTxt = $(this).siblings('.password');
         cancelBtn.siblings('.change-pwd').show();
@@ -176,7 +182,7 @@ $(document).ready(function() {
     });
 
     //invite vendor by sending an email
-    $('.invite').click(function() {
+    $('.invite').click(function () {
         //code to mail vendor goes here
         var email = $(this).parent().siblings('.modal-body').children('.email').val();
         var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
@@ -187,14 +193,15 @@ $(document).ready(function() {
                 url: $('#completePath').text() + '/ajax/InviteVendor',
                 data: {'email': email,
                 },
-                success: function(data) {
+                success: function (data) {
+                    console.log(data);
                     if (data == '200')
                         location.reload();
                 }
             });
             $('#invite-vendor-modal').modal('hide');
         }
-        else{
+        else {
             $('.alert').toggle();
         }
 
@@ -203,7 +210,7 @@ $(document).ready(function() {
 });
 
 //flash messages fade in fade out
-$('#flash-messages').fadeOut('slow',function (){
+$('#flash-messages').fadeOut('slow', function () {
     $(this).remove();
 })
 
@@ -217,13 +224,29 @@ function removeListingFromCampaignd(id, cid) {
             'sid': id,
             'cid': cid
         },
-        success: function(data) {
+        success: function (data) {
             $('#addedlistings_' + id).parent().remove();
             console.log(data);
         },
-        error: function(data) { // if error occured
+        error: function (data) { // if error occured
             alert("Error occured.please try again");
             alert(data);
         }
     });
+}
+
+function fetchNotifications() {
+    //$('.dropdown-toggle').dropdown();
+    $.ajax({
+        type: 'POST',
+        url: $('#completePath').text() + '/ajax/fetchNotifications',
+        success: function (data) {
+            console.log('sdf');
+        },
+        error: function (data) { // if error occured
+            alert("Error occured.please try again");
+            alert(data);
+        }
+    });
+
 }

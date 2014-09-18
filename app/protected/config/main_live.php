@@ -28,7 +28,7 @@ return array(
             'class' => 'system.gii.GiiModule',
             'password' => 'monitorly',
             // If removed, Gii defaults to localhost only. Edit carefully to taste.
-            'ipFilters' => false, //array($_SERVER['REMOTE_ADDR']),
+            'ipFilters' => false,//array($_SERVER['REMOTE_ADDR']),
         ),
     ),
     // application components
@@ -39,22 +39,23 @@ return array(
         ),
         // uncomment the following to enable URLs in path-format
         'urlManager' => array(
-            'showScriptName' => false,
-            'urlFormat' => 'path',
-            'rules' => array(
+            'showScriptName'=>false,
+            'urlFormat' => 'path',            
+            'rules'=>array(
                 /*
-                  'post/<id:\d+>/<title:.*?>'=>'post/view',
-                  'posts/<tag:.*?>'=>'post/index',
-                 */
-
+                'post/<id:\d+>/<title:.*?>'=>'post/view',                
+                'posts/<tag:.*?>'=>'post/index',                 
+                */
+                
                 // REST patterns
-                array('api/list', 'pattern' => 'api/<model:\w+>', 'verb' => 'GET'),
-                array('api/view', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'GET'),
-                array('api/update', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'PUT'),
-                array('api/delete', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'DELETE'),
-                array('api/create', 'pattern' => 'api/<model:\w+>', 'verb' => 'POST'),
+                array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
+                array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
+                array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),
+                array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
+                array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
+                
                 // Other controllers
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
             ),
         ),
         /*
@@ -64,11 +65,14 @@ return array(
          */
         // uncomment the following to use a MySQL database
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=eatads',
+            'connectionString' => 'mysql:host=kelltoneatads.cggaglcdijh1.ap-southeast-1.rds.amazonaws.com;dbname=eatadskell',
             'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => 'root',
+            'username' => 'eatadskell',
+            'password' => 'jsdf98t78DIUISA',
             'charset' => 'utf8',
+            // enabled profile params for YII-DEBUG-TOOLBAR
+            'enableProfiling' => true,
+            'enableParamLogging' => true,
         ),
         'errorHandler' => array(
             // use 'site/error' action to display errors
@@ -92,38 +96,40 @@ return array(
     // application-level parameters that can be accessed
     // using Yii::app()->params['paramName']
     'params' => array(
-        'protocol' => $protocol, // goto top
+        'protocol' => $protocol,    // goto top
         // this is used in contact page
-        'adminEmail' => 'amit@eatads.com',
+        'adminEmail' => 'admin@eatads.com',
         'linkexpiry' => array(
             'signup' => 48,
             'forgot' => 24
         ),
+        // for password protection extension
         'phpass' => array(
             'iteration_count_log2' => 8,
             'portable_hashes' => false,
         ),
-        'fileUploadPath' => $_SERVER['DOCUMENT_ROOT'] . '/monitorly/app/uploads/',
+        'fileUploadPath' => $_SERVER['DOCUMENT_ROOT'] .  '/uploads/',
         'mandrill' => array(
             'api_key' => 'wtWRc4QXlHhoMyK6nzHUqQ'
         ),
-        'mailChimp' => array(// mail chimp api key and id
-            'api_key' => '76d05ba87b150c382677a19da6f4be91-us3',
-            'id' => 'c3657884d3'
+        'mailChimp' => array(       // mail chimp api key and id
+            'api_key' => '487aee600f274bad7118b9eee06d380e-us4',
+            'id' => 'e765513994'
         ),
-        'mailChimpBrief' => array(// mail chimp api key and id for brief
-            'api_key' => '76d05ba87b150c382677a19da6f4be91-us3',
-            'id' => 'c3657884d3'
+        'mailChimpBrief' => array(       // mail chimp api key and id for brief
+            'api_key' => '487aee600f274bad7118b9eee06d380e-us4',
+            'id' => '14343a88f9'
         ),
         // for gmail api
-        'gmapApiKey' => 'AIzaSyD9ycb1xXwLT6Wh5HrRb1YbUcBCw7_UHic', //'AIzaSyCtfa3XFporc1yBA7Z16T_FmhMfxNJ6WcQ',
+        'gmapApiKey' => 'AIzaSyDPTsHK_Dv2OBv6UaltL_LrBI3875nYqfw',
         // for password protection extension
         'init_markers' => 1000,
         'load_markers' => 3000,
         'solrCurl' => 'http://eataddsolr.eatads.com:8080/solr/listing/select?',
-        'awss3' => array(// amazon s3 details
-            's3Bucket' => 'monitorly-localhost-media',
-            'accessKey' => 'AKIAIW62GKSH4I5LIEXQ',
-            'secretKey' => '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'
+        'awss3' => array(           // amazon s3 details
+            's3Bucket'=>'monitorly-prod-media',
+            'accessKey'=>'AKIAIW62GKSH4I5LIEXQ',
+            'secretKey'=>'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'
         ),
-        ));
+    ),
+);
