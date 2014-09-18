@@ -20,7 +20,7 @@ class AjaxController extends Controller {
         return array(
             array('allow', // allow all users to perform actions
                 'actions' => array('signup', 'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting', 'getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
-                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword', 'invitevendor', 'removeListingFromCampaign', 'updateCampaign', 'forgotpwd', 'resetpwd', 'fetchNotifications'),
+                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword', 'invitevendor', 'removeListingFromCampaign', 'updateCampaign', 'forgotpwd', 'verifyresethash', 'resetpwd', 'fetchNotifications'),
                 'users' => array('*'),
             )
         );
@@ -66,25 +66,51 @@ class AjaxController extends Controller {
         $email = Yii::app()->request->getParam('email');
 
         // get the userid from the entered email
-        $userModel = User::model()->find(array('condition' => 'email=:email', 'params' => array(':email' => $model->email), 'select' => 'id'));
-
-        $userId = $userModel->id;
-        // generate the hash
-        $hash = sha1(uniqid());
-        // generate reset link
-        $linkModel = new Link();
-        $linkModel->attributes = array('userid' => $userId, 'hash' => $hash, 'type' => 0, 'datecreated' => date('Y-m-d H:i:s'));
-        if ($linkModel->save()) {
-            // send reset pwd link email to user    
-            $resetLink = Yii::app()->createAbsoluteUrl('account/reset', array('code' => $hash));
-            $mail = new EatadsMailer('forgot-pwd', $model->email, array('resetLink' => $resetLink));
-            $mail->eatadsSend();
-            $model->unsetAttributes();
-            // show success message
-            echo true;
+        $userModel = User::model()->find(array('condition' => 'email=:email', 'params' => array(':email' => $email), 'select' => 'id'));
+        if ($userModel) {
+            $userId = $userModel->id;
+            // generate the hash
+            $hash = sha1(uniqid());
+            // generate reset link
+            $linkModel = new Link();
+            $linkModel->attributes = array('userid' => $userId, 'hash' => $hash, 'type' => 0, 'datecreated' => date('Y-m-d H:i:s'));
+            if ($linkModel->save()) {
+                // send reset pwd link email to user    
+                $resetLink = Yii::app()->createAbsoluteUrl('account/index', array('code' => $hash));
+                $mail = new EatadsMailer('forgot-pwd', $email, array('resetLink' => $resetLink));
+                $mail->eatadsSend();                
+                // show success message
+                echo 1;
+            } else {
+                // show error message
+                echo 2;                
+            }
         } else {
             // show error message
-            echo "Could not send email to user.";
+            echo 3;          
+        }        
+    }
+
+    public function actionVerifyresethash() {
+        $hash = Yii::app()->request->getParam('hash');
+        $linkModel = Link::model()->find('hash=:hash AND type=:type', array(':hash' => $hash, ':type' => 0));
+        if ($linkModel) {
+            if ($linkModel->expired == 0) {
+                // check if link has not expired
+                $timeDiff = (time() - strtotime($linkModel->datecreated)) / 3600;
+                //$linkModel->expired = 1;    // expire the link
+                //$linkModel->save();         // save the record
+                // check link expiration time set in config
+                if ($timeDiff < Yii::app()->params['linkexpiry']['forgot']) {                    
+                    echo 1;
+                } else {
+                    echo 2;
+                }
+            } else {
+                echo 3;
+            }
+        } else {
+            echo 4;
         }
     }
 
@@ -108,15 +134,25 @@ class AjaxController extends Controller {
                     $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
                     $userModel->password = $ph->HashPassword($password);
                     $userModel->save();
-                    echo true;
+                    // login & redirect from server
+                    
+                    $identity = new UserIdentity($userModel->email, $password);
+                    if ($identity->authenticate()) {
+                        $user = Yii::app()->user;
+                        $user->login($identity);
+                        //$this->redirect($user->returnUrl);
+                        echo Yii::app()->getBaseUrl() . '/myCampaigns';
+                    } else {
+                        echo 5;
+                    }                    
                 } else {
-                    echo 'Link expired';
+                    echo 2;
                 }
             } else {
-                echo 'Link already used';
+                echo 3;
             }
         } else {
-            echo 'Link invalid';
+            echo 4;
         }
     }
 

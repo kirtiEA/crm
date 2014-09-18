@@ -4,6 +4,8 @@ class AccountController extends Controller {
 
     public function actionIndex() {
         $returnUrlParam = Yii::app()->request->getQuery('rurl');
+        $forgotPwdCode = Yii::app()->request->getQuery('code');
+        
         $model = new LoginForm('signin');
         //$model->setscenario('signin');   // set scenario for rules validation
         // if it is ajax validation request
@@ -29,7 +31,7 @@ class AccountController extends Controller {
                 $status = 101;
             }
         }
-        $this->renderPartial('index', array('model' => $model, 'status' => $status));
+        $this->renderPartial('index', array('model' => $model, 'status' => $status, 'forgotPwdCode'=>$forgotPwdCode));
     }
 
     /**

@@ -279,6 +279,7 @@ in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/Site
 2014/09/18 00:59:07 [trace] [system.CModule] Loading "clientScript" application component
 in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
 <<<<<<< HEAD
+<<<<<<< HEAD
 2014/09/17 16:17:53 [trace] [system.CModule] Loading "log" application component
 in C:\xampp\htdocs\monitorly_webapp_new\app\index.php (24)
 2014/09/17 16:17:53 [trace] [system.CModule] Loading "request" application component
@@ -11998,3 +11999,53 @@ in C:\xampp\htdocs\monitorly_webapp_new\app\protected\views\layouts\column1.php 
 in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (77)
 2014/09/18 14:09:03 [trace] [system.CModule] Loading "clientScript" application component
 in C:\xampp\htdocs\monitorly_webapp_new\app\protected\controllers\SiteController.php (77)
+=======
+2014/09/18 13:43:49 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:43:49 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:43:49 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:43:50 [trace] [system.CModule] Loading "user" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (41)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:43:50 [trace] [system.CModule] Loading "session" application component
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (41)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:43:50 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:43:50 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:43:50 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:43:50 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (34)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:43:50 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (34)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:43:50 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (34)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:46:01 [trace] [system.CModule] Loading "log" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:46:01 [trace] [system.CModule] Loading "request" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:46:01 [trace] [system.CModule] Loading "urlManager" application component
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:46:01 [trace] [system.CModule] Loading "widgetFactory" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (37)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (34)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:46:01 [trace] [system.CModule] Loading "coreMessages" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (41)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (34)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+2014/09/18 13:46:01 [trace] [system.CModule] Loading "clientScript" application component
+in C:\xampp\htdocs\monitorly\app\protected\views\account\index.php (49)
+in C:\xampp\htdocs\monitorly\app\protected\controllers\AccountController.php (34)
+in C:\xampp\htdocs\monitorly\app\index.php (27)
+>>>>>>> 6077c5acb09279e162b9778524ccfd466d967381
