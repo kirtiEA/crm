@@ -794,6 +794,7 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
             $mail = new EatadsMailer('request-accepted', $email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
             $mail->eatadsSend();
             $inviteVendors = Yii::app()->getBaseUrl(true) . '/vendor';
+            //print_r($inviteVendors); die();
             $mail = new EatadsMailer('invite-accepted', Yii::app()->user->email, array('resetLink' => $inviteVendors, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
             $mail->eatadsSend();
             Yii::app()->user->setFlash('success', 'Request accepted Successfully');
