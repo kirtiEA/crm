@@ -65,7 +65,7 @@
                             
                         </ul>
                     </div>
-                    <div class="col-md-9 right-content" style="height: 700px;">
+                    <div class="col-md-9 right-content" style="height: 460px;">
                         <div class="search-box-wrapper">
                             <input type="text" placeholder="Search Sites" id="search_box_vendor_sites">
                         </div>
