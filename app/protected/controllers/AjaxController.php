@@ -78,17 +78,17 @@ class AjaxController extends Controller {
                 // send reset pwd link email to user    
                 $resetLink = Yii::app()->createAbsoluteUrl('account/index', array('code' => $hash));
                 $mail = new EatadsMailer('forgot-pwd', $email, array('resetLink' => $resetLink));
-                $mail->eatadsSend();                
+                $mail->eatadsSend();
                 // show success message
                 echo 1;
             } else {
                 // show error message
-                echo 2;                
+                echo 2;
             }
         } else {
             // show error message
-            echo 3;          
-        }        
+            echo 3;
+        }
     }
 
     public function actionVerifyresethash() {
@@ -101,7 +101,7 @@ class AjaxController extends Controller {
                 //$linkModel->expired = 1;    // expire the link
                 //$linkModel->save();         // save the record
                 // check link expiration time set in config
-                if ($timeDiff < Yii::app()->params['linkexpiry']['forgot']) {                    
+                if ($timeDiff < Yii::app()->params['linkexpiry']['forgot']) {
                     echo 1;
                 } else {
                     echo 2;
@@ -135,7 +135,7 @@ class AjaxController extends Controller {
                     $userModel->password = $ph->HashPassword($password);
                     $userModel->save();
                     // login & redirect from server
-                    
+
                     $identity = new UserIdentity($userModel->email, $password);
                     if ($identity->authenticate()) {
                         $user = Yii::app()->user;
@@ -144,7 +144,7 @@ class AjaxController extends Controller {
                         echo Yii::app()->getBaseUrl() . '/myCampaigns';
                     } else {
                         echo 5;
-                    }                    
+                    }
                 } else {
                     echo 2;
                 }
@@ -526,7 +526,7 @@ class AjaxController extends Controller {
                         }
                     }
                 }
-Yii::app()->user->setFlash('success', 'Campaign updated successfully');
+                Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                 echo '200';
             } else if ($_POST['type'] == 3) {
                 $vendorIds = json_decode($_POST['pop']);
@@ -795,9 +795,11 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
             $invite->save();
             $mail = new EatadsMailer('request-accepted', $email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
             $mail->eatadsSend();
+            $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
+            $agencyName = $getName['name'];
             $inviteVendors = Yii::app()->getBaseUrl(true) . '/vendor';
             //print_r($inviteVendors); die();
-            $mail = new EatadsMailer('invite-accepted', Yii::app()->user->email, array('resetLink' => $inviteVendors, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
+            $mail = new EatadsMailer('invite-accepted', Yii::app()->user->email, array('resetLink' => $inviteVendors, 'agencyName' => $agencyName), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
             $mail->eatadsSend();
             Yii::app()->user->setFlash('success', 'Request accepted Successfully');
             echo 200;
@@ -835,7 +837,7 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
             Listing::updateListing($_POST['id']);
         }
     }
-    
+
     public function actionfetchNotifications() {
         $notifications = MonitorlyNotification::fetchNotifications(Yii::app()->user->cid);
         $result = array();
