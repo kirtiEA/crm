@@ -128,12 +128,6 @@ class AccountController extends Controller {
                     $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
                     $mail = new EatadsMailer('request-accepted', $emailid, array('resetLink' => $resetlink, 'vendorName' => $_POST['MonitorlySubscription']['companyname']), array('shruti@eatads.com'), $_POST['MonitorlySubscription']['companyname'], $_POST['MonitorlySubscription']['email']);
                     $mail->eatadsSend();
-                    $getName = UserCompany::model()->findByAttributes(array('userid' => $createdbyid));
-                    $agencyName = $getName['name'];
-                    //echo $agencyName;                    die();
-                    $inviteVendors = Yii::app()->getBaseUrl(true) . '/vendor';
-                    $mail = new EatadsMailer('invite-accepted', $_POST['MonitorlySubscription']['email'], array('resetLink' => $inviteVendors, 'agencyName' => $agencyName), array('shruti@eatads.com'), $agencyName, Yii::app()->user->email);
-                    $mail->eatadsSend();
                     Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
                 }
                 //   echo $_POST['MonitorlySubscription']['type'];              die();
