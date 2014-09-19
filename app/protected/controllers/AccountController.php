@@ -133,9 +133,7 @@ class AccountController extends Controller {
                 //echo $_POST['MonitorlySubscription']['type'];              die();
 
                 if ($flag == 1) {
-                    
                     $model->save();
-                    
                     echo 'FLAG=' . $flag.'model saved or not'.$model->getAttributes();die();
                 }
                 //echo $_POST['MonitorlySubscription']['type'];                die();

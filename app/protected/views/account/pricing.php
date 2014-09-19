@@ -90,7 +90,8 @@
 </div>
 <!-- end of pricing content -->
 <script>
-    $(function(){        
+    $(function(){
+        $('li.phone1').css('margin-top', 15);
         $('#header_nav').removeClass('navbar-dark');
     });    
 </script>
