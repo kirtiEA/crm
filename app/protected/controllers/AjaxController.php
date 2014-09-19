@@ -478,6 +478,8 @@ class AjaxController extends Controller {
                         $task->campaignid = $_POST['cid'];
                         $task->siteid = $add[$i];
                         $task->status = 1;
+                        $task->createdDate = date("Y-m-d H:i:s");
+                        $task->createdBy = Yii::app()->user->id;
                         $task->dueDate = date("Y-m-d H:i:s", $date);
                         $task->save();
                     }
@@ -517,6 +519,8 @@ class AjaxController extends Controller {
                             $task->status = 1;
                             $task->dueDate = date("Y-m-d H:i:s", $date);
                             $task->pop = 0;
+                            $task->createdDate = date("Y-m-d H:i:s");
+                            $task->createdBy = Yii::app()->user->id;
                             $task->save();
                             $date = strtotime('+1 day', $date);
                         }
@@ -538,6 +542,8 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                             $task->status = 1;
                             $task->dueDate = date("Y-m-d H:i:s", $date);
                             $task->pop = 0;
+                            $task->createdDate = date("Y-m-d H:i:s");
+                            $task->createdBy = Yii::app()->user->id;
                             $task->save();
                             $date = strtotime('+1 day', $date);
                         }
