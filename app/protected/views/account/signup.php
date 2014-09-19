@@ -37,10 +37,10 @@
                     ),
                 ));
                 ?>
-    <!--                        <input type="email" class="form-control" placeholder="Email">-->
+<!--                        <input type="email" class="form-control" placeholder="Email">-->
                 <?php echo $form->emailField($modelSub, 'email', array('class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email')); ?>                            
                 <?php echo $form->error($modelSub, 'email'); ?>
-    <!--                        <input type="text" class="form-control" placeholder="Company Name">-->
+<!--                        <input type="text" class="form-control" placeholder="Company Name">-->
                 <?php echo $form->textField($modelSub, 'companyname', array('class' => 'form-control ', 'placeholder' => 'Company Name')); ?> 
                 <input type="hidden" value="" id="vendor-ac-id">
                 <?php echo $form->error($modelSub, 'companyname'); ?>
@@ -50,9 +50,9 @@
                 <?php echo $form->error($modelSub, 'phonenumber'); ?>
                 <br><br>
                 <?php echo $form->hiddenField($modelSub, 'nid', array('value' => $nid, 'id' => 'nid')); ?>
-                <?php echo $form->hiddenField($modelSub, 'type',array('value'=>$type, 'id' =>'type'));?>
-                <?php echo CHtml::submitButton('Sign Up for Free', array('class' => 'save btn btn-primary btn-primary-lg')); ?>
-                <!--                        <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>-->
+                <?php echo $form->hiddenField($modelSub, 'type', array('value' => $type, 'id' => 'type')); ?>
+                <?php // echo CHtml::submitButton('Sign Up for Free', array('class' => 'save btn btn-primary btn-primary-lg')); ?>
+                <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>
                 <br>
                 <h5>No Credit Card required</h5>
 

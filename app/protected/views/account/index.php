@@ -28,7 +28,8 @@
                         <?php echo $form->passwordField($model, 'password', array('class' => 'form-control', 'placeholder' => 'Password', 'id' => 'password')); ?>
                         <?php echo $form->error($model, 'password'); ?>
                     </div>
-                    <?php echo CHtml::submitButton('Login', array('class' => 'btn btn-primary', 'id' => '_submit')); ?>&nbsp;
+                    <button class="btn btn-primary">Login</button>
+                    <?php //echo CHtml::button('Login', array('class' => 'btn btn-primary', 'id' => '_submit')); ?>&nbsp;
                     <a href="#" data-dismiss="modal">Cancel</a>
                     <?php $this->endWidget(); ?>
                 </div>
@@ -155,7 +156,8 @@
         <br><br>
         <?php echo $form->hiddenField($modelSub, 'nid', array('value' => $nid, 'id' => 'nid')); ?>
         <?php echo $form->hiddenField($modelSub, 'type', array('value' => $type, 'id' => 'type')); ?>
-        <?php echo CHtml::submitButton('Sign Up for Free', array('class' => 'btn btn-primary btn-primary-lg', 'id' => '_submit')); ?>
+        <?php //echo CHtml::submitButton('Sign Up for Free', array('class' => 'btn btn-primary btn-primary-lg', 'id' => '_submit')); ?>
+        <button class="btn btn-primary btn-primary-lg">Create Free Account</button>
         <!--                        <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>-->
         <br>
         <h5>No Credit Card required</h5>

@@ -67,17 +67,17 @@ $('.mon_menu').each(function() {
                 $html = '';
                 foreach ($campaigns as $value) {
                     $html = $html . '            <li class="list-item">
-                <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
+                <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-plus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
                  . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3>' .
-                  '<div class="pull-right">
+                  '<div class="pull-right campaign-btn">
                     <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
                 </div>' .
-                  '<div class="list-item-content show-hide-content">
-                    <ul class="sub-list">';
+                  '<div class="list-item-content show-hide-content" style="display:none;">
+                    <ul class="sub-list abc" >';
                     foreach ($value['sites'] as $site) {
                         $html = $html . '<li>
-                            <h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $site['name'] . ' &nbsp;</h3>'
-                            . '<ul class="sub-sub-list show-hide-content">';
+                            <h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-plus expand-collapse"></span>&nbsp;' . $site['name'] . ' &nbsp;</h3>'
+                            . '<ul class="sub-sub-list show-hide-content" style="display:none;">';
                         foreach ($site['listings'] as $list) {
                             $html = $html . '<li>' . $list['name'] . ', ' . $list['mediatype'] . ', '
                                     . $list['locality'] . '&nbsp;</li>';
