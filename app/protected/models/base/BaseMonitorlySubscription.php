@@ -11,7 +11,7 @@
  * @property string $phonenumber
  * @property string $createddate
  */
-class BaseMonitorlySubscription extends CActiveRecord {
+class   BaseMonitorlySubscription extends CActiveRecord {
 
     /**
      * @return string the associated database table name
@@ -31,8 +31,8 @@ class BaseMonitorlySubscription extends CActiveRecord {
             array('id, nid', 'numerical', 'integerOnly' => true),
             array('companyname, email', 'length', 'max' => 50),
             array('phonenumber', 'length', 'max' => 20),
-            array('companyname,email,phonenumber', // allows to a create a new user
-                'required', 'on' => 'subscribe', 'message' => 'All fileds are Required'),
+            //array('companyname,email,phonenumber', // allows to a create a new user
+              //  'required', 'on' => 'subscribe', 'message' => 'All fileds are Required'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, nid, companyname, email, phonenumber, createddate', 'safe', 'on' => 'search'),

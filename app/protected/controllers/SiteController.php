@@ -22,7 +22,7 @@ class SiteController extends Controller {
 
     public function init() {
         if (Yii::app()->user->isGuest) {
-            $this->redirect(Yii::app()->createUrl('account'));
+            //$this->redirect(Yii::app()->createUrl('account'));
         }
     }
 
