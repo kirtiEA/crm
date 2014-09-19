@@ -119,22 +119,22 @@ class AccountController extends Controller {
                     $flag = 0;
                     // $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
                 } else if (strlen($_POST['MonitorlySubscription']['companyname']) != 0 && strlen($_POST['MonitorlySubscription']['phonenumber']) != 0) {
-                    Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
-                    //  $this->redirect(Yii::app()->getBaseUrl() . '/account');
                     $vendorName = MonitorlyNotification::model()->findByPk($_POST['MonitorlySubscription']['nid']);
                     $createdbyid = $vendorName['createdby'];
                     $email = User::model()->findByPk($createdbyid);
                     $emailid = $email['email'];
-                    //echo $emailid.' '.; die();
+                    //$agencyName = 
+                    //echo $emailid.' '. $_POST['MonitorlySubscription']['companyname']. ' '. $_POST['MonitorlySubscription']['email']; die();
                     $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
-                    $mail = new EatadsMailer('request-accepted', $emailid, array('resetLink' => $resetlink, $_POST['MonitorlySubscription']['companyname']), array('shruti@eatads.com'), $_POST['MonitorlySubscription']['companyname'], $_POST['MonitorlySubscription']['email']);
+                    $mail = new EatadsMailer('request-accepted', $emailid, array('resetLink' => $resetlink, 'vendorName' => $_POST['MonitorlySubscription']['companyname']), array('shruti@eatads.com'), $_POST['MonitorlySubscription']['companyname'], $_POST['MonitorlySubscription']['email']);
                     $mail->eatadsSend();
-                    $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
+                    $getName = UserCompany::model()->findByAttributes(array('userid' => $createdbyid));
                     $agencyName = $getName['name'];
+                    //echo $agencyName;                    die();
                     $inviteVendors = Yii::app()->getBaseUrl(true) . '/vendor';
                     $mail = new EatadsMailer('invite-accepted', $_POST['MonitorlySubscription']['email'], array('resetLink' => $inviteVendors, 'agencyName' => $agencyName), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
                     $mail->eatadsSend();
-                    Yii::app()->user->setFlash('success', 'Request accepted Successfully');
+                    Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
                 }
                 //   echo $_POST['MonitorlySubscription']['type'];              die();
 
