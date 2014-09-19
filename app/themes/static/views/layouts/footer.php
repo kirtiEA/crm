@@ -34,7 +34,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="https://www.eatads.com/">EatAds.com</a></li>
                 <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/pricing'); ?>">Pricing</a></li>
-                <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>">Terms &amp; Conditions</a></li>
                 <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/contactus'); ?>">Contact Us</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

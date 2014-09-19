@@ -4062,7 +4062,13 @@ lang=EN-GB>Yes, you would require that! Needs to be made.</span></p>
 </div>
 
 <script>
-    $(function(){        
+    $(function(){
+        $('li.phone1').css({
+            "margin-top": "15px",
+            "font-size": "16px",
+            "font-weight": "600",
+            "margin-right": "10px"
+        });
         $('#header_nav').removeClass('navbar-dark');
     });    
 </script>
