@@ -294,7 +294,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
 //             });    
 
              $('#selectedvendorid').val(id);
-                 $('#selectedvendorname').val($('#vendor_'+id).text());
+                 $('#selectedvendorname').val($('#fjs_'+id).text());
                  var arr = $('#campaignListings > li').map(function(){ return $(this).attr('id').split('_')[1];
             }).get();
             
