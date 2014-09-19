@@ -50,7 +50,7 @@
                 <?php echo $form->error($modelSub, 'phonenumber'); ?>
                 <br><br>
                 <?php echo $form->hiddenField($modelSub, 'nid', array('value' => $nid, 'id' => 'nid')); ?>
-                <?php echo $form->hiddenField($modelSub, 'type',array('value'=>$type, 'type' =>'type'));?>
+                <?php echo $form->hiddenField($modelSub, 'type',array('value'=>$type, 'id' =>'type'));?>
                 <?php echo CHtml::submitButton('Sign Up for Free', array('class' => 'save btn btn-primary btn-primary-lg', 'id' => '_submit')); ?>
                 <!--                        <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>-->
                 <br>

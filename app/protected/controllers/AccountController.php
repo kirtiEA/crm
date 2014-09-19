@@ -86,9 +86,10 @@ class AccountController extends Controller {
     }
 
     public function actionCreateVendor() {
-       die('sfsdfsdfsfssf');
+       //die('sfsdfsdfsfssf');
         $model = new MonitorlySubscription();
         //$model->setScenario('subscribe');
+        echo 'hello'; die();
         if (isset($_POST['MonitorlySubscription'])) {
             echo 'hi';die();
             if (strlen($_POST['MonitorlySubscription']['email']) && filter_var($_POST['MonitorlySubscription']['email'], FILTER_VALIDATE_EMAIL)) {
@@ -125,7 +126,7 @@ class AccountController extends Controller {
                     Yii::app()->user->setFlash('success', 'Mobile number is required');
                     $flag = 0;
                     // $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
-                } else {
+                } else if(strlen($_POST['MonitorlySubscription']['companyname']) != 0 && strlen($_POST['MonitorlySubscription']['phonenumber']) != 0){
                     Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
                     //  $this->redirect(Yii::app()->getBaseUrl() . '/account');
                 }
