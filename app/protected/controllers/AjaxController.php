@@ -714,7 +714,7 @@ Yii::app()->user->setFlash('success', 'Campaign updated successfully');
                 $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
                 //echo $getName['name'] ; die();
                 $agencyName = $getName['name'];
-                $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $invite->id;
+                $resetLink = Yii::app()->getBaseUrl(true) . '/account/signup?nid=' . $invite->id;
                 $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
                 //echo $mail->; die();
                 $mail->eatadsSend();
