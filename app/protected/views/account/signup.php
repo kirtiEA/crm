@@ -81,7 +81,12 @@
 <!-- end of sign up content -->
 <script>
     $(function () {
-        $('li.phone1').css('margin-top', 15);
+        $('li.phone1').css({
+            "margin-top": "15px",
+            "font-size": "16px",
+            "font-weight": "600",
+            "margin-right": "10px"
+        });
         $('#header_nav').removeClass('navbar-dark');
     });
 </script>
