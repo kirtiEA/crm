@@ -86,25 +86,15 @@ class AccountController extends Controller {
     }
 
     public function actionCreateVendor() {
-        //die('sfsdfsdfsfssf');
-        //echo 'Create Vendor';die();
         $model = new MonitorlySubscription();
-        //$model->setScenario('subscribe');
-        //echo 'hello';die();
-        //echo $_POST['MonitorlySubscription']['type'];              die();
         if (isset($_POST['MonitorlySubscription'])) {
-            //echo 'hi';die();
             if (strlen($_POST['MonitorlySubscription']['email']) && filter_var($_POST['MonitorlySubscription']['email'], FILTER_VALIDATE_EMAIL)) {
-                //$model->nid = Yii::app()->request->getParam('nid');   
                 $model->companyname = $_POST['MonitorlySubscription']['companyname'];
                 $model->email = $_POST['MonitorlySubscription']['email'];
                 $model->phonenumber = $_POST['MonitorlySubscription']['phonenumber'];
                 $model->nid = $_POST['MonitorlySubscription']['nid'];
                 $model->createddate = date("Y-m-d H:i:s");
-                //print_r($model->attributes);
-                //print_r($_POST);
-                //if($model->validate())
-//                $id = Yii::app()->user->id;
+                //          $id = Yii::app()->user->id;
 //                $email = Yii::app()->user->emailid;
 //                $invite = new MonitorlyNotification();
 //                $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 2);
@@ -131,17 +121,31 @@ class AccountController extends Controller {
                 } else if (strlen($_POST['MonitorlySubscription']['companyname']) != 0 && strlen($_POST['MonitorlySubscription']['phonenumber']) != 0) {
                     Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
                     //  $this->redirect(Yii::app()->getBaseUrl() . '/account');
+                    $vendorName = MonitorlyNotification::model()->findByPk($_POST['MonitorlySubscription']['nid']);
+                    $createdbyid = $vendorName['createdby'];
+                    $email = User::model()->findByPk($createdbyid);
+                    $emailid = $email['email'];
+                    echo $emailid; die();
+                    $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
+                    $mail = new EatadsMailer('request-accepted', $emailid, array('resetLink' => $resetlink, $_POST['MonitorlySubscription']['companyname']), array('shruti@eatads.com'), $_POST['MonitorlySubscription']['companyname'], $_POST['MonitorlySubscription']['email']);
+                    $mail->eatadsSend();
+                    $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
+                    $agencyName = $getName['name'];
+                    $inviteVendors = Yii::app()->getBaseUrl(true) . '/vendor';
+                    $mail = new EatadsMailer('invite-accepted', $_POST['MonitorlySubscription']['email'], array('resetLink' => $inviteVendors, 'agencyName' => $agencyName), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
+                    $mail->eatadsSend();
+                    Yii::app()->user->setFlash('success', 'Request accepted Successfully');
                 }
-             //   echo $_POST['MonitorlySubscription']['type'];              die();
+                //   echo $_POST['MonitorlySubscription']['type'];              die();
 
                 if ($flag == 1) {
-  //                  print_r($model->validate());die();
-                   // echo ; die();
-  echo  $model->save(false);                
-      //              print_r($model->attributes);die();
-        //            print_r($model->getErrors());die();
+                    //                  print_r($model->validate());die();
+                    // echo ; die();
+                    echo $model->save(false);
+                    //              print_r($model->attributes);die();
+                    //            print_r($model->getErrors());die();
                 }
-               // echo $_POST['MonitorlySubscription']['type'];                die('45666');
+                // echo $_POST['MonitorlySubscription']['type'];                die('45666');
                 if (strcasecmp($_POST['MonitorlySubscription']['type'], '1') == 0) {
                     $this->redirect(Yii::app()->getBaseUrl() . '/account');
                 } else if (strcasecmp($_POST['MonitorlySubscription']['type'], '2') == 0) {
