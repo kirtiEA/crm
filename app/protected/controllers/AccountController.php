@@ -132,7 +132,7 @@ class AccountController extends Controller {
                     $agencyName = $getName['name'];
                     //echo $agencyName;                    die();
                     $inviteVendors = Yii::app()->getBaseUrl(true) . '/vendor';
-                    $mail = new EatadsMailer('invite-accepted', $_POST['MonitorlySubscription']['email'], array('resetLink' => $inviteVendors, 'agencyName' => $agencyName), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
+                    $mail = new EatadsMailer('invite-accepted', $_POST['MonitorlySubscription']['email'], array('resetLink' => $inviteVendors, 'agencyName' => $agencyName), array('shruti@eatads.com'), $agencyName, Yii::app()->user->email);
                     $mail->eatadsSend();
                     Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
                 }
