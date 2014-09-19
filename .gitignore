@@ -8,4 +8,4 @@ app/uploads/*
 app/uploads/listing/*
 !app/uploads/listing
 
-app/protected/runtime/application.log
+app/protected/runtime/*
