@@ -69,9 +69,9 @@ $('.mon_menu').each(function() {
                     $html = $html . '            <li class="list-item">
                 <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-plus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
                  . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3>' .
-                  '<div class="pull-right campaign-btn">
-                    <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
-                </div>' .
+//                  '<div class="pull-right campaign-btn">
+//                    <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
+//                </div>' .
                   '<div class="list-item-content show-hide-content" style="display:none;">
                     <ul class="sub-list abc" >';
                     foreach ($value['sites'] as $site) {
