@@ -22,7 +22,7 @@ $(document).ready(function() {
         //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do']
         preferredCountries: ["in","sg", "us"],
         autoFormat: true,
-        utilsScript: "<?php echo Yii::app()->request->baseUrl; ?>/js/libphonenumber/build/utils.js"
+        utilsScript: $('#completePath').text() + "/js/libphonenumber/build/utils.js"
       });
       
       $('#MonitorlySubscription_email').blur(function(){

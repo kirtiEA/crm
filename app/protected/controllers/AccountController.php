@@ -91,11 +91,12 @@ class AccountController extends Controller {
         $model = new MonitorlySubscription();
         //$model->setScenario('subscribe');
         //echo 'hello';die();
+        //echo $_POST['MonitorlySubscription']['type'];              die();
         if (isset($_POST['MonitorlySubscription'])) {
             //echo 'hi';die();
             if (strlen($_POST['MonitorlySubscription']['email']) && filter_var($_POST['MonitorlySubscription']['email'], FILTER_VALIDATE_EMAIL)) {
                 //$model->nid = Yii::app()->request->getParam('nid');   
-//                $model->companyname = $_POST['MonitorlySubscription']['companyname'];
+                $model->companyname = $_POST['MonitorlySubscription']['companyname'];
                 $model->email = $_POST['MonitorlySubscription']['email'];
                 $model->phonenumber = $_POST['MonitorlySubscription']['phonenumber'];
                 $model->nid = $_POST['MonitorlySubscription']['nid'];
@@ -114,6 +115,7 @@ class AccountController extends Controller {
                 //echo '<pre>';
                 //              print_r($model->attributes);
                 $flag = 1;
+//               echo $model->save(false);die('sdfsd');
                 if (strlen($_POST['MonitorlySubscription']['companyname']) == 0 && strlen($_POST['MonitorlySubscription']['phonenumber']) == 0) {
                     Yii::app()->user->setFlash('success', 'All feilds are required');
 
@@ -130,13 +132,16 @@ class AccountController extends Controller {
                     Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
                     //  $this->redirect(Yii::app()->getBaseUrl() . '/account');
                 }
-                //echo $_POST['MonitorlySubscription']['type'];              die();
+             //   echo $_POST['MonitorlySubscription']['type'];              die();
 
                 if ($flag == 1) {
-                    $model->save();
-                    echo 'FLAG=' . $flag.'model saved or not'.$model->getAttributes();die();
+  //                  print_r($model->validate());die();
+                   // echo ; die();
+  echo  $model->save(false);                
+      //              print_r($model->attributes);die();
+        //            print_r($model->getErrors());die();
                 }
-                //echo $_POST['MonitorlySubscription']['type'];                die();
+               // echo $_POST['MonitorlySubscription']['type'];                die('45666');
                 if (strcasecmp($_POST['MonitorlySubscription']['type'], '1') == 0) {
                     $this->redirect(Yii::app()->getBaseUrl() . '/account');
                 } else if (strcasecmp($_POST['MonitorlySubscription']['type'], '2') == 0) {

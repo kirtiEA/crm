@@ -37,7 +37,7 @@
     </head>
     <body>
         <!-- header -->
-
+        <div style="display: none;" id="completePath"><?php echo Yii::app()->getBaseUrl();?></div>
         <nav class="navbar navbar-default navbar-dark" id="header_nav" role="navigation">
             <div class="container-fluid">
 
