@@ -125,7 +125,7 @@ class AccountController extends Controller {
                     $createdbyid = $vendorName['createdby'];
                     $email = User::model()->findByPk($createdbyid);
                     $emailid = $email['email'];
-                    echo $emailid; die();
+                    //echo $emailid.' '.; die();
                     $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
                     $mail = new EatadsMailer('request-accepted', $emailid, array('resetLink' => $resetlink, $_POST['MonitorlySubscription']['companyname']), array('shruti@eatads.com'), $_POST['MonitorlySubscription']['companyname'], $_POST['MonitorlySubscription']['email']);
                     $mail->eatadsSend();
