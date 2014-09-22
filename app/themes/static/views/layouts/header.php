@@ -22,11 +22,13 @@
         <script src="<?php //echo $theme->getBaseUrl();  ?>/js/bootstrap.js"></script>
         <script src="<?php //echo $theme->getBaseUrl();  ?>/js/s_application.js"></script>
         -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>       
+
         <?php
+        
+        $cs->registerScriptFile($theme->getBaseUrl() . '/js/jquery-1.10.2.min.js', CClientScript::POS_BEGIN);
         $cs->registerScriptFile($theme->getBaseUrl() . '/js/jquery-ui.min.js', CClientScript::POS_BEGIN);
         $cs->registerScriptFile($theme->getBaseUrl() . '/js/bootstrap.js', CClientScript::POS_END);
-        $cs->registerScriptFile($theme->getBaseUrl() . '/js/application.js', CClientScript::POS_END);
+        $cs->registerScriptFile($theme->getBaseUrl() . '/js/application.js', CClientScript::POS_BEGIN);
         $cs->registerScriptFile($theme->getBaseUrl() . '/js/intlTelInput.js', CClientScript::POS_BEGIN);
         ?>
         <style>
