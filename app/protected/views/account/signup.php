@@ -54,12 +54,12 @@
                 
                 <?php echo $form->hiddenField($modelSub, 'companyid', array('id' => 'vendor-ac-id')); ?>
 
-                        <?php echo $form->passwordField($modelSub, 'password', array('id' =>'passwordid','class' => 'form-control', 'placeholder' => 'Password', 'id' => 'password', 'autocomplete' => 'off')); ?>
+                        <?php echo $form->passwordField($modelSub, 'password', array('id' => 'password','class' => 'form-control', 'placeholder' => 'Password', 'autocomplete' => 'off', 'style' => 'width:300px;')); ?>
                         <?php echo $form->error($modelSub, 'password'); ?>
                     
 <!--                        <input type="text" class="form-control" placeholder="+91">-->
 <!--                        <input  class="form-control intl-tel-input" placeholder="Mobile" id="mobile-number" type="tel">-->
-                <?php echo $form->textField($modelSub, 'phonenumber', array('id' =>'pnid','max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
+                <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
                 <?php echo $form->error($modelSub, 'phonenumber'); ?>
                 <br><br>
                 <?php echo $form->hiddenField($modelSub, 'nid', array('value' => $nid, 'id' => 'nid')); ?>
@@ -70,7 +70,7 @@
                     }
                 ?>
                 <?php // echo CHtml::submitButton('Sign Up for Free', array('class' => 'save btn btn-primary btn-primary-lg')); ?>
-                <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>
+                <button class="btn btn-primary btn-primary-lg" id="signup">Sign Up for Free</button>
                 <br>
                 <h5>No Credit Card required</h5>
 
@@ -98,21 +98,26 @@
 </div>
 <!-- end of sign up content -->
 <script>
-    $('#vendor_subscription1').submit(function(event){
+    $('#signup').on('click',function(event){
         event.preventDefault();
         if($('#emailid').val()) {
+//            console.log('1');
             if($('#companynameid').val()) {
-                if($('#passwordid').val()) {
-                    if($('#pnid').val()) {
+  //              console.log('2');
+                if($('#password').val()) {
+    //                console.log('3');
+                    if($('#mobile-number').val()) {
+                        console.log('4');
                         $('#vendor_subscription1').submit();
+                        //return true;
                     } else {
-                        $('#pnid').focus();
-                        $('#pnid').attr('placeholder', 'Phone Number is required').attr('style','background-color:rgb(218, 172, 172)');
+                        $('#mobile-number').focus();
+                        $('#mobile-number').attr('placeholder', 'Phone Number is required').attr('style','background-color:rgb(218, 172, 172)');
                         //alert('Phone Number is required');
                     }
                 } else {
-                    $('#passwordid').focus();
-                    $('#passwordid').attr('placeholder', 'Password is required').attr('style','background-color:rgb(218, 172, 172)');
+                    $('#password').focus();
+                    $('#password').attr('placeholder', 'Password is required').attr('style','background-color:rgb(218, 172, 172)');
                     //alert('Password is required');
                 }
                 
@@ -129,6 +134,9 @@
     });
     
     $(function () {
+        $('#companynameid').attr('autocomplete',"off");
+        $('#password').val('');
+        $('#mobile-number').val('');
         $('li.phone1').css({
             "margin-top": "15px",
             "font-size": "16px",

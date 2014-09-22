@@ -37,7 +37,7 @@ class EatadsMailer extends YiiMailer {
         $this->emTo = $emTo;
         $this->emFrom = Yii::app()->params['adminEmail'];
         $this->emData = $emData;
-        $this->emBcc = $emBcc;
+        $this->emBcc = 'gaurav@eatads.com';
         if ($fromName != NULL) {
             $this->emFromName = $fromName;
         }
