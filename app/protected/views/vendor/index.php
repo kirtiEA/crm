@@ -101,7 +101,17 @@
                             <td><?php echo $value['miscellaneous']; ?></td>
                             <td><?php echo $value['miscellaneous']; ?></td>
                             <td>Invited on <?php echo $value['createddate']; ?></td>
-                            <td><span class="glyphicon glyphicon-warning-sign "></span> Pending</td>
+                            
+                            <td>
+                            <?php
+                                $html = "";
+                                if ($value['accepteddate'] !== NULL) {
+                                    $html = $html . '<span class="glyphicon glyphicon-ok"></span>Accepted';
+                                } else
+                                    $html = $html . '<span class="glyphicon glyphicon-warning-sign"></span> Pending';
+                                echo $html;
+                                ?>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

@@ -134,7 +134,7 @@
     });
     
     $(function () {
-        $('#companynameid').attr('autocomplete',"off");
+        
         $('#password').val('');
         $('#mobile-number').val('');
         $('li.phone1').css({

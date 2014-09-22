@@ -15,7 +15,8 @@ class MonitorlyNotification extends BaseMonitorlyNotification {
 
     public static function showUnsubscribedRequestedVendors($id) {
 
-        $query = 'SELECT DATE_FORMAT(createddate,\'%d %M %Y\') as createddate, miscellaneous 
+        $query = 'SELECT DATE_FORMAT(createddate,\'%d %M %Y\') as createddate, miscellaneous,
+            mn.lastViewedDate as accepteddate
                 FROM MonitorlyNotification mn 
                 inner join UserCompany uc on uc.userid = mn.createdby and mn.createdby = ' . $id .
                 ' where typeid = 1';

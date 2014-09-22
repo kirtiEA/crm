@@ -55,11 +55,13 @@ class AccountController extends Controller {
     }
 
     public function actionPricing() {
-        $this->render('pricing');
+        $model = new LoginForm('signin');
+        $this->render('pricing',array('model' => $model));
     }
 
     public function actionContactus() {
-        $this->render('contactus');
+        $model = new LoginForm('signin');
+        $this->render('contactus',array('model' => $model));
     }
 
     public function actionSignup() {
@@ -76,9 +78,14 @@ class AccountController extends Controller {
         }
         
         $modelSub->nid = $nid;
+        
+        
+                $model = new LoginForm('signin');
+
         $this->render('signup', array('modelSub' => $modelSub,
             'vendorList' => json_encode($vendorList),
             'nid' => $nid,
+            array('model' => $model),
             'type' => 2));
     }
 
@@ -99,6 +106,7 @@ class AccountController extends Controller {
             if (isset($_POST['SubscriptionForm'])) {
                 //echo  $_POST['SubscriptionForm']['nid'] . ' fsdfsd';die();
                 if ($_POST['SubscriptionForm']['nid'] && strlen($_POST['SubscriptionForm']['email']) && filter_var($_POST['SubscriptionForm']['email'], FILTER_VALIDATE_EMAIL)) {
+                    $noti = MonitorlyNotification::model()->findByPk($_POST['SubscriptionForm']['nid']);
                   //check user with the email exists
                   $user = User::model()->findByAttributes(array('email' => $_POST['SubscriptionForm']['email'], 'status' =>1));
                   if (empty($user)) {
@@ -125,7 +133,40 @@ class AccountController extends Controller {
                             //role set role as 6
                             $role = Role::model()->findByPk(1);
 //                            UserRole::model()->insertRoles($model->id, $role->id);
-                            print_r(UserRole::model()->insertRoles($model->id, $role->id));die();
+                            UserRole::model()->insertRoles($model->id, $role->id);
+                           // User::model()->updateByPk($model->id, array('companyid' => $comp->id));
+                            Yii::app()->user->setFlash('success', 'User created successfully');
+                            $identity = new UserIdentity($model->email, $pwd);
+                            if ($identity->authenticate()) {
+                                $user = Yii::app()->user;
+                                $user->login($identity);
+                                /*
+                                 * update nid
+                                 * 
+                                 */
+                                MonitorlyNotification::model()->updateByPk($_POST['SubscriptionForm']['nid'], array('lastViewedDate' => date("Y-m-d H:i:s")));
+                                
+                                /*
+                                 * insert into requested vendor
+                                 */
+                                
+                                $model1 = new RequestedCompanyVendor();
+                                $model1->attributes = array(
+                                    'companyid' => $noti->companyid,
+                                    'createdby' => Yii::app()->user->id,
+                                    'createddate' => date("Y-m-d H:i:s"),
+                                    'vendorcompanyid' => Yii::app()->user->cid,
+                                    'acceptedby' => Yii::app()->user->id,
+                                    'accepteddate' => date("Y-m-d H:i:s"),
+                                );
+                                $model1->save();
+                                $resetlink = Yii::app()->getBaseUrl(true) . '/vendor';
+                                $vendorName = UserCompany::model()->findByPk(Yii::app()->user->cid);
+                                $emailToUser = User::model()->findByPk($noti->createdby);
+                                $mail = new EatadsMailer('request-accepted', $emailToUser->email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
+                                $mail->eatadsSend();
+                                $this->redirect(Yii::app()->getBaseUrl() .'/myCampaigns');
+                            }
                         } else {
                             $role = Role::model()->findByPk(1);//admin
                             //print_r($model);die();
@@ -147,6 +188,30 @@ class AccountController extends Controller {
                             if ($identity->authenticate()) {
                                 $user = Yii::app()->user;
                                 $user->login($identity);
+                                /*
+                                 * update nid
+                                 * 
+                                 */
+                                MonitorlyNotification::model()->updateByPk($_POST['SubscriptionForm']['nid'], array('lastViewedDate' => date("Y-m-d H:i:s")));
+                                /*
+                                 * insert into requested vendor
+                                 */
+                                
+                                $model1 = new RequestedCompanyVendor();
+                                $model1->attributes = array(
+                                    'companyid' => $noti->companyid,
+                                    'createdby' => Yii::app()->user->id,
+                                    'createddate' => date("Y-m-d H:i:s"),
+                                    'vendorcompanyid' => Yii::app()->user->cid,
+                                    'acceptedby' => Yii::app()->user->id,
+                                    'accepteddate' => date("Y-m-d H:i:s"),
+                                );
+                                $model1->save();
+                                $emailToUser = User::model()->findByPk($noti->createdby);
+                                $vendorName = UserCompany::model()->findByPk(Yii::app()->user->cid);
+                                $resetlink = Yii::app()->getBaseUrl(true) . '/vendor';
+                                $mail = new EatadsMailer('request-accepted', $emailToUser->email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
+                                $mail->eatadsSend();
                                 $this->redirect(Yii::app()->getBaseUrl() .'/myCampaigns');
                             } else {
                                 Yii::app()->user->setFlash('success', 'User already exists with this email');
