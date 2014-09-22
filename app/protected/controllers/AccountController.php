@@ -97,7 +97,6 @@ class AccountController extends Controller {
     public function actionCreateVendorAccount() {
 
             if (isset($_POST['SubscriptionForm'])) {
-                    print_r($_POST['SubscriptionForm']);die();
                 if ($_POST['SubscriptionForm']['nid'] && strlen($_POST['SubscriptionForm']['email']) && filter_var($_POST['SubscriptionForm']['email'], FILTER_VALIDATE_EMAIL)) {
                   //check user with the email exists
                   $user = User::model()->findByAttributes(array('email' => $_POST['SubscriptionForm']['email'], 'status' =>1));
