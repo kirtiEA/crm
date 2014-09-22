@@ -6243,3 +6243,166 @@ in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/layouts/co
 in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
 2014/09/22 10:29:25 [trace] [system.CModule] Loading "clientScript" application component
 in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
+2014/09/22 10:32:55 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:55 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:55 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:55 [trace] [system.db.ar.CActiveRecord] UserCompany.findAll()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (69)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:55 [trace] [system.CModule] Loading "db" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (69)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:55 [trace] [system.db.CDbConnection] Opening DB connection
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (69)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:55 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `UserCompany`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (69)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:55 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `UserCompany`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (69)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:55 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `UserCompany` `t`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (69)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:55 [trace] [system.db.ar.CActiveRecord] MonitorlyNotification.findByPk()
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (74)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:55 [trace] [system.db.CDbCommand] Querying SQL: SHOW FULL COLUMNS FROM `MonitorlyNotification`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (74)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:55 [trace] [system.db.CDbCommand] Querying SQL: SHOW CREATE TABLE `MonitorlyNotification`
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (74)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:55 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM `MonitorlyNotification` `t` WHERE `t`.`id`=1 LIMIT 1
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (74)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "themeManager" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (82)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/account/signup.php (21)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (82)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/account/signup.php (21)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (82)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "widgetFactory" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/account/signup.php (38)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (82)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "clientScript" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/account/signup.php (78)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/AccountController.php (82)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "coreMessages" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/static/css/bootstrap/glyphicons-halflings-regular.woff".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/static/c...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/themes/static/css/bootstrap/glyphicons-halflings-regular.woff
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/themes/static/css/application.css
+---
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (24)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (24)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "widgetFactory" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/layouts/column1.php (2)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "clientScript" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "coreMessages" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/static/images/ui-bg_highlight-soft_100_ffffff_1x100.png".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/static/i...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/themes/static/images/ui-bg_highlight-soft_100_ffffff_1x100.png
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/themes/static/css/application.css
+---
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (24)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (24)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "widgetFactory" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/layouts/column1.php (2)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "clientScript" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "coreMessages" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/static/css/bootstrap/glyphicons-halflings-regular.ttf".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/static/c...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/themes/static/css/bootstrap/glyphicons-halflings-regular.ttf
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/themes/static/css/application.css
+---
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (24)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (24)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "widgetFactory" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/layouts/column1.php (2)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "clientScript" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "log" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "request" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "urlManager" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "coreMessages" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php (27)
+2014/09/22 10:32:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/static/css/bootstrap/glyphicons-halflings-regular.svg".' in /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/static/c...')
+#1 /Applications/MAMP/htdocs/monitorly_webapp_new/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/monitorly_webapp_new/app/index.php(27): CApplication->run()
+#3 {main}
+REQUEST_URI=/monitorly_webapp_new/app/themes/static/css/bootstrap/glyphicons-halflings-regular.svg
+HTTP_REFERER=http://localhost:8888/monitorly_webapp_new/app/themes/static/css/application.css
+---
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "errorHandler" application component
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "user" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (24)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "session" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (24)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "widgetFactory" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/views/layouts/column1.php (2)
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
+2014/09/22 10:32:56 [trace] [system.CModule] Loading "clientScript" application component
+in /Applications/MAMP/htdocs/monitorly_webapp_new/app/protected/controllers/SiteController.php (77)
