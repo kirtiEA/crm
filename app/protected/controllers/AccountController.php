@@ -123,11 +123,11 @@ class AccountController extends Controller {
                             $model->companyid = $_POST['SubscriptionForm']['companyid'];
                              $model->save(false);
                             //role set role as 6
-                            $role = Role::model()->findByPk(6);
+                            $role = Role::model()->findByPk(1);
 //                            UserRole::model()->insertRoles($model->id, $role->id);
                             print_r(UserRole::model()->insertRoles($model->id, $role->id));die();
                         } else {
-                            $role = Role::model()->findByPk(5);//admin
+                            $role = Role::model()->findByPk(1);//admin
                             //print_r($model);die();
                             $model->save(false);
                             UserRole::model()->insertRoles($model->id, $role->id);
