@@ -27,7 +27,7 @@
                 <?php
                 $form = $this->beginWidget('CActiveForm', array(
                     'id' => 'vendor_subscription1',
-                    'action' => 'createvendor',
+                    'action' => 'createvendoraccount',
                     //'enableClientValidation' => true,
                     //    'clientOptions' => array(
                     //        'validateOnSubmit' => true,
@@ -38,19 +38,37 @@
                 ));
                 ?>
 <!--                        <input type="email" class="form-control" placeholder="Email">-->
-                <?php echo $form->emailField($modelSub, 'email', array('class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email')); ?>                            
-                <?php echo $form->error($modelSub, 'email'); ?>
+                <?php 
+                    if (!empty($modelSub->email)) {
+                        echo $form->emailField($modelSub, 'email', array('id' =>'emailid','class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email','disabled' => 'true'  ,'autocomplete' => 'off', 'value' =>$modelSub->email));                             
+                        echo $form->error($modelSub, 'email');    
+                    } else {
+                        echo $form->emailField($modelSub, 'email', array('id' =>'emailid','class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email'));                             
+                        echo $form->error($modelSub, 'email');
+                    }
+                ?>
+
 <!--                        <input type="text" class="form-control" placeholder="Company Name">-->
-                <?php echo $form->textField($modelSub, 'companyname', array('class' => 'form-control ', 'placeholder' => 'Company Name')); ?> 
-                <input type="hidden" value="" id="vendor-ac-id">
+                <?php echo $form->textField($modelSub, 'companyname', array('id' =>'companynameid','class' => 'form-control companyname', 'placeholder' => 'Company Name', 'autocomplete' => 'off')); ?> 
                 <?php echo $form->error($modelSub, 'companyname'); ?>
+                
+                <?php echo $form->hiddenField($modelSub, 'companyid', array('id' => 'vendor-ac-id')); ?>
+
+                        <?php echo $form->passwordField($modelSub, 'password', array('id' =>'passwordid','class' => 'form-control', 'placeholder' => 'Password', 'id' => 'password', 'autocomplete' => 'off')); ?>
+                        <?php echo $form->error($modelSub, 'password'); ?>
+                    
 <!--                        <input type="text" class="form-control" placeholder="+91">-->
 <!--                        <input  class="form-control intl-tel-input" placeholder="Mobile" id="mobile-number" type="tel">-->
-                <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number')); ?>                            
+                <?php echo $form->textField($modelSub, 'phonenumber', array('id' =>'pnid','max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
                 <?php echo $form->error($modelSub, 'phonenumber'); ?>
                 <br><br>
                 <?php echo $form->hiddenField($modelSub, 'nid', array('value' => $nid, 'id' => 'nid')); ?>
                 <?php echo $form->hiddenField($modelSub, 'type', array('value' => $type, 'id' => 'type')); ?>
+                <?php 
+                    if (!empty($modelSub->email)) {
+                        echo $form->hiddenField($modelSub, 'email',array('class' => 'form-control'));
+                    }
+                ?>
                 <?php // echo CHtml::submitButton('Sign Up for Free', array('class' => 'save btn btn-primary btn-primary-lg')); ?>
                 <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>
                 <br>
@@ -80,6 +98,36 @@
 </div>
 <!-- end of sign up content -->
 <script>
+    $('#vendor_subscription1').submit(function(event){
+        event.preventDefault();
+        if($('#emailid').val()) {
+            if($('#companynameid').val()) {
+                if($('#passwordid').val()) {
+                    if($('#pnid').val()) {
+                        $('#vendor_subscription1').submit();
+                    } else {
+                        $('#pnid').focus();
+                        $('#pnid').attr('placeholder', 'Phone Number is required').attr('style','background-color:rgb(218, 172, 172)');
+                        //alert('Phone Number is required');
+                    }
+                } else {
+                    $('#passwordid').focus();
+                    $('#passwordid').attr('placeholder', 'Password is required').attr('style','background-color:rgb(218, 172, 172)');
+                    //alert('Password is required');
+                }
+                
+            } else {
+                $('#companynameid').focus();
+                $('#companynameid').attr('placeholder', 'Company Name is Required').attr('style','background-color:rgb(218, 172, 172)');
+                //alert('Company Name is Required');
+            }
+        } else {
+            $('#emailid').focus();
+            $('#emailid').attr('placeholder', 'Email is required').attr('style','background-color:rgb(218, 172, 172)');
+            alert('Email is required');
+        }
+    });
+    
     $(function () {
         $('li.phone1').css({
             "margin-top": "15px",
@@ -88,5 +136,30 @@
             "margin-right": "10px"
         });
         $('#header_nav').removeClass('navbar-dark');
+    });
+        $(function () {
+
+//autocomplete for company name in vendor subscription form
+        var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
+//console.log(allVendorJson);
+        $('.companyname').autocomplete({
+            source: allVendorJson,
+            select: function (event, ui) {
+                console.log(ui.item.value + ', ' + ui.item.id);
+                $("#vendor-ac-id").val(ui.item.id);
+            },
+            change: function (event, ui) {
+                if (ui.item == null) {
+                    //$(".companyname").val('');
+                    $("#vendor-ac-id").val('');
+                    $(".companyname").focus();
+                }
+            },
+            messages: {
+                noResults: '',
+                results: function () {
+                }
+            },
+        })
     });
 </script>

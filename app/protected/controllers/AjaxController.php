@@ -295,7 +295,8 @@ class AjaxController extends Controller {
 
                 $invite->save();
                 $email = UserCompany::fetchVendorEmail($vendorId);
-                $mail = new EatadsMailer('approve-sites', $email['email'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
+                //$email['email']
+                $mail = new EatadsMailer('approve-sites', 'gaurav@eatads.com', array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
                 $mail->eatadsSend();
             }
 
@@ -835,6 +836,13 @@ class AjaxController extends Controller {
     public function actionApproveListingRequest() {
         if ($_POST['id']) {
             Listing::updateListing($_POST['id']);
+//                    $invite = new MonitorlyNotification();
+//        $invite->attributes = array('typeid' => "", 'createddate' => date("Y-m-d H:i:s"), 'createdby' => Yii::app()->user->cid, 'emailtypeid' => 4);
+//        $invite->save();
+//        $email = "";
+//        $mail = new EatadsMailer('site-accepted', $email, array('resetLink' => ""), array('sales@eatads.com'));
+//        $mail->eatadsSend();
+
         }
     }
 
