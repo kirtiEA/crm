@@ -2,7 +2,7 @@
 
 class AccountController extends Controller {
 
-    public function init() {
+    public function init() {        
         Yii::app()->theme = 'static';
         $this->layout = "//layouts/static_page";
     }
