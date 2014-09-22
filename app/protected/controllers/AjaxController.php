@@ -779,6 +779,7 @@ class AjaxController extends Controller {
             $vcid = $_POST['vendorcompanyid'];
             $id = $_POST['id'];
             $email = $_POST['emailid'];
+            
             //echo $email; die();
             $model = RequestedCompanyVendor::model()->findByPk($id);
             $model->acceptedby = $vcid;
@@ -796,8 +797,12 @@ class AjaxController extends Controller {
             $invite->save();
             $mail = new EatadsMailer('request-accepted', $email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
             $mail->eatadsSend();
-            $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
+            $getUserId = User::model()->findByAttributes(array('email' => $email));
+            //print_r($getUserId['id']); die();
+            //print_r($getUserId);
+            $getName = UserCompany::model()->findByAttributes(array('userid' => $getUserId['id']));
             $agencyName = $getName['name'];
+            //print_r($agencyName); die();
             $inviteVendors = Yii::app()->getBaseUrl(true) . '/vendor';
             //print_r($inviteVendors); die();
             $mail = new EatadsMailer('invite-accepted', Yii::app()->user->email, array('resetLink' => $inviteVendors, 'agencyName' => $agencyName), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
