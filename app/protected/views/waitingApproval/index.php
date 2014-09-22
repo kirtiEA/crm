@@ -127,7 +127,7 @@
             source: allVendorJson,
             minLength: 3,
             select: function(event, ui) {
-                console.log(ui.item.value + ', ' + ui.item.id);
+                //console.log(ui.item.value + ', ' + ui.item.id);
                 $(".vendor-ac-id").val(ui.item.id);
 
             },
@@ -172,7 +172,7 @@
         var vcid = $(this).siblings('.vendorcompanyid').val();
         var id = $(this).siblings('.id').val();
         var email = $(this).siblings('.emailid').val();
-        console.log(vcid + ' ' + id+' '+email);
+        //console.log(vcid + ' ' + id+' '+email);
         $.ajax({
             type: 'POST',
             url: $('#completePath').text() + '/ajax/AcceptRequest',

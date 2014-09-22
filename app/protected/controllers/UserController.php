@@ -101,7 +101,7 @@ class UserController extends Controller {
                     Yii::app()->user->setFlash('error', 'Space is not allowed in User Name');
                     Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
                 } else {
-                    Yii::app()->user->setFlash('success', 'All Fields are required');
+                    Yii::app()->user->setFlash('success', 'Please enter feilds in correct format');
                     Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
                 }
             } elseif (strlen($_POST['User']['username']) == 0 && strlen($_POST['User']['password']) == 0 && (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10)) {
