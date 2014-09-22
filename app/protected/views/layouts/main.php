@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
-        
+
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>Monitorly</title>
@@ -24,17 +24,17 @@
     <style>
         .notification {
             width: 40px;
-height: 40px;
-background-size: cover;
-display: block;
--webkit-border-radius: 100px;
--moz-border-radius: 100px;
--ms-border-radius: 100px;
--o-border-radius: 100px;
-border-radius: 100px;
-font-size: 1.7em;
+            height: 40px;
+            background-size: cover;
+            display: block;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+            -ms-border-radius: 100px;
+            -o-border-radius: 100px;
+            border-radius: 100px;
+            font-size: 1.7em;
         }
-        
+
     </style>
     <body class="full static">
 
@@ -73,34 +73,34 @@ font-size: 1.7em;
                                 <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
                             </ul>
                         </li>
-<!--                        <li class="dropdown">
-                            <?php 
+                        <!--                        <li class="dropdown">
+                        <?php
 //                                $cnt = JoyUtilities::findUnseenNotificationsCount(Yii::app()->user->cid);
 //                                if($cnt == 0) {
 //                                    echo '<div class="notification glyphicon glyphicon-bell"></div>';
 //                                } else {
 //                                    echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="fetchNotifications();" ><div class="notification glyphicon glyphicon-bell" style="color: coral;" ></div></a>';
 //                                }    
-                            ?>
-                            <ul class="dropdown-menu" id="notificationCenter">
-                                <li><a href="#">Settings</a></li>
-                                <li><a href="<?php //echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
-                            </ul>
-                        </li>-->
+                        ?>
+                                                    <ul class="dropdown-menu" id="notificationCenter">
+                                                        <li><a href="#">Settings</a></li>
+                                                        <li><a href="<?php //echo Yii::app()->urlManager->createUrl('account/logout');  ?>">Logout</a></li>
+                                                    </ul>
+                                                </li>-->
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
         <?php if (Yii::app()->user->hasFlash('success')) { ?>
             <div id="flash-messages" class="alert alert-success alert-dismissible">
-                    <?php echo Yii::app()->user->getFlash('success'); ?>
-                
+                <?php echo Yii::app()->user->getFlash('success'); ?>
+
             </div>
         <?php } ?>
         <?php if (Yii::app()->user->hasFlash('error')) { ?>
             <div id="flash-messages" class="alert alert-success alert-dismissible">
-                    <?php echo Yii::app()->user->getFlash('error'); ?>
-               
+                <?php echo Yii::app()->user->getFlash('error'); ?>
+
             </div>
         <?php } ?>
         <div style="display: none" id="completePath"><?php echo Yii::app()->getBaseUrl(true); ?></div>
