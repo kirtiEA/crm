@@ -1,3 +1,4 @@
+<?php $this->widget('LoginModal'); ?>
 <!-- pricing content -->
 <div class="row pricing-content">
     <div class="col-md-12">

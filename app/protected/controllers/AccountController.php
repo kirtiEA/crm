@@ -9,34 +9,7 @@ class AccountController extends Controller {
 
     public function actionIndex() {
         $returnUrlParam = Yii::app()->request->getQuery('rurl');
-        $forgotPwdCode = Yii::app()->request->getQuery('code');
-
-        $model = new LoginForm('signin');
-        //$model->setscenario('signin');   // set scenario for rules validation
-        // if it is ajax validation request
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
-
-        $status = 200;
-        // collect user input data
-        if (isset($_POST['LoginForm'])) {
-            $model->attributes = $_POST['LoginForm'];
-            // validate user input and redirect to the previous page if valid
-
-            if ($model->validate() && $model->login()) {
-                if (!empty($returnUrlParam)) {
-                    $this->redirect($returnUrlParam);
-                } else {
-                    JoyUtilities::redirectUser(Yii::app()->user->id);
-                    $this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');
-                }
-            } else {
-                $status = 101;
-            }
-        }
-
+        $forgotPwdCode = Yii::app()->request->getQuery('code');       
 
         $modelSub = new MonitorlySubscription();
         $vendorList = array();
@@ -48,8 +21,7 @@ class AccountController extends Controller {
 
         $this->render('index', array('modelSub' => $modelSub,
             'vendorList' => json_encode($vendorList),
-            'nid' => $nid,
-            'model' => $model, 'status' => $status,
+            'nid' => $nid,                        
             'forgotPwdCode' => $forgotPwdCode,
             'type' => 1));
     }
@@ -105,7 +77,8 @@ class AccountController extends Controller {
 
             if (isset($_POST['SubscriptionForm'])) {
                 //echo  $_POST['SubscriptionForm']['nid'] . ' fsdfsd';die();
-                if ($_POST['SubscriptionForm']['nid'] && strlen($_POST['SubscriptionForm']['email']) && filter_var($_POST['SubscriptionForm']['email'], FILTER_VALIDATE_EMAIL)) {
+                if (strlen($_POST['SubscriptionForm']['email']) && filter_var($_POST['SubscriptionForm']['email'], FILTER_VALIDATE_EMAIL)) {
+                    //$_POST['SubscriptionForm']['nid'] && 
                     $noti = MonitorlyNotification::model()->findByPk($_POST['SubscriptionForm']['nid']);
                   //check user with the email exists
                   $user = User::model()->findByAttributes(array('email' => $_POST['SubscriptionForm']['email'], 'status' =>1));

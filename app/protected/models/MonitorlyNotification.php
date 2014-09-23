@@ -19,7 +19,7 @@ class MonitorlyNotification extends BaseMonitorlyNotification {
             mn.lastViewedDate as accepteddate
                 FROM MonitorlyNotification mn 
                 inner join UserCompany uc on uc.userid = mn.createdby and mn.createdby = ' . $id .
-                ' where typeid = 1';
+                ' where typeid = 1 and mn.lastViewedDate is null';
 
         return Yii::app()->db->createCommand($query)->queryAll();
     }
@@ -29,7 +29,7 @@ class MonitorlyNotification extends BaseMonitorlyNotification {
         $query = 'SELECT miscellaneous 
                 FROM MonitorlyNotification mn 
                 inner join UserCompany uc on uc.userid = mn.createdby and mn.createdby = ' . $id .
-                ' where typeid = 1';
+                ' where typeid = 1 and mn.lastViewedDate is null';
 
         return Yii::app()->db->createCommand($query)->queryAll();
     }
@@ -38,7 +38,7 @@ class MonitorlyNotification extends BaseMonitorlyNotification {
         $query = 'SELECT count(*)as cnt
                 FROM MonitorlyNotification mn 
                 inner join UserCompany uc on uc.userid = mn.createdby and mn.createdby = ' . $id .
-                ' where typeid = 1 and miscellaneous like \'' . $email . '\'';
+                ' where typeid = 1 and mn.lastViewedDate is null and miscellaneous like \'' . $email . '\'';
         return Yii::app()->db->createCommand($query)->queryRow();
     }
     

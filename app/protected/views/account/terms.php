@@ -73,6 +73,9 @@
  	<br>
 	<p>These Terms are governed by the laws of Singapore without reference to the principles of conflicts of laws thereof</p>
 	<br>
+
+<?php $this->widget('LoginModal'); ?>
+
 </div>
 <script>
     $(function(){

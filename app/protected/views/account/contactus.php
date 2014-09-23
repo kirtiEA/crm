@@ -1,3 +1,4 @@
+<?php $this->widget('LoginModal'); ?>
 <div class="row contactus-content">
     <div class="col-md-12">
         <div class="contactus-content-headings">

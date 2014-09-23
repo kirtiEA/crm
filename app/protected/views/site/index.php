@@ -6,7 +6,7 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/ng-infinite-scroll.min.js"></script>
 
-        <script src="http://maps.google.com/maps/api/js?sensor=false" 
+        <script src="https://maps.google.com/maps/api/js?sensor=false" 
           type="text/javascript"></script>
 <!--        <script type="text/javascript" src="<?php //echo Yii::app()->request->baseUrl; ?>/js/map.js"></script>-->
         
