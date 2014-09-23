@@ -835,6 +835,7 @@ class AjaxController extends Controller {
             $mail = new EatadsMailer('remind-all', $value['miscellaneous'], array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
             $mail->eatadsSend();
         }
+        Yii::app()->user->setFlash('success', 'Reminder mail sent');
         echo '200';
     }
 
