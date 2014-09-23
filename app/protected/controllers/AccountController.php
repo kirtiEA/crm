@@ -77,7 +77,8 @@ class AccountController extends Controller {
 
             if (isset($_POST['SubscriptionForm'])) {
                 //echo  $_POST['SubscriptionForm']['nid'] . ' fsdfsd';die();
-                if ($_POST['SubscriptionForm']['nid'] && strlen($_POST['SubscriptionForm']['email']) && filter_var($_POST['SubscriptionForm']['email'], FILTER_VALIDATE_EMAIL)) {
+                if (strlen($_POST['SubscriptionForm']['email']) && filter_var($_POST['SubscriptionForm']['email'], FILTER_VALIDATE_EMAIL)) {
+                    //$_POST['SubscriptionForm']['nid'] && 
                     $noti = MonitorlyNotification::model()->findByPk($_POST['SubscriptionForm']['nid']);
                   //check user with the email exists
                   $user = User::model()->findByAttributes(array('email' => $_POST['SubscriptionForm']['email'], 'status' =>1));
