@@ -820,7 +820,7 @@ class AjaxController extends Controller {
         $remindAllEmails = RequestedCompanyVendor::showRequestedVendorsEmail($companyid);
         foreach ($remindAllEmails as $value) {
             //echo $value['vendoradmin'];
-            $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
+            $resetlink = Yii::app()->getBaseUrl(true) . '/vendor';
             $mail = new EatadsMailer('remind-all', $value['vendoradmin'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
             $mail->eatadsSend();
         }
@@ -831,7 +831,7 @@ class AjaxController extends Controller {
 
             $nid = MonitorlyNotification::model()->findByAttributes(array('miscellaneous' => $value['miscellaneous']));
             //print_r($nid['id']);
-            $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $nid['id'];
+            $resetLink = Yii::app()->getBaseUrl(true) . '/account/signup?nid=' . $nid['id'];
             $mail = new EatadsMailer('remind-all', $value['miscellaneous'], array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
             $mail->eatadsSend();
         }

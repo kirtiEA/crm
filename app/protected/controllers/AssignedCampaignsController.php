@@ -2,6 +2,12 @@
 
 class AssignedCampaignsController extends Controller
 {
+    
+    public function init() {
+        if (Yii::app()->user->isGuest) {
+            $this->redirect(Yii::app()->createUrl('account'));
+        }
+    }
 		public function actionExpired()
 	{
             
