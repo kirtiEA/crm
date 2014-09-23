@@ -1,3 +1,4 @@
+<?php $this->widget('LoginModal'); ?>
 <!-- sign up content -->
 <div class="row signup-content">
     <div class="col-md-12">

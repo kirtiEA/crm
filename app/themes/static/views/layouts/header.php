@@ -63,7 +63,12 @@
                         </li>
                         <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/pricing'); ?>">Pricing</a></li>
                         <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/contactus'); ?>">Contact Us</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#modal-login">Login</a></li>
+                        <?php if(Yii::app()->user->isGuest) { ?>
+                            <li><a href="#" data-toggle="modal" data-target="#modal-login">Login</a></li>
+                            
+                        <?php } else { ?>
+                            <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
+                        <?php } ?>
                         <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/signup'); ?>">Sign Up</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
