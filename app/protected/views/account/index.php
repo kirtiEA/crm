@@ -120,9 +120,9 @@
 <!-- hero section -->
 <div class="row hero-section">
     <div class="col-md-12">
-        <h1>Tamper-proof, Efficient OOH Monitoring</h1>
-        <h3>Save costs and delight clients by sharing certified OOH campaign photos online, instantly using Monitorly mobile app</h3>
-        <h4><span class="dashed-line"></span> First 100 Photos Free <span class="dashed-line"></span></h4>
+        <h1>OOH Proof, Monitoring & Reporting made Easy</h1>
+        <h3>Delight clients by capturing & instantly sharing campaign reports using the Monitorly mobile app. Save time, get paid. Certified by EatAds. </h3>
+        <h4><span class="dashed-line"></span> 100 images free (limited offer) <span class="dashed-line"></span></h4>
         <?php if (Yii::app()->user->hasFlash('success')) { ?>
             <div id="flash-messages" class="alert alert-success alert-dismissible">
                 <?php echo Yii::app()->user->getFlash('success'); ?>
@@ -173,7 +173,7 @@
 <!-- process steps in monitorly -->
 <div class="row process-steps">
     <div class="col-md-12">
-        <h2>5 Steps to Take All Your Monitoring Pain Away</h2>
+        <h2>2 Steps to Take All Your Monitoring Pain Away</h2>
         <img class="img-responsive" src="<?php echo $theme->getBaseUrl(); ?>/images/process-steps.png">
     </div>
 </div>
@@ -195,41 +195,25 @@
         <hr>
         <h1>How Monitorly Does It?</h1>
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-8 col-md-offset-2">
                 <ul>
                     <li>
-                        <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-dummy.png">
-                        <h2>Build Trust</h2>
-                        <p>Get confidence in the campaign photos with timestamped, geo-tagged, certified images</p>
+                        <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-benefit-1.png">
+                        <h2>Easy to Use</h2>
+						<br>
+                        <p class="selling-point-desc">Designed for simple set-up and use. Monitorly gets your team and partners in the office and around the country, set-up in an hour.  </p>
                     </li>
                     <li>
-                        <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-dummy.png">
-                        <h2>Manage Monitoring Easily</h2>
-                        <p>Create and manage monitoring plan and assign tasks easily using our online dashboard</p>
+                        <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-benefit-2.png">
+                        <h2>Get Paid, Save Time</h2>
+						<br>
+                        <p class="selling-point-desc">Delight your clients, build trust and save time with Automatic Reporting. And with Certified Images, all your campaign images are time-stamped and geo-tagged so your clients can make payment with complete confidence. </p>
                     </li>
                     <li>
-                        <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-dummy.png">
-                        <h2>Share Reports</h2>
-                        <p>Share online interactive report or generate a PDF report instantly in our Reports section</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-5 col-md-offset-2">
-                <ul>
-                    <li>
-                        <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-dummy.png">
-                        <h2>Report in Seconds</h2>
-                        <p>Upload photos from field and auto-generate reports to reduce reporting time to few seconds</p>
-                    </li>
-                    <li>
-                        <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-dummy.png">
-                        <h2>Get Problem Alerts</h2>
-                        <p>Receive instant email alerts with problem details if there’s problem with any site</p>
-                    </li>
-                    <li>
-                        <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-dummy.png">
-                        <h2>Operate Without Internet</h2>
-                        <p>Use the app seamlessly even with no network connectivity using our auto-sync feature</p>
+                        <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-benefit-3.png">
+                        <h2>Certified, Anywhere</h2>
+						<br>
+                        <p class="selling-point-desc">Certified images can be captured anywhere with Offline mode (and image auto-sync). Any site, anywhere, even away from network connectivity. </p>
                     </li>
                 </ul>
             </div>
