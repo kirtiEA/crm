@@ -1,3 +1,4 @@
+<?php $this->widget('LoginModal'); ?>
 <?php
 /* @var $this AccountController */
 
