@@ -2,7 +2,7 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-helpers-1.1.1.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/listings.js"></script>
 
-<script src="http://maps.google.com/maps/api/js?sensor=false" 
+<script src="https://maps.google.com/maps/api/js?sensor=false" 
           type="text/javascript"></script>
 <script>
     $(document).ready(function(){
@@ -81,7 +81,7 @@
 <div class="col-md-4" id="site-list-container" style="height: 700px;" ng-controller = "DemoController">
     <div class="list-container">
                 <div class="action-buttons">
-                    <button class="btn btn-primary" onclick="location.href='<?php echo Yii::app()->urlManager->createUrl('site/addvendor'); ?>'">Add Vendors Sites</button>
+                    <button class="btn btn-primary" onclick="location.href='<?php echo Yii::app()->urlManager->createUrl('site/addvendor'); ?>'">Add Sites</button>
                 </div>
 <!--                <div class="list-tools">
                     <ul>

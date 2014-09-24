@@ -169,7 +169,7 @@ class SiteController extends Controller {
     }
     
     public function actionMySites() {
-         $data = Listing::getListingsForAcceptedVendors(Yii::app()->user->cid, 0);
+         $data = Listing::getListingsForCompanyNew(Yii::app()->user->cid, 0);
            $arr = array();
             foreach ($data as $key => $value) {
                 $result = array();

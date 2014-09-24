@@ -117,7 +117,7 @@
 <div class="col-md-4" id="site-list-container" style="height: 700px;" ng-controller = "DemoController">
     <div class="list-container">
                 <div class="action-buttons">
-                    <button class="btn btn-primary" onclick="location.href='<?php echo Yii::app()->urlManager->createUrl('site/addvendor'); ?>'">Add Vendors Sites</button>
+                    <button class="btn btn-primary" onclick="location.href='<?php echo Yii::app()->urlManager->createUrl('site/addvendor'); ?>'">Add Sites</button>
                 </div>
                 <div class="list-tools">
                     <ul>

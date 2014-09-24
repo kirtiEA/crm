@@ -294,7 +294,7 @@ class AjaxController extends Controller {
                 $invite->attributes = array('typeid' => 4, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $vendorId, 'emailtypeid' => 4);
                 $invite->companyid = Yii::app()->user->cid;
                 $invite->notifiedcompanyid = $vendorId;
-
+                $invite->createdby = Yii::app()->user->id;
                 $invite->save();
                 $email = UserCompany::fetchVendorEmail($vendorId);
                 //$email['email']

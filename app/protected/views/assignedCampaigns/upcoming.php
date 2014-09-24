@@ -145,14 +145,14 @@
             <h1 class="list-heading">Campaign List (<?php echo count($campaigns)?>)</h1>
             <ul class="list">
             <?php 
+            //<button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Change Site Assignment</button>&nbsp;
                 $html = '';
                 foreach ($campaigns as $value) {
                 $html = $html . '            <li class="list-item" id="camp_'. $value['id'] .'">
                 <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
                  . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3>' .
                   '<div class="pull-right">
-                      <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Change Site Assignment </button>
-                    &nbsp;
+                      
                     <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
                     &nbsp;
                         <button class="btn btn-secondary" data-toggle="modal" data-target="#add-site-modal" onclick="fetchvendors(\''. $value['name'] .'\', \''.$value['id'] .'\');"><span class="glyphicon glyphicon-plus"></span> Add Sites</button>
@@ -177,10 +177,10 @@ if (strcasecmp($site['id'], Yii::app()->user->cid) != 0) {
                         foreach ($site['listings'] as $list) {
                             $html = $html . '<li>' . $list['name'] . ', ' . $list['mediatype'] . ', '
                                     . $list['locality'] . '&nbsp; <span onclick="removeListingFromCampaignd(\'' . $list['id'] .'\', \'' . $value['id'] .'\');" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_'.$list['id'].'"></span></li>';
-                            if(!empty($list['assignedusers'])) {
-                                $html = $html . '<div class="assign-dropdown">Assigned to ' . json_encode($list['assignedusers'])
-                                    . '</div>';
-                            }
+//                            if(!empty($list['assignedusers'])) {
+//                                $html = $html . '<div class="assign-dropdown">Assigned to ' . json_encode($list['assignedusers'])
+//                                    . '</div>';
+//                            }
                         }
                         $html = $html . '</ul></li>';
                     }

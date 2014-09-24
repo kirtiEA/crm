@@ -55,7 +55,7 @@
                 
                 <?php echo $form->hiddenField($modelSub, 'companyid', array('id' => 'vendor-ac-id')); ?>
 
-                        <?php echo $form->passwordField($modelSub, 'password', array('id' => 'password','class' => 'form-control', 'placeholder' => 'Password', 'autocomplete' => 'off', 'style' => 'width:300px;')); ?>
+                        <?php echo $form->passwordField($modelSub, 'password', array('id' => 'password','class' => 'form-control', 'placeholder' => 'Password', 'style' => 'width:300px;')); ?>
                         <?php echo $form->error($modelSub, 'password'); ?>
                     
 <!--                        <input type="text" class="form-control" placeholder="+91">-->
@@ -89,11 +89,12 @@
     $('#signup').on('click',function(event){
         event.preventDefault();
         if($('#emailid').val()) {
-//            console.log('1');
+            console.log('1');
             if($('#companynameid').val()) {
-  //              console.log('2');
-                if($('#password').val()) {
-    //                console.log('3');
+                console.log('2 ds ' + $('#password').val());
+                
+                if($("input[name='SubscriptionForm[password]']" ).val()) {
+                    console.log('3');
                     if($('#mobile-number').val()) {
                         console.log('4');
                         $('#vendor_subscription1').submit();
@@ -104,8 +105,8 @@
                         //alert('Phone Number is required');
                     }
                 } else {
-                    $('#password').focus();
-                    $('#password').attr('placeholder', 'Password is required').attr('style','background-color:rgb(218, 172, 172)');
+                    $( "input[name='SubscriptionForm[password]']" ).focus();
+                    $( "input[name='SubscriptionForm[password]']" ).attr('placeholder', 'Password is required').attr('style','background-color:rgb(218, 172, 172)');
                     //alert('Password is required');
                 }
                 

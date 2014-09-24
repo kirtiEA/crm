@@ -2,9 +2,19 @@
 
 class AccountController extends Controller {
 
-    public function init() {        
-        Yii::app()->theme = 'static';
-        $this->layout = "//layouts/static_page";
+    public function init() {
+        if (Yii::app()->user->isGuest || Yii::app()->controller->id == 'account') {
+            Yii::app()->theme = 'static';
+            $this->layout = "//layouts/static_page";
+            if (!Yii::app()->user->isGuest) {
+                Yii::app()->user->logout();
+            }
+        } 
+        else {
+            $this->redirect(Yii::app()->createUrl('myCampaigns')); 
+        }
+//        Yii::app()->theme = 'static';
+//        $this->layout = "//layouts/static_page";
     }
 
     public function actionIndex() {
