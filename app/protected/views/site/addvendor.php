@@ -32,7 +32,7 @@
 <div class="container-fluid content-wrapper content-wrapper-custom">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="list-heading">Add Vendors Sites</h1>
+            <h1 class="list-heading">Add Sites</h1>
             <label>Select Vendor </label>
             <input type="text" placeholder="Enter a Vendor Name" id="vendor-ac">
             <input type="hidden" value="" id="vendor-ac-id">
