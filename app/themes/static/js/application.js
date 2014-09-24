@@ -8,11 +8,11 @@ $(document).ready(function() {
     //click on Add Vendors Sites button
     
     $('.js-signup-btn').click(function(e) {
-        window.location.href = 'signup.html';
+        window.location.href =  $('#completePath').text() + '/account/signup';
     });
     
     $('.js-contactus-btn').click(function(e) {
-        window.location.href = 'contactus.html';
+        window.location.href = $('#completePath').text() + '/account/contactus';
     });
     
     $('.js-signup-btn-scrolltop').click(function() {
