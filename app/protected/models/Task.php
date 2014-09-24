@@ -68,4 +68,12 @@ if ($date != null) {
         $sql = 'Select siteid from Task where status = 1 and campaignid = ' . $cid;
         return Yii::app()->db->createCommand($sql)->queryAll();
     }
+    
+    public static function fetcUsersAssignedToSite($siteid, $campaignid,$companyid) {
+        $sql = 'select u.id,u.username from Task 
+        inner join User u on u.id = assigneduserid
+        where siteid = ' . $siteid . ' and campaignid = '. $campaignid .' and  assignedCompanyId = ' . $companyid .'
+        group by u.id';
+        return Yii::app()->db->createCommand($sql)->queryAll();
+    }
 }
