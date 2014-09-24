@@ -68,7 +68,7 @@
 		                        <?php }
 						} else { ?>
 	                        <li class="phone1"><span class="glyphicon glyphicon-phone-alt">&nbsp;</span>+91 11 4132 0334</li>
-							<li><a href="https://play.google.com/store/apps/details?id=com.monitorly.monitorlyv05" target="_blank">Download App</a></li>
+							<li><a href="https://play.google.com/store/apps/details?id=com.monitorly.monitorlyv05" target="_blank" class="download-app-link">Download App</a></li>
 	                        <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/contactus'); ?>">Contact Us</a></li>
 	                        <?php if(Yii::app()->user->isGuest) { ?>
 	                            <li><a href="#" data-toggle="modal" data-target="#modal-login">Login</a></li>
