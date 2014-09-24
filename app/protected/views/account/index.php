@@ -157,6 +157,8 @@
         //$('#modal-login').modal('show');
         //$('#modal-forgotpassword').modal('show');               
 
+		$('#static_logo').removeClass('logo-on-lightbcg');
+		$('#static_logo').addClass('logo-on-darkbcg');
         var fpc = '<?php echo $forgotPwdCode; ?>';
         if (fpc) {
             //console.clear();

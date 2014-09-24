@@ -53,7 +53,9 @@
     </div>
 </div>
 <script>
-    $(function() {        
+    $(function() {    
+		$('#static_logo').removeClass('logo-on-darkbcg');
+		$('#static_logo').addClass('logo-on-lightbcg');    
         $('li.phone1').css({
             "margin-top": "15px",
             "font-size": "16px",
