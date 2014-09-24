@@ -3,10 +3,10 @@
 <div class="row signup-content">
     <div class="col-md-12">
         <div class="signup-content-headings">
-            <h1>OOH Proof, Monitoring &amp; Reporting made Easy</h1>
+            <h1>Sign-up for Monitorly</h1>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-6 col-sm-6 col-md-offset-3">
                 <!--                <form class="form" role="form">
                                     <input type="email" class="form-control" placeholder="Email">
                                     <input type="text" class="form-control" placeholder="Company Name">
@@ -38,7 +38,7 @@
                 ?>
 <!--                        <input type="email" class="form-control" placeholder="Email">-->
 				<div class="signup-form-wrap">
-					<h2>Sign-up in Seconds</h2><br>
+					<div class="signup-form">
                 <?php 
                     if (!empty($modelSub->email)) {
                         echo $form->emailField($modelSub, 'email', array('id' =>'emailid','class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email','disabled' => 'true'  ,'autocomplete' => 'off', 'value' =>$modelSub->email));                             
@@ -76,15 +76,10 @@
                 <h5>No Credit Card required</h5>
 
                 <h5>By signing-up you agree to <a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>" target="_blank">Terms &amp; Conditions</a></h5>
+					</div>
 				</div>
                 <?php $this->endWidget(); ?>
 
-            </div>
-            <div class="col-md-6 col-sm-6">
-                <div class="value-propositions">
-					<br><br>
-                    <img class="img-responsive" src="../images/process-steps.png">
-                </div>
             </div>
         </div>
     </div>

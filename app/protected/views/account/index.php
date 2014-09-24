@@ -82,7 +82,7 @@
         <h5>By signing-up you agree to <a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>" target="_blank">Terms &amp; Conditions</a></h5>
         <?php $this->endWidget(); ?>
 
-        <div><a class="pricing-link" href="pricing.html">Know More About Pricing &amp; Plan</a></div>
+        <!--<div><a class="pricing-link" href="pricing.html">Know More About Pricing &amp; Plan</a></div>-->
     </div>
 </div>
 <!-- end of hero section -->
@@ -134,6 +134,7 @@
                     </li>
                 </ul>
             </div>
+			<!--
             <div class="row pricing-preview">
                 <div class="col-md-12">
                     <h2>No Nonsense Pay-As-You-Go Pricing</h2>
@@ -145,7 +146,7 @@
                     <button class="btn btn-primary btn-primary-lg js-signup-btn-scrolltop">Sign Up for Free</button>
                     <h5>No Credit Card required</h5>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>
