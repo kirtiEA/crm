@@ -143,7 +143,7 @@ class AccountController extends Controller {
                                     'accepteddate' => date("Y-m-d H:i:s"),
                                 );
                                 $model1->save();
-                                $resetlink = Yii::app()->getBaseUrl(true) . '/vendor';
+                                $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
                                 $vendorName = UserCompany::model()->findByPk(Yii::app()->user->cid);
                                 $emailToUser = User::model()->findByPk($noti->createdby);
                                 $mail = new EatadsMailer('request-accepted', $emailToUser->email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);

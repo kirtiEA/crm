@@ -57,7 +57,8 @@
 
                         <?php echo $form->passwordField($modelSub, 'password', array('id' => 'password','class' => 'form-control', 'placeholder' => 'Password', 'style' => 'width:300px;')); ?>
                         <?php echo $form->error($modelSub, 'password'); ?>
-                    
+                                            <input type="password" class="form-control" placeholder="Confirm Password" style="width: 300px;" id="cnf_password">
+                                                
 <!--                        <input type="text" class="form-control" placeholder="+91">-->
 <!--                        <input  class="form-control intl-tel-input" placeholder="Mobile" id="mobile-number" type="tel">-->
                 <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
@@ -95,15 +96,29 @@
                 
                 if($("input[name='SubscriptionForm[password]']" ).val()) {
                     console.log('3');
-                    if($('#mobile-number').val()) {
-                        console.log('4');
-                        $('#vendor_subscription1').submit();
-                        //return true;
+                    
+                    if ($('#cnf_password').val()) {
+                     if ($('#cnf_password').val() == $("input[name='SubscriptionForm[password]']" ).val()) {
+                         if($('#mobile-number').val()) {
+                            console.log('4');
+                            $('#vendor_subscription1').submit();
+                            //return true;
+                        } else {
+                            $('#mobile-number').focus();
+                            $('#mobile-number').attr('placeholder', 'Phone Number is required').attr('style','background-color:rgb(218, 172, 172)');
+                            //alert('Phone Number is required');
+                        }
+                     }  else {
+                         $('#cnf_password').focus();
+                         $('#cnf_password').val('');
+                        $('#cnf_password').attr('placeholder', 'Confirm Password does not match your password').attr('style','background-color:rgb(218, 172, 172)');
+                     } 
+                        
                     } else {
-                        $('#mobile-number').focus();
-                        $('#mobile-number').attr('placeholder', 'Phone Number is required').attr('style','background-color:rgb(218, 172, 172)');
-                        //alert('Phone Number is required');
+                        $('#cnf_password').focus();
+                        $('#cnf_password').attr('placeholder', 'Confirm your password').attr('style','background-color:rgb(218, 172, 172)');
                     }
+                    
                 } else {
                     $( "input[name='SubscriptionForm[password]']" ).focus();
                     $( "input[name='SubscriptionForm[password]']" ).attr('placeholder', 'Password is required').attr('style','background-color:rgb(218, 172, 172)');
