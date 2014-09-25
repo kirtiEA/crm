@@ -45,7 +45,7 @@
                 <h3 class="modal-title">Set Your Password</h3>
             </div>
             <div class="modal-body">
-                <div class="alert alert-warning" id="set_warning" hidden="true"><span id="set_err_msg"></span></div>
+                <div class="alert alert-warning" id="set_warning" style="display: none;" ><span id="set_err_msg"></span></div>
                 <div class="form-wrap" id="set_modal_form">
                     <h4>Provide your password below.</b></h4>
                     <br>
@@ -350,8 +350,13 @@
                     success: function (data) {
                         //console.log('hi');
                         //console.log(data);
-                        if(data ==1){
+                        if(data == 1){
                             window.location=$('#completePath').text() + '/myCampaigns';
+                        }
+                        else if(data == 2){
+                            window.location=$('#completePath').text();
+                            $('#set_modal_form').hide();
+                            $('#set_err_msg').html("Your password link has expired.");
                         }
                         if (data == 5) {
                             // login and redirect from server
