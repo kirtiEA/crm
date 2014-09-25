@@ -34,6 +34,42 @@
 </div>
 <!-- end of reset password modal -->
 
+
+<!-- set password modal -->
+
+<div class="modal fade modal-app" id="modal-setpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title">Set Your Password</h3>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning" id="set_warning" hidden="true"><span id="set_err_msg"></span></div>
+                <div class="form-wrap" id="set_modal_form">
+                    <h4>Provide your password below.</b></h4>
+                    <br>
+                    <form class="form">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <input class="form-control" type="password" id="set_password" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="password" id="set_confirm_password" placeholder="Re-type Password">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="set_submit">Done</button>&nbsp;
+                        <a href="#" data-dismiss="modal">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end of set password modal -->
+
+
 <!-- hero section -->
 <div class="row hero-section">
     <div class="col-md-12">
@@ -60,21 +96,20 @@
         ));
         ?>
 <!--                        <input type="email" class="form-control" placeholder="Email">-->
-        <?php echo $form->emailField($modelSub, 'email', array('class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email')); ?>                            
+        <?php echo $form->emailField($modelSub, 'email', array('id' => 'emailid', 'class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email', 'autocomplete' => 'off')); ?>                            
         <?php echo $form->error($modelSub, 'email'); ?>
 <!--                        <input type="text" class="form-control" placeholder="Company Name">-->
-        <?php echo $form->textField($modelSub, 'companyname', array('class' => 'form-control ', 'placeholder' => 'Company Name')); ?> 
+        <?php echo $form->textField($modelSub, 'companyname', array('id' => 'companynameid', 'class' => 'form-control companyname', 'placeholder' => 'Company Name', 'autocomplete' => 'off')); ?> 
         <input type="hidden" value="" id="vendor-ac-id">
         <?php echo $form->error($modelSub, 'companyname'); ?>
 <!--                        <input type="text" class="form-control" placeholder="+91">-->
 <!--                        <input  class="form-control intl-tel-input" placeholder="Mobile" id="mobile-number" type="tel">-->
-        <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number')); ?>                            
+        <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
         <?php echo $form->error($modelSub, 'phonenumber'); ?>
-        <br><br>
-        <?php echo $form->hiddenField($modelSub, 'nid', array('value' => $nid, 'id' => 'nid')); ?>
-        <?php echo $form->hiddenField($modelSub, 'type', array('value' => $type, 'id' => 'type')); ?>
+        <br>
+        <br>
         <?php //echo CHtml::submitButton('Sign Up for Free', array('class' => 'btn btn-primary btn-primary-lg', 'id' => '_submit')); ?>
-        <button class="btn btn-primary btn-primary-lg">Create Free Account</button>
+        <button class="btn btn-primary btn-primary-lg" id="signup">Create Free Account</button>
         <!--                        <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>-->
         <br>
         <h5>No Credit Card required</h5>
@@ -117,36 +152,36 @@
                     <li>
                         <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-benefit-1.png">
                         <h2>Easy to Use</h2>
-						<br>
+                        <br>
                         <p class="selling-point-desc">Designed for simple set-up and use. Monitorly gets your team and partners in the office and around the country, set-up in an hour.  </p>
                     </li>
                     <li>
                         <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-benefit-2.png">
                         <h2>Get Paid, Save Time</h2>
-						<br>
+                        <br>
                         <p class="selling-point-desc">Delight your clients, build trust and save time with Automatic Reporting. And with Certified Images, all your campaign images are time-stamped and geo-tagged so your clients can make payment with complete confidence. </p>
                     </li>
                     <li>
                         <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-benefit-3.png">
                         <h2>Certified, Anywhere</h2>
-						<br>
+                        <br>
                         <p class="selling-point-desc">Certified images can be captured anywhere with Offline mode (and image auto-sync). Any site, anywhere, even away from network connectivity. </p>
                     </li>
                 </ul>
             </div>
-			<!--
-            <div class="row pricing-preview">
-                <div class="col-md-12">
-                    <h2>No Nonsense Pay-As-You-Go Pricing</h2>
-                    <br>
-                    <h4>Get your free 100 photos when you sign-up</h4>
-                    <br>
-                    <h4><a href="<?php echo Yii::app()->urlManager->createUrl('account/pricing'); ?>">Know More About Pricing and Plan</a></h4>
-                    <br>
-                    <button class="btn btn-primary btn-primary-lg js-signup-btn-scrolltop">Sign Up for Free</button>
-                    <h5>No Credit Card required</h5>
-                </div>
-            </div>-->
+            <!--
+<div class="row pricing-preview">
+    <div class="col-md-12">
+        <h2>No Nonsense Pay-As-You-Go Pricing</h2>
+        <br>
+        <h4>Get your free 100 photos when you sign-up</h4>
+        <br>
+        <h4><a href="<?php echo Yii::app()->urlManager->createUrl('account/pricing'); ?>">Know More About Pricing and Plan</a></h4>
+        <br>
+        <button class="btn btn-primary btn-primary-lg js-signup-btn-scrolltop">Sign Up for Free</button>
+        <h5>No Credit Card required</h5>
+    </div>
+</div>-->
         </div>
     </div>
 </div>
@@ -154,12 +189,65 @@
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
+
+    $('#signup').on('click', function (event) {
+        event.preventDefault();
+        //console.log(data);
+        if ($('#emailid').val()) {
+//            console.log('1');
+            if ($('#companynameid').val()) {
+                //              console.log('2');
+                if ($('#mobile-number').val()) {
+                    //console.log('4');
+                    $('#vendor_subscription').submit();
+                    //return true;
+                } else {
+                    $('#mobile-number').focus();
+                    $('#mobile-number').attr('placeholder', 'Phone Number is required').attr('style', 'background-color:rgb(218, 172, 172)');
+                    //alert('Phone Number is required');
+                }
+            } else {
+                $('#companynameid').focus();
+                $('#companynameid').attr('placeholder', 'Company Name is Required').attr('style', 'background-color:rgb(218, 172, 172)');
+                //alert('Company Name is Required');
+            }
+        } else {
+            $('#emailid').focus();
+            $('#emailid').attr('placeholder', 'Email is required').attr('style', 'background-color:rgb(218, 172, 172)');
+            alert('Email is required');
+        }
+    });
+
     $(function () {
         //$('#modal-login').modal('show');
-        //$('#modal-forgotpassword').modal('show');               
 
-		$('#static_logo').removeClass('logo-on-lightbcg');
-		$('#static_logo').addClass('logo-on-darkbcg');
+        //$('#modal-setpassword').modal('show');
+        //
+        //autocomplete for company name in vendor subscription form
+        var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
+//console.log(allVendorJson);
+        $('.companyname').autocomplete({
+            source: allVendorJson,
+            select: function (event, ui) {
+                //console.log(ui.item.value + ', ' + ui.item.id);
+                $("#vendor-ac-id").val(ui.item.id);
+            },
+            change: function (event, ui) {
+                if (ui.item == null) {
+                    //$(".companyname").val('');
+                    $("#vendor-ac-id").val('');
+                    $(".companyname").focus();
+                }
+            },
+            messages: {
+                noResults: '',
+                results: function () {
+                }
+            },
+        })
+
+        $('#static_logo').removeClass('logo-on-lightbcg');
+        $('#static_logo').addClass('logo-on-darkbcg');
         var fpc = '<?php echo $forgotPwdCode; ?>';
         if (fpc) {
             //console.clear();
@@ -192,13 +280,20 @@
                     $('#modal-resetpassword').modal('show');
                 }
             });
+
+        }
+
+        var spc = '<?php echo $setPwdHash; ?>';
+        if (spc) {
+            $('#modal-setpassword').modal('show');
+
         }
 
         $('#reset_modal_forgot').on("click", function () {
             $('#modal-resetpassword').modal('hide');
             $('#modal-forgotpassword').modal('show');
         });
-        
+
         $('#reset_submit').click(function () {
             var pwd = $('#reset_password').val();
             var cpwd = $('#reset_confirm_password').val();
@@ -240,7 +335,36 @@
             }
         });
 
-        
+        $('#set_submit').click(function () {
+            var pwd = $('#set_password').val();
+            var cpwd = $('#set_confirm_password').val();
+            //console.log(pwd + ' ' + cpwd);
+            if (pwd === cpwd) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: $('#completePath').text() + '/ajax/SetPassword',
+                    data: {
+                        password: pwd,
+                        hash: '<?php echo $setPwdHash; ?>'},
+                    success: function (data) {
+                        //console.log('hi');
+                        //console.log(data);
+                        if(data ==1){
+                            window.location=$('#completePath').text() + '/myCampaigns';
+                        }
+                        if (data == 5) {
+                            // login and redirect from server
+                            $('#set_modal_form').hide();
+                            $('#set_err_msg').html("Please login to your account.");
+                        }
+                    }
+                })
+            } else {
+                $('#set_err_msg').html("The two passwords do not match.");
+                $('#set_warning').show();
+            }
+        });
 
         $('#home_login').click(function (e) {
             //console.log('clicked');
@@ -248,31 +372,7 @@
             $('#LoginModal').modal('show');
         });
 
-        //autocomplete for company name in vendor subscription form
-        var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
-        //console.log(allVendorJson);
-        $('.companyname').autocomplete({
-            source: allVendorJson,
-            select: function (event, ui) {
-                console.log(ui.item.value + ', ' + ui.item.id);
-                $("#vendor-ac-id").val(ui.item.id);
-            },
-            change: function (event, ui) {
-                if (ui.item == null) {
-                    $(".companyname").val('');
-                    $("#vendor-ac-id").val('');
-                    $(".companyname").focus();
-                }
-            },
-            messages: {
-                noResults: '',
-                results: function () {
-                }
-            },
-        });
-
     });
-
     (function (b, o, i, l, e, r) {
         b.GoogleAnalyticsObject = l;
         b[l] || (b[l] =
@@ -287,7 +387,7 @@
     }(window, document, 'script', 'ga'));
     ga('create', 'UA-XXXXX-X');
     ga('send', 'pageview');
-    
+
 </script>
 </body>
 </html>

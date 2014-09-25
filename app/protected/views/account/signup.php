@@ -47,18 +47,20 @@
                         echo $form->emailField($modelSub, 'email', array('id' =>'emailid','class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email'));                             
                         echo $form->error($modelSub, 'email');
                     }
+
                 ?>
 
 <!--                        <input type="text" class="form-control" placeholder="Company Name">-->
-                <?php echo $form->textField($modelSub, 'companyname', array('id' =>'companynameid','class' => 'form-control companyname', 'placeholder' => 'Company Name', 'autocomplete' => 'off')); ?> 
+                <?php echo $form->textField($modelSub, 'companyname', array('id' => 'companynameid', 'class' => 'form-control companyname', 'placeholder' => 'Company Name', 'autocomplete' => 'off')); ?> 
                 <?php echo $form->error($modelSub, 'companyname'); ?>
-                
+
                 <?php echo $form->hiddenField($modelSub, 'companyid', array('id' => 'vendor-ac-id')); ?>
 
                         <?php echo $form->passwordField($modelSub, 'password', array('id' => 'password','class' => 'form-control', 'placeholder' => 'Password', 'style' => 'width:300px;')); ?>
                         <?php echo $form->error($modelSub, 'password'); ?>
                                             <input type="password" class="form-control" placeholder="Confirm Password" style="width: 300px;" id="cnf_password">
                                                 
+
 <!--                        <input type="text" class="form-control" placeholder="+91">-->
 <!--                        <input  class="form-control intl-tel-input" placeholder="Mobile" id="mobile-number" type="tel">-->
                 <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
@@ -66,10 +68,10 @@
                 <br><br>
                 <?php echo $form->hiddenField($modelSub, 'nid', array('value' => $nid, 'id' => 'nid')); ?>
                 <?php echo $form->hiddenField($modelSub, 'type', array('value' => $type, 'id' => 'type')); ?>
-                <?php 
-                    if (!empty($modelSub->email)) {
-                        echo $form->hiddenField($modelSub, 'email',array('class' => 'form-control'));
-                    }
+                <?php
+                if (!empty($modelSub->email)) {
+                    echo $form->hiddenField($modelSub, 'email', array('class' => 'form-control'));
+                }
                 ?>
                 <?php // echo CHtml::submitButton('Sign Up for Free', array('class' => 'save btn btn-primary btn-primary-lg')); ?>
                 <button class="btn btn-primary btn-primary-lg" id="signup">Create Free Account</button>
@@ -82,13 +84,16 @@
                 <?php $this->endWidget(); ?>
 
             </div>
+
+
         </div>
     </div>
 </div>
 <!-- end of sign up content -->
 <script>
-    $('#signup').on('click',function(event){
+    $('#signup').on('click', function (event) {
         event.preventDefault();
+
         if($('#emailid').val()) {
             console.log('1');
             if($('#companynameid').val()) {
@@ -117,31 +122,36 @@
                     } else {
                         $('#cnf_password').focus();
                         $('#cnf_password').attr('placeholder', 'Confirm your password').attr('style','background-color:rgb(218, 172, 172)');
+
                     }
                     
                 } else {
+
                     $( "input[name='SubscriptionForm[password]']" ).focus();
                     $( "input[name='SubscriptionForm[password]']" ).attr('placeholder', 'Password is required').attr('style','background-color:rgb(218, 172, 172)');
+
                     //alert('Password is required');
                 }
-                
+
             } else {
                 $('#companynameid').focus();
-                $('#companynameid').attr('placeholder', 'Company Name is Required').attr('style','background-color:rgb(218, 172, 172)');
+                $('#companynameid').attr('placeholder', 'Company Name is Required').attr('style', 'background-color:rgb(218, 172, 172)');
                 //alert('Company Name is Required');
             }
         } else {
             $('#emailid').focus();
-            $('#emailid').attr('placeholder', 'Email is required').attr('style','background-color:rgb(218, 172, 172)');
+            $('#emailid').attr('placeholder', 'Email is required').attr('style', 'background-color:rgb(218, 172, 172)');
             alert('Email is required');
         }
     });
-    
+
     $(function () {
+
         
 		$('#static_logo').removeClass('logo-on-darkbcg');
 		$('#static_logo').addClass('logo-on-lightbcg');
 		
+
         $('#password').val('');
         $('#mobile-number').val('');
         $('li.phone1').css({
@@ -152,7 +162,7 @@
         });
         $('#header_nav').removeClass('navbar-dark');
     });
-        $(function () {
+    $(function () {
 
 //autocomplete for company name in vendor subscription form
         var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
