@@ -77,7 +77,10 @@
                         <td><?php echo $t['site']; ?></td>
                         <td><?php echo $t['mediatype']; ?></td>
                         <td><?php echo strlen($t['assignedto']) ? $t['assignedto'] : 'Unassigned'; ?></td>
-                        <td><?php echo date('d/m/Y', strtotime($t['duedate'])); ?><input type="hidden" class="duedate" value="<?php echo date('Y-m-d', strtotime($t['duedate'])); ?>" /></td>
+                        <td><?php echo date('d/m/Y', strtotime($t['duedate'])); ?>
+                            <input type="hidden" class="duedate" value="<?php echo date('Y-m-d', strtotime($t['duedate'])); ?>" />
+                            <input type="hidden" class="pop" value="<?php echo $t['pop']; ?>" />
+                        </td>
                         <td>
                             <?php
                             $status = '';
@@ -135,13 +138,15 @@
             var taskid = $(this).parents('tr').attr('id');
             var campaign = $(this).parents('tr').children('td:eq(0)').text();
             var site = $(this).parents('tr').children('td:eq(1)').text();
+            var pop = $(this).parents('tr').find('input.pop').val();
             console.log(campaign + " " + site);
             $.ajax({
                 url: "<?php echo Yii::app()->urlManager->createUrl('ajax/fetchppimages'); ?>",
                 type: "POST",
                 data: {                    
                     taskid: taskid,
-                    duedate: duedate
+                    duedate: duedate,
+                    pop: pop
                 },
                 async: false,                
                 success: function(data) {

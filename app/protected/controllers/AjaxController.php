@@ -161,15 +161,17 @@ class AjaxController extends Controller {
     public function actionFetchppimages() {
         $taskId = Yii::app()->request->getParam('taskid');
         $dueDate = Yii::app()->request->getParam('duedate');
-        $sql = "SELECT pp.id, pp.imageName, pp.clickedDateTime, pp.clickedLat, pp.clickedLng, CONCAT(u.fname, u.lname) as clickedBy, pp.installation, "
-                . "pp.lighting, pp.obstruction, pp.comments, l.name as siteName, c.name as campaignName "
+        $pop = Yii::app()->request->getParam('pop');
+        $sql = "SELECT pp.id, pp.imageName, pp.clickedDateTime, pp.clickedLat, pp.clickedLng, CONCAT(u.fname, u.lname) as clickedBy, "
+                . "pp.installation, pp.lighting, pp.obstruction, pp.comments, l.name as siteName, c.name as campaignName "
                 . "FROM PhotoProof pp "
                 . "LEFT JOIN User u ON u.id=pp.clickedBy "
                 . "LEFT JOIN Task t ON t.id=pp.taskid "
                 . "LEFT JOIN Campaign c ON c.id=t.campaignid "
                 . "LEFT JOIN Listing l ON l.id=t.siteid "
-                . "WHERE pp.taskid = '$taskId' "
-                . "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";
+                . "WHERE pp.taskid = '$taskId' ";
+        if(!$pop) 
+            $sql .= "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";        
         $photoProofResult = Yii::app()->db->createCommand($sql)->queryAll();
         $photoProofArr = array();
         foreach ($photoProofResult as $pp) {
