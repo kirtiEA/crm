@@ -34,7 +34,7 @@
 </div>
 <!-- end of reset password modal -->
 
-<<<<<<< HEAD
+
 <!-- forgot password modal -->
 
 <div class="modal fade modal-app" id="modal-forgotpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -102,8 +102,6 @@
 
 <!-- end of set password modal -->
 
-=======
->>>>>>> eb45b3577a5acc391162b5090e1418b491a82b96
 <!-- hero section -->
 <div class="row hero-section">
     <div class="col-md-12">

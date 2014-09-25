@@ -123,7 +123,7 @@ class AjaxController extends Controller {
         print_r($password);
         $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
         $pwd = $ph->HashPassword($password);
-        $passwordLink = Link::model()->find('hash=:hash', array(':hash'));
+        $passwordLink = Link::model()->find('hash=:hash AND type=:type', array(':hash' => $hash, ':type' => 0));
         if ($passwordLink) {
             $userModel = User::model()->findByPk($passwordLink->userid);
             $userModel->password = $pwd;
