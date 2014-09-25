@@ -114,6 +114,30 @@ class AjaxController extends Controller {
         }
     }
 
+    public function actionSetPassowrd() {
+        //echo 'hiiii';        die();
+        $hash = Yii::app()->request->getParam('set');
+        $password = $_POST['password'];
+        print_r($password);
+        $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
+        $pwd = $ph->HashPassword($password);
+        $passwordLink = Link::model()->find('hash=:hash', array(':hash'));
+        if ($passwordLink) {
+            $userModel = User::model()->findByPk($passwordLink->userid);
+            $userModel->password = $pwd;
+            $userModel->save();
+            $identity = new UserIdentity($userModel->email, $password);
+            if ($identity->authenticate()) {
+                $user = Yii::app()->user;
+                $user->login($identity);
+                //$this->redirect($user->returnUrl);
+                echo Yii::app()->getBaseUrl() . '/myCampaigns';
+            } else {
+                echo 5;
+            }
+        }
+    }
+
     public function actionResetpwd() {
         $hash = Yii::app()->request->getParam('hash');
         $password = Yii::app()->request->getParam('password');
@@ -779,7 +803,7 @@ class AjaxController extends Controller {
             $vcid = $_POST['vendorcompanyid'];
             $id = $_POST['id'];
             $email = $_POST['emailid'];
-            
+
             //echo $email; die();
             $model = RequestedCompanyVendor::model()->findByPk($id);
             $model->acceptedby = $vcid;
@@ -831,7 +855,7 @@ class AjaxController extends Controller {
 
             $nid = MonitorlyNotification::model()->findByAttributes(array('miscellaneous' => $value['miscellaneous']));
             //print_r($nid['id']);
-            $resetLink = Yii::app()->getBaseUrl(true) . '/subscription?nid=' . $nid['id'];
+            $resetLink = Yii::app()->getBaseUrl(true) . '/account/signup?nid=' . $nid['id'];
             $mail = new EatadsMailer('remind-all', $value['miscellaneous'], array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
             $mail->eatadsSend();
         }
@@ -847,7 +871,6 @@ class AjaxController extends Controller {
 //        $email = "";
 //        $mail = new EatadsMailer('site-accepted', $email, array('resetLink' => ""), array('sales@eatads.com'));
 //        $mail->eatadsSend();
-
         }
     }
 
