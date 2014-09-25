@@ -31,7 +31,7 @@ class RequestedCompanyVendor extends BaseRequestedCompanyVendor {
             from RequestedCompanyVendor rv
             inner join UserCompany uc on uc.id = rv.vendorcompanyid
             inner join User u on u.id = uc.userid
-            where rv.companyid = ' . $companyid;
+            where rv.accepteddate is null and rv.companyid = ' . $companyid;
         return Yii::app()->db->createCommand($query)->queryAll();
     }
 

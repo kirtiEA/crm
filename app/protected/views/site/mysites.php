@@ -6,7 +6,7 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/ng-infinite-scroll.min.js"></script>
 
-        <script src="http://maps.google.com/maps/api/js?sensor=false" 
+        <script src="https://maps.google.com/maps/api/js?sensor=false" 
           type="text/javascript"></script>
 <!--        <script type="text/javascript" src="<?php //echo Yii::app()->request->baseUrl; ?>/js/map.js"></script>-->
         
@@ -117,7 +117,7 @@
 <div class="col-md-4" id="site-list-container" style="height: 700px;" ng-controller = "DemoController">
     <div class="list-container">
                 <div class="action-buttons">
-                    <button class="btn btn-primary" onclick="location.href='<?php echo Yii::app()->urlManager->createUrl('site/addvendor'); ?>'">Add Vendors Sites</button>
+                    <button class="btn btn-primary" onclick="location.href='<?php echo Yii::app()->urlManager->createUrl('site/addvendor'); ?>'">Add Sites</button>
                 </div>
                 <div class="list-tools">
                     <ul>

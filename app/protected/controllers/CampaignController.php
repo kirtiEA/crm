@@ -40,7 +40,7 @@ class CampaignController extends Controller {
     public function actionCreate() {
         $model = new Campaign();
         $model->setScenario('insert');
-        if (isset($_POST['Campaign'])) {
+        if (isset($_POST['Campaign']) && !empty($_POST['Campaign']['name']) && !empty($_POST['Campaign']['startDate']) && !empty($_POST['Campaign']['endDate'])) {
             $model->attributes = $_POST['Campaign'];
             $sdate = $model->startDate;
             $edate = $model->endDate;
@@ -60,6 +60,8 @@ class CampaignController extends Controller {
             /*
              * Add flash message for success
              */
+            $this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns/upcoming');
+        } else {
             $this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns/upcoming');
         }
     }

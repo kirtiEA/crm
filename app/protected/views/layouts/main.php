@@ -50,7 +50,7 @@
                     </button>
                     <a class="navbar-brand" href="#">                        
                         <div id="logo">
-                            <img src="<?php echo Yii::app()->getBaseUrl() . '/images/logo.png'; ?>"></img>
+<!--                           <img src="<?php //echo Yii::app()->getBaseUrl() . '/images/logo.png'; ?>"></img>-->
                         </div>
                     </a>
                 </div>

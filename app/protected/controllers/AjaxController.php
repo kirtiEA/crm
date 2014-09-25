@@ -20,7 +20,9 @@ class AjaxController extends Controller {
         return array(
             array('allow', // allow all users to perform actions
                 'actions' => array('signup', 'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting', 'getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
-                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword', 'invitevendor', 'removeListingFromCampaign', 'updateCampaign', 'forgotpwd', 'verifyresethash', 'resetpwd', 'fetchNotifications'),
+                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword', 
+                    'invitevendor', 'removeListingFromCampaign', 'updateCampaign', 'forgotpwd', 'verifyresethash', 
+                    'resetpwd', 'fetchNotifications','fetchVendorListing'),
                 'users' => array('*'),
             )
         );
@@ -316,7 +318,7 @@ class AjaxController extends Controller {
                 $invite->attributes = array('typeid' => 4, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $vendorId, 'emailtypeid' => 4);
                 $invite->companyid = Yii::app()->user->cid;
                 $invite->notifiedcompanyid = $vendorId;
-
+                $invite->createdby = Yii::app()->user->id;
                 $invite->save();
                 $email = UserCompany::fetchVendorEmail($vendorId);
                 //$email['email']
@@ -844,7 +846,7 @@ class AjaxController extends Controller {
         $remindAllEmails = RequestedCompanyVendor::showRequestedVendorsEmail($companyid);
         foreach ($remindAllEmails as $value) {
             //echo $value['vendoradmin'];
-            $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
+            $resetlink = Yii::app()->getBaseUrl(true) . '/vendor';
             $mail = new EatadsMailer('remind-all', $value['vendoradmin'], array('resetLink' => $resetlink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
             $mail->eatadsSend();
         }
@@ -859,6 +861,7 @@ class AjaxController extends Controller {
             $mail = new EatadsMailer('remind-all', $value['miscellaneous'], array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
             $mail->eatadsSend();
         }
+        Yii::app()->user->setFlash('success', 'Reminder mail sent');
         echo '200';
     }
 

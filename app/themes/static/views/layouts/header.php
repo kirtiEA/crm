@@ -25,11 +25,11 @@
 
         <?php
         
-        $cs->registerScriptFile($theme->getBaseUrl() . '/js/jquery-1.10.2.min.js', CClientScript::POS_BEGIN);
-        $cs->registerScriptFile($theme->getBaseUrl() . '/js/jquery-ui.min.js', CClientScript::POS_BEGIN);
-        $cs->registerScriptFile($theme->getBaseUrl() . '/js/bootstrap.js', CClientScript::POS_END);
-        $cs->registerScriptFile($theme->getBaseUrl() . '/js/application.js', CClientScript::POS_BEGIN);
-        $cs->registerScriptFile($theme->getBaseUrl() . '/js/intlTelInput.js', CClientScript::POS_BEGIN);
+        //$cs->registerScriptFile($theme->getBaseUrl() . '/js/jquery-1.10.2.min.js');//, CClientScript::POS_BEGIN);
+        $cs->registerScriptFile($theme->getBaseUrl() . '/js/jquery-ui.min.js');//, CClientScript::POS_BEGIN);
+        $cs->registerScriptFile($theme->getBaseUrl() . '/js/bootstrap.js');//, CClientScript::POS_END);
+        $cs->registerScriptFile($theme->getBaseUrl() . '/js/application.js');//, CClientScript::POS_BEGIN);
+        $cs->registerScriptFile($theme->getBaseUrl() . '/js/intlTelInput.js');//, CClientScript::POS_BEGIN);
         ?>
         <style>
             .flag{
@@ -52,19 +52,33 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="<?php echo Yii::app()->getBaseUrl(); ?>">
-                        <div id="logo"></div>
+                        <div class="logo-on-darkbcg" id="static_logo"></div>
                     </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="phone1"><span class="glyphicon glyphicon-phone-alt">&nbsp;</span>+91 11 4132 0334
-                        </li>
-                        <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/pricing'); ?>">Pricing</a></li>
-                        <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/contactus'); ?>">Contact Us</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#modal-login">Login</a></li>
-                        <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/signup'); ?>">Sign Up</a></li>
+						<?php if(Yii::app()->controller->id == 'account' && Yii::app()->controller->action->id == 'signup') {
+		                        if(Yii::app()->user->isGuest) { ?>
+		                            <li><a href="#" data-toggle="modal" data-target="#modal-login">Already have an account? Login</a></li>
+		                            
+		                        <?php } else { ?>
+		                            <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
+		                        <?php }
+						} else { ?>
+	                        <li class="phone1"><span class="glyphicon glyphicon-phone-alt">&nbsp;</span>+91 11 4132 0334</li>
+							<li><a href="https://play.google.com/store/apps/details?id=com.monitorly.monitorlyv05" target="_blank" class="download-app-link">Download App</a></li>
+	                        <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/contactus'); ?>">Contact Us</a></li>
+	                        <?php if(Yii::app()->user->isGuest) { ?>
+	                            <li><a href="#" data-toggle="modal" data-target="#modal-login">Login</a></li>
+	                            <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/signup'); ?>">Sign Up</a></li>
+	                        <?php } else { ?>
+	                            <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
+	                        <?php }
+						} ?>
+                        
+                        
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
