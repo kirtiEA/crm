@@ -116,27 +116,43 @@ class AjaxController extends Controller {
         }
     }
 
-    public function actionSetPassowrd() {
+    public function actionSetPassword() {
         //echo 'hiiii';        die();
-        $hash = Yii::app()->request->getParam('set');
-        $password = $_POST['password'];
-        print_r($password);
+        $hash = Yii::app()->request->getParam('hash');
+        //echo $hash; die();
+        $password = Yii::app()->request->getParam('password');
+        //echo $password; 
         $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
         $pwd = $ph->HashPassword($password);
-        $passwordLink = Link::model()->find('hash=:hash AND type=:type', array(':hash' => $hash, ':type' => 0));
+        $passwordLink = Link::model()->find('hash=:hash AND type=:type AND expired=:expired', array(':hash' => $hash, ':type' => 1, ':expired' => 0));
+        //echo $passwordLink;
         if ($passwordLink) {
             $userModel = User::model()->findByPk($passwordLink->userid);
+            //echo $passwordLink->userid; die();
             $userModel->password = $pwd;
+            $userModel->active = 1;
+            $userModel->status = 1;
             $userModel->save();
+            
             $identity = new UserIdentity($userModel->email, $password);
+            //print_r($identity);die();
             if ($identity->authenticate()) {
                 $user = Yii::app()->user;
                 $user->login($identity);
+                $passwordLink->expired=1;
+                $passwordLink->save();
+                echo 1;
+                
                 //$this->redirect($user->returnUrl);
-                echo Yii::app()->getBaseUrl() . '/myCampaigns';
+                //$this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');
             } else {
                 echo 5;
             }
+        }
+        else{
+            /*
+             * password has expired
+             */
         }
     }
 

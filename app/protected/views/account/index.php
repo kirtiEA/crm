@@ -35,39 +35,6 @@
 <!-- end of reset password modal -->
 
 
-<!-- forgot password modal -->
-
-<div class="modal fade modal-app" id="modal-forgotpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title">Forgot Password?</h3>
-            </div>
-            <div class="modal-body">
-                <div class="alert alert-success" id="forgot_modal_alert" style="display: none;"></div>
-                <div class="form-wrap" id="forgot_modal_form">
-                    <h4>Don't worry. <b>What's your email?</b></h4>
-                    <br>
-                    <h5>We will mail you a link to quickly reset it.</h5>
-                    <br>
-                    <form class="form">
-                        <div class="form-group">
-                            <input class="form-control" type="email" id="forgot_email" placeholder="Email">
-                        </div>
-                        <button type="button" class="btn btn-primary" id="forgot_submit">Okay</button>&nbsp;
-                        <a href="#" data-dismiss="modal">Cancel</a>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">                         
-                <a href="<?php echo Yii::app()->urlManager->createUrl('account/signup'); ?>" class="pull-right">Don't have an account? <b>Sign Up</b></a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end of forgot password modal -->
-
 <!-- set password modal -->
 
 <div class="modal fade modal-app" id="modal-setpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -78,7 +45,7 @@
                 <h3 class="modal-title">Set Your Password</h3>
             </div>
             <div class="modal-body">
-                <div class="alert alert-warning" id="set_warning"><span id="set_err_msg"></span></div>
+                <div class="alert alert-warning" id="set_warning" hidden="true"><span id="set_err_msg"></span></div>
                 <div class="form-wrap" id="set_modal_form">
                     <h4>Provide your password below.</b></h4>
                     <br>
@@ -101,6 +68,7 @@
 </div>
 
 <!-- end of set password modal -->
+
 
 <!-- hero section -->
 <div class="row hero-section">
@@ -184,36 +152,36 @@
                     <li>
                         <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-benefit-1.png">
                         <h2>Easy to Use</h2>
-						<br>
+                        <br>
                         <p class="selling-point-desc">Designed for simple set-up and use. Monitorly gets your team and partners in the office and around the country, set-up in an hour.  </p>
                     </li>
                     <li>
                         <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-benefit-2.png">
                         <h2>Get Paid, Save Time</h2>
-						<br>
+                        <br>
                         <p class="selling-point-desc">Delight your clients, build trust and save time with Automatic Reporting. And with Certified Images, all your campaign images are time-stamped and geo-tagged so your clients can make payment with complete confidence. </p>
                     </li>
                     <li>
                         <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-benefit-3.png">
                         <h2>Certified, Anywhere</h2>
-						<br>
+                        <br>
                         <p class="selling-point-desc">Certified images can be captured anywhere with Offline mode (and image auto-sync). Any site, anywhere, even away from network connectivity. </p>
                     </li>
                 </ul>
             </div>
-			<!--
-            <div class="row pricing-preview">
-                <div class="col-md-12">
-                    <h2>No Nonsense Pay-As-You-Go Pricing</h2>
-                    <br>
-                    <h4>Get your free 100 photos when you sign-up</h4>
-                    <br>
-                    <h4><a href="<?php echo Yii::app()->urlManager->createUrl('account/pricing'); ?>">Know More About Pricing and Plan</a></h4>
-                    <br>
-                    <button class="btn btn-primary btn-primary-lg js-signup-btn-scrolltop">Sign Up for Free</button>
-                    <h5>No Credit Card required</h5>
-                </div>
-            </div>-->
+            <!--
+<div class="row pricing-preview">
+    <div class="col-md-12">
+        <h2>No Nonsense Pay-As-You-Go Pricing</h2>
+        <br>
+        <h4>Get your free 100 photos when you sign-up</h4>
+        <br>
+        <h4><a href="<?php echo Yii::app()->urlManager->createUrl('account/pricing'); ?>">Know More About Pricing and Plan</a></h4>
+        <br>
+        <button class="btn btn-primary btn-primary-lg js-signup-btn-scrolltop">Sign Up for Free</button>
+        <h5>No Credit Card required</h5>
+    </div>
+</div>-->
         </div>
     </div>
 </div>
@@ -278,15 +246,8 @@
             },
         })
 
-
-        var status = <?php echo $status; ?>;
-        if (status != 200) {
-            $('#modal-login').modal('show');
-        }
-
-
-		$('#static_logo').removeClass('logo-on-lightbcg');
-		$('#static_logo').addClass('logo-on-darkbcg');
+        $('#static_logo').removeClass('logo-on-lightbcg');
+        $('#static_logo').addClass('logo-on-darkbcg');
         var fpc = '<?php echo $forgotPwdCode; ?>';
         if (fpc) {
             //console.clear();
@@ -333,11 +294,6 @@
             $('#modal-forgotpassword').modal('show');
         });
 
-        $('#forgotpassword').click(function () {
-            $('#modal-login').modal('hide');
-            $('#modal-forgotpassword').modal('show');
-        });
-
         $('#reset_submit').click(function () {
             var pwd = $('#reset_password').val();
             var cpwd = $('#reset_confirm_password').val();
@@ -379,52 +335,24 @@
             }
         });
 
-        $('#forgot_submit').click(function () {
-            var email = $('#forgot_email').val();
-            //console.log(email);
-            $.ajax({
-                type: "POST",
-                url: "<?php echo Yii::app()->urlManager->createUrl('ajax/forgotpwd'); ?>",
-                data: {
-                    email: email
-                },
-                async: false,
-                success: function (data) {
-                    //console.log(data);
-
-                    if (data == 1) {
-                        $('#forgot_modal_alert').html('<b>Leap to your mailbox.</b> Reset password. And be back on Monitorly!');
-                        $('#forgot_modal_alert').removeClass('alert-warning');
-                        $('#forgot_modal_alert').addClass('alert-success');
-                        $('#forgot_modal_form').hide();
-                        // remove text buttons
-                    } else if (data == 2) {
-                        $('#forgot_modal_alert').html("Our server couldn't send a mail to you. Sorry, it's acting quirky. Try again in some time.");
-                        $('#forgot_modal_alert').removeClass('alert-success');
-                        $('#forgot_modal_alert').addClass('alert-warning');
-                    } else if (data == 3) {
-                        $('#forgot_modal_alert').html("We don't have this email in our system. Check if your entered it correctly.");
-                        $('#forgot_modal_alert').removeClass('alert-success');
-                        $('#forgot_modal_alert').addClass('alert-warning');
-                    }
-                    $('#forgot_modal_alert').show();
-                }
-            });
-        });
         $('#set_submit').click(function () {
             var pwd = $('#set_password').val();
             var cpwd = $('#set_confirm_password').val();
-            
-            if (pwd === cpwd ) {
-                
+            //console.log(pwd + ' ' + cpwd);
+            if (pwd === cpwd) {
+
                 $.ajax({
                     type: 'POST',
                     url: $('#completePath').text() + '/ajax/SetPassword',
                     data: {
-                        'password': pwd},
+                        password: pwd,
+                        hash: '<?php echo $setPwdHash; ?>'},
                     success: function (data) {
                         //console.log('hi');
                         //console.log(data);
+                        if(data ==1){
+                            window.location=$('#completePath').text() + '/myCampaigns';
+                        }
                         if (data == 5) {
                             // login and redirect from server
                             $('#set_modal_form').hide();
@@ -445,34 +373,6 @@
         });
 
     });
-
-
-        //autocomplete for company name in vendor subscription form
-        var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
-        //console.log(allVendorJson);
-        $('.companyname').autocomplete({
-            source: allVendorJson,
-            select: function (event, ui) {
-                console.log(ui.item.value + ', ' + ui.item.id);
-                $("#vendor-ac-id").val(ui.item.id);
-            },
-            change: function (event, ui) {
-                if (ui.item == null) {
-                    $(".companyname").val('');
-                    $("#vendor-ac-id").val('');
-                    $(".companyname").focus();
-                }
-            },
-            messages: {
-                noResults: '',
-                results: function () {
-                }
-            },
-        });
-
-    });
-
-
     (function (b, o, i, l, e, r) {
         b.GoogleAnalyticsObject = l;
         b[l] || (b[l] =
@@ -487,7 +387,7 @@
     }(window, document, 'script', 'ga'));
     ga('create', 'UA-XXXXX-X');
     ga('send', 'pageview');
-    
+
 </script>
 </body>
 </html>

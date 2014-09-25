@@ -291,11 +291,12 @@ class AccountController extends Controller {
                         // User::model()->updateByPk($model->id, array('companyid' => $comp->id));
                         Yii::app()->user->setFlash('success', 'User created successfully');
                         $hash = sha1(uniqid());
+                        //echo $hash;
                         $passwordLink = new Link();
                         $passwordLink->attributes = array('userid' => $model->id, 'hash' => $hash, 'datecreated' => date('Y-m-d H:i:s'), 'type' => '1');
                         if ($passwordLink->save()) {
                             $resetlink = Yii::app()->getBaseUrl(true) . '/?set=' . $hash;
-                            print_r($resetlink); // $resetlink;
+                            //print_r($resetlink); // $resetlink;
                             $mail = new EatadsMailer('new-user', $_POST['SubscriptionForm']['email'], array('resetLink' => $resetlink), array('shruti@eatads.com'), 'EatAds Admin');
                             $mail->eatadsSend();
                             Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
@@ -326,8 +327,7 @@ class AccountController extends Controller {
                         if ($passwordLink->save(false)) {
 
                             $resetlink = Yii::app()->getBaseUrl(true) . '?set=' . $hash;
-                            echo $resetlink;
-                            die('sdfsd');
+                            //echo $resetlink;
                             $mail = new EatadsMailer('new-user', $_POST['SubscriptionForm']['email'], array('resetLink' => $resetlink), array('shruti@eatads.com'), 'EatAds Admin');
                             $mail->eatadsSend();
                             Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
