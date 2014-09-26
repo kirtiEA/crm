@@ -380,7 +380,7 @@
                             window.location=$('#completePath').text() + '/myCampaigns';
                         }
                         else if(data == 2){
-                            window.location=$('#completePath').text();
+                            window.location=$('#completePath').text() + '/';
                             $('#set_modal_form').hide();
                             $('#set_err_msg').html("Your password link has expired.");
                             $('#set_warning').show();
