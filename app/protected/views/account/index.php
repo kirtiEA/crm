@@ -214,7 +214,7 @@
         } else {
             $('#emailid').focus();
             $('#emailid').attr('placeholder', 'Email is required').attr('style', 'background-color:rgb(218, 172, 172)');
-            alert('Email is required');
+            //alert('Email is required');
         }
     });
 
