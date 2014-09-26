@@ -152,7 +152,7 @@ class ApiController extends Controller {
                                 . "GROUP BY t.id "
                                 . "LIMIT {$start}, {$limit} ";                                
                     }
-                          //echo $sql;              
+                         //echo $sql;
                     $tasks = Yii::app()->db->createCommand($sql)->queryAll();
                     $this->_sendResponse(200, $tasks);
                 }
