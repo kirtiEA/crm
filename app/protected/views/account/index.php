@@ -357,8 +357,9 @@
                             window.location=$('#completePath').text();
                             $('#set_modal_form').hide();
                             $('#set_err_msg').html("Your password link has expired.");
+                            $('#set_warning').show();
                         }
-                        if (data == 5) {
+                        else if (data == 5) {
                             // login and redirect from server
                             $('#set_modal_form').hide();
                             $('#set_err_msg').html("Please login to your account.");
