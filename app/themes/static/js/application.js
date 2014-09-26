@@ -63,6 +63,7 @@ $(document).ready(function() {
 		      }, 1200);
 	  });
 	  
-	  if ($('#selling-points-subnav').offset() == 0)
-	  {alert('navbar should be sticky now');}
+//	  if($('#selling-points-subnav').scrollTop = 300) {alert('hi');}
+	  //if ($('#selling-points-subnav').offset() = 0)
+	  //{alert('navbar should be sticky now');}
 });

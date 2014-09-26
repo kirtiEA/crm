@@ -1,6 +1,5 @@
 <?php $theme = Yii::app()->theme; ?>
 
-
 <?php $this->widget('LoginModal'); ?>
 <!-- reset password modal -->
 <div class="modal fade modal-app" id="modal-resetpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -73,8 +72,8 @@
 <!-- hero section -->
 <div class="row hero-section">
     <div class="col-md-12">
-        <h1 class="hero-section-main-message">Capture Campaign Images. Report Instantly.</h1>
-		<h1 class="hero-section-main-message">Save Time, Get Paid.</h1>
+        <h1 class="hero-section-main-message">Capture campaign images. Report instantly.</h1>
+		<h1 class="hero-section-main-message">Save time, Get paid.</h1>
        
         <?php if (Yii::app()->user->hasFlash('success')) { ?>
             <div id="flash-messages" class="alert alert-success alert-dismissible">
@@ -122,14 +121,12 @@
         <!--<div><a class="pricing-link" href="pricing.html">Know More About Pricing &amp; Plan</a></div>-->
 		</div>
 		<nav class="navbar navbar-default subnav" id="selling-points-subnav" role="navigation">
-			<div class="container-fluid">
-				<ul class="nav navbar-nav subnav-nav">
-					<li class="subnav-item"><a href="#" id="selling-point-phone-anchor">Mobile App</a></li>
-					<li class="subnav-item"><a href="#" id="selling-point-sync-anchor">Works Anywhere</a></li>
-					<li class="subnav-item"><a href="#" id="selling-point-certification-anchor">Certified Images</a></li>
-					<li class="subnav-item"><a href="#" id="selling-point-report-anchor">Instant Reports</a></li>
-				</ul>
-			</div>
+			
+				<a href="#" id="selling-point-phone-anchor">Mobile App</a>
+				<a href="#" id="selling-point-sync-anchor">Works Anywhere</a>
+				<a href="#" id="selling-point-certification-anchor">Certified Images</a>
+				<a href="#" id="selling-point-report-anchor">Instant Reports</a>
+
 		</nav>
     </div>
 </div>
@@ -421,6 +418,22 @@
     ga('create', 'UA-XXXXX-X');
     ga('send', 'pageview');
 
+
+
+
+	$(document).ready(function() {
+	    var s = $("#selling-points-subnav");
+	    var pos = s.position();                    
+	    $(window).scroll(function() {
+	        var windowpos = $(window).scrollTop();
+
+	        if (windowpos >= pos.top) {
+	            s.addClass("stick");
+	        } else {
+	            s.removeClass("stick"); 
+	        }
+	    });
+	});
 </script>
 </body>
 </html>

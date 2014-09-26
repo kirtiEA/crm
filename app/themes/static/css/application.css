@@ -10549,7 +10549,7 @@ p {
 .logo-on-darkbcg {
   background-image: url("../images/logo-on-darkbcg.png");
   height: 64px;
-  width: 160px;
+  width: 180px;
   background-size: cover;
   margin-top: -2px;
   margin-right: 12px;
@@ -10676,18 +10676,26 @@ p {
   -o-border-radius: 0;
   border-radius: 0;
   margin: 0 -35px;
+  text-align: center;
 }
-/* line 325, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
-.content-wrapper .hero-section nav.subnav ul.subnav-nav li.subnav-item {
+/* line 324, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+.content-wrapper .hero-section nav.subnav a {
   margin-right: 40px;
+  display: inline-block;
+  padding: 15px 10px;
 }
-/* line 337, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 329, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+.content-wrapper .hero-section nav.subnav a:hover {
+  text-decoration: none;
+  background-color: #526069;
+}
+/* line 342, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .signup-content {
   background-color: #F8F8F1;
   padding: 20px;
   height: 100vh;
 }
-/* line 342, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 347, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .signup-content .signup-form-wrap {
   background-color: #efefe0;
   padding: 20px;
@@ -10699,128 +10707,128 @@ p {
   border-radius: 10px;
   text-align: center;
 }
-/* line 349, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 354, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .signup-content .signup-form-wrap .signup-form {
   display: inline-block;
   text-align: left;
   padding-top: 20px;
 }
-/* line 352, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 357, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .signup-content .signup-content-headings {
   text-align: center;
 }
-/* line 355, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 360, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .signup-content .signup-content-headings h1 {
   font-weight: 600;
   margin-bottom: 40px;
   font-size: 36px;
 }
-/* line 361, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 366, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .signup-content .signup-content-headings h3 {
   margin-bottom: 40px;
 }
-/* line 364, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 369, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .signup-content .signup-content-headings h3 .emphasis-text {
   color: #3E78B3;
   font-weight: 800;
 }
-/* line 371, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 376, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .signup-content input {
   width: 300px;
   margin-bottom: 10px;
 }
-/* line 376, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 381, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .signup-content h5 {
   margin-top: 10px;
   margin-bottom: 20px;
   color: #758793;
 }
-/* line 384, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 389, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .signup-content .value-propositions h3 {
   font-weight: 600;
   margin-bottom: 4px;
 }
-/* line 389, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 394, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .signup-content .value-propositions p {
   margin-bottom: 20px;
 }
-/* line 401, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 406, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .pricing-content {
   background-color: #F8F8F1;
   padding: 20px;
   text-align: center;
 }
-/* line 409, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 414, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .pricing-content .pricing-content-headings h1 {
   font-weight: 600;
   margin-bottom: 20px;
   font-size: 36px;
 }
-/* line 415, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 420, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .pricing-content .pricing-content-headings h3 {
   margin-bottom: 40px;
 }
-/* line 418, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 423, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .pricing-content .pricing-content-headings h3 .emphasis-text {
   color: #3E78B3;
   font-weight: 800;
 }
-/* line 425, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 430, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .pricing-content .pricing-tables-wrap {
   width: 60%;
   text-align: center;
   margin: 0 auto;
 }
-/* line 432, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 437, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .pricing-content .pricing-table th, .content-wrapper .pricing-content .pricing-table td {
   padding: 20px;
   text-align: center;
 }
-/* line 433, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 438, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .pricing-content .pricing-table h4 {
   font-weight: 700;
   margin-top: 8px;
 }
-/* line 434, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 439, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .pricing-content .pricing-table th {
   background-color: #47535b;
   color: #fff;
 }
-/* line 439, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 444, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .pricing-content .pricing-table .free-features-body {
   background-color: #f1f1e3;
   font-weight: 600;
   font-size: 16px;
 }
-/* line 445, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 450, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .pricing-content .pricing-table th.free-features-head {
   background-color: #3E78B3;
 }
-/* line 457, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 462, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content {
   background-color: #F8F8F1;
   padding: 20px;
 }
-/* line 461, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 466, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .contactus-content-headings {
   text-align: center;
 }
-/* line 464, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 469, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .contactus-content-headings h1 {
   font-weight: 600;
   margin-bottom: 20px;
   font-size: 36px;
 }
-/* line 470, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 475, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .contactus-content-headings h3 {
   margin-bottom: 40px;
 }
-/* line 473, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 478, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .contactus-content-headings h3 .emphasis-text {
   color: #3E78B3;
   font-weight: 800;
 }
-/* line 480, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 485, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .contactus-form-wrap {
   background-color: #f2f0cb;
   padding: 20px;
@@ -10834,62 +10842,62 @@ p {
   border-top-right-radius: 10px;
   margin-bottom: 40px;
 }
-/* line 489, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 494, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .contactus-form-wrap .form {
   width: 50%;
   margin: 0 auto;
 }
-/* line 493, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 498, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .contactus-form-wrap .form h2.form-heading {
   font-weight: 600;
 }
-/* line 497, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 502, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .office-address {
   text-align: center;
   margin-bottom: 80px;
 }
-/* line 501, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 506, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .office-address h2.office-address-heading {
   font-weight: 600;
   margin-bottom: 10px;
 }
-/* line 502, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 507, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .office-address h4.office-address-details {
   margin-bottom: 20px;
   padding-left: 20%;
   padding-right: 20%;
 }
-/* line 506, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 511, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .contact-number {
   text-align: center;
   margin-bottom: 80px;
 }
-/* line 510, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 515, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .contact-number h2 {
   font-weight: 800;
 }
-/* line 511, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 516, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contactus-content .contact-number h3 {
   color: #3E78B3;
   font-weight: 600;
   font-style: italic;
 }
-/* line 519, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 524, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points {
   padding: 20px 100px 20px 100px;
   background-color: #F8F8F1;
   color: 13px;
 }
-/* line 524, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 529, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points hr {
   border: 1px solid #ECECD4;
 }
-/* line 529, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 534, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points ul li {
   margin-bottom: 40px;
   text-align: center;
 }
-/* line 533, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 538, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points ul li .selling-point-heading {
   font-weight: 600;
   margin-bottom: 10px;
@@ -10897,11 +10905,11 @@ p {
   font-size: 38px;
   color: #3E78B3;
 }
-/* line 541, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 546, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points ul li p {
   width: 100%;
 }
-/* line 547, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 552, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points .selling-point-phone-icon {
   display: inline-block;
   width: 54px;
@@ -10910,7 +10918,7 @@ p {
   background-image: url("../images/selling-points-icons.png");
   background-position: 0px 0px;
 }
-/* line 556, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 561, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points .selling-point-sync-icon {
   display: inline-block;
   width: 54px;
@@ -10919,7 +10927,7 @@ p {
   background-image: url("../images/selling-points-icons.png");
   background-position: -79px 0px;
 }
-/* line 565, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 570, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points .selling-point-certification-icon {
   display: inline-block;
   width: 82px;
@@ -10928,7 +10936,7 @@ p {
   background-image: url("../images/selling-points-icons.png");
   background-position: -154px 0px;
 }
-/* line 574, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 579, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points .selling-point-report-icon {
   display: inline-block;
   width: 100px;
@@ -10937,107 +10945,107 @@ p {
   background-image: url("../images/selling-points-icons.png");
   background-position: -247px 0px;
 }
-/* line 583, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 588, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points .selling-point-desc {
   font-size: 16px;
 }
-/* line 585, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 590, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points .pricing-preview {
   text-align: center;
 }
-/* line 588, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 593, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points .pricing-preview h2 {
   color: #3E78B3;
   font-weight: 600;
 }
-/* line 593, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 598, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .selling-points .pricing-preview h4 span {
   font-size: 20px;
   font-weight: 800;
 }
-/* line 602, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 607, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .process-steps {
   padding: 40px;
   background-color: #F7F6DF;
   color: 13px;
   text-align: center;
 }
-/* line 608, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 613, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .process-steps h2 {
   font-weight: 600;
   margin-bottom: 40px;
 }
-/* line 613, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 618, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .process-steps img {
   display: inline-block;
 }
-/* line 619, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 624, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .testimonial {
   padding: 30px;
 }
-/* line 622, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 627, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .testimonial .testimonial-author-image {
   margin-top: 10px;
 }
-/* line 624, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 629, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .testimonial .testimonial-content {
   margin-left: -30px;
 }
-/* line 627, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 632, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .testimonial .testimonial-content .testimonial-desc {
   color: #A09942;
   padding-top: 16px;
   font-size: 20px;
 }
-/* line 636, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 641, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .testimonial .col-md-10 p:nth-child(2) {
   color: #47535b;
   font-weight: 600;
 }
-/* line 641, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 646, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .testimonial img {
   width: 100px;
   height: auto;
 }
-/* line 649, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 654, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contact-details-wrap {
   background-image: url("../images/wood.png");
   background-repeat: repeat-x;
   padding-bottom: 15px;
   margin-left: -30px;
 }
-/* line 656, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 661, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contact-details {
   color: 13px;
   padding-left: 10px;
 }
-/* line 660, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 665, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contact-details h2 {
   color: #D4CFCD;
   margin-top: 20px;
   margin-left: 10px;
   font-weight: 600;
 }
-/* line 667, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 672, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contact-details .contact-info {
   color: #D4CFCD;
   margin-left: 10px;
   margin-top: 10px;
   font-size: 16px;
 }
-/* line 673, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 678, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contact-details .contact-info a {
   color: #fff1c7;
 }
-/* line 675, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 680, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contact-details .contact-info .contact-info-email {
   margin-left: 5px;
 }
-/* line 680, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 685, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .contact-details .social-icons {
   margin-right: 10px;
 }
-/* line 688, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 693, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .navbar.footer {
   border-radius: 0px;
   background-color: #fff;
@@ -11045,21 +11053,21 @@ p {
   height: 40px;
   margin-bottom: -15px;
 }
-/* line 696, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 701, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .navbar.footer .container-fluid {
   margin-left: -15px;
 }
-/* line 699, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 704, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .navbar.footer .container-fluid .navbar-collapse {
   margin-left: -15px;
 }
-/* line 704, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 709, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .navbar.footer ul.nav.navbar-nav li {
   font-size: 13px;
   padding-top: 15px;
   padding-bottom: 15px;
 }
-/* line 709, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 714, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .navbar.footer ul.nav.navbar-nav li a {
   padding-top: 0px;
   color: #47535b;
@@ -11067,61 +11075,61 @@ p {
   font-size: 12px;
   font-weight: 400;
 }
-/* line 716, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 721, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .navbar.footer ul.nav.navbar-nav li a:hover {
   color: #daa916;
 }
-/* line 721, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 726, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .navbar.footer ul.nav.navbar-nav li h5 {
   color: #92969B;
 }
-/* line 726, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 731, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .content-wrapper .navbar.footer ul.nav.navbar-nav.navbar-right li {
   padding-top: 19px;
 }
 
-/* line 736, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 741, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .terms-content {
   width: 60%;
   margin: 0 auto;
 }
 
 /*-- pdf report --*/
-/* line 744, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 749, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .report-body {
   background-color: #ebedee;
 }
 
-/* line 746, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 751, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 h2.section-heading {
   font-size: 16px;
   margin-bottom: 20px;
   font-weight: 600;
 }
 
-/* line 748, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 753, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .legend-icon {
   display: inline-block;
   width: 8px;
   height: 8px;
 }
 
-/* line 749, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 754, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .legend-icon-1 {
   background-color: #6195C5;
 }
 
-/* line 750, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 755, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .legend-icon-2 {
   background-color: #C96560;
 }
 
-/* line 751, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 756, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .legend-icon-3 {
   background-color: #A9C26F;
 }
 
-/* line 753, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 758, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .report-wrap {
   background-color: #fff;
   width: 920px;
@@ -11129,7 +11137,7 @@ h2.section-heading {
   padding: 10px;
 }
 
-/* line 755, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 760, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 h2.campaign-name {
   background-color: #47535b;
   color: #fff;
@@ -11139,119 +11147,127 @@ h2.campaign-name {
   padding: 10px 0;
 }
 
-/* line 758, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 763, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .campaign-info ul.campaign-info-values {
   margin-left: -28px;
 }
-/* line 759, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 764, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .campaign-info ul li {
   padding: 8px;
 }
-/* line 760, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 765, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .campaign-info ul.campaign-info-labels li {
   font-weight: 700;
 }
-/* line 761, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 766, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .campaign-info ul.campaign-info-labels li:nth-child(odd) {
   background-color: #ebedee;
 }
-/* line 762, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 767, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .campaign-info ul.campaign-info-values li:nth-child(odd) {
   background-color: #f3f4f5;
 }
 
-/* line 765, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 770, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .summary {
   text-align: center;
 }
-/* line 768, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 773, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .summary .legend {
   display: inline-block;
   margin-right: 12px;
 }
-/* line 770, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 775, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .summary .summary-diagram {
   margin-top: 20px;
 }
 
-/* line 773, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 778, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .tabular-summary {
   margin-top: 40px;
 }
-/* line 776, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 781, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .tabular-summary .table th, .tabular-summary .table td {
   font-size: 13px;
 }
-/* line 777, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 782, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .tabular-summary .footnote {
   text-align: left;
   font-size: 11px;
 }
 
-/* line 780, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 785, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .high-res-images {
   margin-top: 20px;
 }
-/* line 783, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 788, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .high-res-images .btn.btn-primary {
   display: inline-block;
   width: 300px;
 }
 
-/* line 786, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 791, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .image-gallery {
   margin-top: 40px;
 }
-/* line 789, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 794, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .image-gallery .image-box {
   width: 310px;
   height: 310px;
   margin-bottom: 20px;
   margin: 0 auto;
 }
-/* line 795, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 800, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .image-gallery .image-box .status-icon {
   margin-bottom: 8px;
 }
-/* line 797, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 802, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .image-gallery .image-box .image {
   width: 310px;
   height: 240px;
   background-image: url("../images/image-gallery-sprite.png");
 }
-/* line 798, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 803, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .image-gallery .image-box .image1 {
   background-position: -62px -66px;
 }
-/* line 799, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 804, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .image-gallery .image-box .image2 {
   background-position: 440px -66px;
 }
-/* line 800, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 805, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .image-gallery .image-box .image3 {
   background-position: -592px -66px;
 }
-/* line 801, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 806, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .image-gallery .image-box .image4 {
   background-position: 918px -66px;
 }
-/* line 803, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 808, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .image-gallery .image-box .color-labels {
   background-color: #fff;
   padding: 10px 0;
 }
-/* line 804, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 809, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .image-gallery .image-box .color-labels .legend-icon {
   margin-right: 12px;
 }
 
-/* line 808, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 813, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .divider {
   border: 1px solid #ebedee;
 }
 
 /*-- end of pdf report --*/
-/* line 813, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+/* line 818, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
 .country {
   text-align: left;
+}
+
+/* line 820, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+.stick {
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+  width: 100%;
 }
