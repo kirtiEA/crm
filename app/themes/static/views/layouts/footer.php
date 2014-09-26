@@ -4,7 +4,7 @@
         <div class="contact-details">
             <h2>Even More Curious, Approach Us Anytime.</h2>
             <div class="contact-info pull-left">
-                <span class="glyphicon glyphicon-phone-alt"></span>  +91 11 4132 0334 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:sales@eatads.com"><span class="glyphicon glyphicon-envelope"><span class="contact-info-email">sales@eatads.com</span></a></span>  
+                <span class="glyphicon glyphicon-phone-alt"></span>  +91 11 4132 0334 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:sales@eatads.com"><span class="glyphicon glyphicon-envelope"><span class="contact-info-email">sales@eatads.com</span></a></span> 
             </div>
             <div class="social-icons pull-right">                
                 <a href="https://www.linkedin.com/company/2128549" target="_blank"><img src="<?php echo $theme->getBaseUrl(); ?>/images/linkedin.png">&nbsp;</a>
@@ -35,7 +35,6 @@
                 <li><a href="https://www.eatads.com/">EatAds.com</a></li>
                 <!--<li><a href="<?php echo Yii::app()->urlManager->createUrl('account/pricing'); ?>">Pricing</a></li>-->
                 <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>">Terms &amp; Conditions</a></li>
-                <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/contactus'); ?>">Contact Us</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><h5 class="pull-right">Copyright © EatAds, Inc. 2014 Block 71, Ayer Rajah Crescent #01-12 Singapore 139951</h5></li>

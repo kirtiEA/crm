@@ -37,4 +37,32 @@ $(document).ready(function() {
             $('#MonitorlySubscription_email').attr('style', 'background-color:rgb(223, 190, 190)');
         }    
       });
+	  
+	  //anchor links on homepage
+	  $('#selling-point-phone-anchor').click(function(e) {
+		      $('html, body').animate({
+		          scrollTop: $('#selling-point-phone').offset().top
+		      }, 1200);
+	  });
+	  
+	  $('#selling-point-sync-anchor').click(function(e) {
+		      $('html, body').animate({
+		          scrollTop: $('#selling-point-sync').offset().top
+		      }, 1200);
+	  });
+	  
+	  $('#selling-point-certification-anchor').click(function(e) {
+		      $('html, body').animate({
+		          scrollTop: $('#selling-point-certification').offset().top
+		      }, 1200);
+	  });
+	  
+	  $('#selling-point-report-anchor').click(function(e) {
+		      $('html, body').animate({
+		          scrollTop: $('#selling-point-report').offset().top
+		      }, 1200);
+	  });
+	  
+	  if ($('#selling-points-subnav').offset() == 0)
+	  {alert('navbar should be sticky now');}
 });
