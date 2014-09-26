@@ -98,7 +98,7 @@
             </div>
         <?php } ?>
         <?php if (Yii::app()->user->hasFlash('error')) { ?>
-            <div id="flash-messages" class="alert alert-success alert-dismissible">
+        <div id="flash-messages" class="alert alert-success alert-dismissible" style="background-color: rgb(218, 172, 172); color: black;">
                 <?php echo Yii::app()->user->getFlash('error'); ?>
 
             </div>

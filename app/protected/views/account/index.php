@@ -214,7 +214,7 @@
         } else {
             $('#emailid').focus();
             $('#emailid').attr('placeholder', 'Email is required').attr('style', 'background-color:rgb(218, 172, 172)');
-            alert('Email is required');
+            //alert('Email is required');
         }
     });
 
@@ -357,8 +357,9 @@
                             window.location=$('#completePath').text();
                             $('#set_modal_form').hide();
                             $('#set_err_msg').html("Your password link has expired.");
+                            $('#set_warning').show();
                         }
-                        if (data == 5) {
+                        else if (data == 5) {
                             // login and redirect from server
                             $('#set_modal_form').hide();
                             $('#set_err_msg').html("Please login to your account.");
