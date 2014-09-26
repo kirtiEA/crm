@@ -310,7 +310,6 @@
         var spc = '<?php echo $setPwdHash; ?>';
         if (spc) {
             $('#modal-setpassword').modal('show');
-
         }
 
         $('#reset_modal_forgot').on("click", function () {
@@ -378,7 +377,7 @@
                             window.location=$('#completePath').text() + '/myCampaigns';
                         }
                         else if(data == 2){
-                            window.location=$('#completePath').text();
+                            window.location=$('#completePath').text() + '/';
                             $('#set_modal_form').hide();
                             $('#set_err_msg').html("Your password link has expired.");
                             $('#set_warning').show();
