@@ -47,6 +47,14 @@ class SiteController extends Controller {
     }
 
     public function actionAddVendor() {
+        
+        // if last http referer is mysites, for preselected mysites data
+        $cId = Yii::app()->request->getParam('cid');
+        $mySiteName='';
+        if(is_numeric($cId)) {
+            $mySiteName = UserCompany::fetchCompanyName($cId);
+        }
+                
         $vendorList = array();
         $result = UserCompany::fetchVendorsList(Yii::app()->user->cid);
         foreach($result as $value) {
@@ -64,7 +72,9 @@ class SiteController extends Controller {
         $this->render('addvendor', array(
             'vendorList' => json_encode($vendorList),
             'mediaType' => json_encode($mediaType),
-            'lightingType' => json_encode(array_values(Listing::getLighting()))
+            'lightingType' => json_encode(array_values(Listing::getLighting())),
+            'cId'=>$cId,
+            'mySiteName'=>$mySiteName
         ));
     }
 

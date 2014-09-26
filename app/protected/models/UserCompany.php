@@ -35,4 +35,9 @@ from Listing
         $sql = 'SELECT u.email FROM UserCompany uc inner join User u on u.id =uc.userid where uc.id = '.$param;
         return Yii::app()->db->createCommand($sql)->queryRow();
     }
+    
+    public static function fetchCompanyName($cId) {
+        $row = self::model()->findByPk($cId, array('select'=>'name'));
+        return $row->name;
+    }
 }
