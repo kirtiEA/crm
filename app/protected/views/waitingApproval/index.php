@@ -92,16 +92,17 @@
                         </tr>
                     <?php endforeach; ?>
                         <?php foreach ($accepted as $value): ?>
+                        <?php if ($value['accepteddate'] !== NULL): ?>
                         <tr>
-                            <?php if ($value['accepteddate'] !== NULL): ?>
+                            
                             <td><?php echo $value['name']; ?></td>
                             <td><?php echo $value['vendoradmin']; ?></td>
                             <td>Invited on <?php echo $value['createddate']; ?></td>
                             <td>
                                 <span class="glyphicon glyphicon-ok"></span>Accepted
                             </td>
-                            <?php endif;?>
                         </tr>
+                        <?php endif;?>
                     <?php endforeach; ?>
                 </table>
             </div>

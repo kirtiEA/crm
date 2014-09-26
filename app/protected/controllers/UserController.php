@@ -2,11 +2,6 @@
 
 class UserController extends Controller {
 
-    public function init() {
-        if (Yii::app()->user->isGuest) {
-            $this->redirect(Yii::app()->createUrl('account'));
-        }
-    }
     protected $userroleid;
 
     /**
@@ -87,16 +82,16 @@ class UserController extends Controller {
                 $password = $ph->HashPassword($pwd);
                 $result = $ph->CheckPassword($pwd, $model->password);
                 $model->password = $password;
-                if (strlen($_POST['User']['password']) == 0 && (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10)) {
-                    Yii::app()->user->setFlash('error', 'Password & 10 digit phone number are required');
-                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
-                } else if (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10) {
-                    Yii::app()->user->setFlash('error', '10 digit phone number is required');
-                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
-                } elseif (strlen($_POST['User']['password']) == 0) {
-                    Yii::app()->user->setFlash('error', 'Password is required');
-                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
-                }
+//                if (strlen($_POST['User']['password']) == 0 && (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10)) {
+//                    Yii::app()->user->setFlash('error', 'Password & 10 digit phone number are required');
+//                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+//                } else if (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10) {
+//                    Yii::app()->user->setFlash('error', '10 digit phone number is required');
+//                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+//                } elseif (strlen($_POST['User']['password']) == 0) {
+//                    Yii::app()->user->setFlash('error', 'Password is required');
+//                    Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+//                }
                 if ($model->validate()) {
                     $model->save();
                     UserRole::model()->insertRoles($model->id, $role->id);
@@ -106,25 +101,27 @@ class UserController extends Controller {
                     Yii::app()->user->setFlash('error', 'Space is not allowed in User Name');
                     Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
                 } else {
-                    Yii::app()->user->setFlash('success', 'Please enter feilds in correct format');
+                    Yii::app()->user->setFlash('error', 'Please enter feilds in correct format');
                     Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
                 }
             } elseif (strlen($_POST['User']['username']) == 0 && strlen($_POST['User']['password']) == 0 && (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10)) {
                 Yii::app()->user->setFlash('error', 'All Fields are required');
                 Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
-            } elseif (strlen($_POST['User']['username']) == 0 && strlen($_POST['User']['password']) == 0) {
-                Yii::app()->user->setFlash('error', 'User name & password are required');
-                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
-            } elseif (strlen($_POST['User']['username']) == 0 && (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10)) {
-                Yii::app()->user->setFlash('error', 'User name & 10 digit phone number are required');
-                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
-            } elseif (strlen($_POST['User']['username']) == 0) {
-                Yii::app()->user->setFlash('error', 'User Name is required');
-                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
-            } else if (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10) {
-                Yii::app()->user->setFlash('error', '10 digit phone number is required');
-                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
-            } else {
+            } 
+//            elseif (strlen($_POST['User']['username']) == 0 && strlen($_POST['User']['password']) == 0) {
+//                Yii::app()->user->setFlash('error', 'User name & password are required');
+//                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+//            } elseif (strlen($_POST['User']['username']) == 0 && (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10)) {
+//                Yii::app()->user->setFlash('error', 'User name & 10 digit phone number are required');
+//                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+//            } elseif (strlen($_POST['User']['username']) == 0) {
+//                Yii::app()->user->setFlash('error', 'User Name is required');
+//                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+//            } else if (strlen($_POST['User']['phonenumber']) == 0 || strlen($_POST['User']['phonenumber']) < 10) {
+//                Yii::app()->user->setFlash('error', '10 digit phone number is required');
+//                Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
+//            } 
+            else {
                 Yii::app()->user->setFlash('error', 'User already exists. Choose a different username');
                 Yii::app()->controller->redirect(Yii::app()->getBaseUrl() . '/user');
             }

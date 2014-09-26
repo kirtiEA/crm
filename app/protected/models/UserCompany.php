@@ -9,12 +9,10 @@ class UserCompany extends BaseUserCompany {
     }
 
     public static function fetchVendorsList($cid) {
-        $sql = 'select count(*) as cnt, companyid as id, uc.name from Listing  
-            inner join UserCompany uc on uc.id = companyid and uc.id in ( select vendorcompanyid from RequestedCompanyVendor where companyid =' . $cid . ' and accepteddate is not null)' .
-                'where companyid is not null and companyid != 0
+        $sql = 'select (select count(id) from Listing where status = 1 and companyid = uc.id) as cnt,uc.id,uc.name  from RequestedCompanyVendor rcv
+inner join UserCompany uc on uc.id = rcv.vendorcompanyid
+where rcv.companyid = ' .$cid .' and rcv.accepteddate is not null
 
-            and status = 1 
-            group by companyid 
             union  select count(*) as cnt, uc.id as id, uc.name 
 from Listing  
             inner join UserCompany uc on uc.id = companyid and uc.id = ' . $cid;
@@ -36,5 +34,10 @@ from Listing
     public static function fetchVendorEmail($param) {
         $sql = 'SELECT u.email FROM UserCompany uc inner join User u on u.id =uc.userid where uc.id = '.$param;
         return Yii::app()->db->createCommand($sql)->queryRow();
+    }
+    
+    public static function fetchCompanyName($cId) {
+        $row = self::model()->findByPk($cId, array('select'=>'name'));
+        return $row->name;
     }
 }

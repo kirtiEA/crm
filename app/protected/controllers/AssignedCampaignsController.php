@@ -70,7 +70,6 @@ class AssignedCampaignsController extends Controller
                         $listings = Listing::getListingsForCampaign($vendors[$i]['id'], $value['id']);
                         $temp = $vendors[$i];
                         $temp['listings'] = $listings;
-//                        print_r($temp);die();
                         array_push($result, $temp);
                     }
                     $sDate = new DateTime($value['startDate']);
@@ -90,7 +89,8 @@ class AssignedCampaignsController extends Controller
                 /*
                  * fetch Vendors list that needs to be published
                  */
-		$this->render('index', array('model' => $model, 'campaigns' => $finalCampaigns));
+                $users = User::fetchCompanyUsers(Yii::app()->user->cid);
+		$this->render('index', array('model' => $model, 'campaigns' => $finalCampaigns, 'users' => $users));
 	}
 
 	public function actionUpcoming()
@@ -112,7 +112,16 @@ class AssignedCampaignsController extends Controller
                         //echo $vendors[$i]['name'] . ' ww ' . $vendors[$i]['id'];
                         $listings = Listing::getListingsForCampaign($vendors[$i]['id'], $value['id']);
                         $temp = $vendors[$i];
-                        $temp['listings'] = $listings;
+                        $listingsFinal = array();
+                        foreach ($listings as $list) {
+                            $usersperlisting = Task::fetcUsersAssignedToSite($list['id'], $value['id'], Yii::app()->user->cid);
+                        //    print_r($usersperlisting);die('sfsdfsd');
+                            $list['assignedusers'] = $usersperlisting;
+                            array_push($listingsFinal, $list);
+                        }
+                        
+                        $temp['listings'] = $listingsFinal;
+//                        $temp['listings'] = $listings;
 //                        print_r($temp);die();
                         array_push($result, $temp);
                     }

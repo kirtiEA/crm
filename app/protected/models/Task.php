@@ -19,7 +19,7 @@ class Task extends BaseTask {
         inner join Listing l on l.id = t.siteid 
         inner join MediaType mt on mt.id = l.mediatypeid
         left outer join User u on u.id = t.assigneduserid
-        where t.status =1 and assignedCompanyId = ' . $companyid;
+        where t.status =1 and t.dueDate > CURRENT_TIMESTAMP and assignedCompanyId = ' . $companyid;
         if ($campaignId) {
             $sql = $sql . ' and  campaignid in (' . $campaignId . ')';
         }
@@ -66,6 +66,14 @@ if ($date != null) {
     
     public static function fetchAllSitesInCampaign($cid) {
         $sql = 'Select siteid from Task where status = 1 and campaignid = ' . $cid;
+        return Yii::app()->db->createCommand($sql)->queryAll();
+    }
+    
+    public static function fetcUsersAssignedToSite($siteid, $campaignid,$companyid) {
+        $sql = 'select u.id,u.username from Task 
+        inner join User u on u.id = assigneduserid
+        where siteid = ' . $siteid . ' and campaignid = '. $campaignid .' and  assignedCompanyId = ' . $companyid .'
+        group by u.id';
         return Yii::app()->db->createCommand($sql)->queryAll();
     }
 }
