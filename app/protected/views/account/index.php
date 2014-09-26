@@ -286,7 +286,6 @@
         var spc = '<?php echo $setPwdHash; ?>';
         if (spc) {
             $('#modal-setpassword').modal('show');
-
         }
 
         $('#reset_modal_forgot').on("click", function () {
