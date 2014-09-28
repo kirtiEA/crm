@@ -202,11 +202,11 @@
         //console.log(JSON.stringify(handsontableData));
         var vendorid = $('#vendor-ac-id').val();
         var byuserid = 1;//'<?php echo Yii::app()->user->id; ?>';
-        console.log(vendorid + " - " + byuserid + " - " + cleanData.length);
-        console.log(JSON.stringify(cleanData));
+        //console.log(vendorid + " - " + byuserid + " - " + cleanData.length);
+        //console.log(JSON.stringify(cleanData));
 
         if (vendorid && byuserid && cleanData.length) {
-            console.log('inside if');
+            //console.log('inside if');
             $.ajax({
                 type: 'POST',
                 url: '<?php echo Yii::app()->urlManager->createUrl('ajax/massuploadsite'); ?>',
@@ -217,7 +217,7 @@
                 },
                 success: function(data) {
                     //var json = JSON.parse(data);
-                    console.log(data);
+                    //console.log(data);
                     if (data == true)
                         location.reload();
                     else
@@ -233,23 +233,27 @@
             $(window).scrollTop(0);
             $('#vendor-ac').focus();
         }
-
-
     });
     $(function() {
         $('.mon_menu').each(function() {
             $(this).removeClass('active');
         });
         $('.menu_site').addClass('active');
-
+        
         var allVendorJson = JSON.parse('<?php echo $vendorList; ?>');
-
+        var hot = $("#listings").handsontable('getInstance');        
+        hot.updateSettings({
+            readOnly: true
+        });
         $('#vendor-ac').autocomplete({
             source: allVendorJson,            
             select: function(event, ui) {
-                console.log(ui.item.value + ', ' + ui.item.id);
+                //console.log(ui.item.value + ', ' + ui.item.id);
                 $("#vendor-ac-id").val(ui.item.id);
                 fetchSites(ui.item.id);
+                hot.updateSettings({
+                    readOnly: false
+                });
             },
             change: function(event, ui) {
                 if (ui.item == null) {
@@ -264,5 +268,16 @@
                 }
             },
         });
+        var cid = '<?php echo $cId; ?>';
+        if(cid) {
+            $('#vendor-ac').val('<?php echo $mySiteName; ?>');
+            $("#vendor-ac-id").val(cid);
+            fetchSites(cid);
+            hot.updateSettings({
+                readOnly: false
+            });
+        } else {
+            $("#vendor-ac").focus();
+        }
     });
 </script>

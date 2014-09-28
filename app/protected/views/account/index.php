@@ -1,6 +1,5 @@
 <?php $theme = Yii::app()->theme; ?>
 
-
 <?php $this->widget('LoginModal'); ?>
 <!-- reset password modal -->
 <div class="modal fade modal-app" id="modal-resetpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -45,7 +44,7 @@
                 <h3 class="modal-title">Set Your Password</h3>
             </div>
             <div class="modal-body">
-                <div class="alert alert-warning" id="set_warning" hidden="true"><span id="set_err_msg"></span></div>
+                <div class="alert alert-warning" id="set_warning" style="display: none;" ><span id="set_err_msg"></span></div>
                 <div class="form-wrap" id="set_modal_form">
                     <h4>Provide your password below.</b></h4>
                     <br>
@@ -73,9 +72,9 @@
 <!-- hero section -->
 <div class="row hero-section">
     <div class="col-md-12">
-        <h1>OOH Proof, Monitoring & Reporting made Easy</h1>
-        <h3>Delight clients by capturing & instantly sharing campaign reports using the Monitorly mobile app. Save time, get paid. Certified by EatAds. </h3>
-        <h4><span class="dashed-line"></span> 100 images free (limited offer) <span class="dashed-line"></span></h4>
+        <h1 class="hero-section-main-message">Capture campaign images. Report instantly.</h1>
+		<h1 class="hero-section-main-message">Save time, Get paid.</h1>
+       
         <?php if (Yii::app()->user->hasFlash('success')) { ?>
             <div id="flash-messages" class="alert alert-success alert-dismissible">
                 <?php echo Yii::app()->user->getFlash('success'); ?>
@@ -95,16 +94,19 @@
             ),
         ));
         ?>
+		<div class="signup-form-wrap-homepage">
 <!--                        <input type="email" class="form-control" placeholder="Email">-->
-        <?php echo $form->emailField($modelSub, 'email', array('id' => 'emailid', 'class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email', 'autocomplete' => 'off')); ?>                            
+
+        <?php echo $form->emailField($modelSub, 'email', array('id' => 'emailid', 'class' => 'form-control form-control-hero-section', 'placeholder' => 'Email', 'type' => 'email', 'autocomplete' => 'off')); ?>                            
         <?php echo $form->error($modelSub, 'email'); ?>
 <!--                        <input type="text" class="form-control" placeholder="Company Name">-->
-        <?php echo $form->textField($modelSub, 'companyname', array('id' => 'companynameid', 'class' => 'form-control companyname', 'placeholder' => 'Company Name', 'autocomplete' => 'off')); ?> 
+        <?php echo $form->textField($modelSub, 'companyname', array('id' => 'companynameid', 'class' => 'form-control companyname form-control-hero-section', 'placeholder' => 'Company Name', 'autocomplete' => 'off')); ?> 
+
         <input type="hidden" value="" id="vendor-ac-id">
         <?php echo $form->error($modelSub, 'companyname'); ?>
 <!--                        <input type="text" class="form-control" placeholder="+91">-->
 <!--                        <input  class="form-control intl-tel-input" placeholder="Mobile" id="mobile-number" type="tel">-->
-        <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
+        <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input form-control-hero-section intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
         <?php echo $form->error($modelSub, 'phonenumber'); ?>
         <br>
         <br>
@@ -112,60 +114,59 @@
         <button class="btn btn-primary btn-primary-lg" id="signup">Create Free Account</button>
         <!--                        <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>-->
         <br>
-        <h5>No Credit Card required</h5>
 
-        <h5>By signing-up you agree to <a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>" target="_blank">Terms &amp; Conditions</a></h5>
+        <h5 class="hero-section-termscopy">By signing-up you agree to <a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>" target="_blank">Terms &amp; Conditions</a></h5>
         <?php $this->endWidget(); ?>
 
         <!--<div><a class="pricing-link" href="pricing.html">Know More About Pricing &amp; Plan</a></div>-->
-    </div>
-</div>
-<!-- end of hero section -->
+		</div>
+		<nav class="navbar navbar-default subnav" id="selling-points-subnav" role="navigation">
+			
+				<a href="#" id="selling-point-phone-anchor">Mobile App</a>
+				<a href="#" id="selling-point-sync-anchor">Works Anywhere</a>
+				<a href="#" id="selling-point-certification-anchor">Certified Images</a>
+				<a href="#" id="selling-point-report-anchor">Instant Reports</a>
 
-<!-- process steps in monitorly -->
-<div class="row process-steps">
-    <div class="col-md-12">
-        <h2>2 Steps to Take All Your Monitoring Pain Away</h2>
-        <img class="img-responsive" src="<?php echo $theme->getBaseUrl(); ?>/images/process-steps.png">
+		</nav>
     </div>
 </div>
-<!-- end of process steps in monitorly  --> 
+<!-- end of hero section --> 
 
 <!-- benefits -->
-<div class="row benefits">
+<div class="row selling-points">
     <div class="col-md-12">
-        <hr>
-        <div class="row testimonial">
-            <div class="col-md-2">
-                <img src="<?php echo $theme->getBaseUrl(); ?>/images/rongraham.png">
-            </div>
-            <div class="col-md-10">
-                <p>"Proof of Posting &amp; Monitoring is a necessity but Monitorly makes it automated and dynamic for media owners and agencies to use and advertisers to review. This is a big step forward."</p>
-                <p>Ron Graham, Media On The Go</p>
-            </div>
-        </div>
-        <hr>
-        <h1>How Monitorly Does It?</h1>
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
                 <ul>
-                    <li>
-                        <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-benefit-1.png">
-                        <h2>Easy to Use</h2>
-                        <br>
-                        <p class="selling-point-desc">Designed for simple set-up and use. Monitorly gets your team and partners in the office and around the country, set-up in an hour.  </p>
+                    <li id="selling-point-phone">
+						<hr>
+                        <div class="selling-point-phone-icon"></div>
+                        <h1 class="selling-point-heading">Mobile phones have it all, no need for digital cameras</h1>
+						<br>
+                        <p class="selling-point-desc">Common smart phones now have amazing cameras, perfect for your campaign pics. Even at night. Plus, as they’re connoted to the internet, they allow instant transfer of images to your campaign reports.</p>
+						<hr>
                     </li>
-                    <li>
-                        <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-benefit-2.png">
-                        <h2>Get Paid, Save Time</h2>
-                        <br>
-                        <p class="selling-point-desc">Delight your clients, build trust and save time with Automatic Reporting. And with Certified Images, all your campaign images are time-stamped and geo-tagged so your clients can make payment with complete confidence. </p>
+                    <li id="selling-point-sync">
+                        <div class="selling-point-sync-icon"></div>
+                        <h2 class="selling-point-heading">Out of range? Absolutely no problems. </h2>
+						<br>
+                        <p class="selling-point-desc">Our mobile app works brilliantly in all scenarios. Even if you’re out of range, capture campaign images and automatically sync later when you’re connected.</p>
+						<hr>
                     </li>
-                    <li>
-                        <img src="<?php echo $theme->getBaseUrl(); ?>/images/img-benefit-3.png">
-                        <h2>Certified, Anywhere</h2>
-                        <br>
-                        <p class="selling-point-desc">Certified images can be captured anywhere with Offline mode (and image auto-sync). Any site, anywhere, even away from network connectivity. </p>
+                    <li id="selling-point-certification">
+                        <div class="selling-point-certification-icon"></div>
+                        <h2 class="selling-point-heading">Your clients will never doubt you</h2>
+						<br>
+                        <p class="selling-point-desc">Leveraging the latest location and mobile technologies, each campaign image you capture is certified. Time is certified. Location is certified. No more questioning the authenticity of your campaign images so you can get paid, and faster. </p>
+						<hr>
+                    </li>
+                    <li id="selling-point-report">
+                        <div class="selling-point-report-icon"></div>
+                        <h2 class="selling-point-heading">Comprehensive reports for your clients, instantly </h2>
+						<br>
+                        <p class="selling-point-desc">No more downloading, cutting, pasting, and saving into reports, only to then have problems trying to email large files to clients. With Monitorly, your campaign reports are generated automatically. And can be shared instantly with your clients. </p>
+						<hr>
+
                     </li>
                 </ul>
             </div>
@@ -186,6 +187,29 @@
     </div>
 </div>
 <!-- end of benefits  -->
+
+<!-- process steps in monitorly -->
+<div class="row process-steps">
+    <div class="col-md-12">
+        <h2>5 Steps to Take All Your Monitoring Pain Away</h2>
+        <img class="img-responsive" src="<?php echo $theme->getBaseUrl(); ?>/images/process-steps.png">
+    </div>
+</div>
+<!-- end of process steps in monitorly  -->
+
+<!-- testimonials -->
+<div class="row testimonial">
+    <div class="col-md-2">
+        <img src="<?php echo $theme->getBaseUrl(); ?>/images/rongraham.png" class="testimonial-author-image">
+    </div>
+    <div class="col-md-10">
+		<div class="testimonial-content">
+	        <p class="testimonial-desc">"Proof of Posting &amp; Monitoring is a necessity but Monitorly makes it automated and dynamic for media owners and agencies to use and advertisers to review. This is a big step forward."</p>
+	        <p class="testimonial-author">Ron Graham, Media On The Go</p>
+		</div>
+    </div>
+</div>
+<!-- end of testimonials -->
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
@@ -214,7 +238,7 @@
         } else {
             $('#emailid').focus();
             $('#emailid').attr('placeholder', 'Email is required').attr('style', 'background-color:rgb(218, 172, 172)');
-            alert('Email is required');
+            //alert('Email is required');
         }
     });
 
@@ -286,7 +310,6 @@
         var spc = '<?php echo $setPwdHash; ?>';
         if (spc) {
             $('#modal-setpassword').modal('show');
-
         }
 
         $('#reset_modal_forgot').on("click", function () {
@@ -350,10 +373,16 @@
                     success: function (data) {
                         //console.log('hi');
                         //console.log(data);
-                        if(data ==1){
+                        if(data == 1){
                             window.location=$('#completePath').text() + '/myCampaigns';
                         }
-                        if (data == 5) {
+                        else if(data == 2){
+                            window.location=$('#completePath').text() + '/';
+                            $('#set_modal_form').hide();
+                            $('#set_err_msg').html("Your password link has expired.");
+                            $('#set_warning').show();
+                        }
+                        else if (data == 5) {
                             // login and redirect from server
                             $('#set_modal_form').hide();
                             $('#set_err_msg').html("Please login to your account.");
@@ -388,6 +417,22 @@
     ga('create', 'UA-XXXXX-X');
     ga('send', 'pageview');
 
+
+
+
+	$(document).ready(function() {
+	    var s = $("#selling-points-subnav");
+	    var pos = s.position();                    
+	    $(window).scroll(function() {
+	        var windowpos = $(window).scrollTop();
+
+	        if (windowpos >= pos.top) {
+	            s.addClass("stick");
+	        } else {
+	            s.removeClass("stick"); 
+	        }
+	    });
+	});
 </script>
 </body>
 </html>

@@ -110,9 +110,7 @@ class ApiController extends Controller {
                                 . "LEFT JOIN Listing l ON l.id = t.siteid "
                                 . "LEFT JOIN PhotoProof pp ON pp.taskid = t.id "
                                 . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
-
-                                . "WHERE t.taskDone=1 AND t.status=1 AND t.pop=0 AND t.assigneduserid='$uId' AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
-
+                                . "WHERE t.taskDone=1 AND t.status=1 AND t.assigneduserid='$uId' AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
                                 . "GROUP BY t.id "
                                 . "LIMIT {$start}, {$limit}";
                     } else if($tDone == 0) {
@@ -143,16 +141,16 @@ class ApiController extends Controller {
                             . "UNION ALL ";
                                                 
                         $sql .= "SELECT t.id, c.name AS campaign, l.name AS site, l.geoLat AS lat, l.geoLng AS lng, COUNT( pp.id ) as photocount, dueDate as duedate "
-                                . "FROM Task t "
-                                . "LEFT JOIN Campaign c ON c.id = t.campaignid "
-                                . "LEFT JOIN Listing l ON l.id = t.siteid "
-                                . "LEFT JOIN PhotoProof pp ON pp.taskid = t.id "
-                                . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
-                                . "WHERE t.status=1 AND t.pop=0 AND t.assigneduserid='$uId' AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
-                                . "GROUP BY t.id "
-                                . "LIMIT {$start}, {$limit} ";                                
+                            . "FROM Task t "
+                            . "LEFT JOIN Campaign c ON c.id = t.campaignid "
+                            . "LEFT JOIN Listing l ON l.id = t.siteid "
+                            . "LEFT JOIN PhotoProof pp ON pp.taskid = t.id "
+                            . "AND pp.clickedDateTime BETWEEN '$sDate' AND '$eDate' "
+                            . "WHERE t.status=1 AND t.assigneduserid='$uId' AND t.dueDate BETWEEN '$sDate' AND '$eDate' "
+                            . "GROUP BY t.id "
+                            . "LIMIT {$start}, {$limit} ";
                     }
-                          //echo $sql;              
+                         //echo $sql;
                     $tasks = Yii::app()->db->createCommand($sql)->queryAll();
                     $this->_sendResponse(200, $tasks);
                 }

@@ -153,6 +153,7 @@ class AjaxController extends Controller {
             /*
              * password has expired
              */
+            echo 2;
         }
     }
 
