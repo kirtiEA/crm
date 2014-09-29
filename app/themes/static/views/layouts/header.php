@@ -51,7 +51,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo Yii::app()->getBaseUrl(); ?>">
+                    <a class="navbar-brand" href="<?php echo Yii::app()->urlManager->createUrl('account'); ?>">
                         <div class="logo-on-darkbcg" id="static_logo"></div>
                     </a>
                 </div>
