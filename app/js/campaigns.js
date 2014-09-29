@@ -106,6 +106,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
         }    
     }
     function removeFromArrayAddToCampaign(id) {
+        if (confirm("Do you really want to delete this site from campaign!") == true) {
             var index = addtocampaign.indexOf(id);
             if (index > -1) {
                 $('#fjs_listing_' + id).removeClass('selected');
@@ -113,6 +114,10 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                 $('#justadded_' + id).remove();
                 addtocampaign.splice(index, 1);
             }
+        } else {
+            x = "You pressed Cancel!";
+        }
+            
     }
     function removeFromCampaign(id) {
         removefromcampaign.push(id);
@@ -328,6 +333,31 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
              }
            });
     }
+    function removeListingFromCampaignd(id, cid) {
+//        console.log('ffsdsdfsfss');
+    //var cid = $('#addedlistings_' +id).parent().parent().parent().parent().attr('id').split('_')[1];
+    if (confirm("Do you really want to delete this site from campaign!") == true) {
+            $.ajax({
+        type: 'POST',
+        url: $('#completePath').text() + '/ajax/removeListingFromCampaign',
+        data: {
+            'sid': id,
+            'cid': cid
+        },
+        success: function (data) {
+            $('#addedlistings_' + id).parent().remove();
+            console.log(data);
+        },
+        error: function (data) { // if error occured
+            alert("Error occured.please try again");
+            alert(data);
+        }
+    });
+    } else {
+        x = "You pressed Cancel!";
+    }
+
+}
     $('.mon_menu').each(function() {
         $(this).removeClass('active');
     });
