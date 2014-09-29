@@ -37,50 +37,49 @@
                 ));
                 ?>
 <!--                        <input type="email" class="form-control" placeholder="Email">-->
-				<div class="signup-form-wrap">
-					<div class="signup-form">
-                <?php 
-                    if (!empty($modelSub->email)) {
-                        echo $form->emailField($modelSub, 'email', array('id' =>'emailid','class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email','disabled' => 'true'  ,'autocomplete' => 'off', 'value' =>$modelSub->email));                             
-                        echo $form->error($modelSub, 'email');    
-                    } else {
-                        echo $form->emailField($modelSub, 'email', array('id' =>'emailid','class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email'));                             
-                        echo $form->error($modelSub, 'email');
-                    }
-
-                ?>
+                <div class="signup-form-wrap">
+                    <div class="signup-form">
+                        <?php
+                        if (!empty($modelSub->email)) {
+                            echo $form->emailField($modelSub, 'email', array('id' => 'emailid', 'class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email', 'disabled' => 'true', 'autocomplete' => 'off', 'value' => $modelSub->email));
+                            echo $form->error($modelSub, 'email');
+                        } else {
+                            echo $form->emailField($modelSub, 'email', array('id' => 'emailid', 'class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email'));
+                            echo $form->error($modelSub, 'email');
+                        }
+                        ?>
 
 <!--                        <input type="text" class="form-control" placeholder="Company Name">-->
-                <?php echo $form->textField($modelSub, 'companyname', array('id' => 'companynameid', 'class' => 'form-control companyname', 'placeholder' => 'Company Name', 'autocomplete' => 'off')); ?> 
-                <?php echo $form->error($modelSub, 'companyname'); ?>
+                        <?php echo $form->textField($modelSub, 'companyname', array('id' => 'companynameid', 'class' => 'form-control companyname', 'placeholder' => 'Company Name', 'autocomplete' => 'off')); ?> 
+                        <?php echo $form->error($modelSub, 'companyname'); ?>
 
-                <?php echo $form->hiddenField($modelSub, 'companyid', array('id' => 'vendor-ac-id')); ?>
+                        <?php echo $form->hiddenField($modelSub, 'companyid', array('id' => 'vendor-ac-id')); ?>
 
-                        <?php echo $form->passwordField($modelSub, 'password', array('id' => 'password','class' => 'form-control', 'placeholder' => 'Password', 'style' => 'width:300px;')); ?>
+                        <?php echo $form->passwordField($modelSub, 'password', array('id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password', 'style' => 'width:300px;')); ?>
                         <?php echo $form->error($modelSub, 'password'); ?>
-                                            <input type="password" class="form-control" placeholder="Confirm Password" style="width: 300px;" id="cnf_password">
-                                                
+                        <input type="password" class="form-control" placeholder="Confirm Password" style="width: 300px;" id="cnf_password">
+
 
 <!--                        <input type="text" class="form-control" placeholder="+91">-->
 <!--                        <input  class="form-control intl-tel-input" placeholder="Mobile" id="mobile-number" type="tel">-->
-                <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
-                <?php echo $form->error($modelSub, 'phonenumber'); ?>
-                <br><br>
-                <?php echo $form->hiddenField($modelSub, 'nid', array('value' => $nid, 'id' => 'nid')); ?>
-                <?php echo $form->hiddenField($modelSub, 'type', array('value' => $type, 'id' => 'type')); ?>
-                <?php
-                if (!empty($modelSub->email)) {
-                    echo $form->hiddenField($modelSub, 'email', array('class' => 'form-control'));
-                }
-                ?>
-                <?php // echo CHtml::submitButton('Sign Up for Free', array('class' => 'save btn btn-primary btn-primary-lg')); ?>
-                <button class="btn btn-primary btn-primary-lg" id="signup">Create Free Account</button>
-                <br>
-                <h5>No Credit Card required</h5>
+                        <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
+                        <?php echo $form->error($modelSub, 'phonenumber'); ?>
+                        <br><br>
+                        <?php echo $form->hiddenField($modelSub, 'nid', array('value' => $nid, 'id' => 'nid')); ?>
+                        <?php echo $form->hiddenField($modelSub, 'type', array('value' => $type, 'id' => 'type')); ?>
+                        <?php
+                        if (!empty($modelSub->email)) {
+                            echo $form->hiddenField($modelSub, 'email', array('class' => 'form-control'));
+                        }
+                        ?>
+                        <?php // echo CHtml::submitButton('Sign Up for Free', array('class' => 'save btn btn-primary btn-primary-lg')); ?>
+                        <button class="btn btn-primary btn-primary-lg" id="signup">Create Free Account</button>
+                        <br>
+                        <h5>No Credit Card required</h5>
 
-                <h5>By signing-up you agree to <a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>" target="_blank">Terms &amp; Conditions</a></h5>
-					</div>
-				</div>
+                        <h5>By signing-up you agree to <a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>" target="_blank">Terms &amp; Conditions</a></h5>
+                    </div>
+                </div>
                 <?php $this->endWidget(); ?>
 
             </div>
@@ -94,41 +93,41 @@
     $('#signup').on('click', function (event) {
         event.preventDefault();
 
-        if($('#emailid').val()) {
+        if ($('#emailid').val()) {
             console.log('1');
-            if($('#companynameid').val()) {
+            if ($('#companynameid').val()) {
                 console.log('2 ds ' + $('#password').val());
-                
-                if($("input[name='SubscriptionForm[password]']" ).val()) {
+
+                if ($("input[name='SubscriptionForm[password]']").val()) {
                     console.log('3');
-                    
+
                     if ($('#cnf_password').val()) {
-                     if ($('#cnf_password').val() == $("input[name='SubscriptionForm[password]']" ).val()) {
-                         if($('#mobile-number').val()) {
-                            console.log('4');
-                            $('#vendor_subscription1').submit();
-                            //return true;
+                        if ($('#cnf_password').val() == $("input[name='SubscriptionForm[password]']").val()) {
+                            if ($('#mobile-number').val()) {
+                                console.log('4');
+                                $('#vendor_subscription1').submit();
+                                //return true;
+                            } else {
+                                $('#mobile-number').focus();
+                                $('#mobile-number').attr('placeholder', 'Phone Number is required').attr('style', 'background-color:rgb(218, 172, 172)');
+                                //alert('Phone Number is required');
+                            }
                         } else {
-                            $('#mobile-number').focus();
-                            $('#mobile-number').attr('placeholder', 'Phone Number is required').attr('style','background-color:rgb(218, 172, 172)');
-                            //alert('Phone Number is required');
+                            $('#cnf_password').focus();
+                            $('#cnf_password').val('');
+                            $('#cnf_password').attr('placeholder', 'Confirm Password does not match your password').attr('style', 'background-color:rgb(218, 172, 172)');
                         }
-                     }  else {
-                         $('#cnf_password').focus();
-                         $('#cnf_password').val('');
-                        $('#cnf_password').attr('placeholder', 'Confirm Password does not match your password').attr('style','background-color:rgb(218, 172, 172)');
-                     } 
-                        
+
                     } else {
                         $('#cnf_password').focus();
-                        $('#cnf_password').attr('placeholder', 'Confirm your password').attr('style','background-color:rgb(218, 172, 172)');
+                        $('#cnf_password').attr('placeholder', 'Confirm your password').attr('style', 'background-color:rgb(218, 172, 172)');
 
                     }
-                    
+
                 } else {
 
-                    $( "input[name='SubscriptionForm[password]']" ).focus();
-                    $( "input[name='SubscriptionForm[password]']" ).attr('placeholder', 'Password is required').attr('style','background-color:rgb(218, 172, 172)');
+                    $("input[name='SubscriptionForm[password]']").focus();
+                    $("input[name='SubscriptionForm[password]']").attr('placeholder', 'Password is required').attr('style', 'background-color:rgb(218, 172, 172)');
 
                     //alert('Password is required');
                 }
@@ -147,10 +146,10 @@
 
     $(function () {
 
-        
-		$('#static_logo').removeClass('logo-on-darkbcg');
-		$('#static_logo').addClass('logo-on-lightbcg');
-		
+
+        $('#static_logo').removeClass('logo-on-darkbcg');
+        $('#static_logo').addClass('logo-on-lightbcg');
+
 
         $('#password').val('');
         $('#mobile-number').val('');
