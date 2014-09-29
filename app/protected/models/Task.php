@@ -19,7 +19,7 @@ class Task extends BaseTask {
         inner join Listing l on l.id = t.siteid 
         inner join MediaType mt on mt.id = l.mediatypeid
         left outer join User u on u.id = t.assigneduserid
-        where t.status =1 and t.dueDate > CURRENT_TIMESTAMP and assignedCompanyId = ' . $companyid .' AND l.status=1 ';
+        where t.status =1 and DATE_FORMAT(dueDate, \'%Y-%m-%d\') >= CURRENT_DATE and assignedCompanyId = ' . $companyid .' AND l.status=1 ';
         if ($campaignId) {
             $sql = $sql . ' and  campaignid in (' . $campaignId . ')';
         }

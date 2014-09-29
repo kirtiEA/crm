@@ -143,12 +143,12 @@
                         <div class="selling-point-phone-icon"></div>
                         <h1 class="selling-point-heading">Mobile phones have it all, no need for digital cameras</h1>
 						<br>
-                        <p class="selling-point-desc">Common smart phones now have amazing cameras, perfect for your campaign pics. Even at night. Plus, as they’re connoted to the internet, they allow instant transfer of images to your campaign reports.</p>
+                        <p class="selling-point-desc">Common smart phones now have amazing cameras, perfect for your campaign pics. Even at night. Plus, as they’re connected to the internet, they allow instant transfer of images to your campaign reports.</p>
 						<hr>
                     </li>
                     <li id="selling-point-sync">
                         <div class="selling-point-sync-icon"></div>
-                        <h2 class="selling-point-heading">Out of range? Absolutely no problems. </h2>
+                        <h2 class="selling-point-heading">No signal, No problem </h2>
 						<br>
                         <p class="selling-point-desc">Our mobile app works brilliantly in all scenarios. Even if you’re out of range, capture campaign images and automatically sync later when you’re connected.</p>
 						<hr>

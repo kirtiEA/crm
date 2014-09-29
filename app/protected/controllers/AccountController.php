@@ -114,7 +114,6 @@ class AccountController extends Controller {
 
     public function actionCreateVendorAccount() {
 
-
         if (isset($_POST['SubscriptionForm'])) {
             //echo  $_POST['SubscriptionForm']['nid'] . ' fsdfsd';die();
             if (strlen($_POST['SubscriptionForm']['email']) && filter_var($_POST['SubscriptionForm']['email'], FILTER_VALIDATE_EMAIL)) {

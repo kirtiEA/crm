@@ -33,12 +33,14 @@ class TaskController extends Controller {
         } else {
             $tasks = Task::fetchTaskList(Yii::app()->user->cid);
         }
-
+        //echo $tasks;
         $campaigns = Campaign::fetchCompanyCampaignsName(Yii::app()->user->cid, 4);
         //print_r(Yii::app()->user->cid);
+        //echo $campaigns;
         $users = User::fetchCompanyUsers(Yii::app()->user->cid);
 
         $this->render('index', array('tasks' => $tasks, 'campaigns' => $campaigns, 'users' => $users, 'model' => $model));
+        //$this->render('index', array('tasks' => array(), 'campaigns' => $campaigns, 'users' => $users, 'model' => $model));
     }
 
     // Uncomment the following methods and override them if needed
