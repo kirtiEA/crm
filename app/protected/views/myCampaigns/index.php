@@ -79,8 +79,9 @@ $('.mon_menu').each(function() {
                             <h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-plus expand-collapse"></span>&nbsp;' . $site['name'] . ' &nbsp;</h3>'
                             . '<ul class="sub-sub-list show-hide-content" style="display:none;">';
                         foreach ($site['listings'] as $list) {
-                            $html = $html . '<li>' . $list['name'] . ', ' . $list['mediatype'] . ', '
-                                    . $list['locality'] . '&nbsp;</li>';
+                            $html = $html . '<li>' . $list['name'] //. ', ' . $list['mediatype'] . ', '
+                                    //. $list['locality'] 
+                                    . '&nbsp;</li>';
                         }
                         $html = $html . '</ul></li>';
                     }

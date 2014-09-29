@@ -42,7 +42,8 @@ class ReportsController extends Controller
                     . "LEFT JOIN Listing l ON l.id=t.siteid "
                     . "LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE t.pop=1 AND t.assignedCompanyid=$cId ";
+                    . "WHERE t.pop=1 AND t.assignedCompanyid=$cId "
+                    . "AND l.status=1 ";
             if(!is_null($sdate) && !is_null($edate)) {
                 $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
             }
@@ -108,7 +109,8 @@ class ReportsController extends Controller
                     . "LEFT JOIN Listing l ON l.id=t.siteid "
                     . "LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE t.assignedCompanyid=$cId ";
+                    . "WHERE t.assignedCompanyid=$cId "
+                    . "AND l.status=1 ";
             if(!is_null($sdate) && !is_null($edate)) {
                 $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
             }

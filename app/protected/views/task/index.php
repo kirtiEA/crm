@@ -117,7 +117,7 @@
             foreach ($tasks as $value) {
                  $row = '<tr>
                 <td>' . $value['campaignname']. '</td>
-                <td>'. $value['name']. ','. $value['locality'].'</td>
+                <td>'. $value['name']. ', '. $value['locality'].'</td>
                 <td>'.$value['mediatype'].'</td>
                 <td>
                     <div class="dropdown">
