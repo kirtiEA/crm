@@ -175,8 +175,9 @@ if (strcasecmp($site['id'], Yii::app()->user->cid) != 0) {
                                 
                             . '<ul class="sub-sub-list show-hide-content">';
                         foreach ($site['listings'] as $list) {
-                            $html = $html . '<li>' . $list['name'] . ', ' . $list['mediatype'] . ', '
-                                    . $list['locality'] . '&nbsp; <span onclick="removeListingFromCampaignd(\'' . $list['id'] .'\', \'' . $value['id'] .'\');" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_'.$list['id'].'"></span></li>';
+                            $html = $html . '<li>' . $list['name'] //. ', ' . $list['mediatype'] . ', '
+                                    //. $list['locality'] 
+                                    . '&nbsp; <span onclick="removeListingFromCampaignd(\'' . $list['id'] .'\', \'' . $value['id'] .'\');" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_'.$list['id'].'"></span></li>';
 //                            if(!empty($list['assignedusers'])) {
 //                                $html = $html . '<div class="assign-dropdown">Assigned to ' . json_encode($list['assignedusers'])
 //                                    . '</div>';
@@ -201,12 +202,14 @@ if (strcasecmp($site['id'], Yii::app()->user->cid) != 0) {
 
 <script id="vendorsitelist" type="text/html">
 {{#is_onCampaign}}
-<li class="selected" id="listing_{{id}}">{{name}}, {{mediatype}}, {{locality}}
+<li class="selected" id="listing_{{id}}">{{name}}
+<!--    , {{mediatype}}, {{locality}}-->
     <span class="glyphicon glyphicon-remove pull-right" onclick="removeFromCampaign('{{id}}');"></span>
 </li>
 {{/is_onCampaign}}
 {{^is_onCampaign}}
-<li id="listing_{{id}}">{{name}}, {{mediatype}}, {{locality}}
+<li id="listing_{{id}}">{{name}}
+<!--    , {{mediatype}}, {{locality}}-->
     <span class="glyphicon glyphicon-plus pull-right" onclick="addToCampaign('{{id}}');"></span>
 </li>    
 {{/is_onCampaign}}
