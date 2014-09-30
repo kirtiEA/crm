@@ -52,7 +52,7 @@
       <div class="modal-dialog modal-lg modal-extra-large">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <button type="button" class="close" data-dismiss="modal" onclick="cancelAddedSitesToCampaigns();"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <h2 class="modal-title"><b>Add Sites</b> to <span class="campaignName"></span> </h2>
           </div>
           <div class="modal-body">
@@ -79,8 +79,8 @@
               </div>
           </div>
           <div class="modal-footer">
-            <a href="#" data-dismiss="modal">Cancel&nbsp;</a>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="$('#')" >Add Sites</button>
+              <a href="#" data-dismiss="modal" onclick="cancelAddedSitesToCampaigns();">Cancel&nbsp;</a>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" >Add Sites</button>
           </div>
         </div>
       </div>

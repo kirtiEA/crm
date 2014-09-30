@@ -83,7 +83,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
         var cname = $('#selectedvendorname').val()
         var details = $('#fjs_listing_'+id).text();
         var html = '<li id="justadded_' + id +'">' + details +'<span onclick="removeFromArrayAddToCampaign(\'' + id + '\')" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_1"></span></li>';
-        console.log('cid ' + cid + ' html ' + html + ' cname ' + cname + ' camp ' + campid);
+        //console.log('cid ' + cid + ' html ' + html + ' cname ' + cname + ' camp ' + campid);
         if ($('#vendorselected_'+campid+ '_'+cid).length  ==0) {
             console.log("no vendor added");
             var htm = '<li id="vendorselected_'+campid+ '_' +cid +'">' +
@@ -98,7 +98,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
                             htm = htm + '</select></div><ul class="sub-sub-list show-hide-content">'
                                     +'</ul></li>';
                             
-           console.log("no vendor added  >> "+ htm); 
+                    //  console.log("no vendor added  >> "+ htm); 
             $('#campaign_'+campid).append(htm);
             $('#vendorselected_'+campid+ '_'+cid + ' > ul').append(html);
         } else {
@@ -358,6 +358,23 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
         x = "You pressed Cancel!";
     }
 
+}
+
+function cancelAddedSitesToCampaigns() {
+    var id = $('.selectedCampaignId').text();
+//    console.log(id + " selected campaign");
+if (addtocampaign.length > 0 || removefromcampaign.length > 0) {
+    if (confirm("Do you really want to discard any changes you made in this campaign!") == true) {
+            addtocampaign = [];
+        removefromcampaign = [];
+        $('.campaignName').html('');
+        $('#selectedvendorname').val('');
+        $('.selectedCampaignId').html('');
+        $('#campaign_' + id).children().find('ul > li[id^=justadded]').remove();
+    }
+
+}
+    
 }
     $('.mon_menu').each(function() {
         $(this).removeClass('active');
