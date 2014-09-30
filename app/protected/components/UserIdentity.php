@@ -22,7 +22,7 @@ class UserIdentity extends CUserIdentity
         // if normal login check for status as well and
         // in case of signup->ver. w/o pass no need to check status
         $user = ($setPassword==true) 
-                ? User::model()->findByAttributes(array('email'=>$this->username, 'status'=>1))
+                ? User::model()->findByAttributes(array('email'=>$this->username, 'status'=>1, 'active' => 1, 'companyid' => 'NOT NULL'))
                 : User::model()->findByAttributes(array('email'=>$this->username));
         // echo '<pre>';var_dump($user); echo '</pre>'; die();
         $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);

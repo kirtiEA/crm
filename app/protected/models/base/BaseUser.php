@@ -17,18 +17,20 @@
  * @property string $lastlogin
  * @property string $datecreated
  * @property string $datemodified
+ * @property string $dateactivated
+ * @property integer $companyid
  *
  * The followings are the available model relations:
- * @property Email[] $emails
- * @property Email[] $emails1
+ * @property Campaign[] $campaigns
  * @property FavouriteListing[] $favouriteListings
  * @property Link[] $links
  * @property Listing[] $listings
  * @property Listing[] $listings1
- * @property Permission[] $permissions
- * @property UserAudienceTag[] $userAudienceTags
- * @property UserCompany[] $userCompanies
- * @property UserRole[] $userRoles
+ * @property ListingDraft[] $listingDrafts
+ * @property ListingDraft[] $listingDrafts1
+ * @property MonitorlyNotification[] $monitorlyNotifications
+ * @property PhotoProof[] $photoProofs
+ * @property Plan[] $plans
  */
 class BaseUser extends CActiveRecord
 {
@@ -48,14 +50,15 @@ class BaseUser extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fname, lname, email, password, phonenumber, active, datecreated', 'required'),
-			array('active, status, subscribe', 'numerical', 'integerOnly'=>true),
+			array('fname, lname, email, password, phonenumber, active, datecreated, datemodified', 'required'),
+			array('active, status, subscribe, companyid', 'numerical', 'integerOnly'=>true),
 			array('fname, lname, username, phonenumber', 'length', 'max'=>20),
 			array('email', 'length', 'max'=>50),
 			array('password', 'length', 'max'=>60),
+			array('lastlogin, dateactivated', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, fname, lname, email, username, password, phonenumber, active, status, subscribe, lastlogin, datecreated, datemodified', 'safe', 'on'=>'search'),
+			array('id, fname, lname, email, username, password, phonenumber, active, status, subscribe, lastlogin, datecreated, datemodified, dateactivated, companyid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,16 +70,16 @@ class BaseUser extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'emails' => array(self::HAS_MANY, 'Email', 'byuserid'),
-			'emails1' => array(self::HAS_MANY, 'Email', 'foruserid'),
+			'campaigns' => array(self::HAS_MANY, 'Campaign', 'createdBy'),
 			'favouriteListings' => array(self::HAS_MANY, 'FavouriteListing', 'userid'),
 			'links' => array(self::HAS_MANY, 'Link', 'userid'),
 			'listings' => array(self::HAS_MANY, 'Listing', 'byuserid'),
 			'listings1' => array(self::HAS_MANY, 'Listing', 'foruserid'),
-			'permissions' => array(self::HAS_MANY, 'Permission', 'userid'),
-			'userAudienceTags' => array(self::HAS_MANY, 'UserAudienceTag', 'userid'),
-			'userCompanies' => array(self::HAS_MANY, 'UserCompany', 'userid'),
-			'userRoles' => array(self::HAS_MANY, 'UserRole', 'userid'),
+			'listingDrafts' => array(self::HAS_MANY, 'ListingDraft', 'byuserid'),
+			'listingDrafts1' => array(self::HAS_MANY, 'ListingDraft', 'foruserid'),
+			'monitorlyNotifications' => array(self::HAS_MANY, 'MonitorlyNotification', 'createdby'),
+			'photoProofs' => array(self::HAS_MANY, 'PhotoProof', 'clickedBy'),
+			'plans' => array(self::HAS_MANY, 'Plan', 'userid'),
 		);
 	}
 
@@ -95,10 +98,12 @@ class BaseUser extends CActiveRecord
 			'phonenumber' => 'Phonenumber',
 			'active' => 'Active',
 			'status' => 'Status',
-			'subscribe' => 'Subscribe',
-                        'lastlogin' => 'Lastlogin',
+			'subscribe' => 'email subscription; 1=>subscribed',
+			'lastlogin' => 'Lastlogin',
 			'datecreated' => 'Datecreated',
 			'datemodified' => 'Datemodified',
+			'dateactivated' => 'Dateactivated',
+			'companyid' => 'Companyid',
 		);
 	}
 
@@ -130,9 +135,11 @@ class BaseUser extends CActiveRecord
 		$criteria->compare('active',$this->active);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('subscribe',$this->subscribe);
-                $criteria->compare('lastlogin',$this->lastlogin,true);
+		$criteria->compare('lastlogin',$this->lastlogin,true);
 		$criteria->compare('datecreated',$this->datecreated,true);
 		$criteria->compare('datemodified',$this->datemodified,true);
+		$criteria->compare('dateactivated',$this->dateactivated,true);
+		$criteria->compare('companyid',$this->companyid);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -143,7 +150,7 @@ class BaseUser extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return User the static model class
+	 * @return BaseUser the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
