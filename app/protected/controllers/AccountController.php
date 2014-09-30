@@ -75,6 +75,41 @@ class AccountController extends Controller {
         $this->render('contactus', array('model' => $model));
     }
 
+    public function actionValidate() {
+        $hash = Yii::app()->request->getParam('set');
+        //echo $hash; die();
+        $passwordLink = Link::model()->find('hash=:hash AND type=:type AND expired=:expired', array(':hash' => $hash, ':type' => 1, ':expired' => 0));
+//        print_r($passwordLink);die();
+        if ($passwordLink) {
+            $userModel = User::model()->findByPk($passwordLink->userid);
+            //echo $passwordLink->userid;
+            $userModel->active = 1;
+            $userModel->status = 1;
+            $userModel->save();
+            $identity = new UserIdentity($userModel->email, false); //new UserIdentity($userModel->email, FALSE);
+            print_r($identity);
+            //die();
+                            $user = Yii::app()->user;
+                $user->login($identity);
+                $this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');die();
+//            echo $identity->authenticate();die('sdfs');
+            if ($identity->authenticate()) {
+                $user = Yii::app()->user;
+                $user->login($identity);
+                $passwordLink->expired = 1;
+                $passwordLink->save();
+                echo 1;
+            } else {
+                echo 5;
+            }
+        } else {
+            /*
+             * password has expired
+             */
+            echo 2;
+        }
+    }
+
     public function actionSignup() {
         $modelSub = new SubscriptionForm();
         $setPwdHash = Yii::app()->request->getParam('set');
@@ -167,7 +202,7 @@ class AccountController extends Controller {
                         //echo $hash;
                         $passwordLink = new Link();
                         $passwordLink->attributes = array('userid' => $model->id, 'hash' => $hash, 'datecreated' => date('Y-m-d H:i:s'), 'type' => '1');
-                        $resetlink1 = Yii::app()->getBaseUrl(true) . '/?set=' . $hash;
+                        $resetlink1 = Yii::app()->getBaseUrl(true) . 'validate/?set=' . $hash;
                         if ($_POST['SubscriptionForm']['nid']) {
                             /*
                              * update nid

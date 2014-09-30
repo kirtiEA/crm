@@ -90,28 +90,6 @@
 </div>
 <!-- end of sign up content -->
 
-<!-- validate and login modal -->
-
-<div class="modal fade modal-app" id="modal-validate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title">You have validated your email. Click the button below to continue to your account</h3>
-            </div>
-            <div class="modal-body">
-                <div class="alert alert-warning" id="set_warning" style="display: none;" ><span id="set_err_msg"></span></div>
-                <div class="form-wrap" id="set_modal_form">
-                    <button type="button" class="btn btn-primary" id="set_submit">Continue</button>&nbsp;
-                    <a href="#" data-dismiss="modal">Cancel</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- end of validate and login modal -->
-
 <script>
     $('#signup').on('click', function (event) {
         event.preventDefault();
@@ -186,43 +164,6 @@
     });
 
     $(function () {
-
-        var spc = '<?php echo $setPwdHash; ?>';
-        if (spc) {
-            $('#modal-validate').modal('show');
-        }
-
-        $('#set_submit').click(function () {
-            //var password = $("input[name='SubscriptionForm[password]']").val();
-            $.ajax({
-                type: 'POST',
-                url: $('#completePath').text() + '/ajax/ValidateLogin',
-                data: {
-                    //password: password,
-                    hash: '<?php echo $setPwdHash; ?>'},
-                success: function (data) {
-                    //console.log('hi');
-                    //console.log(data);
-                    if (data == 1) {
-                        window.location = $('#completePath').text() + '/myCampaigns';
-                    }
-                    else if (data == 2) {
-                        window.location = $('#completePath').text() + '/';
-                        $('#set_modal_form').hide();
-                        $('#set_err_msg').html("Your link has expired.");
-                        $('#set_warning').show();
-                    }
-                    else if (data == 5) {
-                        // login and redirect from server
-                        $('#set_modal_form').hide();
-                        $('#set_err_msg').html("Please login to your account.");
-                        $('#set_warning').show();
-                    }
-                }
-            });
-
-        });
-
         $('#static_logo').removeClass('logo-on-darkbcg');
         $('#static_logo').addClass('logo-on-lightbcg');
 

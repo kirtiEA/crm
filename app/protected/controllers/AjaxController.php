@@ -116,40 +116,6 @@ class AjaxController extends Controller {
         }
     }
 
-    public function actionValidateLogin() {
-        //echo 'hiiii';        die();
-        $hash = Yii::app()->request->getParam('hash');
-        //echo $hash; 
-        //$password = Yii::app()->request->getParam('password');
-        //echo $password;
-        $passwordLink = Link::model()->find('hash=:hash AND type=:type AND expired=:expired', array(':hash' => $hash, ':type' => 1, ':expired' => 0));
-        //echo $passwordLink;
-        if ($passwordLink) {
-            $userModel = User::model()->findByPk($passwordLink->userid);
-            //echo $passwordLink->userid; die();
-            $userModel->active = 1;
-            $userModel->status = 1;
-            $userModel->save();
-            $identity = new UserIdentity($userModel->email, $userModel->password);
-            //print_r($identity);die();
-            //echo $userModel->email;
-            if ($identity->authenticate()) {
-                $user = Yii::app()->user;
-                $user->login($identity);
-                $passwordLink->expired = 1;
-                $passwordLink->save();
-                echo 1;
-            } else {
-                echo 5;
-            }
-        } else {
-            /*
-             * password has expired
-             */
-            echo 2;
-        }
-    }
-
     public function actionResetpwd() {
         $hash = Yii::app()->request->getParam('hash');
         $password = Yii::app()->request->getParam('password');
