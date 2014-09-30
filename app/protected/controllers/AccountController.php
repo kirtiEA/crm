@@ -202,7 +202,7 @@ class AccountController extends Controller {
                         //echo $hash;
                         $passwordLink = new Link();
                         $passwordLink->attributes = array('userid' => $model->id, 'hash' => $hash, 'datecreated' => date('Y-m-d H:i:s'), 'type' => '1');
-                        $resetlink1 = Yii::app()->getBaseUrl(true) . 'validate/?set=' . $hash;
+                        $resetlink1 = Yii::app()->getBaseUrl(true) . 'validate?set=' . $hash;
                         if ($_POST['SubscriptionForm']['nid']) {
                             /*
                              * update nid
