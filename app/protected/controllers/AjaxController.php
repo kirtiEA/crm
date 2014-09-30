@@ -20,9 +20,9 @@ class AjaxController extends Controller {
         return array(
             array('allow', // allow all users to perform actions
                 'actions' => array('signup', 'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting', 'getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
-                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword', 
-                    'invitevendor', 'removeListingFromCampaign', 'updateCampaign', 'forgotpwd', 'verifyresethash', 
-                    'resetpwd', 'fetchNotifications','fetchVendorListing'),
+                    'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword',
+                    'invitevendor', 'removeListingFromCampaign', 'updateCampaign', 'forgotpwd', 'verifyresethash',
+                    'resetpwd', 'fetchNotifications', 'fetchVendorListing'),
                 'users' => array('*'),
             )
         );
@@ -133,23 +133,22 @@ class AjaxController extends Controller {
             $userModel->active = 1;
             $userModel->status = 1;
             $userModel->save();
-            
+
             $identity = new UserIdentity($userModel->email, $password);
             //print_r($identity);die();
             if ($identity->authenticate()) {
                 $user = Yii::app()->user;
                 $user->login($identity);
-                $passwordLink->expired=1;
+                $passwordLink->expired = 1;
                 $passwordLink->save();
                 echo 1;
-                
+
                 //$this->redirect($user->returnUrl);
                 //$this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');
             } else {
                 echo 5;
             }
-        }
-        else{
+        } else {
             /*
              * password has expired
              */
@@ -211,8 +210,8 @@ class AjaxController extends Controller {
                 . "LEFT JOIN Campaign c ON c.id=t.campaignid "
                 . "LEFT JOIN Listing l ON l.id=t.siteid "
                 . "WHERE pp.taskid = '$taskId' ";
-        if(!$pop) 
-            $sql .= "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";        
+        if (!$pop)
+            $sql .= "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";
         $photoProofResult = Yii::app()->db->createCommand($sql)->queryAll();
         $photoProofArr = array();
         foreach ($photoProofResult as $pp) {
@@ -753,27 +752,39 @@ class AjaxController extends Controller {
     public function actionInviteVendor() {
         $email = Yii::app()->request->getParam('email');
         $id = Yii::app()->user->id;
+        //$cid = Yii::app()->user->cid;
         if (strlen($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $chk = User::model()->findByAttributes(array('email' => $email));
+            $requestedCompanyId = $chk['companyid'];
+            //echo $requestedCompanyId;
+            $rcvModel = RequestedCompanyVendor::model()->find('createdby=:createdby AND vendorcompanyid=:vendorcompanyid', 
+                    array(':createdby' => $id, ':vendorcompanyid' => $requestedCompanyId)
+            );
+            
+            if (!$rcvModel['acceptedby']) {
+                $check = MonitorlyNotification::checkUniqueUnsubscribedVendors($id, $email);
+                if (strcasecmp($check['cnt'], '0') == 0) {
 
-            $check = MonitorlyNotification::checkUniqueUnsubscribedVendors($id, $email);
-            if (strcasecmp($check['cnt'], '0') == 0) {
-
-                $invite = new MonitorlyNotification();
-                $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1, 'miscellaneous' => $email);
-                $invite->companyid = Yii::app()->user->cid;
-                $invite->save();
-                //echo Yii::app()->user->email; die();
-                $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
-                //echo $getName['name'] ; die();
-                $agencyName = $getName['name'];
-                $resetLink = Yii::app()->getBaseUrl(true) . '/account/signup?nid=' . $invite->id;
-                $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
-                //echo $mail->; die();
-                $mail->eatadsSend();
-                Yii::app()->user->setFlash('success', 'Vendor Invited Successfully');
-                echo '200';
+                    $invite = new MonitorlyNotification();
+                    $invite->attributes = array('typeid' => 1, 'createddate' => date("Y-m-d H:i:s"), 'createdby' => $id, 'emailtypeid' => 1, 'miscellaneous' => $email);
+                    $invite->companyid = Yii::app()->user->cid;
+                    $invite->save();
+                    //echo Yii::app()->user->email; die();
+                    $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
+                    //echo $getName['name'] ; die();
+                    $agencyName = $getName['name'];
+                    $resetLink = Yii::app()->getBaseUrl(true) . '/account/signup?nid=' . $invite->id;
+                    $mail = new EatadsMailer('invite', $email, array('resetLink' => $resetLink, 'agencyName' => $agencyName), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
+                    //echo $mail->; die();
+                    $mail->eatadsSend();
+                    Yii::app()->user->setFlash('success', 'Vendor Invited Successfully');
+                    echo '200';
+                } else {
+                    Yii::app()->user->setFlash('error', 'Vendor already invited');
+                    echo '200';
+                }
             } else {
-                Yii::app()->user->setFlash('error', 'Vendor already invited');
+                Yii::app()->user->setFlash('error', 'You are already connected to this user');
                 echo '200';
             }
         } else {
