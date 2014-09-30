@@ -116,35 +116,29 @@ class AjaxController extends Controller {
         }
     }
 
-    public function actionSetPassword() {
+    public function actionValidateLogin() {
         //echo 'hiiii';        die();
         $hash = Yii::app()->request->getParam('hash');
-        //echo $hash; die();
-        $password = Yii::app()->request->getParam('password');
-        //echo $password; 
-        $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
-        $pwd = $ph->HashPassword($password);
+        //echo $hash; 
+        //$password = Yii::app()->request->getParam('password');
+        //echo $password;
         $passwordLink = Link::model()->find('hash=:hash AND type=:type AND expired=:expired', array(':hash' => $hash, ':type' => 1, ':expired' => 0));
         //echo $passwordLink;
         if ($passwordLink) {
             $userModel = User::model()->findByPk($passwordLink->userid);
             //echo $passwordLink->userid; die();
-            $userModel->password = $pwd;
             $userModel->active = 1;
             $userModel->status = 1;
             $userModel->save();
-
-            $identity = new UserIdentity($userModel->email, $password);
+            $identity = new UserIdentity($userModel->email, $userModel->password);
             //print_r($identity);die();
+            //echo $userModel->email;
             if ($identity->authenticate()) {
                 $user = Yii::app()->user;
                 $user->login($identity);
                 $passwordLink->expired = 1;
                 $passwordLink->save();
                 echo 1;
-
-                //$this->redirect($user->returnUrl);
-                //$this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');
             } else {
                 echo 5;
             }
@@ -743,6 +737,16 @@ class AjaxController extends Controller {
             }
             echo json_encode($result);
         }
+    }
+    
+    public function actionCheckEmail() {
+        $email = Yii::app()->$_POST['email'];
+        //echo $email;        die();
+        $chk = User::model()->findByAttributes(array('email' => $email));
+        if($chk)
+            echo 1;
+        else
+            echo 2;
     }
 
     /*

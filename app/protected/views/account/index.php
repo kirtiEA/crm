@@ -388,7 +388,7 @@
                             $('#set_err_msg').html("Please login to your account.");
                         }
                     }
-                })
+                });
             } else {
                 $('#set_err_msg').html("The two passwords do not match.");
                 $('#set_warning').show();

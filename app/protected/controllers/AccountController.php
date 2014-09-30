@@ -77,7 +77,8 @@ class AccountController extends Controller {
 
     public function actionSignup() {
         $modelSub = new SubscriptionForm();
-
+        $setPwdHash = Yii::app()->request->getParam('set');
+        //echo $setPwdHash; die();
         $vendorList = array();
         foreach (UserCompany::model()->findAll() as $value) {
             array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
@@ -96,6 +97,7 @@ class AccountController extends Controller {
         $this->render('signup', array('modelSub' => $modelSub,
             'vendorList' => json_encode($vendorList),
             'nid' => $nid,
+            'setPwdHash' => $setPwdHash,
             array('model' => $model),
             'type' => 2));
     }
@@ -115,7 +117,7 @@ class AccountController extends Controller {
     public function actionCreateVendorAccount() {
 
         if (isset($_POST['SubscriptionForm'])) {
-            //echo  $_POST['SubscriptionForm']['nid'] . ' fsdfsd';die();
+            //echo  $_POST['SubscriptionForm']['email'] . ' fsdfsd';die();
             if (strlen($_POST['SubscriptionForm']['email']) && filter_var($_POST['SubscriptionForm']['email'], FILTER_VALIDATE_EMAIL)) {
                 //$_POST['SubscriptionForm']['nid'] && 
                 $noti = MonitorlyNotification::model()->findByPk($_POST['SubscriptionForm']['nid']);
@@ -129,7 +131,7 @@ class AccountController extends Controller {
                     $model->phonenumber = $_POST['SubscriptionForm']['phonenumber'];
                     $model->datecreated = date("Y-m-d H:i:s");
                     $model->datemodified = date("Y-m-d H:i:s");
-                    $model->active = 1;
+                    //$model->active = 1;
                     $model->fname = $_POST['SubscriptionForm']['email'];
 
 //                        $model->companyid = Yii::app()->user->cid;
@@ -140,68 +142,80 @@ class AccountController extends Controller {
                     $result = $ph->CheckPassword($pwd, $model->password);
                     $model->password = $password;
 
-                    if (!empty($_POST['SubscriptionForm']['companyid'])) {
-                        $model->companyid = $_POST['SubscriptionForm']['companyid'];
+                    if (!($_POST['SubscriptionForm']['companyid'])) {
                         $model->save(false);
                         //role set role as 6
                         $role = Role::model()->findByPk(1);
 //                            UserRole::model()->insertRoles($model->id, $role->id);
                         UserRole::model()->insertRoles($model->id, $role->id);
+                        //create company
+                        $comp = new UserCompany;
+                        $comp->name = $_POST['SubscriptionForm']['companyname'];
+                        //echo $_POST['SubscriptionForm']['companyname']; die();
+                        //$comp->alias = UserCompany::companyNameAlias(JoyUtilities::createAlias($_POST['UserCompany']['name']));
+                        $comp->countryid = 1;
+                        $comp->stateid = 2;
+                        $comp->cityid = 3;
+                        $comp->userid = $model->id;
+                        $comp->save(false);
+                        $model->companyid = $comp->id;
+                        //print_r($comp); die();
+                        $model->save(false);
                         // User::model()->updateByPk($model->id, array('companyid' => $comp->id));
-                        Yii::app()->user->setFlash('success', 'User created successfully');
-                        $identity = new UserIdentity($model->email, $pwd);
-                        if ($identity->authenticate()) {
-                            $user = Yii::app()->user;
-                            $user->login($identity);
-                            //if ($_POST['SubscriptionForm']['nid']) {
-                                /*
-                                 * update nid
-                                 * 
-                                 */
-                                MonitorlyNotification::model()->updateByPk($_POST['SubscriptionForm']['nid'], array('lastViewedDate' => date("Y-m-d H:i:s")));
+                        Yii::app()->user->setFlash('success', 'Your account has been created successfully');
+                        $hash = sha1(uniqid());
+                        //echo $hash;
+                        $passwordLink = new Link();
+                        $passwordLink->attributes = array('userid' => $model->id, 'hash' => $hash, 'datecreated' => date('Y-m-d H:i:s'), 'type' => '1');
+                        $resetlink1 = Yii::app()->getBaseUrl(true) . '/?set=' . $hash;
+                        if ($_POST['SubscriptionForm']['nid']) {
+                            /*
+                             * update nid
+                             * 
+                             */
+                            MonitorlyNotification::model()->updateByPk($_POST['SubscriptionForm']['nid'], array('lastViewedDate' => date("Y-m-d H:i:s")));
 
-                                /*
-                                 * insert into requested vendor
-                                 */
+                            /*
+                             * insert into requested vendor
+                             */
 
-                                $model1 = new RequestedCompanyVendor();
-                                $model1->attributes = array(
-                                    'companyid' => $noti->companyid,
-                                    'createdby' => Yii::app()->user->id,
-                                    'createddate' => date("Y-m-d H:i:s"),
-                                    'vendorcompanyid' => Yii::app()->user->cid,
-                                    'acceptedby' => Yii::app()->user->id,
-                                    'accepteddate' => date("Y-m-d H:i:s"),
-                                );
-                                $model1->save();
-                                $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
-                                $vendorName = UserCompany::model()->findByPk(Yii::app()->user->cid);
-                                $emailToUser = User::model()->findByPk($noti->createdby);
-                                $mail = new EatadsMailer('request-accepted', $emailToUser->email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
+                            $model1 = new RequestedCompanyVendor();
+                            $model1->attributes = array(
+                                'companyid' => $noti->companyid,
+                                'createdby' => Yii::app()->user->id,
+                                'createddate' => date("Y-m-d H:i:s"),
+                                'vendorcompanyid' => Yii::app()->user->cid,
+                                'acceptedby' => Yii::app()->user->id,
+                                'accepteddate' => date("Y-m-d H:i:s"),
+                            );
+                            $model1->save();
+                            $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
+                            $vendorName = UserCompany::model()->findByPk(Yii::app()->user->cid);
+                            $emailToUser = User::model()->findByPk($noti->createdby);
+                            $mail = new EatadsMailer('request-accepted', $emailToUser->email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
+                            $mail->eatadsSend();
+                            if ($passwordLink->save()) {
+                                $mail = new EatadsMailer('new-user', $_POST['SubscriptionForm']['email'], array('resetLink' => $resetlink1), array('shruti@eatads.com'), 'EatAds Admin');
                                 $mail->eatadsSend();
-                                $this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');
-//                                $resetlink1 = Yii::app()->getBaseUrl(true) . '?set=' . $hash;
-//                                //echo $resetlink;
-//                                $mail = new EatadsMailer('new-user', $_POST['SubscriptionForm']['email'], array('resetLink' => $resetlink1), array('shruti@eatads.com'), 'EatAds Admin');
-//                                $mail->eatadsSend();
-//                                Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
-//                                $this->redirect(Yii::app()->getBaseUrl() . '/account');
-//                            } else {
-//                                $resetlink1 = Yii::app()->getBaseUrl(true) . '?set=' . $hash;
-//                                //echo $resetlink;
-//                                $mail = new EatadsMailer('new-user', $_POST['SubscriptionForm']['email'], array('resetLink' => $resetlink1), array('shruti@eatads.com'), 'EatAds Admin');
-//                                $mail->eatadsSend();
-//                                Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
-//                                $this->redirect(Yii::app()->getBaseUrl() . '/account');
-//                            }
+                                Yii::app()->user->setFlash('success', 'Thank you for subscribing. Please confrim your Email id by clicking on the link sent to you in the mail.');
+                                $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
+                            }
+                        } else {
+                            if ($passwordLink->save()) {
+                                $mail = new EatadsMailer('new-user', $_POST['SubscriptionForm']['email'], array('resetLink' => $resetlink1), array('shruti@eatads.com'), 'EatAds Admin');
+                                $mail->eatadsSend();
+                                Yii::app()->user->setFlash('success', 'Thank you for subscribing. Please confrim your Email id by clicking on the link sent to you in the mail.');
+                                $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
+                            }
                         }
                     } else {
                         Yii::app()->user->setFlash('success', 'User already exists with this email');
-                        $this->redirect(Yii::app()->getBaseUrl() . '/account');
+                        $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
                     }
                 } else {
+
                     Yii::app()->user->setFlash('success', 'User already exists with this email');
-                    $this->redirect(Yii::app()->getBaseUrl() . '/account');
+                    $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
                 }
                 //create user
                 //check if company already exists
