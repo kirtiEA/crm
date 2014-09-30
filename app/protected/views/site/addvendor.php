@@ -203,13 +203,13 @@
         var vendorid = $('#vendor-ac-id').val();
         var byuserid = 1;//'<?php echo Yii::app()->user->id; ?>';
         //console.log(vendorid + " - " + byuserid + " - " + cleanData.length);
-        //console.log(JSON.stringify(cleanData));
+        console.log(JSON.stringify(cleanData));
 
         if (vendorid && byuserid && cleanData.length) {
-            //console.log('inside if');
+            console.log('inside if');
             $.ajax({
                 type: 'POST',
-                url: '<?php echo Yii::app()->urlManager->createUrl('ajax/massuploadsite'); ?>',
+                url: '<?php //echo Yii::app()->urlManager->createUrl('ajax/massuploadsite'); ?>',
                 data: {
                     'vendorid': vendorid,
                     'byuserid': byuserid,
