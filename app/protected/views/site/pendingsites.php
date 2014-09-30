@@ -109,25 +109,29 @@
                     <ul id="site-list" >
                         <?php 
                             $html = '';
-                            foreach ($lists as $list) {
-                                $html = $html . '<li class="list-item" id="listing_'.$list['id'].'">';
+                            foreach ($lists as $key => $list) {
+                                
+                                if (!empty($list['id'])) {
+                                    $html = $html . '<li class="list-item" id="listing_'.$list['id'].'">';
                              
-                             if(!empty($list['thumbnail'])) {
-                                 $html = $html . '<div class="pull-left site-thumb" style="background-image:url(\'' . $list['thumbnail'] . '\')"</div>'; 
-                             } else {
-                                $html = $html . '<div class="pull-left site-thumb" ></div>';
-                             }  
-                            
-                            $html = $html . '<div class="site-details"><h3>' . $list['name'] .'</h3>'.
-                              '<h5><span>' . $list['lighting'] .'</span>' . $list['mediatype'] . '&nbsp;&nbsp;' . $list['width'] . ' x ' . $list['height'] . ' ' . $list['sizeunit'] . '</h5>'
-                                . '<h4>' . $list['companyname'] . '</h4></div>'.
-                                        
-                                '<div  class="pull-right list-item-buttons">
-                                <div  class="btn btn-secondary" onclick="approvelisting(\'' . $list['id'] .'\')">Approve</div>
-                            </div>
-                            <div class="clearfix"></div>';
-                                echo $html;
+                                    if(!empty($list['thumbnail'])) {
+                                        $html = $html . '<div class="pull-left site-thumb" style="background-image:url(\'' . $list['thumbnail'] . '\')"</div>'; 
+                                    } else {
+                                       $html = $html . '<div class="pull-left site-thumb" ></div>';
+                                    }  
+
+                                   $html = $html . '<div class="site-details"><h3>' . $list['name'] .'</h3>'.
+                                     '<h5><span>' . $list['lighting'] .'</span> ' . $list['mediatype'] . '&nbsp;&nbsp;' . $list['width'] . ' x ' . $list['height'] . ' ' . $list['sizeunit'] . '</h5>'
+                                       . '<h4>' . $list['companyname'] . '</h4></div>'.
+
+                                       '<div  class="pull-right list-item-buttons">
+                                       <div  class="btn btn-secondary" onclick="approvelisting(\'' . $list['id'] .'\')">Approve</div>
+                                   </div>
+                                   <div class="clearfix"></div>';
+                                       //echo $html;
+                                }
                             }
+                            echo $html;
                         ?>
 
                         </li>

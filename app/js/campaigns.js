@@ -122,6 +122,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
     function removeFromCampaign(id) {
         removefromcampaign.push(id);
         $('#fjs_listing_' + id).removeClass('selected');
+        removeListingFromCampaignd(id,$('.selectedCampaignId').text());
     }
     
     function saveCampaign(id) {

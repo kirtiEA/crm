@@ -209,7 +209,7 @@
             console.log('inside if');
             $.ajax({
                 type: 'POST',
-                url: '<?php //echo Yii::app()->urlManager->createUrl('ajax/massuploadsite'); ?>',
+                url: '<?php echo Yii::app()->urlManager->createUrl('ajax/massuploadsite'); ?>',
                 data: {
                     'vendorid': vendorid,
                     'byuserid': byuserid,
