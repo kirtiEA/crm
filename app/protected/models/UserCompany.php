@@ -9,13 +9,13 @@ class UserCompany extends BaseUserCompany {
     }
 
     public static function fetchVendorsList($cid) {
-        $sql = 'select (select count(id) from Listing where status = 1 and companyid = uc.id) as cnt,uc.id,uc.name  from RequestedCompanyVendor rcv
+        $sql = 'select (select count(id) from Listing where approved = 1 and status = 1 and companyid = uc.id) as cnt,uc.id,uc.name  from RequestedCompanyVendor rcv
 inner join UserCompany uc on uc.id = rcv.vendorcompanyid
 where rcv.companyid = ' .$cid .' and rcv.accepteddate is not null
 
             union  select count(*) as cnt, uc.id as id, uc.name 
-from Listing  
-            inner join UserCompany uc on uc.id = companyid and uc.id = ' . $cid;
+from Listing  l
+            inner join UserCompany uc on uc.id = l.companyid and l.status = 1 and  l.status = 1 and uc.id = ' . $cid;
         $command = Yii::app()->db->createCommand($sql);
         $data = $command->queryAll();
         return $data;
