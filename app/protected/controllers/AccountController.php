@@ -86,19 +86,22 @@ class AccountController extends Controller {
             $userModel->active = 1;
             $userModel->status = 1;
             $userModel->save();
-            $identity = new UserIdentity($userModel->email, false); //new UserIdentity($userModel->email, FALSE);
-            print_r($identity);
+//            $identity = new UserIdentity($userModel->email, false); //new UserIdentity($userModel->email, FALSE);
+//            print_r($identity);
             //die();
-                            $user = Yii::app()->user;
-                $user->login($identity);
-                $this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');die();
+//                            $user = Yii::app()->user;
+//                $user->login($identity);
+//                $this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');die();
 //            echo $identity->authenticate();die('sdfs');
-            if ($identity->authenticate()) {
-                $user = Yii::app()->user;
-                $user->login($identity);
+            $identity=new LoginForm();
+            
+            if ($identity->loginWithoutPassword($userModel->email)) {
+//                $user = Yii::app()->user;
+//                $user->login($identity);
                 $passwordLink->expired = 1;
                 $passwordLink->save();
-                echo 1;
+                $this->redirect(Yii::app()->getBaseUrl() .  '/myCampaigns');
+//                echo 1;
             } else {
                 echo 5;
             }
@@ -202,7 +205,7 @@ class AccountController extends Controller {
                         //echo $hash;
                         $passwordLink = new Link();
                         $passwordLink->attributes = array('userid' => $model->id, 'hash' => $hash, 'datecreated' => date('Y-m-d H:i:s'), 'type' => '1');
-                        $resetlink1 = Yii::app()->getBaseUrl(true) . 'validate?set=' . $hash;
+                        $resetlink1 = Yii::app()->getBaseUrl(true) . '/account/validate?set=' . $hash;
                         if ($_POST['SubscriptionForm']['nid']) {
                             /*
                              * update nid
