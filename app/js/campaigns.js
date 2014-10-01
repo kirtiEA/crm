@@ -80,7 +80,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
         var campid = $('.selectedCampaignId').text();
         var currentCompanyId = $('#currentCompanyId').text(); 
         var cid = $('#selectedvendorid').val();
-        var cname = $('#selectedvendorname').val()
+        var cname = $('#selectedvendorname').val().split('(')[0];
         var details = $('#fjs_listing_'+id).text();
         var html = '<li id="justadded_' + id +'">' + details +'<span onclick="removeFromArrayAddToCampaign(\'' + id + '\')" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_1"></span></li>';
         //console.log('cid ' + cid + ' html ' + html + ' cname ' + cname + ' camp ' + campid);
