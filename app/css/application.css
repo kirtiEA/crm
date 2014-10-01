@@ -11314,3 +11314,9 @@ nav.navbar.navbar-default.navbar-fixed-bottom.table-control .pull-right {
 }
 
 /*-- end of multi level dropdown --*/
+
+/*-- up-coming --*/
+.upcoming
+{
+    width: 500px;
+}
