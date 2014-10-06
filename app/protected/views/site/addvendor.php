@@ -182,7 +182,17 @@
                 });
             } else {
                 console.log('i = ' + changedata1[i]);
-                $("#listings").handsontable('selectCell', changedata1[i]);
+                //var hot = $("#listings").handsontable('getInstance');
+                // https://github.com/handsontable/jquery-handsontable/wiki/Methods
+                //hot.validateCells
+                if(!row.mediatype)
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 1, '*');
+                if(!row.city)
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 2, '*');
+                if(!row.locality)
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 3, '*');
+                if(!row.name)
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 4, '*');
             }
         }
 
