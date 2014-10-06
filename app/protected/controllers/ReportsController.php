@@ -53,7 +53,8 @@ class ReportsController extends Controller
             if(!is_null($assignedTo) && strlen($assignedTo)) {
                 $sql .= " AND t.assigneduserid IN ($assignedTo) ";
             }
-
+            $sql .= "ORDER BY t.dueDate DESC ";
+            
             $tasks = Yii::app()->db->createCommand($sql)->queryAll();
             $campaignIdList = array();
             $assignedToList = array();
@@ -120,7 +121,8 @@ class ReportsController extends Controller
             if(!is_null($assignedTo) && strlen($assignedTo)) {
                 $sql .= " AND t.assigneduserid IN ($assignedTo) ";
             }
-                        
+            $sql .= "ORDER BY t.dueDate DESC ";
+            
             $tasks = Yii::app()->db->createCommand($sql)->queryAll();            
             
             $campaignIdList = array();
