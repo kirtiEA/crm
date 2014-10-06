@@ -154,7 +154,9 @@
                   '<div class="pull-right">
                       
                     <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
-                    &nbsp;'
+                    &nbsp;' .
+                        '&nbsp;
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#add-campaign-modal" onclick="saveCampaign(\'' .$value['id'] . '\');">Save Campaign</button>'
 //                        <button class="btn btn-secondary" data-toggle="modal" data-target="#add-site-modal" onclick="fetchvendors(\''. $value['name'] .'\', \''.$value['id'] .'\');"><span class="glyphicon glyphicon-plus"></span> Add Sites</button>
 //                        &nbsp;
 //                        <button class="btn btn-primary" data-toggle="modal" data-target="#add-campaign-modal" onclick="saveCampaign(\'' .$value['id'] . '\');">Save Campaign</button>
@@ -179,10 +181,10 @@ if (strcasecmp($site['id'], Yii::app()->user->cid) != 0) {
                                     //. $list['locality'] 
                                     //. '&nbsp; <span onclick="removeListingFromCampaignd(\'' . $list['id'] .'\', \'' . $value['id'] .'\');" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_'.$list['id'].'"></span>'
                                     . '</li>';
-//                            if(!empty($list['assignedusers'])) {
-//                                $html = $html . '<div class="assign-dropdown">Assigned to ' . json_encode($list['assignedusers'])
-//                                    . '</div>';
-//                            }
+                            if(!empty($list['assignedusers'])) {
+                                $html = $html . '<div class="assign-dropdown">Assigned to ' . json_encode($list['assignedusers'])
+                                    . '</div>';
+                            }
                         }
                         $html = $html . '</ul></li>';
                     }

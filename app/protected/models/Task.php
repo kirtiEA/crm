@@ -74,6 +74,7 @@ if ($date != null) {
         inner join User u on u.id = assigneduserid
         where siteid = ' . $siteid . ' and campaignid = '. $campaignid .' and  assignedCompanyId = ' . $companyid .'
         group by u.id';
+     //   return $sql;
         return Yii::app()->db->createCommand($sql)->queryAll();
     }
 }

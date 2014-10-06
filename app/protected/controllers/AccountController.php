@@ -180,22 +180,28 @@ class AccountController extends Controller {
                     $result = $ph->CheckPassword($pwd, $model->password);
                     $model->password = $password;
 
-                    if (!($_POST['SubscriptionForm']['companyid'])) {
+                    //if (!($_POST['SubscriptionForm']['companyid'])) {
                         $model->save(false);
                         //role set role as 6
                         $role = Role::model()->findByPk(1);
 //                            UserRole::model()->insertRoles($model->id, $role->id);
                         UserRole::model()->insertRoles($model->id, $role->id);
-                        //create company
-                        $comp = new UserCompany;
-                        $comp->name = $_POST['SubscriptionForm']['companyname'];
-                        //echo $_POST['SubscriptionForm']['companyname']; die();
-                        //$comp->alias = UserCompany::companyNameAlias(JoyUtilities::createAlias($_POST['UserCompany']['name']));
-                        $comp->countryid = 1;
-                        $comp->stateid = 2;
-                        $comp->cityid = 3;
-                        $comp->userid = $model->id;
-                        $comp->save(false);
+                        $comp = null;
+                        if (!($_POST['SubscriptionForm']['companyid'])) {
+                            //create company
+                            $comp = new UserCompany;
+                            $comp->name = $_POST['SubscriptionForm']['companyname'];
+                            //echo $_POST['SubscriptionForm']['companyname']; die();
+                            //$comp->alias = UserCompany::companyNameAlias(JoyUtilities::createAlias($_POST['UserCompany']['name']));
+                            $comp->countryid = 1;
+                            $comp->stateid = 2;
+                            $comp->cityid = 3;
+                            $comp->userid = $model->id;
+                            $comp->save(false);
+                        } else {
+                           $comp = UserCompany::model()->findByPk($_POST['SubscriptionForm']['companyid']);     
+                        }
+                        
                         $model->companyid = $comp->id;
                         //print_r($comp); die();
                         $model->save(false);
@@ -246,10 +252,10 @@ class AccountController extends Controller {
                                 $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
                             }
                         }
-                    } else {
-                        Yii::app()->user->setFlash('success', 'User already exists with this email');
-                        $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
-                    }
+//                    } else {
+//                        Yii::app()->user->setFlash('success', 'User already exists with this email');
+//                        $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
+//                    }
                 } else {
 
                     Yii::app()->user->setFlash('success', 'User already exists with this email');

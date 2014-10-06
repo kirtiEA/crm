@@ -115,7 +115,7 @@ class AssignedCampaignsController extends Controller
                         $listingsFinal = array();
                         foreach ($listings as $list) {
                             $usersperlisting = Task::fetcUsersAssignedToSite($list['id'], $value['id'], Yii::app()->user->cid);
-                        //    print_r($usersperlisting);die('sfsdfsd');
+                           // print_r($usersperlisting);die();
                             $list['assignedusers'] = $usersperlisting;
                             array_push($listingsFinal, $list);
                         }
@@ -127,14 +127,15 @@ class AssignedCampaignsController extends Controller
                     }
                     $sDate = new DateTime($value['startDate']);
                     $eDate = new DateTime($value['endDate']);
-                    
+                    $users = User::fetchCompanyUsers(Yii::app()->user->cid);
                     $val = array(
                         'id' => $value['id'],
                         'name' => $value['name'],
                         'startDate' => $sDate->format('d M Y'),
                         'endDate' => $eDate->format('d M Y'),
                         'count' => $value['count'],
-                        'sites' => $result
+                        'sites' => $result,
+                        'users' => $users,
                         );
                         
                         array_push($finalCampaigns, $val);
