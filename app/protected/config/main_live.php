@@ -65,6 +65,8 @@ return array(
          */
         // uncomment the following to use a MySQL database
         'db' => array(
+          //  kelltoneatads.cggaglcdijh1.ap-southeast-1.rds.amazonaws.com:3306
+        //    kelltoneatads.cggaglcdijh1.ap-southeast-1.rds.amazonaws.com
             'connectionString' => 'mysql:host=kelltoneatads.cggaglcdijh1.ap-southeast-1.rds.amazonaws.com;dbname=eatadskell',
             'emulatePrepare' => true,
             'username' => 'eatadskell',
