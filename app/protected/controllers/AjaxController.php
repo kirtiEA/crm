@@ -235,6 +235,7 @@ class AjaxController extends Controller {
     }
 
     public function actionMassuploadsite() {
+        
         // fetch all media types to match
         $mtResult = Mediatype::model()->findAll();
         $mediaTypes = array();
@@ -246,7 +247,7 @@ class AjaxController extends Controller {
         //print_r($lightings); die();
 
 
-        $vendorId = Yii::app()->request->getParam('vendorid');
+        $vendorId = Yii::app()->request->getParam('vendorid');        
         $byUserId = Yii::app()->user->id;
         $data = json_decode(Yii::app()->request->getParam('data'));
 
@@ -261,8 +262,8 @@ class AjaxController extends Controller {
             $address = $value->locality . ',' . $value->city;
             $addressGeocode = JoyUtilities::geocode($address);
             $countryId = 1;
-            $stateId = 1;
-            $cityId = 1;
+            $stateId = 2;
+            $cityId = 3;
             //echo (json_encode($addressGeocode)) . '<pre>'; 
             if ($addressGeocode) {
                 // check if country exists        

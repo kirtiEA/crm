@@ -46,6 +46,8 @@ class ReportsController extends Controller
                     . "AND l.status=1 ";
             if(!is_null($sdate) && !is_null($edate)) {
                 $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
+            } else {
+                $sql .= " AND DATE(t.dueDate) <= CURRENT_DATE() ";
             }
             if(!is_null($campaignIds) && strlen($campaignIds)) {
                 $sql .= " AND c.id IN ($campaignIds) ";
@@ -53,7 +55,8 @@ class ReportsController extends Controller
             if(!is_null($assignedTo) && strlen($assignedTo)) {
                 $sql .= " AND t.assigneduserid IN ($assignedTo) ";
             }
-
+            $sql .= "ORDER BY t.dueDate DESC ";
+            
             $tasks = Yii::app()->db->createCommand($sql)->queryAll();
             $campaignIdList = array();
             $assignedToList = array();
@@ -61,7 +64,8 @@ class ReportsController extends Controller
                     . "FROM Task t "
                     . "LEFT JOIN Campaign c ON c.id=t.campaignid "                    
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE t.assignedCompanyid=$cId ";
+                    . "WHERE t.assignedCompanyid=$cId "
+                    . "AND DATE(t.dueDate) <= CURRENT_DATE() ";
             $filters = Yii::app()->db->createCommand($sql2)->queryAll();
             foreach($filters as $fl) {
                 //echo '<pre>';
@@ -113,6 +117,8 @@ class ReportsController extends Controller
                     . "AND l.status=1 ";
             if(!is_null($sdate) && !is_null($edate)) {
                 $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
+            } else {
+                $sql .= " AND DATE(t.dueDate) <= CURRENT_DATE() ";
             }
             if(!is_null($campaignIds) && strlen($campaignIds)) {
                 $sql .= " AND c.id IN ($campaignIds) ";
@@ -120,7 +126,8 @@ class ReportsController extends Controller
             if(!is_null($assignedTo) && strlen($assignedTo)) {
                 $sql .= " AND t.assigneduserid IN ($assignedTo) ";
             }
-                        
+            $sql .= "ORDER BY t.dueDate DESC ";
+            
             $tasks = Yii::app()->db->createCommand($sql)->queryAll();            
             
             $campaignIdList = array();
@@ -129,7 +136,8 @@ class ReportsController extends Controller
                     . "FROM Task t "
                     . "LEFT JOIN Campaign c ON c.id=t.campaignid "                    
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE t.assignedCompanyid=$cId ";
+                    . "WHERE t.assignedCompanyid=$cId "
+                    . "AND DATE(t.dueDate) <= CURRENT_DATE() ";
             $filters = Yii::app()->db->createCommand($sql2)->queryAll();
             foreach($filters as $fl) {
                 //echo '<pre>';

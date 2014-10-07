@@ -54,7 +54,7 @@
 </div>
 <!-- end of tasks list --> 
 <script type="text/javascript">
-
+    var non_empty_text = /^[A-Za-z0-9 ]+$/;
     function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
     }
@@ -78,8 +78,8 @@
             success: function(data) {
                 var parsedData = JSON.parse(data);
                 handsontable.loadData(parsedData);
-                if (parsedData)
-                    console.log(parsedData.length);
+                //if (parsedData)
+                    //console.log(parsedData.length);
             }
         });
     }
@@ -90,11 +90,15 @@
         colHeaders: ['SITE CODE', 'MEDIA TYPE', 'CITY', 'LOCALITY', 'NAME', 'WIDTH', 'HEIGHT', 'LIGHTING'],
         rowHeaders: true,
         colWidths: [100, 150, 150, 250, 250, 100, 100, 100],
+        
+        currentRowClassName: 'currentRow',
+        currentColClassName: 'currentCol',
+        
         manualColumnResize: true,
         manualRowResize: true,
         minSpareRows: 50,
         onChange: function() {
-            console.log('onchanhe' + JSON.stringify(arguments));
+            //console.log('onchange' + JSON.stringify(arguments));
             if (arguments[0] !== null) {
                 changedata[changedata.length] = arguments[0][0][0];
 //        changedata.push['asd'];
@@ -120,16 +124,24 @@
             }, {
                 data: 'mediatype',
                 type: 'dropdown',
-                source: <?php echo $mediaType; ?>
+                source: <?php echo $mediaType; ?>,                
+                validator: non_empty_text,
+                allow_invalid: false
             }, {
                 data: 'city',
-                type: 'text'
+                type: 'text',
+                validator: non_empty_text,
+                allow_invalid: false
             }, {
                 data: 'locality',
-                type: 'text'
+                type: 'text',
+                validator: non_empty_text,
+                allow_invalid: false
             }, {
                 data: 'name',
-                type: 'text'
+                type: 'text',
+                validator: non_empty_text,
+                allow_invalid: false
             }, {
                 data: 'width',
                 type: 'numeric'
@@ -157,10 +169,10 @@
         //        console.log('change data s' + changedata);
         var cleanData = [];
         var changedata1 = changedata.filter(onlyUnique);
-//        console.log('change data s' + changedata1);
+        //console.log('change data ' + changedata1);
         for (var i = 0; i < changedata1.length; i++) {
             var row = data[changedata1[i]];
-            if (row.name) {
+            if (row.name && row.mediatype && row.city && row.locality) {
                 cleanData.push({
                     id: row.id,
                     site_code: row.site_code,
@@ -172,6 +184,27 @@
                     width: row.width,
                     lighting: row.lighting
                 });
+            } else {
+                //console.log('i = ' + changedata1[i]);                 
+                // https://github.com/handsontable/jquery-handsontable/wiki/Methods
+                //validateCells('non_empty_text');
+                //$("#listings").handsontable('selectCell', changedata1[i], 3);
+                if(!row.mediatype) {
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 1, '*');
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 1, '');
+                }
+                if(!row.city) {
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 2, '*');
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 2, '');
+                }
+                if(!row.locality) {
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 3, '*');
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 3, '');
+                }
+                if(!row.name) {
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 4, '*');
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 4, '');
+                }
             }
         }
 
@@ -203,31 +236,35 @@
         var vendorid = $('#vendor-ac-id').val();
         var byuserid = 1;//'<?php echo Yii::app()->user->id; ?>';
         //console.log(vendorid + " - " + byuserid + " - " + cleanData.length);
-        console.log(JSON.stringify(cleanData));
+        //console.log(JSON.stringify(cleanData));
 
-        if (vendorid && byuserid && cleanData.length) {
-            console.log('inside if');
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo Yii::app()->urlManager->createUrl('ajax/massuploadsite'); ?>',
-                data: {
-                    'vendorid': vendorid,
-                    'byuserid': byuserid,
-                    'data': JSON.stringify(cleanData)
-                },
-                success: function(data) {
-                    //var json = JSON.parse(data);
-                    //console.log(data);
-                    if (data == true)
-                        location.reload();
-                    else
-                        alert('Failed to save data.')
-                },
-                error: function(data) { // if error occured
-                    alert("Error occured.please try again");
-                    alert(data);
-                }
-            });
+        if (vendorid && byuserid) {
+            //console.log('inside if');
+            if(cleanData.length) {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo Yii::app()->urlManager->createUrl('ajax/massuploadsite'); ?>',
+                    data: {
+                        'vendorid': vendorid,
+                        'byuserid': byuserid,
+                        'data': JSON.stringify(cleanData)
+                    },
+                    success: function(data) {
+                        //var json = JSON.parse(data);
+                        //console.log(data);
+                        if (data == true)
+                            location.reload();
+                        else
+                            alert('Failed to save data.')
+                    },
+                    error: function(data) { // if error occured
+                        alert("Error occured.please try again");
+                        alert(data);
+                    }
+                });
+            } else {
+                
+            }
         } else {
             alert("Please select Media Vendor from the drop down");
             $(window).scrollTop(0);

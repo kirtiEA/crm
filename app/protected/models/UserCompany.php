@@ -15,7 +15,7 @@ where rcv.companyid = ' .$cid .' and rcv.accepteddate is not null
 
             union  select count(*) as cnt, uc.id as id, uc.name 
 from Listing  l
-            inner join UserCompany uc on uc.id = l.companyid and l.status = 1 and  l.status = 1 and uc.id = ' . $cid;
+            inner join UserCompany uc on uc.id = l.companyid and l.status = 1 and uc.id = ' . $cid;
         $command = Yii::app()->db->createCommand($sql);
         $data = $command->queryAll();
         return $data;
