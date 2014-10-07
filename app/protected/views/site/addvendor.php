@@ -79,7 +79,7 @@
                 var parsedData = JSON.parse(data);
                 handsontable.loadData(parsedData);
                 if (parsedData)
-                    console.log(parsedData.length);
+                    //console.log(parsedData.length);
             }
         });
     }
@@ -90,11 +90,15 @@
         colHeaders: ['SITE CODE', 'MEDIA TYPE', 'CITY', 'LOCALITY', 'NAME', 'WIDTH', 'HEIGHT', 'LIGHTING'],
         rowHeaders: true,
         colWidths: [100, 150, 150, 250, 250, 100, 100, 100],
+        
+        currentRowClassName: 'currentRow',
+        currentColClassName: 'currentCol',
+        
         manualColumnResize: true,
         manualRowResize: true,
         minSpareRows: 50,
         onChange: function() {
-            console.log('onchange' + JSON.stringify(arguments));
+            //console.log('onchange' + JSON.stringify(arguments));
             if (arguments[0] !== null) {
                 changedata[changedata.length] = arguments[0][0][0];
 //        changedata.push['asd'];
@@ -165,7 +169,7 @@
         //        console.log('change data s' + changedata);
         var cleanData = [];
         var changedata1 = changedata.filter(onlyUnique);
-        console.log('change data ' + changedata1);
+        //console.log('change data ' + changedata1);
         for (var i = 0; i < changedata1.length; i++) {
             var row = data[changedata1[i]];
             if (row.name && row.mediatype && row.city && row.locality) {
@@ -181,18 +185,26 @@
                     lighting: row.lighting
                 });
             } else {
-                console.log('i = ' + changedata1[i]);
-                //var hot = $("#listings").handsontable('getInstance');
+                //console.log('i = ' + changedata1[i]);                 
                 // https://github.com/handsontable/jquery-handsontable/wiki/Methods
-                //hot.validateCells
-                if(!row.mediatype)
+                //validateCells('non_empty_text');
+                //$("#listings").handsontable('selectCell', changedata1[i], 3);
+                if(!row.mediatype) {
                     $("#listings").handsontable('setDataAtCell', changedata1[i], 1, '*');
-                if(!row.city)
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 1, '');
+                }
+                if(!row.city) {
                     $("#listings").handsontable('setDataAtCell', changedata1[i], 2, '*');
-                if(!row.locality)
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 2, '');
+                }
+                if(!row.locality) {
                     $("#listings").handsontable('setDataAtCell', changedata1[i], 3, '*');
-                if(!row.name)
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 3, '');
+                }
+                if(!row.name) {
                     $("#listings").handsontable('setDataAtCell', changedata1[i], 4, '*');
+                    $("#listings").handsontable('setDataAtCell', changedata1[i], 4, '');
+                }
             }
         }
 
@@ -224,7 +236,7 @@
         var vendorid = $('#vendor-ac-id').val();
         var byuserid = 1;//'<?php echo Yii::app()->user->id; ?>';
         //console.log(vendorid + " - " + byuserid + " - " + cleanData.length);
-        console.log(JSON.stringify(cleanData));
+        //console.log(JSON.stringify(cleanData));
 
         if (vendorid && byuserid) {
             //console.log('inside if');
