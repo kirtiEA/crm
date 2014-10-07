@@ -247,8 +247,7 @@ class AjaxController extends Controller {
         //print_r($lightings); die();
 
 
-        $vendorId = Yii::app()->request->getParam('vendorid');
-        echo $vendorId; die();
+        $vendorId = Yii::app()->request->getParam('vendorid');        
         $byUserId = Yii::app()->user->id;
         $data = json_decode(Yii::app()->request->getParam('data'));
 
