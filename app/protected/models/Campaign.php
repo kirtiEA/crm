@@ -27,16 +27,16 @@ class Campaign extends BaseCampaign {
         $sql = 'select c.id, name, startDate, endDate, (select count(distinct tt.siteid) from Task tt where tt.campaignid  = c.id and tt.status = 1) as count from Campaign c where c.companyid = ' . $companyid;
         switch ($type) {
             case 1:
-                $sql = $sql . ' and endDate >= \'' . date("Y-m-d H:i:s") . '\' and startDate <= \'' . date("Y-m-d H:i:s") . '\'';
+                $sql = $sql . ' and DATE(endDate) >= CURRENT_DATE() and DATE(startDate) <= CURRENT_DATE()';
                 break;
             case 2:
-                $sql = $sql . ' and endDate >= \'' . date("Y-m-d H:i:s") . '\' and startDate >= \'' . date("Y-m-d H:i:s") . '\'';
+                $sql = $sql . ' and DATE(endDate) >= CURRENT_DATE() and DATE(startDate) >= CURRENT_DATE()';
                 break;
             case 3:
-                $sql = $sql . ' and endDate <= \'' . date("Y-m-d H:i:s") . '\' and startDate <= \'' . date("Y-m-d H:i:s") . '\'';
+                $sql = $sql . ' and DATE(endDate) <= CURRENT_DATE() and DATE(startDate) <= CURRENT_DATE()';
                  break;   
             case 4:
-                $sql = $sql . ' and ((endDate >= \'' . date("Y-m-d H:i:s") . '\' and startDate <= \'' . date("Y-m-d H:i:s") . '\') ' . ' or (endDate >= \'' . date("Y-m-d H:i:s") . '\' and startDate >= \'' . date("Y-m-d H:i:s") . '\'))';
+                $sql = $sql . ' and ((DATE(endDate) >= CURRENT_DATE() and DATE(startDate) <= CURRENT_DATE()) ' . ' or (DATE(endDate) >= CURRENT_DATE() and DATE(startDate) >= CURRENT_DATE()))';
                 break;
             default:
                 break;
