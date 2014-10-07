@@ -78,7 +78,7 @@
             success: function(data) {
                 var parsedData = JSON.parse(data);
                 handsontable.loadData(parsedData);
-                if (parsedData)
+                //if (parsedData)
                     //console.log(parsedData.length);
             }
         });
