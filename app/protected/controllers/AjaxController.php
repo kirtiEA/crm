@@ -22,7 +22,7 @@ class AjaxController extends Controller {
                 'actions' => array('signup', 'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting', 'getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
                     'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword',
                     'invitevendor', 'removeListingFromCampaign', 'updateCampaign', 'forgotpwd', 'verifyresethash',
-                    'resetpwd', 'fetchNotifications', 'fetchVendorListing'),
+                    'resetpwd', 'fetchNotifications', 'fetchVendorListing', 'assignCampaignSiteToUser'),
                 'users' => array('*'),
             )
         );
@@ -903,4 +903,16 @@ class AjaxController extends Controller {
         echo json_encode($result);
     }
 
+    public function actionassignCampaignSiteToUser() {
+//        echo $_POST['cid'] . ' _ '. $_POST['sid'] . ' _ '. $_POST['uid'];
+        if (isset($_POST['cid']) && isset($_POST['sid']) && isset($_POST['uid'])) {
+          //echo '';
+            $flag = Task::updateAssignTaskforaSite($_POST['sid'], $_POST['cid'], $_POST['uid']);
+           //echo ' _  ' + $flag;
+           if ($flag > 0) {
+               Yii::app()->user->setFlash('success', 'Campaign Successfully Updated');
+               echo '200';
+           }
+        }
+    }
 }

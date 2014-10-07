@@ -127,6 +127,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
     
     function saveCampaign(id) {
     $('.selectedCampaignId').html(id);
+    updateCampaign();
     }    
     function finalCampaignSave() {
         var id = $('.selectedCampaignId').html();
@@ -186,26 +187,27 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
     var temp = $('#campaign_' + id+' > li > div > select > option:selected').map(function(){ return $(this).val();
     }).get();
         console.log(chk + " cmap " + id + ' fdfd '+ temp);
+        finalCampaignUpdate(2,null);
       //  $('.selectedCampaignId').html(id);
-        if (chk.length > 0) {
-            if (chk.length == 1 && chk[0] == '2') {
-                var r = confirm("Are you sure you don't want proof of posting from vendors?");
-                if (r == true) {
-                 //type 2   
-                    finalCampaignUpdate(2,null);
-                } else {
-                    txt = "You pressed Cancel!";
-                }
-            } if (chk.length == 1 && chk[0] == '1') {
-                //type 1
-                finalCampaignUpdate(1,JSON.stringify(temp));
-            } else if (chk.length == 2){
-                //type 3
-                finalCampaignUpdate(3,JSON.stringify(temp));
-            }    
-        } else {
-            alert("Please Select atleast one option");
-        }    
+//        if (chk.length > 0) {
+//            if (chk.length == 1 && chk[0] == '2') {
+//                var r = confirm("Are you sure you don't want proof of posting from vendors?");
+//                if (r == true) {
+//                 //type 2   
+//                    finalCampaignUpdate(2,null);
+//                } else {
+//                    txt = "You pressed Cancel!";
+//                }
+//            } if (chk.length == 1 && chk[0] == '1') {
+//                //type 1
+//                finalCampaignUpdate(1,JSON.stringify(temp));
+//            } else if (chk.length == 2){
+//                //type 3
+//                finalCampaignUpdate(3,JSON.stringify(temp));
+//            }    
+//        } else {
+//            alert("Please Select atleast one option");
+//        }    
     }
     
     function fetchvendors(name,id) {
@@ -376,6 +378,31 @@ if (addtocampaign.length > 0 || removefromcampaign.length > 0) {
 }
     
 }
+
+
+function assignTaskToUser(cid, sid) {
+    var uid = $('#selectcampaign_'+ cid + '_' + sid).val();
+        $.ajax({
+                   type: 'POST',
+                   url: $('#completePath').text() + '/ajax/assignCampaignSiteToUser',
+                   data: {
+                       'cid': cid,
+                       'uid' : uid,
+                       'sid' : sid
+                   },
+                success:function(data){
+                    console.log(data + ' asdad ');
+                    if (data == '200') {
+                        location.reload();
+                    }
+                   },
+                   error: function(data) { // if error occured
+                         alert("Error occured.please try again");
+                         alert(data);
+                    }
+                  });
+    }
+    
     $('.mon_menu').each(function() {
         $(this).removeClass('active');
     });
