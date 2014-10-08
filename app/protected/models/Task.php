@@ -78,7 +78,7 @@ if ($date != null) {
     }
     
     public static function updateAssignTaskforaSite($siteid, $campaignid, $userid) {
-        $sql = 'Update Task set assigneduserid = ' . $userid . ' where campaignid=' . $campaignid . ' and siteid = ' . $siteid;
+        $sql = 'Update Task set assigneduserid = ' . $userid . ' where DATE(dueDate) > CURRENT_DATE and campaignid=' . $campaignid . ' and siteid = ' . $siteid;
 //        return $sql ;
         return Yii::app()->db->createCommand($sql)->execute();
     }
