@@ -170,8 +170,8 @@ class AjaxController extends Controller {
                 . "LEFT JOIN Campaign c ON c.id=t.campaignid "
                 . "LEFT JOIN Listing l ON l.id=t.siteid "
                 . "WHERE pp.taskid = '$taskId' ";
-        if (!$pop)
-            $sql .= "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";
+        //if (!$pop)
+            //$sql .= "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";
         $photoProofResult = Yii::app()->db->createCommand($sql)->queryAll();
         $photoProofArr = array();
         foreach ($photoProofResult as $pp) {
