@@ -128,13 +128,13 @@ class ReportsController extends Controller
             }
             $sql .= "ORDER BY t.dueDate DESC ";
             
-            $tasks = Yii::app()->db->createCommand($sql)->queryAll();            
+            $tasks = Yii::app()->db->createCommand($sql)->queryAll();
             
             $campaignIdList = array();
             $assignedToList = array();
             $sql2 = "SELECT c.id as cid, c.name as campaign, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto "
                     . "FROM Task t "
-                    . "LEFT JOIN Campaign c ON c.id=t.campaignid "                    
+                    . "LEFT JOIN Campaign c ON c.id=t.campaignid "
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
                     . "WHERE t.assignedCompanyid=$cId "
                     . "AND DATE(t.dueDate) <= CURRENT_DATE() ";
