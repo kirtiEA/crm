@@ -306,7 +306,7 @@ class ApiController extends Controller {
                 $ppModel->clickedBy = $put_vars['clickedby'];
                 $ppModel->clickedLat = $put_vars['lat'];
                 $ppModel->clickedLng = $put_vars['lng'];
-                $ppModel->clickedLng = $put_vars['direction'];
+                $ppModel->direction = $put_vars['direction'];
                 $ppModel->installation = $installationProblem;
                 $ppModel->lighting = $lightingProblem;
                 $ppModel->obstruction = $obstructionProblem;
