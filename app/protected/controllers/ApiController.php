@@ -306,6 +306,7 @@ class ApiController extends Controller {
                 $ppModel->clickedBy = $put_vars['clickedby'];
                 $ppModel->clickedLat = $put_vars['lat'];
                 $ppModel->clickedLng = $put_vars['lng'];
+                $ppModel->direction = $put_vars['direction'];
                 $ppModel->installation = $installationProblem;
                 $ppModel->lighting = $lightingProblem;
                 $ppModel->obstruction = $obstructionProblem;
@@ -322,7 +323,15 @@ class ApiController extends Controller {
                 if ($ppModel->getPrimaryKey()) {
                     $taskDoneFlag = 1;
                 }
-                if (!is_null($installationProblem) || !is_null($lightingProblem) || !is_null($obstructionProblem) || !is_null($commentProblem)) {
+                // look for the latest clickedAt photo to see any problem
+                $sql = "SELECT  installation, lighting, obstruction, comments "
+                    . "FROM PhotoProof "                    
+                    . "WHERE taskid = $taskId "
+                    . "ORDER BY clickedDateTime DESC "
+                    . "LIMIT 1 ";
+                $ppProblem = Yii::app()->db->createCommand($sql)->query();
+                
+                if (!is_null($ppProblem['installation']) || !is_null($ppProblem['lighting']) || !is_null($ppProblem['obstruction']) || !is_null($ppProblem['comments'])) {
                     $problemFlag = 1;
                 }
                 $taskModel = Task::model()->findByPk($taskId);
@@ -330,8 +339,7 @@ class ApiController extends Controller {
                 $taskModel->problem = $problemFlag;
                 $taskModel->modifiedDate = $currDateTime;
                 
-                if ($taskModel->save()) {
-                    
+                if ($taskModel->save()) {                    
                     $this->_sendResponse(200, array("success" => true));
                 } else {
                     $this->_sendResponse(200, array("success" => false));
