@@ -228,15 +228,15 @@ class AccountController extends Controller {
                                 'companyid' => $noti->companyid,
                                 'createdby' => Yii::app()->user->id,
                                 'createddate' => date("Y-m-d H:i:s"),
-                                'vendorcompanyid' => Yii::app()->user->cid,
+                                'vendorcompanyid' => $comp->id,
                                 'acceptedby' => Yii::app()->user->id,
                                 'accepteddate' => date("Y-m-d H:i:s"),
                             );
                             $model1->save();
                             $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
-                            $vendorName = UserCompany::model()->findByPk(Yii::app()->user->cid);
+                            $vendorName = UserCompany::model()->findByPk($comp->id);
                             $emailToUser = User::model()->findByPk($noti->createdby);
-                            $mail = new EatadsMailer('request-accepted', $emailToUser->email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
+                            $mail = new EatadsMailer('request-accepted', $emailToUser->email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array(''), $vendorName['name'], $model->email);
                             $mail->eatadsSend();
                             if ($passwordLink->save()) {
                                 $mail = new EatadsMailer('new-user', $_POST['SubscriptionForm']['email'], array('resetLink' => $resetlink1), array('shruti@eatads.com'), 'EatAds Admin');

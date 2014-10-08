@@ -157,9 +157,10 @@
                     <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
                     &nbsp;
                         <button class="btn btn-secondary" data-toggle="modal" data-target="#add-site-modal" onclick="fetchvendors(\''. $value['name'] .'\', \''.$value['id'] .'\');"><span class="glyphicon glyphicon-plus"></span> Add/Remove Sites</button>
-                        &nbsp;
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#add-campaign-modal" onclick="saveCampaign(\'' .$value['id'] . '\');">Save Campaign</button>
-                </div>' .
+                        &nbsp;'
+                        //<button class="btn btn-primary" data-toggle="modal" data-target="#add-campaign-modal" onclick="saveCampaign(\'' .$value['id'] . '\');">Save Campaign</button>
+                       .'<button class="btn btn-primary" data-toggle="modal"  onclick="saveCampaign(\'' .$value['id'] . '\');">Save Campaign</button>'
+                .'</div>' .
                   '<div class="list-item-content show-hide-content">
                     <ul class="sub-list" id="campaign_'. $value['id'].'">';
                     foreach ($value['sites'] as $site) {

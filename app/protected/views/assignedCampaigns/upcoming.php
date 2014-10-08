@@ -154,9 +154,10 @@
                   '<div class="pull-right">
                       
                     <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
-                    &nbsp;' .
-                        '&nbsp;
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#add-campaign-modal" onclick="saveCampaign(\'' .$value['id'] . '\');">Save Campaign</button>'
+                    &nbsp;' 
+//                        .
+//                        '&nbsp;
+//                        <button class="btn btn-primary" data-toggle="modal" data-target="#add-campaign-modal" onclick="saveCampaign(\'' .$value['id'] . '\');">Save Campaign</button>'
 //                        <button class="btn btn-secondary" data-toggle="modal" data-target="#add-site-modal" onclick="fetchvendors(\''. $value['name'] .'\', \''.$value['id'] .'\');"><span class="glyphicon glyphicon-plus"></span> Add Sites</button>
 //                        &nbsp;
 //                        <button class="btn btn-primary" data-toggle="modal" data-target="#add-campaign-modal" onclick="saveCampaign(\'' .$value['id'] . '\');">Save Campaign</button>
@@ -166,25 +167,39 @@
                     foreach ($value['sites'] as $site) {
                         $html = $html . '<li id="vendorselected_'. $value['id'] . '_' . $site['id'] .'">
                             <h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $site['name'] .'('.$site['count'] . ') &nbsp;</h3>'
-                            . '<div class="assign-dropdown">Assigned to 
-                                <select>
-                                    <option value="'. $site['id'].'_0" selected="true">Myself</option>';
-if (strcasecmp($site['id'], Yii::app()->user->cid) != 0) {
-                            $html = $html . '<option value="'.$site['id']. '_' .$site['id'] .'">' . $site['name'] .'</option>';
-                        }
-                                    
-                          $html = $html .      '</select></div>' 
+//                            . '<div class="assign-dropdown">Assigned to 
+//                                <select>
+//                                    <option value="'. $site['id'].'_0" selected="true">Myself</option>';
+//if (strcasecmp($site['id'], Yii::app()->user->cid) != 0) {
+//                            $html = $html . '<option value="'.$site['id']. '_' .$site['id'] .'">' . $site['name'] .'</option>';
+//                        }
+//                                    
+//                          $html = $html .      '</select></div>' 
                                 
                             . '<ul class="sub-sub-list show-hide-content">';
                         foreach ($site['listings'] as $list) {
-                            $html = $html . '<li>' . $list['name'] //. ', ' . $list['mediatype'] . ', '
+                            $html = $html . '<li>' . $list['name']; //. ', ' . $list['mediatype'] . ', '
                                     //. $list['locality'] 
                                     //. '&nbsp; <span onclick="removeListingFromCampaignd(\'' . $list['id'] .'\', \'' . $value['id'] .'\');" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_'.$list['id'].'"></span>'
-                                    . '</li>';
+                            $html = $html . '<div class="assign-dropdown">Assigned to 
+                                <select id="selectcampaign_'.$value['id'].'_' . $list['id'] . '" onchange="assignTaskToUser(\''. $value['id'] .'\',\''. $list['id'] .'\');">';        
                             if(!empty($list['assignedusers'])) {
-                                $html = $html . '<div class="assign-dropdown">Assigned to ' . json_encode($list['assignedusers'])
-                                    . '</div>';
+                                
+                                foreach ($users as $user) {
+                                    if (strcasecmp($list['assignedusers']['id'], $user['id']) == 0) {
+                                        $html = $html . '<option value="'. $user['id'] .'" selected="true">'. $user['name'] .'</option>';
+                                    } else {
+                                        $html = $html . '<option value="'. $user['id'] .'" >'. $user['name'] .'</option>';
+                                    }
+                                }
+                            } else {
+                                $html = $html . '<option value="0" selected="true">UnAssigned</option>';
+                                foreach ($users as $user) {
+                                    $html = $html . '<option  value="'. $user['id'] .'" >'. $user['name'] .'</option>';
+                                }
                             }
+                            $html = $html .      '</select></div>';
+                            $html = $html .  '</li>';
                         }
                         $html = $html . '</ul></li>';
                     }
