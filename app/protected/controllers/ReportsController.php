@@ -107,14 +107,15 @@ class ReportsController extends Controller
             }
             
             $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
-                    . "t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop "
-                    . "FROM Task t "
-                    . "LEFT JOIN Campaign c ON c.id=t.campaignid "
-                    . "LEFT JOIN Listing l ON l.id=t.siteid "
-                    . "LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
-                    . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE t.assignedCompanyid=$cId "
-                    . "AND l.status=1 ";
+                    . "t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
+                    . " FROM Task t "
+                    . " LEFT JOIN Campaign c ON c.id=t.campaignid "
+                    . " LEFT JOIN Listing l ON l.id=t.siteid "
+                    . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
+                    . " LEFT JOIN User u ON u.id=t.assigneduserid "
+                    . " LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
+                    . " WHERE t.assignedCompanyid=$cId "                    
+                    . " AND l.status=1 ";
             if(!is_null($sdate) && !is_null($edate)) {
                 $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
             } else {
@@ -126,9 +127,14 @@ class ReportsController extends Controller
             if(!is_null($assignedTo) && strlen($assignedTo)) {
                 $sql .= " AND t.assigneduserid IN ($assignedTo) ";
             }
-            $sql .= "ORDER BY t.dueDate DESC ";
-            
+            $sql .= " GROUP BY t.id ";
+            $sql .= " ORDER BY t.dueDate DESC ";
+            //echo $sql; die();
             $tasks = Yii::app()->db->createCommand($sql)->queryAll();
+            $taskArr = array();
+            foreach ($tasks as $tk) {
+                
+            }
             
             $campaignIdList = array();
             $assignedToList = array();
