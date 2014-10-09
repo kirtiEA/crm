@@ -52,7 +52,11 @@ class SiteController extends Controller {
         $cId = Yii::app()->request->getParam('cid');
         $mySiteName='';
         if(is_numeric($cId)) {
-            $mySiteName = UserCompany::fetchCompanyName($cId);
+            // match cId
+            if($cId == Yii::app()->user->cid)            
+                $mySiteName = UserCompany::fetchCompanyName($cId);
+            else
+                $cId = '';
         }
                 
         $vendorList = array();
