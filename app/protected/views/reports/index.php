@@ -85,7 +85,10 @@
                             <?php
                             $status = '';
                             if ($t['status'] == 0) {
-                                $status = 'Pending';
+                                if($t['duedate'] < date('Y-m-d'))
+                                    $status = 'Missed';
+                                else 
+                                    $status = 'Pending';                                
                             } else {
                                 if ($t['problem']) {
                                     $status = '<span class="glyphicon glyphicon-warning-sign"></span>';
