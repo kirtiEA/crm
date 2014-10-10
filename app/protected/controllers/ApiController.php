@@ -329,7 +329,7 @@ class ApiController extends Controller {
                     . "WHERE taskid = $taskId "
                     . "ORDER BY clickedDateTime DESC "
                     . "LIMIT 1 ";
-                $ppProblem = Yii::app()->db->createCommand($sql)->query();
+                $ppProblem = Yii::app()->db->createCommand($sql)->queryRow();
                 
                 if (!is_null($ppProblem['installation']) || !is_null($ppProblem['lighting']) || !is_null($ppProblem['obstruction']) || !is_null($ppProblem['comments'])) {
                     $problemFlag = 1;

@@ -101,7 +101,7 @@
                             if ($t['status'] == 0) {
                                 echo '-';
                             } else {
-                                echo '<a href="#" class="lightbox-btn">View</a>';
+                                echo '<a href="javascript:void(0);" class="lightbox-btn">View</a>';
                             }
                             ?>
                         </td>
