@@ -58,6 +58,7 @@
                 <tr>
                     <th>Campaign</th>
                     <th>Site</th>
+                    <th>Location</th>
                     <th>Media Type</th>
                     <th>Assigned To</th>
                     <th>Due Date</th>
@@ -75,6 +76,7 @@
                     <tr class='<?php echo $trClass; ?>' id="<?php echo $t['id'] ?>">
                         <td><?php echo $t['campaign']; ?></td>
                         <td><?php echo $t['site']; ?></td>
+                        <td><?php echo $t['location']; ?></td>
                         <td><?php echo $t['mediatype']; ?></td>
                         <td><?php echo strlen($t['assignedto']) ? $t['assignedto'] : 'Unassigned'; ?></td>
                         <td><?php echo date('d/m/Y', strtotime($t['duedate'])); ?>
