@@ -10,6 +10,7 @@
  * @property string $clickedDateTime
  * @property double $clickedLat
  * @property double $clickedLng
+ * @property integer $direction
  * @property string $installation
  * @property string $lighting
  * @property string $obstruction
@@ -40,14 +41,14 @@ class BasePhotoProof extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('taskid, clickedBy', 'numerical', 'integerOnly'=>true),
+			array('taskid, direction, clickedBy', 'numerical', 'integerOnly'=>true),
 			array('clickedLat, clickedLng', 'numerical'),
 			array('imageName', 'length', 'max'=>45),
 			array('installation, lighting, obstruction, comments', 'length', 'max'=>255),
 			array('clickedDateTime, createdDate, modifiedDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, taskid, imageName, clickedDateTime, clickedLat, clickedLng, installation, lighting, obstruction, comments, clickedBy, createdDate, modifiedDate', 'safe', 'on'=>'search'),
+			array('id, taskid, imageName, clickedDateTime, clickedLat, clickedLng, direction, installation, lighting, obstruction, comments, clickedBy, createdDate, modifiedDate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,6 +77,7 @@ class BasePhotoProof extends CActiveRecord
 			'clickedDateTime' => 'Clicked Date Time',
 			'clickedLat' => 'Clicked Lat',
 			'clickedLng' => 'Clicked Lng',
+                        'direction' => 'Camera Facing Direction',
 			'installation' => 'Installation',
 			'lighting' => 'Lighting',
 			'obstruction' => 'Obstruction',
@@ -110,6 +112,7 @@ class BasePhotoProof extends CActiveRecord
 		$criteria->compare('clickedDateTime',$this->clickedDateTime,true);
 		$criteria->compare('clickedLat',$this->clickedLat);
 		$criteria->compare('clickedLng',$this->clickedLng);
+                $criteria->compare('direction',$this->direction);
 		$criteria->compare('installation',$this->installation,true);
 		$criteria->compare('lighting',$this->lighting,true);
 		$criteria->compare('obstruction',$this->obstruction,true);

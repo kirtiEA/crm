@@ -36,16 +36,20 @@ class ReportsController extends Controller
                 $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));                
             }
             $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
-                    . "t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop "
-                    . "FROM Task t "
-                    . "LEFT JOIN Campaign c ON c.id=t.campaignid "
-                    . "LEFT JOIN Listing l ON l.id=t.siteid "
-                    . "LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
-                    . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE t.pop=1 AND t.assignedCompanyid=$cId "
-                    . "AND l.status=1 ";
+                    . " CONCAT(l.locality, ', ', a.name) as location, "
+                    . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop "
+                    . " FROM Task t "
+                    . " LEFT JOIN Campaign c ON c.id=t.campaignid "
+                    . " LEFT JOIN Listing l ON l.id=t.siteid "
+                    . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
+                    . " LEFT JOIN User u ON u.id=t.assigneduserid "
+                    . " LEFT JOIN Area a ON a.id=l.cityid "
+                    . " WHERE t.pop=1 AND t.assignedCompanyid=$cId "
+                    . " AND l.status=1 ";
             if(!is_null($sdate) && !is_null($edate)) {
                 $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
+            } else {
+                $sql .= " AND DATE(t.dueDate) <= CURRENT_DATE() ";
             }
             if(!is_null($campaignIds) && strlen($campaignIds)) {
                 $sql .= " AND c.id IN ($campaignIds) ";
@@ -53,7 +57,8 @@ class ReportsController extends Controller
             if(!is_null($assignedTo) && strlen($assignedTo)) {
                 $sql .= " AND t.assigneduserid IN ($assignedTo) ";
             }
-
+            $sql .= "ORDER BY t.dueDate DESC ";
+            
             $tasks = Yii::app()->db->createCommand($sql)->queryAll();
             $campaignIdList = array();
             $assignedToList = array();
@@ -61,7 +66,8 @@ class ReportsController extends Controller
                     . "FROM Task t "
                     . "LEFT JOIN Campaign c ON c.id=t.campaignid "                    
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE t.assignedCompanyid=$cId ";
+                    . "WHERE t.assignedCompanyid=$cId "
+                    . "AND DATE(t.dueDate) <= CURRENT_DATE() ";
             $filters = Yii::app()->db->createCommand($sql2)->queryAll();
             foreach($filters as $fl) {
                 //echo '<pre>';
@@ -103,16 +109,21 @@ class ReportsController extends Controller
             }
             
             $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
-                    . "t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop "
-                    . "FROM Task t "
-                    . "LEFT JOIN Campaign c ON c.id=t.campaignid "
-                    . "LEFT JOIN Listing l ON l.id=t.siteid "
-                    . "LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
-                    . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE t.assignedCompanyid=$cId "
-                    . "AND l.status=1 ";
+                    . " CONCAT(l.locality, ', ', a.name) as location, "
+                    . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
+                    . " FROM Task t "
+                    . " LEFT JOIN Campaign c ON c.id=t.campaignid "
+                    . " LEFT JOIN Listing l ON l.id=t.siteid "
+                    . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
+                    . " LEFT JOIN User u ON u.id=t.assigneduserid "
+                    . " LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
+                    . " LEFT JOIN Area a ON a.id=l.cityid "
+                    . " WHERE t.assignedCompanyid=$cId "                    
+                    . " AND l.status=1 ";
             if(!is_null($sdate) && !is_null($edate)) {
                 $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
+            } else {
+                $sql .= " AND DATE(t.dueDate) <= CURRENT_DATE() ";
             }
             if(!is_null($campaignIds) && strlen($campaignIds)) {
                 $sql .= " AND c.id IN ($campaignIds) ";
@@ -120,16 +131,23 @@ class ReportsController extends Controller
             if(!is_null($assignedTo) && strlen($assignedTo)) {
                 $sql .= " AND t.assigneduserid IN ($assignedTo) ";
             }
-                        
-            $tasks = Yii::app()->db->createCommand($sql)->queryAll();            
+            $sql .= " GROUP BY t.id ";
+            $sql .= " ORDER BY t.dueDate DESC ";
+            //echo $sql; die();
+            $tasks = Yii::app()->db->createCommand($sql)->queryAll();
+            $taskArr = array();
+            foreach ($tasks as $tk) {
+                
+            }
             
             $campaignIdList = array();
             $assignedToList = array();
             $sql2 = "SELECT c.id as cid, c.name as campaign, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto "
                     . "FROM Task t "
-                    . "LEFT JOIN Campaign c ON c.id=t.campaignid "                    
+                    . "LEFT JOIN Campaign c ON c.id=t.campaignid "
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE t.assignedCompanyid=$cId ";
+                    . "WHERE t.assignedCompanyid=$cId "
+                    . "AND DATE(t.dueDate) <= CURRENT_DATE() ";
             $filters = Yii::app()->db->createCommand($sql2)->queryAll();
             foreach($filters as $fl) {
                 //echo '<pre>';

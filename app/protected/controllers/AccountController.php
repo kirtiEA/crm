@@ -86,19 +86,22 @@ class AccountController extends Controller {
             $userModel->active = 1;
             $userModel->status = 1;
             $userModel->save();
-            $identity = new UserIdentity($userModel->email, false); //new UserIdentity($userModel->email, FALSE);
-            print_r($identity);
+//            $identity = new UserIdentity($userModel->email, false); //new UserIdentity($userModel->email, FALSE);
+//            print_r($identity);
             //die();
-                            $user = Yii::app()->user;
-                $user->login($identity);
-                $this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');die();
+//                            $user = Yii::app()->user;
+//                $user->login($identity);
+//                $this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');die();
 //            echo $identity->authenticate();die('sdfs');
-            if ($identity->authenticate()) {
-                $user = Yii::app()->user;
-                $user->login($identity);
+            $identity=new LoginForm();
+            
+            if ($identity->loginWithoutPassword($userModel->email)) {
+//                $user = Yii::app()->user;
+//                $user->login($identity);
                 $passwordLink->expired = 1;
                 $passwordLink->save();
-                echo 1;
+                $this->redirect(Yii::app()->getBaseUrl() .  '/myCampaigns');
+//                echo 1;
             } else {
                 echo 5;
             }
@@ -177,22 +180,28 @@ class AccountController extends Controller {
                     $result = $ph->CheckPassword($pwd, $model->password);
                     $model->password = $password;
 
-                    if (!($_POST['SubscriptionForm']['companyid'])) {
+                    //if (!($_POST['SubscriptionForm']['companyid'])) {
                         $model->save(false);
                         //role set role as 6
                         $role = Role::model()->findByPk(1);
 //                            UserRole::model()->insertRoles($model->id, $role->id);
                         UserRole::model()->insertRoles($model->id, $role->id);
-                        //create company
-                        $comp = new UserCompany;
-                        $comp->name = $_POST['SubscriptionForm']['companyname'];
-                        //echo $_POST['SubscriptionForm']['companyname']; die();
-                        //$comp->alias = UserCompany::companyNameAlias(JoyUtilities::createAlias($_POST['UserCompany']['name']));
-                        $comp->countryid = 1;
-                        $comp->stateid = 2;
-                        $comp->cityid = 3;
-                        $comp->userid = $model->id;
-                        $comp->save(false);
+                        $comp = null;
+                        if (!($_POST['SubscriptionForm']['companyid'])) {
+                            //create company
+                            $comp = new UserCompany;
+                            $comp->name = $_POST['SubscriptionForm']['companyname'];
+                            //echo $_POST['SubscriptionForm']['companyname']; die();
+                            //$comp->alias = UserCompany::companyNameAlias(JoyUtilities::createAlias($_POST['UserCompany']['name']));
+                            $comp->countryid = 1;
+                            $comp->stateid = 2;
+                            $comp->cityid = 3;
+                            $comp->userid = $model->id;
+                            $comp->save(false);
+                        } else {
+                           $comp = UserCompany::model()->findByPk($_POST['SubscriptionForm']['companyid']);     
+                        }
+                        
                         $model->companyid = $comp->id;
                         //print_r($comp); die();
                         $model->save(false);
@@ -202,7 +211,7 @@ class AccountController extends Controller {
                         //echo $hash;
                         $passwordLink = new Link();
                         $passwordLink->attributes = array('userid' => $model->id, 'hash' => $hash, 'datecreated' => date('Y-m-d H:i:s'), 'type' => '1');
-                        $resetlink1 = Yii::app()->getBaseUrl(true) . 'validate?set=' . $hash;
+                        $resetlink1 = Yii::app()->getBaseUrl(true) . '/account/validate?set=' . $hash;
                         if ($_POST['SubscriptionForm']['nid']) {
                             /*
                              * update nid
@@ -219,15 +228,15 @@ class AccountController extends Controller {
                                 'companyid' => $noti->companyid,
                                 'createdby' => Yii::app()->user->id,
                                 'createddate' => date("Y-m-d H:i:s"),
-                                'vendorcompanyid' => Yii::app()->user->cid,
+                                'vendorcompanyid' => $comp->id,
                                 'acceptedby' => Yii::app()->user->id,
                                 'accepteddate' => date("Y-m-d H:i:s"),
                             );
                             $model1->save();
                             $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
-                            $vendorName = UserCompany::model()->findByPk(Yii::app()->user->cid);
+                            $vendorName = UserCompany::model()->findByPk($comp->id);
                             $emailToUser = User::model()->findByPk($noti->createdby);
-                            $mail = new EatadsMailer('request-accepted', $emailToUser->email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array('shruti@eatads.com'), $vendorName['name'], Yii::app()->user->email);
+                            $mail = new EatadsMailer('request-accepted', $emailToUser->email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array(''), $vendorName['name'], $model->email);
                             $mail->eatadsSend();
                             if ($passwordLink->save()) {
                                 $mail = new EatadsMailer('new-user', $_POST['SubscriptionForm']['email'], array('resetLink' => $resetlink1), array('shruti@eatads.com'), 'EatAds Admin');
@@ -243,10 +252,10 @@ class AccountController extends Controller {
                                 $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
                             }
                         }
-                    } else {
-                        Yii::app()->user->setFlash('success', 'User already exists with this email');
-                        $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
-                    }
+//                    } else {
+//                        Yii::app()->user->setFlash('success', 'User already exists with this email');
+//                        $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
+//                    }
                 } else {
 
                     Yii::app()->user->setFlash('success', 'User already exists with this email');

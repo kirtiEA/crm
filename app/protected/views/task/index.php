@@ -9,14 +9,14 @@
         $('.menu_task').addClass('active');
 
     });
-            $('#filter-form').submit(function() {
-        console.log('sdfsdf'); 
-        });
-        $(document).ready(function() {
-//            dust.render("tasks", <?php //echo $tasks;?>, function(err, out) {
-//                $('#tasks').html(out);
-//            });
-        });
+//            $('#filter-form').submit(function() {
+//        console.log('sdfsdf'); 
+//        });
+//        $(document).ready(function() {
+////            dust.render("tasks", <?php //echo $tasks;?>, function(err, out) {
+////                $('#tasks').html(out);
+////            });
+//        });
         
        function filter() {
             $('#campaignids').val(JSON.stringify($('#multiselect-campaigns').val()));
@@ -134,7 +134,7 @@
                       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">';
                  
                         foreach ($users as $user) {
-                            $row = $row . '<li role="presentation" onclick="assignTaskToUser('.$user['id'].','. $value['id'] .');"><a role="menuitem" tabindex="-1" href="#">'. $user['name'] .'</a></li>';
+                            $row = $row . '<li role="presentation" onclick="assignTaskToUser('.$user['id'].','. $value['id'] .');"><a role="menuitem" tabindex="-1" href="#!">'. $user['name'] .'</a></li>';
                             
                         }
  

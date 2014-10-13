@@ -70,10 +70,16 @@ if ($date != null) {
     }
     
     public static function fetcUsersAssignedToSite($siteid, $campaignid,$companyid) {
-        $sql = 'select u.id,u.username from Task 
-        inner join User u on u.id = assigneduserid
-        where siteid = ' . $siteid . ' and campaignid = '. $campaignid .' and  assignedCompanyId = ' . $companyid .'
-        group by u.id';
-        return Yii::app()->db->createCommand($sql)->queryAll();
+        $sql = 'select u.id,u.username, count(t.id) as cnt  from Task t
+        inner join User u on u.id = t.assigneduserid
+        where t.siteid = ' . $siteid . ' and t.campaignid = '. $campaignid .' and  t.assignedCompanyId = ' . $companyid .'
+        group by u.id order by cnt desc limit 1';
+        return Yii::app()->db->createCommand($sql)->queryRow();
+    }
+    
+    public static function updateAssignTaskforaSite($siteid, $campaignid, $userid) {
+        $sql = 'Update Task set assigneduserid = ' . $userid . ' where campaignid=' . $campaignid . ' and siteid = ' . $siteid;
+//        return $sql ;
+        return Yii::app()->db->createCommand($sql)->execute();
     }
 }
