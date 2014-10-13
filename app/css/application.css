@@ -11320,3 +11320,9 @@ nav.navbar.navbar-default.navbar-fixed-bottom.table-control .pull-right {
 {
     width: 500px;
 }
+
+.errorMessage{
+font-size:14px; 
+font-weight: bold;
+color:red;
+}

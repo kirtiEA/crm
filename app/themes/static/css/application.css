@@ -11271,3 +11271,8 @@ h2.campaign-name {
   z-index: 100;
   width: 100%;
 }
+
+.errorMessage{
+  color: red;
+  font-size: 14px;
+}
