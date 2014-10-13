@@ -36,14 +36,16 @@ class ReportsController extends Controller
                 $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));                
             }
             $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
-                    . "t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop "
-                    . "FROM Task t "
-                    . "LEFT JOIN Campaign c ON c.id=t.campaignid "
-                    . "LEFT JOIN Listing l ON l.id=t.siteid "
-                    . "LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
-                    . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE t.pop=1 AND t.assignedCompanyid=$cId "
-                    . "AND l.status=1 ";
+                    . " CONCAT(l.locality, ', ', a.name) as location, "
+                    . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop "
+                    . " FROM Task t "
+                    . " LEFT JOIN Campaign c ON c.id=t.campaignid "
+                    . " LEFT JOIN Listing l ON l.id=t.siteid "
+                    . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
+                    . " LEFT JOIN User u ON u.id=t.assigneduserid "
+                    . " LEFT JOIN Area a ON a.id=l.cityid "
+                    . " WHERE t.pop=1 AND t.assignedCompanyid=$cId "
+                    . " AND l.status=1 ";
             if(!is_null($sdate) && !is_null($edate)) {
                 $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
             } else {
@@ -107,13 +109,15 @@ class ReportsController extends Controller
             }
             
             $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
-                    . "t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
+                    . " CONCAT(l.locality, ', ', a.name) as location, "
+                    . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
                     . " FROM Task t "
                     . " LEFT JOIN Campaign c ON c.id=t.campaignid "
                     . " LEFT JOIN Listing l ON l.id=t.siteid "
                     . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
                     . " LEFT JOIN User u ON u.id=t.assigneduserid "
                     . " LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
+                    . " LEFT JOIN Area a ON a.id=l.cityid "
                     . " WHERE t.assignedCompanyid=$cId "                    
                     . " AND l.status=1 ";
             if(!is_null($sdate) && !is_null($edate)) {
