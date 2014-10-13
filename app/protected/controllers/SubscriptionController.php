@@ -40,7 +40,7 @@ class SubscriptionController extends Controller {
         $vendorList = array();
         $nid = Yii::app()->request->getParam('nid');
         $model->nid = $nid;
-        foreach (UserCompany::model()->findAll() as $value) {
+        foreach (UserCompany::model()->findAllByAttributes(array('status' => 1)) as $value) {
             array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
         }
         $this->renderPartial('index', array(

@@ -53,7 +53,7 @@ class AccountController extends Controller {
         $vendorList = array();
 //        $nid = Yii::app()->request->getParam('nid');
 //        $modelSub->nid = $nid;
-        foreach (UserCompany::model()->findAll() as $value) {
+        foreach (UserCompany::model()->findAllByAttributes(array('status' => 1)) as $value) {
             array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
         }
 
@@ -118,7 +118,7 @@ class AccountController extends Controller {
         $setPwdHash = Yii::app()->request->getParam('set');
         //echo $setPwdHash; die();
         $vendorList = array();
-        foreach (UserCompany::model()->findAll() as $value) {
+        foreach (UserCompany::model()->findAllByAttributes(array('status' => 1)) as $value) {
             array_push($vendorList, array('id' => $value->id, 'value' => $value->name));
         }
         $nid = Yii::app()->request->getParam('nid');

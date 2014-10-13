@@ -17,7 +17,7 @@ class RequestedCompanyVendor extends BaseRequestedCompanyVendor {
 
         $query = 'select uc.name as name, u.email as vendoradmin,  DATE_FORMAT(rv.createddate,\'%d %M %Y\') as createddate, rv.accepteddate 
             from RequestedCompanyVendor rv
-            inner join UserCompany uc on uc.id = rv.vendorcompanyid
+            inner join UserCompany uc on uc.id = rv.vendorcompanyid and uc.status = 1
             inner join User u on u.id = uc.userid
             and rv.companyid = ' . $companyid;
 
@@ -29,7 +29,7 @@ class RequestedCompanyVendor extends BaseRequestedCompanyVendor {
 
         $query = 'select u.email as vendoradmin
             from RequestedCompanyVendor rv
-            inner join UserCompany uc on uc.id = rv.vendorcompanyid
+            inner join UserCompany uc on uc.id = rv.vendorcompanyid and uc.status = 1
             inner join User u on u.id = uc.userid
             where rv.accepteddate is null and rv.companyid = ' . $companyid;
         return Yii::app()->db->createCommand($query)->queryAll();
@@ -38,7 +38,7 @@ class RequestedCompanyVendor extends BaseRequestedCompanyVendor {
     public static function showWaitingRequests($cid) {
         $query = 'select rv.id as id, uc.name as name, u.email as vendoradmin, DATE_FORMAT(rv.createddate,\'%d %M %Y\') as createddate, rv.accepteddate 
                     from RequestedCompanyVendor rv 
-                    inner join UserCompany uc on uc.id = rv.companyid 
+                    inner join UserCompany uc on uc.id = rv.companyid and uc.status = 1
                     inner join User u on u.id = uc.userid and rv.vendorcompanyid =' . $cid . ' and rv.acceptedby is NULL';
 
         return Yii::app()->db->createCommand($query)->queryAll();
@@ -47,7 +47,7 @@ class RequestedCompanyVendor extends BaseRequestedCompanyVendor {
     public static function showAcceptedRequests($cid) {
         $query = 'select rv.id as id, uc.name as name, u.email as vendoradmin, DATE_FORMAT(rv.createddate,\'%d %M %Y\') as createddate, rv.accepteddate 
                     from RequestedCompanyVendor rv 
-                    inner join UserCompany uc on uc.id = rv.companyid 
+                    inner join UserCompany uc on uc.id = rv.companyid and uc.status = 1
                     inner join User u on u.id = uc.userid and rv.vendorcompanyid =' . $cid ;
 
         return Yii::app()->db->createCommand($query)->queryAll();
