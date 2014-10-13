@@ -44,8 +44,8 @@
 <!-- end of filters sub-header --> 
 
 <ul class="nav nav-tabs" role="tablist">
-    <li class="active"><a href="#">Proof of Posting</a></li>
     <li><a href="<?php echo Yii::app()->urlManager->createUrl('reports/all'); ?>">Full Campaign</a></li>
+    <li class="active"><a href="#">Proof of Posting</a></li>
 </ul>
 
 <!-- tasks list --> 
