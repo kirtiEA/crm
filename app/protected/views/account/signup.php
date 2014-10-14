@@ -180,15 +180,24 @@
     });
     
     $(document).ready(function() {
-        $('#mobile-number').keypress(function(){
+        window.phnum=null;
+        window.phcheck=false;
+
+        $('#mobile-number').keydown(function(e){
+            if (window.phcheck==true){
+                e.preventDefault();
+            }
            var title = $('#mobile-number').val();
            console.log(title.length);
-           if (title.length >= 10) {
-                       var shortText = jQuery.trim(title).substring(0, 16);
-            $('#mobile-number').val(shortText);
-           }
+
+           if (title.length >= 16 ){
+             window.phcheck=true;
+            e.preventDefault();
+
+           } 
 
         });
+
     });
     
     $(function () {

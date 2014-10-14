@@ -106,7 +106,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
         }    
     }
     function removeFromArrayAddToCampaign(id) {
-        if (confirm("Do you really want to delete this site from campaign!") == true) {
+        if (confirm("Do you really want to delete this site from campaign ?") == true) {
             var index = addtocampaign.indexOf(id);
             if (index > -1) {
                 $('#fjs_listing_' + id).removeClass('selected');

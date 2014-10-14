@@ -226,7 +226,7 @@ License: https://github.com/ashleydw/lightbox/blob/master/LICENSE
       return this;
     },
     showLoading: function() {
-      this.lightbox_body.html('<div class="modal-loading">Loading..</div>');
+      this.lightbox_body.html('<div class="modal-loading"><img src="../../images/Bigloader.gif"></div>');
       return this;
     },
     showYoutubeVideo: function(id) {
