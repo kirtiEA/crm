@@ -50,7 +50,7 @@
                         </div>
                         <button class="request btn btn-primary">Request</button>
                         &nbsp;
-                        <a href="#" data-toggle="modal" data-target="#invite-vendor-modal">Can't find vendor? <b>Invite them</b></a>
+                        <a href="#" data-toggle="modal" data-target="#invite-vendor-modal">Can't find the vendor? <b>Invite them</b></a>
                     </div>
                 </form>
             </div>
