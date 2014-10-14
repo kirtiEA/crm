@@ -44,7 +44,7 @@ class ReportsController extends Controller
                     . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
                     . " LEFT JOIN User u ON u.id=t.assigneduserid "
                     . " LEFT JOIN Area a ON a.id=l.cityid "
-                    . " WHERE t.pop=1 AND t.assignedCompanyid=$cId "
+                    . " WHERE t.status = 1 and t.pop=1 AND t.assignedCompanyid=$cId "
                     . " AND l.status=1 ";
             if(!is_null($sdate) && !is_null($edate)) {
                 $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
@@ -66,7 +66,7 @@ class ReportsController extends Controller
                     . "FROM Task t "
                     . "LEFT JOIN Campaign c ON c.id=t.campaignid "                    
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE t.assignedCompanyid=$cId "
+                    . "WHERE t.status = 1 and  t.assignedCompanyid=$cId "
                     . "AND DATE(t.dueDate) <= CURRENT_DATE() ";
             $filters = Yii::app()->db->createCommand($sql2)->queryAll();
             foreach($filters as $fl) {
@@ -118,7 +118,7 @@ class ReportsController extends Controller
                     . " LEFT JOIN User u ON u.id=t.assigneduserid "
                     . " LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
                     . " LEFT JOIN Area a ON a.id=l.cityid "
-                    . " WHERE t.assignedCompanyid=$cId "                    
+                    . " WHERE  t.status = 1 and t.assignedCompanyid=$cId "                    
                     . " AND l.status=1 ";
             if(!is_null($sdate) && !is_null($edate)) {
                 $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
@@ -146,7 +146,7 @@ class ReportsController extends Controller
                     . "FROM Task t "
                     . "LEFT JOIN Campaign c ON c.id=t.campaignid "
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE t.assignedCompanyid=$cId "
+                    . "WHERE  t.status = 1 and  t.assignedCompanyid=$cId "
                     . "AND DATE(t.dueDate) <= CURRENT_DATE() ";
             $filters = Yii::app()->db->createCommand($sql2)->queryAll();
             foreach($filters as $fl) {
