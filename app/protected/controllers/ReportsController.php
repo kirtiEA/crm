@@ -84,6 +84,7 @@ class ReportsController extends Controller
         
         public function actionAll()
 	{
+            
             $cId = Yii::app()->user->cid;
             $sdate = null; 
             $edate = null;
@@ -160,6 +161,33 @@ class ReportsController extends Controller
                 }                
             }
             $this->render('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList));
+            
+            $uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
+            # mPDF
+            $mPDF1 = Yii::app()->ePdf->mpdf();
+            # You can easily override default constructor's params
+            //$mPDF1 = Yii::app()->ePdf->mpdf('', 'A5');
+            # render (full page)
+            $mPDF1->WriteHTML($this->renderPartial('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList), true));
+            //$mPDF1->WriteHTML('<table><tr>Hello World</tr></table>');
+            # Load a stylesheet
+            //$stylesheet = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/main.css');
+            //$mPDF1->WriteHTML($stylesheet, 1);
+            # renderPartial (only 'view' of current controller)
+            //$mPDF1->WriteHTML($this->renderPartial('index', array(), true));
+            # Renders image
+            //$mPDF1->WriteHTML(CHtml::image(Yii::getPathOfAlias('webroot.css') . '/bg.gif' ));
+            # Outputs ready PDF
+            $mPDF1->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);
+            
+            # HTML2PDF has very similar syntax
+            /*$html2pdf = Yii::app()->ePdf->HTML2PDF();
+            $html2pdf->writeHTML('<table><tr>Hello World</tr></table>');
+            //$html2pdf->WriteHTML($this->renderPartial('all', array(), true));
+            $html2pdf->Output(); */
+            die();
+            
+            
 	}
 	// Uncomment the following methods and override them if needed
 	/*
