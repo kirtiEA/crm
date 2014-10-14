@@ -3,7 +3,7 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/lightbox_dust.js"></script>
 <!-- filters sub-header -->    
 
-<div class="container-fluid sub-header">
+<div id="submenu" class="container-fluid sub-header">
     <div class="row">
         <div class="col-md-12">
             <form class="form-horizontol" role="form" method="post" id="filter-form">
@@ -121,7 +121,29 @@
 </div>
 <!-- end of tasks list --> 
 <script type="text/javascript">
-    $(function() {
+$(document).ready(function () {
+
+var menu = $('#submenu');
+var origOffsetY = menu.offset().top;
+
+function scroll() {
+    console.log("yes"+origOffsetY);
+
+    if ($(window).scrollTop() >= origOffsetY) {
+        $('#submenu').css("margin-top","0px");
+        $('#submenu').addClass('navbar-fixed-top');
+       // $('.content').addClass('menu-padding');
+    } else {
+        $('#submenu').css("margin-top","-20px");
+        $('#submenu').removeClass('navbar-fixed-top');
+        //$('.content').removeClass('menu-padding');
+    }
+
+
+   }
+
+  document.onscroll = scroll;
+
         $('.mon_menu').each(function() {
             $(this).removeClass('active');
         });

@@ -121,7 +121,9 @@
 </div>
 <!-- end of tasks list --> 
 <script type="text/javascript">
-    $(function() {
+$(document).ready(function () {
+
+
         $('.mon_menu').each(function() {
             $(this).removeClass('active');
         });

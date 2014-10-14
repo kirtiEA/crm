@@ -62,7 +62,7 @@
 
 <!--                        <input type="text" class="form-control" placeholder="+91">-->
 <!--                        <input  class="form-control intl-tel-input" placeholder="Mobile" id="mobile-number" type="tel">-->
-                        <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
+                        <?php echo $form->textField($modelSub, 'phonenumber', array('class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
                         <?php echo $form->error($modelSub, 'phonenumber'); ?>
                         <br><br>
                         <?php echo $form->hiddenField($modelSub, 'nid', array('value' => $nid, 'id' => 'nid')); ?>
@@ -178,6 +178,19 @@
         });
         $('#header_nav').removeClass('navbar-dark');
     });
+    
+    $(document).ready(function() {
+        $('#mobile-number').keypress(function(){
+           var title = $('#mobile-number').val();
+           console.log(title.length);
+           if (title.length >= 10) {
+                       var shortText = jQuery.trim(title).substring(0, 16);
+            $('#mobile-number').val(shortText);
+           }
+
+        });
+    });
+    
     $(function () {
 
 //autocomplete for company name in vendor subscription form
