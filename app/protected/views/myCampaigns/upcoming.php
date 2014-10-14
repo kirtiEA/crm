@@ -156,7 +156,7 @@
                   '<span class="pull-right">
                     <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
                     &nbsp;
-                        <button class="btn btn-secondary" data-toggle="modal" data-target="#add-site-modal" onclick="fetchvendors(\''. $value['name'] .'\', \''.$value['id'] .'\');"><span class="glyphicon glyphicon-plus"></span> Add Sites</button>
+                        <button class="btn btn-secondary" data-toggle="modal" data-target="#add-site-modal" onclick="fetchvendors(\''. $value['name'] .'\', \''.$value['id'] .'\');"><span class="glyphicon glyphicon-plus"></span> Add/Remove Sites</button>
                         &nbsp;
                         <button class="btn btn-primary" onclick="saveCampaign(\'' .$value['id'] . '\');">Save Campaign</button>
                 </span>' .
