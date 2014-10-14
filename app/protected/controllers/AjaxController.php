@@ -203,7 +203,7 @@ class AjaxController extends Controller {
                 . "FROM Listing l "
                 . "LEFT JOIN Area a ON a.id=l.cityid "
                 . "LEFT JOIN MediaType mt ON mt.id=l.mediatypeid "
-                . "WHERE l.companyId = '$vendorId' ";
+                . "WHERE l.status=1 AND l.companyId = '$vendorId' ";
         $result = Yii::app()->db->createCommand($sql)->queryAll();
         //echo json_encode($result); die();
         //$result = Listing::model()->findAllByAttributes(array('companyId' => $vendorId));
