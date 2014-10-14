@@ -73,7 +73,8 @@
 
                     <li class="list-item">
                         <div class="pull-left">
-                            <h2 class="list-item-heading"><?php echo $value->fname . ' ' . $value->lname; ?></h2>
+                            <h2 class="list-item-heading">
+                            <?php echo $value->fname . ' ' . $value->lname; ?></h2>
                             <h4><?php echo $value->phonenumber; ?></h4>
                         </div>
                         <div class="pull-right" id="<?php echo $value->id; ?>">
