@@ -84,6 +84,7 @@ class ReportsController extends Controller
         
         public function actionAll()
 	{
+            
             $cId = Yii::app()->user->cid;
             $sdate = null; 
             $edate = null;
@@ -160,6 +161,7 @@ class ReportsController extends Controller
                 }                
             }
             $this->render('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList));
+                        
 	}
 	// Uncomment the following methods and override them if needed
 	/*
