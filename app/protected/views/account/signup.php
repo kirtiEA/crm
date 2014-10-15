@@ -184,17 +184,23 @@
         window.phcheck=false;
 
         $('#mobile-number').keydown(function(e){
-            if (window.phcheck==true){
+            console.log(e.which);
+            if (window.phcheck==true && e.which!= 8 && e.which!= 46 && e.which!= 13){
+             console.log("got in");
                 e.preventDefault();
             }
            var title = $('#mobile-number').val();
-           console.log(title.length);
+           //console.log(title.length);
 
-           if (title.length >= 16 ){
+           if (title.length >= 16 && e.which!= 8 && e.which!= 46 && e.which!= 13){
              window.phcheck=true;
             e.preventDefault();
-
+             console.log("disabled");
            } 
+            
+            if(e.which!= 8 && e.which!= 46){
+                window.phcheck=false;
+            }           
 
         });
 
