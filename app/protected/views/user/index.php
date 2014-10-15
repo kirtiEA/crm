@@ -32,7 +32,7 @@
                 <h3 class="subheader-heading" style="margin-left: 16px;">Add New User</h3>
                 <div class="control">
                     <label class="control-label">Username</label>
-                    <?php echo $form->textField($model, 'username', array('autocomplete' => "off", 'id' => 'username')); ?>    
+                    <?php echo $form->textField($model, 'username', array('autocomplete' => "off", 'maxlength'=>'10','id' => 'username')); ?>    
                     <?php echo $form->error($model, 'username'); ?>
                 </div>
                 <div class="control">
