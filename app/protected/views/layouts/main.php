@@ -91,6 +91,13 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
+        <?php if (Yii::app()->user->hasFlash('successconst')) { ?>
+            <div id="flash-messages" class="alert alert-success alert">
+                <?php echo Yii::app()->user->getFlash('success'); ?>
+
+            </div>
+        <?php } ?>
+
         <?php if (Yii::app()->user->hasFlash('success')) { ?>
             <div id="flash-messages" class="alert alert-success alert-dismissible">
                 <?php echo Yii::app()->user->getFlash('success'); ?>
