@@ -152,7 +152,7 @@
                 foreach ($campaigns as $value) {
                 $html = $html . '            <li class="list-item" id="camp_'. $value['id'] .'">
                 <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
-                 . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3> </span>' .
+                 . '<h3 class="pull-left"><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3> </span>' .
                   '<span class="pull-right">
                     <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
                     &nbsp;
