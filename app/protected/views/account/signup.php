@@ -183,6 +183,7 @@
         window.phnum=null;
         window.phcheck=false;
 
+<<<<<<< HEAD
         $('#mobile-number').keydown(function(e){
             console.log(e.which);
             if (window.phcheck==true && e.which!= 8 && e.which!= 46 && e.which!= 13){
@@ -203,6 +204,22 @@
             }           
 
         });
+=======
+//        $('#mobile-number').keydown(function(e){
+//            if (window.phcheck==true){
+//                e.preventDefault();
+//            }
+//           var title = $('#mobile-number').val();
+//           console.log(title.length);
+//
+//           if (title.length >= 16 ){
+//             window.phcheck=true;
+//            e.preventDefault();
+//
+//           } 
+//
+//        });
+>>>>>>> origin/master
 
     });
     
