@@ -394,7 +394,9 @@ class AjaxController extends Controller {
             }
 //            usleep(250000);
         }
-        Yii::app()->user->setFlash('success', 'Sites Added Successfully');
+
+        Yii::app()->user->setFlash('successconst', 'Sites Added Successfully');
+        //Yii::app()->user->setFlash('success', 'Sites Added Successfully');
         echo true;
     }
 
