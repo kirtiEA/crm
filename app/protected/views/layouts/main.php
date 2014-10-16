@@ -93,7 +93,7 @@
         </nav>
         <?php if (Yii::app()->user->hasFlash('successconst')) { ?>
             <div id="flash-messages" class="alert alert-success alert">
-                <?php echo Yii::app()->user->getFlash('success'); ?>
+                <?php echo Yii::app()->user->getFlash('successconst'); ?>
 
             </div>
         <?php } ?>
