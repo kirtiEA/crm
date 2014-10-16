@@ -26,14 +26,7 @@
  * @property string $backup_country
  * @property string $backup_city
  * @property integer $availability_auto_mail_trigger
- *
- * The followings are the available model relations:
- * @property CompanyZone[] $companyZones
- * @property Area $city
- * @property Area $country
- * @property Area $state
- * @property User $user
- * @property Usercontacts[] $usercontacts
+ * @property integer $status
  */
 class BaseUserCompany extends CActiveRecord
 {
@@ -53,8 +46,8 @@ class BaseUserCompany extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('userid, name, alias, websiteurl, phonenumber, countryid, stateid, cityid, address1, address2, postalcode, facebookprofile, twitterhandle, linkedinprofile, googleplusprofile', 'required'),
-			array('userid, countryid, stateid, cityid, area_status, availability_auto_mail_trigger', 'numerical', 'integerOnly'=>true),
+			array('userid, name, alias, websiteurl, phonenumber, countryid, stateid, cityid, address1, address2, postalcode, facebookprofile, twitterhandle, linkedinprofile, googleplusprofile, availability_auto_mail_trigger', 'required'),
+			array('userid, countryid, stateid, cityid, area_status, availability_auto_mail_trigger, status', 'numerical', 'integerOnly'=>true),
 			array('name, websiteurl, address1, address2', 'length', 'max'=>50),
 			array('alias', 'length', 'max'=>55),
 			array('logo, facebookprofile, linkedinprofile, googleplusprofile', 'length', 'max'=>100),
@@ -63,7 +56,7 @@ class BaseUserCompany extends CActiveRecord
 			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, userid, name, alias, description, logo, websiteurl, phonenumber, countryid, stateid, cityid, area_status, address1, address2, postalcode, facebookprofile, twitterhandle, linkedinprofile, googleplusprofile, backup_country, backup_city, availability_auto_mail_trigger', 'safe', 'on'=>'search'),
+			array('id, userid, name, alias, description, logo, websiteurl, phonenumber, countryid, stateid, cityid, area_status, address1, address2, postalcode, facebookprofile, twitterhandle, linkedinprofile, googleplusprofile, backup_country, backup_city, availability_auto_mail_trigger, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,12 +68,6 @@ class BaseUserCompany extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'companyZones' => array(self::HAS_MANY, 'CompanyZone', 'companyid'),
-			'city' => array(self::BELONGS_TO, 'Area', 'cityid'),
-			'country' => array(self::BELONGS_TO, 'Area', 'countryid'),
-			'state' => array(self::BELONGS_TO, 'Area', 'stateid'),
-			'user' => array(self::BELONGS_TO, 'User', 'userid'),
-			'usercontacts' => array(self::HAS_MANY, 'Usercontacts', 'vendorid'),
 		);
 	}
 
@@ -101,7 +88,7 @@ class BaseUserCompany extends CActiveRecord
 			'countryid' => 'Countryid',
 			'stateid' => 'Stateid',
 			'cityid' => 'Cityid',
-			'area_status' => 'Area Status',
+			'area_status' => '0-default,1-updated,2-error',
 			'address1' => 'Address1',
 			'address2' => 'Address2',
 			'postalcode' => 'Postalcode',
@@ -112,6 +99,7 @@ class BaseUserCompany extends CActiveRecord
 			'backup_country' => 'Backup Country',
 			'backup_city' => 'Backup City',
 			'availability_auto_mail_trigger' => 'Availability Auto Mail Trigger',
+			'status' => 'Status',
 		);
 	}
 
@@ -155,6 +143,7 @@ class BaseUserCompany extends CActiveRecord
 		$criteria->compare('backup_country',$this->backup_country,true);
 		$criteria->compare('backup_city',$this->backup_city,true);
 		$criteria->compare('availability_auto_mail_trigger',$this->availability_auto_mail_trigger);
+		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -165,7 +154,7 @@ class BaseUserCompany extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return UserCompany the static model class
+	 * @return BaseUserCompany the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

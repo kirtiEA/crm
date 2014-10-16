@@ -62,7 +62,7 @@
 
 <!--                        <input type="text" class="form-control" placeholder="+91">-->
 <!--                        <input  class="form-control intl-tel-input" placeholder="Mobile" id="mobile-number" type="tel">-->
-                        <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
+                        <?php echo $form->textField($modelSub, 'phonenumber', array('class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
                         <?php echo $form->error($modelSub, 'phonenumber'); ?>
                         <br><br>
                         <?php echo $form->hiddenField($modelSub, 'nid', array('value' => $nid, 'id' => 'nid')); ?>
@@ -178,6 +178,49 @@
         });
         $('#header_nav').removeClass('navbar-dark');
     });
+    
+    $(document).ready(function() {
+        window.phnum=null;
+        window.phcheck=false;
+
+        $('#mobile-number').keydown(function(e){
+            console.log(e.which);
+            if (window.phcheck==true && e.which!= 8 && e.which!= 46 && e.which!= 13){
+             console.log("got in");
+                e.preventDefault();
+            }
+           var title = $('#mobile-number').val();
+           //console.log(title.length);
+
+           if (title.length >= 16 && e.which!= 8 && e.which!= 46 && e.which!= 13){
+             window.phcheck=true;
+            e.preventDefault();
+             console.log("disabled");
+           } 
+            
+            if(e.which!= 8 && e.which!= 46){
+                window.phcheck=false;
+            }           
+
+        });
+
+//        $('#mobile-number').keydown(function(e){
+//            if (window.phcheck==true){
+//                e.preventDefault();
+//            }
+//           var title = $('#mobile-number').val();
+//           console.log(title.length);
+//
+//           if (title.length >= 16 ){
+//             window.phcheck=true;
+//            e.preventDefault();
+//
+//           } 
+//
+//        });
+
+    });
+    
     $(function () {
 
 //autocomplete for company name in vendor subscription form

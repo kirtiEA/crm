@@ -3,7 +3,7 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/lightbox_dust.js"></script>
 <!-- filters sub-header -->    
 
-<div class="container-fluid sub-header">
+<div id="submenu" class="container-fluid sub-header">
     <div class="row">
         <div class="col-md-12">
             <form class="form-horizontol" role="form" method="post" id="filter-form">
@@ -44,8 +44,8 @@
 <!-- end of filters sub-header --> 
 
 <ul class="nav nav-tabs" role="tablist">
-    <li><a href="<?php echo Yii::app()->urlManager->createUrl('reports'); ?>">Proof of Posting</a></li>
     <li class="active"><a href="#">Full Campaign</a></li>
+    <li><a href="<?php echo Yii::app()->urlManager->createUrl('reports'); ?>">Proof of Posting</a></li>
 </ul>
 
 <!-- tasks list --> 
@@ -58,6 +58,7 @@
                 <tr>
                     <th>Campaign</th>
                     <th>Site</th>
+                    <th>Location</th>
                     <th>Media Type</th>
                     <th>Assigned To</th>
                     <th>Due Date</th>
@@ -75,6 +76,7 @@
                     <tr class='<?php echo $trClass; ?>' id="<?php echo $t['id']; ?>">
                         <td><?php echo $t['campaign']; ?></td>
                         <td><?php echo $t['site']; ?></td>
+                        <td><?php echo $t['location']; ?></td>
                         <td><?php echo $t['mediatype']; ?></td>
                         <td><?php echo strlen($t['assignedto']) ? $t['assignedto'] : 'Unassigned'; ?></td>
                         <td><?php echo date('d/m/Y', strtotime($t['duedate'])); ?>
@@ -85,7 +87,10 @@
                             <?php
                             $status = '';
                             if ($t['status'] == 0) {
-                                $status = 'Pending';
+                                if($t['duedate'] < date('Y-m-d'))
+                                    $status = 'Missed';
+                                else 
+                                    $status = 'Pending';
                             } else {
                                 if ($t['problem']) {
                                     $status = '<span class="glyphicon glyphicon-warning-sign"></span>';
@@ -101,7 +106,7 @@
                             if ($t['status'] == 0) {
                                 echo '-';
                             } else {
-                                echo '<a href="#" class="lightbox-btn">View</a>';
+                                echo '<a href="javascript:void(0);" class="lightbox-btn">View ('.$t['photocount'].')</a>';
                             }
                             ?>
                         </td>
@@ -116,7 +121,29 @@
 </div>
 <!-- end of tasks list --> 
 <script type="text/javascript">
-    $(function() {
+$(document).ready(function () {
+
+var menu = $('#submenu');
+var origOffsetY = menu.offset().top;
+
+function scroll() {
+    console.log("yes"+origOffsetY);
+
+    if ($(window).scrollTop() >= origOffsetY) {
+        $('#submenu').css("margin-top","0px");
+        $('#submenu').addClass('navbar-fixed-top');
+       // $('.content').addClass('menu-padding');
+    } else {
+        $('#submenu').css("margin-top","-20px");
+        $('#submenu').removeClass('navbar-fixed-top');
+        //$('.content').removeClass('menu-padding');
+    }
+
+
+   }
+
+  document.onscroll = scroll;
+
         $('.mon_menu').each(function() {
             $(this).removeClass('active');
         });

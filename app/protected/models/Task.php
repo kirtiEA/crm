@@ -26,9 +26,16 @@ class Task extends BaseTask {
         if ($assignedUserId) {
             $sql = $sql . ' and  assigneduserid in (' . $assignedUserId . ')';
         }
-                
+        if ($startDate) {
+            $sql = $sql . ' and DATE_FORMAT(dueDate, \'%Y-%m-%d\') >= \'' . $startDate . '\'';
+        }
+        if ($endDate) {
+            $sql = $sql . ' and DATE_FORMAT(dueDate, \'%Y-%m-%d\') <= \'' . $endDate . '\'';
+        }
+        
+        $sql = $sql . ' order by t.dueDate ASC';
         $tasks = Yii::app()->db->createCommand($sql)->queryAll();
-        return $tasks;
+         return $tasks;
     }
     
     public static function fetchTaskDetails($tid) {

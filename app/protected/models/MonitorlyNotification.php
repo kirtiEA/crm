@@ -18,7 +18,7 @@ class MonitorlyNotification extends BaseMonitorlyNotification {
         $query = 'SELECT DATE_FORMAT(createddate,\'%d %M %Y\') as createddate, miscellaneous,
             mn.lastViewedDate as accepteddate
                 FROM MonitorlyNotification mn 
-                inner join UserCompany uc on uc.userid = mn.createdby and mn.createdby = ' . $id .
+                inner join UserCompany uc on uc.userid = mn.createdby and uc.status = 1 and  mn.createdby = ' . $id .
                 ' where typeid = 1 and mn.lastViewedDate is null';
 
         return Yii::app()->db->createCommand($query)->queryAll();
@@ -28,7 +28,7 @@ class MonitorlyNotification extends BaseMonitorlyNotification {
 
         $query = 'SELECT miscellaneous 
                 FROM MonitorlyNotification mn 
-                inner join UserCompany uc on uc.userid = mn.createdby and mn.createdby = ' . $id .
+                inner join UserCompany uc on uc.userid = mn.createdby and uc.status = 1 and mn.createdby = ' . $id .
                 ' where typeid = 1 and mn.lastViewedDate is null';
 
         return Yii::app()->db->createCommand($query)->queryAll();
@@ -37,14 +37,14 @@ class MonitorlyNotification extends BaseMonitorlyNotification {
     public static function checkUniqueUnsubscribedVendors($id, $email) {
         $query = 'SELECT count(*)as cnt
                 FROM MonitorlyNotification mn 
-                inner join UserCompany uc on uc.userid = mn.createdby and mn.createdby = ' . $id .
+                inner join UserCompany uc on uc.userid = mn.createdby and uc.status = 1 and mn.createdby = ' . $id .
                 ' where typeid = 1 and miscellaneous like \'' . $email . '\'';
         return Yii::app()->db->createCommand($query)->queryRow();
     }
     
     public static function fetchNotifications($cid) {
         $sql = 'SELECT mn.typeid,uc.name, mn.createddate FROM MonitorlyNotification mn
-inner join UserCompany uc on uc.id = mn.companyid
+inner join UserCompany uc on uc.id = mn.companyid and uc.status = 1
 where notifiedcompanyid = ' . $cid;
         return Yii::app()->db->createCommand($query)->queryAll();
     }

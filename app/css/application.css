@@ -11314,3 +11314,21 @@ nav.navbar.navbar-default.navbar-fixed-bottom.table-control .pull-right {
 }
 
 /*-- end of multi level dropdown --*/
+
+/*-- up-coming --*/
+.upcoming
+{
+    width: 500px;
+}
+
+.errorMessage{
+font-size:14px; 
+font-weight: bold;
+color:red;
+}
+
+
+.list{
+ height: 600px;
+overflow-y: scroll;   
+}

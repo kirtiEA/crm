@@ -568,3 +568,10 @@ Context menu alignment buttons
     opacity: 1;
   }
 }
+
+/* added by Chirag to resolve header related issue 
+.ht_clone_top , .ht_clone_left, .ht_clone_corner {
+position: fixed !important;
+}
+
+*/

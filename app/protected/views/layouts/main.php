@@ -63,7 +63,7 @@
                         <li class="mon_menu menu_vendor"><a href="<?php echo Yii::app()->urlManager->createUrl('vendor'); ?>">Vendors</a></li>
                         <li class="mon_menu menu_user"><a href="<?php echo Yii::app()->urlManager->createUrl('user'); ?>">Users</a></li>
                         <li class="mon_menu menu_task"><a href="<?php echo Yii::app()->urlManager->createUrl('task'); ?>">Tasks</a></li>
-                        <li class="mon_menu menu_report"><a href="<?php echo Yii::app()->urlManager->createUrl('reports'); ?>">Reports</a></li>
+                        <li class="mon_menu menu_report"><a href="<?php echo Yii::app()->urlManager->createUrl('reports/all'); ?>">Reports</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -91,6 +91,13 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
+        <?php if (Yii::app()->user->hasFlash('successconst')) { ?>
+            <div id="flash-messages" class="alert alert-success alert">
+                <?php echo Yii::app()->user->getFlash('success'); ?>
+
+            </div>
+        <?php } ?>
+
         <?php if (Yii::app()->user->hasFlash('success')) { ?>
             <div id="flash-messages" class="alert alert-success alert-dismissible">
                 <?php echo Yii::app()->user->getFlash('success'); ?>

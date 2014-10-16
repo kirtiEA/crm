@@ -28,8 +28,18 @@ class TaskController extends Controller {
             if (!empty($uids) && $uids != 'null') {
                 $userids = implode(',', json_decode(str_replace('"', '', $uids)));
             }
-
-            $tasks = Task::fetchTaskList(Yii::app()->user->cid, $campaigns, $userids);
+            $model->sdate = $_POST['FilterForm']['sdate'];
+            $model->edate = $_POST['FilterForm']['edate'];
+            
+            $sdate = null;
+            $edate = null;
+            if (isset($_POST['FilterForm']['sdate']) && !empty($_POST['FilterForm']['sdate']))
+                $sdate = date('Y-m-d', strtotime($_POST['FilterForm']['sdate']));
+            if (isset($_POST['FilterForm']['edate']) && !empty($_POST['FilterForm']['edate']))
+                $edate = date('Y-m-d', strtotime($_POST['FilterForm']['edate']));
+            
+            $tasks = Task::fetchTaskList(Yii::app()->user->cid, $campaigns, $userids, $sdate, $edate );
+           // echo $tasks;
         } else {
             $tasks = Task::fetchTaskList(Yii::app()->user->cid);
         }
@@ -40,7 +50,7 @@ class TaskController extends Controller {
         $users = User::fetchCompanyUsers(Yii::app()->user->cid);
 
         $this->render('index', array('tasks' => $tasks, 'campaigns' => $campaigns, 'users' => $users, 'model' => $model));
-        //$this->render('index', array('tasks' => array(), 'campaigns' => $campaigns, 'users' => $users, 'model' => $model));
+       // $this->render('index', array('tasks' => array(), 'campaigns' => $campaigns, 'users' => $users, 'model' => $model));
     }
 
     // Uncomment the following methods and override them if needed

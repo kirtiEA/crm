@@ -203,7 +203,7 @@ class AjaxController extends Controller {
                 . "FROM Listing l "
                 . "LEFT JOIN Area a ON a.id=l.cityid "
                 . "LEFT JOIN MediaType mt ON mt.id=l.mediatypeid "
-                . "WHERE l.companyId = '$vendorId' ";
+                . "WHERE l.status=1 AND l.companyId = '$vendorId' ";
         $result = Yii::app()->db->createCommand($sql)->queryAll();
         //echo json_encode($result); die();
         //$result = Listing::model()->findAllByAttributes(array('companyId' => $vendorId));
@@ -291,7 +291,7 @@ class AjaxController extends Controller {
                 $status = 0;
                 $approved = 0;
                 $invite = new MonitorlyNotification();
-                $getName = UserCompany::model()->findByAttributes(array('userid' => $vendorId));
+                $getName = UserCompany::model()->findByAttributes(array('userid' => $vendorId,' status' => 1));
                 //echo $getName['name'] ; die();
                 $agencyName = $getName['name'];
                 $resetlink = Yii::app()->getBaseUrl(true) . '/site/myPendingSites';
@@ -742,7 +742,7 @@ class AjaxController extends Controller {
                     $invite->companyid = Yii::app()->user->cid;
                     $invite->save();
                     //echo Yii::app()->user->email; die();
-                    $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
+                    $getName = UserCompany::model()->findByAttributes(array('userid' => $id, 'status' => 1));
                     //echo $getName['name'] ; die();
                     $agencyName = $getName['name'];
                     $resetLink = Yii::app()->getBaseUrl(true) . '/account/signup?nid=' . $invite->id;
@@ -781,7 +781,7 @@ class AjaxController extends Controller {
                 $model->save();
                 $invite = new MonitorlyNotification();
                 $email = UserCompany::fetchVendorEmail($vendorcompanyid);
-                $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
+                $getName = UserCompany::model()->findByAttributes(array('userid' => $id, 'status' => 1));
                 //echo $getName['name'] ; die();
                 $agencyName = $getName['name'];
                 $resetlink = Yii::app()->getBaseUrl(true) . '/waitingApproval';
@@ -828,7 +828,7 @@ class AjaxController extends Controller {
             $getUserId = User::model()->findByAttributes(array('email' => $email));
             //print_r($getUserId['id']); die();
             //print_r($getUserId);
-            $getName = UserCompany::model()->findByAttributes(array('userid' => $getUserId['id']));
+            $getName = UserCompany::model()->findByAttributes(array('userid' => $getUserId['id'], 'status' => 1));
             $agencyName = $getName['name'];
             //print_r($agencyName); die();
             $inviteVendors = Yii::app()->getBaseUrl(true) . '/vendor';
@@ -843,7 +843,7 @@ class AjaxController extends Controller {
     public function actionRemindAll() {
         $companyid = Yii::app()->user->cid;
         $id = Yii::app()->user->id;
-        $getName = UserCompany::model()->findByAttributes(array('userid' => $id));
+        $getName = UserCompany::model()->findByAttributes(array('userid' => $id, 'status' => 1));
         $agencyName = $getName['name'];
         $remindAllEmails = RequestedCompanyVendor::showRequestedVendorsEmail($companyid);
         foreach ($remindAllEmails as $value) {
