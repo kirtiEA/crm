@@ -95,9 +95,8 @@
         <div id="constantbox">
             <div id="flash-messagesx" class="alert alert-success alert">
                 <?php echo Yii::app()->user->getFlash('successconst'); ?>
-
-                </div>
             </div>
+        </div>
         <?php } ?>
 
         <?php if (Yii::app()->user->hasFlash('success')) { ?>
