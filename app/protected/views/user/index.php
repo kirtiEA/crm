@@ -40,6 +40,7 @@
                     <?php echo $form->passwordField($model, 'password', array('autocomplete' => "off", 'id' => 'password')); ?>                            
                     <?php echo $form->error($model, 'password'); ?>
                 </div>
+          
                 <div class="control">
                     <label class="control-label">Mobile No.</label>
 <!--                        <select>
