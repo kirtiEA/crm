@@ -291,7 +291,7 @@ class AjaxController extends Controller {
                 $status = 0;
                 $approved = 0;
                 $invite = new MonitorlyNotification();
-                $getName = UserCompany::model()->findByAttributes(array('userid' => $vendorId,' status' => 1));
+                $getName = UserCompany::model()->findByAttributes(array('userid' => $vendorId,'status' => 1));
                 //echo $getName['name'] ; die();
                 $agencyName = $getName['name'];
                 $resetlink = Yii::app()->getBaseUrl(true) . '/site/myPendingSites';
@@ -394,7 +394,9 @@ class AjaxController extends Controller {
             }
 //            usleep(250000);
         }
-        Yii::app()->user->setFlash('success', 'Sites Added Successfully');
+
+        Yii::app()->user->setFlash('successconst', 'Sites Added Successfully');
+        //Yii::app()->user->setFlash('success', 'Sites Added Successfully');
         echo true;
     }
 

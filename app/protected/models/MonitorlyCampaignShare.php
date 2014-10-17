@@ -14,4 +14,4 @@ class MonitorlyCampaignShare extends BaseMonitorlyCampaignShare {
         return parent::model($className);
     }
 }
-    
+
