@@ -22,7 +22,7 @@ class AjaxController extends Controller {
                 'actions' => array('signup', 'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting', 'getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
                     'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword',
                     'invitevendor', 'removeListingFromCampaign', 'updateCampaign', 'forgotpwd', 'verifyresethash',
-                    'resetpwd', 'fetchNotifications', 'fetchVendorListing', 'assignCampaignSiteToUser'),
+                    'resetpwd', 'fetchNotifications', 'fetchVendorListing', 'assignCampaignSiteToUser', 'shareCampaignWithEmails'),
                 'users' => array('*'),
             )
         );
@@ -915,6 +915,52 @@ class AjaxController extends Controller {
                Yii::app()->user->setFlash('success', 'Campaign Successfully Updated');
                echo '200';
            }
+        }
+    }
+    
+    public function actionShareCampaignWithEmails() {
+        if (isset($_POST['id']) && isset($_POST['emails'])) {
+            $goodEmails = array();
+            $badEmails = array();
+            $campaign = Campaign::model()->findByPk($_POST['id']);
+            if (!empty($campaign)) {
+                $emails = explode(',', $_POST['emails']);
+                if (count($emails) > 0) {
+                    foreach ($emails as $email) {
+                        if (strlen($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                            array_push($goodEmails, $email);
+                            $alreadyShared = MonitorlyCampaignShare::model()->findByAttributes(array('email' => $email, 'campaignid' => $_POST['id']));
+                            if (empty($alreadyShared)) {
+                                $shareCampaign = new MonitorlyCampaignShare();
+                                $shareCampaign->campaignid = $_POST['id'];
+                                $shareCampaign->email = $email;
+                                $chk = User::model()->findByAttributes(array('email' => $email));
+                                if ($chk && !empty($chk)) {
+                                    $shareCampaign->userid = $chk['id'];
+                                }
+                                $shareCampaign->createdby = Yii::app()->user->id;
+                                $shareCampaign->createddate = date("Y-m-d H:i:s");
+                                $shareCampaign->save();
+                            }
+
+                            //send mail
+                            $getName = UserCompany::model()->findByAttributes(array('userid' => Yii::app()->user->id, 'status' => 1));
+                            //echo $getName['name'] ; die();
+                            $agencyName = $getName['name'];
+                            $resetLink = Yii::app()->getBaseUrl(true) . '/reports/all?cid=' . $campaign->id;
+                            $sDate = new DateTime($campaign['startDate']);
+                            $eDate = new DateTime($campaign['endDate']);
+                            $mail = new EatadsMailer('share-campaign', $email, array('resetLink' => $resetLink,'agencyName' => $agencyName ,'CampaignName' => $campaign['name'], 'startDate' => $sDate->format('d M Y'), 'endDate' => $eDate->format('d M Y')), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
+                            //echo $mail->; die();
+                            $mail->eatadsSend();
+                            Yii::app()->user->setFlash('success', 'Campaign Shared Successfully');
+                        } else {
+                            array_push($badEmails, $email);
+                        }
+                    }
+                    echo json_encode($badEmails);
+                }
+            }
         }
     }
 }

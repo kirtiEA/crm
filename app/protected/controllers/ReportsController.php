@@ -104,6 +104,8 @@ class ReportsController extends Controller
             
             if(isset($_POST['campaignids']) && $_POST['campaignids']!='null') {
                 $campaignIds = implode(',', json_decode(str_replace('"', '', $_POST['campaignids'])));                
+            } else if (Yii::app()->request->getParam('cid')) {
+                $campaignIds = Yii::app()->request->getParam('cid');
             }
             if(isset($_POST['assignedto']) && $_POST['assignedto']!='null') {                
                 $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));                

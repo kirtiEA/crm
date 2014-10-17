@@ -131,6 +131,8 @@
 <ul class="nav nav-tabs" role="tablist">
     <li><a href="<?php echo Yii::app()->urlManager->createUrl('myCampaigns')?>" >Created by Me</a></li>
     <li class="active"><a href="#profile" >Assigned to Me</a></li>
+        
+    <li ><a href="<?php echo Yii::app()->createUrl('sharedWithMe');?>" >Shared With Me</a></li>
 </ul>
 
 <!-- campaigns list --> 
