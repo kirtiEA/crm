@@ -404,7 +404,7 @@ function assignTaskToUser(cid, sid) {
     }
     
     function shareCampaignToEmails() {
-        event.preventDefault();
+//        event.preventDefault();
         var id = $('#selectedShareCampaign').val();
         var emails = $('#share_emails').val();
         console.log('adasd');
