@@ -154,8 +154,8 @@
                 foreach ($campaigns as $value) {
                 $html = $html . '            <li class="list-item" id="camp_'. $value['id'] .'">
                 <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
-                 . '<h3 class="pull-left"><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3> </span>' .
-                  '<span class="pull-right">
+                 . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3> </span>' .
+                  '<span class="btnadjust pull-right">
                     <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
                     &nbsp;
                         <button class="btn btn-secondary" data-toggle="modal" data-target="#add-site-modal" onclick="fetchvendors(\''. $value['name'] .'\', \''.$value['id'] .'\');"><span class="glyphicon glyphicon-plus"></span> Add/Remove Sites</button>
