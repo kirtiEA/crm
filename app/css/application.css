@@ -11332,3 +11332,7 @@ color:red;
  height: 600px;
 overflow-y: scroll;   
 }
+
+.btnadjust
+{margin-top: -24px;
+}
