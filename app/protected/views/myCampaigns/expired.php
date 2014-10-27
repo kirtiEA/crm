@@ -1,3 +1,6 @@
+
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/campaigns.js"></script>
+
 <!-- add new user sub-header -->    
 <script>
 $('.mon_menu').each(function() {
@@ -50,6 +53,8 @@ $('.mon_menu').each(function() {
 <ul class="nav nav-tabs" role="tablist">
     <li class="active"><a href="#home" >Created by Me</a></li>
     <li><a href="<?php echo Yii::app()->createUrl('assignedCampaigns');?>" >Assigned to Me</a></li>
+        
+    <li ><a href="<?php echo Yii::app()->createUrl('sharedWithMe');?>" >Shared With Me</a></li>
 </ul>
 
 <!-- campaigns list --> 
@@ -74,9 +79,9 @@ $('.mon_menu').each(function() {
                     $html = $html . '            <li class="list-item">
                 <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
                  . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3>' .
-//                  '<div class="pull-right">
-//                    <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
-//                </div>' .
+                  '<div class="pull-right">
+                    <button data-toggle="modal" data-target="#share-campaign-modal" onclick="$(\'#selectedShareCampaign\').val('. $value['id'] .')" class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
+                </div>' .
                   '<div class="list-item-content show-hide-content">
                     <ul class="sub-list">';
                     foreach ($value['sites'] as $site) {

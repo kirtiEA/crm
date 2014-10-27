@@ -1,25 +1,29 @@
 <?php
 
 /**
- * This is the model class for table "ShareCampaignLog".
+ * This is the model class for table "MonitorlyCampaignShare".
  *
- * The followings are the available columns in table 'ShareCampaignLog':
+ * The followings are the available columns in table 'MonitorlyCampaignShare':
  * @property integer $id
+ * @property integer $campaignid
+ * @property integer $createdby
+ * @property string $createddate
  * @property string $email
  * @property integer $userid
- * @property string $createdDate
  *
  * The followings are the available model relations:
  * @property User $user
+ * @property Campaign $campaign
+ * @property User $createdby0
  */
-class ShareCampaignLog extends CActiveRecord
+class BaseMonitorlyCampaignShare extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'ShareCampaignLog';
+		return 'MonitorlyCampaignShare';
 	}
 
 	/**
@@ -30,12 +34,12 @@ class ShareCampaignLog extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('userid', 'numerical', 'integerOnly'=>true),
-			array('email', 'length', 'max'=>245),
-			array('createdDate', 'length', 'max'=>45),
+			array('campaignid, createdby, createddate, email, userid', 'required'),
+			array('campaignid, createdby, userid', 'numerical', 'integerOnly'=>true),
+			array('email', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, email, userid, createdDate', 'safe', 'on'=>'search'),
+			array('id, campaignid, createdby, createddate, email, userid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,6 +52,8 @@ class ShareCampaignLog extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'userid'),
+			'campaign' => array(self::BELONGS_TO, 'Campaign', 'campaignid'),
+			'createdby0' => array(self::BELONGS_TO, 'User', 'createdby'),
 		);
 	}
 
@@ -58,9 +64,11 @@ class ShareCampaignLog extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'campaignid' => 'Campaignid',
+			'createdby' => 'Createdby',
+			'createddate' => 'Createddate',
 			'email' => 'Email',
 			'userid' => 'Userid',
-			'createdDate' => 'Created Date',
 		);
 	}
 
@@ -83,9 +91,11 @@ class ShareCampaignLog extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('campaignid',$this->campaignid);
+		$criteria->compare('createdby',$this->createdby);
+		$criteria->compare('createddate',$this->createddate,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('userid',$this->userid);
-		$criteria->compare('createdDate',$this->createdDate,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -96,7 +106,7 @@ class ShareCampaignLog extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return ShareCampaignLog the static model class
+	 * @return BaseMonitorlyCampaignShare the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

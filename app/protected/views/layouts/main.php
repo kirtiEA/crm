@@ -91,6 +91,14 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
+        <?php if (Yii::app()->user->hasFlash('successconst')) { ?>
+        <div id="constantbox">
+            <div id="flash-messagesx" class="alert alert-success alert">
+                <?php echo Yii::app()->user->getFlash('successconst'); ?>
+            </div>
+        </div>
+        <?php } ?>
+
         <?php if (Yii::app()->user->hasFlash('success')) { ?>
             <div id="flash-messages" class="alert alert-success alert-dismissible">
                 <?php echo Yii::app()->user->getFlash('success'); ?>
@@ -106,6 +114,27 @@
         <div style="display: none" id="completePath"><?php echo Yii::app()->getBaseUrl(true); ?></div>
         <div style="display: none" id="currentCompanyId"><?php echo Yii::app()->user->cid; ?></div>
         <?php echo $content; ?>        
+        <!-- invite vendor modal -->
+    <div class="modal fade" id="share-campaign-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-sm-custom">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><b>Share Campaign</b></h3>
+                </div>
+                <div class="modal-body">
+<!--                    <label>Email</label>&nbsp;-->
+<input type="text" id="selectedShareCampaign" style="display: none"></input>    
+                    <textarea placeholder="Enter comma separated Emails" style="width: 215px;" id="share_emails"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <div class="alert alert-danger" role="alert" style="display:none;">Please enter correct email id</div>
+                    <a href="#" id="cancel">Cancel</a>&nbsp;
+                    <button class="btn btn-primary" id="shareCampaign" onclick="shareCampaignToEmails();">Share</button>
+                </div>
+            </div>
 
+        </div>
+    </div>
+    <!-- end of invite vendor modal -->
     </body>
 </html>

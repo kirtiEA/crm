@@ -134,6 +134,8 @@
 <ul class="nav nav-tabs" role="tablist">
     <li class="active"><a href="#home">Created by Me</a></li>
     <li><a href="<?php echo Yii::app()->createUrl('assignedCampaigns');?>">Assigned to Me</a></li>
+        
+    <li ><a href="<?php echo Yii::app()->createUrl('sharedWithMe');?>" >Shared With Me</a></li>
 </ul>
 
 <!-- campaigns list --> 
@@ -153,10 +155,10 @@
                 $html = $html . '            <li class="list-item" id="camp_'. $value['id'] .'">
                 <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
                  . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3> </span>' .
-                  '<span class="pull-right">
+                  '<span class="btnadjust pull-right">
                     <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
                     &nbsp;
-                        <button class="btn btn-secondary" data-toggle="modal" data-target="#add-site-modal" onclick="fetchvendors(\''. $value['name'] .'\', \''.$value['id'] .'\');"><span class="glyphicon glyphicon-plus"></span> Add Sites</button>
+                        <button class="btn btn-secondary" data-toggle="modal" data-target="#add-site-modal" onclick="fetchvendors(\''. $value['name'] .'\', \''.$value['id'] .'\');"><span class="glyphicon glyphicon-plus"></span> Add/Remove Sites</button>
                         &nbsp;
                         <button class="btn btn-primary" onclick="saveCampaign(\'' .$value['id'] . '\');">Save Campaign</button>
                 </span>' .

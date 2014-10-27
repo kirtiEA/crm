@@ -106,7 +106,7 @@ dust.render("campaigns", JSON.parse(data) , function(err, out) {
         }    
     }
     function removeFromArrayAddToCampaign(id) {
-        if (confirm("Do you really want to delete this site from campaign!") == true) {
+        if (confirm("Do you really want to delete this site from campaign ?") == true) {
             var index = addtocampaign.indexOf(id);
             if (index > -1) {
                 $('#fjs_listing_' + id).removeClass('selected');
@@ -402,6 +402,37 @@ function assignTaskToUser(cid, sid) {
                     }
                   });
     }
+    
+    function shareCampaignToEmails() {
+//        event.preventDefault();
+        var id = $('#selectedShareCampaign').val();
+        var emails = $('#share_emails').val();
+        console.log('adasd');
+        if (id && emails) {
+            $.ajax({
+                   type: 'POST',
+                   url: $('#completePath').text() + '/ajax/shareCampaignWithEmails',
+                   data: {
+                       'id': id,
+                       'emails' : emails
+                   },
+                success:function(data){
+                    console.log(data + ' asdad ');
+                    var json = JSON.parse(data);
+                    if (json.length > 0) {
+                        $('.alert').text(data + ' invalid emails');
+                        $('.alert').show();
+                    } else {
+                        location.reload();
+                    }
+                   },
+                   error: function(data) { // if error occured
+                         alert("Error occured.please try again");
+                         alert(data);
+                    }
+                  });
+        }
+    };
     
     $('.mon_menu').each(function() {
         $(this).removeClass('active');

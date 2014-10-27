@@ -1,8 +1,10 @@
-
-
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/campaigns.js"></script>
 <!-- add new user sub-header -->    
-
+<script>
+$('.mon_menu').each(function() {
+        $(this).removeClass('active');
+    });
+    $('.menu_campaign').addClass('active');
+</script>
 <div class="container-fluid sub-header">
     <div class="row">
         <div class="col-md-12">
@@ -46,27 +48,22 @@
 <!-- end of add new user sub-header --> 
 
 <ul class="nav nav-tabs" role="tablist">
-    <li><a href="<?php echo Yii::app()->urlManager->createUrl('myCampaigns')?>" >Created by Me</a></li>
-    <li class="active"><a href="#profile" >Assigned to Me</a></li>
-        
-    <li ><a href="<?php echo Yii::app()->createUrl('sharedWithMe');?>" >Shared With Me</a></li>
+    <li ><a href="<?php echo Yii::app()->createUrl('myCampaigns');?>" >Created by Me</a></li>
+    <li><a href="<?php echo Yii::app()->createUrl('assignedCampaigns');?>" >Assigned to Me</a></li>
+    <li class="active"><a href=#" >Shared With Me</a></li>
 </ul>
-<script>
-$('.mon_menu').each(function() {
-        $(this).removeClass('active');
-    });
-    $('.menu_campaign').addClass('active');
-</script>
+
 <!-- campaigns list --> 
 <div class="container-fluid content-wrapper">
     <div class="row">
         <div class="col-md-12">
-            <div class="btn-group">
-                <a href="#"> <button type="button" class="btn btn-default active" >Active <span class="cnt1"></span></button></a>
-                <a href="<?php echo Yii::app()->createUrl('assignedCampaigns/upcoming'); ?>"><button type="button" class="btn btn-default" >Upcoming <span class="cnt2"></span></button></a>
-                <a href="<?php echo Yii::app()->createUrl('assignedCampaigns/expired'); ?>"><button type="button" class="btn btn-default" > Expired <span class="cnt3"></span></button></a>
-            </div>
+
             <h1 class="list-heading">Campaign List (<?php echo count($campaigns)?>)</h1>
+            
+            
+            
+            
+            
             <ul class="list">
             <?php 
                 $html = '';
@@ -74,9 +71,9 @@ $('.mon_menu').each(function() {
                     $html = $html . '            <li class="list-item">
                 <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
                  . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3>' .
-                  '<div class="pull-right">
-                    <button data-toggle="modal" data-target="#share-campaign-modal" onclick="$(\'#selectedShareCampaign\').val('. $value['id'] .')" class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
-                </div>' .
+//                  '<div class="pull-right">
+//                    <button data-toggle="modal" data-target="#share-campaign-modal" onclick="$(\'#selectedShareCampaign\').val('. $value['id'] .')" class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
+//                </div>' .
                   '<div class="list-item-content show-hide-content">
                     <ul class="sub-list">';
                     foreach ($value['sites'] as $site) {
@@ -85,7 +82,7 @@ $('.mon_menu').each(function() {
                             . '<ul class="sub-sub-list show-hide-content">';
                         foreach ($site['listings'] as $list) {
                             $html = $html . '<li>' . $list['name'] //. ', ' . $list['mediatype'] . ', '
-                                    //. $list['locality'] 
+                                    //. $list['locality']
                                     . '&nbsp;</li>';
                         }
                         $html = $html . '</ul></li>';
@@ -96,7 +93,7 @@ $('.mon_menu').each(function() {
                         
             echo $html;
             ?>    
-            </ul>
+            </ul>    
                 
                 
 
