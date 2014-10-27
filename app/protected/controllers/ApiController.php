@@ -65,7 +65,7 @@ class ApiController extends Controller {
                 $user = User::model()->find('LOWER(username)=?', array(strtolower($uname)));
                 if ($user === null) {
                     // Error: Unauthorized
-                    $this->_sendResponse(401, 'User is invalid');
+                    $this->_sendResponse(401, 'Username is invalid');
                 } else {
                     // check useridentity file in components
                     $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
@@ -80,7 +80,7 @@ class ApiController extends Controller {
                         $this->_sendResponse(200, $data);
                     } else {
                         // Error: Unauthorized
-                        $this->_sendResponse(401, 'User Password is invalid');
+                        $this->_sendResponse(401, 'Password is invalid');
                     }
                 }
                 Yii::app()->end();
@@ -97,7 +97,7 @@ class ApiController extends Controller {
                 $user = User::model()->findByPk($uId);
                 if ($user === null) {
                     // Error: Unauthorized
-                    $this->_sendResponse(401, 'User is invalid');
+                    $this->_sendResponse(401, 'Username is invalid');
                 } else {
                     // Valid User
                     // fetch all the task                           
