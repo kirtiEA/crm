@@ -67,7 +67,7 @@ class ReportsController extends Controller
                     . "LEFT JOIN Campaign c ON c.id=t.campaignid "                    
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
                     . "WHERE t.status = 1 and  t.assignedCompanyid=$cId "
-                    . "AND DATE(t.dueDate) <= CURRENT_DATE() ";
+                    . "AND DATE(t.dueDate) <= CURRENT_DATE() and u.username is not null and u.username != '' ";
             $filters = Yii::app()->db->createCommand($sql2)->queryAll();
             foreach($filters as $fl) {
                 //echo '<pre>';
@@ -150,7 +150,7 @@ class ReportsController extends Controller
                     . "LEFT JOIN Campaign c ON c.id=t.campaignid "
                     . "LEFT JOIN User u ON u.id=t.assigneduserid "
                     . "WHERE  t.status = 1 and  t.assignedCompanyid=$cId "
-                    . "AND DATE(t.dueDate) <= CURRENT_DATE() ";
+                    . "AND DATE(t.dueDate) <= CURRENT_DATE() and u.username is not null and u.username != '' ";
             $filters = Yii::app()->db->createCommand($sql2)->queryAll();
             foreach($filters as $fl) {
                 //echo '<pre>';

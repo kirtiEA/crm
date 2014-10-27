@@ -332,7 +332,7 @@ class User extends BaseUser {
 
     public static function fetchCompanyUsers($companyid, $roleid = null) {
         $sql = 'select u.id, u.username as name from User u '
-                . 'where u.status = 1 and u.active= 1 and  companyid = ' . $companyid;
+                . 'where u.username is not null and u.username != \'\' and u.status = 1 and u.active= 1 and  companyid = ' . $companyid;
         return Yii::app()->db->createCommand($sql)->queryAll();
     }
 
