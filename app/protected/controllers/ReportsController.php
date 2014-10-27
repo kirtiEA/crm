@@ -11,6 +11,9 @@ class ReportsController extends Controller
                 $this->redirect(Yii::app()->createUrl('account'));
             }
         }
+        public function actionDownload() {
+            $this->renderPartial('download');
+        }
         public function actionIndex()
 	{
             $cId = Yii::app()->user->cid;
@@ -22,7 +25,7 @@ class ReportsController extends Controller
             if(isset($_POST['sdate']) && $_POST['sdate']!='') {
                 $sdate = $_POST['sdate'];
                 //$sdate = str_replace('/', '-', $sdate);
-                $sdate = date("Y-m-d", strtotime($sdate));                
+                $sdate = date("Y-m-d", strtotime($sdate));
             }
             if(isset($_POST['edate']) && $_POST['edate']!='') {    
                 $edate = $_POST['edate'];
@@ -135,11 +138,7 @@ class ReportsController extends Controller
             $sql .= " GROUP BY t.id ";
             $sql .= " ORDER BY t.dueDate DESC ";
             //echo $sql; die();
-            $tasks = Yii::app()->db->createCommand($sql)->queryAll();
-            $taskArr = array();
-            foreach ($tasks as $tk) {
-                
-            }
+            $tasks = Yii::app()->db->createCommand($sql)->queryAll();            
             
             $campaignIdList = array();
             $assignedToList = array();
@@ -165,31 +164,53 @@ class ReportsController extends Controller
             
             
             $uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
-            # mPDF
-            $mPDF1 = Yii::app()->ePdf->mpdf();
-            # You can easily override default constructor's params
-            //$mPDF1 = Yii::app()->ePdf->mpdf('', 'A5');
-            # render (full page)
-            $mPDF1->WriteHTML($this->renderPartial('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList), true));
-            //$mPDF1->WriteHTML('<table><tr>Hello World</tr></table>');
-            # Load a stylesheet
-            //$stylesheet = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/main.css');
-            //$mPDF1->WriteHTML($stylesheet, 1);
-            # renderPartial (only 'view' of current controller)
-            //$mPDF1->WriteHTML($this->renderPartial('index', array(), true));
-            # Renders image
-            //$mPDF1->WriteHTML(CHtml::image(Yii::getPathOfAlias('webroot.css') . '/bg.gif' ));
-            # Outputs ready PDF
-            $mPDF1->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);
+            
+            /*$html = '<div class="high-res-images">'.
+                        '<h2 class="section-heading">High Resolution Images</h2>'.
+                        '<br>'.
+                        '<h4>To get high resolution images in zip file click on the button below</h4>'.
+                        '<br>'.
+                        //'<button>DOWNLOAD HI-RES IMAGES</button>'.
+                        //'<button class="btn btn-primary btn-primary-lg">DOWNLOAD HI-RES IMAGES</button>'.
+                        '<br><br>'.
+                        '<h4>For low resolution summary photos, see the pages below.</h4>'.
+                    '</div>';*/
+                        
             
             # HTML2PDF has very similar syntax
-            /*$html2pdf = Yii::app()->ePdf->HTML2PDF();
-            $html2pdf->writeHTML('<table><tr>Hello World</tr></table>');
-            //$html2pdf->WriteHTML($this->renderPartial('all', array(), true));
-            $html2pdf->Output(); */
-            die();
+            /*$html2pdf = Yii::app()->ePdf->HTML2PDF();            
+            $html2pdf->writeHTML($this->renderPartial('download', array('path' => Yii::getPathOfAlias('webroot.css')), true));
+            $html2pdf->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);*/
+            /*$html2pdf->WriteHTML($stylesheet, 1);
+            //$html2pdf->writeHTML($html);            
+            //$html2pdf->WriteHTML($this->renderPartial('download', array('path' => Yii::getPathOfAlias('webroot.css')), true));
+            //$html2pdf->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);            
+            //print_r($var); die();*/
             
-                        
+            
+            $campId = 5;    // coke
+            // get campaign report details
+            $data = Campaign::fetchCampaignReport($campId);
+            print_r($data);
+            
+            # mPDF
+            $mPDF1 = Yii::app()->ePdf->mpdf();
+
+            # You can easily override default constructor's params
+            //$mPDF1 = Yii::app()->ePdf->mpdf('', 'A5');
+
+            # render (full page)            
+            $mPDF1->WriteHTML($this->renderPartial('download', array('data' => $data), true));
+            
+            # Load a stylesheet
+            $stylesheet = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/application.css');
+            $mPDF1->WriteHTML($stylesheet, 1);
+
+            # Renders image
+            //$mPDF1->WriteHTML(CHtml::image(Yii::getPathOfAlias('webroot.css') . '/bg.gif' ));
+
+            # Outputs ready PDF
+            $mPDF1->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);                     
 	}
 	// Uncomment the following methods and override them if needed
 	/*

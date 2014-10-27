@@ -113,7 +113,7 @@ return array(
                   ) */
                 ),
                 'HTML2PDF' => array(
-                    'librarySourcePath' => 'application.vendors.html2pdf.*',
+                    'librarySourcePath' => 'application.vendor.html2pdf.*',
                     'classFile' => 'html2pdf.class.php', // For adding to Yii::$classMap
                 /* 'defaultParams'     => array( // More info: http://wiki.spipu.net/doku.php?id=html2pdf:en:v4:accueil
                   'orientation' => 'P', // landscape or portrait orientation
