@@ -22,7 +22,8 @@ class AjaxController extends Controller {
                 'actions' => array('signup', 'getlisting', 'getmarkers', 'vendordetails', 'retriveplan', 'getsitedetails', 'addinexistingplan', 'addplan', 'addfavorite', 'plandetail', 'deleteplanlisting', 'getmediatypes', 'uploadcontacts', 'vendorcontacts', 'updatevendorcontacts',
                     'PushAvailabilityMailsToQueue', 'MassUploadListingsForVendor', 'fetchvendorsites', 'massuploadsite', 'updatepassword',
                     'invitevendor', 'removeListingFromCampaign', 'updateCampaign', 'forgotpwd', 'verifyresethash',
-                    'resetpwd', 'fetchNotifications', 'fetchVendorListing', 'assignCampaignSiteToUser', 'shareCampaignWithEmails'),
+                    'resetpwd', 'fetchNotifications', 'fetchVendorListing', 'assignCampaignSiteToUser', 'shareCampaignWithEmails',
+                    'filterTasks', 'filterAllReports'),
                 'users' => array('*'),
             )
         );
@@ -969,28 +970,48 @@ class AjaxController extends Controller {
     
     
     public function actionFilterTasks() {
-            $cids = $_POST['campaignids'];
-            $uids = $_POST['userids'];
+            $cids ;
+            $uids;
+            $sdate = null;
+            $edate = null;
+            $start =0;
+            $limit = 50;
+            if (isset($_POST['campaignids'])) {
+                $cids = $_POST['campaignids'];
+            }
+            if (isset($_POST['userids'])) {
+                $uids = $_POST['userids'];
+            }
             $campaigns = null;
             $userids = null;
             if (!empty($cids) && $cids != 'null') {
-                $campaigns = implode(',', json_decode(str_replace('"', '', $cids)));
+                $campaigns = $cids;
             }
             if (!empty($uids) && $uids != 'null') {
-                $userids = implode(',', json_decode(str_replace('"', '', $uids)));
+                $userids = $uids;
             }
-            $model->sdate = $_POST['sdate'];
-            $model->edate = $_POST['edate'];
+            if (isset($_POST['sdate'])) {
+                $model->sdate = $_POST['sdate'];
+            }
             
-            $sdate = null;
-            $edate = null;
-            if (isset($_POST['FilterForm']['sdate']) && !empty($_POST['FilterForm']['sdate']))
-                $sdate = date('Y-m-d', strtotime($_POST['FilterForm']['sdate']));
-            if (isset($_POST['FilterForm']['edate']) && !empty($_POST['FilterForm']['edate']))
-                $edate = date('Y-m-d', strtotime($_POST['FilterForm']['edate']));
+            if (isset($_POST['edate'])) {
+               $model->edate = $_POST['edate'];
+
+            }
             
-            $start = $_POST['start'];
-            $limit = $_POST['limit'];
+            
+            if (isset($_POST['sdate']) && !empty($_POST['sdate']))
+                $sdate = date('Y-m-d', strtotime($_POST['sdate']));
+            if (isset($_POST['edate']) && !empty($_POST['edate']))
+                $edate = date('Y-m-d', strtotime($_POST['edate']));
+            
+            if (isset($_POST['start'])) {
+                $start = $_POST['start'];
+            }
+
+            if (isset($_POST['limit'])) {
+                $limit = $_POST['limit'];
+            }
             $tasks = Task::fetchTaskList(Yii::app()->user->cid, $campaigns, $userids, $sdate, $edate );
             echo json_encode($tasks);
     }
@@ -1014,12 +1035,12 @@ class AjaxController extends Controller {
             }
             
             if(isset($_POST['campaignids']) && $_POST['campaignids']!='null') {
-                $campaignIds = implode(',', json_decode(str_replace('"', '', $_POST['campaignids'])));                
+                $campaignIds = $_POST['campaignids'];                
             } else if (Yii::app()->request->getParam('cid')) {
                 $campaignIds = Yii::app()->request->getParam('cid');
             }
             if(isset($_POST['assignedto']) && $_POST['assignedto']!='null') {                
-                $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));                
+                $assignedTo = $_POST['assignedto'];                
             }
             $start ;
             if (isset($_POST['start']) && $_POST['start'] != 'null') {
