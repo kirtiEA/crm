@@ -135,7 +135,8 @@ class AjaxController extends Controller {
                     // CHANGE THE PASSWORD HASHING METHOD
                     $ph = new PasswordHash(Yii::app()->params['phpass']['iteration_count_log2'], Yii::app()->params['phpass']['portable_hashes']);
                     $userModel->password = $ph->HashPassword($password);
-                    $userModel->save();
+                    $userModel->update();
+//                    $userModel->save();
                     // login & redirect from server
 
                     $identity = new UserIdentity($userModel->email, $password);
@@ -964,5 +965,100 @@ class AjaxController extends Controller {
                 }
             }
         }
+    }
+    
+    
+    public function actionFilterTasks() {
+            $cids = $_POST['campaignids'];
+            $uids = $_POST['userids'];
+            $campaigns = null;
+            $userids = null;
+            if (!empty($cids) && $cids != 'null') {
+                $campaigns = implode(',', json_decode(str_replace('"', '', $cids)));
+            }
+            if (!empty($uids) && $uids != 'null') {
+                $userids = implode(',', json_decode(str_replace('"', '', $uids)));
+            }
+            $model->sdate = $_POST['sdate'];
+            $model->edate = $_POST['edate'];
+            
+            $sdate = null;
+            $edate = null;
+            if (isset($_POST['FilterForm']['sdate']) && !empty($_POST['FilterForm']['sdate']))
+                $sdate = date('Y-m-d', strtotime($_POST['FilterForm']['sdate']));
+            if (isset($_POST['FilterForm']['edate']) && !empty($_POST['FilterForm']['edate']))
+                $edate = date('Y-m-d', strtotime($_POST['FilterForm']['edate']));
+            
+            $start = $_POST['start'];
+            $limit = $_POST['limit'];
+            $tasks = Task::fetchTaskList(Yii::app()->user->cid, $campaigns, $userids, $sdate, $edate );
+            echo json_encode($tasks);
+    }
+    
+    public function actionFilterAllReports() {
+        $cId = Yii::app()->user->cid;
+            $sdate = null; 
+            $edate = null;
+            $campaignIds = null;
+            $assignedTo = null;
+            
+            if(isset($_POST['sdate']) && $_POST['sdate']!='') {
+                $sdate = $_POST['sdate'];
+                //$sdate = str_replace('/', '-', $sdate);
+                $sdate = date("Y-m-d", strtotime($sdate));                
+            }
+            if(isset($_POST['edate']) && $_POST['edate']!='') {    
+                $edate = $_POST['edate'];
+                //$edate = str_replace('/', '-', $edate);
+                $edate = date("Y-m-d", strtotime($edate));
+            }
+            
+            if(isset($_POST['campaignids']) && $_POST['campaignids']!='null') {
+                $campaignIds = implode(',', json_decode(str_replace('"', '', $_POST['campaignids'])));                
+            } else if (Yii::app()->request->getParam('cid')) {
+                $campaignIds = Yii::app()->request->getParam('cid');
+            }
+            if(isset($_POST['assignedto']) && $_POST['assignedto']!='null') {                
+                $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));                
+            }
+            $start ;
+            if (isset($_POST['start']) && $_POST['start'] != 'null') {
+                $start = $_POST['start'];
+            }
+            
+            $limit ;
+            if (isset($_POST['limit']) && $_POST['limit'] != 'null') {
+                $limit = $_POST['limit'];
+            }
+            
+            $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
+                    . " CONCAT(l.locality, ', ', a.name) as location, "
+                    . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
+                    . " FROM Task t "
+                    . " LEFT JOIN Campaign c ON c.id=t.campaignid "
+                    . " LEFT JOIN Listing l ON l.id=t.siteid "
+                    . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
+                    . " LEFT JOIN User u ON u.id=t.assigneduserid "
+                    . " LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
+                    . " LEFT JOIN Area a ON a.id=l.cityid "
+                    . " WHERE  t.status = 1 and t.assignedCompanyid=$cId "                    
+                    . " AND l.status=1 ";
+            if(!is_null($sdate) && !is_null($edate)) {
+                $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
+            } else {
+                $sql .= " AND DATE(t.dueDate) <= CURRENT_DATE() ";
+            }
+            if(!is_null($campaignIds) && strlen($campaignIds)) {
+                $sql .= " AND c.id IN ($campaignIds) ";
+            }
+            if(!is_null($assignedTo) && strlen($assignedTo)) {
+                $sql .= " AND t.assigneduserid IN ($assignedTo) ";
+            }
+            $sql .= " GROUP BY t.id ";
+            $sql .= " ORDER BY t.dueDate DESC ";
+            //echo $sql; die();
+            $tasks = Yii::app()->db->createCommand($sql)->queryAll();
+            
+            echo json_encode($tasks);
     }
 }

@@ -22,6 +22,7 @@ return array(
         'ext.yii-pdf.*',
         'application.extensions.PasswordHash',
         'ext.YiiMailer.EatadsMailer', // Wrapper of YiiMailer
+        'application.extensions.GcmPushNotification',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool        
@@ -164,4 +165,5 @@ return array(
             'accessKey' => 'AKIAIW62GKSH4I5LIEXQ',
             'secretKey' => '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'
         ),
+        'gcmApiKey' => 'AIzaSyDw-yUNq8J2fu03alKgldZBxAUUJ-c0QWI',
         ));

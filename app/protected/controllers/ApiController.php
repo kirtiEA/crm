@@ -61,6 +61,7 @@ class ApiController extends Controller {
                 // check the usrn and password
                 $uname = Yii::app()->getRequest()->getQuery('uname');
                 $pwd = Yii::app()->getRequest()->getQuery('pwd');
+                $deviceid = Yii::app()->getRequest()->getQuery('did');
                 // check STATUS, USER ROLE & MONITORLY flag
                 $user = User::model()->find('LOWER(username)=?', array(strtolower($uname)));
                 if ($user === null) {
@@ -76,6 +77,20 @@ class ApiController extends Controller {
                             'name' => $user->fname . ' ' . $user->lname,
                             'time' => time()
                         );
+                        //update device id
+                       MonitorlyPushNotificationUserDeviceMapping::updateUniqueDeviceIdForUser($user->id, $deviceid);
+
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         // Authorized
                         $this->_sendResponse(200, $data);
                     } else {
@@ -83,6 +98,7 @@ class ApiController extends Controller {
                         $this->_sendResponse(401, 'Password is invalid');
                     }
                 }
+
                 Yii::app()->end();
 
             case 'tasks':
