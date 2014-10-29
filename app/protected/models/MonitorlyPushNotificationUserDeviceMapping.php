@@ -25,7 +25,7 @@ class MonitorlyPushNotificationUserDeviceMapping extends BaseMonitorlyPushNotifi
                     $update = 'Update MonitorlyPushNotificationUserDeviceMapping set status=1 , userid ='. $uid .', logoutdate = NULL, where id =' . $combinations['id'];
                 } else {
                     // update the logout date to null
-                    $update = 'Update MonitorlyPushNotificationUserDeviceMapping set status=1 ,  logoutdate = NULL, where id =' . $combinations['id'];
+                    $update = 'Update MonitorlyPushNotificationUserDeviceMapping set status=1 ,  logoutdate = NULL where id =' . $combinations['id'];
                 }
                 $flag = Yii::app()->db->createCommand($update)->execute();
             } else {

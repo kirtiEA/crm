@@ -69,7 +69,7 @@ return array(
             'connectionString' => 'mysql:host=localhost;dbname=eatads',
             'emulatePrepare' => true,
             'username' => 'root',
-            'password' => '',
+            'password' => 'root',
             'charset' => 'utf8',
         ),
         'errorHandler' => array(
