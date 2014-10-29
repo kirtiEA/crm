@@ -52,6 +52,12 @@ class ApiController extends Controller {
 
         // Get the respective model instance
         switch ($_GET['model']) {
+            case 'install':
+                $deviceid = Yii::app()->getRequest()->getQuery('did');
+                $imei = Yii::app()->getRequest()->getQuery('imei');
+                MonitorlyPushNotificationUserDeviceMapping::appinstall($deviceid, $imei);
+                
+                Yii::app()->end();
             case 'user':
                 $models = User::model()->findAll();
                 break;
@@ -79,17 +85,6 @@ class ApiController extends Controller {
                         );
                         //update device id
                        MonitorlyPushNotificationUserDeviceMapping::updateUniqueDeviceIdForUser($user->id, $deviceid);
-
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                         
                         // Authorized
                         $this->_sendResponse(200, $data);

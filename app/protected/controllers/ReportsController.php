@@ -74,11 +74,25 @@ class ReportsController extends Controller
                 
                 if(!isset($campaignIdList[$fl['cid']])) {
                     $campaignIdList[$fl['cid']] = $fl['campaign'];
+                    //shared campaigns to  be included
                 }
                 if(!isset($assignedToList[$fl['uid']])) {
                     $assignedToList[$fl['uid']] = $fl['assignedto'];
                 }                
-            }            
+            }
+                        $campaignsSharedWithMe = MonitorlyCampaignShare::model()->findAllByAttributes(array('email' => Yii::app()->user->email));
+            $sharedcampaigns = array();
+            if (!empty($campaignsSharedWithMe)) {
+                $sharedCampId = array();
+                foreach ($campaignsSharedWithMe as $key => $shared) {
+ //                   print_r($shared);
+                    array_push($sharedCampId, $shared['campaignid']);
+                }
+                $sharedcampaigns = Campaign::fetchCampaignsOnIds(implode(',', $sharedCampId));
+            }
+            foreach ($sharedcampaigns as $camp) {
+                $campaignIdList[$camp['id']] = $camp['name'];
+            }
             $this->render('index', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList));
 	}
         
@@ -138,10 +152,51 @@ class ReportsController extends Controller
             $sql .= " ORDER BY t.dueDate DESC ";
             //echo $sql; die();
             $tasks = Yii::app()->db->createCommand($sql)->queryAll();
-            $taskArr = array();
-            foreach ($tasks as $tk) {
-                
+            
+            //push campaign ids shared with me to this
+            $campaigns = array();
+            $campaignsSharedWithMe = MonitorlyCampaignShare::model()->findAllByAttributes(array('email' => Yii::app()->user->email));
+//            print_r($campaignsSharedWithMe);die();
+            if (!empty($campaignsSharedWithMe)) {
+                $sharedCampId = array();
+                foreach ($campaignsSharedWithMe as $key => $shared) {
+ //                  print_r($shared);
+                    array_push($sharedCampId, $shared['campaignid']);
+                }
+                $campaignsIdsStr = implode(',', $sharedCampId);
+                $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
+                    . " CONCAT(l.locality, ', ', a.name) as location, "
+                    . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
+                    . " FROM Task t "
+                    . " LEFT JOIN Campaign c ON c.id=t.campaignid "
+                    . " LEFT JOIN Listing l ON l.id=t.siteid "
+                    . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
+                    . " LEFT JOIN User u ON u.id=t.assigneduserid "
+                    . " LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
+                    . " LEFT JOIN Area a ON a.id=l.cityid "
+                    . " WHERE  t.status = 1 and t.assignedCompanyid != $cId "                    
+                    . " AND l.status=1 ";
+                    if(!is_null($sdate) && !is_null($edate)) {
+                        $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
+                    } else {
+                        $sql .= " AND DATE(t.dueDate) <= CURRENT_DATE() ";
+                    }
+                    if(!is_null($campaignIds) && strlen($campaignIds)) {
+                        $sql .= " AND c.id IN ($campaignIds) ";
+                    } else {
+                        $sql .= " AND c.id IN ($campaignsIdsStr) ";
+                    }
+                    if(!is_null($assignedTo) && strlen($assignedTo)) {
+                        $sql .= " AND t.assigneduserid IN ($assignedTo) ";
+                    }
+                    $sql .= " GROUP BY t.id ";
+                    $sql .= " ORDER BY t.dueDate DESC ";
+                    $data = Yii::app()->db->createCommand($sql)->queryAll();
+                    foreach ($data as $d) {
+                        array_push($tasks, $d);
+                    }
             }
+            
             
             $campaignIdList = array();
             $assignedToList = array();
@@ -162,7 +217,20 @@ class ReportsController extends Controller
                     $assignedToList[$fl['uid']] = $fl['assignedto'];
                 }                
             }
-            $this->render('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList));
+            $campaignsSharedWithMe = MonitorlyCampaignShare::model()->findAllByAttributes(array('email' => Yii::app()->user->email));
+            $sharedcampaigns = array();
+            if (!empty($campaignsSharedWithMe)) {
+                $sharedCampId = array();
+                foreach ($campaignsSharedWithMe as $key => $shared) {
+ //                   print_r($shared);
+                    array_push($sharedCampId, $shared['campaignid']);
+                }
+                $sharedcampaigns = Campaign::fetchCampaignsOnIds(implode(',', $sharedCampId));
+            }
+            foreach ($sharedcampaigns as $camp) {
+                $campaignIdList[$camp['id']] = $camp['name'];
+            }
+            $this->render('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList, 'selectedCampaignIds' => $campaignIds));
                         
 	}
 	// Uncomment the following methods and override them if needed

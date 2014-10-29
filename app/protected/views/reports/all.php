@@ -221,5 +221,33 @@ function scroll() {
             });
 
         });
+        
+        
+       var selectedCamp = <?php 
+       if (!empty($selectedCampaignIds)) {
+           echo "'" .$selectedCampaignIds . "'";
+       } else {
+           echo "0";
+       }    
+       ?> ;
+       var arrselectedCamp = [];
+       if (selectedCamp != 0) {
+       arrselectedCamp = selectedCamp.split(',');
+       }    
+        
+       console.log(arrselectedCamp);
+    $("#multiselect-campaigns option").each(function()
+{
+    for(var i=0; i<arrselectedCamp.length; i++) {
+        console.log($(this).val() + ' sdfsdfs' + parseInt(arrselectedCamp[i]) );
+        if ($(this).val() == parseInt(arrselectedCamp[i])) {
+//            $(this).addClass('active');   
+            console.log($(this).addClass("active"));
+        }   
+       }
+    // add $(this).val() to your list
+    
+});   
+        
     });
 </script>

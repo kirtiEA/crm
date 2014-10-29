@@ -10,6 +10,7 @@
  * @property string $logindate
  * @property string $logoutdate
  * @property integer $status
+ * @property string $imei
  */
 class BaseMonitorlyPushNotificationUserDeviceMapping extends CActiveRecord
 {
@@ -29,13 +30,13 @@ class BaseMonitorlyPushNotificationUserDeviceMapping extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('userid, deviceid, logindate, status', 'required'),
+			array('deviceid, logindate, status', 'required'),
 			array('userid, status', 'numerical', 'integerOnly'=>true),
-			array('deviceid', 'length', 'max'=>1000),
+			array('deviceid, imei', 'length', 'max'=>1000),
 			array('logoutdate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, userid, deviceid, logindate, logoutdate, status', 'safe', 'on'=>'search'),
+			array('id, userid, deviceid, logindate, logoutdate, status, imei', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +63,7 @@ class BaseMonitorlyPushNotificationUserDeviceMapping extends CActiveRecord
 			'logindate' => 'Logindate',
 			'logoutdate' => 'Logoutdate',
 			'status' => 'Status',
+			'imei' => 'Imei',
 		);
 	}
 
@@ -89,6 +91,7 @@ class BaseMonitorlyPushNotificationUserDeviceMapping extends CActiveRecord
 		$criteria->compare('logindate',$this->logindate,true);
 		$criteria->compare('logoutdate',$this->logoutdate,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('imei',$this->imei,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
