@@ -30,7 +30,7 @@ class TaskController extends Controller {
             }
             $model->sdate = $_POST['FilterForm']['sdate'];
             $model->edate = $_POST['FilterForm']['edate'];
-            
+                        
             $sdate = null;
             $edate = null;
             if (isset($_POST['FilterForm']['sdate']) && !empty($_POST['FilterForm']['sdate']))
