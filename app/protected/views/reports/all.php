@@ -40,8 +40,11 @@
             </form>
         </div>
     </div>
+
 </div>
 <!-- end of filters sub-header --> 
+
+
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="active"><a href="#">Full Campaign</a></li>
@@ -123,6 +126,7 @@
 <script type="text/javascript">
 $(document).ready(function () {
 
+
 var menu = $('#submenu');
 var origOffsetY = menu.offset().top;
 
@@ -153,7 +157,8 @@ function scroll() {
             e.preventDefault();        
             $('#campaignids').val(JSON.stringify($('#multiselect-campaigns').val()));
             $('#assignedto').val(JSON.stringify($('#multiselect-assignedto').val()));
-            $('#filter-form').submit();         
+            $('#filter-form').submit();  
+          
         });
 
         $('.lightbox-btn').click(function() {
