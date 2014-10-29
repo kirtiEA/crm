@@ -932,7 +932,12 @@ class AjaxController extends Controller {
                 if (count($emails) > 0) {
                     foreach ($emails as $email) {
                         if (strlen($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                            array_push($goodEmails, $email);
+                        } else {
+                            array_push($badEmails, $email);
+                        }
+                    }
+                    if (count($badEmails) == 0) {
+                        foreach ($goodEmails as $email) {
                             $alreadyShared = MonitorlyCampaignShare::model()->findByAttributes(array('email' => $email, 'campaignid' => $_POST['id']));
                             if (empty($alreadyShared)) {
                                 $shareCampaign = new MonitorlyCampaignShare();
@@ -958,9 +963,7 @@ class AjaxController extends Controller {
                             //echo $mail->; die();
                             $mail->eatadsSend();
                             Yii::app()->user->setFlash('success', 'Campaign Shared Successfully');
-                        } else {
-                            array_push($badEmails, $email);
-                        }
+                    }
                     }
                     echo json_encode($badEmails);
                 }
