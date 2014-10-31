@@ -159,39 +159,41 @@ class ReportsController extends Controller
                     $assignedToList[$fl['uid']] = $fl['assignedto'];
                 }                
             }
-            $this->render('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList));
-            
-            
+            $this->render('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList));                        
             
             $uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
             
             /*$html = '<div class="high-res-images">'.
-                        '<h2 class="section-heading">High Resolution Images</h2>'.
-                        '<br>'.
-                        '<h4>To get high resolution images in zip file click on the button below</h4>'.
-                        '<br>'.
-                        //'<button>DOWNLOAD HI-RES IMAGES</button>'.
-                        //'<button class="btn btn-primary btn-primary-lg">DOWNLOAD HI-RES IMAGES</button>'.
-                        '<br><br>'.
-                        '<h4>For low resolution summary photos, see the pages below.</h4>'.
-                    '</div>';*/
+                '<h2 class="section-heading">High Resolution Images</h2>'.
+                '<br>'.
+                '<h4>To get high resolution images in zip file click on the button below</h4>'.
+                '<br>'.
+                //'<button>DOWNLOAD HI-RES IMAGES</button>'.
+                //'<button class="btn btn-primary btn-primary-lg">DOWNLOAD HI-RES IMAGES</button>'.
+                '<br><br>'.
+                '<h4>For low resolution summary photos, see the pages below.</h4>'.
+            '</div>';*/
                         
             
-            # HTML2PDF has very similar syntax
-            /*$html2pdf = Yii::app()->ePdf->HTML2PDF();            
-            $html2pdf->writeHTML($this->renderPartial('download', array('path' => Yii::getPathOfAlias('webroot.css')), true));
-            $html2pdf->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);*/
-            /*$html2pdf->WriteHTML($stylesheet, 1);
-            //$html2pdf->writeHTML($html);            
-            //$html2pdf->WriteHTML($this->renderPartial('download', array('path' => Yii::getPathOfAlias('webroot.css')), true));
-            //$html2pdf->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);            
-            //print_r($var); die();*/
             
             
             $campId = 5;    // coke
             // get campaign report details
             $data = Campaign::fetchCampaignReport($campId);
+            echo '<pre>';
             print_r($data);
+            
+            
+            /*# HTML2PDF has very similar syntax
+            $html2pdf = Yii::app()->ePdf->HTML2PDF();            
+            $html2pdf->writeHTML($this->renderPartial('download', array('data' => $data), true));
+            $html2pdf->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);*/
+            
+            /*$html2pdf->WriteHTML($stylesheet, 1);
+            //$html2pdf->writeHTML($html);            
+            //$html2pdf->WriteHTML($this->renderPartial('download', array('path' => Yii::getPathOfAlias('webroot.css')), true));
+            //$html2pdf->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);            
+            //print_r($var); die();*/
             
             # mPDF
             $mPDF1 = Yii::app()->ePdf->mpdf();
@@ -202,10 +204,13 @@ class ReportsController extends Controller
             # render (full page)            
             $mPDF1->WriteHTML($this->renderPartial('download', array('data' => $data), true));
             
-            # Load a stylesheet
-            $stylesheet = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/application.css');
-            $mPDF1->WriteHTML($stylesheet, 1);
-
+            # Load a stylesheet            
+            $stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');            
+            $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
+            
+            $mPDF1->WriteHTML($stylesheet1, 1);
+            $mPDF1->WriteHTML($stylesheet2, 1);            
+            
             # Renders image
             //$mPDF1->WriteHTML(CHtml::image(Yii::getPathOfAlias('webroot.css') . '/bg.gif' ));
 
