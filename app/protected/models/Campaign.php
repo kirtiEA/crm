@@ -73,10 +73,92 @@ class Campaign extends BaseCampaign {
         return $data;
     }
     
-    public static function fetchCampaignsOnIds($ids) {
-        $sql = 'select c.id, name, startDate, endDate, (select count(distinct tt.siteid) from Task tt where tt.campaignid  = c.id and tt.status = 1) as count from Campaign c where c.id in ('. $ids .')' ;
-        $command = Yii::app()->db->createCommand($sql);
-        $data = $command->queryAll();
+
+    public static function fetchCampaignReport($campId) {
+        // c date, generated date, sites, city and no of sites in cities,
+        $model = self::model()->findByPk($campId);        
+        $campArr = array(
+            'name' => $model->name,
+            'sdate' => $model->startDate,
+            'edate' => $model->endDate,
+            'createdDate' => $model->createdDate
+        );        
+        
+        // all task list
+        $sql = "SELECT t.id, l.name as sitename, CONCAT(l.locality,', ', a.name) as location, l.name, a.name as city, "
+                . "t.dueDate, t.taskDone as status, t.problem, mt.name as mediatype, IFNULL(COUNT(pp.id),0) as photocount, "
+                . "t.assigneduserid, CONCAT(u.fname,' ', u.lname) as assigneduser, u.companyid, uc.name as usercompany "
+                . "FROM Task t "
+                //. "LEFT JOIN Task t ON t.id=pp.taskid "
+                . "LEFT JOIN Listing l ON l.id=t.siteid "
+                . "LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
+                . "LEFT JOIN MediaType mt ON mt.id=l.mediatypeid "
+                . "LEFT JOIN Area a ON a.id=l.cityid "
+                . "LEFT JOIN User u ON u.id=t.assigneduserid "
+                . "LEFT JOIN UserCompany uc ON uc.id=u.companyid "
+                . "WHERE t.campaignid = $campId AND t.status=1 AND l.status=1 "
+                . "GROUP BY t.id "
+                . "ORDER BY t.dueDate DESC ";        
+        $siteArr = Yii::app()->db->createCommand($sql)->queryAll();
+        
+        //echo $sql;die();//.Yii::app()->user->cid.'<br /><pre>';          
+        $photoArr = array();
+        for($i=0; $i<count($siteArr); $i++) {
+            if($siteArr[$i]['assigneduserid']== null) {
+                $siteArr[$i]['assignedto'] = 'Unassigned';
+            } else {
+                if(Yii::app()->user->cid == $siteArr[$i]['companyid']) {
+                    $siteArr[$i]['assignedto'] = ucwords($siteArr[$i]['assigneduser']);
+                } else {
+                    $siteArr[$i]['assignedto'] = ucwords($siteArr[$i]['usercompany']);
+                }
+            }
+            unset($siteArr[$i]['assigneduser']);
+            unset($siteArr[$i]['usercompany']);
+            unset($siteArr[$i]['companyid']);
+            unset($siteArr[$i]['assigneduserid']);
+            
+            if($siteArr[$i]['photocount']) {
+                // fetch photo of the tasks
+                $sql3 = "SELECT l.name, pp.imageName, pp.clickedDateTime, pp.clickedLat, pp.clickedLng, pp.direction, pp.installation, "
+                        . "pp.lighting, pp.obstruction, pp.comments "
+                        . "FROM PhotoProof pp "
+                        . "LEFT JOIN Task t ON t.id=pp.taskid "
+                        . "LEFT JOIN Listing l ON l.id=t.siteid "
+                        . "WHERE taskid= {$siteArr[$i]['id']} ";
+                $ppArr = Yii::app()->db->createCommand($sql3)->queryAll();
+                array_push($photoArr, $ppArr);
+            }
+        }        
+        //print_r($siteArr);
+        //die();
+        
+        // sites in cities
+        $sql2 = "SELECT t.siteid, a.name AS city, l.cityid "
+                . "FROM Task t "
+                . "LEFT JOIN Listing l ON l.id = t.siteid "
+                . "LEFT JOIN Area a ON a.id = l.cityid "
+                . "WHERE t.campaignid=$campId "
+                . "AND t.status=1 "
+                . "AND l.status=1 "
+                . "GROUP BY t.siteid ";
+        $sitesInCities = Yii::app()->db->createCommand($sql2)->queryAll();
+        
+        $siteCountArr = array();
+        foreach($sitesInCities as $key => $value) {
+            if(isset($siteCountArr[$value['city']])) { 
+                $siteCountArr[$value['city']]++;
+                //print_r($sites);
+            } else {
+                $siteCountArr[$value['city']] = 1;
+            }
+        }        
+        $data = array(
+            'campaign' => $campArr,            
+            'sitesInCities' => $siteCountArr,
+            'sites' => $siteArr,
+            'photos' => $photoArr
+        );        
         return $data;
     }
 }

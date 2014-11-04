@@ -74,6 +74,7 @@ $('.mon_menu').each(function() {
             
             <ul class="list">
             <?php 
+                // A report for <Campaign Name> from <Start Date> to <Curr Date or End Date whichever is lower> will be generated in PDF format                
                 $html = '';
                 foreach ($campaigns as $value) {
                     $html = $html . '            <li class="list-item">
@@ -84,22 +85,19 @@ $('.mon_menu').each(function() {
                 </div>' .
                   '<div class="list-item-content show-hide-content">
                     <ul class="sub-list">';
+
                     foreach ($value['sites'] as $site) {
                         $html = $html . '<li>
                             <h3 class="sub-list-item-heading clickfor-show-hide"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $site['name'] .'('.$site['count'] . ') &nbsp;</h3>'
                             . '<ul class="sub-sub-list show-hide-content">';
                         foreach ($site['listings'] as $list) {
-                            $html = $html . '<li>' . $list['name'] //. ', ' . $list['mediatype'] . ', '
-                                    //. $list['locality']
-                                    . '&nbsp;</li>';
+                            $html = $html . '<li>' . $list['name'] . '&nbsp;</li>';
                         }
                         $html = $html . '</ul></li>';
                     }
                     $html = $html . '</ul></div></li>';
-                }        
-                
-                        
-            echo $html;
+                }
+                echo $html;
             ?>    
             </ul>    
                 
@@ -122,3 +120,13 @@ $('.mon_menu').each(function() {
     </div>
 </div>
 <!-- end of campaigns list --> 
+
+<script type="text/javascript">
+    $('.down_rep_but').click(function(){
+        var r = window.confirm('Download report');
+        if(r == true)
+            alert('OK');
+        else 
+            alert('Cancel');
+    });
+</script>

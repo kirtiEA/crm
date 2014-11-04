@@ -1,0 +1,122 @@
+
+
+/* ==========================================================================
+   Eatads's custom styles
+   ========================================================================== */
+.problem .install, .problem .lighting, .problem .obstruct {
+    color: white;
+    border-radius: 16px;
+    padding: 4px 12px;
+    margin-right: 4px;
+    line-height: 28px;
+    font-size: 11px;
+    word-wrap: none;
+}
+/* line 739, ../scss/application.scss */
+.problem .install {
+    background-color: #D42333;
+}
+/* line 740, ../scss/application.scss */
+.problem .lighting {
+    background-color: #F1890F;
+}
+/* line 741, ../scss/application.scss */
+.problem .obstruct {
+    background-color: #EBBA09;
+}
+
+
+
+
+.sitepic{
+  height: 400px;
+
+}
+.sitepic img{
+  max-height: 320px;
+  margin-bottom: 5px;
+}
+
+
+.photo{
+	height:400px;
+  margin-bottom: 30px;
+
+}
+.photo img{
+	height: 100%;
+	width: 100%;
+}
+
+.navbar-reportpdf{
+background-color: rgb(71, 83, 91);
+color: white;
+font-weight: bold;
+font-size: 18px;
+padding: 0.5em;
+}
+
+.glyphicon-warning-sign {
+color: red;
+}
+
+
+.btn-primary {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  background-color: #feca2f;
+  font-size: 16px ;
+  font-weight: 600;
+  color: #47535b !important;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+  box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+  border-bottom: 2px solid #daa916;
+}
+/* line 90, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+.btn-primary:hover {
+  background-color: #daa916;
+  color: #47535b;
+}
+/* line 95, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+.btn-primary:disabled {
+  background-color: #777777;
+  border: none;
+  color: #333333;
+  border: 1px solid #555555;
+}
+.btn-primary {
+    color: white;
+    background-color: #feca2f;
+    border-color: #fec416;
+}
+/* line 15, ../scss/vendor/bootstrap/mixins/_buttons.scss */
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {
+    color: white;
+    background-color: #f9bb01;
+    border-color: #d5a001;
+}
+/* line 22, ../scss/vendor/bootstrap/mixins/_buttons.scss */
+.btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {
+    background-image: none;
+}
+/* line 32, ../scss/vendor/bootstrap/mixins/_buttons.scss */
+.btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled]:active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary.active {
+    background-color: #feca2f;
+    border-color: #fec416;
+}
+/* line 38, ../scss/vendor/bootstrap/mixins/_buttons.scss */
+.btn-primary .badge {
+    color: #feca2f;
+    background-color: white;
+}
+
+
+/* line 103, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
+
+
+
+
+
+
+
