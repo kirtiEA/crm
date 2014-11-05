@@ -7,9 +7,7 @@
 
 <!DOCTYPE html5>
 
-
 <body>
-
 
     <!-- invite vendor modal -->
     <div class="modal fade" id="invite-vendor-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -35,7 +33,7 @@
 
 
     <!-- subheader -->    
-
+ 
     <div class="container-fluid sub-header">
         <div class="row">
             <div class="col-md-12">
@@ -56,6 +54,8 @@
             </div>
         </div>
     </div>
+
+
     <!-- end of subheader --> 
 
     <!-- tabs -->    
@@ -67,7 +67,6 @@
 
 
     <!-- vendor list --> 
-
     <div class="container-fluid content-wrapper">
         <div class="row">
             <div class="col-md-12">
