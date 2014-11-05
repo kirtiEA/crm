@@ -81,42 +81,20 @@
 
             </div>
         <?php } ?>
-        <?php
-        $form = $this->beginWidget('CActiveForm', array(
-            'id' => 'vendor_subscription',
-            'action' => 'account/createvendor',
-            //'enableClientValidation' => true,
-            //    'clientOptions' => array(
-            //        'validateOnSubmit' => true,
-            //    ),
-            'htmlOptions' => array(
-                'class' => 'form-inline',
-            ),
-        ));
-        ?>
+
 		<div class="signup-form-wrap-homepage">
 <!--                        <input type="email" class="form-control" placeholder="Email">-->
+                <form action="account/signup">
 
-        <?php echo $form->emailField($modelSub, 'email', array('id' => 'emailid', 'class' => 'form-control form-control-hero-section', 'placeholder' => 'Email', 'type' => 'email', 'autocomplete' => 'off')); ?>                            
-        <?php echo $form->error($modelSub, 'email'); ?>
-<!--                        <input type="text" class="form-control" placeholder="Company Name">-->
-        <?php echo $form->textField($modelSub, 'companyname', array('id' => 'companynameid', 'class' => 'form-control companyname form-control-hero-section', 'placeholder' => 'Company Name', 'autocomplete' => 'off')); ?> 
-
-        <input type="hidden" value="" id="vendor-ac-id">
-        <?php echo $form->error($modelSub, 'companyname'); ?>
-<!--                        <input type="text" class="form-control" placeholder="+91">-->
-<!--                        <input  class="form-control intl-tel-input" placeholder="Mobile" id="mobile-number" type="tel">-->
-        <?php echo $form->textField($modelSub, 'phonenumber', array('max-length' => '10', 'class' => 'form-control intl-tel-input form-control-hero-section intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
-        <?php echo $form->error($modelSub, 'phonenumber'); ?>
-        <br>
-        <br>
-        <?php //echo CHtml::submitButton('Sign Up for Free', array('class' => 'btn btn-primary btn-primary-lg', 'id' => '_submit')); ?>
-        <button class="btn btn-primary btn-primary-lg" id="signup">Create Free Account</button>
+        <input type="submit" class="btn btn-primary btn-primary-lg" id="signups" value="Create Free Account">
         <!--                        <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>-->
         <br>
-
+        
         <h5 class="hero-section-termscopy">By signing-up you agree to <a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>" target="_blank">Terms &amp; Conditions</a></h5>
-        <?php $this->endWidget(); ?>
+
+</form>
+        <br>
+
 
         <!--<div><a class="pricing-link" href="pricing.html">Know More About Pricing &amp; Plan</a></div>-->
 		</div>
