@@ -149,7 +149,7 @@
             </div>
             
             <?php
-                    foreach ($data['photos'] as $pic) { ?>
+                    foreach ($data['photos'] as $pic): ?>
 
             <div class="row photo">
                 <div class="col-md-6 sitepic">
@@ -165,7 +165,7 @@
                 </div>
                 
             </div>
-                    <?php } ?>
+                    <?php endforeach; ?>
         </div>
         <hr>
     </body>
