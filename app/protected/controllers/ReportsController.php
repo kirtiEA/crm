@@ -254,7 +254,7 @@ class ReportsController extends Controller
                 $campaignIdList[$camp['id']] = $camp['name'];
             }
             $this->render('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList, 'selectedCampaignIds' => $campaignIds));
-            $uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
+  //          $uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
             
             /*$html = '<div class="high-res-images">'.
                 '<h2 class="section-heading">High Resolution Images</h2>'.
@@ -271,9 +271,9 @@ class ReportsController extends Controller
             
             
             
-            $campId = 22;    // coke
-            // get campaign report details
-            $data = Campaign::fetchCampaignReport($campId);
+//            $campId = 22;    // coke
+//            // get campaign report details
+//            $data = Campaign::fetchCampaignReport($campId);
 //            echo '<pre>';
 //           print_r($data);
             
@@ -290,26 +290,26 @@ class ReportsController extends Controller
             //print_r($var); die();*/
             
             # mPDF
-            $mPDF1 = Yii::app()->ePdf->mpdf();
-
-            # You can easily override default constructor's params
-            //$mPDF1 = Yii::app()->ePdf->mpdf('', 'A5');
-
-            # render (full page)            
-            $mPDF1->WriteHTML($this->renderPartial('download', array('data' => $data), true));
-            
-            # Load a stylesheet            
-            $stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');            
-            $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
-            
-            $mPDF1->WriteHTML($stylesheet1, 1);
-            $mPDF1->WriteHTML($stylesheet2, 1);            
-            
-            # Renders image
-            //$mPDF1->WriteHTML(CHtml::image(Yii::getPathOfAlias('webroot.css') . '/bg.gif' ));
-
-            # Outputs ready PDF
-            $mPDF1->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);                     
+//            $mPDF1 = Yii::app()->ePdf->mpdf();
+//
+//            # You can easily override default constructor's params
+//            //$mPDF1 = Yii::app()->ePdf->mpdf('', 'A5');
+//
+//            # render (full page)            
+//            $mPDF1->WriteHTML($this->renderPartial('download', array('data' => $data), true));
+//            
+//            # Load a stylesheet            
+//            $stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');            
+//            $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
+//            
+//            $mPDF1->WriteHTML($stylesheet1, 1);
+//            $mPDF1->WriteHTML($stylesheet2, 1);            
+//            
+//            # Renders image
+//            //$mPDF1->WriteHTML(CHtml::image(Yii::getPathOfAlias('webroot.css') . '/bg.gif' ));
+//
+//            # Outputs ready PDF
+//            $mPDF1->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);                     
 	}
 	// Uncomment the following methods and override them if needed
 	/*
