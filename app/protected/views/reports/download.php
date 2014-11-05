@@ -157,7 +157,7 @@
                         <b>Clicked At:</b> <?php echo date('Y-m-d', strtotime($pic['clickedDateTime']));?>
                     </center>
                     <center>
-                        <img src="<?php JoyUtilities::getAwsFileUrl( $pp['imageName'], 'listing'); ?>" class="img-thumbnail" >
+                        <img src="<?php echo JoyUtilities::getAwsFileUrl( $pp['imageName'], 'listing'); ?>" class="img-thumbnail" >
                     </center>
                     <div class ="problem"><b>Problems: </b>
                         <span class="install"><?php echo $pic['installation'] . ',' . $pic['lighting'] . ',' . $pic['obstruction']  ?></span>
