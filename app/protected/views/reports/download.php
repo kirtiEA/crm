@@ -147,79 +147,25 @@
                     <center><h3>Images</h3></center>
                 </div>
             </div>
+            
+            <?php
+                    foreach ($data['photos'] as $pic) { ?>
 
             <div class="row photo">
                 <div class="col-md-6 sitepic">
-                    <center><b>Site Name:</b> Vodafone-Delhi <br>
-                        <b>Clicked At:</b> dd/mm/yyyy - hh:mm
+                    <center><b>Site Name:</b> <?php echo $pic['name'];?> <br>
+                        <b>Clicked At:</b> <?php echo date('Y-m-d', strtotime($pic['clickedDateTime']));?>
                     </center>
                     <center>
-                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/uploads/bill1.jpg" class="img-thumbnail" >
+                        <img src="<?php JoyUtilities::getAwsFileUrl( $pp['imageName'], 'listing'); ?>" class="img-thumbnail" >
                     </center>
                     <div class ="problem"><b>Problems: </b>
-                        <span class="install">Faded</span>
+                        <span class="install"><?php echo $pic['installation'] . ',' . $pic['lighting'] . ',' . $pic['obstruction']  ?></span>
                     </div>
                 </div>
-                <div class="col-md-6 sitepic">
-                    <center><b>Site Name:</b> Vodafone-Delhi <br>
-                        <b>Clicked At:</b> dd/mm/yyyy - hh:mm
-                    </center>
-                    <center>
-                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/uploads/bill2.jpg"  class="img-thumbnail">
-                    </center>
-                    <div class ="problem"><b>Problems: </b>
-                        <span class="lighting">Partially Unlit</span>
-                    </div>
-                </div>
+                
             </div>
-            <div class="row photo">
-                <div class="col-md-6 sitepic">
-                    <center><b>Site Name:</b> Vodafone-Delhi <br>
-                        <b>Clicked At:</b> dd/mm/yyyy - hh:mm
-                    </center>
-                    <center>
-                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/uploads/bill3.jpg" class="img-thumbnail">
-                    </center>
-                    <div class ="problem"><b>Problems: </b>
-                        <span class="lighting">Partially Unlit</span>
-                    </div>
-                </div>
-                <div class="col-md-6 sitepic">
-                    <center><b>Site Name:</b> Vodafone-Delhi <br>
-                        <b>Clicked At:</b> dd/mm/yyyy - hh:mm
-                    </center>
-                    <center>
-                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/uploads/bill4.jpg"  class="img-thumbnail">
-                    </center>
-                    <div class ="problem"><b>Problems: </b>
-                        <span class="lighting">Partially Unlit</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row photo">
-                <div class="col-md-6 sitepic">
-                    <center><b>Site Name:</b> Vodafone-Delhi <br>
-                        <b>Clicked At:</b> dd/mm/yyyy - hh:mm
-                    </center>
-                    <center>
-                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/uploads/bill5.jpg" class="img-thumbnail">
-                    </center>
-                    <div class ="problem"><b>Problems: </b>
-                        <span class="install">Faded</span>
-                    </div>
-                </div>
-                <div class="col-md-6 sitepic">
-                    <center><b>Site Name:</b> Vodafone-Delhi <br>
-                        <b>Clicked At:</b> dd/mm/yyyy - hh:mm
-                    </center>
-                    <center>
-                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/uploads/bill6.jpg"  class="img-thumbnail">
-                    </center>
-                    <div class ="problem"><b>Problems: </b>
-                        <span class="lighting">Partially Unlit</span>
-                    </div>
-                </div>
-            </div>
+                    <?php } ?>
         </div>
         <hr>
     </body>
