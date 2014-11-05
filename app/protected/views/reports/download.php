@@ -149,9 +149,9 @@
             </div>
             
             <?php
-                    foreach ($data['photos'] as $pic): ?>
-
-            <div class="row photo">
+                    foreach ($data['photos'] as $pictures): ?>
+                        <div class="row photo">
+                <?php foreach ($pictures as $pic):?>    
                 <div class="col-md-6 sitepic">
                     <center><b>Site Name:</b> <?php echo $pic['name'];?> <br>
                         <b>Clicked At:</b> <?php echo date('Y-m-d', strtotime($pic['clickedDateTime']));?>
@@ -163,7 +163,7 @@
                         <span class="install"><?php echo $pic['installation'] . ',' . $pic['lighting'] . ',' . $pic['obstruction']  ?></span>
                     </div>
                 </div>
-                
+                <?php endforeach; ?>
             </div>
                     <?php endforeach; ?>
         </div>
