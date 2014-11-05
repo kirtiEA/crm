@@ -93,8 +93,13 @@ if(!function_exists('strcode2utf')){
   function strcode2utf($str,$lo=true) {
 	//converts all the &#nnn; and &#xhhh; in a string to Unicode
 	if ($lo) { $lo = 1; } else { $lo = 0; }
-	$str = preg_replace('/\&\#([0-9]+)\;/me', "code2utf('\\1',{$lo})",$str);
-	$str = preg_replace('/\&\#x([0-9a-fA-F]+)\;/me', "codeHex2utf('\\1',{$lo})",$str);
+//	$str = preg_replace('/\&\#([0-9]+)\;/me', "code2utf('\\1',{$lo})",$str);
+//	$str = preg_replace('/\&\#x([0-9a-fA-F]+)\;/me', "codeHex2utf('\\1',{$lo})",$str);
+        $str = preg_replace_callback(
+ '/&gt;(\s*$\s*)&lt;/m',
+ create_function('$matches', "return strpos('$matches[0]', ' ') === false?'&gt;&lt;':'&gt; &lt;';"),
+ $str
+ );
 	return $str;
   }
 }

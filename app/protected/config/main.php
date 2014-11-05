@@ -21,6 +21,7 @@ return array(
         'ext.easyimage.EasyImage',
         'ext.yii-pdf.*',
         'application.extensions.PasswordHash',
+        'application.vendor.mpdf_old.*',
         'ext.YiiMailer.EatadsMailer', // Wrapper of YiiMailer
         'application.extensions.GcmPushNotification',
     ),
@@ -72,7 +73,7 @@ return array(
             'password' => 'root',
             'charset' => 'utf8',
         ),
-        'errorHandler' => array(
+        'errorHandler' => array(    
             // use 'site/error' action to display errors
             'errorAction' => 'site/error',
         ),
@@ -161,7 +162,7 @@ return array(
         'load_markers' => 3000,
         'solrCurl' => 'http://eataddsolr.eatads.com:8080/solr/listing/select?',
         'awss3' => array(// amazon s3 details
-            's3Bucket' => 'monitorly-localhost-media',
+            's3Bucket' => 'monitorly-prod-media',
             'accessKey' => 'AKIAIW62GKSH4I5LIEXQ',
             'secretKey' => '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'
         ),

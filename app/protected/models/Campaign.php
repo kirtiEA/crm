@@ -161,5 +161,13 @@ class Campaign extends BaseCampaign {
         );        
         return $data;
     }
+    
+    
+        public static function fetchCampaignsOnIds($ids) {
+        $sql = 'select c.id, name, startDate, endDate, (select count(distinct tt.siteid) from Task tt where tt.campaignid  = c.id and tt.status = 1) as count from Campaign c where c.id in ('. $ids .')' ;
+        $command = Yii::app()->db->createCommand($sql);
+        $data = $command->queryAll();
+        return $data;
+    }
 }
 
