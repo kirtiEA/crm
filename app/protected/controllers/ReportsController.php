@@ -254,7 +254,7 @@ class ReportsController extends Controller
                 $campaignIdList[$camp['id']] = $camp['name'];
             }
             $this->render('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList, 'selectedCampaignIds' => $campaignIds));
-            echo $uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
+            $uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
             
             /*$html = '<div class="high-res-images">'.
                 '<h2 class="section-heading">High Resolution Images</h2>'.
