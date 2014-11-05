@@ -181,6 +181,7 @@ class AjaxController extends Controller {
             $photoProof = array(
                 'id' => $pp['id'],
                 'imageName' => JoyUtilities::getAwsFileUrl('big_' . $pp['imageName'], 'listing'),
+                'originalImageName' => JoyUtilities::getAwsFileUrl( $pp['imageName'], 'listing'),
                 'siteName' => $pp['siteName'],
                 'campaignName' => $pp['campaignName'],
                 'clickedDateTime' => $pp['clickedDateTime'],

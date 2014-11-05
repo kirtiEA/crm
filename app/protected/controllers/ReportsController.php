@@ -101,7 +101,7 @@ class ReportsController extends Controller
         
         public function actionAll()
 	{
-            
+
             $cId = Yii::app()->user->cid;
             $sdate = null; 
             $edate = null;
@@ -163,7 +163,7 @@ class ReportsController extends Controller
             if (!empty($campaignsSharedWithMe)) {
                 $sharedCampId = array();
                 foreach ($campaignsSharedWithMe as $key => $shared) {
- //                  print_r($shared);
+                   //print_r($shared);
                     array_push($sharedCampId, $shared['campaignid']);
                 }
                 $campaignsIdsStr = implode(',', $sharedCampId);
@@ -201,7 +201,6 @@ class ReportsController extends Controller
             }
 
             
-            
             $campaignIdList = array();
             $assignedToList = array();
             $sql2 = "SELECT c.id as cid, c.name as campaign, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto "
@@ -221,7 +220,7 @@ class ReportsController extends Controller
                     $assignedToList[$fl['uid']] = $fl['assignedto'];
                 }                
             }
-
+          //  print_r($tasks);die('asdas');
             $campaignsSharedWithMe = MonitorlyCampaignShare::model()->findAllByAttributes(array('email' => Yii::app()->user->email));
             $sharedcampaigns = array();
             if (!empty($campaignsSharedWithMe)) {
@@ -230,13 +229,15 @@ class ReportsController extends Controller
  //                   print_r($shared);
                     array_push($sharedCampId, $shared['campaignid']);
                 }
-                $sharedcampaigns = Campaign::fetchCampaignsOnIds(implode(',', $sharedCampId));
+              //  $sharedcampaigns = Campaign::fetchCampaignsOnIds(implode(',', $sharedCampId));
+              //  print_r($sharedcampaigns);
             }
             foreach ($sharedcampaigns as $camp) {
                 $campaignIdList[$camp['id']] = $camp['name'];
             }
+echo 1;
             $this->render('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList, 'selectedCampaignIds' => $campaignIds));
-         $uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
+         //$uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
             
             /*$html = '<div class="high-res-images">'.
                 '<h2 class="section-heading">High Resolution Images</h2>'.
@@ -253,11 +254,11 @@ class ReportsController extends Controller
             
             
             
-            $campId = 5;    // coke
-            // get campaign report details
-            $data = Campaign::fetchCampaignReport($campId);
-            echo '<pre>';
-            print_r($data);
+//            $campId = 5;    // coke
+//            // get campaign report details
+//            $data = Campaign::fetchCampaignReport($campId);
+//            echo '<pre>';
+//            print_r($data);
             
             
             /*# HTML2PDF has very similar syntax
@@ -271,27 +272,27 @@ class ReportsController extends Controller
             //$html2pdf->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);            
             //print_r($var); die();*/
             
-            # mPDF
-            $mPDF1 = Yii::app()->ePdf->mpdf();
-
-            # You can easily override default constructor's params
-            //$mPDF1 = Yii::app()->ePdf->mpdf('', 'A5');
-
-            # render (full page)            
-            $mPDF1->WriteHTML($this->renderPartial('download', array('data' => $data), true));
-            
-            # Load a stylesheet            
-            $stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');            
-            $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
-            
-            $mPDF1->WriteHTML($stylesheet1, 1);
-            $mPDF1->WriteHTML($stylesheet2, 1);            
-            
-            # Renders image
-            //$mPDF1->WriteHTML(CHtml::image(Yii::getPathOfAlias('webroot.css') . '/bg.gif' ));
-
-            # Outputs ready PDF
-            $mPDF1->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);                     
+//            # mPDF
+//            $mPDF1 = Yii::app()->ePdf->mpdf();
+//
+//            # You can easily override default constructor's params
+//            //$mPDF1 = Yii::app()->ePdf->mpdf('', 'A5');
+//
+//            # render (full page)            
+//            $mPDF1->WriteHTML($this->renderPartial('download', array('data' => $data), true));
+//            
+//            # Load a stylesheet            
+//            $stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');            
+//            $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
+//            
+//            $mPDF1->WriteHTML($stylesheet1, 1);
+//            $mPDF1->WriteHTML($stylesheet2, 1);            
+//            
+//            # Renders image
+//            //$mPDF1->WriteHTML(CHtml::image(Yii::getPathOfAlias('webroot.css') . '/bg.gif' ));
+//
+//            # Outputs ready PDF
+//            $mPDF1->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);                     
 	}
 	// Uncomment the following methods and override them if needed
 	/*
