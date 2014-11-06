@@ -8,14 +8,17 @@ class ReportsController extends Controller
 		           $campId = 22;    
             $data = Campaign::fetchCampaignReport($campId);
             $mPDF1 = Yii::app()->ePdf->mpdf();
- 
-            $mPDF1->WriteHTML($this->renderPartial('download_new', array('data' => $data), true));
+
             
-            $stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');            
+
+            $mPDF1->WriteHTML($this->renderPartial('download_new', array('data' => $data), true));
+            $stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');
             $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
+            //print_r($stylesheet1);die();
             
             $mPDF1->WriteHTML($stylesheet1, 1);
             $mPDF1->WriteHTML($stylesheet2, 1);            
+                      
 
             $mPDF1->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_DOWNLOAD);
 	}

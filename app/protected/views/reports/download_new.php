@@ -6,9 +6,6 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
@@ -34,7 +31,7 @@
 
       <table class="table table-striped">
           <tr>
-              <td class="col-md-3"><b>sites:</b></td>
+              <td class="col-md-3"><b>Sites:</b></td>
               <td class="col-md-9">
                   <?php
                                 $siteCities = '';
