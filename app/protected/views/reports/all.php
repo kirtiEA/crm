@@ -57,8 +57,10 @@
         <div class="col-md-12">
             <h1 class="list-heading pull-left">Report</h1>
             <button class="btn btn-secondary table-control pull-right"><span class="glyphicon glyphicon-download"></span> Download Report</button>
-            <table class="table table-hover">
-                <tr>
+
+    <table class="table table-condensed" style="table-layout:fixed">
+        <thead>
+            <tr>
                     <th>Campaign</th>
                     <th>Site</th>
                     <th>Location</th>
@@ -67,7 +69,14 @@
                     <th>Due Date</th>
                     <th>Status</th>
                     <th>Photo</th>
-                </tr>
+            </tr>
+        </thead>
+    </table>
+
+<div class="div-table-content" style="overflow-y:auto;height:400px;margin-top:-22px;">
+
+            <table class="table table-hover" style="table-layout:fixed">
+             <tbody>
 
                 <?php
                 foreach ($tasks as $t):
@@ -116,8 +125,11 @@
                     </tr>
 
                 <?php endforeach; ?>
+                </tbody>
 
             </table>
+                </div>
+
         </div>
         <div id="img-gallery" style="display:block;"></div>
     </div>
@@ -125,18 +137,32 @@
 <!-- end of tasks list --> 
 <script type="text/javascript">
 $(document).ready(function () {
+    $('.standstill').css("table-layout","fixed");
 
 
 var menu = $('#submenu');
 var origOffsetY = menu.offset().top;
 
+var tbheader = $('.standstill');
+var tbOffsetY = tbheader.offset().top;
+
+
 function scroll() {
-    console.log("yes"+origOffsetY);
+//    console.log("yes"+tbOffsetY);
+
 
     if ($(window).scrollTop() >= origOffsetY) {
         $('#submenu').css("margin-top","0px");
         $('#submenu').addClass('navbar-fixed-top');
        // $('.content').addClass('menu-padding');
+               if ($(window).scrollTop() >= tbOffsetY) {
+                           console.log("yes"+tbOffsetY);
+ //                   $('.standstill').css("margin-top","0px");
+                    $('.standstill').css("position","fixed");
+                    //$('.standstill').css("top","45px");
+                    //$('.standstill').css("width","100%");
+                  //  $('.standstill').addClass('navbar-fixed-top');
+            }
     } else {
         $('#submenu').css("margin-top","-20px");
         $('#submenu').removeClass('navbar-fixed-top');

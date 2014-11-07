@@ -91,7 +91,6 @@
         <br>
         
         <h5 class="hero-section-termscopy">By signing-up you agree to <a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>" target="_blank">Terms &amp; Conditions</a></h5>
-
 </form>
         <br>
 
@@ -109,7 +108,6 @@
     </div>
 </div>
 <!-- end of hero section --> 
-
 <!-- benefits -->
 <div class="row selling-points">
     <div class="col-md-12">
