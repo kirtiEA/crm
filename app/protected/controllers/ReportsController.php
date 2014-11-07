@@ -5,14 +5,14 @@ class ReportsController extends Controller
     
     public function actionDownloadreport()
 	{
-		           $campId = 22;    
+            $campId = 22;    
             $data = Campaign::fetchCampaignReport($campId);
             $mPDF1 = Yii::app()->ePdf->mpdf();
 
-            
+            //print_r($data);
 
             $mPDF1->WriteHTML($this->renderPartial('download_new', array('data' => $data), true));
-            $stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');
+         //   $stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');
             $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
             //print_r($stylesheet1);die();
             
