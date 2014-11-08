@@ -14,7 +14,7 @@ class ReportsController extends Controller
             $mpdf->SetProtection(array('print'));
             $mpdf->SetTitle("Campaign Report");
             $mpdf->SetAuthor("Eatads");
-            $mpdf->SetWatermarkText("Paid");
+            $mpdf->SetWatermarkText("Monitorly");
             $mpdf->showWatermarkText = true;
             $mpdf->watermark_font = 'DejaVuSansCondensed';
             $mpdf->watermarkTextAlpha = 0.1;
@@ -29,8 +29,8 @@ class ReportsController extends Controller
            // $mPDF1->WriteHTML($stylesheet1, 1);
            // $mPDF1->WriteHTML($stylesheet2, 1);            
                       
-
-            $mpdf->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);
+            $name = $data['campaign']['name'] . '_' . date();
+            $mpdf->Output($name, EYiiPdf::OUTPUT_TO_DOWNLOAD);
 	}
     
 	public function actionFetchreport()
