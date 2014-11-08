@@ -8,7 +8,7 @@ class ReportsController extends Controller
             $campId = 22;    
             $data = Campaign::fetchCampaignReport($campId);
             $mpdf = Yii::app()->ePdf->mpdf();
-            
+            $uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
             //$mpdf=new mPDF(); 
             $mpdf->useOnlyCoreFonts = true;    // false is default
             $mpdf->SetProtection(array('print'));
