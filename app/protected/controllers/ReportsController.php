@@ -29,7 +29,7 @@ class ReportsController extends Controller
            // $mPDF1->WriteHTML($stylesheet1, 1);
            // $mPDF1->WriteHTML($stylesheet2, 1);            
                       
-            $name = $data['campaign']['name'] . '_' . date();
+            $name = $data['campaign']['name'] . '_' . date('Y-m-d').'.pdf';
             $mpdf->Output($name, EYiiPdf::OUTPUT_TO_DOWNLOAD);
 	}
     
