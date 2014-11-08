@@ -144,7 +144,10 @@ var menu = $('#submenu');
 var origOffsetY = menu.offset().top;
 
 var tbheader = $('.standstill');
-var tbOffsetY = tbheader.offset().top;
+if (tbheader && tbheader.offset()) {
+var tbOffsetY = tbheader.offset().top;    
+}
+
 
 
 function scroll() {

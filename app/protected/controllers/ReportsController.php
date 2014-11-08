@@ -7,20 +7,30 @@ class ReportsController extends Controller
 	{
             $campId = 22;    
             $data = Campaign::fetchCampaignReport($campId);
-            $mPDF1 = Yii::app()->ePdf->mpdf();
-
+            $mpdf = Yii::app()->ePdf->mpdf();
+            
+            //$mpdf=new mPDF(); 
+            $mpdf->useOnlyCoreFonts = true;    // false is default
+            $mpdf->SetProtection(array('print'));
+            $mpdf->SetTitle("Campaign Report");
+            $mpdf->SetAuthor("Eatads");
+            $mpdf->SetWatermarkText("Paid");
+            $mpdf->showWatermarkText = true;
+            $mpdf->watermark_font = 'DejaVuSansCondensed';
+            $mpdf->watermarkTextAlpha = 0.1;
+            $mpdf->SetDisplayMode('fullpage');
             //print_r($data);
 
-            $mPDF1->WriteHTML($this->renderPartial('download_new', array('data' => $data), true));
+            $mpdf->WriteHTML($this->renderPartial('download_new_1', array('data' => $data), true));
          //   $stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');
-            $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
+           // $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
             //print_r($stylesheet1);die();
             
-            $mPDF1->WriteHTML($stylesheet1, 1);
-            $mPDF1->WriteHTML($stylesheet2, 1);            
+           // $mPDF1->WriteHTML($stylesheet1, 1);
+           // $mPDF1->WriteHTML($stylesheet2, 1);            
                       
 
-            $mPDF1->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_DOWNLOAD);
+            $mpdf->Output($uploadFilePath, EYiiPdf::OUTPUT_TO_FILE);
 	}
     
 	public function actionFetchreport()

@@ -6108,7 +6108,7 @@ h1 small {
                                 
                                         <tr>
                                             <td>
-                                              <img src="<?php echo JoyUtilities::getAwsFileUrl('big_' . $pic['imageName'], 'listing'); ?>" class="img-thumbnail" >  
+                                              <img src="<?php echo JoyUtilities::getAwsFileUrl('small_' . $pic['imageName'], 'listing'); ?>" class="img-thumbnail" >  
                                             </td>
                                         </tr>
                                     
