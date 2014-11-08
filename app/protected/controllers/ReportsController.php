@@ -5,32 +5,34 @@ class ReportsController extends Controller
     
     public function actionDownloadreport()
 	{
-            $campId = 22;    
-            $data = Campaign::fetchCampaignReport($campId);
-            $mpdf = Yii::app()->ePdf->mpdf();
-            $uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
-            //$mpdf=new mPDF(); 
-            $mpdf->useOnlyCoreFonts = true;    // false is default
-            $mpdf->SetProtection(array('print'));
-            $mpdf->SetTitle("Campaign Report");
-            $mpdf->SetAuthor("Eatads");
-            $mpdf->SetWatermarkText("Monitorly");
-            $mpdf->showWatermarkText = true;
-            $mpdf->watermark_font = 'DejaVuSansCondensed';
-            $mpdf->watermarkTextAlpha = 0.1;
-            $mpdf->SetDisplayMode('fullpage');
-            //print_r($data);
+            if( isset($_POST['campaign'])) {
+                $campId = $_POST['campaign'];
+                $data = Campaign::fetchCampaignReport($campId);
+                $mpdf = Yii::app()->ePdf->mpdf();
+                $uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
+                //$mpdf=new mPDF(); 
+                $mpdf->useOnlyCoreFonts = true;    // false is default
+                $mpdf->SetProtection(array('print'));
+                $mpdf->SetTitle("Campaign Report");
+                $mpdf->SetAuthor("Eatads");
+                $mpdf->SetWatermarkText("Monitorly");
+                $mpdf->showWatermarkText = true;
+                $mpdf->watermark_font = 'DejaVuSansCondensed';
+                $mpdf->watermarkTextAlpha = 0.1;
+                $mpdf->SetDisplayMode('fullpage');
+                //print_r($data);
 
-            $mpdf->WriteHTML($this->renderPartial('download_new_1', array('data' => $data), true));
-         //   $stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');
-           // $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
-            //print_r($stylesheet1);die();
-            
-           // $mPDF1->WriteHTML($stylesheet1, 1);
-           // $mPDF1->WriteHTML($stylesheet2, 1);            
-                      
-            $name = $data['campaign']['name'] . '_' . date('Y-m-d').'.pdf';
-            $mpdf->Output($name, EYiiPdf::OUTPUT_TO_DOWNLOAD);
+                $mpdf->WriteHTML($this->renderPartial('download_new_1', array('data' => $data), true));
+                //$stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');
+               // $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
+                //print_r($stylesheet1);die();
+
+               // $mPDF1->WriteHTML($stylesheet1, 1);
+               // $mPDF1->WriteHTML($stylesheet2, 1);            
+
+                $name = $data['campaign']['name'] . '_' . date('Y-m-d').'.pdf';
+                $mpdf->Output($name, EYiiPdf::OUTPUT_TO_DOWNLOAD);
+            }
 	}
     
 	public function actionFetchreport()
@@ -104,22 +106,23 @@ class ReportsController extends Controller
                     . "AND DATE(t.dueDate) <= CURRENT_DATE() and u.username is not null and u.username != '' ";
             $filters = Yii::app()->db->createCommand($sql2)->queryAll();
             foreach($filters as $fl) {
-                //echo '<pre>';
+                
                 
                 if(!isset($campaignIdList[$fl['cid']])) {
                     $campaignIdList[$fl['cid']] = $fl['campaign'];
                     //shared campaigns to  be included
+                    print_r($campaignIdList);
                 }
                 if(!isset($assignedToList[$fl['uid']])) {
                     $assignedToList[$fl['uid']] = $fl['assignedto'];
                 }                
             }
-                        $campaignsSharedWithMe = MonitorlyCampaignShare::model()->findAllByAttributes(array('email' => Yii::app()->user->email));
+            $campaignsSharedWithMe = MonitorlyCampaignShare::model()->findAllByAttributes(array('email' => Yii::app()->user->email));
             $sharedcampaigns = array();
             if (!empty($campaignsSharedWithMe)) {
                 $sharedCampId = array();
                 foreach ($campaignsSharedWithMe as $key => $shared) {
- //                   print_r($shared);
+                  //  print_r($shared);
                     array_push($sharedCampId, $shared['campaignid']);
                 }
                 $sharedcampaigns = Campaign::fetchCampaignsOnIds(implode(',', $sharedCampId));
@@ -260,7 +263,7 @@ class ReportsController extends Controller
  //                   print_r($shared);
                     array_push($sharedCampId, $shared['campaignid']);
                 }
-              //  $sharedcampaigns = Campaign::fetchCampaignsOnIds(implode(',', $sharedCampId));
+                $sharedcampaigns = Campaign::fetchCampaignsOnIds(implode(',', $sharedCampId));
               //  print_r($sharedcampaigns);
             }
             foreach ($sharedcampaigns as $camp) {
