@@ -162,7 +162,7 @@
                                   <b>Clicked At:</b> <?php echo date('Y-m-d H:i:s', strtotime($pic['clickedDateTime']));?>
                                 </div>
                                  <div class="image_site" style="width:80%;">
-                                    <img src="<?php echo JoyUtilities::getAwsFileUrl('small_' . $pic['imageName'], 'listing'); ?>" class="img-thumbnail" >  
+                                    <img src="<?php echo JoyUtilities::getAwsFileUrl('big_' . $pic['imageName'], 'listing'); ?>" class="img-thumbnail" >  
                                  </div>
                                         
                                     
