@@ -126,7 +126,6 @@ function scroll() {
       <div class="col-md-12">
           <h1 class="list-heading pull-left">Tasks List (<?php echo count($tasks)?>)</h1>
 <!--        <button class="btn btn-primary pull-right table-control">Save Changes</button>-->
-       
         <table class="table table-hover" id="tasks">
          <tr> 
             <th>Campaign</th>
