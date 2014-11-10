@@ -21,14 +21,17 @@ class ReportsController extends Controller
                 $mpdf->watermarkTextAlpha = 0.1;
                 $mpdf->SetDisplayMode('fullpage');
                 //print_r($data);
-
-                $mpdf->WriteHTML($this->renderPartial('download_new_1', array('data' => $data), true));
+                //changing order of WriteHTML
+                $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
+                
+                $mpdf->WriteHTML($stylesheet2, 1);
+                $mpdf->WriteHTML($this->renderPartial('download', array('data' => $data), true),2);
                 //$stylesheet1 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/bootstrap.min.css');
-               // $stylesheet2 = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/reports/main.css');
+                
                 //print_r($stylesheet1);die();
 
                // $mPDF1->WriteHTML($stylesheet1, 1);
-               // $mPDF1->WriteHTML($stylesheet2, 1);            
+                            
 
                 $name = $data['campaign']['name'] . '_' . date('Y-m-d').'.pdf';
                 $mpdf->Output($name, EYiiPdf::OUTPUT_TO_DOWNLOAD);

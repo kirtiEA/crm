@@ -3,148 +3,71 @@
 /* ==========================================================================
    Eatads's custom styles
    ========================================================================== */
-.problem .install, .problem .lighting, .problem .obstruct {
-    color: white;
-    border-radius: 16px;
-    padding: 4px 12px;
-    margin-right: 4px;
-    line-height: 28px;
-    font-size: 11px;
-    word-wrap: none;
+/* CSS selectors like first-child, references like > and html tags like button do not work with mpdf.
+Therefore, using class names instead of referencing with the paren selector. 
+*/
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	text-align: center;
 }
-/* line 739, ../scss/application.scss */
-.problem .install {
-    background-color: #D42333;
+.navbar-reportpdf {
+	background-color: rgb(71, 83, 91);
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 0.5em;
 }
-/* line 740, ../scss/application.scss */
+.table-hover {
+	margin-bottom: 3em; 
+	
+}
+.table-hover-tr {
+	background-color: #e1e1e1;
+}
+.danger {
+    background-color: #f2dede;
+}
+.heading-image-download {
+	width: 100%;
+	text-align:center;
+}
+.heading-image-download-button {
+	color:#fff;
+	background-color:#feca2f;
+	padding: 0.4em;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+	box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+	border-bottom: 2px solid #daa916;
+}
+.full-row-h3 {
+	text-align: center; 
+	margin: 2em;
+}
+.full-row-h3-b {
+	background-color:rgb(71, 83, 91);
+	color: #fff;
+}
+.photos {
+	width: 100%; 
+	text-align:justify;
+}
+.sitepic {
+	width: 50%; 
+	float: left; 
+	margin-bottom:1em;
+}
+.image_site {
+	width:80%;
+}
 .problem .lighting {
-    background-color: #F1890F;
+        color: white;
+        border-radius: 16px;
+        padding: 4px 12px;
+        margin-right: 4px;
+        line-height: 28px;
+        font-size: 11px;
+        word-wrap: normal;
+        background-color: #F1890F;
 }
-/* line 741, ../scss/application.scss */
-.problem .obstruct {
-    background-color: #EBBA09;
-}
-
-
-
- table { page-break-inside:avoid !important; 
-         page-break-after:auto;
-       }
- /* Adding some styling for Images heading */
-
-.sitepic{
-  height: 400px;
-}
-.sitepic img{
-  max-height: 320px;
-  margin-bottom: 5px;
-}
-
-
-.photo{
-	max-height:400px;
-  margin-bottom: 30px;
-
-}
-.photo img{
-	height: auto;
-	width: auto;
-}
-
-.navbar-reportpdf{
-background-color: rgb(71, 83, 91);
-color: white;
-font-weight: bold;
-font-size: 18px;
-padding: 0.5em;
-}
-
-.glyphicon-warning-sign {
-color: red;
-}
-
-h1 small {
-  color: #fff !important;
-}
-.btn-primary {
-  padding-bottom: 5px;
-  padding-top: 5px;
-  background-color: #feca2f;
-  font-size: 16px ;
-  font-weight: 600;
-  /*color: #47535b !important;*/
-  color: #fff !important;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
-  box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
-  border-bottom: 2px solid #daa916;
-}
-/* line 90, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
-.btn-primary:hover {
-  background-color: #daa916;
-  color: #47535b;
-}
-/* line 95, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
-.btn-primary:disabled {
-  background-color: #777777;
-  border: none;
-  color: #333333;
-  border: 1px solid #555555;
-}
-.btn-primary {
-    color: white;
-    background-color: #feca2f;
-    border-color: #fec416;
-}
-/* line 15, ../scss/vendor/bootstrap/mixins/_buttons.scss */
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {
-    color: white;
-    background-color: #f9bb01;
-    border-color: #d5a001;
-}
-/* line 22, ../scss/vendor/bootstrap/mixins/_buttons.scss */
-.btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {
-    background-image: none;
-}
-/* line 32, ../scss/vendor/bootstrap/mixins/_buttons.scss */
-.btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled]:active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary.active {
-    background-color: #feca2f;
-    border-color: #fec416;
-}
-/* line 38, ../scss/vendor/bootstrap/mixins/_buttons.scss */
-.btn-primary .badge {
-    color: #feca2f;
-    background-color: white;
-}
- 
-@media print {
-  .btn-primary {
-  background-color: #f9bb01 !important;
-  }
-  .table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
-    background-color: #f9f9f9 !important;
-  }
-  .well {
-    background-color: #f5f5f5 !important;
-    border: 1px solid #e3e3e3 !important;
-  }
-  .table>thead>tr>td.danger, .table>tbody>tr>td.danger, .table>tfoot>tr>td.danger, .table>thead>tr>th.danger, .table>tbody>tr>th.danger, .table>tfoot>tr>th.danger, .table>thead>tr.danger>td, .table>tbody>tr.danger>td, .table>tfoot>tr.danger>td, .table>thead>tr.danger>th, .table>tbody>tr.danger>th, .table>tfoot>tr.danger>th {
-    background-color: #f2dede !important;
-  }
-  .navbar-reportpdf {
-    background-color: rgb(71, 83, 91) !important;
-    color: #fff !important;
-  }
-  .navbar {
-    display: block !important;
-    color: #fff !important;
-  }
-}
-/* line 103, ../../../../../../../../Users/Abhishek/Desktop/MonitorlyHomepageCode/assets/scss/application.scss */
-
-
-
-
-
-
-
