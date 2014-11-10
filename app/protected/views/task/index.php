@@ -126,7 +126,12 @@ function scroll() {
       <div class="col-md-12">
           <h1 class="list-heading pull-left">Tasks List (<?php echo count($tasks)?>)</h1>
 <!--        <button class="btn btn-primary pull-right table-control">Save Changes</button>-->
+        
+
+
+
         <table class="table table-hover" id="tasks">
+            <thead>
          <tr> 
             <th>Campaign</th>
             <th>Site</th>
@@ -134,6 +139,14 @@ function scroll() {
             <th>Assigned To</th>
             <th>Due Date</th>
         </tr>
+        </thead>
+    </table>
+
+<div id="rcontent" class="div-table-content">
+
+            <table class="table table-hover" style="table-layout:fixed">
+             <tbody>
+
             <?php
             foreach ($tasks as $value) {
                  $row = '<tr>
@@ -170,7 +183,10 @@ function scroll() {
                echo $row;         
             }
           ?>
-        </table>
+                </tbody>
+
+            </table>
+                </div>
       </div>
     </div>
   </div>

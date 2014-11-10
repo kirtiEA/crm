@@ -73,7 +73,7 @@
         </thead>
     </table>
 
-<div class="div-table-content" style="overflow-y:auto;height:400px;margin-top:-22px;">
+<div id="rcontent" class="div-table-content">
 
             <table class="table table-hover" style="table-layout:fixed">
              <tbody>

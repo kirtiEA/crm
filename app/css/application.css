@@ -11337,3 +11337,9 @@ overflow-y: scroll;
 {margin-top: -24px;
 }
 
+#rcontent{
+    overflow-y:auto;
+    height:67vh;
+    margin-top:-22px;
+}
+

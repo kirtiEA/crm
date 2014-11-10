@@ -80,7 +80,7 @@ $('.mon_menu').each(function() {
                     $html = $html . '            <li class="list-item">
                 <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
                  . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3>' .
-                  '<div class="pull-right">
+                  '<div class="btnadjust pull-right">
                     <button data-toggle="modal" data-target="#share-campaign-modal" onclick="$(\'#selectedShareCampaign\').val('. $value['id'] .')" class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
                 </div>' .
                   '<div class="list-item-content show-hide-content">
