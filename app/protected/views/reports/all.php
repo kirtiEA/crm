@@ -1,12 +1,42 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-full-2.2.0.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-helpers-1.1.1.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/lightbox_dust.js"></script>
+
+    <div class="modal fade" id="download-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-sm-custom">
+            <form class="form-horizontol" role="form" method="post" id="report-form" action="downloadreport">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><b>Download Report</b></h3>
+                </div>
+                <div class="modal-body">
+                    
+                    
+                    <label>Select Campaign</label>&nbsp;
+                    <select name="campaign">
+                        <?php foreach($campaignIdList as $key => $value) {
+                            echo "<option value='$key'>$value</option>";                            
+                        } ?>
+                    </select>
+                    
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#" id="cancel">Cancel</a>&nbsp;
+                    <button class="invite btn btn-primary" id="report_submit">Download Report</button>
+                </div>
+            </div>
+            </form>
+
+        </div>
+    </div>
+
 <!-- filters sub-header -->    
 
 <div id="submenu" class="container-fluid sub-header">
     <div class="row">
         <div class="col-md-12">
-            <form class="form-horizontol" role="form" method="post" id="filter-form">
+            <form class="form-horizontol" role="form" method="post" id="filter-form" >
                 <div class="form-group">
                     <h3 class="subheader-heading">Filter Tasks</h3>
                     <div class="control">
@@ -56,7 +86,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1 class="list-heading pull-left">Report</h1>
-            <button class="btn btn-secondary table-control pull-right"><span class="glyphicon glyphicon-download"></span> Download Report</button>
+            <button class="btn btn-secondary table-control pull-right" data-toggle="modal" data-target="#download-modal"><span class="glyphicon glyphicon-download"></span> Download Report</button>
 
     <table class="table table-condensed" style="table-layout:fixed">
         <thead>
@@ -144,7 +174,10 @@ var menu = $('#submenu');
 var origOffsetY = menu.offset().top;
 
 var tbheader = $('.standstill');
-var tbOffsetY = tbheader.offset().top;
+if (tbheader && tbheader.offset()) {
+var tbOffsetY = tbheader.offset().top;    
+}
+
 
 
 function scroll() {
@@ -185,6 +218,11 @@ function scroll() {
             $('#assignedto').val(JSON.stringify($('#multiselect-assignedto').val()));
             $('#filter-form').submit();  
           
+        });
+        
+        $('#report_submit').click(function(e){
+            e.preventDefault();        
+            $('#report-form').submit();
         });
 
         $('.lightbox-btn').click(function() {
