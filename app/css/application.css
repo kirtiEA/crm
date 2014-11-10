@@ -11336,3 +11336,10 @@ overflow-y: scroll;
 .btnadjust
 {margin-top: -24px;
 }
+
+#rcontent{
+    overflow-y:auto;
+    height:67vh;
+    margin-top:-22px;
+}
+
