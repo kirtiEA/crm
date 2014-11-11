@@ -66,4 +66,9 @@ $(document).ready(function() {
 //	  if($('#selling-points-subnav').scrollTop = 300) {alert('hi');}
 	  //if ($('#selling-points-subnav').offset() = 0)
 	  //{alert('navbar should be sticky now');}
+           $('#emailid').add("#mobile-number").keyup( function() {
+                  $(this).addClass("dirty");
+              });
+          
+          
 });

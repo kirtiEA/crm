@@ -11276,3 +11276,12 @@ h2.campaign-name {
   color: red;
   font-size: 14px;
 }
+/* If input field is not is focus, dirty and valid */
+input.dirty:not(:focus):valid {
+	border-color: #3c763d;
+}
+
+/* If input field is not is focus, dirty and invalid */
+input.dirty:not(:focus):invalid {
+	border-color: #a94442;
+}

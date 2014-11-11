@@ -38,7 +38,7 @@
                 ?>
 <!--                        <input type="email" class="form-control" placeholder="Email">-->
                 <div class="signup-form-wrap">
-                    <div class="signup-form">
+                    <div class="signup-form" id="emailValidation" >
                         <?php
                         if (!empty($modelSub->email)) {
                             echo $form->emailField($modelSub, 'email', array('id' => 'emailid', 'class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email', 'disabled' => 'true', 'autocomplete' => 'off', 'value' => $modelSub->email));
@@ -57,12 +57,12 @@
 
                         <?php echo $form->passwordField($modelSub, 'password', array('id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password', 'style' => 'width:300px;')); ?>
                         <?php echo $form->error($modelSub, 'password'); ?>
-                        <input type="password" class="form-control" placeholder="Confirm Password" style="width: 300px;" id="cnf_password">
+                        <input type="password" class="form-control" placeholder="Confirm Password" style="width: 300px;" id="cnf_password" required >
 
 
 <!--                        <input type="text" class="form-control" placeholder="+91">-->
 <!--                        <input  class="form-control intl-tel-input" placeholder="Mobile" id="mobile-number" type="tel">-->
-                        <?php echo $form->textField($modelSub, 'phonenumber', array('class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number', 'autocomplete' => 'off')); ?>                            
+                        <?php echo $form->textField($modelSub, 'phonenumber', array('class' => 'form-control intl-tel-input', 'placeholder' => 'Mobile', 'type' => 'tel', 'id' => 'mobile-number','pattern' => '.{10,}','autocomplete' => 'off')); ?>                            
                         <?php echo $form->error($modelSub, 'phonenumber'); ?>
                         <br><br>
                         <?php echo $form->hiddenField($modelSub, 'nid', array('value' => $nid, 'id' => 'nid')); ?>

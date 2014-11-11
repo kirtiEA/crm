@@ -4,8 +4,8 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
-
+<div class="form" onload="init()">
+git 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'user-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
@@ -37,7 +37,7 @@
 		<?php //echo $form->error($role,'fname'); ?>
 	</div>
 
-	<div class="row" id="emailValidation">
+	<div class="row" >
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'email'); ?>
