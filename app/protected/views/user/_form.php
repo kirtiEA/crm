@@ -37,7 +37,7 @@
 		<?php //echo $form->error($role,'fname'); ?>
 	</div>
 
-	<div class="row">
+	<div class="row" id="emailValidation">
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'email'); ?>
