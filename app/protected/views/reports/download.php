@@ -92,9 +92,9 @@
                                             }
                                         } else {
                                             if ($site['problem']) {
-                                                $status = 'Warning'; //'<span class="glyphicon glyphicon-warning-sign"></span>';
+                                                $status = '<img src="' . Yii::app()->request->baseUrl . '/images/warning.png">'; 
                                             } else {
-                                                $status = 'OK'; //'<span class="glyphicon glyphicon-ok"></span>';
+                                                $status = '<img src="' . Yii::app()->request->baseUrl . '/images/ok.png">'; 
                                             }
                                         }
                                         echo $status;

@@ -20,11 +20,11 @@ class LoginForm extends CFormModel {
     public function rules() {
         return array(
             // email is required
-            array('email', 'required'),
+            array('email','required'),
             // email is required
             array('password', 'required', 'on' => 'signin'),
             // email should be email
-            array('email', 'match', 'pattern' => '/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/', 'message' => 'Email address is not valid.'),
+            array('email','match', 'pattern' => '/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/', 'message' => 'Email address is not valid.'),
             // email should exists
             array('email', 'emailExist', 'on' => 'forgot'),
             // email should have status 1

@@ -22,7 +22,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a href="#" id="cancel"data-dismiss="modal">Cancel</a>&nbsp;
+                    <a href="#" id="cancel">Cancel</a>&nbsp;
                     <button class="invite btn btn-primary" id="report_submit">Download Report</button>
                 </div>
             </div>
@@ -135,9 +135,9 @@
                                     $status = 'Pending';
                             } else {
                                 if ($t['problem']) {
-                                    $status = '<span class="glyphicon glyphicon-warning-sign"></span>';
+                                    $status = '<img src="' . Yii::app()->request->baseUrl . '/images/warning.png">';
                                 } else {
-                                    $status = '<span class="glyphicon glyphicon-ok"></span>';
+                                    $status = '<img src="' . Yii::app()->request->baseUrl . '/images/ok.png">';
                                 }
                             }
                             echo $status;

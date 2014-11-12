@@ -6,7 +6,10 @@
 /* CSS selectors like first-child, references like > and html tags like button do not work with mpdf.
 Therefore, using class names instead of referencing with the paren selector. 
 */
-
+ @font-face {
+      font-family: "fontAwesome";
+      src: url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/fonts/fontawesome-webfont.ttf");
+    }
 body {
 	font-family: 'Open Sans', sans-serif;
 	text-align: center;
@@ -70,4 +73,8 @@ body {
         font-size: 11px;
         word-wrap: normal;
         background-color: #F1890F;
+}
+/* Icons */
+.fa-check {
+    color: #000;
 }
