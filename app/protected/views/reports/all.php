@@ -22,8 +22,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a href="#" id="cancel">Cancel</a>&nbsp;
-                    <button class="invite btn btn-primary" id="report_submit">Download Report</button>
+                    <a href="#" id="cancel" data-dismiss="modal">Cancel</a>&nbsp;
+                    <button class="invite btn btn-primary" id="report_submit" data-dismiss="modal">Download Report</button>
                 </div>
             </div>
             </form>
