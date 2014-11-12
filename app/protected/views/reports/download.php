@@ -78,7 +78,8 @@
                 <td><?php echo $site['sitename']; ?></td>
                 <td><?php echo $site['location']; ?></td>
                 <td><?php echo $site['mediatype']; ?></td>
-                <td>Unassigned</td>
+                <td><?php echo $site['assignedto'];?></td>
+                
                 <td><?php echo date('d/m/Y', strtotime($site['dueDate'])); ?>
                 </td>
                 <td>
