@@ -125,23 +125,23 @@
                 data: 'mediatype',
                 type: 'dropdown',
                 source: <?php echo $mediaType; ?>,                
-                validator: non_empty_text,
-                allow_invalid: false
+//                validator: non_empty_text,
+//                allow_invalid: false
             }, {
                 data: 'city',
                 type: 'text',
-                validator: non_empty_text,
-                allow_invalid: false
+//                validator: non_empty_text,
+//                allow_invalid: false
             }, {
                 data: 'locality',
                 type: 'text',
-                validator: non_empty_text,
-                allow_invalid: false
+//                validator: non_empty_text,
+//                allow_invalid: false
             }, {
                 data: 'name',
                 type: 'text',
-                validator: non_empty_text,
-                allow_invalid: false
+//                validator: non_empty_text,
+//                allow_invalid: false
             }, {
                 data: 'width',
                 type: 'numeric'
@@ -170,6 +170,24 @@
         var cleanData = [];
         var changedata1 = changedata.filter(onlyUnique);
         //console.log('change data ' + changedata1);
+        
+        data.forEach(function(row){
+            //console.log('index' + i);
+            if(!row.id) {
+                cleanData.push({
+                    //id: row.id,
+                    site_code: row.site_code,
+                    name: row.name,
+                    mediatype: row.mediatype,
+                    locality: row.locality,
+                    city: row.city,
+                    length: row.length1,
+                    width: row.width,
+                    lighting: row.lighting                    
+                });
+            }
+        });
+        console.log('cleanData : ' + cleanData.length);
         for (var i = 0; i < changedata1.length; i++) {
             var row = data[changedata1[i]];
             if (row.name && row.mediatype && row.city && row.locality) {
@@ -184,28 +202,29 @@
                     width: row.width,
                     lighting: row.lighting
                 });
-            } else {
-                //console.log('i = ' + changedata1[i]);                 
-                // https://github.com/handsontable/jquery-handsontable/wiki/Methods
-                //validateCells('non_empty_text');
-                //$("#listings").handsontable('selectCell', changedata1[i], 3);
-                if(!row.mediatype) {
-                    $("#listings").handsontable('setDataAtCell', changedata1[i], 1, '*');
-                    $("#listings").handsontable('setDataAtCell', changedata1[i], 1, '');
-                }
-                if(!row.city) {
-                    $("#listings").handsontable('setDataAtCell', changedata1[i], 2, '*');
-                    $("#listings").handsontable('setDataAtCell', changedata1[i], 2, '');
-                }
-                if(!row.locality) {
-                    $("#listings").handsontable('setDataAtCell', changedata1[i], 3, '*');
-                    $("#listings").handsontable('setDataAtCell', changedata1[i], 3, '');
-                }
-                if(!row.name) {
-                    $("#listings").handsontable('setDataAtCell', changedata1[i], 4, '*');
-                    $("#listings").handsontable('setDataAtCell', changedata1[i], 4, '');
-                }
-            }
+            } 
+//            else {
+//                //console.log('i = ' + changedata1[i]);                 
+//                // https://github.com/handsontable/jquery-handsontable/wiki/Methods
+//                //validateCells('non_empty_text');
+//                //$("#listings").handsontable('selectCell', changedata1[i], 3);
+//                if(!row.mediatype) {
+//                    $("#listings").handsontable('setDataAtCell', changedata1[i], 1, '*');
+//                    $("#listings").handsontable('setDataAtCell', changedata1[i], 1, '');
+//                }
+//                if(!row.city) {
+//                    $("#listings").handsontable('setDataAtCell', changedata1[i], 2, '*');
+//                    $("#listings").handsontable('setDataAtCell', changedata1[i], 2, '');
+//                }
+//                if(!row.locality) {
+//                    $("#listings").handsontable('setDataAtCell', changedata1[i], 3, '*');
+//                    $("#listings").handsontable('setDataAtCell', changedata1[i], 3, '');
+//                }
+//                if(!row.name) {
+//                    $("#listings").handsontable('setDataAtCell', changedata1[i], 4, '*');
+//                    $("#listings").handsontable('setDataAtCell', changedata1[i], 4, '');
+//                }
+//            }
         }
 
 //        data.forEach(function(row){
@@ -224,10 +243,11 @@
 //                });
 //            }
 //        });
+        console.log('cleanData2 : ' + cleanData.length);
         return cleanData;
     }
     $('body').on('click', 'button[name=save]', function() {
-        //jQuery('#loading-image').show();        
+        jQuery('#loading-image').show();        
         var handsontableData = $('#listings').data('handsontable').getData();
         var cleanData = cleanTableData(handsontableData);
         //console.log('data of ' + dump, JSON.stringify($container.handsontable('getData')));        
@@ -252,12 +272,14 @@
                     success: function(data) {
                         //var json = JSON.parse(data);
                         //console.log(data);
+                        jQuery('#loading-image').hide();
                         if (data == true)
                             location.reload();
                         else
                             alert('Failed to save data.')
                     },
                     error: function(data) { // if error occured
+                        jQuery('#loading-image').hide();
                         alert("Error occured.please try again");
                         alert(data);
                     }

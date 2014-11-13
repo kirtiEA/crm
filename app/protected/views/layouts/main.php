@@ -21,6 +21,32 @@
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/ekko-lightbox.js"></script>        
 
     </head>
+    
+    <style>
+    .site_marked_fav {
+        background-color: #F58707;
+        color: white;
+        border: none;
+    }
+     .selectedSite {
+                background-color: bisque;
+            }
+            
+            #loading-image {
+	background-color: #333;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	z-index: 9999;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px; /* future proofing */
+	-khtml-border-radius: 10px;
+        opacity: 0.7;
+}
+</style>
     <style>
         .notification {
             width: 40px;
@@ -37,7 +63,9 @@
 
     </style>
     <body class="full static">
-
+        <div id="loading-image" style="display: none;">
+    <img style="margin-left: 400px;margin-top: 200px;" src='<?php echo Yii::app()->getBaseUrl(); ?>/images/override.gif' alt="Loading..." />
+</div>
         <nav class="navbar navbar-default" role="navigation">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
