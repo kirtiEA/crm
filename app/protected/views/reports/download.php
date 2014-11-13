@@ -26,13 +26,7 @@
               <td class="col-md-3"><b>Sites:</b></td>
               <td class="col-md-9"> 
                   <?php
-                    $siteCities = '';
-                    $siteCityCount = 0;
-                    foreach ($data['sitesInCities'] as $key => $value) {
-                        $siteCities .= $key . ' (' . $value . '), ';
-                        $siteCityCount += $value;
-                    }
-                    echo $siteCityCount;
+                    echo $data['sitesInCities'];
                     ?>
               </td>
           </tr>
@@ -169,7 +163,19 @@
                                 <div class ="problem">
                                     <b>Problems: </b>
                                     <span class="lighting">
-                                        <?php echo $pic['installation'] . ',' . $pic['lighting'] . ',' . $pic['obstruction']  ?>
+                                        <?php  
+                                        $arr = array();
+                                        if (!empty($pic['installation'])) {
+                                            array_merge($arr, explode(',', $pic['installation']));
+                                        }
+                                        if (!empty($pic['lighting'])) {
+                                            array_merge($arr, explode(',', $pic['lighting']));
+                                        }
+                                        if (!empty($pic['obstruction'])) {
+                                            array_merge($arr, explode(',', $pic['obstruction']));
+                                        }
+                                        
+                                        echo implode(',', $arr);  ?>
                                     </span>
                                 </div>
                             </div>

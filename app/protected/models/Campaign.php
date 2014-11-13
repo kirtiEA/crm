@@ -145,6 +145,7 @@ class Campaign extends BaseCampaign {
         $sitesInCities = Yii::app()->db->createCommand($sql2)->queryAll();
         
         $siteCountArr = array();
+        $finalArr = array();
         foreach($sitesInCities as $key => $value) {
             if(isset($siteCountArr[$value['city']])) { 
                 $siteCountArr[$value['city']]++;
@@ -152,10 +153,16 @@ class Campaign extends BaseCampaign {
             } else {
                 $siteCountArr[$value['city']] = 1;
             }
-        }        
+        }
+        
+        foreach ($siteCountArr as $key => $value) {
+            $str = $key . ' (' . $value . ') ';
+            array_push($finalArr, $str);
+        }
+        
         $data = array(
             'campaign' => $campArr,            
-            'sitesInCities' => $siteCountArr,
+            'sitesInCities' => implode(',', $finalArr),
             'sites' => $siteArr,
             'photos' => $photoArr
         );        

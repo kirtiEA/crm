@@ -114,7 +114,7 @@ class ReportsController extends Controller
                 if(!isset($campaignIdList[$fl['cid']])) {
                     $campaignIdList[$fl['cid']] = $fl['campaign'];
                     //shared campaigns to  be included
-                    print_r($campaignIdList);
+                  //  print_r($campaignIdList);
                 }
                 if(!isset($assignedToList[$fl['uid']])) {
                     $assignedToList[$fl['uid']] = $fl['assignedto'];
