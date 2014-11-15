@@ -18,6 +18,8 @@ class TaskController extends Controller {
         if (isset($_POST['FilterForm'])) {
             //$model->attributes = $_POST['FilterForm'];
             //  print_r($_POST['FilterForm']); 
+            $start = 0;
+            $limit = 3000;
             $cids = $_POST['FilterForm']['campaignids'];
             $uids = $_POST['FilterForm']['userids'];
             $campaigns = null;
@@ -38,7 +40,7 @@ class TaskController extends Controller {
             if (isset($_POST['FilterForm']['edate']) && !empty($_POST['FilterForm']['edate']))
                 $edate = date('Y-m-d', strtotime($_POST['FilterForm']['edate']));
             
-            $tasks = Task::fetchTaskList(Yii::app()->user->cid, $campaigns, $userids, $sdate, $edate );
+            $tasks = Task::fetchTaskList(Yii::app()->user->cid, $campaigns, $userids, $sdate, $edate, $start, $limit);
            // echo $tasks;
         } else {
             $tasks = Task::fetchTaskList(Yii::app()->user->cid);
