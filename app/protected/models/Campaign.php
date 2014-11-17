@@ -107,7 +107,7 @@ class Campaign extends BaseCampaign {
             if($siteArr[$i]['assigneduserid']== null) {
                 $siteArr[$i]['assignedto'] = 'Unassigned';
             } else {
-                if(Yii::app()->user->cid == $siteArr[$i]['companyid']) {
+                if(!Yii::app()->user->isGuest && (Yii::app()->user->cid == $siteArr[$i]['companyid'])) {
                     $siteArr[$i]['assignedto'] = ucwords($siteArr[$i]['assigneduser']);
                 } else {
                     $siteArr[$i]['assignedto'] = ucwords($siteArr[$i]['usercompany']);
