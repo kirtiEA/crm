@@ -366,6 +366,8 @@ class ReportsController extends Controller
             $sdate = null; 
             $edate = null;
             $assignedTo = null;
+            $start = 0;
+            $limit = 3000;
             if (Yii::app()->request->getParam('id')) {
                 $campaignIds = Yii::app()->request->getParam('id');
             }
@@ -384,7 +386,7 @@ class ReportsController extends Controller
                 $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));                
             }
             //echo $assignedTo;
-            $tasks = Campaign::fetchReports(null, $campaignIds, $sdate, $edate, $assignedTo, null);
+            $tasks = Campaign::fetchReports(null, $campaignIds, $sdate, $edate, $assignedTo, null, $start, $limit);
             
             
 //            echo $tasks;
