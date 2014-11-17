@@ -43,6 +43,7 @@ return array(
             'showScriptName'=>false,
             'urlFormat' => 'path',            
             'rules'=>array(
+                'shared/<vendor:[\w\-]+>/<id:[\w\-]+>/<campaignName:[\w\-]+>' => 'reports/shared',
                 /*
                 'post/<id:\d+>/<title:.*?>'=>'post/view',                
                 'posts/<tag:.*?>'=>'post/index',                 
