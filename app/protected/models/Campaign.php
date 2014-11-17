@@ -176,5 +176,59 @@ class Campaign extends BaseCampaign {
         $data = $command->queryAll();
         return $data;
     }
+    
+    public static function fetchReports($pop=null,$campaignIds=null,$sdate=null,$edate=null,$assignedTo=null,$companyId=null) {
+                    $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
+                    . " CONCAT(l.locality, ', ', a.name) as location, "
+                    . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
+                    . " FROM Task t "
+                    . " LEFT JOIN Campaign c ON c.id=t.campaignid "
+                    . " LEFT JOIN Listing l ON l.id=t.siteid "
+                    . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
+                    . " LEFT JOIN User u ON u.id=t.assigneduserid "
+                    . " LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
+                    . " LEFT JOIN Area a ON a.id=l.cityid "
+                    . " WHERE  t.status = 1 "                    
+                    . " AND l.status=1 ";
+            
+            if (!is_null($pop) && !empty($pop)) {
+                $sql .= " and t.pop=$pop ";
+            }
+            if (!is_null($companyId) && !empty($companyId)) {
+                $sql .= " AND t.assignedCompanyid=$companyIdcId ";
+            }        
+            if(!is_null($sdate) && !is_null($edate)) {
+                $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
+            } else {
+                $sql .= " AND DATE(t.dueDate) <= CURRENT_DATE() ";
+            }
+            if(!is_null($campaignIds) && strlen($campaignIds)) {
+                $sql .= " AND c.id IN ($campaignIds) ";
+            }
+            if(!is_null($assignedTo) && strlen($assignedTo)) {
+                $sql .= " AND t.assigneduserid IN ($assignedTo) ";
+            }
+             $sql .= " GROUP BY t.id ";
+            $sql .= " ORDER BY t.dueDate DESC ";
+            $tasks = Yii::app()->db->createCommand($sql)->queryAll();
+            return $tasks;
+    }
+    
+    public static function fiterReportTasks($companyId=null, $campaignIds =null) {
+        $sql = "SELECT c.id as cid, c.name as campaign, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto "
+                    . "FROM Task t "
+                    . "LEFT JOIN Campaign c ON c.id=t.campaignid "                    
+                    . "LEFT JOIN User u ON u.id=t.assigneduserid "
+                    . "WHERE t.status = 1 "
+                    . "AND DATE(t.dueDate) <= CURRENT_DATE() and u.username is not null and u.username != '' ";
+        if (!is_null($companyId) && !empty($companyId)) {
+                $sql .= " AND t.assignedCompanyid=$companyIdcId ";
+            } 
+            if(!is_null($campaignIds) && strlen($campaignIds)) {
+                $sql .= " AND c.id IN ($campaignIds) ";
+            }
+        $filters = Yii::app()->db->createCommand($sql)->queryAll();
+        return $filters;    
+    }
 }
 

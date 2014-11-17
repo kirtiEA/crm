@@ -39,6 +39,7 @@
             <form class="form-horizontol" role="form" method="post" id="filter-form" >
                 <div class="form-group">
                     <h3 class="subheader-heading">Filter Tasks</h3>
+                    <?php if (!Yii::app()->user->isGuest) :?>
                     <div class="control">
                         <label class="control-label">Campaigns</label>
                         <select class="multiselect" id="multiselect-campaigns" multiple="multiple">
@@ -47,6 +48,7 @@
                             } ?>
                         </select>
                     </div>
+                    <?php endif;?>
                     <div class="control">
                         <label class="control-label">Assigned To</label>
                         <select class="multiselect" id="multiselect-assignedto" multiple="multiple">
@@ -65,7 +67,9 @@
                     </div>
                     <input type="hidden" name="campaignids" id="campaignids" />
                     <input type="hidden" name="assignedto" id="assignedto" />
-                    <button type="submit" name="filter_submit" id="filter_submit" class="btn btn-primary">Filter</button>
+                   
+                    <button type="submit" name="filter_submit" id="filter_submit" class="btn btn-primary" action="">Filter</button>
+                    
                 </div>
             </form>
         </div>
@@ -78,7 +82,9 @@
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="active"><a href="#">Full Campaign</a></li>
+    <?php if(!Yii::app()->user->isGuest) : ?>
     <li><a href="<?php echo Yii::app()->urlManager->createUrl('reports'); ?>">Proof of Posting</a></li>
+     <?php endif;?>
 </ul>
 
 <!-- tasks list --> 
@@ -168,8 +174,12 @@
 <script type="text/javascript">
 $(document).ready(function () {
     $('.standstill').css("table-layout","fixed");
+<?php if ($vendorName) :?>
 
+var name = <?php echo '"'. $vendorName .'"';?>;
+$('#vendorName').html(name);
 
+<?php endif;?>
 var menu = $('#submenu');
 var origOffsetY = menu.offset().top;
 

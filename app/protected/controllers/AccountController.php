@@ -10,9 +10,17 @@ class AccountController extends Controller {
             if (!Yii::app()->user->isGuest) {
                 Yii::app()->user->logout();
             }
-        } else {
-            $this->redirect(Yii::app()->createUrl('myCampaigns'));
-        }
+        }    
+         if (Yii::app()->user->isGuest && Yii::app()->controller->id == 'reports') {
+            Yii::app()->theme = 'report';
+            $this->layout = "//layouts/static_page";
+            if (!Yii::app()->user->isGuest) {
+                Yii::app()->user->logout();
+            }
+        } 
+//        else {
+//            $this->redirect(Yii::app()->createUrl('myCampaigns'));
+//        }
 //        Yii::app()->theme = 'static';
 //        $this->layout = "//layouts/static_page";
     }

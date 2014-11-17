@@ -85,21 +85,21 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav tabs">
+<!--                    <ul class="nav navbar-nav tabs">
                         <li class="mon_menu menu_campaign"><a href="<?php echo Yii::app()->urlManager->createUrl('myCampaigns'); ?>">Campaigns</a></li>
                         <li class="mon_menu menu_site"><a href="<?php echo Yii::app()->urlManager->createUrl('site'); ?>">Sites</a></li>
                         <li class="mon_menu menu_vendor"><a href="<?php echo Yii::app()->urlManager->createUrl('vendor'); ?>">Vendors</a></li>
                         <li class="mon_menu menu_user"><a href="<?php echo Yii::app()->urlManager->createUrl('user'); ?>">Users</a></li>
                         <li class="mon_menu menu_task"><a href="<?php echo Yii::app()->urlManager->createUrl('task'); ?>">Tasks</a></li>
                         <li class="mon_menu menu_report"><a href="<?php echo Yii::app()->urlManager->createUrl('reports/all'); ?>">Reports</a></li>
-                    </ul>
+                    </ul>-->
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::app()->user->name; ?> <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <!--<li><a href="#">Settings</a></li>-->
-                                <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
-                            </ul>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span id="vendorName"></span> </a>
+<!--                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="<?php //echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
+                            </ul>-->
                         </li>
                         <!--                        <li class="dropdown">
                         <?php
@@ -140,7 +140,7 @@
             </div>
         <?php } ?>
         <div style="display: none" id="completePath"><?php echo Yii::app()->getBaseUrl(true); ?></div>
-        <div style="display: none" id="currentCompanyId"><?php echo Yii::app()->user->cid; ?></div>
+        
         <?php echo $content; ?>        
         <!-- invite vendor modal -->
     <div class="modal fade" id="share-campaign-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -156,7 +156,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="alert alert-danger" role="alert" style="display:none;">Please enter correct email id</div>
-                    <a href="#" id="cancel" data-dismiss="modal">Cancel</a>&nbsp;
+                    <a href="#" id="cancel">Cancel</a>&nbsp;
                     <button class="btn btn-primary" id="shareCampaign" onclick="shareCampaignToEmails();">Share</button>
                 </div>
             </div>

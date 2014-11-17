@@ -2,6 +2,24 @@
 
 class ReportsController extends Controller
 {
+    public function init() {
+
+        if (Yii::app()->user->isGuest) {
+            Yii::app()->theme = 'report';
+            $this->layout = "//layouts/static_page";
+
+
+//            if (!Yii::app()->user->isGuest) {
+//                Yii::app()->user->logout();
+//            }
+        } 
+//        else {
+//            $this->redirect(Yii::app()->createUrl('reports/all'));
+//        }
+//        Yii::app()->theme = 'static';
+//        $this->layout = "//layouts/static_page";
+    }
+    
     
     public function actionDownloadreport()
 	{
@@ -42,11 +60,11 @@ class ReportsController extends Controller
 	{
 		$this->render('fetchreport');
 	}
-        public function init() {
-            if(Yii::app()->user->isGuest) {           
-                $this->redirect(Yii::app()->createUrl('account'));
-            }
-        }
+//        public function init() {
+//            if(Yii::app()->user->isGuest) {           
+//                $this->redirect(Yii::app()->createUrl('account'));
+//            }
+//        }
         public function actionDownload() {
             $this->renderPartial('download');
         }
@@ -138,8 +156,11 @@ class ReportsController extends Controller
         
         public function actionAll()
 	{
-
-            $cId = Yii::app()->user->cid;
+            //echo "dfsdfsd";
+            if (!Yii::app()->user->isGuest) {
+                $cId = Yii::app()->user->cid;
+            }
+            
             $sdate = null; 
             $edate = null;
             $campaignIds = null;
@@ -165,114 +186,92 @@ class ReportsController extends Controller
                 $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));                
             }
             
-            $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
-                    . " CONCAT(l.locality, ', ', a.name) as location, "
-                    . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
-                    . " FROM Task t "
-                    . " LEFT JOIN Campaign c ON c.id=t.campaignid "
-                    . " LEFT JOIN Listing l ON l.id=t.siteid "
-                    . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
-                    . " LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . " LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
-                    . " LEFT JOIN Area a ON a.id=l.cityid "
-                    . " WHERE  t.status = 1 and t.assignedCompanyid=$cId "                    
-                    . " AND l.status=1 ";
-            if(!is_null($sdate) && !is_null($edate)) {
-                $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
-            } else {
-                $sql .= " AND DATE(t.dueDate) <= CURRENT_DATE() ";
-            }
-            if(!is_null($campaignIds) && strlen($campaignIds)) {
-                $sql .= " AND c.id IN ($campaignIds) ";
-            }
-            if(!is_null($assignedTo) && strlen($assignedTo)) {
-                $sql .= " AND t.assigneduserid IN ($assignedTo) ";
-            }
-            $sql .= " GROUP BY t.id ";
-            $sql .= " ORDER BY t.dueDate DESC ";
-            //echo $sql; die();
-            $tasks = Yii::app()->db->createCommand($sql)->queryAll();
-            //print_r($tasks);die();
-            //push campaign ids shared with me to this
-            $campaigns = array();
-            $campaignsSharedWithMe = MonitorlyCampaignShare::model()->findAllByAttributes(array('email' => Yii::app()->user->email));
-//            print_r($campaignsSharedWithMe);die();
-            if (!empty($campaignsSharedWithMe)) {
-                $sharedCampId = array();
-                foreach ($campaignsSharedWithMe as $key => $shared) {
-                   //print_r($shared);
-                    array_push($sharedCampId, $shared['campaignid']);
-                }
-                $campaignsIdsStr = implode(',', $sharedCampId);
-                $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
-                    . " CONCAT(l.locality, ', ', a.name) as location, "
-                    . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
-                    . " FROM Task t "
-                    . " LEFT JOIN Campaign c ON c.id=t.campaignid "
-                    . " LEFT JOIN Listing l ON l.id=t.siteid "
-                    . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
-                    . " LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . " LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
-                    . " LEFT JOIN Area a ON a.id=l.cityid "
-                    . " WHERE  t.status = 1 and t.assignedCompanyid != $cId "                    
-                    . " AND l.status=1 ";
-                    if(!is_null($sdate) && !is_null($edate)) {
-                        $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
-                    } else {
-                        $sql .= " AND DATE(t.dueDate) <= CURRENT_DATE() ";
-                    }
-                    if(!is_null($campaignIds) && strlen($campaignIds)) {
-                        $sql .= " AND c.id IN ($campaignIds) ";
-                    } else {
-                        $sql .= " AND c.id IN ($campaignsIdsStr) ";
-                    }
-                    if(!is_null($assignedTo) && strlen($assignedTo)) {
-                        $sql .= " AND t.assigneduserid IN ($assignedTo) ";
-                    }
-                    $sql .= " GROUP BY t.id ";
-                    $sql .= " ORDER BY t.dueDate DESC ";
-                    $data = Yii::app()->db->createCommand($sql)->queryAll();
-                    foreach ($data as $d) {
-                        array_push($tasks, $d);
-                    }
-            }
 
-            
+            //echo $sql; die();
+            $tasks = Campaign::fetchReports(null, $campaignIds, $sdate, $assignedTo, $sdate, $edate, $cId);
             $campaignIdList = array();
             $assignedToList = array();
-            $sql2 = "SELECT c.id as cid, c.name as campaign, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto "
-                    . "FROM Task t "
-                    . "LEFT JOIN Campaign c ON c.id=t.campaignid "
-                    . "LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . "WHERE  t.status = 1 and  t.assignedCompanyid=$cId "
-                    . "AND DATE(t.dueDate) <= CURRENT_DATE() and u.username is not null and u.username != '' ";
-            $filters = Yii::app()->db->createCommand($sql2)->queryAll();
-            foreach($filters as $fl) {
-                //echo '<pre>';
-                
-                if(!isset($campaignIdList[$fl['cid']])) {
-                    $campaignIdList[$fl['cid']] = $fl['campaign'];
+            if (!Yii::app()->user->isGuest) {
+                            $campaigns = array();
+                $campaignsSharedWithMe = MonitorlyCampaignShare::model()->findAllByAttributes(array('email' => Yii::app()->user->email));
+    //            print_r($campaignsSharedWithMe);die();
+                if (!empty($campaignsSharedWithMe)) {
+                    $sharedCampId = array();
+                    foreach ($campaignsSharedWithMe as $key => $shared) {
+                       //print_r($shared);
+                        array_push($sharedCampId, $shared['campaignid']);
+                    }
+                    $campaignsIdsStr = implode(',', $sharedCampId);
+                    $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
+                        . " CONCAT(l.locality, ', ', a.name) as location, "
+                        . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
+                        . " FROM Task t "
+                        . " LEFT JOIN Campaign c ON c.id=t.campaignid "
+                        . " LEFT JOIN Listing l ON l.id=t.siteid "
+                        . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
+                        . " LEFT JOIN User u ON u.id=t.assigneduserid "
+                        . " LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
+                        . " LEFT JOIN Area a ON a.id=l.cityid "
+                        . " WHERE  t.status = 1 and t.assignedCompanyid != $cId "                    
+                        . " AND l.status=1 ";
+                        if(!is_null($sdate) && !is_null($edate)) {
+                            $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
+                        } else {
+                            $sql .= " AND DATE(t.dueDate) <= CURRENT_DATE() ";
+                        }
+                        if(!is_null($campaignIds) && strlen($campaignIds)) {
+                            $sql .= " AND c.id IN ($campaignIds) ";
+                        } else {
+                            $sql .= " AND c.id IN ($campaignsIdsStr) ";
+                        }
+                        if(!is_null($assignedTo) && strlen($assignedTo)) {
+                            $sql .= " AND t.assigneduserid IN ($assignedTo) ";
+                        }
+                        $sql .= " GROUP BY t.id ";
+                        $sql .= " ORDER BY t.dueDate DESC ";
+                        $data = Yii::app()->db->createCommand($sql)->queryAll();
+                        foreach ($data as $d) {
+                            array_push($tasks, $d);
+                        }
                 }
-                if(!isset($assignedToList[$fl['uid']])) {
-                    $assignedToList[$fl['uid']] = $fl['assignedto'];
-                }                
-            }
-          //  print_r($tasks);die('asdas');
-            $campaignsSharedWithMe = MonitorlyCampaignShare::model()->findAllByAttributes(array('email' => Yii::app()->user->email));
-            $sharedcampaigns = array();
-            if (!empty($campaignsSharedWithMe)) {
-                $sharedCampId = array();
-                foreach ($campaignsSharedWithMe as $key => $shared) {
- //                   print_r($shared);
-                    array_push($sharedCampId, $shared['campaignid']);
+
+
+
+                $sql2 = "SELECT c.id as cid, c.name as campaign, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto "
+                        . "FROM Task t "
+                        . "LEFT JOIN Campaign c ON c.id=t.campaignid "
+                        . "LEFT JOIN User u ON u.id=t.assigneduserid "
+                        . "WHERE  t.status = 1 and  t.assignedCompanyid=$cId "
+                        . "AND DATE(t.dueDate) <= CURRENT_DATE() and u.username is not null and u.username != '' ";
+                $filters = Yii::app()->db->createCommand($sql2)->queryAll();
+                foreach($filters as $fl) {
+                    //echo '<pre>';
+
+                    if(!isset($campaignIdList[$fl['cid']])) {
+                        $campaignIdList[$fl['cid']] = $fl['campaign'];
+                    }
+                    if(!isset($assignedToList[$fl['uid']])) {
+                        $assignedToList[$fl['uid']] = $fl['assignedto'];
+                    }                
                 }
-                $sharedcampaigns = Campaign::fetchCampaignsOnIds(implode(',', $sharedCampId));
-              //  print_r($sharedcampaigns);
-            }
-            foreach ($sharedcampaigns as $camp) {
-                $campaignIdList[$camp['id']] = $camp['name'];
-            }
-            $this->render('all', array('tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList, 'selectedCampaignIds' => $campaignIds));
+              //  print_r($tasks);die('asdas');
+                $campaignsSharedWithMe = MonitorlyCampaignShare::model()->findAllByAttributes(array('email' => Yii::app()->user->email));
+                $sharedcampaigns = array();
+                if (!empty($campaignsSharedWithMe)) {
+                    $sharedCampId = array();
+                    foreach ($campaignsSharedWithMe as $key => $shared) {
+     //                   print_r($shared);
+                        array_push($sharedCampId, $shared['campaignid']);
+                    }
+                    $sharedcampaigns = Campaign::fetchCampaignsOnIds(implode(',', $sharedCampId));
+                  //  print_r($sharedcampaigns);
+                }
+                foreach ($sharedcampaigns as $camp) {
+                    $campaignIdList[$camp['id']] = $camp['name'];
+                }
+            }   
+
+            $this->render('all', array('vendorName'=> '' ,'tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList, 'selectedCampaignIds' => $campaignIds));
   //          $uploadFilePath = Yii::app()->params['fileUploadPath'].'Reports.pdf';
             
             /*$html = '<div class="high-res-images">'.
@@ -356,4 +355,50 @@ class ReportsController extends Controller
 		);
 	}
 	*/
+        
+        public function actionShared() {
+            $campaignIds = Yii::app()->request->getQuery('id');
+            $vendorName = Yii::app()->request->getQuery('vendor');
+            $assignedToList = array();
+            $campaignIdList = array();
+            $campaignIds = array();
+            $sdate = null; 
+            $edate = null;
+            $assignedTo = null;
+            if (Yii::app()->request->getParam('id')) {
+                $campaignIds = Yii::app()->request->getParam('id');
+            }
+            
+            if(isset($_POST['sdate']) && $_POST['sdate']!='') {
+                $sdate = $_POST['sdate'];
+                //$sdate = str_replace('/', '-', $sdate);
+                $sdate = date("Y-m-d", strtotime($sdate));                
+            }
+            if(isset($_POST['edate']) && $_POST['edate']!='') {    
+                $edate = $_POST['edate'];
+                //$edate = str_replace('/', '-', $edate);
+                $edate = date("Y-m-d", strtotime($edate));
+            }
+            if(isset($_POST['assignedto']) && $_POST['assignedto']!='null') {                
+                $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['assignedto'])));                
+            }
+            //echo $assignedTo;
+            $tasks = Campaign::fetchReports(null, $campaignIds, $sdate, $edate, $assignedTo, null);
+            
+            
+//            echo $tasks;
+            
+            $filters = Campaign::fiterReportTasks(null, $campaignIds);
+            foreach($filters as $fl) {
+                if(!isset($campaignIdList[$fl['cid']])) {
+                    $campaignIdList[$fl['cid']] = $fl['campaign'];
+                    //shared campaigns to  be included
+                  //  print_r($campaignIdList);
+                }
+                if(!isset($assignedToList[$fl['uid']])) {
+                    $assignedToList[$fl['uid']] = $fl['assignedto'];
+                }                
+            }
+            $this->render('all', array('vendorName'=>$vendorName,'tasks'=>$tasks, 'campaignIdList'=>$campaignIdList, 'assignedToList'=> $assignedToList, 'selectedCampaignIds' => $campaignIds));
+        }
 }

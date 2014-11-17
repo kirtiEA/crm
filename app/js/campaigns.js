@@ -423,7 +423,7 @@ function assignTaskToUser(cid, sid) {
                         $('.alert').text(data + ' invalid emails');
                         $('.alert').show();
                     } else {
-                        location.reload();
+                        //location.reload();
                     }
                    },
                    error: function(data) { // if error occured

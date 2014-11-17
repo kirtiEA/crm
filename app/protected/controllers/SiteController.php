@@ -20,11 +20,16 @@ class SiteController extends Controller {
         );
     }
 
-    public function init() {        
+    public function init() {      
+        echo Yii::app()->controller->id;
         if (Yii::app()->user->isGuest) {
-            if(Yii::app()->controller->id != 'account') {
+            if(Yii::app()->controller->id == 'account') {
                 $this->redirect(Yii::app()->createUrl('account'));
-            }            
+            } else if(Yii::app()->controller->id == 'reports') {
+                $this->redirect(Yii::app()->createUrl('reports/all'));
+            } else {
+                $this->redirect(Yii::app()->createUrl('account'));
+            }     
         }        
     }
 
