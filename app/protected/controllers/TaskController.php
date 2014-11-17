@@ -15,11 +15,12 @@ class TaskController extends Controller {
     public function actionIndex() {
         $model = new FilterForm();
         $tasks;
+                    $start = 0;
+            $limit = 3000;
         if (isset($_POST['FilterForm'])) {
             //$model->attributes = $_POST['FilterForm'];
             //  print_r($_POST['FilterForm']); 
-            $start = 0;
-            $limit = 3000;
+
             $cids = $_POST['FilterForm']['campaignids'];
             $uids = $_POST['FilterForm']['userids'];
             $campaigns = null;
@@ -43,7 +44,7 @@ class TaskController extends Controller {
             $tasks = Task::fetchTaskList(Yii::app()->user->cid, $campaigns, $userids, $sdate, $edate, $start, $limit);
            // echo $tasks;
         } else {
-            $tasks = Task::fetchTaskList(Yii::app()->user->cid);
+            $tasks = Task::fetchTaskList(Yii::app()->user->cid, null, null, null, null, $start, $limit);  
         }
         //echo $tasks;
         $campaigns = Campaign::fetchCompanyCampaignsName(Yii::app()->user->cid, 4);
