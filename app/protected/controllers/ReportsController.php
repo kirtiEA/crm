@@ -160,7 +160,8 @@ class ReportsController extends Controller
             if (!Yii::app()->user->isGuest) {
                 $cId = Yii::app()->user->cid;
             }
-            
+            $start = 0;
+            $limit = 400;
             $sdate = null; 
             $edate = null;
             $campaignIds = null;
@@ -188,7 +189,7 @@ class ReportsController extends Controller
             
 
             //echo $sql; die();
-            $tasks = Campaign::fetchReports(null, $campaignIds, $sdate, $assignedTo, $sdate, $edate, $cId);
+            $tasks = Campaign::fetchReports(null, $campaignIds, $sdate, $assignedTo, $sdate, $edate, $cId, $start, $limit);
             $campaignIdList = array();
             $assignedToList = array();
             if (!Yii::app()->user->isGuest) {

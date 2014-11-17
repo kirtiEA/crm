@@ -38,7 +38,7 @@
         <div class="col-md-12">
             <form class="form-horizontol" role="form" method="post" id="filter-form" >
                 <div class="form-group">
-                    <h3 class="subheader-heading">Filter Tasks</h3>
+                    <h3 class="subheader-heading">Filter</h3>
                     <?php if (!Yii::app()->user->isGuest) :?>
                     <div class="control">
                         <label class="control-label">Campaigns</label>

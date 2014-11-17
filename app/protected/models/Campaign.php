@@ -177,7 +177,7 @@ class Campaign extends BaseCampaign {
         return $data;
     }
     
-    public static function fetchReports($pop=null,$campaignIds=null,$sdate=null,$edate=null,$assignedTo=null,$companyId=null) {
+    public static function fetchReports($pop=null,$campaignIds=null,$sdate=null,$edate=null,$assignedTo=null,$companyId=null, $start =null, $limit =null) {
                     $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
                     . " CONCAT(l.locality, ', ', a.name) as location, "
                     . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
@@ -209,7 +209,7 @@ class Campaign extends BaseCampaign {
                 $sql .= " AND t.assigneduserid IN ($assignedTo) ";
             }
              $sql .= " GROUP BY t.id ";
-            $sql .= " ORDER BY t.dueDate DESC ";
+            $sql .= " ORDER BY t.dueDate DESC limit $start,$limit";
             $tasks = Yii::app()->db->createCommand($sql)->queryAll();
             return $tasks;
     }

@@ -46,6 +46,7 @@ return array(
             'urlFormat' => 'path',            
             'rules'=>array(
                 'shared/<vendor:[\w\-]+>/<id:[\w\-]+>/<campaignName:[\w\-]+>' => 'reports/shared',
+                'shared/<vendor:[\w\-]+>/<id:[\w\-]+>/<campaignName:[\w\-]+>/downloadreport' => 'reports/downloadreport',
                 /*
                 'post/<id:\d+>/<title:.*?>'=>'post/view',                
                 'posts/<tag:.*?>'=>'post/index',                 
