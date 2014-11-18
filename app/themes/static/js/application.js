@@ -66,9 +66,21 @@ $(document).ready(function() {
 //	  if($('#selling-points-subnav').scrollTop = 300) {alert('hi');}
 	  //if ($('#selling-points-subnav').offset() = 0)
 	  //{alert('navbar should be sticky now');}
+    
+          /* Adding a class dirty for in-built validation */
            $('#emailid').add("#mobile-number").add("#email").focusout( function() {
                   $(this).addClass("dirty");
               });
+           /* validation for email only */
+           $('#emailid').focusout( function () {
+            var val = $(this).val();
+            var email = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i; 
+            if(email.test(val)){
+              $(this).css({'border-color': '#3c763d',});
+            } else { 
+              $(this).css({'border-color': '#a94442',});
+            }
+           });
           
           
 });
