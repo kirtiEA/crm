@@ -97,12 +97,12 @@ function scroll() {
                   });
     }
     
-    $('.infinite-scroll').jscroll({
-    loadingHtml: '<img src="loading.gif" alt="Loading" /> Loading...', // The HTML to show at the bottom of the content while loading the next set.
-    padding: 2, // The distance from the bottom of the scrollable content at which to trigger the loading of the next set of content. 
-    nextSelector: 'a.jscroll-next:last',
-    autoTrigger: true
-});
+//    $('.infinite-scroll').jscroll({
+//    loadingHtml: '<img src="loading.gif" alt="Loading" /> Loading...', // The HTML to show at the bottom of the content while loading the next set.
+//    padding: 2, // The distance from the bottom of the scrollable content at which to trigger the loading of the next set of content. 
+//    nextSelector: 'a.jscroll-next:last',
+//    autoTrigger: true
+//});
 
 
 function renderDropDown(id) {
