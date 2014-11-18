@@ -16,7 +16,7 @@ class TaskController extends Controller {
         $model = new FilterForm();
         $tasks;
                     $start = 0;
-            $limit = 3000;
+            $limit = 100;
         if (isset($_POST['FilterForm'])) {
             //$model->attributes = $_POST['FilterForm'];
             //  print_r($_POST['FilterForm']); 

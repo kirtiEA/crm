@@ -979,7 +979,7 @@ class AjaxController extends Controller {
             $sdate = null;
             $edate = null;
             $start =0;
-            $limit = 50;
+            $limit = 10;
             if (isset($_POST['campaignids'])) {
                 $cids = $_POST['campaignids'];
             }
@@ -989,34 +989,31 @@ class AjaxController extends Controller {
             $campaigns = null;
             $userids = null;
             if (!empty($cids) && $cids != 'null') {
-                $campaigns = $cids;
+                $campaigns = implode(',', json_decode(str_replace('"', '', $cids)));
             }
             if (!empty($uids) && $uids != 'null') {
-                $userids = $uids;
-            }
-            if (isset($_POST['sdate'])) {
-                $model->sdate = $_POST['sdate'];
+                $userids = implode(',', json_decode(str_replace('"', '', $uids)));
             }
             
-            if (isset($_POST['edate'])) {
-               $model->edate = $_POST['edate'];
+            if (isset($_POST['start'])) {
+               $start = $_POST['start'];
 
             }
-            
             
             if (isset($_POST['sdate']) && !empty($_POST['sdate']))
                 $sdate = date('Y-m-d', strtotime($_POST['sdate']));
             if (isset($_POST['edate']) && !empty($_POST['edate']))
                 $edate = date('Y-m-d', strtotime($_POST['edate']));
             
-            if (isset($_POST['start'])) {
+            if (isset($_POST['start']) && !empty($_POST['start'])) {
                 $start = $_POST['start'];
             }
 
-            if (isset($_POST['limit'])) {
+            if (isset($_POST['limit']) && !empty($_POST['start'])) {
                 $limit = $_POST['limit'];
             }
-            $tasks = Task::fetchTaskList(Yii::app()->user->cid, $campaigns, $userids, $sdate, $edate );
+            $tasks = Task::fetchTaskList(Yii::app()->user->cid, $campaigns, $userids, $sdate, $edate,$start, $limit );
+            
             echo json_encode($tasks);
     }
     

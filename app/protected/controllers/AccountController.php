@@ -244,19 +244,32 @@ class AccountController extends Controller {
                             $resetlink = Yii::app()->getBaseUrl(true) . '/myCampaigns';
                             $vendorName = UserCompany::model()->findByPk($comp->id);
                             $emailToUser = User::model()->findByPk($noti->createdby);
-                            $mail = new EatadsMailer('request-accepted', $emailToUser->email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array(''), $vendorName['name'], $model->email);
+                            //$mail = new EatadsMailer('request-accepted', $emailToUser->email, array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array(''), $vendorName['name'], $model->email);
+                            $mail = new EatadsMailer('request-accepted', 'sales@eatads.com', array('resetLink' => $resetlink, 'vendorName' => $vendorName['name']), array(''), $vendorName['name'], $model->email);
                             $mail->eatadsSend();
+                            
+                            
+                            
+                            $mail2admin = new EatadsMailer('sign-up-admin', 'sales@eatads.com', array('userType' => $model->email, 'fname' => $comp->name, 'lname' => $model->phonenumber), array(''), $vendorName['name'], $model->email);
+                            $mail2admin->eatadsSend();
                             if ($passwordLink->save()) {
-                                $mail = new EatadsMailer('new-user', $_POST['SubscriptionForm']['email'], array('resetLink' => $resetlink1), array('shruti@eatads.com'), 'EatAds Admin');
+                                //$mail = new EatadsMailer('new-user', $_POST['SubscriptionForm']['email'], array('resetLink' => $resetlink1), array('shruti@eatads.com'), 'EatAds Admin');
+                                $mail = new EatadsMailer('new-user', 'sales@eatads.com', array('resetLink' => $resetlink1), array('sales@eatads.com'), 'EatAds Admin');
                                 $mail->eatadsSend();
-                                Yii::app()->user->setFlash('success', 'Thank you for subscribing. Please confrim your Email id by clicking on the link sent to you in the mail.');
+                                
+                                $mail2admin = new EatadsMailer('sign-up-admin', 'sales@eatads.com', array('userType' => $model->email, 'fname' => $comp->name, 'lname' => $model->phonenumber));
+                                $mail2admin->eatadsSend();
+                                Yii::app()->user->setFlash('success', 'Thank you for registering for Monitorly. We will get back to you shortly confirming your account.');
                                 $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
                             }
                         } else {
                             if ($passwordLink->save()) {
-                                $mail = new EatadsMailer('new-user', $_POST['SubscriptionForm']['email'], array('resetLink' => $resetlink1), array('shruti@eatads.com'), 'EatAds Admin');
+                                //$mail = new EatadsMailer('new-user', $_POST['SubscriptionForm']['email'], array('resetLink' => $resetlink1), array('shruti@eatads.com'), 'EatAds Admin');
+                                $mail = new EatadsMailer('new-user', 'sales@eatads.com', array('resetLink' => $resetlink1), array('sales@eatads.com'), 'EatAds Admin');
                                 $mail->eatadsSend();
-                                Yii::app()->user->setFlash('success', 'Thank you for subscribing. Please confrim your Email id by clicking on the link sent to you in the mail.');
+                                $mail2admin = new EatadsMailer('sign-up-admin', 'sales@eatads.com', array('userType' => $model->email, 'fname' => $comp->name, 'lname' => $model->phonenumber));
+                                $mail2admin->eatadsSend();
+                                Yii::app()->user->setFlash('success', 'Thank you for registering for Monitorly. We will get back to you shortly confirming your account.');
                                 $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
                             }
                         }
@@ -298,7 +311,7 @@ class AccountController extends Controller {
                     $flag = 0;
                     // $this->redirect(Yii::app()->getBaseUrl() . '/account/signup');
                 } else if (strlen($_POST['SubscriptionForm']['companyname']) != 0 && strlen($_POST['SubscriptionForm']['phonenumber']) != 0) {
-                    Yii::app()->user->setFlash('success', 'Thank you for subscribing. We will get back to you shortly.');
+                    Yii::app()->user->setFlash('success', 'Thank you for registering for Monitorly. We will get back to you shortly confirming your account.');
                     //  $this->redirect(Yii::app()->getBaseUrl() . '/account');
 //                        $vendorName = MonitorlyNotification::model()->findByPk($_POST['SubscriptionForm']['nid']);
 //                        $createdbyid = $vendorName['createdby'];

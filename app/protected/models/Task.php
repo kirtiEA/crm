@@ -14,7 +14,10 @@ class Task extends BaseTask {
     
     public static function fetchTaskList($companyid, $campaignId = null, $assignedUserId = null, $startDate = null, $endDate = null, $start = null, $limit = null ) {
         $sql = 'select l.name, length, width,mt.name as mediatype, locality, t.id, DATE_FORMAT(t.dueDate,\'%d %M %Y\') as dueDate, c.name as campaignname, 
-        u.id as assigneduserid, u.username as assignedusername from Task t 
+        u.id as assigneduserid, 
+        case when u.username is null then "UnAssigned"
+             else u.username
+        end as assignedusername from Task t 
         inner join Campaign c on c.id = t.campaignid
         inner join Listing l on l.id = t.siteid 
         inner join MediaType mt on mt.id = l.mediatypeid
@@ -34,8 +37,8 @@ class Task extends BaseTask {
         }
         
         $sql = $sql . ' order by t.dueDate ASC limit '. $start .','. $limit;
-        $tasks = Yii::app()->db->createCommand($sql)->queryAll();
-         return $tasks;
+       $tasks = Yii::app()->db->createCommand($sql)->queryAll();
+       return $tasks;
     }
     
     public static function fetchTaskDetails($tid) {

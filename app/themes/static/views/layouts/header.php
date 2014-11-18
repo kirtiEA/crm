@@ -38,6 +38,16 @@
         </style>    
     </head>
     <body>
+        <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WQCMG9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){wl=wl||[];wl.push(
+{'gtm.start': new Date().getTime(),event:'gtm.js'}
+);var f=d.getElementsByTagName(s)0,
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WQCMG9');</script>
+<!-- End Google Tag Manager -->
         <!-- header -->
         <div style="display: none;" id="completePath"><?php echo Yii::app()->getBaseUrl();?></div>
         <nav class="navbar navbar-default navbar-dark" id="header_nav" role="navigation">

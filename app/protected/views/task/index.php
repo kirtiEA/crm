@@ -8,7 +8,7 @@ var menu = $('#submenu');
 var origOffsetY = menu.offset().top;
 
 function scroll() {
-    console.log("yes"+origOffsetY);
+//    console.log("yes"+origOffsetY);
 
     if ($(window).scrollTop() >= origOffsetY) {
         $('#submenu').css("margin-top","0px");
@@ -19,7 +19,10 @@ function scroll() {
         $('#submenu').removeClass('navbar-fixed-top');
         //$('.content').removeClass('menu-padding');
     }
-
+    
+    if ($(window).scrollTop() == ($(document).height() - $(window).height())) {
+        fetchNextTasks(1);
+    }
 
    }
 
@@ -30,19 +33,12 @@ function scroll() {
         $('.menu_task').addClass('active');
 
     });
-//            $('#filter-form').submit(function() {
-//        console.log('sdfsdf'); 
-//        });
-//        $(document).ready(function() {
-////            dust.render("tasks", <?php //echo $tasks;?>, function(err, out) {
-////                $('#tasks').html(out);
-////            });
-//        });
         
        function filter() {
             $('#campaignids').val(JSON.stringify($('#multiselect-campaigns').val()));
            $('#userids').val(JSON.stringify($('#multiselect-users').val()));
-           $('#filter-form').submit();
+           //$('#filter-form').submit();
+           fetchNextTasks(2);
         }     
         
     function assignTaskToUser(uid,tid) {
@@ -63,6 +59,65 @@ function scroll() {
                     }
                   });
     }
+    var start = <?php echo count($tasks);?>;
+    var limit = 10;
+    function fetchNextTasks(id) {
+        if (id == 2) {
+            start = 0;
+        }
+        $.ajax({
+                   type: 'POST',
+                   url: '<?php echo Yii::app()->urlManager->createUrl('ajax/filterTasks'); ?>',
+                   data: {
+                       'campaignids': JSON.stringify($('#multiselect-campaigns').val()),
+                       'userids' : JSON.stringify($('#multiselect-users').val()),
+                       'sdate' : $('#sdate').val(),
+                       'edate' :$('#edate').val(),
+                       'start' :start
+                   },
+                success: function (data) {
+                    start += limit;
+                    
+                    var template = $('#task_row').html();
+                    Mustache.parse(template);   // optional, speeds up future uses
+                    var rendered = Mustache.render(template, JSON.parse(data));
+                    if (id == 1) {
+                        $('#tbody_task').append(rendered);
+                    } else if (id == 2) {
+                        $('#tbody_task').html(rendered);
+                    }    
+                    
+                    
+                    $('#task_cnt').html(start);
+                   },
+                   error: function(data) { // if error occured
+                         alert("Error occured.please try again");
+                         alert(data);
+                    }
+                  });
+    }
+    
+    $('.infinite-scroll').jscroll({
+    loadingHtml: '<img src="loading.gif" alt="Loading" /> Loading...', // The HTML to show at the bottom of the content while loading the next set.
+    padding: 2, // The distance from the bottom of the scrollable content at which to trigger the loading of the next set of content. 
+    nextSelector: 'a.jscroll-next:last',
+    autoTrigger: true
+});
+
+
+function renderDropDown(id) {
+//    console.log(id + "sdfsf");
+    var template = $('#dropdown_row').html();
+    Mustache.parse(template);   // optional, speeds up future uses
+    //var json = parseJSON();
+    var json = [];
+    json['taskid'] = id;
+    json['users'] = <?php echo json_encode($users);?>;
+    var rendered = Mustache.render(template, <?php echo json_encode($users);?>);
+    $('#ul_'+id).html(rendered);
+    
+}    
+ 
 </script>
 
 <div id="submenu" class="container-fluid sub-header">
@@ -111,6 +166,8 @@ function scroll() {
                         <?php echo $form->hiddenField($model, 'userids', array('id' => 'userids')) ?>
                     </div>
                     <div class="btn btn-primary" onclick="filter();">Filter</div>
+                    &nbsp;
+                    <a href="javascript:location.reload();" ><b>Clear Filter</b></a>
                 </div>
 <!--            </form>-->
 <?php $this->endWidget(); ?>
@@ -124,7 +181,7 @@ function scroll() {
   <div class="container-fluid content-wrapper">
     <div class="row">
       <div class="col-md-12">
-          <h1 class="list-heading pull-left">Tasks List (<?php echo count($tasks)?>)</h1>
+          <h1 class="list-heading pull-left">Tasks List (<span id="task_cnt"><?php echo count($tasks)?></span>)</h1>
 <!--        <button class="btn btn-primary pull-right table-control">Save Changes</button>-->
 
     <table class="table table-condensed" style="table-layout:fixed">
@@ -139,10 +196,10 @@ function scroll() {
         </thead>
     </table>
 
-<div id="rcontent" class="div-table-content">
-
+<div id="rcontent" class="div-table-content scroll" data-ui="jscroll-default">
+    <div class="jscroll-inner">
             <table class="table table-hover" style="table-layout:fixed">
-             <tbody>
+                <tbody id="tbody_task" class="scroll">
             <?php
             foreach ($tasks as $value) {
                  $row = '<tr>
@@ -179,10 +236,39 @@ function scroll() {
                echo $row;         
             }
           ?>
+
                 </tbody>
 
             </table>
+        <div class="next jscroll-next-parent" ><a href="javascript:fetchNextTasks(1);">next</a></div>
+    </div>
                 </div>
       </div>
     </div>
   </div>
+   
+   <script id="task_row">
+       {{#.}}
+       <tr>
+                <td>{{campaignname}}</td>
+                <td>{{name}}, {{locality}}</td>
+                <td>{{mediatype}}</td>
+                <td>
+                    <div class="dropdown">
+                      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" onclick="renderDropDown('{{id}}');" id="user_assigned_{{id}}">{{assignedusername}}<span class="caret"></span>
+                      </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="ul_{{id}}">
+              </ul>
+                    </div>
+                </td>
+                <td>{{dueDate}}</td>
+</tr>
+{{/.}}
+   </script>
+   <script id="dropdown_row">
+        {{#.}}
+            <li role="presentation" onclick="assignTaskToUser({{id}},{{taskid}});">
+                        <a role="menuitem" tabindex="-1" href="#!">{{name}}</a>
+             </li>
+        {{/.}}
+   </script>
