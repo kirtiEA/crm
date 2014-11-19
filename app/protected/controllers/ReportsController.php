@@ -3,21 +3,10 @@
 class ReportsController extends Controller
 {
     public function init() {
-
         if (Yii::app()->user->isGuest) {
             Yii::app()->theme = 'report';
             $this->layout = "//layouts/static_page";
-
-
-//            if (!Yii::app()->user->isGuest) {
-//                Yii::app()->user->logout();
-//            }
         } 
-//        else {
-//            $this->redirect(Yii::app()->createUrl('reports/all'));
-//        }
-//        Yii::app()->theme = 'static';
-//        $this->layout = "//layouts/static_page";
     }
     
     
@@ -156,7 +145,6 @@ class ReportsController extends Controller
         
         public function actionAll()
 	{
-            //echo "dfsdfsd";
             if (!Yii::app()->user->isGuest) {
                 $cId = Yii::app()->user->cid;
             }

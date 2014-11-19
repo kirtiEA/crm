@@ -3,6 +3,12 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/tasks.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
+    
+    $('#rcontent').bind('scroll', function() {
+        if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
+            fetchNextTasks(1);
+        }
+    })
 
 var menu = $('#submenu');
 var origOffsetY = menu.offset().top;
@@ -196,8 +202,7 @@ function renderDropDown(id) {
         </thead>
     </table>
 
-<div id="rcontent" class="div-table-content scroll" data-ui="jscroll-default">
-    <div class="jscroll-inner">
+<div id="rcontent" class="div-table-content">
             <table class="table table-hover" style="table-layout:fixed">
                 <tbody id="tbody_task" class="scroll">
             <?php
@@ -241,7 +246,6 @@ function renderDropDown(id) {
 
             </table>
         <div class="next jscroll-next-parent" ><a href="javascript:fetchNextTasks(1);">next</a></div>
-    </div>
                 </div>
       </div>
     </div>
