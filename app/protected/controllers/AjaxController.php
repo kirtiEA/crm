@@ -931,7 +931,7 @@ class AjaxController extends Controller {
                 $emails = explode(',', $_POST['emails']);
                 if (count($emails) > 0) {
                     foreach ($emails as $email) {
-                        if (strlen($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        if (strlen($email) && filter_var(trim($email), FILTER_VALIDATE_EMAIL)) {
                             array_push($goodEmails, $email);
                         } else {
                             array_push($badEmails, $email);
