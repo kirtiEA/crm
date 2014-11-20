@@ -145,6 +145,7 @@ class ReportsController extends Controller
         
         public function actionAll()
 	{
+            $cId = null;
             if (!Yii::app()->user->isGuest) {
                 $cId = Yii::app()->user->cid;
             }
@@ -177,7 +178,7 @@ class ReportsController extends Controller
             
 
             //echo $sql; die();
-            $tasks = Campaign::fetchReports(null, $campaignIds, $sdate, $assignedTo, $sdate, $edate, $cId, $start, $limit);
+            $tasks = Campaign::fetchReports(null, $campaignIds, $sdate, $edate,$assignedTo,  $cId, $start, $limit);
             $campaignIdList = array();
             $assignedToList = array();
             if (!Yii::app()->user->isGuest) {

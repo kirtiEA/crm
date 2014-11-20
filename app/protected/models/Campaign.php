@@ -195,7 +195,7 @@ class Campaign extends BaseCampaign {
                 $sql .= " and t.pop=$pop ";
             }
             if (!is_null($companyId) && !empty($companyId)) {
-                $sql .= " AND t.assignedCompanyid=$companyIdcId ";
+                $sql .= " AND t.assignedCompanyid=$companyId ";
             }        
             if(!is_null($sdate) && !is_null($edate)) {
                 $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
@@ -209,9 +209,9 @@ class Campaign extends BaseCampaign {
                 $sql .= " AND t.assigneduserid IN ($assignedTo) ";
             }
              $sql .= " GROUP BY t.id ";
-            $sql .= " ORDER BY t.dueDate DESC limit $start,$limit";
-            $tasks = Yii::app()->db->createCommand($sql)->queryAll();
-            return $tasks;
+          return   $sql .= " ORDER BY t.dueDate DESC";
+//            $tasks = Yii::app()->db->createCommand($sql)->queryAll();
+//            return $tasks;
     }
     
     public static function fiterReportTasks($companyId=null, $campaignIds =null) {
@@ -222,7 +222,7 @@ class Campaign extends BaseCampaign {
                     . "WHERE t.status = 1 "
                     . "AND DATE(t.dueDate) <= CURRENT_DATE() and u.username is not null and u.username != '' ";
         if (!is_null($companyId) && !empty($companyId)) {
-                $sql .= " AND t.assignedCompanyid=$companyIdcId ";
+                $sql .= " AND t.assignedCompanyid=$companyId";
             } 
             if(!is_null($campaignIds) && strlen($campaignIds)) {
                 $sql .= " AND c.id IN ($campaignIds) ";
