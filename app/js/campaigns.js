@@ -434,6 +434,9 @@ function assignTaskToUser(cid, sid) {
         }
     };
     
+    
+    
+    
     $('.mon_menu').each(function() {
         $(this).removeClass('active');
     });

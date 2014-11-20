@@ -1,7 +1,40 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-full-2.2.0.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/dust/dust-helpers-1.1.1.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/template/js/lightbox_dust.js"></script>
+    
+    
+    
+            <!-- share zip modal -->
+    <div class="modal fade" id="share-zip-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-sm-custom">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><b>Download Campaign Images</b></h3>
+                </div>
+                <div class="modal-body">
+                    <label>Select Campaign</label>&nbsp;
+                    <select name="campaign" id="selectedShareCampaign_zip">
+                        <?php foreach($campaignIdList as $key => $value) {
+                            echo "<option value='$key'>$value</option>";                            
+                        } ?>
+                    </select>
+                <br/>
+<!--                    <label>Email</label>&nbsp;-->
 
+                    <textarea placeholder="Enter comma separated Emails" style="width: 215px;" id="share_emails_zip"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <div class="alert alert-danger" role="alert" style="display:none;">Please enter correct email id</div>
+                    <a href="#" id="cancel" data-dismiss="modal">Cancel</a>&nbsp;
+                    <button class="btn btn-primary" id="sharezip" onclick="shareCampaignZipToEmails();">Download Images</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- end of invite vendor modal -->
+    
+    
     <div class="modal fade" id="download-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-sm-custom">
             <form class="form-horizontol" role="form" method="post" id="report-form" action="downloadreport">
@@ -93,6 +126,7 @@
         <div class="col-md-12">
             <h1 class="list-heading pull-left">Report</h1>
             <button class="btn btn-secondary table-control pull-right" data-toggle="modal" data-target="#download-modal"><span class="glyphicon glyphicon-download"></span> Download Report</button>
+            <button class="btn btn-secondary table-control pull-right" data-toggle="modal" data-target="#share-zip-modal"><span class="glyphicon glyphicon-download"></span> Download Campaign Images</button>
 
     <table class="table table-condensed" style="table-layout:fixed">
         <thead>
@@ -329,4 +363,37 @@ function scroll() {
 });   
         
     });
+    
+    
+    
+    function shareCampaignZipToEmails() {
+//        event.preventDefault();
+        var id = $('#selectedShareCampaign_zip').val();
+        var emails = $('#share_emails_zip').val();
+        console.log('adasd');
+        if (id && emails) {
+            $.ajax({
+                   type: 'POST',
+                   url: $('#completePath').text() + '/ajax/shareCampaignZipImages',
+                   data: {
+                       'id': id,
+                       'emails' : emails
+                   },
+                success:function(data){
+                    console.log(data + ' asdad ');
+                    var json = data;
+                    if (json.length > 0) {
+                        $('.alert').text('The email ' + data + ' is invalid');
+                        $('.alert').show();
+                    } else {
+                        location.reload();
+                    }
+                   },
+                   error: function(data) { // if error occured
+                         alert("Error occured.please try again");
+                         alert(data);
+                    }
+                  });
+        }
+    };
 </script>

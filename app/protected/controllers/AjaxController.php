@@ -1085,4 +1085,54 @@ class AjaxController extends Controller {
             
             echo json_encode($tasks);
     }
+    
+    
+    
+    
+    public function actionShareCampaignZipImages() {
+        if (isset($_POST['id']) && isset($_POST['emails'])) {
+            $goodEmails = array();
+            array_push($goodEmails, Yii::app()->user->email);
+            $badEmails = array();
+            $campaign = Campaign::model()->findByPk($_POST['id']);
+            if (!empty($campaign)) {
+                $emails = explode(',', $_POST['emails']);
+                if (count($emails) > 0) {
+                    foreach ($emails as $email) {
+                        if (strlen($email) && filter_var(trim($email), FILTER_VALIDATE_EMAIL)) {
+                            array_push($goodEmails, $email);
+                        } else {
+                            if(strlen($email)) {
+                                array_push($badEmails, $email);
+                            }
+                        }
+                    }
+                    if (count($badEmails) == 0) {
+//                        foreach ($goodEmails as $email) {
+//                            
+//                        }
+                        
+                        $data = array("emails" => implode(',', array_unique($goodEmails)));
+                        $data_json = json_encode($data);
+//                        echo '<pre>';
+//                        print_r($data);
+//                        echo http_build_query($data). ' ';
+                      $url = Yii::app()->getBaseUrl(true) . '/api/zip/' . $_POST['id'];
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($data_json)));
+ curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+curl_setopt($ch, CURLOPT_POSTFIELDS,$data_json);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+ $response  = curl_exec($ch);
+curl_close($ch);
+
+                        Yii::app()->user->setFlash('success', 'You will shortly receive a mail with a link to download images.');
+                    }
+                    echo implode(',', $badEmails) ;
+                }
+            }
+        }
+    }
 }
