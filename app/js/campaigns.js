@@ -418,9 +418,9 @@ function assignTaskToUser(cid, sid) {
                    },
                 success:function(data){
                     console.log(data + ' asdad ');
-                    var json = JSON.parse(data);
+                    var json = data;
                     if (json.length > 0) {
-                        $('.alert').text(data + ' invalid emails');
+                        $('.alert').text('The email ' + data + ' is invalid');
                         $('.alert').show();
                     } else {
                         location.reload();

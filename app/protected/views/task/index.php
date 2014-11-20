@@ -7,6 +7,7 @@ $(document).ready(function () {
     $('#rcontent').bind('scroll', function() {
         if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
             fetchNextTasks(1);
+            console.log('ada');
         }
     })
 
@@ -119,7 +120,8 @@ function renderDropDown(id) {
     var json = [];
     json['taskid'] = id;
     json['users'] = <?php echo json_encode($users);?>;
-    var rendered = Mustache.render(template, <?php echo json_encode($users);?>);
+    console.log(json)
+    var rendered = Mustache.render(template, json);
     $('#ul_'+id).html(rendered);
     
 }    
@@ -270,9 +272,10 @@ function renderDropDown(id) {
 {{/.}}
    </script>
    <script id="dropdown_row">
-        {{#.}}
+        {{#users}}
             <li role="presentation" onclick="assignTaskToUser({{id}},{{taskid}});">
                         <a role="menuitem" tabindex="-1" href="#!">{{name}}</a>
              </li>
-        {{/.}}
+        {{/users}}
+        
    </script>

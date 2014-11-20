@@ -35,12 +35,12 @@
               <td class="col-md-9"><?php echo $siteCities; ?></td>
           </tr>
           <tr>
-              <td class="col-md-3"><b>Camping Dates:</b></td>
-              <td class="col-md-9"><?php echo $data['campaign']['sdate'] . " - " . $data['campaign']['edate']; ?></td>
+              <td class="col-md-3"><b>Campaign Dates:</b></td>
+              <td class="col-md-9"><?php echo date('d/m/Y', strtotime($data['campaign']['sdate']))  . " - " . date('d/m/Y', strtotime($data['campaign']['edate'])); ?></td>
           </tr>
           <tr>
               <td class="col-md-3"><b>Generated on:</b></td>
-              <td class="col-md-9"><?php echo date('Y-m-d h:i:s'); ?></td>
+              <td class="col-md-9"><?php echo date('Y-m-d H:i'); ?></td>
           </tr>
 
       </table>

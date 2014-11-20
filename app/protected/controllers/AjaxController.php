@@ -242,7 +242,7 @@ class AjaxController extends Controller {
         foreach ($mtResult as $value) {
              $mediaTypes[$value->id] = strtolower($value->name);
         }
-        print_r($mediaTypes);
+//        print_r($mediaTypes);
         // fetch all lighting
         $lightings = array_map('strtolower', Listing::getLighting());
         //print_r($lightings); die();
@@ -257,8 +257,8 @@ class AjaxController extends Controller {
         foreach ($data as $value) {
             //  echo $value->id . ',' . strcmp($vendorId, Yii::app()->user->cid);
             $mediaTypeId = array_search(strtolower($value->mediatype), $mediaTypes);
-            echo '<pre>';
-            print_r($value->mediatype . ' -- ' . $mediaTypeId);
+          //  echo '<pre>';
+           // print_r($value->mediatype . ' -- ' . $mediaTypeId);
             $lightingId = array_search(strtolower($value->lighting), $lightings);
             //$productType = UserProduct::getUserProductType(552);//$forUserId);
 
@@ -934,7 +934,9 @@ class AjaxController extends Controller {
                         if (strlen($email) && filter_var(trim($email), FILTER_VALIDATE_EMAIL)) {
                             array_push($goodEmails, $email);
                         } else {
-                            array_push($badEmails, $email);
+                            if(strlen($email)) {
+                                array_push($badEmails, $email);
+                            }
                         }
                     }
                     if (count($badEmails) == 0) {
@@ -957,7 +959,7 @@ class AjaxController extends Controller {
                             $getName = UserCompany::model()->findByAttributes(array('userid' => Yii::app()->user->id, 'status' => 1));
                             //echo $getName['name'] ; die();
                             $agencyName = $getName['name'];
-                            $resetLink = Yii::app()->getBaseUrl(true) . '/shared/'. str_replace(' ', '_', $agencyName)  .'/' . $campaign->id.'/'. str_replace(' ', '_', $campaign['name']) ;
+                            $resetLink = Yii::app()->getBaseUrl(true) . '/shared/'. str_replace(' ', '_', $agencyName)  .'/' . $campaign->id.'/'. str_replace(' ', '_', $campaign['name'] . '/') ;
                             $sDate = new DateTime($campaign['startDate']);
                             $eDate = new DateTime($campaign['endDate']);
                             $mail = new EatadsMailer('share-campaign', $email, array('resetLink' => $resetLink,'agencyName' => $agencyName ,'CampaignName' => $campaign['name'], 'startDate' => $sDate->format('d M Y'), 'endDate' => $eDate->format('d M Y')), array('sales@eatads.com'), $agencyName, Yii::app()->user->email);
@@ -966,7 +968,7 @@ class AjaxController extends Controller {
                             Yii::app()->user->setFlash('success', 'Campaign Shared Successfully');
                     }
                     }
-                    echo json_encode($badEmails);
+                    echo implode(',', $badEmails) ;
                 }
             }
         }
