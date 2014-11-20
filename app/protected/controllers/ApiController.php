@@ -166,7 +166,42 @@ class ApiController extends Controller {
                     $this->_sendResponse(200, $tasks);
                 }
                 Yii::app()->end();
-
+            case 'zip':
+                $campaignId = $_GET['id'];
+               // $userid = $_GET['uid'];
+               // emails = $_GET['emails'];
+               
+              //fetch campaign data;
+               $campaign = Campaign::model()->findByPk($campaignId); 
+               if ($campaign) {
+                   $zipstore = 
+               } 
+                
+                //fetch all image_names for all the photos : 
+                $sql = "select imageName from Campaign c inner join Task t on t.campaignid = c.id and t.status =1 "
+                        . "inner join PhotoProof pp on pp.taskid = t.id where c.id = $campaignId";
+                $photos = Yii::app()->db->createCommand($sql)->queryAll();
+//                print_r($photos);die();
+                if ($photos) {
+                    foreach ($photos as $photo) {
+                      //  $image = JoyUtilities::getAwsFileUrl($photo['imageName'], 'listing');
+                     //   $uploadFilePath = Yii::app()->params['fileUploadPath'] . 'listing/' . $photo['imageName'];
+                      //  file_put_contents($uploadFilePath, file_get_contents($image));
+                    }
+                    $zipname = Yii::app()->params['fileUploadPath'] . 'zip/' . $campaignId . '.zip';
+                    $zip = new ZipArchive;
+                    $zip->open($zipname, ZipArchive::CREATE);
+                    foreach ($photos as $photo) {
+                     // $zip->addFile(Yii::app()->params['fileUploadPath'] . 'listing/' . $photo['imageName']);
+                    }
+                    $s3Obj = new EatadsS3();
+                    //$s3Obj->uploadFile($zipname, 'zip/' . $campaignId . '.zip');
+                    
+                    //JoyUtilities::getAwsFileUrl($campaignId . '.zip', 'zip');
+                    $zip->close();
+                }
+                Yii::app()->end();
+            break;   
             default:
                 // Model not implemented error              
                 $this->_sendResponse(501, 'Mode <b>list</b> is not implemented for model ' . $_GET['model']);

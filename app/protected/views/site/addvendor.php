@@ -263,7 +263,7 @@
             if(cleanData.length) {
                 $.ajax({
                     type: 'POST',
-                    url: '<?php //echo Yii::app()->urlManager->createUrl('ajax/massuploadsite'); ?>',
+                    url: '<?php echo Yii::app()->urlManager->createUrl('ajax/massuploadsite'); ?>',
                     data: {
                         'vendorid': vendorid,
                         'byuserid': byuserid,
@@ -280,8 +280,9 @@
                     },
                     error: function(data) { // if error occured
                         jQuery('#loading-image').hide();
-                        alert("Error occured.please try again");
-                        alert(data);
+                        //alert("Error occured.please try again");
+                        //alert(data);
+                        location.reload();
                     }
                 });
             } else {
