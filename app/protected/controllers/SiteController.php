@@ -21,7 +21,6 @@ class SiteController extends Controller {
     }
 
     public function init() {      
-        echo Yii::app()->controller->id;
         if (Yii::app()->user->isGuest) {
             if(Yii::app()->controller->id == 'account') {
                 $this->redirect(Yii::app()->createUrl('account'));
