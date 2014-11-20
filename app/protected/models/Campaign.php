@@ -209,9 +209,9 @@ class Campaign extends BaseCampaign {
                 $sql .= " AND t.assigneduserid IN ($assignedTo) ";
             }
              $sql .= " GROUP BY t.id ";
-          return   $sql .= " ORDER BY t.dueDate DESC";
-//            $tasks = Yii::app()->db->createCommand($sql)->queryAll();
-//            return $tasks;
+             $sql .= " ORDER BY t.dueDate DESC";
+            $tasks = Yii::app()->db->createCommand($sql)->queryAll();
+            return $tasks;
     }
     
     public static function fiterReportTasks($companyId=null, $campaignIds =null) {
