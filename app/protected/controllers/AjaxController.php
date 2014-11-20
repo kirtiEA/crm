@@ -934,7 +934,9 @@ class AjaxController extends Controller {
                         if (strlen($email) && filter_var(trim($email), FILTER_VALIDATE_EMAIL)) {
                             array_push($goodEmails, $email);
                         } else {
-                            array_push($badEmails, $email);
+                            if(strlen($email)) {
+                                array_push($badEmails, $email);
+                            }
                         }
                     }
                     if (count($badEmails) == 0) {
@@ -966,7 +968,7 @@ class AjaxController extends Controller {
                             Yii::app()->user->setFlash('success', 'Campaign Shared Successfully');
                     }
                     }
-                    echo json_encode($badEmails);
+                    echo implode(',', $badEmails) ;
                 }
             }
         }
