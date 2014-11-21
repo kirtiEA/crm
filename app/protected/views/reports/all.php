@@ -370,7 +370,7 @@ function scroll() {
 //        event.preventDefault();
         var id = $('#selectedShareCampaign_zip').val();
         var emails = $('#share_emails_zip').val();
-        console.log('adasd');
+       // console.log('adasd');
         if (id && emails) {
             $.ajax({
                    type: 'POST',
@@ -380,9 +380,9 @@ function scroll() {
                        'emails' : emails
                    },
                 success:function(data){
-                    console.log(data + ' asdad ');
+                    console.log(data.length + ' asdad ');
                     var json = data;
-                    if (json.length > 0) {
+                    if (data.trim().length > 0) {
                         $('.alert').text('The email ' + data + ' is invalid');
                         $('.alert').show();
                     } else {

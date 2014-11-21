@@ -401,7 +401,7 @@ class ApiController extends Controller {
                             $zip = new ZipArchive;
                             $zip->open($zipname, ZipArchive::CREATE);
                             foreach ($photos as $photo) {
-                              $zip->addFile(Yii::app()->params['fileUploadPath'] . 'listing/' . $photo['imageName']);
+                              $zip->addFile(Yii::app()->params['fileUploadPath'] . 'listing/' . $photo['imageName'],$photo['imageName']);
                             }
                             $zip->close();
                             $s3Obj = new EatadsS3();
