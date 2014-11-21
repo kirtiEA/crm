@@ -1092,7 +1092,10 @@ class AjaxController extends Controller {
     public function actionShareCampaignZipImages() {
         if (isset($_POST['id']) && isset($_POST['emails'])) {
             $goodEmails = array();
-            array_push($goodEmails, Yii::app()->user->email);
+            if (!Yii::app()->user->isGuest) {
+                array_push($goodEmails, Yii::app()->user->email);
+            }
+            
             $badEmails = array();
             $campaign = Campaign::model()->findByPk($_POST['id']);
             if (!empty($campaign)) {

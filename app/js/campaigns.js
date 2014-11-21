@@ -419,7 +419,7 @@ function assignTaskToUser(cid, sid) {
                 success:function(data){
                     console.log(data + ' asdad ');
                     var json = data;
-                    if (json.length > 0) {
+                    if (data.trim().length > 0) {
                         $('.alert').text('The email ' + data + ' is invalid');
                         $('.alert').show();
                     } else {
