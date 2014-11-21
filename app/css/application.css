@@ -9,6 +9,8 @@ html {
 /* line 19, ../scss/vendor/bootstrap/_normalize.scss */
 body {
     margin: 0;
+    width: 99.7%;
+
 }
 
 /* line 43, ../scss/vendor/bootstrap/_normalize.scss */
