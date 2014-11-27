@@ -7,16 +7,18 @@ $(document).ready( function () {
 
 /* Bind scroll to table id rcontent */
 $('#rcontent').bind('scroll', function() {
+	console.log('sdf');
+	console.log("this is" + this);
 	/* calculate window inner height */
 if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
+	console.log("this is" + this);
+	console.log("$this is" + $(this));
 	fetchNextTasks(1);
 }
 });
-
-document.onscroll = scroll;
+window.onscroll = scroll;
 /* scroll function for fixing css properties using javascript */
-var scroll = function () {
-console.log("scroll is called");
+function scroll () {
 if($(window).scrollTop() >= origOffsetY) {
 	/* first if statement starts */
 	$('#submenu').css("margin-top","0px");
@@ -307,7 +309,7 @@ $('.lightbox-btn').on('click', function (event) {
      					<input type="hidden" name="campaignids" id="campaignids" />
      					<input type="hidden" name="assignedto" id="assignedto" />
 
-     					<button type="submit" name="filter_submit" id="filter_submit" class="btn btn-primary" action="">Filter</button>
+     					<div name="filter_submit" id="filter_submit" class="btn btn-primary" onclick="filter();">Filter</div>
 
      				</div>
      			</form>
@@ -415,42 +417,17 @@ $('.lightbox-btn').on('click', function (event) {
 
 
    <script id="task_row">
-   	<tr class='<?php echo $trClass; ?>' id="<?php echo $t['id']; ?>" >
-   		<td><?php echo $t['campaign']; ?></td>
-   		<td><?php echo $t['site']; ?></td>
-   		<td><?php echo $t['location']; ?></td>
-   		<td><?php echo $t['mediatype']; ?></td>
-   		<td><?php echo strlen($t['assignedto']) ? $t['assignedto'] : 'Unassigned'; ?></td>
-   		<td><?php echo date('d/m/Y', strtotime($t['duedate'])); ?>
-   			<input type="hidden" class="duedate" value="<?php echo date('Y-m-d', strtotime($t['duedate'])); ?>" />
-   			<input type="hidden" class="pop" value="<?php echo $t['pop']; ?>" />
+   {{#.}}
+   	<tr class='{{class}}' id="{{id}}" >
+   		<td>{{campaign}}</td>
+   		<td>{{site}}</td>
+   		<td>{{location}}</td>
+   		<td>{{mediatype}}</td>
+   		<td>{{#assignedto}} {{assignedto}} {{/assignedto}} {{^assignedto}}Unassigned{{/assignedto}}</td>
+   		<td>{{duedate}}
    		</td>
-   		<td>
-   			<?php
-   			$status = '';
-   			if ($t['status'] == 0) {
-   				if($t['duedate'] < date('Y-m-d'))
-   					$status = 'Missed';
-   				else 
-   					$status = 'Pending';
-   			} else {
-   				if ($t['problem']) {
-   					$status = '<img src="' . Yii::app()->request->baseUrl . '/images/warning.png">';
-   				} else {
-   					$status = '<img src="' . Yii::app()->request->baseUrl . '/images/ok.png">';
-   				}
-   			}
-   			echo $status;
-   			?>
-   		</td>
-   		<td>
-   			<?php
-   			if ($t['status'] == 0) {
-   				echo '-';
-   			} else {
-   				echo '<a href="javascript:void(0);" class="lightbox-btn">View ('.$t['photocount'].')</a>';
-   			}
-   			?>
-   		</td>
+   		<td>{{problemstatus}}</td>
+   		<td>{{#status}}<a href="javascript:void(0);" class="lightbox-btn">View ({{photocount}})</a>{{/status}} {{^status}}-{{/status}}</td>
    	</tr>
+   	{{/.}}
    </script>
