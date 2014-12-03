@@ -7,12 +7,8 @@ $(document).ready( function () {
 
 /* Bind scroll to table id rcontent */
 $('#rcontent').bind('scroll', function() {
-	console.log('sdf');
-	console.log("this is" + this);
 	/* calculate window inner height */
 if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
-	console.log("this is" + this);
-	console.log("$this is" + $(this));
 	fetchNextTasks(1);
 }
 });
@@ -104,8 +100,8 @@ var start = 20, limit = 10;
 
 /* filter function starts */
 var filter = function () {
-$('#campaignids').val(JSON.stringify($('#multiselect-campaigns').val()));
-$('#userids').val(JSON.stringify($('#multiselect-users').val()));
+//$('#campaignids').val(JSON.stringify($('#multiselect-campaigns').val()));
+//$('#userids').val(JSON.stringify($('#multiselect-users').val()));
   //$('#filter-form').submit();
   fetchNextTasks(2);
 };
@@ -114,7 +110,7 @@ $('#userids').val(JSON.stringify($('#multiselect-users').val()));
 
 /*fetchnexttasks starts */
  var fetchNextTasks = function (id) {
- 	console.log("Hey there I have been called on click");
+// 	console.log("Hey there I have been called on click");
  	if (id == 2) {start = 0;}
  	$.ajax({
  		type: 'POST',
@@ -176,40 +172,8 @@ error: function(data) { // if error occured
 });
 /* share campaign zip to emails ends */
 
-/* lightbox start */
-$('.lightbox-btn').on('click', function (event) {
-	event.preventDefault();
-// 	/* Act on the event */
-// 	console.log('clicked');
-	var img_html = '';
-	var duedate = $(this).parents('tr').find('input.duedate').val();//children('td:eq(4).duedate').val();
-	var taskid = $(this).parents('tr').attr('id');
-	var campaign = $(this).parents('tr').children('td:eq(0)').text();
-	var site = $(this).parents('tr').children('td:eq(1)').text();
-	var pop = $(this).parents('tr').find('input.pop').val();
-	console.log(campaign + " " + site);
-	$.$.ajax({
-		url: "<?php echo Yii::app()->urlManager->createUrl('ajax/fetchppimages'); ?>",
-		type: 'POST',
-		data: {
-			taskid: taskid,
-			duedate: duedate,
-			pop: pop
-		},
-		async: false,
-		success: function (data) {
-			dust.render("lightbox", JSON.parse(data), function (err, out) {
-				$("").html(out);
-				console.log(err);
-			})
-		$('div#img-gallery a:first-child').ekkoLightbox();
-		}
-	})
-})
-/* lightbox ends */
   }
 }
-
 </script>
 
      <!-- share zip modal -->
@@ -430,4 +394,38 @@ $('.lightbox-btn').on('click', function (event) {
    		<td>{{#status}}<a href="javascript:void(0);" class="lightbox-btn">View ({{photocount}})</a>{{/status}} {{^status}}-{{/status}}</td>
    	</tr>
    	{{/.}}
+   </script>
+   
+   <script>
+   /* lightbox start */
+$('.lightbox-btn').on('click', function () {
+//	event.preventDefault();
+// 	/* Act on the event */
+// 	console.log('clicked');
+	var img_html = '';
+	var duedate = $(this).parents('tr').find('input.duedate').val();//children('td:eq(4).duedate').val();
+	var taskid = $(this).parents('tr').attr('id');
+	var campaign = $(this).parents('tr').children('td:eq(0)').text();
+	var site = $(this).parents('tr').children('td:eq(1)').text();
+	var pop = $(this).parents('tr').find('input.pop').val();
+	console.log(campaign + " " + taskid);
+	$.ajax({
+		url: "<?php echo Yii::app()->urlManager->createUrl('ajax/fetchppimages'); ?>",
+		type: 'POST',
+		data: {
+			taskid: taskid,
+			duedate: duedate,
+			pop: pop
+		},
+		async: false,
+		success: function (data) {
+			dust.render("lightbox", JSON.parse(data), function (err, out) {
+				$("#img-gallery").html(out);
+				console.log(out);
+			})
+		$('div#img-gallery a:first-child').ekkoLightbox();
+		}
+	})
+})
+/* lightbox ends */
    </script>
