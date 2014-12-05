@@ -50,10 +50,11 @@ class SiteController extends Controller {
         $this->render('index', array('markers' => json_encode($arr)));
     }
 
-    public function actionAddVendor() {
+    public function actionMySites() {
         
         // if last http referer is mysites, for preselected mysites data
-        $cId = Yii::app()->request->getParam('cid');
+        //$cId = Yii::app()->request->getParam('cid');
+        $cId = Yii::app()->user->cid;
         $mySiteName='';
         if(is_numeric($cId)) {
             // match cId
@@ -187,7 +188,7 @@ class SiteController extends Controller {
         $this->render('pendingsites', array('lists' => $result, 'markers' => json_encode($arr)));
     }
     
-    public function actionMySites() {
+    public function actionMySites1() {
          $data = Listing::getListingsForCompanyNew(Yii::app()->user->cid, 0);
            $arr = array();
             foreach ($data as $key => $value) {
@@ -201,7 +202,6 @@ class SiteController extends Controller {
             }
 //            echo json_encode($result);
         $this->render('mysites', array('markers' => json_encode($arr)));
-
     }
 
 }

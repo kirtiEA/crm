@@ -34,9 +34,9 @@
         <div class="col-md-12">
             <h1 class="list-heading">Add Sites</h1>
             <label>Select Vendor </label>
-            <input type="text" placeholder="Enter a Vendor Name" id="vendor-ac">
+            <input type="text" placeholder="Enter a Vendor Name" id="vendor-ac" disabled="true">
             <input type="hidden" value="" id="vendor-ac-id">
-            <a href="#" data-toggle="modal" data-target="#invite-vendor-modal">Can't find a vendor? <b>Invite him</b></a>
+<!--            <a href="#" data-toggle="modal" data-target="#invite-vendor-modal">Can't find a vendor? <b>Invite him</b></a>-->
             <br><br>
             <div class="row">
                 <div class="col-md-12">
