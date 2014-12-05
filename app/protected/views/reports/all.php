@@ -6,12 +6,11 @@ $(document).ready( function () {
 /* code inside doc.ready starts*/
 
 /* Bind scroll to table id rcontent */
-$('#rcontent').bind('scroll', function() {
-	/* calculate window inner height */
-if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
-	fetchNextTasks(1);
-}
-});
+ $('#rcontent').bind('scroll', function() {
+        if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
+            fetchNextTasks(1);
+        }
+    })
 window.onscroll = scroll;
 /* scroll function for fixing css properties using javascript */
 function scroll () {
@@ -50,47 +49,7 @@ $('.mon_menu').each(function() {
 });
 $('.menu_report').addClass('active');
 
-$('#filter_submit').click(function(e){
-	e.preventDefault();        
-	$('#campaignids').val(JSON.stringify($('#multiselect-campaigns').val()));
-	$('#assignedto').val(JSON.stringify($('#multiselect-assignedto').val()));
-	$('#filter-form').submit();  
-
-});
-
-$('#report_submit').click(function(e){
-	e.preventDefault();        
-	$('#report-form').submit();
-});
-var selectedCamp = <?php 
-if (!empty($selectedCampaignIds)) {
-	echo "'" .$selectedCampaignIds . "'";
-} else {
-	echo "0";
-}    
-?> ;
-var arrselectedCamp = [];
-if (selectedCamp != 0) {
-	arrselectedCamp = selectedCamp.split(',');
-}   
 /* Legacy code ends*/
-
-
-$("#multiselect-campaigns option").each(function() {
-/* This for loop could be optimized by either caching the length or by looping till zero.Commenting both approaches */
-/*	var length = arrselectedCamp.length;
-	for (var i = length - 1; i >= 0; i--) {
-		if ($(this).val() == parseInt(arrselectedCamp[i])) { 
-		console.log($(this).addClass("active"));
-		} 
-	};
-*/
-	for(var i=0; i<arrselectedCamp.length; i++) { 
-		// console.log($(this).val() + ' sdfsdfs' + parseInt(arrselectedCamp[i]) ); 
-		if ($(this).val() == parseInt(arrselectedCamp[i])) { 
-			console.log($(this).addClass("active"));
-		} } 
-	});
 
 	/* code inside doc.ready ends*/
 });
@@ -100,9 +59,7 @@ var start = 20, limit = 10;
 
 /* filter function starts */
 var filter = function () {
-//$('#campaignids').val(JSON.stringify($('#multiselect-campaigns').val()));
-//$('#userids').val(JSON.stringify($('#multiselect-users').val()));
-  //$('#filter-form').submit();
+
   fetchNextTasks(2);
 };
 
@@ -110,7 +67,7 @@ var filter = function () {
 
 /*fetchnexttasks starts */
  var fetchNextTasks = function (id) {
-// 	console.log("Hey there I have been called on click");
+ 	console.log("Hey there I have been called on click");
  	if (id == 2) {start = 0;}
  	$.ajax({
  		type: 'POST',
@@ -118,8 +75,8 @@ var filter = function () {
  		data: {
  			'campaignids': JSON.stringify($('#multiselect-campaigns').val()),
  			'userids' : JSON.stringify($('#multiselect-users').val()),
- 			'sdate' : $('#sdate').val(),
- 			'edate' :$('#edate').val(),
+ 			'sdate' : $('#srdate').val(),
+ 			'edate' :$('#erdate').val(),
  			'start' :start
  		},
  		success: function (data) {
@@ -171,7 +128,6 @@ error: function(data) { // if error occured
 }
 });
 /* share campaign zip to emails ends */
-
   }
 }
 </script>
@@ -256,7 +212,7 @@ error: function(data) { // if error occured
      					<?php endif;?>
      					<div class="control">
      						<label class="control-label">Assigned To</label>
-     						<select class="multiselect" id="multiselect-assignedto" multiple="multiple">
+     						<select class="multiselect" id="multiselect-users" multiple="multiple">
      							<?php foreach($assignedToList as $key => $value) {
      								echo "<option value='$key'>$value</option>";                            
      							} ?>
@@ -360,7 +316,7 @@ error: function(data) { // if error occured
      								if ($t['status'] == 0) {
      									echo '-';
      								} else {
-     									echo '<a href="javascript:void(0);" class="lightbox-btn">View ('.$t['photocount'].')</a>';
+     									echo '<a href="javascript:void(0);" class="lightbox-btn" onclick="lightBoxView(' . $t['id'] .');">View ('.$t['photocount'].')</a>';
      								}
      								?>
      							</td>
@@ -388,44 +344,32 @@ error: function(data) { // if error occured
    		<td>{{location}}</td>
    		<td>{{mediatype}}</td>
    		<td>{{#assignedto}} {{assignedto}} {{/assignedto}} {{^assignedto}}Unassigned{{/assignedto}}</td>
-   		<td>{{duedate}}
-   		</td>
-   		<td>{{problemstatus}}</td>
-   		<td>{{#status}}<a href="javascript:void(0);" class="lightbox-btn">View ({{photocount}})</a>{{/status}} {{^status}}-{{/status}}</td>
+   		<td>{{duedateNew}}</td>
+   		<td>{{#class}}{{problemstatus}}{{/class}} {{^class}}<img src="{{problemImage}}"> {{/class}}</td>
+   		<td> {{#class}}-{{/class}} {{^class}}<a href="javascript:void(0);" class="lightbox-btn" onclick="lightBoxView({{id}});">View ({{photocount}})</a>{{/class}}</td>
    	</tr>
    	{{/.}}
    </script>
    
+   
    <script>
-   /* lightbox start */
-$('.lightbox-btn').on('click', function () {
-//	event.preventDefault();
-// 	/* Act on the event */
-// 	console.log('clicked');
-	var img_html = '';
-	var duedate = $(this).parents('tr').find('input.duedate').val();//children('td:eq(4).duedate').val();
-	var taskid = $(this).parents('tr').attr('id');
-	var campaign = $(this).parents('tr').children('td:eq(0)').text();
-	var site = $(this).parents('tr').children('td:eq(1)').text();
-	var pop = $(this).parents('tr').find('input.pop').val();
-	console.log(campaign + " " + taskid);
+    /* lightbox start */
+function lightBoxView (id) {
 	$.ajax({
 		url: "<?php echo Yii::app()->urlManager->createUrl('ajax/fetchppimages'); ?>",
 		type: 'POST',
 		data: {
-			taskid: taskid,
-			duedate: duedate,
-			pop: pop
+			taskid: id
 		},
 		async: false,
 		success: function (data) {
 			dust.render("lightbox", JSON.parse(data), function (err, out) {
 				$("#img-gallery").html(out);
-				console.log(out);
+				//console.log(err);
 			})
 		$('div#img-gallery a:first-child').ekkoLightbox();
 		}
 	})
-})
-/* lightbox ends */
-   </script>
+}
+/* lightbox ends */            
+</script>               

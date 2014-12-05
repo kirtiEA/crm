@@ -209,7 +209,7 @@ class Campaign extends BaseCampaign {
                 $sql .= " AND t.assigneduserid IN ($assignedTo) ";
             }
              $sql .= " GROUP BY t.id ";
-             $sql .= " ORDER BY t.dueDate DESC";
+             $sql .= " ORDER BY t.dueDate DESC limit $start,$limit";
             $tasks = Yii::app()->db->createCommand($sql)->queryAll();
             return $tasks;
     }

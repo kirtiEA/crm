@@ -1019,71 +1019,114 @@ class AjaxController extends Controller {
             echo json_encode($tasks);
     }
     
-    public function actionFilterAllReports() {
-        $cId = Yii::app()->user->cid;
+ public function actionFilterAllReports() {
+            $cId = null;
+            if (!Yii::app()->user->isGuest) {
+                $cId = Yii::app()->user->cid;
+            }
+            $start = 0;
+            $limit = 100;
             $sdate = null; 
             $edate = null;
             $campaignIds = null;
             $assignedTo = null;
             
             if(isset($_POST['sdate']) && $_POST['sdate']!='') {
-                $sdate = $_POST['sdate'];
+//                $sdate = $_POST['sdate'];
                 //$sdate = str_replace('/', '-', $sdate);
-                $sdate = date("Y-m-d", strtotime($sdate));                
+                $sdate = date("Y-m-d", strtotime($_POST['sdate']));                
             }
             if(isset($_POST['edate']) && $_POST['edate']!='') {    
-                $edate = $_POST['edate'];
+//                $edate = $_POST['edate'];
                 //$edate = str_replace('/', '-', $edate);
-                $edate = date("Y-m-d", strtotime($edate));
+                $edate = date("Y-m-d", strtotime($_POST['edate']));
             }
             
-            if(isset($_POST['campaignids']) && $_POST['campaignids']!='null') {
-                $campaignIds = $_POST['campaignids'];                
-            } else if (Yii::app()->request->getParam('cid')) {
-                $campaignIds = Yii::app()->request->getParam('cid');
-            }
-            if(isset($_POST['assignedto']) && $_POST['assignedto']!='null') {                
-                $assignedTo = $_POST['assignedto'];                
-            }
-            $start ;
-            if (isset($_POST['start']) && $_POST['start'] != 'null') {
+            if(isset($_POST['start']) && $_POST['start']!='') {    
                 $start = $_POST['start'];
             }
             
-            $limit ;
-            if (isset($_POST['limit']) && $_POST['limit'] != 'null') {
+            if(isset($_POST['limit']) && $_POST['limit']!='') {    
                 $limit = $_POST['limit'];
             }
             
-            $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
-                    . " CONCAT(l.locality, ', ', a.name) as location, "
-                    . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
-                    . " FROM Task t "
-                    . " LEFT JOIN Campaign c ON c.id=t.campaignid "
-                    . " LEFT JOIN Listing l ON l.id=t.siteid "
-                    . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
-                    . " LEFT JOIN User u ON u.id=t.assigneduserid "
-                    . " LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
-                    . " LEFT JOIN Area a ON a.id=l.cityid "
-                    . " WHERE  t.status = 1 and t.assignedCompanyid=$cId "                    
-                    . " AND l.status=1 ";
-            if(!is_null($sdate) && !is_null($edate)) {
-                $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
-            } else {
-                $sql .= " AND DATE(t.dueDate) <= CURRENT_DATE() ";
+            if(isset($_POST['campaignids']) && $_POST['campaignids']!='null') {
+                $campaignIds = implode(',', json_decode(str_replace('"', '', $_POST['campaignids'])));                
+            } else if (Yii::app()->request->getParam('cid')) {
+                $campaignIds = Yii::app()->request->getParam('cid');
             }
-            if(!is_null($campaignIds) && strlen($campaignIds)) {
-                $sql .= " AND c.id IN ($campaignIds) ";
+            if(isset($_POST['userids']) && $_POST['userids']!='null') {                
+                $assignedTo = implode(',', json_decode(str_replace('"', '', $_POST['userids'])));                
             }
-            if(!is_null($assignedTo) && strlen($assignedTo)) {
-                $sql .= " AND t.assigneduserid IN ($assignedTo) ";
+
+            $tasks = Campaign::fetchReports(null, $campaignIds, $sdate, $edate,$assignedTo,  $cId, $start, $limit);
+         //   print_r($tasks);die();
+            if (!is_null($campaignIds)) {
+                $campaigns = array();
+                $campaignsSharedWithMe = MonitorlyCampaignShare::model()->findAllByAttributes(array('email' => Yii::app()->user->email));
+    //            print_r($campaignsSharedWithMe);die();
+                if (!empty($campaignsSharedWithMe)) {
+                    $sharedCampId = array();
+                    foreach ($campaignsSharedWithMe as $key => $shared) {
+                       //print_r($shared);
+                        array_push($sharedCampId, $shared['campaignid']);
+                    }
+                    $campaignsIdsStr = implode(',', $sharedCampId);
+                    $sql = "SELECT t.id, c.id as cid, c.name as campaign, l.name as site, mt.name as mediatype, t.dueDate as duedate, "
+                        . " CONCAT(l.locality, ', ', a.name) as location, "
+                        . " t.taskDone as status, t.problem, u.id as uid, CONCAT(u.fname,' ', u.lname) as assignedto, t.pop, IFNULL(COUNT(pp.id),0) as photocount "
+                        . " FROM Task t "
+                        . " LEFT JOIN Campaign c ON c.id=t.campaignid "
+                        . " LEFT JOIN Listing l ON l.id=t.siteid "
+                        . " LEFT JOIN MediaType mt ON mt.id=l.mediaTypeId "
+                        . " LEFT JOIN User u ON u.id=t.assigneduserid "
+                        . " LEFT JOIN PhotoProof pp ON pp.taskid=t.id "
+                        . " LEFT JOIN Area a ON a.id=l.cityid "
+                        . " WHERE  t.status = 1 and t.assignedCompanyid != $cId "                    
+                        . " AND l.status=1 ";
+                        if(!is_null($sdate) && !is_null($edate)) {
+                            $sql .= " AND DATE(t.dueDate) BETWEEN '$sdate' AND '$edate' ";
+                        } else {
+                            $sql .= " AND DATE(t.dueDate) <= CURRENT_DATE() ";
+                        }
+                        if(!is_null($campaignIds) && strlen($campaignIds)) {
+                            $sql .= " AND c.id IN ($campaignIds) ";
+                        } else {
+                            $sql .= " AND c.id IN ($campaignsIdsStr) ";
+                        }
+                        if(!is_null($assignedTo) && strlen($assignedTo)) {
+                            $sql .= " AND t.assigneduserid IN ($assignedTo) ";
+                        }
+                        $sql .= " GROUP BY t.id ";
+                        $sql .= " ORDER BY t.dueDate DESC ";
+                        $data = Yii::app()->db->createCommand($sql)->queryAll();
+                        foreach ($data as $d) {
+                            array_push($tasks, $d);
+                        }
+                }
             }
-            $sql .= " GROUP BY t.id ";
-            $sql .= " ORDER BY t.dueDate DESC ";
-            //echo $sql; die();
-            $tasks = Yii::app()->db->createCommand($sql)->queryAll();
-            
-            echo json_encode($tasks);
+            $newtasks = array();
+            foreach ($tasks as $t) {
+                $t['duedateNew'] = date('d/m/Y', strtotime($t['duedate']));
+                if ($t['status'] == 0) {
+                    $t['class'] = 'danger';
+                    
+                    if($t['duedate'] < date('Y-m-d'))
+                        $t['problemstatus'] = 'Missed';
+                    else 
+                        $t['problemstatus'] = 'Pending';
+                } else {
+                    if ($t['problem']) {
+                        $t['problemImage'] = Yii::app()->request->baseUrl . '/images/warning.png';
+//                        $status = '<img src="' . Yii::app()->request->baseUrl . '/images/warning.png">';
+                    } else {
+                        $t['problemImage'] = Yii::app()->request->baseUrl . '/images/ok.png';
+//                        $status = '<img src="' . Yii::app()->request->baseUrl . '/images/ok.png">';
+                    }
+                }
+                array_push($newtasks, $t);  
+            }
+            echo json_encode($newtasks);
     }
     
     
@@ -1121,15 +1164,15 @@ class AjaxController extends Controller {
 //                        print_r($data);
 //                        echo http_build_query($data). ' ';
                       $url = Yii::app()->getBaseUrl(true) . '/api/zip/' . $_POST['id'];
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($data_json)));
- curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-curl_setopt($ch, CURLOPT_POSTFIELDS,$data_json);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_TIMEOUT, 2);
- $response  = curl_exec($ch);
-curl_close($ch);
+                        $ch = curl_init();
+                        curl_setopt($ch, CURLOPT_URL, $url);
+                        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($data_json)));
+                         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+                        curl_setopt($ch, CURLOPT_POSTFIELDS,$data_json);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+                         $response  = curl_exec($ch);
+                        curl_close($ch);
 
                         Yii::app()->user->setFlash('success', 'You will shortly receive a mail with a link to download images.');
                     }
