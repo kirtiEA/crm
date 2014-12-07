@@ -4,13 +4,6 @@
 <script type="text/javascript">
 $(document).ready( function () {
 /* code inside doc.ready starts*/
-
-/* Bind scroll to table id rcontent */
- $('#rcontent').bind('scroll', function() {
-        if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
-            fetchNextTasks(1);
-        }
-    })
 window.onscroll = scroll;
 /* scroll function for fixing css properties using javascript */
 function scroll () {
@@ -28,6 +21,10 @@ if($(window).scrollTop() >= origOffsetY) {
 	/* Second if else statement ends */
 }
 	/* first if statement ends */
+        
+         if ($(window).scrollTop() == ($(document).height() - $(window).height())) {
+        fetchNextTasks(1);
+    }
 }
 /* Legacy code starts*/
 $('.standstill').css("table-layout","fixed");
@@ -353,6 +350,13 @@ error: function(data) { // if error occured
    
    
    <script>
+               /* Bind scroll to table id rcontent */
+ $('#rcontent').bind('scroll', function() {
+        if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
+            console.log('asd');
+            fetchNextTasks(1);
+        }
+    });
     /* lightbox start */
 function lightBoxView (id) {
 	$.ajax({
