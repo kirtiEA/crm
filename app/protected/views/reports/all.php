@@ -127,6 +127,7 @@ error: function(data) { // if error occured
 /* share campaign zip to emails ends */
   }
 }
+
 </script>
 
      <!-- share zip modal -->
@@ -376,4 +377,9 @@ function lightBoxView (id) {
 	})
 }
 /* lightbox ends */            
+
+$('#report_submit').click(function(e){
+	e.preventDefault();        
+	$('#report-form').submit();
+});
 </script>               
