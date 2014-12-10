@@ -9,6 +9,17 @@ class SiteModal extends CWidget {
         }
     }
     public function run() {
-        $this->render('siteModal');        
+        $cid = Yii::app()->request->getParam('cid');
+        $listings = Listing::getListingsForCampaign(Yii::app()->user->cid, $cid);
+//        print_r(Yii::app()->request->getParam('cid'));
+        $listingsFinal = array();
+        foreach ($listings as $list) {
+            $usersperlisting = Task::fetcUsersAssignedToSite($list['id'],  $cid, Yii::app()->user->cid);
+           // print_r($usersperlisting);die();
+            $list['monitor'] = $usersperlisting['username'];
+            array_push($listingsFinal, $list);
+        }
+        
+        $this->render('siteModal',array('listings' => $listingsFinal));        
     }
 }

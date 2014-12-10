@@ -5,52 +5,11 @@ $('.mon_menu').each(function() {
     });
     $('.menu_campaign').addClass('active');
 </script>
-<div class="container-fluid sub-header">
-    <div class="row">
-        <div class="col-md-12">
-            <!-- <form class="form-horizontol" role="form"> -->
-             <?php $form=$this->beginWidget('CActiveForm', array(
-                                'id'=>'create-campaign',
-                                'action' => Yii::app()->getBaseUrl() .  '/campaign/create',   
-                                //'enableClientValidation'=>true,
-                                'clientOptions'=>array(
-                                        'validateOnSubmit'=>true,
-                                ),
-                        )); ?>
-                <div class="form-group">
-                    <h3 class="subheader-heading">Add New Campaign</h3>
-                    <div class="control">
-                        <label class="control-label">Name</label>
-                        <?php echo $form->textField($model,'name'); ?>
-                        <?php echo $form->error($model,'name'); ?>
-<!--                        
-                        <input type="text">-->
-                    </div>
-                    <div class="control">
-                        <label class="control-label">Start Date</label>
-                        <?php echo $form->textField($model,'startDate', array('id' => 'sdate')); ?>
-                        <?php echo $form->error($model,'startDate'); ?>
-<!--                        <input type="text" class="datepicker" name="sdate" id="sdate" />-->
-                    </div>
-                    <div class="control">
-                        <label class="control-label">End Date</label>
-                        <?php echo $form->textField($model,'endDate', array('id' => 'edate')); ?>
-                        <?php echo $form->error($model,'endDate'); ?>
-<!--                        <input type="text" class="datepicker" name="edate" id="edate" />-->
-                    </div>
-                    <button class="btn btn-primary">Add</button>
-                </div>
-      <?php $this->endWidget(); ?>      
-<!--            </form>-->
-        </div>
-    </div>
-</div>
-<!-- end of add new user sub-header --> 
-
 <ul class="nav nav-tabs" role="tablist">
     <li ><a href="<?php echo Yii::app()->createUrl('myCampaigns');?>" >Created by Me</a></li>
-    <li><a href="<?php echo Yii::app()->createUrl('assignedCampaigns');?>" >Assigned to Me</a></li>
+<!--    <li><a href="<?php //echo Yii::app()->createUrl('assignedCampaigns');?>" >Assigned to Me</a></li>-->
     <li class="active"><a href=#" >Shared With Me</a></li>
+    <li class="pull-right"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#campaign_creation_modal">+ Add New Campaign</button></li>
 </ul>
 
 <!-- campaigns list --> 

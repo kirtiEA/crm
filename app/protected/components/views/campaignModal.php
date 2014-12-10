@@ -1,15 +1,6 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/mdp.css" />
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.multidatespicker.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.min.js"></script>
-<<<<<<< HEAD
-<!--<script>
-$('#campaign_creation_modal').on('shown.bs.modal', function() {
-    $(document).off('focusin.bs.modal');
-});
-</script>-->
-=======
-
->>>>>>> 141688b95f860ccf766716519e8aee0d3f001af0
 <!-- Campaign creation Modal -->
 <div class="modal fade" id="campaign_creation_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -66,46 +57,46 @@ $('#altField').multiDatesPicker({
     altField: '#altField',
     minDate: today
 });
-    $('#listings_campaign').handsontable({
-       colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
-      //rowHeaders: false,
-      colWidths: [100, 150, 100, 150, 100, 100, 100, 100],
-      currentRowClassName: 'currentRow',
-      currentColClassName: 'currentCol',
-       manualColumnResize: true,
-       manualRowResize: true,
-      startRows: 20,
-      minSpareRows: 5,
-      onChange: function() {
-        if (arguments[0] !== null) {
-          changedata[changedata.length] = arguments[0][0][0];
-        } else {
-        }   
-      },
-      columns: [{
-        data: 'site_code',
-        type: 'text'
-      }, {
-        data: 'name',
-        type: 'text',
-      }, {
-        data: 'city',
-        type: 'text',
-      }, {
-        data: 'locality',
-        type: 'text',
-      }, {
-        data: 'width',
-        type: 'numeric'
-      }, {
-        data: 'length1',
-        type: 'numeric'
-      }, {
-        data: 'monitor',
-        type: 'dropdown',
-        source: <?php echo json_encode($this->users);?>
-            }]
-          });
+//    $('#listings_campaign').handsontable({
+//       colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
+//      //rowHeaders: false,
+//      colWidths: [100, 150, 100, 150, 100, 100, 100, 100],
+//      currentRowClassName: 'currentRow',
+//      currentColClassName: 'currentCol',
+//       manualColumnResize: true,
+//       manualRowResize: true,
+//      startRows: 20,
+//      minSpareRows: 5,
+//      onChange: function() {
+//        if (arguments[0] !== null) {
+//          changedata[changedata.length] = arguments[0][0][0];
+//        } else {
+//        }   
+//      },
+//      columns: [{
+//        data: 'site_code',
+//        type: 'text'
+//      }, {
+//        data: 'name',
+//        type: 'text',
+//      }, {
+//        data: 'city',
+//        type: 'text',
+//      }, {
+//        data: 'locality',
+//        type: 'text',
+//      }, {
+//        data: 'width',
+//        type: 'numeric'
+//      }, {
+//        data: 'length1',
+//        type: 'numeric'
+//      }, {
+//        data: 'monitor',
+//        type: 'dropdown',
+//        source: 
+//            }]
+//          });
           
 //function fetchSites() {
 //  var handsontable = $('#listings').data('handsontable');

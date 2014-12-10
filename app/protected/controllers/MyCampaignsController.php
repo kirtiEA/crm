@@ -55,9 +55,14 @@ class MyCampaignsController extends Controller {
         /*
          * fetch campaigns of the Company
          */
-        $campaigns = Campaign::fetchCompanyCampaignsName(Yii::app()->user->cid);
+        $t= 1;
+        if (Yii::app()->request->getParam('t')) {
+            $t = Yii::app()->request->getParam('t');
+        }
+        $campaigns = Campaign::fetchCompanyCampaignsName(Yii::app()->user->cid,$t);
         $finalCampaigns = array();
         //              print_r($campaigns); die();
+        $users = User::fetchCompanyUsers(Yii::app()->user->cid);
         foreach ($campaigns as $key => $value) {
             $vendors = UserCompany::fetchVendorsInCampaign($value['id']);
             //echo count($vendors);
@@ -66,8 +71,16 @@ class MyCampaignsController extends Controller {
             for ($i = 0; $i < count($vendors); $i++) {
                 //echo $vendors[$i]['name'] . ' ww ' . $vendors[$i]['id'];
                 $listings = Listing::getListingsForCampaign($vendors[$i]['id'], $value['id']);
-                $temp = $vendors[$i];
-                $temp['listings'] = $listings;
+                    $temp = $vendors[$i];
+                        $listingsFinal = array();
+                        foreach ($listings as $list) {
+                            $usersperlisting = Task::fetcUsersAssignedToSite($list['id'], $value['id'], Yii::app()->user->cid);
+                           // print_r($usersperlisting);die();
+                            $list['assignedusers'] = $usersperlisting;
+                            array_push($listingsFinal, $list);
+                        }
+                        
+                        $temp['listings'] = $listingsFinal;
 //                        print_r($temp);die();
                 array_push($result, $temp);
             }
@@ -88,7 +101,7 @@ class MyCampaignsController extends Controller {
         /*
          * fetch Vendors list that needs to be published
          */
-        $this->render('index', array('model' => $model, 'campaigns' => $finalCampaigns));
+        $this->render('index', array('model' => $model, 'campaigns' => $finalCampaigns,'users' => $users));
     }
 
     public function actionUpcoming() {
@@ -100,6 +113,7 @@ class MyCampaignsController extends Controller {
         $campaigns = Campaign::fetchCompanyCampaignsName(Yii::app()->user->cid, 2);
         $finalCampaigns = array();
         //              print_r($campaigns); die();
+        $users = User::fetchCompanyUsers(Yii::app()->user->cid);
         foreach ($campaigns as $key => $value) {
             $vendors = UserCompany::fetchVendorsInCampaign($value['id']);
             //echo count($vendors);
@@ -130,7 +144,7 @@ class MyCampaignsController extends Controller {
         /*
          * fetch Vendors list that needs to be published
          */
-        $this->render('upcoming', array('model' => $model, 'campaigns' => $finalCampaigns));
+        $this->render('upcoming', array('model' => $model, 'campaigns' => $finalCampaigns,'users' => $users));
     }
 
     

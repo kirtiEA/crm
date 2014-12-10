@@ -287,10 +287,11 @@ var createnewcampaign = function () {
           }  
         },
         success: function (data) {
-            //console.log('campaign id ' + data);
+           console.log('campaign id ' + data);
             $('#createdcampaignid').html(data);
             if (data) {
-                location.reload = '/myCampaigns/addsites';
+                console.log($('#completePath').text()+  '/myCampaigns/addsites?cid=' + data);
+                window.location.href = $('#completePath').text()+  '/myCampaigns/addsites?cid=' + data;
 //                $("#firstStep, #myModalfirstLabel,#NextButtonCampaignModal").addClass("hide");
 //                $("#secondStep,#myModalsecondLabel,#FinishButtonCampaignModal").removeClass("hide");
             }
@@ -302,48 +303,6 @@ var createnewcampaign = function () {
     });
  };
 
-
-var callMeSecondTime1 = function () {
-//    $('#campaign_creation_modal').modal("hide");
-//    $('#flash-messages').show('slow', function() {
-//    });
-    
-      jQuery('#loading-image').show();        
-  var handsontableData = $('#listings').data('handsontable').getData();
-  var cleanData = cleanTableData(handsontableData);
-  console.log(cleanDate);
-//  if (byuserid) {
-var cid = $('createdcampaignid').text();
-    if(cleanData.length && cid.length) {
-      $.ajax({
-        type: 'POST',
-        url: $('#completePath').text() +'ajax/massuploadsiteForCampaign',
-        data: {
-         // 'byuserid': byuserid,
-          'cid' : cid, 
-          'data': JSON.stringify(cleanData)
-        },
-        success: function(data) {
-          jQuery('#loading-image').hide();
-          if (data == true)
-            location.reload();
-          else
-            alert('Failed to save data.')
-        },
-        error: function(data) {
-          jQuery('#loading-image').hide();
-          location.reload();
-        }
-      });
-    } else {
-        alert('Please enter sites data');
-    }
-//  } else {
-//    alert("Please select Media Vendor from the drop down");
-//    $(window).scrollTop(0);
-//    $('#vendor-ac').focus();
-//  }
-};
     var formValidation = function () {
         console.log("form validation is being called");
       var name = $("#campaignname").val();

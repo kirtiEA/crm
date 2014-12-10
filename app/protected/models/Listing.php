@@ -459,10 +459,12 @@ class Listing extends BaseListing {
     }
     
      public static function getListingsForCampaign($companyid, $campaignid) {
-        $listings = Yii::app()->db->createCommand('select distinct t.siteid,l.id,l.name, length, width,mt.name as mediatype, locality,
+        $listings = Yii::app()->db->createCommand('select distinct t.siteid,
+            l.id, l.site_code, mt.name as mediatype, a.name as city, l.locality, l.name, l.length as length1, l.width, l.lightingid ,
             t.assignedCompanyId
             from Task t 
 inner join Listing l on l.id = t.siteid and l.status = 1 and companyid = ' . $companyid . '
+                    LEFT JOIN Area a ON a.id=l.cityid 
 inner join MediaType mt on mt.id = l.mediatypeid
 where t.status =1 and t.campaignid = ' . $campaignid)->queryAll();
         return $listings;

@@ -1,16 +1,16 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/handsontable.full.css" />
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/handsontable.full.js"></script>
 <div class="col-xs-12">
-    <div  id="listings_campaign"></div>
+    <div  id="listings_campaign" ></div>
 </div>
-
+<span class="hide" id="sidedata"><?php echo json_encode($listings);?></span>
 <script>
     var changedata = [];
   $(document).ready(function() {
     
     $('#listings_campaign').handsontable({
        colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
-      //rowHeaders: false,
+      rowHeaders: true,
       colWidths: [100, 150, 100, 150, 100, 100, 100, 100],
       currentRowClassName: 'currentRow',
       currentColClassName: 'currentCol',
@@ -49,12 +49,7 @@
             }]
           });
           
-//function fetchSites() {
-//  var handsontable = $('#listings').data('handsontable');
-//  handsontable.loadData(null);
-//  var parsedData = JSON.parse($('#data').html());
-//  handsontable.loadData(parsedData);
-//}
+
 
 
 //function savecampaignnew() {
@@ -93,9 +88,23 @@
 //  }
 //}
 
+
+ var handsontable = $('#listings_campaign').data('handsontable');
+  handsontable.loadData(null);
+  var parsedData = JSON.parse($('#sidedata').html());
+  handsontable.loadData(parsedData);
 });
 
+function fetchSites() {
+  var handsontable = $('#listings_campaign').data('handsontable');
+  handsontable.loadData(null);
+  var parsedData = JSON.parse($('#sidedata').html());
+  handsontable.loadData(parsedData);
+}
 
+function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+    }
 function cleanTableData(data) {
   var cleanData = [];
   var changedata1 = changedata.filter(onlyUnique);
@@ -134,7 +143,7 @@ function cleanTableData(data) {
   return cleanData;
 }
 
-var callMeSecondTime = function () {
+var addSitesToCampaign = function () {
 //    $('#campaign_creation_modal').modal("hide");
 //    $('#flash-messages').show('slow', function() {
 //    });
@@ -157,7 +166,7 @@ var cid = $('#createdcampaignid').html();
         success: function(data) {
           jQuery('#loading-image').hide();
           if (data)
-            location.reload();
+            window.location.href = $('#completePath').text()+  '/myCampaigns';
           else
             alert('Failed to save data.')
         },
