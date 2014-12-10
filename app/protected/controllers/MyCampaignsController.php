@@ -189,7 +189,10 @@ class MyCampaignsController extends Controller {
         $this->render('newcampaign', array('model' => $model, 'campaigns' => $finalCampaigns,'users' => $usernames));
     }
     
-    
+    public function actionAddSites() {
+        //echo 'asd';
+        $this->render('addsite', array('cid' => Yii::app()->request->getParam('cid')));
+    }
     
     
     

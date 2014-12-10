@@ -1,67 +1,13 @@
-<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/mdp.css" />
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.multidatespicker.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.min.js"></script>
-<!--<script>
-$('#campaign_creation_modal').on('shown.bs.modal', function() {
-    $(document).off('focusin.bs.modal');
-});
-</script>-->
-<!-- Campaign creation Modal -->
-<div class="modal fade" id="campaign_creation_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h1 class="modal-title text-center text-success headings-campaign" id="myModalfirstLabel">Start Creating Campaigns</h1>
-        <h1 class="modal-title text-center hide text-success headings-campaign" id="myModalsecondLabel">Add Vendor Sites</h1>
-      </div>
-      <div class="modal-body row text-success" id="firstStep">
-      	<div class="col-xs-12">
-      		<div class="col-xs-6 wizard-date-select">
-            <h3 class="headings-campaign">Campaign Details</h3>
-            <form action="wizard_submit" method="post" accept-charset="utf-8">
-             <div class="form-group">
-               <label for="Campaign_name">Name</label>
-               <input type="name" class="form-control " name="Campaign[name]" id="campaignname" required>
-             </div>
-             <div class="form-group">
-               <label for="startdate">Start Date</label>
-               <input type="text" name="startdate" class="form-control datepicker" id="snewcampaigndate" required>
-             </div>
-             <div class="form-group">
-               <label for="enddate">End Date</label>
-               <input type="text" name="enddate" class="form-control datepicker" id="enewcampaigndate" required>
-             </div>
-           </form>
-         </div>
-         <div class="col-xs-6">
-           <h3 class="headings-campaign">Schedule Campaigns</h3>
-           <div class="datepicker" id="altField"></div>
-         </div>
-       </div>
-     </div>
-     <div class="modal-body row hide" id="secondStep">
-         <span id="createdcampaignid" class="hide"></span>  
-       <div class="col-xs-12">
-           <div  id="listings_campaign" style="overflow: scroll;"></div>
-      </div>
-    </div>
-    <div class="modal-footer">
-    <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
-      <button type="button" class="btn btn-danger" onclick="formValidation() ? createnewcampaign() : noValidation()" id="NextButtonCampaignModal">Next</button>
-      <button type="button" class="btn btn-danger hide" onclick="callMeSecondTime()" id="FinishButtonCampaignModal">Finish</button>
-    </div>
-  </div>
+<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/handsontable.full.css" />
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/handsontable.full.js"></script>
+<div class="col-xs-12">
+    <div  id="listings_campaign"></div>
 </div>
-</div>
+
 <script>
     var changedata = [];
   $(document).ready(function() {
-    var today = new Date();
-$('#altField').multiDatesPicker({
-    altField: '#altField',
-    minDate: today
-});
+    
     $('#listings_campaign').handsontable({
        colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
       //rowHeaders: false,
@@ -229,10 +175,4 @@ var cid = $('#createdcampaignid').html();
 //    $('#vendor-ac').focus();
 //  }
 };
-</script>    
-
-<!--<style>
-    .ht_clone_top, .ht_clone_left, .ht_clone_corner {
-  display: none; !important;
-}
-    </style>-->
+</script> 

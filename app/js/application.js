@@ -169,6 +169,46 @@ $(document).ready(function () {
             }
         });
     });
+    
+    /* datepicker */
+  $("#snewcampaigndate").datepicker({
+        //changeMonth: true,
+        numberOfMonths: 1,
+        minDate: 0,
+        dateFormat: 'dd M yy',
+        onClose: function (selectedDate) {
+            if (selectedDate)
+                $("#edate").datepicker("option", "minDate", selectedDate);
+        }
+    });
+    $("#enewcampaigndate").datepicker({
+        minDate: 0,
+        //changeMonth: true,
+        numberOfMonths: 1,
+        dateFormat: 'dd M yy',
+        onClose: function (selectedDate) {
+            $("#sdate").datepicker("option", "maxDate", selectedDate);
+        }
+    });
+// $("#snewcampaigndate").multiDatesPicker({
+//     showAnim: "slide",
+//     mode: "normal",
+//     dateFormat: "dd M yy"
+  // onClose: function( selectedDate ) {
+  //   console.log(selectedDate);
+  //  var month_val = selectedDate.slice(0, 2);
+  //  var date_val = selectedDate.slice(3, 5);
+  //  var year_val = selectedDate.slice(6, 10);
+  //  console.log(month_val + date_val + year_val);
+  //  if ($('#altField').find("td > a").val() == date_val) {
+  //    $(this).addClass('ui-state-highight');
+  //  }
+  //  else { console.log("error baby error")};
+  // }
+  // });
+
+
+});
 
     //cancel updating new password
     jQuery(document.body).on('click', '.cancel', function () {
@@ -207,30 +247,6 @@ $(document).ready(function () {
 
     });
 
-
-// this is the new campaign datepicket
-$("#startdate,#enddate").multiDatesPicker({
-    showButtonPanel: true,
-    showAnim: "slide",
-    dateFormat: 'dd M yy', 
-  onClose: function( selectedDate ) {
-   var month_val = selectedDate.slice(0, 2);
-   var date_val = selectedDate.slice(3, 5);
-   var year_val = selectedDate.slice(6, 10);
-//   console.log(month_val + date_val + year_val);
-   if ($('#altField').find("td > a").val() == date_val) {
-     $(this).addClass('ui-state-highight');
-   }
-   else { console.log("error baby error")};
-  }
-  });
-$('#altField').multiDatesPicker({
-    altField: '#altField',
-    showButtonPanel: false
-});
-
-});
-
 //flash messages fade in fade out
 $('#flash-messages').fadeOut('slow', function () {
     $(this).remove();
@@ -255,11 +271,11 @@ function fetchNotifications() {
 
 
 var createnewcampaign = function () {
-  var name = $("#nameofcampaign").val();
-  var startdate = $("#startdate").val();
-  var enddate = $("#enddate").val();
-  var customdate = $("#altField").val();
-  console.log(customdate);
+   var name = $("#campaignname").val();
+   var startdate = $("#snewcampaigndate").val();
+   var enddate = $("#enewcampaigndate").val();
+   var customdate = $("#altField").val();
+  console.log("customdate is" + customdate + "name is" + name + "startdate is" + startdate + "enddate is" + enddate );
   $.ajax({
         type: 'POST',
         url: $('#completePath').text() + '/ajax/createNewCampaign',
@@ -274,8 +290,9 @@ var createnewcampaign = function () {
             //console.log('campaign id ' + data);
             $('#createdcampaignid').html(data);
             if (data) {
-                $("#firstStep, #myModalfirstLabel,#NextButtonCampaignModal").addClass("hide");
-                $("#secondStep,#myModalsecondLabel,#FinishButtonCampaignModal").removeClass("hide");
+                location.reload = '/myCampaigns/addsites';
+//                $("#firstStep, #myModalfirstLabel,#NextButtonCampaignModal").addClass("hide");
+//                $("#secondStep,#myModalsecondLabel,#FinishButtonCampaignModal").removeClass("hide");
             }
         },
         error: function (data) { // if error occured
@@ -283,7 +300,7 @@ var createnewcampaign = function () {
             alert(data);
         }
     });
-};
+ };
 
 
 var callMeSecondTime1 = function () {
@@ -327,3 +344,23 @@ var cid = $('createdcampaignid').text();
 //    $('#vendor-ac').focus();
 //  }
 };
+    var formValidation = function () {
+        console.log("form validation is being called");
+      var name = $("#campaignname").val();
+      var startdate = $("#snewcampaigndate").val();
+      var enddate = $("#enewcampaigndate").val();
+      console.log(name + startdate + enddate);
+      if (name && startdate && enddate) {
+        return true;
+        // console.log("true that");
+        // $("#NextButtonCampaignModal").removeClass("diabled");
+      }else {
+        console.log("false");
+        return false;
+      }
+    };
+
+    var noValidation = function () {
+      console.log("no validation is being called");
+      $(".form-group").addClass('has-error');
+    };
