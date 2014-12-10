@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery.handsontable.full.css" />
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.handsontable.full.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.multidatespicker.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.min.js"></script>
 
 <!-- Campaign creation Modal -->
 <div class="modal fade" id="campaign_creation_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -18,16 +19,16 @@
             <h3 class="headings-campaign">Campaign Details</h3>
             <form action="wizard_submit" method="post" accept-charset="utf-8">
              <div class="form-group">
-               <label for="nameofcampaign">Name</label>
-               <input type="name" class="form-control" id="nameofcampaign" placeholder="Name">
+               <label for="Campaign_name">Name</label>
+               <input type="name" class="form-control " name="Campaign[name]" id="campaignname" required>
              </div>
              <div class="form-group">
                <label for="startdate">Start Date</label>
-               <input type="text" class="form-control datepicker" id="startdate" placeholder="Start Date">
+               <input type="text" name="startdate" class="form-control datepicker" id="snewcampaigndate" required>
              </div>
              <div class="form-group">
-               <label for="startdate">End Date</label>
-               <input type="text" class="form-control datepicker" id="enddate" placeholder="End date">
+               <label for="enddate">End Date</label>
+               <input type="text" name="enddate" class="form-control datepicker" id="enewcampaigndate" required>
              </div>
            </form>
          </div>
@@ -45,7 +46,7 @@
     </div>
     <div class="modal-footer">
     <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
-      <button type="button" class="btn btn-danger" onclick="createnewcampaign()" id="NextButtonCampaignModal">Next</button>
+      <button type="button" class="btn btn-danger" onclick="formValidation() ? createnewcampaign() : noValidation()" id="NextButtonCampaignModal">Next</button>
       <button type="button" class="btn btn-danger hide" onclick="callMeSecondTime()" id="FinishButtonCampaignModal">Finish</button>
     </div>
   </div>
@@ -55,13 +56,13 @@
   $(document).ready(function() {
     var changedata = [];
     $('#listings').handsontable({
-      colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
-      rowHeaders: true,
+      // colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
+      rowHeaders: false,
       colWidths: [100, 150, 100, 150, 100, 100, 100, 100],
       currentRowClassName: 'currentRow',
       currentColClassName: 'currentCol',
-      manualColumnResize: true,
-      manualRowResize: true,
+      // manualColumnResize: true,
+      // manualRowResize: true,
       startRows: 20,
       minSpareRows: 5,
       onChange: function() {
