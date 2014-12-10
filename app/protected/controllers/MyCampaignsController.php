@@ -157,7 +157,7 @@ class MyCampaignsController extends Controller {
                 $finalCampaigns = array();
   //              print_r($campaigns); die();
                 $users = User::fetchCompanyUsers(Yii::app()->user->cid);
-                $usernames = [];
+                $usernames = array();
                 foreach ($users as $user) {
                     array_push($usernames, $user['name']);
                 }

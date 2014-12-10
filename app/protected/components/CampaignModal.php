@@ -1,7 +1,7 @@
 <?php
 
 class CampaignModal extends CWidget {
-    public $users = [];
+    public $users = array();
     public function init() {
         $users = User::fetchCompanyUsers(Yii::app()->user->cid);
         foreach ($users as $user) {

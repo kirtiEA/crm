@@ -1203,7 +1203,7 @@ class AjaxController extends Controller {
     }
     
     public function actionMassuploadsiteForCampaign() {
-        $lids = [];
+        $lids = array();
         $cid = Yii::app()->request->getParam('cid');
         
         // fetch all media types to match
