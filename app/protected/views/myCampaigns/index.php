@@ -6,6 +6,7 @@ $('.mon_menu').each(function() {
     });
     $('.menu_campaign').addClass('active');
 </script>
+
 <div class="container-fluid sub-header">
     <div class="row">
         <div class="col-md-12">
@@ -19,7 +20,7 @@ $('.mon_menu').each(function() {
                                 ),
                         )); ?>
                 <div class="form-group">
-                    <h3 class="subheader-heading">Add New Campaign</h3>
+                    <h3 class="subheader-heading" data-toggle="modal" data-target="#campaign_creation_modal">Add New Campaign</h3>
                     <div class="control">
                         <label class="control-label">Name</label>
                         <?php echo $form->textField($model,'name'); ?>
@@ -115,3 +116,5 @@ $('.mon_menu').each(function() {
     </div>
 </div>
 <!-- end of campaigns list --> 
+
+<?php $this->widget('CampaignModal'); ?>

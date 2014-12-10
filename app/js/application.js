@@ -207,6 +207,22 @@ $(document).ready(function () {
 
     });
 
+
+// this is the new campaign datepicket
+$(".datepicker").multiDatesPicker({
+    altField: '#altField',
+    showButtonPanel: true,
+    showAnim: "slide"
+  // onClose: function( selectedDate ) {
+  //  console.log(selectedDate);
+  //  if ($('#altField').find("td").val() == selectedDate) {
+  //    $(this).addClass('ui-state-highight');
+  //  }
+  //  else { console.log("error baby error")};
+ //  }
+  });
+
+
 });
 
 //flash messages fade in fade out
@@ -230,3 +246,17 @@ function fetchNotifications() {
     });
 
 }
+
+
+var callMe = function () {
+  var name = $("#nameofcampaign").val();
+  var startdate = $("#startdate").val();
+  var enddate = $("#enddate").val();
+  var customdate = $("#altField").val();
+  console.log("Name is" + name);
+  console.log("start date is" + startdate);
+  console.log("end date is" + enddate);
+  console.log("Custom date is" + customdate);
+  $("#firstStep, #myModalfirstLabel").addClass("hide");
+  $("#secondStep,#myModalsecondLabel").removeClass("hide");
+};
