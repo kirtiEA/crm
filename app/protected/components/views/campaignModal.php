@@ -38,9 +38,9 @@
        </div>
      </div>
      <div class="modal-body row hide" id="secondStep">
-         <span id="createdcampaignid" class="hide"></span>  
+         <span id="createdcampaignid" class="hide">89</span>  
        <div class="col-xs-12">
-        <div class="upload-holder" id="listings"></div>
+           <div class="upload-holder" id="listings_campaign" style="overflow: scroll;"></div>
       </div>
     </div>
     <div class="modal-footer">
@@ -52,9 +52,10 @@
 </div>
 </div>
 <script>
-  $(document).ready(function() {
     var changedata = [];
-    $('#listings').handsontable({
+  $(document).ready(function() {
+    
+    $('#listings_campaign').handsontable({
       colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
       rowHeaders: true,
       colWidths: [100, 150, 100, 150, 100, 100, 100, 100],
@@ -62,8 +63,8 @@
       currentColClassName: 'currentCol',
       manualColumnResize: true,
       manualRowResize: true,
-      startRows: 20,
-      minSpareRows: 5,
+//      startRows: 2,
+      minSpareRows: 1,
       onChange: function() {
         if (arguments[0] !== null) {
           changedata[changedata.length] = arguments[0][0][0];
@@ -75,7 +76,7 @@
         type: 'text'
       }, {
         data: 'name',
-        type: 'dropdown',
+        type: 'text',
       }, {
         data: 'city',
         type: 'text',
@@ -91,16 +92,57 @@
       }, {
         data: 'monitor',
         type: 'dropdown',
-              //  source: 
+        source: <?php echo json_encode($this->users);?>
             }]
           });
-function fetchSites(cid) {
+          
+//function fetchSites() {
+//  var handsontable = $('#listings').data('handsontable');
+//  handsontable.loadData(null);
+//  var parsedData = JSON.parse($('#data').html());
+//  handsontable.loadData(parsedData);
+//}
 
-  var handsontable = $('#listings_'+cid).data('handsontable');
-  handsontable.loadData(null);
-  var parsedData = JSON.parse($('#data_'+cid).html());
-  handsontable.loadData(parsedData);
-}
+
+//function savecampaignnew() {
+//  jQuery('#loading-image').show();        
+//  var handsontableData = $('#listings').data('handsontable').getData();
+//  var cleanData = cleanTableData(handsontableData);
+//  var byuserid = '<?php //echo Yii::app()->user->id; ?>';
+//  if (byuserid) {
+//    if(cleanData.length) {
+//      $.ajax({
+//        type: 'POST',
+//        url: '<?php //echo Yii::app()->urlManager->createUrl('ajax/massuploadsiteForCampaign'); ?>',
+//        data: {
+//          'byuserid': byuserid,
+//          'data': JSON.stringify(cleanData)
+//        },
+//        success: function(data) {
+//          jQuery('#loading-image').hide();
+//          if (data == true)
+//            location.reload();
+//          else
+//            alert('Failed to save data.')
+//        },
+//        error: function(data) {
+//          jQuery('#loading-image').hide();
+//          location.reload();
+//        }
+//      });
+//    } else {
+//
+//    }
+//  } else {
+//    alert("Please select Media Vendor from the drop down");
+//    $(window).scrollTop(0);
+//    $('#vendor-ac').focus();
+//  }
+//}
+
+});
+
+
 function cleanTableData(data) {
   var cleanData = [];
   var changedata1 = changedata.filter(onlyUnique);
@@ -115,7 +157,8 @@ function cleanTableData(data) {
         city: row.city,
         length: row.length1,
         width: row.width,
-        lighting: row.lighting                    
+        lighting: row.lighting,
+        monitor: row.monitor,
       });
     }
   });
@@ -137,18 +180,25 @@ function cleanTableData(data) {
   console.log('cleanData2 : ' + cleanData.length);
   return cleanData;
 }
-function savecampaignnew(id) {
-  jQuery('#loading-image').show();        
-  var handsontableData = $('#listings_'+id).data('handsontable').getData();
+
+var callMeSecondTime = function () {
+//    $('#campaign_creation_modal').modal("hide");
+//    $('#flash-messages').show('slow', function() {
+//    });
+    
+      jQuery('#loading-image').show();        
+  var handsontableData = $('#listings_campaign').data('handsontable').getData();
   var cleanData = cleanTableData(handsontableData);
-  var byuserid = '<?php echo Yii::app()->user->id; ?>';
-  if (byuserid) {
-    if(cleanData.length) {
+  console.log(cleanData);
+//  if (byuserid) {
+var cid = $('#createdcampaignid').html();
+    if(cleanData.length && cid.length) {
       $.ajax({
         type: 'POST',
-        url: '<?php echo Yii::app()->urlManager->createUrl('ajax/massuploadsiteForCampaign'); ?>',
+        url: $('#completePath').text() +'/ajax/massuploadsiteForCampaign',
         data: {
-          'byuserid': byuserid,
+         // 'byuserid': byuserid,
+          'cid' : cid, 
           'data': JSON.stringify(cleanData)
         },
         success: function(data) {
@@ -160,18 +210,16 @@ function savecampaignnew(id) {
         },
         error: function(data) {
           jQuery('#loading-image').hide();
-          location.reload();
+         // location.reload();
         }
       });
     } else {
-
+        alert('Please enter sites data');
     }
-  } else {
-    alert("Please select Media Vendor from the drop down");
-    $(window).scrollTop(0);
-    $('#vendor-ac').focus();
-  }
-}
-
-});
+//  } else {
+//    alert("Please select Media Vendor from the drop down");
+//    $(window).scrollTop(0);
+//    $('#vendor-ac').focus();
+//  }
+};
 </script>    

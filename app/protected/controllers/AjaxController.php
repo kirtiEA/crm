@@ -402,26 +402,6 @@ class AjaxController extends Controller {
         echo true;
     }
 
-    public function actionAddsitetocampaign() {
-        $this->render('addsitetocampaign');
-    }
-
-    public function actionAssignzonetouser() {
-        $this->render('assignzonetouser');
-    }
-
-    public function actionManagesites() {
-        $this->render('managesites');
-    }
-
-    public function actionSiteautocomplete() {
-        $this->render('siteautocomplete');
-    }
-
-    public function actionUpdatetaskassignment() {
-        $this->render('updatetaskassignment');
-    }
-
     /*
      * update user password
      */
@@ -1185,10 +1165,47 @@ class AjaxController extends Controller {
     }
     
     
-    
+    private static function createTaskForASite($cid, $add) {
+        $campaign = Campaign::model()->findByPk($cid);
+    //    print_r($campaign);
+        //This is till we have first all days monitoring
+        $diff = strtotime($campaign->attributes['endDate']) - strtotime($campaign->attributes['startDate']);
+//        if ($campaign['type'] != $_POST['type']) {
+//            $tasks = Task::fetchAllSitesInCampaign($_POST['cid']);
+//            for ($i = 0; $i < count($tasks); $i++) {
+//                array_push($add, $tasks[$i]['siteid']);
+//            }
+//            $add = array_unique($add);
+//
+//            Task::deleteAllTaskForCampaign($_POST['cid']);
+//            Campaign::model()->updateByPk($campaign['id'], array('type' => $_POST['type']));
+//        }
+        
+//        if (count($add) > 0) {
+//            for ($i = 0; $i < count($add); $i++) {
+                $date = strtotime($campaign->attributes['startDate']);
+                while ((strtotime($campaign->attributes['endDate']) - $date) >= 0) {
+                    $task = new Task();
+                    $task->assignedCompanyId = Yii::app()->user->cid;
+                    $task->campaignid = $_POST['cid'];
+                    $task->siteid = $add;
+                    $task->status = 1;
+                    $task->dueDate = date("Y-m-d H:i:s", $date);
+                    $task->pop = 0;
+                    $task->createdDate = date("Y-m-d H:i:s");
+                    $task->createdBy = Yii::app()->user->id;
+                    $task->save();
+                    $date = strtotime('+1 day', $date);
+                }
+                return 1;
+            //}
+       // }
+    }
     
     public function actionMassuploadsiteForCampaign() {
         $lids = [];
+        $cid = Yii::app()->request->getParam('cid');
+        
         // fetch all media types to match
        // $mtResult = Mediatype::model()->findAll();
 //        $mediaTypes = array();
@@ -1210,6 +1227,7 @@ class AjaxController extends Controller {
         foreach ($data as $value) {
             $mediaTypeId = 1;
             $lightingId = 1;
+           // print_r($value->locality);
             //  echo $value->id . ',' . strcmp($vendorId, Yii::app()->user->cid);
           //  $mediaTypeId = array_search(strtolower($value->mediatype), $mediaTypes);
           //  echo '<pre>';
@@ -1285,6 +1303,14 @@ class AjaxController extends Controller {
                 $listingModel->datecreated = date('Y-m-d H:i:s');
                 $listingModel->save();
                 array_push($lids, $listingModel->id);
+                //create task for the days
+              $flag = AjaxController::createTaskForASite($cid, $listingModel->id);
+                $userid = User::model()->findByAttributes(array('username' => $value->monitor));
+                //print_r($userid['id']);
+                if ($flag && $userid->attributes['id'] ) {
+                    //assign task to user
+                    Task::updateAssignTaskforaSite($listingModel->id, $cid, $userid->attributes['id']);
+                }
             } else if (!empty($value->id) && strcmp($listingModel->companyId, Yii::app()->user->cid) == 0) {
                 //$listingModel->id = $value->id;
                 // $model = Listing::model()->findByPk($value->id);
@@ -1333,9 +1359,9 @@ class AjaxController extends Controller {
 //            usleep(250000);
         }
 
-        Yii::app()->user->setFlash('successconst', 'Sites Added Successfully');
+        Yii::app()->user->setFlash('successconst', 'Campaign Created Successfully');
         //Yii::app()->user->setFlash('success', 'Sites Added Successfully');
-        echo json_encode($lids);
+        echo true;
     }
     
     
@@ -1357,11 +1383,13 @@ class AjaxController extends Controller {
                 $model->endDate = date("Y-m-d H:i:s", strtotime($model->endDate));
                 $model->save();
             }
-            echo $model->id;
             $link = Yii::app()->getBaseUrl(true) . '/myCampaigns/upcoming';
             //Send a mail to admin for 
             $mail = new EatadsMailer('create-campaign', Yii::app()->user->email, array('resetLink' => $link, 'CampaignName' => $model->name, 'startDate' => $sdate, 'endDate' => $edate));
-            $mail->eatadsSend();
+           // $mail->eatadsSend();
+            echo $model->id;
         }
     }
+    
+    
 }
