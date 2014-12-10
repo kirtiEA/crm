@@ -55,7 +55,8 @@
     var today = new Date();
 $('#altField').multiDatesPicker({
     altField: '#altField',
-    minDate: today
+    minDate: today,
+    dateFormat: 'dd M yy',
 });
 //    $('#listings_campaign').handsontable({
 //       colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
@@ -145,85 +146,85 @@ $('#altField').multiDatesPicker({
 });
 
 
-function cleanTableData(data) {
-  var cleanData = [];
-  var changedata1 = changedata.filter(onlyUnique);
-
-  data.forEach(function(row){
-    if(!row.id) {
-      cleanData.push({
-        site_code: row.site_code,
-        name: row.name,
-        mediatype: row.mediatype,
-        locality: row.locality,
-        city: row.city,
-        length: row.length1,
-        width: row.width,
-        lighting: row.lighting,
-        monitor: row.monitor,
-      });
-    }
-  });
-  console.log('cleanData : ' + cleanData.length);
-  for (var i = 0; i < changedata1.length; i++) {
-    var row = data[changedata1[i]];
-    if (row.name && row.mediatype && row.city && row.locality) {
-      cleanData.push({
-        id: row.id,
-        site_code: row.site_code,
-        name: row.name,
-        locality: row.locality,
-        city: row.city,
-        length: row.length1,
-        width: row.width
-      });
-    } 
-  }
-  console.log('cleanData2 : ' + cleanData.length);
-  return cleanData;
-}
-
-var callMeSecondTime = function () {
-//    $('#campaign_creation_modal').modal("hide");
-//    $('#flash-messages').show('slow', function() {
-//    });
-    
-      jQuery('#loading-image').show();        
-  var handsontableData = $('#listings_campaign').data('handsontable').getData();
-  var cleanData = cleanTableData(handsontableData);
-  console.log(cleanData);
-//  if (byuserid) {
-var cid = $('#createdcampaignid').html();
-    if(cleanData.length && cid.length) {
-      $.ajax({
-        type: 'POST',
-        url: $('#completePath').text() +'/ajax/massuploadsiteForCampaign',
-        data: {
-         // 'byuserid': byuserid,
-          'cid' : cid, 
-          'data': JSON.stringify(cleanData)
-        },
-        success: function(data) {
-          jQuery('#loading-image').hide();
-          if (data)
-            location.reload();
-          else
-            alert('Failed to save data.')
-        },
-        error: function(data) {
-          jQuery('#loading-image').hide();
-         // location.reload();
-        }
-      });
-    } else {
-        alert('Please enter sites data');
-    }
-//  } else {
-//    alert("Please select Media Vendor from the drop down");
-//    $(window).scrollTop(0);
-//    $('#vendor-ac').focus();
+//function cleanTableData(data) {
+//  var cleanData = [];
+//  var changedata1 = changedata.filter(onlyUnique);
+//
+//  data.forEach(function(row){
+//    if(!row.id) {
+//      cleanData.push({
+//        site_code: row.site_code,
+//        name: row.name,
+//        mediatype: row.mediatype,
+//        locality: row.locality,
+//        city: row.city,
+//        length: row.length1,
+//        width: row.width,
+//        lighting: row.lighting,
+//        monitor: row.monitor,
+//      });
+//    }
+//  });
+//  console.log('cleanData : ' + cleanData.length);
+//  for (var i = 0; i < changedata1.length; i++) {
+//    var row = data[changedata1[i]];
+//    if (row.name && row.mediatype && row.city && row.locality) {
+//      cleanData.push({
+//        id: row.id,
+//        site_code: row.site_code,
+//        name: row.name,
+//        locality: row.locality,
+//        city: row.city,
+//        length: row.length1,
+//        width: row.width
+//      });
+//    } 
 //  }
-};
+//  console.log('cleanData2 : ' + cleanData.length);
+//  return cleanData;
+//}
+
+//var callMeSecondTime = function () {
+////    $('#campaign_creation_modal').modal("hide");
+////    $('#flash-messages').show('slow', function() {
+////    });
+//    
+//      jQuery('#loading-image').show();        
+//  var handsontableData = $('#listings_campaign').data('handsontable').getData();
+//  var cleanData = cleanTableData(handsontableData);
+//  console.log(cleanData);
+////  if (byuserid) {
+//var cid = $('#createdcampaignid').html();
+//    if(cleanData.length && cid.length) {
+//      $.ajax({
+//        type: 'POST',
+//        url: $('#completePath').text() +'/ajax/massuploadsiteForCampaign',
+//        data: {
+//         // 'byuserid': byuserid,
+//          'cid' : cid, 
+//          'data': JSON.stringify(cleanData)
+//        },
+//        success: function(data) {
+//          jQuery('#loading-image').hide();
+//          if (data)
+//            location.reload();
+//          else
+//            alert('Failed to save data.')
+//        },
+//        error: function(data) {
+//          jQuery('#loading-image').hide();
+//         // location.reload();
+//        }
+//      });
+//    } else {
+//        alert('Please enter sites data');
+//    }
+////  } else {
+////    alert("Please select Media Vendor from the drop down");
+////    $(window).scrollTop(0);
+////    $('#vendor-ac').focus();
+////  }
+//};
 </script>    
 
 <!--<style>

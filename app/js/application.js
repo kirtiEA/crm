@@ -178,7 +178,14 @@ $(document).ready(function () {
         dateFormat: 'dd M yy',
         onClose: function (selectedDate) {
             if (selectedDate)
+            {
                 $("#edate").datepicker("option", "minDate", selectedDate);
+                $('#altField').datepicker("option", "minDate", selectedDate);
+//                $('#altField').datepicker("option", "addDates", selectedDate);
+                $('#altField').multiDatesPicker({
+                    addDates: [selectedDate]
+                })
+            }
         }
     });
     $("#enewcampaigndate").datepicker({
@@ -188,6 +195,11 @@ $(document).ready(function () {
         dateFormat: 'dd M yy',
         onClose: function (selectedDate) {
             $("#sdate").datepicker("option", "maxDate", selectedDate);
+            $('#altField').datepicker("option", "maxDate", selectedDate);
+//            $('#altField').datepicker("option", "addDates", selectedDate);
+$('#altField').multiDatesPicker({
+                    addDates: [selectedDate]
+                })
         }
     });
 // $("#snewcampaigndate").multiDatesPicker({
@@ -291,7 +303,7 @@ var createnewcampaign = function () {
             $('#createdcampaignid').html(data);
             if (data) {
                 console.log($('#completePath').text()+  '/myCampaigns/addsites?cid=' + data);
-                window.location.href = $('#completePath').text()+  '/myCampaigns/addsites?cid=' + data;
+              //  window.location.href = $('#completePath').text()+  '/myCampaigns/addsites?cid=' + data;
 //                $("#firstStep, #myModalfirstLabel,#NextButtonCampaignModal").addClass("hide");
 //                $("#secondStep,#myModalsecondLabel,#FinishButtonCampaignModal").removeClass("hide");
             }
