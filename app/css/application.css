@@ -11344,6 +11344,9 @@ overflow-y: scroll;
     height:67vh;
     margin-top:-22px;
 }
+.navbar{
+    margin-bottom: 0.3em;
+}
 
 @media only screen and (max-width: 800px) {
      #submenu,

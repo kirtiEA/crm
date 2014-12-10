@@ -56,13 +56,13 @@
   $(document).ready(function() {
     var changedata = [];
     $('#listings').handsontable({
-      // colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
+      colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
       rowHeaders: false,
       colWidths: [100, 150, 100, 150, 100, 100, 100, 100],
       currentRowClassName: 'currentRow',
       currentColClassName: 'currentCol',
-      // manualColumnResize: true,
-      // manualRowResize: true,
+      manualColumnResize: true,
+      manualRowResize: true,
       startRows: 20,
       minSpareRows: 5,
       onChange: function() {
