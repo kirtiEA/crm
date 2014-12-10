@@ -209,19 +209,24 @@ $(document).ready(function () {
 
 
 // this is the new campaign datepicket
-$(".datepicker").multiDatesPicker({
-    altField: '#altField',
+$("#startdate,#enddate").multiDatesPicker({
     showButtonPanel: true,
-    showAnim: "slide"
-  // onClose: function( selectedDate ) {
-  //  console.log(selectedDate);
-  //  if ($('#altField').find("td").val() == selectedDate) {
-  //    $(this).addClass('ui-state-highight');
-  //  }
-  //  else { console.log("error baby error")};
- //  }
+    showAnim: "slide",
+  onClose: function( selectedDate ) {
+   var month_val = selectedDate.slice(0, 2);
+   var date_val = selectedDate.slice(3, 5);
+   var year_val = selectedDate.slice(6, 10);
+   console.log(month_val + date_val + year_val);
+   if ($('#altField').find("td > a").val() == date_val) {
+     $(this).addClass('ui-state-highight');
+   }
+   else { console.log("error baby error")};
+  }
   });
-
+$('#altField').multiDatesPicker({
+    altField: '#altField',
+    showButtonPanel: false
+});
 
 });
 
@@ -253,10 +258,12 @@ var callMe = function () {
   var startdate = $("#startdate").val();
   var enddate = $("#enddate").val();
   var customdate = $("#altField").val();
-  console.log("Name is" + name);
-  console.log("start date is" + startdate);
-  console.log("end date is" + enddate);
-  console.log("Custom date is" + customdate);
-  $("#firstStep, #myModalfirstLabel").addClass("hide");
-  $("#secondStep,#myModalsecondLabel").removeClass("hide");
+  $("#firstStep, #myModalfirstLabel,#NextButtonCampaignModal").addClass("hide");
+  $("#secondStep,#myModalsecondLabel,#FinishButtonCampaignModal").removeClass("hide");
+};
+
+var callMeSecondTime = function () {
+    $('#campaign_creation_modal').modal("hide");
+    $('#flash-messages').show('slow', function() {
+    });
 };
