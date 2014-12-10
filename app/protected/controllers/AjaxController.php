@@ -1339,5 +1339,29 @@ class AjaxController extends Controller {
     }
     
     
-    //create tasks for the 
+    //create campaign
+    
+    public function actionCreateNewCampaign() {
+        $model = new Campaign();
+        $model->setScenario('insert');
+        if (isset($_POST['Campaign']) && !empty($_POST['Campaign']['name']) && !empty($_POST['Campaign']['startDate']) && !empty($_POST['Campaign']['endDate'])) {
+            $model->attributes = $_POST['Campaign'];
+            $sdate = $model->startDate;
+            $edate = $model->endDate;
+            //print_r($model->validate());
+            if ($model->validate()) {
+                $model->createdBy = Yii::app()->user->id;
+                $model->companyid = Yii::app()->user->cid;
+                $model->createdDate = date("Y-m-d H:i:s");
+                $model->startDate = date("Y-m-d H:i:s", strtotime($model->startDate));
+                $model->endDate = date("Y-m-d H:i:s", strtotime($model->endDate));
+                $model->save();
+            }
+            echo $model->id;
+            $link = Yii::app()->getBaseUrl(true) . '/myCampaigns/upcoming';
+            //Send a mail to admin for 
+            $mail = new EatadsMailer('create-campaign', Yii::app()->user->email, array('resetLink' => $link, 'CampaignName' => $model->name, 'startDate' => $sdate, 'endDate' => $edate));
+            $mail->eatadsSend();
+        }
+    }
 }

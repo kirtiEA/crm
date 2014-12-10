@@ -38,13 +38,14 @@
        </div>
      </div>
      <div class="modal-body row hide" id="secondStep">
+         <span id="createdcampaignid" class="hide"></span>  
        <div class="col-xs-12">
         <div class="upload-holder" id="listings"></div>
       </div>
     </div>
     <div class="modal-footer">
     <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
-      <button type="button" class="btn btn-danger" onclick="callMe()" id="NextButtonCampaignModal">Next</button>
+      <button type="button" class="btn btn-danger" onclick="createnewcampaign()" id="NextButtonCampaignModal">Next</button>
       <button type="button" class="btn btn-danger hide" onclick="callMeSecondTime()" id="FinishButtonCampaignModal">Finish</button>
     </div>
   </div>

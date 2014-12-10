@@ -212,6 +212,7 @@ $(document).ready(function () {
 $("#startdate,#enddate").multiDatesPicker({
     showButtonPanel: true,
     showAnim: "slide",
+    dateFormat: 'dd M yy', 
   onClose: function( selectedDate ) {
    var month_val = selectedDate.slice(0, 2);
    var date_val = selectedDate.slice(3, 5);
@@ -253,13 +254,34 @@ function fetchNotifications() {
 }
 
 
-var callMe = function () {
+var createnewcampaign = function () {
   var name = $("#nameofcampaign").val();
   var startdate = $("#startdate").val();
   var enddate = $("#enddate").val();
   var customdate = $("#altField").val();
   $("#firstStep, #myModalfirstLabel,#NextButtonCampaignModal").addClass("hide");
   $("#secondStep,#myModalsecondLabel,#FinishButtonCampaignModal").removeClass("hide");
+  console.log(customdate);
+  
+  $.ajax({
+        type: 'POST',
+        url: $('#completePath').text() + '/ajax/createNewCampaign',
+        data : {
+          'Campaign' : {
+              'name' : name,
+              'startDate' : startdate,
+              'endDate' : enddate
+          }  
+        },
+        success: function (data) {
+            console.log('campaign id ' + data);
+            $('#createdcampaignid').html(data);
+        },
+        error: function (data) { // if error occured
+            alert("Error occured.please try again");
+            alert(data);
+        }
+    });
 };
 
 var callMeSecondTime = function () {
