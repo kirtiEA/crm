@@ -1,11 +1,15 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/mdp.css" />
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.multidatespicker.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.min.js"></script>
+<<<<<<< HEAD
 <!--<script>
 $('#campaign_creation_modal').on('shown.bs.modal', function() {
     $(document).off('focusin.bs.modal');
 });
 </script>-->
+=======
+
+>>>>>>> 141688b95f860ccf766716519e8aee0d3f001af0
 <!-- Campaign creation Modal -->
 <div class="modal fade" id="campaign_creation_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">

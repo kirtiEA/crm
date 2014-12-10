@@ -206,8 +206,6 @@ $(document).ready(function () {
   //  else { console.log("error baby error")};
   // }
   // });
-
-
 });
 
     //cancel updating new password
@@ -247,6 +245,7 @@ $(document).ready(function () {
 
     });
 
+
 //flash messages fade in fade out
 $('#flash-messages').fadeOut('slow', function () {
     $(this).remove();
@@ -276,6 +275,7 @@ var createnewcampaign = function () {
    var enddate = $("#enewcampaigndate").val();
    var customdate = $("#altField").val();
   console.log("customdate is" + customdate + "name is" + name + "startdate is" + startdate + "enddate is" + enddate );
+
   $.ajax({
         type: 'POST',
         url: $('#completePath').text() + '/ajax/createNewCampaign',
