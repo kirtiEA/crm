@@ -44,7 +44,7 @@
       }, {
         data: 'monitor',
         type: 'dropdown',
-        source: '<?php echo json_encode($this->users);?>'
+        source: <?php echo json_encode($this->users);?>
             }]
           });
           
