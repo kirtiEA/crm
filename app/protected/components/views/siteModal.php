@@ -44,7 +44,7 @@
       }, {
         data: 'monitor',
         type: 'dropdown',
-        source: <?php echo json_encode($this->users);?>
+        source: '<?php echo json_encode($this->users);?>'
             }]
           });
           
@@ -108,21 +108,21 @@ function cleanTableData(data) {
   var cleanData = [];
   var changedata1 = changedata.filter(onlyUnique);
 
-  data.forEach(function(row){
-    if(!row.id && row.name && row.city && row.locality) {
-      cleanData.push({
-        site_code: row.site_code,
-        name: row.name,
-        mediatype: row.mediatype,
-        locality: row.locality,
-        city: row.city,
-        length: row.length1,
-        width: row.width,
-        lighting: row.lighting,
-        monitor: row.monitor,
-      });
-    }
-  });
+//  data.forEach(function(row){
+//    if(!row.id && row.name && row.city && row.locality) {
+//      cleanData.push({
+//        site_code: row.site_code,
+//        name: row.name,
+//        mediatype: row.mediatype,
+//        locality: row.locality,
+//        city: row.city,
+//        length: row.length1,
+//        width: row.width,
+//        lighting: row.lighting,
+//        monitor: row.monitor,
+//      });
+//    }
+//  });
   console.log('cleanData : ' + cleanData.length);
   for (var i = 0; i < changedata1.length; i++) {
     var row = data[changedata1[i]];
@@ -165,15 +165,13 @@ var cid = $('#createdcampaignid').html();
         success: function(data) {
           jQuery('#loading-image').hide();
           if (data) {
-              
-              //console.log(data);
             window.location.href = $('#completePath').text()+  '/myCampaigns';
         } else
             alert('Failed to save data.')
         },
         error: function(data) {
           jQuery('#loading-image').hide();
-         // location.reload();
+          location.reload();
         }
       });
     } else {
