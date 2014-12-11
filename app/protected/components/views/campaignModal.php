@@ -6,7 +6,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
         <h1 class="modal-title text-center text-success headings-campaign" id="myModalfirstLabel">Start Creating Campaigns</h1>
         <h1 class="modal-title text-center hide text-success headings-campaign" id="myModalsecondLabel">Add Vendor Sites</h1>
       </div>
