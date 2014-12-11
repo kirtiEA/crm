@@ -11347,9 +11347,12 @@ overflow-y: scroll;
 
 .panel-no-margin {
     margin: -1.6em 0em 0em 0em;
+    background-color: #ebedee;
 }
 .panel-no-margin > .panel-heading{
     padding: 1.5em 0em 1.5em 0em;
+    background-color: #ebedee;
+    border-color: #ebedee;
 }
 .button-background {
     background: #ebedee;
@@ -11358,6 +11361,15 @@ overflow-y: scroll;
 .list-item-block {
     display: block;
     padding: 2em !important;
+}
+.list-item-block > span {
+    line-height: 2em;
+}
+#content {
+    background-color: #ebedee;
+}
+#siteModalContent {
+    overflow: scroll;
 }
 
 @media only screen and (max-width: 800px) {

@@ -12,7 +12,7 @@ $('.mon_menu').each(function() {
     <h1 class="text-success">Add Sites</h1>
     </div>
 </div>
-<div class="container-fluid content-wrapper">
+<div class="container content-wrapper" id="siteModalContent">
     <span id="createdcampaignid" class="hide"><?php echo $cid;?></span>
     <div class="row">
         <?php $this->widget('SiteModal'); ?>
