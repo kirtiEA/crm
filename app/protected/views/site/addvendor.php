@@ -90,7 +90,6 @@
         colHeaders: ['SITE CODE', 'MEDIA TYPE', 'CITY', 'LOCALITY', 'NAME', 'WIDTH', 'HEIGHT', 'LIGHTING'],
         rowHeaders: true,
         colWidths: [100, 150, 150, 250, 250, 100, 100, 100],
-        
         currentRowClassName: 'currentRow',
         currentColClassName: 'currentCol',
         
