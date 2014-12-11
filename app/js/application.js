@@ -314,6 +314,7 @@ var createnewcampaign = function () {
         }
     });
  };
+    /* Call this if campaign creation form passes validation */
 
     var formValidation = function () {
       var name = $("#campaignname").val();
@@ -329,7 +330,17 @@ var createnewcampaign = function () {
       }
     };
 
+    /* Call this if campaign creation form not filled */
+
     var noValidation = function () {
       $(".form-group").addClass('has-error');
       $("#campaignname,#snewcampaigndate,#enewcampaigndate").attr('placeholder', 'Please enter all the values').blur();
     };
+
+    /* On click call the campaign creation modal and disable closing it by esc as well as outside clicks */
+    var createCampaignModal = function () {
+     $("#campaign_creation_modal").modal({
+      'backdrop':'static',
+      'keyboard': false  
+    });
+    }
