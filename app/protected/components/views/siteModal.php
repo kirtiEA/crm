@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/handsontable.full.css" />
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/handsontable.full.js"></script>
-<div class="col-xs-12">
+<div class="center-block">
     <div  id="listings_campaign" ></div>
 </div>
 <span class="hide" id="sidedata"><?php echo json_encode($listings);?></span>
