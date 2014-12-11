@@ -16,7 +16,9 @@ class SiteModal extends CWidget {
         foreach ($listings as $list) {
             $usersperlisting = Task::fetcUsersAssignedToSite($list['id'],  $cid, Yii::app()->user->cid);
            // print_r($usersperlisting);die();
-            $list['monitor'] = $usersperlisting['username'];
+            if (!empty($usersperlisting['username'])) {
+                $list['monitor'] = $usersperlisting['username'];
+            }
             array_push($listingsFinal, $list);
         }
         
