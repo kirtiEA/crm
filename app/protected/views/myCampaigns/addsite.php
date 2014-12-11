@@ -7,14 +7,19 @@ $('.mon_menu').each(function() {
      window.location.href = $('#completePath').text()+  '/myCampaigns';
  }
 </script>
-<div class="col-xs-12 text-success text-center">
-    <h1>Add Sites</h1>
+<div class="panel panel-default text-center panel-no-margin">
+    <div class="panel-heading">
+    <h1 class="text-success">Add Sites</h1>
+    </div>
 </div>
 <div class="container-fluid content-wrapper">
     <span id="createdcampaignid" class="hide"><?php echo $cid;?></span>
     <div class="row">
         <?php $this->widget('SiteModal'); ?>
     </div>
+
 </div>
-<button type="button" class="btn btn-success" onclick="redirectToCampaign();">Cancel</button>
-<button type="button" class="btn btn-danger " onclick="addSitesToCampaign()" id="FinishButtonCampaignModal">Finish</button>
+    <div class="text-center button-background">
+    <button type="button" class="btn btn-success" onclick="redirectToCampaign();">Cancel</button>
+ <button type="button" class="btn btn-danger " onclick="addSitesToCampaign()" id="FinishButtonCampaignModal">Finish</button>
+    </div>

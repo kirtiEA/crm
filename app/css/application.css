@@ -11344,8 +11344,20 @@ overflow-y: scroll;
     height:67vh;
     margin-top:-22px;
 }
-.navbar{
-    margin-bottom: 0.3em;
+
+.panel-no-margin {
+    margin: -1.6em 0em 0em 0em;
+}
+.panel-no-margin > .panel-heading{
+    padding: 1.5em 0em 1.5em 0em;
+}
+.button-background {
+    background: #ebedee;
+    padding: 1em;
+}
+.list-item-block {
+    display: block;
+    padding: 2em !important;
 }
 
 @media only screen and (max-width: 800px) {

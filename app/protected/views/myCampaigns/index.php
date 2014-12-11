@@ -39,10 +39,10 @@ $('.mon_menu').each(function() {
             //<button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Change Site Assignment</button>&nbsp;
                 $html = '';
                 foreach ($campaigns as $value) {
-                $html = $html . '            <li class="list-item" id="camp_'. $value['id'] .'">
+                $html = $html . '            <li class="list-item list-item-block" id="camp_'. $value['id'] .'">
                 <h2 class="list-item-heading clickfor-show-hide pull-left"><span class="glyphicon glyphicon-minus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
-                 . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3>' .
-                  '<div class="pull-right">
+                 . '<span><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></span>' .
+                  '<span class="pull-right">
                       
                     <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
                     &nbsp;' 
@@ -52,7 +52,7 @@ $('.mon_menu').each(function() {
                         '<button class="btn btn-secondary" onclick="redirectToAddSites(\''. $value['id'] .'\''.');"><span class="glyphicon glyphicon-plus"></span> Add Sites</button>
                         &nbsp;'
 //                        <button class="btn btn-primary" data-toggle="modal" data-target="#add-campaign-modal" onclick="saveCampaign(\'' .$value['id'] . '\');">Save Campaign</button>
-                .'</div>' .
+                .'</span>' .
                   '<div class="list-item-content show-hide-content">
                     <ul class="sub-list" id="campaign_'. $value['id'].'">';
                     foreach ($value['sites'] as $site) {
@@ -90,6 +90,7 @@ $('.mon_menu').each(function() {
                                 }
                             }
                             $html = $html .      '</select></div>';
+                            $html = $html .  '&nbsp; <span onclick="removeListingFromCampaignd(\'' . $list['id'] .'\', \'' . $value['id'] .'\');" class="glyphicon glyphicon-remove remove-icon" id="addedlistings_'.$list['id'].'"></span>';
                             $html = $html .  '</li>';
                         }
                         $html = $html . '</ul></li>';

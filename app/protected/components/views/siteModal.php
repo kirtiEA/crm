@@ -9,15 +9,14 @@
   $(document).ready(function() {
     
     $('#listings_campaign').handsontable({
-       colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
+      colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
       rowHeaders: true,
-      colWidths: [100, 150, 100, 150, 100, 100, 100, 100],
+      colWidths: [150, 250, 200, 250, 100, 100, 100, 200],
       currentRowClassName: 'currentRow',
       currentColClassName: 'currentCol',
        manualColumnResize: true,
        manualRowResize: true,
-      startRows: 20,
-      minSpareRows: 5,
+      minSpareRows: 20,
       onChange: function() {
         if (arguments[0] !== null) {
           changedata[changedata.length] = arguments[0][0][0];
