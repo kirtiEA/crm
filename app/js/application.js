@@ -314,24 +314,33 @@ var createnewcampaign = function () {
         }
     });
  };
+    /* Call this if campaign creation form passes validation */
 
     var formValidation = function () {
-        console.log("form validation is being called");
       var name = $("#campaignname").val();
       var startdate = $("#snewcampaigndate").val();
       var enddate = $("#enewcampaigndate").val();
-      console.log(name + startdate + enddate);
+      // console.log(name + startdate + enddate);
       if (name && startdate && enddate) {
         return true;
         // console.log("true that");
         // $("#NextButtonCampaignModal").removeClass("diabled");
       }else {
-        console.log("false");
         return false;
       }
     };
 
+    /* Call this if campaign creation form not filled */
+
     var noValidation = function () {
-      console.log("no validation is being called");
       $(".form-group").addClass('has-error');
+      $("#campaignname,#snewcampaigndate,#enewcampaigndate").attr('placeholder', 'Please enter all the values').blur();
     };
+
+    /* On click call the campaign creation modal and disable closing it by esc as well as outside clicks */
+    var createCampaignModal = function () {
+     $("#campaign_creation_modal").modal({
+      'backdrop':'static',
+      'keyboard': false  
+    });
+    }

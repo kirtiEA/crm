@@ -21,7 +21,7 @@ $('.mon_menu').each(function() {
 <!--    <li><a href="<?php //echo Yii::app()->createUrl('assignedCampaigns');?>" >Assigned to Me</a></li>-->
         
     <li ><a href="<?php echo Yii::app()->createUrl('sharedWithMe');?>" >Shared With Me</a></li>
-    <li class="pull-right"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#campaign_creation_modal">+ Add New Campaign</button></li>
+    <li class="pull-right"><button type="button" class="btn btn-success" onclick="createCampaignModal()">+ Add New Campaign</button></li>
 </ul>
 
 <!-- campaigns list --> 
