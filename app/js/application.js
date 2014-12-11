@@ -295,8 +295,9 @@ var createnewcampaign = function () {
           'Campaign' : {
               'name' : name,
               'startDate' : startdate,
-              'endDate' : enddate
-          }  
+              'endDate' : enddate,
+              'campaignDates': customdate
+          } 
         },
         success: function (data) {
            console.log('campaign id ' + data);

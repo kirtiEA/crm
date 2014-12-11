@@ -15,7 +15,7 @@ class Campaign extends BaseCampaign {
      */
     public function rules() {
         return array(
-            array('name, startDate, endDate', 'required', 'on' => 'insert', 'message' => 'All Fields are required'),
+            array('name, startDate, endDate,campaignDates', 'required', 'on' => 'insert', 'message' => 'All Fields are required'),
         );
     }
     

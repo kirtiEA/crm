@@ -1183,8 +1183,10 @@ class AjaxController extends Controller {
         
 //        if (count($add) > 0) {
 //            for ($i = 0; $i < count($add); $i++) {
-                $date = strtotime($campaign->attributes['startDate']);
-                while ((strtotime($campaign->attributes['endDate']) - $date) >= 0) {
+        
+                $dates = explode(',', $campaign->attributes['campaignDates']);
+                foreach ($dates as $date1) {
+                    $date = strtotime(trim($date1));
                     $task = new Task();
                     $task->assignedCompanyId = Yii::app()->user->cid;
                     $task->campaignid = $_POST['cid'];
@@ -1194,9 +1196,22 @@ class AjaxController extends Controller {
                     $task->pop = 0;
                     $task->createdDate = date("Y-m-d H:i:s");
                     $task->createdBy = Yii::app()->user->id;
-                    $task->save();
-                    $date = strtotime('+1 day', $date);
+                    $task->save();    
                 }
+                
+//                while ((strtotime($campaign->attributes['endDate']) - $date) >= 0) {
+//                    $task = new Task();
+//                    $task->assignedCompanyId = Yii::app()->user->cid;
+//                    $task->campaignid = $_POST['cid'];
+//                    $task->siteid = $add;
+//                    $task->status = 1;
+//                    $task->dueDate = date("Y-m-d H:i:s", $date);
+//                    $task->pop = 0;
+//                    $task->createdDate = date("Y-m-d H:i:s");
+//                    $task->createdBy = Yii::app()->user->id;
+//                    $task->save();
+//                    $date = strtotime('+1 day', $date);
+//                }
                 return 1;
             //}
        // }
