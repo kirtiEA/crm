@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/handsontable.full.css" />
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/handsontable.full.js"></script>
-<div class="center-block">
+<div class="">
     <div  id="listings_campaign" ></div>
 </div>
 <span class="hide" id="sidedata"><?php echo json_encode($listings);?></span>
@@ -11,7 +11,7 @@
     $('#listings_campaign').handsontable({
       colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
       rowHeaders: true,
-      colWidths: [150, 250, 200, 250, 100, 100, 100, 200],
+      stretchH: 'all',
       currentRowClassName: 'currentRow',
       currentColClassName: 'currentCol',
        manualColumnResize: true,
