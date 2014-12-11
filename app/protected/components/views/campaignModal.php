@@ -17,15 +17,15 @@
             <form action="wizard_submit" method="post" accept-charset="utf-8">
              <div class="form-group">
                <label for="Campaign_name">Name</label>
-               <input type="name" class="form-control " name="Campaign[name]" id="campaignname" required>
+               <input type="name" class="form-control " name="Campaign[name]" id="campaignname" placeholder="Campaign Name" required>
              </div>
              <div class="form-group">
                <label for="startdate">Start Date</label>
-               <input type="text" name="startdate" class="form-control datepicker" id="snewcampaigndate" required>
+               <input type="text" name="startdate" class="form-control datepicker" id="snewcampaigndate" placeholder="Campaign Start Date" required>
              </div>
              <div class="form-group">
                <label for="enddate">End Date</label>
-               <input type="text" name="enddate" class="form-control datepicker" id="enewcampaigndate" required>
+               <input type="text" name="enddate" class="form-control datepicker" id="enewcampaigndate" placeholder="Campaign End Date" required>
              </div>
            </form>
          </div>

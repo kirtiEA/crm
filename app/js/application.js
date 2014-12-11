@@ -316,22 +316,20 @@ var createnewcampaign = function () {
  };
 
     var formValidation = function () {
-        console.log("form validation is being called");
       var name = $("#campaignname").val();
       var startdate = $("#snewcampaigndate").val();
       var enddate = $("#enewcampaigndate").val();
-      console.log(name + startdate + enddate);
+      // console.log(name + startdate + enddate);
       if (name && startdate && enddate) {
         return true;
         // console.log("true that");
         // $("#NextButtonCampaignModal").removeClass("diabled");
       }else {
-        console.log("false");
         return false;
       }
     };
 
     var noValidation = function () {
-      console.log("no validation is being called");
       $(".form-group").addClass('has-error');
+      $("#campaignname,#snewcampaigndate,#enewcampaigndate").attr('placeholder', 'Please enter all the values').blur();
     };
