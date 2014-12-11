@@ -167,7 +167,7 @@ var cid = $('#createdcampaignid').html();
           if (data) {
               
               //console.log(data);
-           // window.location.href = $('#completePath').text()+  '/myCampaigns';
+            window.location.href = $('#completePath').text()+  '/myCampaigns';
         } else
             alert('Failed to save data.')
         },
