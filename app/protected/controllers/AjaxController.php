@@ -1299,7 +1299,7 @@ class AjaxController extends Controller {
 
             $listingModel->datemodified = date('Y-m-d H:i:s');
 
-            if (empty($value->id)) {
+            if (empty($value->id) && !empty($value->name) && !empty($value->locality) && !empty($value->city)) {
                 $listingModel->datecreated = date('Y-m-d H:i:s');
                 $listingModel->save();
                 array_push($lids, $listingModel->id);
