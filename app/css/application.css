@@ -11371,7 +11371,13 @@ overflow-y: scroll;
 #siteModalContent {
     overflow-y: scroll;
 }
-
+#datepickerParent {
+    border-right: 2px solid #e1e1e1;
+}
+#FiltersCampaignCreation > p {
+    margin: 1.3em;
+    padding: 1em;
+}
 @media only screen and (max-width: 800px) {
      #submenu,
     #reportdata td:nth-child(4),

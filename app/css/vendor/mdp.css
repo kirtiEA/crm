@@ -98,7 +98,8 @@ table.ui-datepicker-calendar {border-collapse: separate;}
 	border-right: 2px solid #e1e1e1;
 }
 .headings-campaign {
-	padding: 1em 0em 1em 0em;
+	padding: 1em;
+	margin: 0em 0em 1em 0.5em;
 }
 #listings {
 	overflow: scroll;

@@ -13,7 +13,7 @@
       <div class="modal-body row text-success" id="firstStep">
       	<div class="col-xs-12">
       		<div class="col-xs-6 wizard-date-select">
-            <h3 class="headings-campaign">Campaign Details</h3>
+          <div><h3 class="headings-campaign center-block label label-success">Campaign Details</h3></div>
             <form action="wizard_submit" method="post" accept-charset="utf-8">
              <div class="form-group">
                <label for="Campaign_name">Name</label>
@@ -30,8 +30,13 @@
            </form>
          </div>
          <div class="col-xs-6">
-           <h3 class="headings-campaign">Schedule Campaigns</h3>
-           <div class="datepicker" id="altField"></div>
+           <div><h3 class="headings-campaign center-block label label-success">Schedule Campaign</h3></div>
+           <div id="datepickerParent" class="col-xs-8"><div class="datepicker" id="altField"></div></div>
+           <div class="col-xs-4" id="FiltersCampaignCreation">
+             <p class="label label-success col-xs-12" id="FirstLastFilter" >First And Last</p>
+             <p class="label label-default col-xs-12" id="AllDatesFilter" >All Days</p>
+             <p class="label label-default col-xs-12" id="CustomDatesFilter" >Custom Dates</p>
+           </div>
          </div>
        </div>
      </div>
@@ -42,9 +47,9 @@
       </div>
     </div>
     <div class="modal-footer">
-    <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
-      <button type="button" class="btn btn-danger" onclick="formValidation() ? createnewcampaign() : noValidation()" id="NextButtonCampaignModal">Next</button>
-      <button type="button" class="btn btn-danger hide" onclick="callMeSecondTime()" id="FinishButtonCampaignModal">Finish</button>
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      <button type="button" class="btn btn-success" onclick="formValidation() ? createnewcampaign() : noValidation()" id="NextButtonCampaignModal">Next</button>
+      <button type="button" class="btn btn-success hide" onclick="callMeSecondTime()" id="FinishButtonCampaignModal">Finish</button>
     </div>
   </div>
 </div>
