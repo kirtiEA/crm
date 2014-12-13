@@ -319,9 +319,27 @@ var createnewcampaign = function () {
 
     var formValidation = function () {
       var name = $("#campaignname").val();
-      var startdate = $("#snewcampaigndate").val();
-      var enddate = $("#enewcampaigndate").val();
+      var startdate;
+      var enddate ;
+      try{
+           startdate = $.datepicker.parseDate('dd M yy', $('#snewcampaigndate').val()); 
+      } catch(e) {
+          //console.log('thisi is bad');
+          $('#snewcampaigndate').val('');
+          $('#snewcampaigndate').addClass('has-error');
+          $('#snewcampaigndate').attr('placeholder','Incorrect date format');
+      }
+    try{
+        enddate = $.datepicker.parseDate('dd M yy', $('#enewcampaigndate').val());
+    } catch(e) {
+//        console.log();
+          $('#enewcampaigndate').val('');
+          $('#enewcampaigndate').addClass('has-error');
+          $('#enewcampaigndate').attr('placeholder','Incorrect date format');
+    }
+      
       // console.log(name + startdate + enddate);
+      
       if (name && startdate && enddate) {
         return true;
         // console.log("true that");

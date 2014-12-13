@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery.handsontable.full.css" />
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.handsontable.full.js"></script>
-
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/campaigns.js"></script>
 
 <!--<script type="text/javascript" src="<?php //echo Yii::app()->request->baseUrl; ?>/js/campaigns.js"></script>-->
 
@@ -84,7 +84,7 @@
                 <h2 class="list-item-heading clickfor-show-hide pull-left"><span onclick="fetchSites('.$value['id'].');" class="glyphicon glyphicon-plus expand-collapse"></span>&nbsp;' . $value['name'] . ' (' . $value['count'] .')</h2>'
                  . '<h3><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></h3> </span>' .
                   '<span class="btnadjust pull-right">
-                    <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
+                    <button data-toggle="modal" data-target="#share-campaign-modal" onclick="$(\'#selectedShareCampaign\').val('. $value['id'] .')" class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
                     &nbsp;
                         <button class="btn btn-primary" onclick="savecampaignnew(\'' .$value['id'] . '\');">Save Campaign</button>
                 </span>' .
