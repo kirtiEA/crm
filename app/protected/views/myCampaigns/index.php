@@ -44,7 +44,7 @@ $('.mon_menu').each(function() {
                  . '<span><i>&nbsp;&nbsp;' . $value['startDate'] .'-'. $value['endDate'] .'</i></span>' .
                   '<span class="pull-right">
                       
-                    <button class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
+                    <button data-toggle="modal" data-target="#share-campaign-modal" onclick="$(\'#selectedShareCampaign\').val('. $value['id'] .')" class="btn btn-secondary"><span class="glyphicon glyphicon-share"></span> Share</button>
                     &nbsp;' 
                         .
 //                        '&nbsp;

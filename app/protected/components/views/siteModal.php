@@ -141,7 +141,8 @@ function cleanTableData(data) {
         locality: row.locality,
         city: row.city,
         length: row.length1,
-        width: row.width
+        width: row.width,
+        monitor: row.monitor,
       });
     } 
   }
@@ -171,14 +172,15 @@ var cid = $('#createdcampaignid').html();
         },
         success: function(data) {
           jQuery('#loading-image').hide();
+          console.log(data);
           if (data) {
-            window.location.href = $('#completePath').text()+  '/myCampaigns';
+           // window.location.href = $('#completePath').text()+  '/myCampaigns';
         } else
             alert('Failed to save data.')
         },
         error: function(data) {
           jQuery('#loading-image').hide();
-          location.reload();
+         // location.reload();
         }
       });
     } else {

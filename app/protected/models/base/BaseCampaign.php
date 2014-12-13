@@ -13,10 +13,11 @@
  * @property integer $createdBy
  * @property integer $companyid
  * @property integer $type
+ * @property string $campaignDates
  *
  * The followings are the available model relations:
  * @property User $createdBy0
- * @property Task[] $tasks
+ * @property MonitorlyCampaignShare[] $monitorlyCampaignShares
  */
 class BaseCampaign extends CActiveRecord
 {
@@ -38,10 +39,11 @@ class BaseCampaign extends CActiveRecord
 		return array(
 			array('createdBy, companyid, type', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>45),
+			array('campaignDates', 'length', 'max'=>500),
 			array('startDate, endDate, createdDate, modifiedDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, startDate, endDate, createdDate, modifiedDate, createdBy, companyid, type', 'safe', 'on'=>'search'),
+			array('id, name, startDate, endDate, createdDate, modifiedDate, createdBy, companyid, type, campaignDates', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,7 +56,7 @@ class BaseCampaign extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'createdBy0' => array(self::BELONGS_TO, 'User', 'createdBy'),
-			'tasks' => array(self::HAS_MANY, 'Task', 'campaignid'),
+			'monitorlyCampaignShares' => array(self::HAS_MANY, 'MonitorlyCampaignShare', 'campaignid'),
 		);
 	}
 
@@ -73,6 +75,7 @@ class BaseCampaign extends CActiveRecord
 			'createdBy' => 'Created By',
 			'companyid' => 'Companyid',
 			'type' => '1=>POP only; 2=> Daily Monitorling only; 3=> POP and Daily Monitoring',
+			'campaignDates' => 'Campaign Dates',
 		);
 	}
 
@@ -103,6 +106,7 @@ class BaseCampaign extends CActiveRecord
 		$criteria->compare('createdBy',$this->createdBy);
 		$criteria->compare('companyid',$this->companyid);
 		$criteria->compare('type',$this->type);
+		$criteria->compare('campaignDates',$this->campaignDates,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
