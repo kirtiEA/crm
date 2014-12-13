@@ -11378,6 +11378,9 @@ overflow-y: scroll;
     margin: 1.3em;
     padding: 1em;
 }
+#errorAlertHandsonTable {
+    margin-top: 1em;
+}
 @media only screen and (max-width: 800px) {
      #submenu,
     #reportdata td:nth-child(4),

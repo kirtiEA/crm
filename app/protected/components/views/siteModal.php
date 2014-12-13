@@ -1,13 +1,22 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/handsontable.full.css" />
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/handsontable.full.js"></script>
-<div class="">
+<div class="row">
+  <div class="col-xs-4"></div>
+  <div class="col-xs-4 alert alert-danger text-center" role="alert" id="errorAlertHandsonTable">
+  <strong>Error!</strong><span> Height Should be numeric</span>
+</div>
+</div>
+
     <div  id="listings_campaign" ></div>
 </div>
 <span class="hide" id="sidedata"><?php echo json_encode($listings);?></span>
 <script>
     var changedata = [];
   $(document).ready(function() {
-    
+    $('td.currentRow').focusout(function(event) {
+      /* Act on the event */
+      console.log("clicked");
+    });
     $('#listings_campaign').handsontable({
       colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
       rowHeaders: true,
@@ -47,8 +56,6 @@
         source: <?php echo json_encode($this->users);?>
             }]
           });
-          
-
 
 
 //function savecampaignnew() {
