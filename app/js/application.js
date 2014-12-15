@@ -363,3 +363,52 @@ var createnewcampaign = function () {
       'keyboard': false  
     });
     };
+
+function formatDate(d) {
+  var dd = d.getDate()
+  if ( dd < 10 ) dd = '0' + dd
+  var mm = d.getMonth()+1
+  if ( mm < 10 ) mm = '0' + mm
+  var yy = d.getFullYear() % 100
+  if ( yy < 10 ) yy = '0' + yy
+  return dd+' '+mm+' '+yy
+}
+
+
+var customDates = function(type) {
+    console.log('sdfsdf' + type); 
+    var startDate = $('#snewcampaigndate').val();
+    var endDate = $('#enewcampaigndate').val();
+//    if (startDate && endDate) {
+      if ( type == 1) {
+          console.log('sdf');
+          $('#altField').multiDatesPicker('resetDates');
+            $('#altField').multiDatesPicker({
+                addDates: [startDate, endDate]
+            });
+        } else if (type == 2) {
+            var dates = [];
+          $('#altField').multiDatesPicker('resetDates');  
+            var range = Math.floor((Date.parse(endDate) - Date.parse(startDate)) / 86400000);
+            console.log('sdf - ' + range);
+            var date  = new Date(startDate);
+            for (var d = 0; d <= range; d++) {
+                //dates.push(date);
+                console.log($.datepicker.formatDate('dd M yy', date));
+                dates.push($.datepicker.formatDate('dd M yy', date));
+                date.setDate(date.getDate() + 1);
+//                var date  = new Date(startDate);
+//                console.log(date.toString('dd M yy') + ' ada');
+                
+            }
+                            console.log(dates);
+
+            $('#altField').multiDatesPicker({
+                addDates: dates
+            });
+        } else if (type == 3) {
+          $('#altField').multiDatesPicker('resetDates');  
+        }
+   // }
+
+};

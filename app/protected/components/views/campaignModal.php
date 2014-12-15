@@ -33,9 +33,9 @@
            <div><h3 class="headings-campaign center-block label label-success">Schedule Campaign</h3></div>
            <div id="datepickerParent" class="col-xs-8"><div class="datepicker" id="altField"></div></div>
            <div class="col-xs-4" id="FiltersCampaignCreation">
-             <p class="label label-success col-xs-12" id="FirstLastFilter" >First And Last</p>
-             <p class="label label-default col-xs-12" id="AllDatesFilter" >All Days</p>
-             <p class="label label-default col-xs-12" id="CustomDatesFilter" >Custom Dates</p>
+               <p class="label label-success col-xs-12" id="FirstLastFilter" onclick="customDates(1);">First And Last</p>
+             <p class="label label-default col-xs-12" id="AllDatesFilter" onclick="customDates(2);">All Days</p>
+             <p class="label label-default col-xs-12" id="CustomDatesFilter" onclick="customDates(3);">Custom Dates</p>
            </div>
          </div>
        </div>
