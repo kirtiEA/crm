@@ -20,6 +20,6 @@ $('.mon_menu').each(function() {
 
 </div>
     <div class="text-center button-background">
-    <button type="button" class="btn btn-success" onclick="redirectToCampaign();">Cancel</button>
- <button type="button" class="btn btn-danger " onclick="addSitesToCampaign()" id="FinishButtonCampaignModal">Finish</button>
+    <button type="button" class="btn btn-danger" onclick="redirectToCampaign();">Cancel</button>
+ <button type="button" class="btn btn-success " onclick="addSitesToCampaign()" id="FinishButtonCampaignModal">Finish</button>
     </div>
