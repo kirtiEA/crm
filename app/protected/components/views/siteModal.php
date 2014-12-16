@@ -200,7 +200,7 @@ var cid = $('#createdcampaignid').html();
           jQuery('#loading-image').hide();
           console.log(data);
           if (data) {
-           // window.location.href = $('#completePath').text()+  '/myCampaigns';
+           window.location.href = $('#completePath').text()+  '/myCampaigns';
         } else
             alert('Failed to save data.')
         },
