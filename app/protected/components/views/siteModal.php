@@ -18,7 +18,7 @@
       console.log("clicked");
     });
     $('#listings_campaign').handsontable({
-      colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR'],
+      colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR', 'FREQUENCY'],
       rowHeaders: true,
       stretchH: 'all',
       currentRowClassName: 'currentRow',
@@ -54,7 +54,13 @@
         data: 'monitor',
         type: 'dropdown',
         source: <?php echo json_encode($this->users);?>
-            }]
+      }, {
+          data: 'frequency',
+          type: 'dropdown',
+          source: ['Daily', 'Weekly', 'Fortnightly', 'Monthly']
+      }
+                    
+       ]
           });
 
 
@@ -143,6 +149,7 @@ function cleanTableData(data) {
         length: row.length1,
         width: row.width,
         monitor: row.monitor,
+        frequency: row.frequency,
       });
     } 
   }
