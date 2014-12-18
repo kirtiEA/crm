@@ -2,9 +2,7 @@
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/handsontable.full.js"></script>
 <div class="row">
   <div class="col-xs-4"></div>
-  <div class="col-xs-4 alert alert-danger text-center" role="alert" id="errorAlertHandsonTable">
-  <strong>Error!</strong><span> Height Should be numeric</span>
-</div>
+  <div class="col-xs-4 alert alert-danger text-center hide" role="alert" id="errorAlertHandsonTable"></div>
 </div>
 
     <div  id="listings_campaign" ></div>
@@ -13,10 +11,33 @@
 <script>
     var changedata = [];
   $(document).ready(function() {
-    $('td.currentRow').focusout(function(event) {
-      /* Act on the event */
-      console.log("clicked");
-    });
+
+  var validatorNumeric = function (value, callback) {
+  setTimeout(function(){
+    if (/^-?(\d+\.?\d*)$|(\d*\.?\d+)$/.test(value)) {
+          $("#errorAlertHandsonTable").addClass('hide');
+          callback(true);
+    }else {
+      $("#errorAlertHandsonTable").removeClass('hide').html(" <strong>Error!</strong><span> Height Should be numeric</span>");
+      callback(false);
+    }
+  }, 100);
+};
+//   var validatorDropdown = function (value, callback) {
+//   setTimeout(function(){
+//     if () {
+//           $("#errorAlertHandsonTableDropdown").addClass('hide');
+//           callback(true);
+//     }else {
+//       $("#errorAlertHandsonTableDropdown").removeClass('hide').text("hey there");
+//       callback(false);
+//     }
+//   }, 100);
+// };
+    // $('td.currentRow').focusout(function(event) {
+    //   /* Act on the event */
+  
+    // });
     $('#listings_campaign').handsontable({
       colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR', 'FREQUENCY'],
       rowHeaders: true,
@@ -46,13 +67,18 @@
         type: 'text',
       }, {
         data: 'width',
-        type: 'numeric'
+        type: 'numeric',
+        validator: validatorNumeric,
+        allowInvalid: true
       }, {
         data: 'length1',
-        type: 'numeric'
+        type: 'numeric',
+        validator: validatorNumeric,
+        allowInvalid: true
       }, {
         data: 'monitor',
         type: 'dropdown',
+        allowInvalid: false,
         source: <?php echo json_encode($this->users);?>
       }, {
           data: 'frequency',
@@ -181,7 +207,7 @@ var cid = $('#createdcampaignid').html();
           jQuery('#loading-image').hide();
           console.log(data);
           if (data) {
-           // window.location.href = $('#completePath').text()+  '/myCampaigns';
+           window.location.href = $('#completePath').text()+  '/myCampaigns';
         } else
             alert('Failed to save data.')
         },

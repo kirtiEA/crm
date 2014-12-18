@@ -1,7 +1,10 @@
 
 
 $(document).ready(function () {
-
+  //   $("div.wtSpreader > table > tbody > tr > td").focusout(function(event) {
+  //   /* Act on the event */
+  //   console.log("hey table");
+  // });
     setTimeout(function() {
         $("#flash-messages").hide('blind', {}, 500)
     }, 4000);
@@ -374,40 +377,52 @@ function formatDate(d) {
   return dd+' '+mm+' '+yy
 }
 
+// var errorTable = function () {
+
+// };
 
 var customDates = function(type) {
-    console.log('sdfsdf' + type); 
     var startDate = $('#snewcampaigndate').val();
     var endDate = $('#enewcampaigndate').val();
 //    if (startDate && endDate) {
       if ( type == 1) {
-          console.log('sdf');
+          $("#FiltersCampaignCreation > p").removeClass("label-success").addClass('label-default');
+          $("#FirstLastFilter").removeClass("label-default").addClass("label-success");
           $('#altField').multiDatesPicker('resetDates');
             $('#altField').multiDatesPicker({
                 addDates: [startDate, endDate]
             });
         } else if (type == 2) {
+          $("#FiltersCampaignCreation > p").removeClass("label-success").addClass('label-default');
+          $("#AllDatesFilter").removeClass("label-default").addClass("label-success");
             var dates = [];
           $('#altField').multiDatesPicker('resetDates');  
             var range = Math.floor((Date.parse(endDate) - Date.parse(startDate)) / 86400000);
-            console.log('sdf - ' + range);
             var date  = new Date(startDate);
             for (var d = 0; d <= range; d++) {
                 //dates.push(date);
-                console.log($.datepicker.formatDate('dd M yy', date));
                 dates.push($.datepicker.formatDate('dd M yy', date));
                 date.setDate(date.getDate() + 1);
 //                var date  = new Date(startDate);
 //                console.log(date.toString('dd M yy') + ' ada');
                 
             }
-                            console.log(dates);
 
             $('#altField').multiDatesPicker({
                 addDates: dates
             });
         } else if (type == 3) {
-          $('#altField').multiDatesPicker('resetDates');  
+          $("#FiltersCampaignCreation > p").removeClass("label-success").addClass('label-default');
+          $("#CustomDatesFilter").removeClass("label-default").addClass("label-success");
+          $('#altField').multiDatesPicker('resetDates'); 
+          var dates = []; 
+          $('#altField').multiDatesPicker({
+            onSelect: function(selectedDate) {
+              dates.push(selectedDate);
+            }
+
+          });  
+           
         }
    // }
 
