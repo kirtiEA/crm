@@ -324,7 +324,7 @@ error: function(data) { // if error occured
      				</tbody>
 
      			</table>
-     			<div class="next jscroll-next-parent" ><a onclick="fetchNextTasks(1);">next</a></div>
+<!--      			<div class="next jscroll-next-parent" ><a onclick="fetchNextTasks(1);">next</a></div> -->
      		</div>
 
      	</div>

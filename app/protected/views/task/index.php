@@ -246,8 +246,8 @@ function renderDropDown(id) {
 
                 </tbody>
 
-            </table>
-        <div class="next jscroll-next-parent" ><a href="javascript:fetchNextTasks(1);">next</a></div>
+            </table><!-- 
+        <div class="next jscroll-next-parent" ><a href="javascript:fetchNextTasks(1);">next</a></div> -->
                 </div>
       </div>
     </div>

@@ -14,13 +14,15 @@
 
   var validatorNumeric = function (value, callback) {
   setTimeout(function(){
-    if (/^-?(\d+\.?\d*)$|(\d*\.?\d+)$/.test(value)) {
+    if (value) {
+      if (/^-?(\d+\.?\d*)$|(\d*\.?\d+)$/.test(value)) {
           $("#errorAlertHandsonTable").addClass('hide');
           callback(true);
     }else {
       $("#errorAlertHandsonTable").removeClass('hide').html(" <strong>Error!</strong><span> Height Should be numeric</span>");
       callback(false);
     }
+    }; 
   }, 100);
 };
 //   var validatorDropdown = function (value, callback) {
@@ -78,7 +80,7 @@
       }, {
         data: 'monitor',
         type: 'dropdown',
-        allowInvalid: false,
+        // allowInvalid: false,
         source: <?php echo json_encode($this->users);?>
             }]
           });
