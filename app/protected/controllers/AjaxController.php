@@ -1320,13 +1320,15 @@ class AjaxController extends Controller {
                 array_push($lids, $listingModel->id);
                 //create task for the days
               $flag = AjaxController::createTaskForASite($cid, $listingModel->id);
+              //echo $value->monitor . ' sdfsfs'; die();
               if (!empty($value->monitor)) {
-                echo $value->monitor;
+//                echo $value->monitor;
                 $userid = User::model()->findByAttributes(array('username' => $value->monitor));
-                print_r($userid['id']);
+                // print_r($flag . ' sdfsf');die('flag ' . $flag);
                 if ($flag && $userid['id'] ) {
                     //assign task to user
-                    Task::updateAssignTaskforaSite($listingModel->id, $cid, $userid['id']);
+                    $flag = Task::updateAssignTaskforaSite($listingModel->id, $cid, $userid['id']);
+                   // echo $value->monitor . ' sdfsd ' . $flag;die();
                 }
               }                
             } else if (!empty($value->id) && strcmp($listingModel->companyId, Yii::app()->user->cid) == 0) {

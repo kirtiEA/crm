@@ -147,21 +147,21 @@ function cleanTableData(data) {
   var cleanData = [];
   var changedata1 = changedata.filter(onlyUnique);
 
-//  data.forEach(function(row){
-//    if(!row.id && row.name && row.city && row.locality) {
-//      cleanData.push({
-//        site_code: row.site_code,
-//        name: row.name,
-//        mediatype: row.mediatype,
-//        locality: row.locality,
-//        city: row.city,
-//        length: row.length1,
-//        width: row.width,
-//        lighting: row.lighting,
-//        monitor: row.monitor,
-//      });
-//    }
-//  });
+  data.forEach(function(row){
+    if(!row.id && row.name && row.city && row.locality) {
+      cleanData.push({
+        site_code: row.site_code,
+        name: row.name,
+        mediatype: row.mediatype,
+        locality: row.locality,
+        city: row.city,
+        length: row.length1,
+        width: row.width,
+        lighting: row.lighting,
+        monitor: row.monitor
+      });
+    }
+  });
   console.log('cleanData : ' + cleanData.length);
   for (var i = 0; i < changedata1.length; i++) {
     var row = data[changedata1[i]];
@@ -174,8 +174,7 @@ function cleanTableData(data) {
         city: row.city,
         length: row.length1,
         width: row.width,
-        monitor: row.monitor,
-        frequency: row.frequency,
+        monitor: row.monitor
       });
     } 
   }
@@ -205,7 +204,7 @@ var cid = $('#createdcampaignid').html();
         },
         success: function(data) {
           jQuery('#loading-image').hide();
-          console.log(data);
+          //console.log(data);
           if (data) {
            window.location.href = $('#completePath').text()+  '/myCampaigns';
         } else
