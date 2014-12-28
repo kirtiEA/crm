@@ -125,7 +125,7 @@ class Campaign extends BaseCampaign {
                         . "FROM PhotoProof pp "
                         . "LEFT JOIN Task t ON t.id=pp.taskid "
                         . "LEFT JOIN Listing l ON l.id=t.siteid "
-                        . "WHERE pp.imageName is not null and taskid= {$siteArr[$i]['id']} ";
+                        . "WHERE pp.status = 1 and pp.imageName is not null and taskid= {$siteArr[$i]['id']} ";
                 $ppArr = Yii::app()->db->createCommand($sql3)->queryAll();
                 array_push($photoArr, $ppArr);
             }

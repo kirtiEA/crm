@@ -41,7 +41,7 @@
   
     // });
     $('#listings_campaign').handsontable({
-      colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR', 'FREQUENCY'],
+      colHeaders: ['SITE CODE', 'NAME', 'CITY', 'LOCALITY', 'WIDTH', 'HEIGHT', 'MONITOR', 'FREQUENCY', 'DUEDATE'],
       rowHeaders: true,
       stretchH: 'all',
       currentRowClassName: 'currentRow',
@@ -86,6 +86,11 @@
           data: 'frequency',
           type: 'dropdown',
           source: ['Daily', 'Weekly', 'Fortnightly', 'Monthly']
+      },
+       {
+          data: 'taskduedate',
+          type: 'date',
+          dateFormat: 'dd M yy'
       }
                     
        ]
@@ -160,14 +165,16 @@ function cleanTableData(data) {
         length: row.length1,
         width: row.width,
         lighting: row.lighting,
-        monitor: row.monitor
+        monitor: row.monitor,
+        frequency: row.frequency,
+        taskduedate: row.taskduedate
       });
     }
   });
   console.log('cleanData : ' + cleanData.length);
   for (var i = 0; i < changedata1.length; i++) {
     var row = data[changedata1[i]];
-    if (row.name && row.city && row.locality) {
+    if (row.id && row.name && row.city && row.locality) {
       cleanData.push({
         id: row.id,
         site_code: row.site_code,
@@ -176,7 +183,9 @@ function cleanTableData(data) {
         city: row.city,
         length: row.length1,
         width: row.width,
-        monitor: row.monitor
+        monitor: row.monitor,
+        frequency: row.frequency,
+        taskduedate: row.taskduedate
       });
     } 
   }

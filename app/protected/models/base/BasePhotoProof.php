@@ -1,27 +1,29 @@
 <?php
 
 /**
- * This is the model class for table "photoproof".
+ * This is the model class for table "PhotoProof".
  *
- * The followings are the available columns in table 'photoproof':
+ * The followings are the available columns in table 'PhotoProof':
  * @property integer $id
  * @property integer $taskid
  * @property string $imageName
  * @property string $clickedDateTime
  * @property double $clickedLat
  * @property double $clickedLng
- * @property integer $direction
+ * @property integer $siteProblemId
+ * @property integer $clickedBy
+ * @property string $createdDate
+ * @property string $modifiedDate
  * @property string $installation
  * @property string $lighting
  * @property string $obstruction
  * @property string $comments
- * @property integer $clickedBy
- * @property string $createdDate
- * @property string $modifiedDate
+ * @property integer $direction
+ * @property integer $status
  *
  * The followings are the available model relations:
  * @property Task $task
- * @property User $clickedby
+ * @property User $clickedBy0
  */
 class BasePhotoProof extends CActiveRecord
 {
@@ -41,14 +43,14 @@ class BasePhotoProof extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('taskid, direction, clickedBy', 'numerical', 'integerOnly'=>true),
+			array('taskid, siteProblemId, clickedBy, direction, status', 'numerical', 'integerOnly'=>true),
 			array('clickedLat, clickedLng', 'numerical'),
 			array('imageName', 'length', 'max'=>45),
 			array('installation, lighting, obstruction, comments', 'length', 'max'=>255),
 			array('clickedDateTime, createdDate, modifiedDate', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, taskid, imageName, clickedDateTime, clickedLat, clickedLng, direction, installation, lighting, obstruction, comments, clickedBy, createdDate, modifiedDate', 'safe', 'on'=>'search'),
+			array('id, taskid, imageName, clickedDateTime, clickedLat, clickedLng, siteProblemId, clickedBy, createdDate, modifiedDate, installation, lighting, obstruction, comments, direction, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,7 +63,7 @@ class BasePhotoProof extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'task' => array(self::BELONGS_TO, 'Task', 'taskid'),
-			'clickedby' => array(self::BELONGS_TO, 'User', 'clickedby'),
+			'clickedBy0' => array(self::BELONGS_TO, 'User', 'clickedBy'),
 		);
 	}
 
@@ -77,14 +79,16 @@ class BasePhotoProof extends CActiveRecord
 			'clickedDateTime' => 'Clicked Date Time',
 			'clickedLat' => 'Clicked Lat',
 			'clickedLng' => 'Clicked Lng',
-                        'direction' => 'Camera Facing Direction',
+			'siteProblemId' => 'Site Problem',
+			'clickedBy' => 'Clicked By',
+			'createdDate' => 'Created Date',
+			'modifiedDate' => 'Modified Date',
 			'installation' => 'Installation',
 			'lighting' => 'Lighting',
 			'obstruction' => 'Obstruction',
 			'comments' => 'Comments',
-			'clickedBy' => 'Clicked By',
-			'createdDate' => 'Created Date',
-			'modifiedDate' => 'Modified Date',
+			'direction' => 'Direction',
+			'status' => 'Status',
 		);
 	}
 
@@ -112,14 +116,16 @@ class BasePhotoProof extends CActiveRecord
 		$criteria->compare('clickedDateTime',$this->clickedDateTime,true);
 		$criteria->compare('clickedLat',$this->clickedLat);
 		$criteria->compare('clickedLng',$this->clickedLng);
-                $criteria->compare('direction',$this->direction);
+		$criteria->compare('siteProblemId',$this->siteProblemId);
+		$criteria->compare('clickedBy',$this->clickedBy);
+		$criteria->compare('createdDate',$this->createdDate,true);
+		$criteria->compare('modifiedDate',$this->modifiedDate,true);
 		$criteria->compare('installation',$this->installation,true);
 		$criteria->compare('lighting',$this->lighting,true);
 		$criteria->compare('obstruction',$this->obstruction,true);
 		$criteria->compare('comments',$this->comments,true);
-		$criteria->compare('clickedBy',$this->clickedBy);
-		$criteria->compare('createdDate',$this->createdDate,true);
-		$criteria->compare('modifiedDate',$this->modifiedDate,true);
+		$criteria->compare('direction',$this->direction);
+		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -130,7 +136,7 @@ class BasePhotoProof extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return PhotoProof the static model class
+	 * @return BasePhotoProof the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

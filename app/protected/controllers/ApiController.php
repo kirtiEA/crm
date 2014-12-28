@@ -344,6 +344,35 @@ class ApiController extends Controller {
                 
                 if (!is_null($ppProblem['installation']) || !is_null($ppProblem['lighting']) || !is_null($ppProblem['obstruction']) || !is_null($ppProblem['comments'])) {
                     $problemFlag = 1;
+                    
+                    $link = Yii::app()->getBaseUrl(true) . '/myCampaigns/upcoming';
+                    
+                    
+                    $problem = '';
+                    if (!is_null($ppProblem['installation'])) {
+                        $problem += 'Installation';
+                    }
+                    if (!is_null($ppProblem['lighting'])) {
+                        $problem += 'Lighting';
+                    }
+                    if (!is_null($ppProblem['obstruction'])) {
+                        $problem += 'Obstruction';
+                    }
+                //    {{resetLink}},{{typeOfProblem}},{{siteName}},{{UsernameOfPersonWhoClickedPhoto}},
+                    //Send a mail to admin for 
+                   $sql = "select u.username, l.name, u2.email from Task t inner join User u on u.id = t.assigneduserid"
+                           . " inner join Listing l on l.id = t.siteid inner join UserCompany uc on uc.id = t.assignedCompanyId "
+                           . " inner join user u2 on u2.id = uc.userid "
+                           . " where t.id = $taskId";
+                   $result = Yii::app()->db->createCommand($sql);
+                   if (!empty($result)) {
+                    $email = $result['email'];
+                    $username = $result['username'];
+                    $sitename = $result['name'];
+                    $mail = new EatadsMailer('site-review-problem', $email, array('resetLink' => $link,'typeOfProblem' => $problem, 'siteName' => $sitename, 'UsernameOfPersonWhoClickedPhoto' => $username));
+                    $mail->eatadsSend();
+                   }
+
                 }
                 $taskModel = Task::model()->findByPk($taskId);
                 $taskModel->taskDone = $taskDoneFlag;

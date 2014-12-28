@@ -28,6 +28,7 @@ class AjaxController extends Controller {
     public function actionLogin() {
         $username = Yii::app()->request->getParam('usrn');
         $password = Yii::app()->request->getParam('pass');
+        
 
 
         if (!Yii::app()->user->isGuest) {
@@ -161,13 +162,13 @@ class AjaxController extends Controller {
         $dueDate = Yii::app()->request->getParam('duedate');
         $pop = Yii::app()->request->getParam('pop');
         $sql = "SELECT pp.id, pp.imageName, pp.clickedDateTime, pp.clickedLat, pp.clickedLng, CONCAT(u.fname, u.lname) as clickedBy, "
-                . "pp.installation, pp.lighting, pp.obstruction, pp.comments, l.name as siteName, c.name as campaignName "
+                . "pp.installation, pp.lighting, pp.obstruction, pp.comments, l.name as siteName, c.name as campaignName, pp.taskid "
                 . "FROM PhotoProof pp "
                 . "LEFT JOIN User u ON u.id=pp.clickedBy "
                 . "LEFT JOIN Task t ON t.id=pp.taskid "
                 . "LEFT JOIN Campaign c ON c.id=t.campaignid "
                 . "LEFT JOIN Listing l ON l.id=t.siteid "
-                . "WHERE pp.taskid = '$taskId' "
+                . "WHERE pp.status = 1 and pp.taskid = '$taskId' "
                 . "ORDER BY pp.clickedDateTime DESC ";
         //if (!$pop)
             //$sql .= "AND DATE_FORMAT(pp.clickedDateTime, '%Y-%m-%d') = '$dueDate' ";
@@ -188,6 +189,7 @@ class AjaxController extends Controller {
                 'lighting' => array_filter(explode(',', $pp['lighting'])),
                 'obstruction' => array_filter(explode(',', $pp['obstruction'])),
                 'comments' => $pp['comments'],
+                'taskid' => $pp['taskid']
             );
             array_push($photoProofArr, $photoProof);
         }
@@ -1166,55 +1168,76 @@ class AjaxController extends Controller {
     
     
     private static function createTaskForASite($cid, $add) {
-        $campaign = Campaign::model()->findByPk($cid);
-    //    print_r($campaign);
-        //This is till we have first all days monitoring
-        $diff = strtotime($campaign->attributes['endDate']) - strtotime($campaign->attributes['startDate']);
-//        if ($campaign['type'] != $_POST['type']) {
-//            $tasks = Task::fetchAllSitesInCampaign($_POST['cid']);
-//            for ($i = 0; $i < count($tasks); $i++) {
-//                array_push($add, $tasks[$i]['siteid']);
-//            }
-//            $add = array_unique($add);
-//
-//            Task::deleteAllTaskForCampaign($_POST['cid']);
-//            Campaign::model()->updateByPk($campaign['id'], array('type' => $_POST['type']));
-//        }
+                      
+              $campaign = Campaign::model()->findByPk($cid);
         
-//        if (count($add) > 0) {
-//            for ($i = 0; $i < count($add); $i++) {
+        /*
+         * figure out the priority
+         * 1. site level due date
+         * 2. frequency
+         * 3. campaign dates
+         */
+        if (!empty($add->taskduedate)) {
+//            $date = strtotime(trim($add->duedate));
+            $task = new Task();
+            $task->assignedCompanyId = Yii::app()->user->cid;
+            $task->campaignid = $cid;
+            $task->siteid = $add->id;
+            $task->status = 1;
+            $task->dueDate = $add->taskduedate;
+            $task->pop = 0;
+            $task->createdDate = date("Y-m-d H:i:s");
+            $task->createdBy = Yii::app()->user->id;
+            $task->save();
+        } else if (empty($add->taskduedate) && !empty($add->taskfrequency)) {
+            $arrdate = [];
+            $diff = strtotime($campaign->attributes['endDate']) - strtotime($campaign->attributes['startDate']);
+            //Add dates from the task frequency
+            $newdate = strtotime($campaign->attributes['startDate']);
+            array_push($arrdate, $newdate);
+            
+
+                while ($newdate < strtotime($campaign->attributes['endDate'])) {
+
+                    $newdate = strtotime("+$add->taskfrequency day", $newdate);
+                    echo date("Y-m-d H:i:s", $newdate);
+                    array_push($arrdate, $newdate);
+                }                
         
-                $dates = explode(',', $campaign->attributes['campaignDates']);
-                foreach ($dates as $date1) {
-                    $date = strtotime(trim($date1));
-                    $task = new Task();
-                    $task->assignedCompanyId = Yii::app()->user->cid;
-                    $task->campaignid = $_POST['cid'];
-                    $task->siteid = $add;
-                    $task->status = 1;
-                    $task->dueDate = date("Y-m-d H:i:s", $date);
-                    $task->pop = 0;
-                    $task->createdDate = date("Y-m-d H:i:s");
-                    $task->createdBy = Yii::app()->user->id;
-                    $task->save();    
-                }
-                
-//                while ((strtotime($campaign->attributes['endDate']) - $date) >= 0) {
-//                    $task = new Task();
-//                    $task->assignedCompanyId = Yii::app()->user->cid;
-//                    $task->campaignid = $_POST['cid'];
-//                    $task->siteid = $add;
-//                    $task->status = 1;
-//                    $task->dueDate = date("Y-m-d H:i:s", $date);
-//                    $task->pop = 0;
-//                    $task->createdDate = date("Y-m-d H:i:s");
-//                    $task->createdBy = Yii::app()->user->id;
-//                    $task->save();
-//                    $date = strtotime('+1 day', $date);
-//                }
-                return 1;
-            //}
-       // }
+            foreach ($arrdate as $date) {
+                //$date = strtotime(trim($date1));
+                $task = new Task();
+                $task->assignedCompanyId = Yii::app()->user->cid;
+                $task->campaignid = $cid;
+                $task->siteid = $add->id;
+                $task->status = 1;
+                $task->dueDate = date("Y-m-d H:i:s", $date);
+                $task->pop = 0;
+                $task->createdDate = date("Y-m-d H:i:s");
+                $task->createdBy = Yii::app()->user->id;
+                $task->save();    
+            }
+
+        } else if (empty($add->taskduedate) && empty($add->taskfrequency)) {
+            //This is till we have first all days monitoring
+            $diff = strtotime($campaign->attributes['endDate']) - strtotime($campaign->attributes['startDate']);
+            $dates = explode(',', $campaign->attributes['campaignDates']);
+            foreach ($dates as $date1) {
+                $date = strtotime(trim($date1));
+                $task = new Task();
+                $task->assignedCompanyId = Yii::app()->user->cid;
+                $task->campaignid = $cid;
+                $task->siteid = $add->id;
+                $task->status = 1;
+                $task->dueDate = date("Y-m-d H:i:s", $date);
+                $task->pop = 0;
+                $task->createdDate = date("Y-m-d H:i:s");
+                $task->createdBy = Yii::app()->user->id;
+                $task->save();    
+            }
+        }   
+
+        return 1;
     }
     
     public function actionMassuploadsiteForCampaign() {
@@ -1313,13 +1336,53 @@ class AjaxController extends Controller {
             $listingModel->basecurrencyid = 11;   // 11 for India
 
             $listingModel->datemodified = date('Y-m-d H:i:s');
+            
+            if (!empty($value->taskduedate)) {
+                $listingModel->taskduedate = date("Y-m-d H:i:s", strtotime($value->taskduedate));
+            }
+            if (!empty($value->frequency)) {
+                switch (strtolower(trim($value->frequency))) {
+                    case 'daily':
+                        $listingModel->taskfrequency = 1;
+                        break;
+                    case 'weekly':
+                        $listingModel->taskfrequency = 7;
+                        break;
+                    case 'fortnightly':
+                        $listingModel->taskfrequency = 14;
+                        break;
+                    case 'monthly':
+                        $listingModel->taskfrequency© = 30;
+                        break;
+                    default:
+                        break;
+                }
+            }
 
             if (empty($value->id) && !empty($value->name) && !empty($value->locality) && !empty($value->city)) {
                 $listingModel->datecreated = date('Y-m-d H:i:s');
                 $listingModel->save();
                 array_push($lids, $listingModel->id);
                 //create task for the days
-              $flag = AjaxController::createTaskForASite($cid, $listingModel->id);
+                $flag = AjaxController::createTaskForASite($cid, $listingModel); 
+              // $flag;
+              // try {
+              //   $flag = AjaxController::createTaskForASite($cid, $listingModel); 
+              //   print_r($flag);die();   
+              // } catch (Exception $e) {
+              //     print_r($e);die();
+              // }
+
+
+              //TO be copied to a new location
+
+
+
+
+
+
+
+              
               //echo $value->monitor . ' sdfsfs'; die();
               if (!empty($value->monitor)) {
 //                echo $value->monitor;
@@ -1411,5 +1474,11 @@ class AjaxController extends Controller {
         }
     }
     
+    public function actionRemoveImage() {
+        $pp =  PhotoProof::model()->findByPk($_POST['id']);
+        $pp->status = 0;
+        $pp->update();
+        echo 1;
+    }
     
 }

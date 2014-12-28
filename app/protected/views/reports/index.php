@@ -121,6 +121,7 @@
 </div>
 <!-- end of tasks list --> 
 <script type="text/javascript">
+
 $(document).ready(function () {
 
 
@@ -162,40 +163,6 @@ $(document).ready(function () {
                         $('#img-gallery').html(out);
                         console.log(err);
                     });
-//                    $('#img-gallery').html('');
-//                    var img_gal = JSON.parse(data);
-//                    //console.log(img_gal);
-//                    img_gal.forEach(function(col){
-//                        var problems = '';
-//                        var installation = (col.installation).split(",");
-//                        for (var i = 0; i < installation.length; i++) {
-//                            if(installation[i]!=''){
-//                                problems += '<span class=\'install\'>'+installation[i]+'</span>';
-//                            }
-//                        }
-//                        var lighting = (col.lighting).split(",");
-//                        for (var i = 0; i < lighting.length; i++) {
-//                            if(lighting[i]!=''){
-//                                problems += '<span class=\'install\'>'+lighting[i]+'</span>';
-//                            }
-//                        }
-//                        var obstruction = (col.obstruction).split(",");                        
-//                        for (var i = 0; i < obstruction.length; i++) {
-//                            if(obstruction[i]!=''){
-//                                problems += '<span class=\'install\'>'+obstruction[i]+'</span>';
-//                            }
-//                        }
-//                        //installation.filter();
-//                        //console.log(installation); // + " = " + lighting + " = " + obstruction);
-//                        var img_url = '<a href="'+col.imageName+'" data-toggle="lightbox" data-gallery="multiimages" ';
-//                        img_url += 'data-title="<div><h2><span>Site: </span>'+site+'</h2><h3><span>Campaign: </span>'+campaign+'</h3><div>'+problems+'</div></div>" ';
-//                        img_url += 'data-footer="<div class=\'pull-left\'>Clicked by: '+col.clickedBy+'</div><div class=\'pull-right\'>Clicked at: '+col.clickedDateTime+'</div><div class=\'clearfix\'></div>" ';
-//                        img_url += '></a>';
-//                        
-//                        $('#img-gallery').append(img_url);
-//                    });
-
-//$('#img-gallery').append(img_url);
                     $('div#img-gallery a:first-child').ekkoLightbox();
                 }
             });

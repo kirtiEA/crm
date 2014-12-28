@@ -427,3 +427,41 @@ var customDates = function(type) {
    // }
 
 };
+
+
+
+var removeImage = function(id, taskid) {
+    console.log(id + " sdfsf "  + taskid);
+    
+    $.ajax({
+                url: $('#completePath').text()+ "/ajax/removeImage",
+                type: "POST",
+                data: {                    
+                    id: id
+                },
+                success: function(data) {
+                    console.log(data);
+                    if (data == 1) {
+                      $('#img-gallery').html();
+                    $.ajax({
+                                    url: $('#completePath').text()+ '/ajax/fetchppimages',
+                                    type: "POST",
+                                    data: {                    
+                                        taskid: taskid
+                                    },
+                                    async: false,                
+                                    success: function(data) {
+                                        //console.log(data);
+                                        dust.render("lightbox", JSON.parse(data) , function(err, out) {
+                                            $('#img-gallery').html(out);
+                                            console.log(err);
+                                        });
+                                        $('div#img-gallery a:first-child').ekkoLightbox();
+                                    }
+                                });
+
+                    }
+                    
+                }
+            });
+};
