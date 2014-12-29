@@ -1190,7 +1190,7 @@ class AjaxController extends Controller {
             $task->createdBy = Yii::app()->user->id;
             $task->save();
         } else if (empty($add->taskduedate) && !empty($add->taskfrequency)) {
-            $arrdate = [];
+            $arrdate = array();
             $diff = strtotime($campaign->attributes['endDate']) - strtotime($campaign->attributes['startDate']);
             //Add dates from the task frequency
             $newdate = strtotime($campaign->attributes['startDate']);
