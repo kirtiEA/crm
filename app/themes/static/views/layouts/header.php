@@ -5,16 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Monitorly</title>
+        <title>EatAds CRM</title>
 
         <!-- CSS -->
         <?php
         $theme = Yii::app()->theme;
         $cs = Yii::app()->clientScript;
-        $cs->registerCssFile($theme->getBaseUrl() . '/css/application.css');
-        $cs->registerCssFile($theme->getBaseUrl() . '/css/intlTelInput.css');
-        $cs->registerCssFile($theme->getBaseUrl() . '/css/phonenumber.css');
-        
+        $cs->registerCssFile($theme->getBaseUrl() . '/css/application.css');      
         ?>
         <!--
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -29,35 +26,14 @@
         $cs->registerScriptFile($theme->getBaseUrl() . '/js/jquery-ui.min.js');//, CClientScript::POS_BEGIN);
         $cs->registerScriptFile($theme->getBaseUrl() . '/js/bootstrap.js');//, CClientScript::POS_END);
         $cs->registerScriptFile($theme->getBaseUrl() . '/js/application.js');//, CClientScript::POS_BEGIN);
-        $cs->registerScriptFile($theme->getBaseUrl() . '/js/intlTelInput.js');//, CClientScript::POS_BEGIN);
-        ?>
+         ?>
         <style>
             .flag{
                 background-image: url("<?php echo $theme->getBaseUrl() . '/images/flags.png';?>"  )
             }
         </style>    
-        <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-39765015-5', 'auto');
-  ga('send', 'pageview');
-
-</script>
     </head>
     <body>
-        <!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WQCMG9"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){wl=wl||[];wl.push(
-{'gtm.start': new Date().getTime(),event:'gtm.js'}
-);var f=d.getElementsByTagName(s)0,
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WQCMG9');</script>
-<!-- End Google Tag Manager -->
         <!-- header -->
         <div style="display: none;" id="completePath"><?php echo Yii::app()->getBaseUrl();?></div>
         <nav class="navbar navbar-default navbar-dark" id="header_nav" role="navigation">

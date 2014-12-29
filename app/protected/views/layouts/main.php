@@ -1,145 +1,205 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CRM">
+    <meta name="author" content="Kirti">
+    <link rel="icon" href="">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
+    <title>CRM</title>
 
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Monitorly</title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/application.css" />
-        <link rel="stylesheet" type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' />
-                 
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap-multiselect.js"></script> 
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/application.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/ekko-lightbox.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/mustache.js"></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-39765015-5', 'auto');
-  ga('send', 'pageview');
-
-</script>
-    </head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/jquery-ui.min.css" />
     
-    <style>
-    .site_marked_fav {
-        background-color: #F58707;
-        color: white;
-        border: none;
-    }
-     .selectedSite {
-                background-color: bisque;
-            }
-            
-            #loading-image {
-	background-color: #333;
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	top: 0px;
-	right: 0px;
-	z-index: 9999;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px; /* future proofing */
-	-khtml-border-radius: 10px;
-        opacity: 0.7;
-}
-</style>
-    <style>
-        .notification {
-            width: 40px;
-            height: 40px;
-            background-size: cover;
-            display: block;
-            -webkit-border-radius: 100px;
-            -moz-border-radius: 100px;
-            -ms-border-radius: 100px;
-            -o-border-radius: 100px;
-            border-radius: 100px;
-            font-size: 1.7em;
-        }
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
+    
 
-    </style>
-    <body class="full static">
-      <!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WQCMG9"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){wl=wl||[];wl.push(
-{'gtm.start': new Date().getTime(),event:'gtm.js'}
-);var f=d.getElementsByTagName(s),
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WQCMG9');</script>
-<!-- End Google Tag Manager -->  
-        
-        <div id="loading-image" style="display: none;">
-    <img style="margin-left: 400px;margin-top: 200px;" src='<?php echo Yii::app()->getBaseUrl(); ?>/images/override.gif' alt="Loading..." />
-</div>
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-inverse">
+            <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">                        
-                        <div id="logo">
-<!--                           <img src="<?php //echo Yii::app()->getBaseUrl() . '/images/logo.png'; ?>"></img>-->
-                        </div>
-                    </a>
+                    <button type="button" class="btn navbar-toggle collapsed" data-toggle="modal" data-target="#addalead"><span class="fa fa-plus"></span></button>
+                    <a class="navbar-brand" href="#">TPM</a>
                 </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav tabs">
-                        <li class="mon_menu menu_campaign"><a href="<?php echo Yii::app()->urlManager->createUrl('myCampaigns'); ?>">Campaigns</a></li>
-<!--                        <li class="mon_menu menu_site"><a href="<?php //echo Yii::app()->urlManager->createUrl('site/mySites'); ?>">Sites</a></li>-->
-<!--                        <li class="mon_menu menu_vendor"><a href="<?php //echo Yii::app()->urlManager->createUrl('vendor'); ?>">Vendors</a></li>-->
-                        <li class="mon_menu menu_user"><a href="<?php echo Yii::app()->urlManager->createUrl('user'); ?>">Users</a></li>
-                        <li class="mon_menu menu_task"><a href="<?php echo Yii::app()->urlManager->createUrl('task'); ?>">Tasks</a></li>
-                        <li class="mon_menu menu_report"><a href="<?php echo Yii::app()->urlManager->createUrl('reports/all'); ?>">Reports</a></li>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Dashboard</a></li>
+                        <li><a href="#contact">Contacts</a></li>
+                        <li><a href="#contact">Users</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::app()->user->name; ?> <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <!--<li><a href="#">Settings</a></li>-->
-                                <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
-                            </ul>
-                        </li>
-                        <!--                        <li class="dropdown">
-                        <?php
-//                                $cnt = JoyUtilities::findUnseenNotificationsCount(Yii::app()->user->cid);
-//                                if($cnt == 0) {
-//                                    echo '<div class="notification glyphicon glyphicon-bell"></div>';
-//                                } else {
-//                                    echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="fetchNotifications();" ><div class="notification glyphicon glyphicon-bell" style="color: coral;" ></div></a>';
-//                                }    
-                        ?>
-                                                    <ul class="dropdown-menu" id="notificationCenter">
-                                                        <li><a href="#">Settings</a></li>
-                                                        <li><a href="<?php //echo Yii::app()->urlManager->createUrl('account/logout');  ?>">Logout</a></li>
-                                                    </ul>
-                                                </li>-->
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div><!--/.nav-collapse -->
+            </div>
         </nav>
-        <?php if (Yii::app()->user->hasFlash('successconst')) { ?>
+
+<!-- This is main content area-->
+<?php echo $content; ?>
+
+
+         <!-- Modal one [add a lead] -->
+    <div class="modal fade" id="addalead">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>&nbsp;&nbsp;</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xs-12 col-md-8 col-sm-8 pull-right">
+                        <!-- Line 1 starts here -->
+                        <div class="form-inline col-md-12 col-xs-12 col-sm-12">
+                            <p class="col-md-3 col-sm-3 col-xs-12">Campaign Dates:</p>
+                            <div class="col-md-1 hidden-xs">
+                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                            </div>
+                            <input class="col-md-3 col-sm-3 col-xs-12" type="datepicker" id="sdate" name="Start Date" value="" placeholder="Start Date">
+                            <div class="col-md-1 hidden-xs">
+                                <span class="glyphicon glyphicon-calendar align-right" aria-hidden="true"></span>
+                            </div>
+                            <input class="col-md-3 col-sm-3 col-xs-12" type="datepicker" id="edate" name="End Date" value="" placeholder="End Date">
+                        </div>
+                        <!-- line 1 ends here -->
+                        <!-- line 2 starts here -->
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <input class="col-md-3 col-sm-3 col-xs-12" type="text" name="" value="" placeholder="Currency">
+                            <div class="col-md-1 hidden-xs">
+                            </div>
+                            <input class="col-md-3 col-sm-3 col-xs-12" type="number" name="Budget" value="" placeholder="Budget Proposed">
+                        </div>
+                        <!-- line 2 ends here -->
+                        <!-- line 3 starts here -->
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <input class="col-md-3 col-sm-3 col-xs-12" type="text" name="" value="" placeholder="Currency">
+                            <div class="col-md-1 hidden-xs"></div>
+                            <input class="col-md-3 col-sm-3 col-xs-12" type="number" name="Budget" value="" placeholder="Budget Proposed">
+                            <div class="col-md-1 hidden-xs"></div>
+                            <div class="col-md-4 col-xs-12 col-sm-4">
+                                <div class="form-group">
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addabudget">Add Another Budget</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- line 3 ends here -->
+                        <!-- line 4 starts here -->
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <span class="col-md-1 hidden-xs glyphicon glyphicon-tags"></span>
+                            <input class="col-md-10 col-xs-12 col-sm-10" type="text" id="tags"name="" value="" placeholder="Media Format Tags">
+                        </div>
+                        <!-- line 4 ends here -->
+                        <!-- line 5 starts here -->
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <textarea class="form-control" rows="3" placeholder="Description"></textarea>
+                        </div>
+                        <!-- line 5 ends here -->
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-success pull-right">Create Lead</button>
+                        <!-- /.Submit Button -->
+                    </div>
+                    <div class="col-xs-12 col-md-4 col-sm-4 pull-left modal-left">
+                        <hr class="hidden-sm hidden-md hidden-lg">
+                        <h4><b onclick="$('#brand').show();$('#brand_old').empty();" id="brand_old">Brand</b><input type="text" class="col-md-11 col-sm-11 col-xs-12" placeholder="Brand" style="display: none;" id="brand"> <span onclick="$('#brand').show();$('#brand_old').empty();" class="glyphicon glyphicon-edit pull-right"></span> </h4>
+                        <div class="clearfix"></div>
+                        <p><span onclick="$('#agency').show();$('#agency_old').empty();" id="agency_old">Agency</span><input type="text" class="col-md-11 col-sm-11 col-xs-12" placeholder="Agency" style="display: none;" id="agency"><span onclick="$('#agency').show();$('#agency_old').empty();" id="agency_old" class="glyphicon glyphicon-edit pull-right"></span> </p>
+                        <div class="clearfix"></div>
+                        <p><span class="glyphicon glyphicon-user"></span><span onclick="$('#user').show();$('#user_old').empty();" id="user_old"> Assign To</span><input type="text" class="col-md-11 col-sm-11 col-xs-12" placeholder="Assign To" style="display: none;" id="user">  <span onclick="$('#user').show();$('#user_old').empty();" class="glyphicon glyphicon-edit pull-right"></span></p>
+                        <div class="clearfix"></div>
+                        <p>Tourism <span class="glyphicon glyphicon-edit pull-right"></span></p>
+                        <address style="display: none;" id="address">
+                            <strong>Twitter, Inc.</strong><br>
+                            795 Folsom Ave, Suite 600<br>
+                            San Francisco, CA 94107<br>
+                            <abbr title="Phone">P:</abbr> (123) 456-7890
+                        </address>
+
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal one [add a lead] -->
+    <!-- Modal Two -->
+    <div class="modal fade " id ="modaldetails">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>ID: TPM 123</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xs-12 col-md-8 col-sm-8 pull-right">
+                        <div class="col-xs-12 text-left">
+                            <span class=" col-xs-1 glyphicon glyphicon-tags"></span>
+                            <span class=" label label-success">Tag1</span>
+                            <span class=" label label-success">Tag2</span>
+                            <span class=" label label-success">Tag3</span>
+                            <span class="glyphicon glyphicon-edit pull-right"></span>
+                        </div>
+                        <h5><strong>Singapore</strong> <small><span class="glyphicon glyphicon-edit"></span></small></h5>
+                        <h6><strong>SGD</strong> 200,000 <span class="glyphicon glyphicon-edit"></span></h6>
+                        <h5><strong>Jakarta</strong> <small><span class="glyphicon glyphicon-edit"></span></small></h5>
+                        <h6><strong>IDR</strong> 200,000 <span class="glyphicon glyphicon-edit"></span></h6>
+                        <p><mark>Description:</mark>lorem Ipsum Dolor Sit Amet</p>
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <textarea class="form-control" rows="3" placeholder="Remark"></textarea>
+                        </div>
+                        <input type="submit" name="Add" value="Add" class="btn btn-success">
+                        <div class="clearfix"></div>
+                        <hr>
+                        <div class="col-xs-12 col-md-12 col-sm-12 bottomhalfmodal">
+                            <p class="bg-info">Status Change<span class="pull-right">Date</span></p>
+                            <p class="bg-info">Status Change<span class="pull-right">Date</span></p>
+                            <p class="bg-info">Status Change<span class="pull-right">Date</span></p>
+                            <p class="bg-info">Status Change<span class="pull-right">Date</span></p>
+                            <p class="bg-info">Status Change<span class="pull-right">Date</span></p>
+                        </div>
+                        <a href="#" title="">See full history of this lead</a>
+                        <input type="submit" name="Add" value="Move To Proposal Sent" class="btn btn-success pull-right">
+                    </div>
+                    <div class="col-xs-12 col-md-4 col-sm-4 pull-left modal-left">
+                        <hr class="hidden-sm hidden-md hidden-lg">
+                        <h4><b>Toshiba</b> <span class="glyphicon glyphicon-edit pull-right"></span> </h4>
+                        <p>The Media Shop <span class="glyphicon glyphicon-edit pull-right"></span> </p>
+                        <u>Campaign Dates</u>
+                        <p>Start: 1/1/2015<span class="glyphicon glyphicon-edit pull-right"></span></p>
+                        <p>End: 1/1/2015<span class="glyphicon glyphicon-edit pull-right"></span></p>
+                        <p><span class="glyphicon glyphicon-user"></span> Thi <span class="glyphicon glyphicon-edit pull-right"></span></p>
+                        <p>Tourism <span class="glyphicon glyphicon-edit pull-right"></span></p>
+                        <address>
+                            <strong>Twitter, Inc.</strong><br>
+                            795 Folsom Ave, Suite 600<br>
+                            San Francisco, CA 94107<br>
+                            <abbr title="Phone">P:</abbr> (123) 456-7890
+                        </address>
+
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /. Modal Two -->
+
+                <?php if (Yii::app()->user->hasFlash('successconst')) { ?>
         <div id="constantbox">
             <div id="flash-messagesx" class="alert alert-success alert">
                 <?php echo Yii::app()->user->getFlash('successconst'); ?>
@@ -160,30 +220,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
         <?php } ?>
         <div style="display: none" id="completePath"><?php echo Yii::app()->getBaseUrl(true); ?></div>
-        <div style="display: none" id="currentCompanyId"><?php echo Yii::app()->user->cid; ?></div>
-        <?php echo $content; ?>        
-        <!-- invite vendor modal -->
-    <div class="modal fade" id="share-campaign-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-sm-custom">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3><b>Share Campaign</b></h3>
-                </div>
-                <div class="modal-body">
-<!--                    <label>Email</label>&nbsp;-->
-<input type="text" id="selectedShareCampaign" style="display: none"></input>    
-                    <textarea placeholder="Enter comma separated Emails" style="width: 215px;" id="share_emails"></textarea>
-                </div>
-                <div class="modal-footer">
-                    <div class="alert alert-danger" role="alert" style="display:none;">Please enter correct email id</div>
-                    <a href="#" id="cancel" data-dismiss="modal">Cancel</a>&nbsp;
-                    <button class="btn btn-primary" id="shareCampaign" onclick="shareCampaignToEmails();">Share</button>
-                </div>
-            </div>
+        <!-- JavaScript -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery-1.10.2.min.js"></script>
+        <!-- JQuery UI CDN -->
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery-ui.min.js"></script>
+        <!-- Latest compiled and minified JavaScript Bootstrap -->
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/bootstrap.js"></script>
+        <!-- Custom Javascript -->
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
 
-        </div>
-    </div>
-    <!-- end of invite vendor modal -->
-    
-    </body>
-</html>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    </body></html>

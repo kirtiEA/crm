@@ -11,13 +11,6 @@ class AccountController extends Controller {
                 Yii::app()->user->logout();
             }
         }    
-         if (Yii::app()->user->isGuest && Yii::app()->controller->id == 'reports') {
-            Yii::app()->theme = 'report';
-            $this->layout = "//layouts/static_page";
-            if (!Yii::app()->user->isGuest) {
-                Yii::app()->user->logout();
-            }
-        } 
 //        else {
 //            $this->redirect(Yii::app()->createUrl('myCampaigns'));
 //        }
@@ -50,7 +43,7 @@ class AccountController extends Controller {
                     $this->redirect($returnUrlParam);
                 } else {
                     JoyUtilities::redirectUser(Yii::app()->user->id);
-                    $this->redirect(Yii::app()->getBaseUrl() . '/myCampaigns');
+                    $this->redirect(Yii::app()->getBaseUrl() . '/dashboard');
                 }
             } else {
                 $status = 101;

@@ -9,7 +9,7 @@ $protocol = 'http://';     // https:// or http://
 
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
-    'name' => 'Monitorly',
+    'name' => 'EatAds CRM',
     'defaultController' => 'account/index',
     // preloading 'log' component
     'preload' => array('log'),
@@ -19,17 +19,17 @@ return array(
         'application.components.*',
         'application.components.JOY.*',
         'ext.easyimage.EasyImage',
-        'ext.yii-pdf.*',
+   //        'ext.yii-pdf.*',
         'application.extensions.PasswordHash',
-        'application.vendor.mpdf_old.*',
+//        'application.vendor.mpdf_old.*',
         'ext.YiiMailer.EatadsMailer', // Wrapper of YiiMailer
-        'application.extensions.GcmPushNotification',
+ //       'application.extensions.GcmPushNotification',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool        
         'gii' => array(
             'class' => 'system.gii.GiiModule',
-            'password' => 'monitorly',
+            'password' => 'crm',
             // If removed, Gii defaults to localhost only. Edit carefully to taste.
             'ipFilters' => false, //array($_SERVER['REMOTE_ADDR']),
         ),
@@ -54,11 +54,11 @@ return array(
                  */
 
                 // REST patterns
-                array('api/list', 'pattern' => 'api/<model:\w+>', 'verb' => 'GET'),
-                array('api/view', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'GET'),
-                array('api/update', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'PUT'),
-                array('api/delete', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'DELETE'),
-                array('api/create', 'pattern' => 'api/<model:\w+>', 'verb' => 'POST'),
+                // array('api/list', 'pattern' => 'api/<model:\w+>', 'verb' => 'GET'),
+                // array('api/view', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'GET'),
+                // array('api/update', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'PUT'),
+                // array('api/delete', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'DELETE'),
+                // array('api/create', 'pattern' => 'api/<model:\w+>', 'verb' => 'POST'),
                 // Other controllers
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
@@ -94,43 +94,43 @@ return array(
               ), */
             ),
         ),
-        'ePdf' => array(
-            'class' => 'ext.yii-pdf.EYiiPdf',
-            'params' => array(
-                'mpdf' => array(
-                    'librarySourcePath' => 'application.vendor.mpdf.*',
-                    'constants' => array(
-                        '_MPDF_TEMP_PATH' => Yii::getPathOfAlias('application.runtime'),
-                    ),
-                    'class' => 'mpdf', // the literal class filename to be loaded from the vendors folder
-                /* 'defaultParams'     => array( // More info: http://mpdf1.com/manual/index.php?tid=184
-                  'mode'              => '', //  This parameter specifies the mode of the new document.
-                  'format'            => 'A4', // format A4, A5, ...
-                  'default_font_size' => 0, // Sets the default document font size in points (pt)
-                  'default_font'      => '', // Sets the default font-family for the new document.
-                  'mgl'               => 15, // margin_left. Sets the page margins for the new document.
-                  'mgr'               => 15, // margin_right
-                  'mgt'               => 16, // margin_top
-                  'mgb'               => 16, // margin_bottom
-                  'mgh'               => 9, // margin_header
-                  'mgf'               => 9, // margin_footer
-                  'orientation'       => 'P', // landscape or portrait orientation
-                  ) */
-                ),
-                'HTML2PDF' => array(
-                    'librarySourcePath' => 'application.vendor.html2pdf.*',
-                    'classFile' => 'html2pdf.class.php', // For adding to Yii::$classMap
-                /* 'defaultParams'     => array( // More info: http://wiki.spipu.net/doku.php?id=html2pdf:en:v4:accueil
-                  'orientation' => 'P', // landscape or portrait orientation
-                  'format'      => 'A4', // format A4, A5, ...
-                  'language'    => 'en', // language: fr, en, it ...
-                  'unicode'     => true, // TRUE means clustering the input text IS unicode (default = true)
-                  'encoding'    => 'UTF-8', // charset encoding; Default is UTF-8
-                  'marges'      => array(5, 5, 5, 8), // margins by default, in order (left, top, right, bottom)
-                  ) */
-                )
-            ),
-        ),
+        // 'ePdf' => array(
+        //     'class' => 'ext.yii-pdf.EYiiPdf',
+        //     'params' => array(
+        //         'mpdf' => array(
+        //             'librarySourcePath' => 'application.vendor.mpdf.*',
+        //             'constants' => array(
+        //                 '_MPDF_TEMP_PATH' => Yii::getPathOfAlias('application.runtime'),
+        //             ),
+        //             'class' => 'mpdf', // the literal class filename to be loaded from the vendors folder
+        //          'defaultParams'     => array( // More info: http://mpdf1.com/manual/index.php?tid=184
+        //           'mode'              => '', //  This parameter specifies the mode of the new document.
+        //           'format'            => 'A4', // format A4, A5, ...
+        //           'default_font_size' => 0, // Sets the default document font size in points (pt)
+        //           'default_font'      => '', // Sets the default font-family for the new document.
+        //           'mgl'               => 15, // margin_left. Sets the page margins for the new document.
+        //           'mgr'               => 15, // margin_right
+        //           'mgt'               => 16, // margin_top
+        //           'mgb'               => 16, // margin_bottom
+        //           'mgh'               => 9, // margin_header
+        //           'mgf'               => 9, // margin_footer
+        //           'orientation'       => 'P', // landscape or portrait orientation
+        //           ) 
+        //         ),
+        //         'HTML2PDF' => array(
+        //             'librarySourcePath' => 'application.vendor.html2pdf.*',
+        //             'classFile' => 'html2pdf.class.php', // For adding to Yii::$classMap
+        //         /* 'defaultParams'     => array( // More info: http://wiki.spipu.net/doku.php?id=html2pdf:en:v4:accueil
+        //           'orientation' => 'P', // landscape or portrait orientation
+        //           'format'      => 'A4', // format A4, A5, ...
+        //           'language'    => 'en', // language: fr, en, it ...
+        //           'unicode'     => true, // TRUE means clustering the input text IS unicode (default = true)
+        //           'encoding'    => 'UTF-8', // charset encoding; Default is UTF-8
+        //           'marges'      => array(5, 5, 5, 8), // margins by default, in order (left, top, right, bottom)
+        //           ) */
+        //         )
+        //     ),
+        // ),
     ),
     // application-level parameters that can be accessed
     // using Yii::app()->params['paramName']

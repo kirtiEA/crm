@@ -20,34 +20,23 @@ class SiteController extends Controller {
         );
     }
 
-    public function init() {      
-        if (Yii::app()->user->isGuest) {
-            if(Yii::app()->controller->id == 'account') {
-                $this->redirect(Yii::app()->createUrl('account'));
-            } else if(Yii::app()->controller->id == 'reports') {
-                $this->redirect(Yii::app()->createUrl('reports/all'));
-            } else {
-                $this->redirect(Yii::app()->createUrl('account'));
-            }     
-        }        
-    }
 
     /**
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        $data = Listing::getListingsForAcceptedVendors(Yii::app()->user->cid, 0);
-        $arr = array();
-        foreach ($data as $key => $value) {
-            $result = array();
-            $result[0] = $value['name'] . ', ' . $value['address'];
-            $result[1] = $value['lat'];
-            $result[2] = $value['lng'];
-            $result[3] = $value['id'];
-            array_push($arr, $result);
-        }
-        $this->render('index', array('markers' => json_encode($arr)));
+        // $data = Listing::getListingsForAcceptedVendors(Yii::app()->user->cid, 0);
+        // $arr = array();
+        // foreach ($data as $key => $value) {
+        //     $result = array();
+        //     $result[0] = $value['name'] . ', ' . $value['address'];
+        //     $result[1] = $value['lat'];
+        //     $result[2] = $value['lng'];
+        //     $result[3] = $value['id'];
+        //     array_push($arr, $result);
+        // }
+        $this->render('index');
     }
 
     public function actionMySites() {

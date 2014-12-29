@@ -332,8 +332,14 @@ class User extends BaseUser {
 
     public static function fetchCompanyUsers($companyid, $roleid = null) {
         $sql = 'select u.id, u.username as name from User u '
-                . 'where u.username is not null and u.username != \'\' and u.status = 1 and u.active= 1 and  companyid = ' . $companyid;
+               . ' inner join UserRole ur on ur.userid = u.id ';
+        if ($roleid != null) {
+            $sql = $sql . " and ur.roleid = $roleid ";
+        }       
+
+               $sql = $sql . 'where u.username is not null and u.username != \'\' and u.status = 1 and u.active= 1 and  companyid = ' . $companyid;
         return Yii::app()->db->createCommand($sql)->queryAll();
+//               return $sql;
     }
 
     public static function fetchCompanyUsersModel($cid) {
@@ -350,4 +356,6 @@ class User extends BaseUser {
         $sql= 'SELECT count(*) as cnt from User where username like \'' . $username . '\' and companyid = ' . $id;
         return Yii::app()->db->createCommand($sql)->queryRow();
     }
+
+
 }
