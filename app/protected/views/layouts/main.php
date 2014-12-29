@@ -9,17 +9,34 @@
     <link rel="icon" href="">
 
     <title>CRM</title>
-
+<div style="display: none" id="completePath"><?php echo Yii::app()->getBaseUrl(true); ?></div>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/jquery-ui.min.css" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/token-input.css" />
     
     <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
     
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
+    
+            <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery-1.10.2.min.js"></script>
+        <!-- JavaScript -->
 
+        <!-- JQuery UI CDN -->
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery-ui.min.js"></script>
+        <!-- Latest compiled and minified JavaScript Bootstrap -->
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/bootstrap.js"></script>
+        <!-- Custom Javascript -->
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
+        
+        <!-- Token input -->
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery.tokeninput.js"></script>
+        
+        <!-- mustache -->
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/mustache.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -27,7 +44,7 @@
       <![endif]-->
     </head>
 
-    <body>
+    <body >
 
         <nav class="navbar navbar-inverse">
             <div class="container">
@@ -105,27 +122,42 @@
                         <!-- line 4 starts here -->
                         <div class="col-md-12 col-xs-12 col-sm-12">
                             <span class="col-md-1 hidden-xs glyphicon glyphicon-tags"></span>
-                            <input class="col-md-10 col-xs-12 col-sm-10" type="text" id="tags"name="" value="" placeholder="Media Format Tags">
+                            <input class="col-md-10 col-xs-12 col-sm-10" type="text" id="tags" name="" value="" placeholder="Media Format Tags">
                         </div>
                         <!-- line 4 ends here -->
                         <!-- line 5 starts here -->
                         <div class="col-md-12 col-xs-12 col-sm-12">
-                            <textarea class="form-control" rows="3" placeholder="Description"></textarea>
+                            <textarea class="form-control" rows="3" id="description" placeholder="Description"></textarea>
                         </div>
                         <!-- line 5 ends here -->
                         <!-- Submit Button -->
-                        <button type="submit" class="btn btn-success pull-right">Create Lead</button>
+                        <button type="submit" onclick="createlead();" class="btn btn-success pull-right">Create Lead</button>
                         <!-- /.Submit Button -->
                     </div>
                     <div class="col-xs-12 col-md-4 col-sm-4 pull-left modal-left">
                         <hr class="hidden-sm hidden-md hidden-lg">
-                        <h4><b onclick="$('#brand').show();$('#brand_old').empty();" id="brand_old">Brand</b><input type="text" class="col-md-11 col-sm-11 col-xs-12" placeholder="Brand" style="display: none;" id="brand"> <span onclick="$('#brand').show();$('#brand_old').empty();" class="glyphicon glyphicon-edit pull-right"></span> </h4>
+                        <h4><b onclick="$('#brand').show();$('#brand_old').empty();" id="brand_old">Brand</b>
+                                <input type="text" class="col-md-11 col-sm-11 col-xs-12" placeholder="Brand" style="display: none;" id="brand"> 
+                                <input type="text" style="display: none" id="selectedbrandid">
+                                <span onclick="$('#brand').show();$('#brand_old').empty();" class="glyphicon glyphicon-edit pull-right">
+                                    
+                                </span> 
+                        </h4>
                         <div class="clearfix"></div>
-                        <p><span onclick="$('#agency').show();$('#agency_old').empty();" id="agency_old">Agency</span><input type="text" class="col-md-11 col-sm-11 col-xs-12" placeholder="Agency" style="display: none;" id="agency"><span onclick="$('#agency').show();$('#agency_old').empty();" id="agency_old" class="glyphicon glyphicon-edit pull-right"></span> </p>
+                        <p><span onclick="$('#agency').show();$('#agency_old').empty();" id="agency_old">Agency</span>
+                            <input type="text" class="col-md-11 col-sm-11 col-xs-12" placeholder="Agency" style="display: none;" id="agency">
+                            <input type="text" style="display: none" id="selectedagencyid">
+                            <span onclick="$('#agency').show();$('#agency_old').empty();" id="agency_old" class="glyphicon glyphicon-edit pull-right"></span> 
+                        </p>
                         <div class="clearfix"></div>
-                        <p><span class="glyphicon glyphicon-user"></span><span onclick="$('#user').show();$('#user_old').empty();" id="user_old"> Assign To</span><input type="text" class="col-md-11 col-sm-11 col-xs-12" placeholder="Assign To" style="display: none;" id="user">  <span onclick="$('#user').show();$('#user_old').empty();" class="glyphicon glyphicon-edit pull-right"></span></p>
+                        <p><span onclick="$('#user').show();$('#user_old').empty();" id="user_old"><span class="glyphicon glyphicon-user"></span> Assign To</span>
+                            <input type="text" class="col-md-11 col-sm-11 col-xs-12" placeholder="Assign To" style="display: none;" id="user"> 
+                            <input type="text" style="display: none" id="selecteduserid">
+                            <span onclick="$('#user').show();$('#user_old').empty();" class="glyphicon glyphicon-edit pull-right"></span>
+                        </p>
                         <div class="clearfix"></div>
                         <p>Tourism <span class="glyphicon glyphicon-edit pull-right"></span></p>
+                        <div class="clearfix"></div>
                         <address style="display: none;" id="address">
                             <strong>Twitter, Inc.</strong><br>
                             795 Folsom Ave, Suite 600<br>
@@ -219,17 +251,9 @@
 
             </div>
         <?php } ?>
-        <div style="display: none" id="completePath"><?php echo Yii::app()->getBaseUrl(true); ?></div>
-        <!-- JavaScript -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery-1.10.2.min.js"></script>
-        <!-- JQuery UI CDN -->
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery-ui.min.js"></script>
-        <!-- Latest compiled and minified JavaScript Bootstrap -->
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/bootstrap.js"></script>
-        <!-- Custom Javascript -->
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
+        
 
+        
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     </body></html>

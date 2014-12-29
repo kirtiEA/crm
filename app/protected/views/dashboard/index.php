@@ -14,14 +14,21 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
+                                
                                 <?php 
                                 $html = '';
+                                $brandauto = array();
                                 foreach ($sales as $user) {
+                                    $temp = array(
+                                        'value' => $user['id'],
+                                        'label' => $user['name']
+                                    );
+                                    array_push($brandauto, $temp);
                                     $html = $html .  "<li onclick='filterdashboard();'><a>" . $user['name'] . "</a></li>" ;
                                 }
+                                $html = $html . '<li id="allsales" style="display: none;">' . json_encode($brandauto) . '</li>';
                                 echo $html;
                                 ?>
-
                             </ul>
                         </div>
                     </div>
@@ -36,10 +43,16 @@
                             <ul class="dropdown-menu" role="menu">
                                 <?php 
                                 $html = '';
-                                
+                                $brandauto = array();
                                 foreach ($brands as $brand) {
                                     $html = $html .  "<li onclick='filterdashboard();'><a>" . $brand->name . "</a></li>" ;
+                                    $temp = array(
+                                        'value' => $brand->id,
+                                        'label' => $brand->name
+                                    );
+                                    array_push($brandauto, $temp);
                                 }
+                                $html = $html . '<li id="allbrands" style="display: none;">' . json_encode($brandauto) . '</li>';
                                 echo $html;
                                 ?>
                             </ul>
@@ -117,17 +130,39 @@
     <div class="container-fluid data-content">
         <!-- row starts here -->
         <div class="row data-content-row">
-            <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3">
+            <?php
+            $html = '';
+            foreach ($buckets as $bucket) {
+                $html = $html . '<div class="col-xs-12 col-md-3 col-sm-3 col-lg-3">
                 <!-- Panel first starts -->
                 <div class="panel panel-default draggable">
-                    <!-- Default panel contents -->
+                    
+                    <div class="panel-heading">
+                        <b>' . $bucket['name'] .'</b>
+                        <b><span class="fa fa-caret-square-o-down pull-right" data-toggle="modal" data-target="#modaldetails"></span></b>
+                    </div>
+                    <div class="panel-body"  >
+                        <ul class="list-group draggable-first bucket" id="bucket_'. $bucket['id'] .'" onload="loadleads('. $bucket['id'] .');">
+                        </ul>
+                    </div>
+                </div>
+                </div>';            
+            }
+            echo $html;
+            ?>
+            
+            
+<!--            <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3">
+                 Panel first starts 
+                <div class="panel panel-default draggable">
+                     Default panel contents 
                     <div class="panel-heading">
                         <b>Lead(10%)</b>
                         <b><span class="fa fa-caret-square-o-down pull-right" data-toggle="modal" data-target="#modaldetails"></span></b>
                     </div>
                     <div class="panel-body">
                         <ul class="list-group draggable-first">
-                            <!-- list-item one starts -->
+                             list-item one starts 
                             <li class="list-group-item list-group-item-default draggable">
                                 <div>
                                     <h4>Amy</h4>
@@ -139,9 +174,9 @@
                                     </p>
                                 </div>
                             </li>
-                            <!-- List item one ends -->
+                             List item one ends 
                             <div class="clearfix"></div>
-                            <!-- list-item one starts -->
+                             list-item one starts 
                             <li class="list-group-item list-group-item-default draggable bg-success">
                                 <div>
                                     <h4>Ana</h4>
@@ -153,9 +188,9 @@
                                     </p>
                                 </div>
                             </li>
-                            <!-- List item one ends -->
+                             List item one ends 
                             <div class="clearfix"></div>
-                            <!-- list-item one starts -->
+                             list-item one starts 
                             <li class="list-group-item list-group-item-default draggable">
                                 <div>
                                     <h4>Dave</h4>
@@ -168,7 +203,7 @@
 
                                 </div>
                             </li>
-                            <!-- List item one ends -->
+                             List item one ends 
                             <div class="clearfix"></div>
                             <li class="list-group-item list-group-item-default draggable">
                                 <div>
@@ -187,226 +222,38 @@
                     </div>
 
                 </div>
-                <!-- Panel first ends -->
-            </div>
-            <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3">
-                <!-- Panel first starts -->
-                <div class="panel panel-default draggable">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading">
-                        <b>Lead(50%)</b>
-                        <b><span class="fa fa-caret-square-o-down pull-right" ></span></b>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-group draggable-first">
-                            <!-- list-item one starts -->
-                            <li class="list-group-item list-group-item-default draggable">
-                                <div>
-                                    <h4>Matthew</h4>
-                                    <p>Budget: SGD 10,000</p>
-                                    <p>Campaign Dates: 1/1/2015-1/6/2015</p>
-                                    <p>
-                                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>Matthew</b></span>
-                                        <span class="pull-right">Last Updated:1/12/2014</span>
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- List item one ends -->
-                            <div class="clearfix"></div>
-                            <!-- list-item one starts -->
-                            <li class="list-group-item list-group-item-default draggable">
-                                <div>
-                                    <h4>Philipo</h4>
-                                    <p>Budget: SGD 10,000</p>
-                                    <p>Campaign Dates: 1/1/2015-1/6/2015</p>
-                                    <p>
-                                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>Matthew</b></span>
-                                        <span class="pull-right">Last Updated:1/12/2014</span>
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- List item one ends -->
-                            <div class="clearfix"></div>
-                            <!-- list-item one starts -->
-                            <li class="list-group-item list-group-item-default draggable">
-                                <div>
-                                    <h4>Dyson</h4>
-                                    <p>Budget: SGD 10,000</p>
-                                    <p>Campaign Dates: 1/1/2015-1/6/2015</p>
-                                    <p>
-                                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>Matthew</b></span>
-                                        <span class="pull-right">Last Updated:1/12/2014</span>
-                                    </p>
-
-                                </div>
-                            </li>
-                            <!-- List item one ends -->
-                            <div class="clearfix"></div>
-                            <li class="list-group-item list-group-item-default draggable">
-                                <div>
-                                    <h4>Dyson</h4>
-                                    <p>Budget: SGD 10,000</p>
-                                    <p>Campaign Dates: 1/1/2015-1/6/2015</p>
-                                    <p>
-                                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>Matthew</b></span>
-                                        <span class="pull-right">Last Updated:1/12/2014</span>
-                                    </p>
-
-                                </div>
-                            </li>
-                        </ul>
-                        <button class="btn btn-success hide" id="addnewbtn">Add New</button>
-                        <p class="addContent" data-toggle="modal" data-target="#modaldetails">Add A Card...</p>
-                    </div>
-
-                </div>
-                <!-- Panel first ends -->
-            </div>
-            <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3">
-                <!-- Panel first starts -->
-                <div class="panel panel-default draggable">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading">
-                        <b>Lead(75%)</b>
-                        <b><span class="fa fa-caret-square-o-down pull-right" data-toggle="modal" data-target="#modaldetails"></span></b>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-group draggable-first">
-                            <!-- list-item one starts -->
-                            <li class="list-group-item list-group-item-default draggable">
-                                <div>
-                                    <h4>Amy</h4>
-                                    <p>Budget: SGD 10,000</p>
-                                    <p>Campaign Dates: 1/1/2015-1/6/2015</p>
-                                    <p>
-                                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>Matthew</b></span>
-                                        <span class="pull-right">Last Updated:1/12/2014</span>
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- List item one ends -->
-                            <div class="clearfix"></div>
-                            <!-- list-item one starts -->
-                            <li class="list-group-item list-group-item-default draggable bg-success">
-                                <div>
-                                    <h4>Ana</h4>
-                                    <p>Budget: SGD 10,000</p>
-                                    <p>Campaign Dates: 1/1/2015-1/6/2015</p>
-                                    <p>
-                                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>Matthew</b></span>
-                                        <span class="pull-right">Last Updated:1/12/2014</span>
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- List item one ends -->
-                            <div class="clearfix"></div>
-                            <!-- list-item one starts -->
-                            <li class="list-group-item list-group-item-default draggable">
-                                <div>
-                                    <h4>Dave</h4>
-                                    <p>Budget: SGD 10,000</p>
-                                    <p>Campaign Dates: 1/1/2015-1/6/2015</p>
-                                    <p>
-                                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>Matthew</b></span>
-                                        <span class="pull-right">Last Updated:1/12/2014</span>
-                                    </p>
-
-                                </div>
-                            </li>
-                            <!-- List item one ends -->
-                            <div class="clearfix"></div>
-                            <li class="list-group-item list-group-item-default draggable">
-                                <div>
-                                    <h4>Dyson</h4>
-                                    <p>Budget: SGD 10,000</p>
-                                    <p>Campaign Dates: 1/1/2015-1/6/2015</p>
-                                    <p>
-                                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>Matthew</b></span>
-                                        <span class="pull-right">Last Updated:1/12/2014</span>
-                                    </p>
-
-                                </div>
-                            </li>
-                        </ul>
-                        <p class="addContent" data-toggle="modal" data-target="#modaldetails">Add A Card...</p>
-                    </div>
-
-                </div>
-                <!-- Panel first ends -->
-            </div>
-            <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3">
-                <!-- Panel first starts -->
-                <div class="panel panel-default draggable">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading">
-                        <b>Lead(90%)</b>
-                        <b><span class="fa fa-caret-square-o-down pull-right" data-toggle="modal" data-target="#modaldetails"></span></b>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-group draggable-first">
-                            <!-- list-item one starts -->
-                            <li class="list-group-item list-group-item-default draggable">
-                                <div>
-                                    <h4>Amy</h4>
-                                    <p>Budget: SGD 10,000</p>
-                                    <p>Campaign Dates: 1/1/2015-1/6/2015</p>
-                                    <p>
-                                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>Matthew</b></span>
-                                        <span class="pull-right">Last Updated:1/12/2014</span>
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- List item one ends -->
-                            <div class="clearfix"></div>
-                            <!-- list-item one starts -->
-                            <li class="list-group-item list-group-item-default draggable bg-success">
-                                <div>
-                                    <h4>Ana</h4>
-                                    <p>Budget: SGD 10,000</p>
-                                    <p>Campaign Dates: 1/1/2015-1/6/2015</p>
-                                    <p>
-                                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>Matthew</b></span>
-                                        <span class="pull-right">Last Updated:1/12/2014</span>
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- List item one ends -->
-                            <div class="clearfix"></div>
-                            <!-- list-item one starts -->
-                            <li class="list-group-item list-group-item-default draggable">
-                                <div>
-                                    <h4>Dave</h4>
-                                    <p>Budget: SGD 10,000</p>
-                                    <p>Campaign Dates: 1/1/2015-1/6/2015</p>
-                                    <p>
-                                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>Matthew</b></span>
-                                        <span class="pull-right">Last Updated:1/12/2014</span>
-                                    </p>
-
-                                </div>
-                            </li>
-                            <!-- List item one ends -->
-                            <div class="clearfix"></div>
-                            <li class="list-group-item list-group-item-default draggable">
-                                <div>
-                                    <h4>Dyson</h4>
-                                    <p>Budget: SGD 10,000</p>
-                                    <p>Campaign Dates: 1/1/2015-1/6/2015</p>
-                                    <p>
-                                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>Matthew</b></span>
-                                        <span class="pull-right">Last Updated:1/12/2014</span>
-                                    </p>
-
-                                </div>
-                            </li>
-                        </ul>
-                        <p class="addContent" data-toggle="modal" data-target="#modaldetails">Add A Card...</p>
-                    </div>
-
-                </div>
-                <!-- Panel first ends -->
-            </div>
+                 Panel first ends 
+            </div>-->
         </div>
         <!-- row ends here -->
     </div>
     <!-- /.container two -->
+    <script>
+        
+    </script>    
+    
+    <script id="card">
+        {{#.}}
+            <li class="list-group-item list-group-item-default draggable">
+                <div>
+                    <h4>{{brand}}</h4>
+                    <p>Budget: {{budget}}</p>
+                    <p>Campaign Dates: {{campaignstartdate}}-{{campaignenddate}}</p>
+                    <p>
+                        <span class="pull-left"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><b>{{user}}</b></span>
+                        <span class="pull-right">Last Updated:{{lastupdated}}</span>
+                    </p>
+
+                </div>
+            </li>
+        <div class="clearfix"></div>
+{{/.}}
+    </script>    
+    
+    <script>
+        $('.bucket').each(function() {
+           var id = this.id.split('_');
+           //alert(id[1]);
+           loadleads(id[1]);
+        });
+    </script>

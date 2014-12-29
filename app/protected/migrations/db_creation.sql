@@ -296,3 +296,6 @@ CREATE  TABLE IF NOT EXISTS `CompanyCategories` (
   `companyid` INT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
+
+
+ALTER TABLE `eatads`.`CompanyStatuses` CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT  ;

@@ -45,6 +45,102 @@ $(document).ready(function () {
             $("#sdate").datepicker("option", "maxDate", selectedDate);
         }
     });
+    
+    $('#brand').autocomplete({
+      source: JSON.parse($('#allbrands').html()),
+      appendTo: "#addalead",
+      focus: function( event, ui ) {
+            $("#brand").val(ui.item.label);
+            return false;  
+        },
+      select: function (event, ui) {
+          event.preventDefault();
+        console.log(ui.item.label + ' label');
+        $("#brand").val(ui.item.label);
+        $("#selectedbrandid").val(ui.item.value); // save selected id to hidden input
+    }
+    });
+    
+    
+    $('#user').autocomplete({
+      source: JSON.parse($('#allsales').html()),
+      appendTo: "#addalead",
+      focus: function( event, ui ) {
+            $("#user").val(ui.item.label);
+            return false;  
+        },
+      select: function (event, ui) {
+          event.preventDefault();
+        console.log(ui.item.label + ' label');
+        $("#user").val(ui.item.label);
+        $("#selecteduserid").val(ui.item.value); // save selected id to hidden input
+    }
+    });
+    
+    $('#agency').autocomplete({
+      source: $('#completePath').text()+ '/ajax/fetchCompanyContacts',
+      appendTo: "#addalead",
+      focus: function( event, ui ) {
+            $("#agency").val(ui.item.label);
+            return false;  
+        },
+      select: function (event, ui) {
+          event.preventDefault();
+//        console.log(ui.item.label + ' label');
+        $("#agency").val(ui.item.label);
+        $("#selectedagencyid").val(ui.item.value); // save selected id to hidden input
+    }
+    });
+    
+    
+    
 
   
 });
+
+var createlead = function() {
+     $.ajax({
+        url: $('#completePath').text()+ '/dashboard/createLead',
+        type: "POST",
+        data: {                    
+            brandid: $("#selectedbrandid").val(),
+            contactid: $("#selectedagencyid").val(),
+            description: $("#description").val(),
+            assignedto: $("#selecteduserid").val(),
+            sdate: $("#sdate").val(),
+            edate: $("#edate").val(),
+            tags: $("#tags").val(),
+            budget: 0
+        },
+        async: false,                
+        success: function(data) {
+            console.log(data);
+            $('#addalead').modal('hide');
+        }
+    });
+
+    
+}
+
+
+var loadleads = function(id) {
+    console.log('aad');
+    
+    $.ajax({
+        url: $('#completePath').text()+ '/ajax/fetchLeadsForStatus',
+        type: "POST",
+        data: {                    
+            id :id
+        },
+        async: false,                
+        success: function(data) {
+            console.log(data);
+            var template = $('#card').html();
+            Mustache.parse(template);   // optionbucket_al, speeds up future uses
+            var rendered = Mustache.render(template, JSON.parse(data));
+            $('#bucket_' + id).append(rendered);
+        }
+    });
+    
+
+};
