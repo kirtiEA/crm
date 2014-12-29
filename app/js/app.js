@@ -7,6 +7,7 @@ $(document).ready(function () {
     zIndex: 9999,
     start: function (event, ui) {
       ui.item.addClass('tilt');
+      $('ul').css('min-height', '50px');
     },
     stop: function (event, ui) {
       ui.item.removeClass('tilt');
@@ -99,6 +100,12 @@ $(document).ready(function () {
 });
 
 var createlead = function() {
+    var budget = '';
+    $('input[name=Budget]').each(function(){
+       budget = budget + $(this).val(); 
+    });
+
+    
      $.ajax({
         url: $('#completePath').text()+ '/dashboard/createLead',
         type: "POST",
@@ -110,7 +117,7 @@ var createlead = function() {
             sdate: $("#sdate").val(),
             edate: $("#edate").val(),
             tags: $("#tags").val(),
-            budget: 0
+            budget: budget
         },
         async: false,                
         success: function(data) {

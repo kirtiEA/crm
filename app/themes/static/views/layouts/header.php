@@ -36,48 +36,4 @@
     <body>
         <!-- header -->
         <div style="display: none;" id="completePath"><?php echo Yii::app()->getBaseUrl();?></div>
-        <nav class="navbar navbar-default navbar-dark" id="header_nav" role="navigation">
-            <div class="container-fluid">
-
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?php echo Yii::app()->urlManager->createUrl('account'); ?>">
-                        <div class="logo-on-darkbcg" id="static_logo"></div>
-                    </a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-						<?php if(Yii::app()->controller->id == 'account' && Yii::app()->controller->action->id == 'signup') {
-		                        if(Yii::app()->user->isGuest) { ?>
-		                            <li><a href="#" data-toggle="modal" data-target="#modal-login">Already have an account? Login</a></li>
-		                            
-		                        <?php } else { ?>
-		                            <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
-		                        <?php }
-						} else { ?>
-	                        <li class="phone1"><span class="glyphicon glyphicon-phone-alt">&nbsp;</span>+91 11 4132 0334</li>
-							<li><a href="https://play.google.com/store/apps/details?id=com.eatads.monitorly" target="_blank" class="download-app-link">Download App</a></li>
-	                        <li><a href="mailto:sales@eatds.com">Support</a></li>
-	                        <?php if(Yii::app()->user->isGuest) { ?>
-	                            <li><a href="#" data-toggle="modal" data-target="#modal-login">Login</a></li>
-	                            <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/signup'); ?>">Sign Up</a></li>
-	                        <?php } else { ?>
-	                            <li><a href="<?php echo Yii::app()->urlManager->createUrl('account/logout'); ?>">Logout</a></li>
-	                        <?php }
-						} ?>
-                        
-                        
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-
-        <!-- end of header -->
+        

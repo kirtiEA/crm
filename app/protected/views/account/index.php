@@ -1,8 +1,37 @@
 <?php $theme = Yii::app()->theme; ?>
 
 <?php $this->widget('LoginModal'); ?>
+<div class="row hero-section">
+    <div class="col-md-12">
+        
+        <div class="form-wrap">
+                    <?php
+                    $form = $this->beginWidget('CActiveForm', array(
+                        'id' => 'login-form',
+                        //'action' => Yii::app()->getBaseUrl() .  '/account/login',   
+                        'enableClientValidation' => true,
+                        'clientOptions' => array(
+                            'validateOnSubmit' => true,
+                        ),
+                    ));
+                    ?>  
+                    <div class="form-group">
+                        <?php echo $form->textField($model, 'email', array('class' => 'form-control', 'placeholder' => 'Email', 'id' => 'email')); ?>
+                        <?php echo $form->error($model, 'email'); ?>
+                    </div>
+                    <div class="form-group">
+                        <?php echo $form->passwordField($model, 'password', array('class' => 'form-control', 'placeholder' => 'Password', 'id' => 'password')); ?>
+                        <?php echo $form->error($model, 'password'); ?>
+                    </div>
+                    <button class="btn btn-primary">Login</button>
+                    <?php //echo CHtml::button('Login', array('class' => 'btn btn-primary', 'id' => '_submit')); ?>&nbsp;
+                    <a href="#" data-dismiss="modal">Cancel</a>
+                    <?php $this->endWidget(); ?>
+                </div>
+    </div>
+</div>
 <!-- reset password modal -->
-<div class="modal fade modal-app" id="modal-resetpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--<div class="modal fade modal-app" id="modal-resetpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -31,10 +60,10 @@
         </div>
     </div>
 </div>
-<!-- end of reset password modal -->
+ end of reset password modal 
 
 
-<!-- set password modal -->
+ set password modal 
 
 <div class="modal fade modal-app" id="modal-setpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -66,10 +95,10 @@
     </div>
 </div>
 
-<!-- end of set password modal -->
+ end of set password modal 
 
 
-<!-- hero section -->
+ hero section 
 <div class="row hero-section">
     <div class="col-md-12">
         <h1 class="hero-section-main-message">Capture campaign images. Report instantly.</h1>
@@ -83,11 +112,11 @@
         <?php } ?>
 
 		<div class="signup-form-wrap-homepage">
-<!--                        <input type="email" class="form-control" placeholder="Email">-->
+                        <input type="email" class="form-control" placeholder="Email">
                 <form action="account/signup">
 
         <input type="submit" class="btn btn-primary btn-primary-lg" id="signups" value="Create Free Account">
-        <!--                        <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>-->
+                                <button class="btn btn-primary btn-primary-lg">Sign Up for Free</button>
         <br>
         
         <h5 class="hero-section-termscopy">By signing-up you agree to <a href="<?php echo Yii::app()->urlManager->createUrl('account/terms'); ?>" target="_blank">Terms &amp; Conditions</a></h5>
@@ -95,7 +124,7 @@
         <br>
 
 
-        <!--<div><a class="pricing-link" href="pricing.html">Know More About Pricing &amp; Plan</a></div>-->
+        <div><a class="pricing-link" href="pricing.html">Know More About Pricing &amp; Plan</a></div>
 		</div>
 		<nav class="navbar navbar-default subnav" id="selling-points-subnav" role="navigation">
 			
@@ -107,8 +136,8 @@
 		</nav>
     </div>
 </div>
-<!-- end of hero section --> 
-<!-- benefits -->
+ end of hero section  
+ benefits 
 <div class="row selling-points">
     <div class="col-md-12">
         <div class="row">
@@ -146,7 +175,7 @@
                     </li>
                 </ul>
             </div>
-            <!--
+            
 <div class="row pricing-preview">
     <div class="col-md-12">
         <h2>No Nonsense Pay-As-You-Go Pricing</h2>
@@ -158,22 +187,22 @@
         <button class="btn btn-primary btn-primary-lg js-signup-btn-scrolltop">Sign Up for Free</button>
         <h5>No Credit Card required</h5>
     </div>
-</div>-->
+</div>
         </div>
     </div>
 </div>
-<!-- end of benefits  -->
+ end of benefits  
 
-<!-- process steps in monitorly -->
+ process steps in monitorly 
 <div class="row process-steps">
     <div class="col-md-12">
         <h2>5 Steps to Take All Your Monitoring Pain Away</h2>
         <img class="img-responsive" src="<?php echo $theme->getBaseUrl(); ?>/images/process-steps.png">
     </div>
 </div>
-<!-- end of process steps in monitorly  -->
+ end of process steps in monitorly  
 
-<!-- testimonials -->
+ testimonials 
 <div class="row testimonial">
     <div class="col-md-2">
         <img src="<?php echo $theme->getBaseUrl(); ?>/images/rongraham.png" class="testimonial-author-image">
@@ -184,7 +213,7 @@
 	        <p class="testimonial-author">Ron Graham, Media On The Go</p>
 		</div>
     </div>
-</div>
+</div>-->
 <!-- end of testimonials -->
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

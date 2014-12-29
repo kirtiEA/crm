@@ -97,7 +97,7 @@
                         <!-- line 1 ends here -->
                         <!-- line 2 starts here -->
                         <div class="col-md-12 col-xs-12 col-sm-12">
-                            <input class="col-md-3 col-sm-3 col-xs-12" type="text" name="" value="" placeholder="Currency">
+                            <input class="col-md-3 col-sm-3 col-xs-12" type="text" name="curr" value="" placeholder="Currency">
                             <div class="col-md-1 hidden-xs">
                             </div>
                             <input class="col-md-3 col-sm-3 col-xs-12" type="number" name="Budget" value="" placeholder="Budget Proposed">
@@ -105,7 +105,7 @@
                         <!-- line 2 ends here -->
                         <!-- line 3 starts here -->
                         <div class="col-md-12 col-xs-12 col-sm-12">
-                            <input class="col-md-3 col-sm-3 col-xs-12" type="text" name="" value="" placeholder="Currency">
+                            <input class="col-md-3 col-sm-3 col-xs-12" type="text" name="curr" value="" placeholder="Currency">
                             <div class="col-md-1 hidden-xs"></div>
                             <input class="col-md-3 col-sm-3 col-xs-12" type="number" name="Budget" value="" placeholder="Budget Proposed">
                             <div class="col-md-1 hidden-xs"></div>

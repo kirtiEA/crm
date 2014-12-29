@@ -13,7 +13,7 @@
 			if(Yii::app()->controller->id == 'account' && Yii::app()->controller->action->id == 'signup') {
 				// do nothing
 			} else {
-				include_once "footer.php";
+				//include_once "footer.php";
 			}
 			?>
         <!--FOOTER_END-->

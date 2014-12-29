@@ -167,7 +167,7 @@ class AjaxController extends Controller {
    public function actionfetchLeadsForStatus() {
        $sql = "SELECT cb.name as brand, DATE_FORMAT(cl.campaignstartdate, '%Y-%m-%d') as campaignstartdate, DATE_FORMAT(cl.campaignenddate, '%Y-%m-%d') as campaignenddate,
             DATE_FORMAT(cl.lastupdated, '%Y-%m-%d') as lastupdated, u.username as user
-            FROM companyleads cl
+            FROM CompanyLeads cl
             inner join CompanyBrands cb on cb.id = cl.brandid
             inner join User u on u.id = cl.assignedto
             where cl.status = " . $_POST['id'];
