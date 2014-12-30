@@ -32,7 +32,7 @@ class BaseCompanyleads extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'companyleads';
+		return 'CompanyLeads';
 	}
 
 	/**
