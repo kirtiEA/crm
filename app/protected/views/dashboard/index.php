@@ -1,14 +1,13 @@
 <!-- Container -->
-    <div class="container">
+    <div class="container form-top-container">
         <div class="row">
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <!-- On larger screens and tablets -->
-                <div class="col-md-2 col-lg-2 hidden-xs"></div>
-                <form class="form-inline col-xs-12 col-md-10 col-lg-10 col-sm-12" id="form-top-container">
+                <form class="form-inline col-xs-12 col-md-12 col-lg-12 col-sm-12 text-center" id="form-top-container">
                     <div class="form-group">
                         <!-- Split button -->
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default">Sales Person</button>
+                            <button type="button" class="btn btn-default button-name" id="salesPersonDropdown">Sales Person</button>
                             <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
@@ -24,7 +23,7 @@
                                         'label' => $user['name']
                                     );
                                     array_push($brandauto, $temp);
-                                    $html = $html .  "<li onclick='filterdashboard();'><a>" . $user['name'] . "</a></li>" ;
+                                    $html = $html .  "<li><a>" . $user['name'] . "</a></li>" ;
                                 }
                                 $html = $html . '<li id="allsales" style="display: none;">' . json_encode($brandauto) . '</li>';
                                 echo $html;
@@ -35,7 +34,7 @@
                     <div class="form-group">
                         <!-- Split button -->
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default ">Brands</button>
+                            <button type="button" class="btn btn-default button-name">Brands</button>
                             <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
@@ -45,7 +44,8 @@
                                 $html = '';
                                 $brandauto = array();
                                 foreach ($brands as $brand) {
-                                    $html = $html .  "<li onclick='filterdashboard();'><a>" . $brand->name . "</a></li>" ;
+                                    $value_name = $brand->name;
+                                    $html = $html .  "<li><a>" . $brand->name . "</a></li>" ;
                                     $temp = array(
                                         'value' => $brand->id,
                                         'label' => $brand->name
@@ -107,7 +107,7 @@
                     <div class="form-group">
                         <!-- Split button -->
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default ">Tags</button>
+                            <button type="button" class="btn btn-default button-name">Tags</button>
                             <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
@@ -246,7 +246,10 @@
     </div>
     <!-- /.container two -->
     <script>
-        
+$(".dropdown-menu li a").click(function(){
+  var selText = $(this).text();
+  $(this).parents('.btn-group').find('.button-name').html(selText);
+});
     </script>    
     
     <script id="card">

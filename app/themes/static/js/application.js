@@ -1,6 +1,15 @@
 
         
 $(document).ready(function() {
+  if($('.loginForm')){
+    $('.loginForm').parent().css({
+    'background-image': 'url(themes/static/images/bg.jpg)',
+    'background-size': 'cover',
+    'margin-top': '0em',
+    'overflow': 'none',
+    'height':'100vh'
+  });
+  }
     setTimeout(function() {
         $("#flash-messages").hide('blind', {}, 500)
     }, 4000);

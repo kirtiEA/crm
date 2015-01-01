@@ -10,7 +10,7 @@ class AccountController extends Controller {
             if (!Yii::app()->user->isGuest) {
                 Yii::app()->user->logout();
             }
-        }    
+        }
 //        else {
 //            $this->redirect(Yii::app()->createUrl('myCampaigns'));
 //        }
@@ -149,6 +149,7 @@ class AccountController extends Controller {
      * Logs out the current user and redirect to homepage.
      */
     public function actionLogout() {
+        echo "hey there";die();
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);
     }

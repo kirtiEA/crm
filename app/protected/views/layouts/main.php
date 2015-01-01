@@ -15,13 +15,13 @@
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/jquery-ui.min.css" />
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/token-input.css" />
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/bootstrap-multiselect.css" />
-    
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
     <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
-    
+    <!-- <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" /> -->
             <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery-1.10.2.min.js"></script>
         <!-- JavaScript -->
@@ -67,6 +67,9 @@
                         <li class="active crm_menu menu_dash"><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard">Dashboard</a></li>
                         <li class="crm_menu menu_contact"><a href="<?php echo Yii::app()->request->baseUrl; ?>/contacts">Contacts</a></li>
                         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/users">Users</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="navbar-right"><a href="<?php echo Yii::app()->request->baseUrl; ?>/account">Logout</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

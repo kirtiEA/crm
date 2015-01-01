@@ -1,9 +1,13 @@
 <?php $theme = Yii::app()->theme; ?>
 
-<?php $this->widget('LoginModal'); ?>
-<div class="row hero-section">
-    <div class="col-md-12">
-        
+
+<div class="row hero-section loginForm">
+    <div class="col-xs-12 col-md-12">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 login-form">
+        <div class="col-md-12 text-center">
+            <span class="glyphicon glyphicon-user login-user-icon" aria-hidden="true"></span>
+        </div>
         <div class="form-wrap">
                     <?php
                     $form = $this->beginWidget('CActiveForm', array(
@@ -16,17 +20,18 @@
                     ));
                     ?>  
                     <div class="form-group">
-                        <?php echo $form->textField($model, 'email', array('class' => 'form-control', 'placeholder' => 'Email', 'id' => 'email')); ?>
+                        <?php echo $form->textField($model, 'email', array('class' => 'form-control', 'placeholder' => 'Enter your email', 'id' => 'email')); ?>
                         <?php echo $form->error($model, 'email'); ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $form->passwordField($model, 'password', array('class' => 'form-control', 'placeholder' => 'Password', 'id' => 'password')); ?>
+                        <?php echo $form->passwordField($model, 'password', array('class' => 'form-control', 'placeholder' => 'Enter password', 'id' => 'password')); ?>
                         <?php echo $form->error($model, 'password'); ?>
                     </div>
-                    <button class="btn btn-primary">Login</button>
+                    <button class="btn btn-success">Login</button>
                     <?php //echo CHtml::button('Login', array('class' => 'btn btn-primary', 'id' => '_submit')); ?>&nbsp;
-                    <a href="#" data-dismiss="modal">Cancel</a>
+
                     <?php $this->endWidget(); ?>
+                </div>
                 </div>
     </div>
 </div>
