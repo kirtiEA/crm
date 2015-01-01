@@ -1,4 +1,4 @@
-    <!-- Container -->
+<!-- Container -->
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-xs-12 col-sm-12">
@@ -60,8 +60,25 @@
                     </div>
                     <!-- Remove this block if categories not needed -->
                     <div class="form-group">
+                        <select class="multiselect" id="multiselect-campaigns" multiple="multiple" >
+                            <option><a href="#">Auto Lubricant</a></option>
+                                <option><a href="#">Auto Tyre</a></option>
+                                <option><a href="#">Automotive</a></option>
+                                <option><a href="#">Health - Board</a></option>
+                                <option><a href="#">Health - Hospitals</a></option>
+                                <option><a href="#">Health - Others</a></option>
+                                <option><a href="#">Tourism - Hotel & Resorts / Airoptionnes</a></option>
+                                <option><a href="#">Tourism - Board</a></option>
+                                <option><a href="#">Tourism - Others</a></option>
+                                <option><a href="#">Telco</a></option>
+                                <option><a href="#">Property - Developer</a></option>
+                                <option><a href="#">Retail</a></option>
+                                <option><a href="#">Electronics / IT</a></option>
+                                <option><a href="#">F&B</a></option>
+                                <option><a href="#">E Commerce</a></option>
+                        </select>
                         <!-- Split button -->
-                        <div class="btn-group">
+<!--                        <div class="btn-group">
                             <button type="button" class="btn btn-default ">Categories</button>
                             <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
                                 <span class="caret"></span>
@@ -84,7 +101,7 @@
                                 <li><a href="#">F&B</a></li>
                                 <li><a href="#">E Commerce</a></li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                     <!-- Remove this if categories not needed -->
                     <div class="form-group">
@@ -234,7 +251,7 @@
     
     <script id="card">
         {{#.}}
-            <li class="list-group-item list-group-item-default draggable">
+            <li class="list-group-item list-group-item-default draggable" id="card_{{id}}">
                 <div>
                     <h4>{{brand}}</h4>
                     <p>Budget: {{budget}}</p>

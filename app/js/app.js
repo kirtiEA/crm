@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    //initializing multiselect dropdown
+    $('.multiselect').multiselect({
+        nonSelectedText: 'Select',
+        enableFiltering: true
+    });
+    
   $("ul").sortable({
     connectWith: "ul",
     forcePlaceholderSize: true,
@@ -7,10 +13,36 @@ $(document).ready(function () {
     zIndex: 9999,
     start: function (event, ui) {
       ui.item.addClass('tilt');
+      //console.log(this.id);
       $('ul').css('min-height', '50px');
     },
     stop: function (event, ui) {
       ui.item.removeClass('tilt');
+      //console.log('final ' + $(ui.item).attr('id') + ' id ' + this.id);
+    },
+    receive: function(e, ui) {
+        console.log('final ' + $(ui.item).attr('id') + ' id ' + this.id);
+        console.log(ui.item.closest('ul').attr('id'));
+        
+        
+        
+         $.ajax({
+            url: $('#completePath').text()+ '/ajax/UpdateLeadStatus',
+            type: "POST",
+            data: {                    
+                id : $(ui.item).attr('id').split("_")[1],
+                status: this.id.split('_')[1]
+            },
+            async: false,                
+            success: function(data) {
+//                console.log(data);
+//                var template = $('#card').html();
+//                Mustache.parse(template);   // optionbucket_al, speeds up future uses
+//                var rendered = Mustache.render(template, JSON.parse(data));
+//                $('#bucket_' + id).append(rendered);
+            }
+        });
+
     }
   });
   /* This is first way to do it where you show a button on clicking add content */
@@ -123,6 +155,11 @@ var createlead = function() {
         success: function(data) {
             console.log(data);
             $('#addalead').modal('hide');
+            $('.bucket').each(function() {
+           var id = this.id.split('_');
+           //alert(id[1]);
+           loadleads(id[1]);
+        });
         }
     });
 

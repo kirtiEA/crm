@@ -14,9 +14,10 @@
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/jquery-ui.min.css" />
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/token-input.css" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/vendor/bootstrap-multiselect.css" />
     
     <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
-    
+
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
@@ -29,14 +30,17 @@
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery-ui.min.js"></script>
         <!-- Latest compiled and minified JavaScript Bootstrap -->
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/bootstrap.js"></script>
-        <!-- Custom Javascript -->
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
         
         <!-- Token input -->
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery.tokeninput.js"></script>
         
         <!-- mustache -->
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/mustache.js"></script>
+        
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/bootstrap-multiselect.js"></script>
+        
+        <!-- Custom Javascript -->
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -60,9 +64,9 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Dashboard</a></li>
-                        <li><a href="#contact">Contacts</a></li>
-                        <li><a href="#contact">Users</a></li>
+                        <li class="active crm_menu menu_dash"><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard">Dashboard</a></li>
+                        <li class="crm_menu menu_contact"><a href="<?php echo Yii::app()->request->baseUrl; ?>/contacts">Contacts</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/users">Users</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -77,7 +81,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <span>&nbsp;&nbsp;</span>
+                    <span>New Lead</span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -97,14 +101,52 @@
                         <!-- line 1 ends here -->
                         <!-- line 2 starts here -->
                         <div class="col-md-12 col-xs-12 col-sm-12">
-                            <input class="col-md-3 col-sm-3 col-xs-12" type="text" name="curr" value="" placeholder="Currency">
+                            <div class="form-group" >
+                                <div class="input-group">
+                                  <span class="input-group-btn btn-group ">
+                                  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Select Country <span class="caret"></span> </button>
+                                  <ul class="dropdown-menu pull-right">
+                                    <?php 
+                                        $html = '';
+                                        $countries = Area::fetchCountryListing();
+                                        foreach ($countries as $country) {
+                                            $html = $html . '<li>
+                                                <input type="radio"  value="' . $country['id'] . '" name="country" checked="checked">
+                                                <label for="country">' . $country['name'] . '</label>
+                                              </li>';
+                                        }
+                                        echo $html;
+                                    ?>  
+                                  </ul>
+                                  </span> 
+                                  <span class="input-group-btn btn-group ">
+                                  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">USD <span class="caret"></span> </button>
+                                  <ul class="dropdown-menu pull-right">
+                                      <?php 
+                                        $html = '';
+                                        $currencies = LookupBaseCurrency::getBaseCurrencyList();
+                                        foreach ($currencies as $curr) {
+                                            $html = $html . '<li>
+                                                <input type="radio"  value="' . $curr['id'] . '" name="curr" checked="checked">
+                                                <label for="country">' . $curr['currency_code'] . '</label>
+                                              </li>';
+                                        }
+                                        echo $html;
+                                    ?>
+
+                                  </ul>
+                                  </span> 
+                                  <input type="text" class="form-control" id="appendedInput" name="Budget" placeholder="Budget Proposed">
+                                </div>
+                            </div>
+<!--                            <input class="col-md-3 col-sm-3 col-xs-12" type="text" name="curr" value="" placeholder="Currency">
                             <div class="col-md-1 hidden-xs">
                             </div>
-                            <input class="col-md-3 col-sm-3 col-xs-12" type="number" name="Budget" value="" placeholder="Budget Proposed">
+                            <input class="col-md-3 col-sm-3 col-xs-12" type="number" name="Budget" value="" placeholder="Budget Proposed">-->
                         </div>
                         <!-- line 2 ends here -->
                         <!-- line 3 starts here -->
-                        <div class="col-md-12 col-xs-12 col-sm-12">
+<!--                        <div class="col-md-12 col-xs-12 col-sm-12">
                             <input class="col-md-3 col-sm-3 col-xs-12" type="text" name="curr" value="" placeholder="Currency">
                             <div class="col-md-1 hidden-xs"></div>
                             <input class="col-md-3 col-sm-3 col-xs-12" type="number" name="Budget" value="" placeholder="Budget Proposed">
@@ -117,7 +159,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <!-- line 3 ends here -->
                         <!-- line 4 starts here -->
                         <div class="col-md-12 col-xs-12 col-sm-12">

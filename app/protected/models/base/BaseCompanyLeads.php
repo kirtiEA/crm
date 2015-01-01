@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "companyleads".
+ * This is the model class for table "CompanyLeads".
  *
- * The followings are the available columns in table 'companyleads':
+ * The followings are the available columns in table 'CompanyLeads':
  * @property integer $id
  * @property integer $contactid
  * @property integer $brandid
@@ -24,8 +24,13 @@
  * @property CompanyBrands $brand
  * @property CompanyContacts $contact
  * @property CompanyStatuses $status0
+ * @property LeadAttachments[] $leadAttachments
+ * @property LeadCityMapping[] $leadCityMappings
+ * @property LeadCountryMapping[] $leadCountryMappings
+ * @property LeadTagMapping[] $leadTagMappings
+ * @property LeadUpdateLog[] $leadUpdateLogs
  */
-class BaseCompanyleads extends CActiveRecord
+class BaseCompanyLeads extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -65,6 +70,11 @@ class BaseCompanyleads extends CActiveRecord
 			'brand' => array(self::BELONGS_TO, 'CompanyBrands', 'brandid'),
 			'contact' => array(self::BELONGS_TO, 'CompanyContacts', 'contactid'),
 			'status0' => array(self::BELONGS_TO, 'CompanyStatuses', 'status'),
+			'leadAttachments' => array(self::HAS_MANY, 'LeadAttachments', 'leadid'),
+			'leadCityMappings' => array(self::HAS_MANY, 'LeadCityMapping', 'leadid'),
+			'leadCountryMappings' => array(self::HAS_MANY, 'LeadCountryMapping', 'leadid'),
+			'leadTagMappings' => array(self::HAS_MANY, 'LeadTagMapping', 'leadid'),
+			'leadUpdateLogs' => array(self::HAS_MANY, 'LeadUpdateLog', 'leadid'),
 		);
 	}
 
@@ -135,7 +145,7 @@ class BaseCompanyleads extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return BaseCompanyleads the static model class
+	 * @return BaseCompanyLeads the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

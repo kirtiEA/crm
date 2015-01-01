@@ -165,7 +165,7 @@ class AjaxController extends Controller {
     }
     
    public function actionfetchLeadsForStatus() {
-       $sql = "SELECT cb.name as brand, DATE_FORMAT(cl.campaignstartdate, '%Y-%m-%d') as campaignstartdate, DATE_FORMAT(cl.campaignenddate, '%Y-%m-%d') as campaignenddate,
+       $sql = "SELECT cl.id,cb.name as brand, DATE_FORMAT(cl.campaignstartdate, '%Y-%m-%d') as campaignstartdate, DATE_FORMAT(cl.campaignenddate, '%Y-%m-%d') as campaignenddate,
             DATE_FORMAT(cl.lastupdated, '%Y-%m-%d') as lastupdated, u.username as user
             FROM CompanyLeads cl
             inner join CompanyBrands cb on cb.id = cl.brandid
@@ -173,4 +173,19 @@ class AjaxController extends Controller {
             where cl.status = " . $_POST['id'];
      echo json_encode(Yii::app()->db->createCommand($sql)->queryAll());
    } 
+   
+   
+   public function actionUpdateLeadStatus() {
+       $lead = CompanyLeads::model()->findByPk($_POST['id']);
+       if ( $lead != null) {
+           $lead->status = $_POST['status'];
+           if ($lead->save()) {
+               echo 1;
+           } else {
+               echo 0;
+           }
+       } else {
+           echo 0;
+       }
+   }
 }    

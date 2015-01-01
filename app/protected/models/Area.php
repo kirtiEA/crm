@@ -427,4 +427,11 @@ class Area extends BaseArea
         return $command;
         
     }
+    
+    
+    public static function fetchCountryListing() {
+        $sql = "SELECT id ,name  FROM eatads.Area where parentid = id";
+        return Yii::app()->db->createCommand($sql)->queryAll();
+                
+    }
 }

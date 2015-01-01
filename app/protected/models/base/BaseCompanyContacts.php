@@ -10,10 +10,23 @@
  * @property integer $createdby
  * @property integer $status
  * @property integer $companyid
+ * @property string $fname
+ * @property string $lname
+ * @property string $phone1
+ * @property string $phone2
+ * @property string $mobile
+ * @property string $email1
+ * @property string $email2
+ * @property string $fax
+ * @property string $address
+ * @property string $website
+ * @property integer $brandid
  *
  * The followings are the available model relations:
- * @property Companyleads[] $companyleads
- * @property Contactbrandsmapping[] $contactbrandsmappings
+ * @property CompanyBrands $brand
+ * @property UserCompany $company
+ * @property CompanyLeads[] $companyLeads
+ * @property ContactBrandsMapping[] $contactBrandsMappings
  */
 class BaseCompanyContacts extends CActiveRecord
 {
@@ -34,12 +47,14 @@ class BaseCompanyContacts extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
-			array('createdby, status, companyid', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>245),
-			array('createddate', 'safe'),
+			array('createdby, status, companyid, brandid', 'numerical', 'integerOnly'=>true),
+			array('name, fname, lname', 'length', 'max'=>245),
+			array('phone1, phone2, mobile, fax', 'length', 'max'=>45),
+			array('email1, email2, website', 'length', 'max'=>145),
+			array('createddate, address', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, createddate, createdby, status, companyid', 'safe', 'on'=>'search'),
+			array('id, name, createddate, createdby, status, companyid, fname, lname, phone1, phone2, mobile, email1, email2, fax, address, website, brandid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,8 +66,10 @@ class BaseCompanyContacts extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'companyleads' => array(self::HAS_MANY, 'Companyleads', 'contactid'),
-			'contactbrandsmappings' => array(self::HAS_MANY, 'Contactbrandsmapping', 'contactid'),
+			'brand' => array(self::BELONGS_TO, 'CompanyBrands', 'brandid'),
+			'company' => array(self::BELONGS_TO, 'UserCompany', 'companyid'),
+			'companyLeads' => array(self::HAS_MANY, 'CompanyLeads', 'contactid'),
+			'contactBrandsMappings' => array(self::HAS_MANY, 'ContactBrandsMapping', 'contactid'),
 		);
 	}
 
@@ -68,6 +85,17 @@ class BaseCompanyContacts extends CActiveRecord
 			'createdby' => 'Createdby',
 			'status' => 'Status',
 			'companyid' => 'Companyid',
+			'fname' => 'Fname',
+			'lname' => 'Lname',
+			'phone1' => 'Phone1',
+			'phone2' => 'Phone2',
+			'mobile' => 'Mobile',
+			'email1' => 'Email1',
+			'email2' => 'Email2',
+			'fax' => 'Fax',
+			'address' => 'Address',
+			'website' => 'Website',
+			'brandid' => 'Brandid',
 		);
 	}
 
@@ -95,6 +123,17 @@ class BaseCompanyContacts extends CActiveRecord
 		$criteria->compare('createdby',$this->createdby);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('companyid',$this->companyid);
+		$criteria->compare('fname',$this->fname,true);
+		$criteria->compare('lname',$this->lname,true);
+		$criteria->compare('phone1',$this->phone1,true);
+		$criteria->compare('phone2',$this->phone2,true);
+		$criteria->compare('mobile',$this->mobile,true);
+		$criteria->compare('email1',$this->email1,true);
+		$criteria->compare('email2',$this->email2,true);
+		$criteria->compare('fax',$this->fax,true);
+		$criteria->compare('address',$this->address,true);
+		$criteria->compare('website',$this->website,true);
+		$criteria->compare('brandid',$this->brandid);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

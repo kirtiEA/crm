@@ -1,8 +1,8 @@
 <?php
 
-Yii::import('application.models.base.BaseCompanyleads');
+Yii::import('application.models.base.BaseCompanyLeads');
 
-class Companyleads extends BaseCompanyleads {
+class CompanyLeads extends BaseCompanyLeads {
     
     public static function model($className = __CLASS__) {
         return parent::model($className);
