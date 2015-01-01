@@ -246,17 +246,14 @@
     </div>
     <!-- /.container two -->
     <script>
-$(".dropdown-menu li a").click(function(){
-  var selText = $(this).text();
-  $(this).parents('.btn-group').find('.button-name').html(selText);
-});
+
     </script>    
     
     <script id="card">
         {{#.}}
             <li class="list-group-item list-group-item-default draggable" id="card_{{id}}">
                 <div>
-                    <h4>{{brand}}</h4>
+                    <h4>Brand:{{brand}}</h4>
                     <p>Budget: {{budget}}</p>
                     <p>Campaign Dates: {{campaignstartdate}}-{{campaignenddate}}</p>
                     <p>

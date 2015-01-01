@@ -1,4 +1,9 @@
 $(document).ready(function () {
+  // for dropdown in add lead modal 
+    $(".dropdown-menu li").click(function(){
+    var selectedText = $(this).text();
+    $(this).parents('.btn-group').find('.button-name').html(selectedText);
+  });
     //initializing multiselect dropdown
     $('.multiselect').multiselect({
         nonSelectedText: 'Select',
@@ -23,17 +28,14 @@ $(document).ready(function () {
     receive: function(e, ui) {
         console.log('final ' + $(ui.item).attr('id') + ' id ' + this.id);
         console.log(ui.item.closest('ul').attr('id'));
-        
-        
-        
          $.ajax({
             url: $('#completePath').text()+ '/ajax/UpdateLeadStatus',
             type: "POST",
-            data: {                    
+            data: {
                 id : $(ui.item).attr('id').split("_")[1],
                 status: this.id.split('_')[1]
             },
-            async: false,                
+            async: false,
             success: function(data) {
 //                console.log(data);
 //                var template = $('#card').html();

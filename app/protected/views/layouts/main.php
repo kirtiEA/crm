@@ -107,25 +107,25 @@
                             <div class="form-group" >
                                 <div class="input-group">
                                   <span class="input-group-btn btn-group ">
-                                  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Select Country <span class="caret"></span> </button>
+                                  <button class="btn btn-default dropdown-toggle button-name" data-toggle="dropdown">Select Country <span class="caret"></span> </button>
                                   <ul class="dropdown-menu pull-right">
-                                    <?php 
+                                    <?php
                                         $html = '';
                                         $countries = Area::fetchCountryListing();
                                         foreach ($countries as $country) {
                                             $html = $html . '<li>
-                                                <input type="radio"  value="' . $country['id'] . '" name="country" checked="checked">
+                                                <input class="caret-needed" type="radio"  value="' . $country['id'] . '" name="country" checked="checked">
                                                 <label for="country">' . $country['name'] . '</label>
                                               </li>';
                                         }
                                         echo $html;
-                                    ?>  
+                                    ?>
                                   </ul>
-                                  </span> 
+                                  </span>
                                   <span class="input-group-btn btn-group ">
-                                  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">USD <span class="caret"></span> </button>
+                                  <button class="btn btn-default dropdown-toggle button-name" data-toggle="dropdown">USD <span class="caret"></span> </button>
                                   <ul class="dropdown-menu pull-right">
-                                      <?php 
+                                      <?php
                                         $html = '';
                                         $currencies = LookupBaseCurrency::getBaseCurrencyList();
                                         foreach ($currencies as $curr) {
@@ -138,7 +138,7 @@
                                     ?>
 
                                   </ul>
-                                  </span> 
+                                  </span>
                                   <input type="text" class="form-control" id="appendedInput" name="Budget" placeholder="Budget Proposed">
                                 </div>
                             </div>
@@ -185,8 +185,7 @@
                                 <input type="text" class="col-md-11 col-sm-11 col-xs-12" placeholder="Brand" style="display: none;" id="brand"> 
                                 <input type="text" style="display: none" id="selectedbrandid">
                                 <span onclick="$('#brand').show();$('#brand_old').empty();" class="glyphicon glyphicon-edit pull-right">
-                                    
-                                </span> 
+                                </span>
                         </h4>
                         <div class="clearfix"></div>
                         <p><span onclick="$('#agency').show();$('#agency_old').empty();" id="agency_old">Agency</span>
@@ -296,9 +295,6 @@
 
             </div>
         <?php } ?>
-        
-
-        
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     </body></html>

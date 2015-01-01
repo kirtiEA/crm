@@ -1,6 +1,7 @@
 
         
 $(document).ready(function() {
+
   if($('.loginForm')){
     $('.loginForm').parent().css({
     'background-image': 'url(themes/static/images/bg.jpg)',
