@@ -11306,13 +11306,13 @@ input.dirty:not(:focus):invalid {
 }
 /* login form */
 .login-form{
-  background: #fff;
   padding: 1em;
-  min-height: 40vh;
+  min-height: 43vh;
   margin-top: 20vh;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .loginForm {
-  background: url(../images/bg.jpg); !important;
+  background: transparent !important;
   background-size: cover;
 }
 #login-form > .form-group {
@@ -11320,7 +11320,8 @@ input.dirty:not(:focus):invalid {
   margin: 1em;
 }
 .login-user-icon {
-  color: #b2b2b2 !important;
-  margin-bottom: 2em;
+  color: #000 !important;
+  margin-bottom: 1em;
+  margin-top: 1em;
   font-size: 2em;
 }

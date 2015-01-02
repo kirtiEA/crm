@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  // for dropdown in add lead modal 
+  // for dropdown in add lead modal
     $(".dropdown-menu li").click(function(){
     var selectedText = $(this).text();
     $(this).parents('.btn-group').find('.button-name').html(selectedText);
@@ -9,7 +9,6 @@ $(document).ready(function () {
         nonSelectedText: 'Select',
         enableFiltering: true
     });
-    
   $("ul").sortable({
     connectWith: "ul",
     forcePlaceholderSize: true,
@@ -57,10 +56,7 @@ $(document).ready(function () {
   $(".addContent").on('click', function(){
     $(".addContent").siblings("ul").find("li:last-child").after('<li class="placeholder"><textarea class="form-control" rows="3" placeholder="Description"></textarea></li>');
   });
-  
-  
-  
-   // start and end date behavior    
+   // start and end date behavior
     $("#sdate").datepicker({
         //changeMonth: true,
         numberOfMonths: 1,
@@ -80,13 +76,12 @@ $(document).ready(function () {
             $("#sdate").datepicker("option", "maxDate", selectedDate);
         }
     });
-    
     $('#brand').autocomplete({
       source: JSON.parse($('#allbrands').html()),
       appendTo: "#addalead",
       focus: function( event, ui ) {
             $("#brand").val(ui.item.label);
-            return false;  
+            return false;
         },
       select: function (event, ui) {
           event.preventDefault();
@@ -95,14 +90,12 @@ $(document).ready(function () {
         $("#selectedbrandid").val(ui.item.value); // save selected id to hidden input
     }
     });
-    
-    
     $('#user').autocomplete({
       source: JSON.parse($('#allsales').html()),
       appendTo: "#addalead",
       focus: function( event, ui ) {
             $("#user").val(ui.item.label);
-            return false;  
+            return false;
         },
       select: function (event, ui) {
           event.preventDefault();
@@ -111,13 +104,12 @@ $(document).ready(function () {
         $("#selecteduserid").val(ui.item.value); // save selected id to hidden input
     }
     });
-    
     $('#agency').autocomplete({
       source: $('#completePath').text()+ '/ajax/fetchCompanyContacts',
       appendTo: "#addalead",
       focus: function( event, ui ) {
             $("#agency").val(ui.item.label);
-            return false;  
+            return false;
         },
       select: function (event, ui) {
           event.preventDefault();
@@ -126,24 +118,19 @@ $(document).ready(function () {
         $("#selectedagencyid").val(ui.item.value); // save selected id to hidden input
     }
     });
-    
-    
-    
 
-  
 });
 
 var createlead = function() {
     var budget = '';
     $('input[name=Budget]').each(function(){
-       budget = budget + $(this).val(); 
+       budget = budget + $(this).val();
     });
 
-    
      $.ajax({
         url: $('#completePath').text()+ '/dashboard/createLead',
         type: "POST",
-        data: {                    
+        data: {
             brandid: $("#selectedbrandid").val(),
             contactid: $("#selectedagencyid").val(),
             description: $("#description").val(),
@@ -153,7 +140,7 @@ var createlead = function() {
             tags: $("#tags").val(),
             budget: budget
         },
-        async: false,                
+        async: false,
         success: function(data) {
             console.log(data);
             $('#addalead').modal('hide');
@@ -164,21 +151,17 @@ var createlead = function() {
         });
         }
     });
-
-    
 }
 
 
 var loadleads = function(id) {
-    console.log('aad');
-    
     $.ajax({
         url: $('#completePath').text()+ '/ajax/fetchLeadsForStatus',
         type: "POST",
-        data: {                    
+        data: {
             id :id
         },
-        async: false,                
+        async: false,
         success: function(data) {
             console.log(data);
             var template = $('#card').html();
@@ -187,6 +170,5 @@ var loadleads = function(id) {
             $('#bucket_' + id).append(rendered);
         }
     });
-    
 
 };

@@ -33,6 +33,9 @@ form > .form-group, form > button {
 	.container-fluid {
 		margin-top: 1em;
 	}
+/*	.dropdown-menu {
+		min-width: 100%;
+	}*/
 /*.data-content {
 	border-top: 1px solid #b1b1b1;
 	}*/
@@ -45,7 +48,17 @@ li {
 		cursor: -webkit-grab;
 		cursor: -moz-grab;
 		cursor: grab;
+		/*box-shadow: 0 3px 5px rgba(0, 0, 0, 0.21)*/
 	}
+/*.modal-dialog {
+  width: 78%;
+  height: 72%;
+  padding: 0;
+}
+
+.modal-content {
+  height: 99%;
+}*/
 	.panel {
 		background: #f5f5f5;
 			overflow-y: scroll;
@@ -65,9 +78,9 @@ li {
 		padding: 1em;
 		font-size: 12px;
 	}
-	.modal-body {
-		overflow: hidden;
-	}
+/*	.modal-body {
+		overflow: visible;
+	}*/
 	.modal-body >div .col-xs-12 {
 		margin-bottom: 1em;
 	}
@@ -77,8 +90,8 @@ li {
 	.modal-header {
 		border-bottom: 0px solid #e1e1e1;
 	}
-	.modal-left {
-		border-right: 2px solid #b2b2b2;
+	.modal-right {
+		border-left: 2px solid #b2b2b2;
 	}
 	.glyphicon .col-xs-1,.label {
 		margin-left: 1em;
@@ -95,7 +108,19 @@ li {
 		background: #d0e9c6 !important;
 	}
 	@media (max-width:768px) {
-		#form-top-container {
+/*		.modal-dialog {
+  min-width: 100%;
+  min-height: 100%;
+  padding: 0;
+}
+
+.modal-content {
+  min-height: 99%;
+}
+.modal-body {
+	overflow: auto;
+}
+	*/	#form-top-container {
 			display: inline-flex;
 			display: -webkit-flex;
 			display: -moz-flex;
@@ -107,15 +132,13 @@ li {
 			padding-left: 0px !important;
 			padding-right: 0px !important;
 		}
-		input {
-			width: 100% !important;
-		}
+
 
 		.btn-group > .btn-success,.col-xs-1 > span,.glyphicon{
 			display: none;
 		}
-		.modal-left {
-			border-right: 0px solid #e1e1e1;
+		.modal-right {
+			border-left: 0px solid #e1e1e1;
 			/*border-top: 1px solid #e1e1e1;*/
 		}
 	}

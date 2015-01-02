@@ -254,6 +254,7 @@
             <li class="list-group-item list-group-item-default draggable" id="card_{{id}}">
                 <div>
                     <h4>Brand:{{brand}}</h4>
+
                     <p>Budget: {{budget}}</p>
                     <p>Campaign Dates: {{campaignstartdate}}-{{campaignenddate}}</p>
                     <p>

@@ -18,27 +18,20 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
     <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
-
-
     <!-- Custom styles for this template -->
     <!-- <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" /> -->
             <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery-1.10.2.min.js"></script>
         <!-- JavaScript -->
-
         <!-- JQuery UI CDN -->
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery-ui.min.js"></script>
         <!-- Latest compiled and minified JavaScript Bootstrap -->
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/bootstrap.js"></script>
-        
         <!-- Token input -->
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery.tokeninput.js"></script>
-        
         <!-- mustache -->
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/mustache.js"></script>
-        
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/bootstrap-multiselect.js"></script>
-        
         <!-- Custom Javascript -->
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/app.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -47,9 +40,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
     </head>
-
     <body >
-
         <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
@@ -74,11 +65,8 @@
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
-
 <!-- This is main content area-->
 <?php echo $content; ?>
-
-
          <!-- Modal one [add a lead] -->
     <div class="modal fade" id="addalead">
         <div class="modal-dialog modal-lg">
@@ -88,7 +76,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <div class="col-xs-12 col-md-8 col-sm-8 pull-right">
+                    <div class="col-xs-12 col-md-8 col-sm-8 pull-right modal-right">
                         <!-- Line 1 starts here -->
                         <div class="form-inline col-md-12 col-xs-12 col-sm-12">
                             <p class="col-md-3 col-sm-3 col-xs-12">Campaign Dates:</p>
@@ -108,7 +96,7 @@
                                 <div class="input-group">
                                   <span class="input-group-btn btn-group ">
                                   <button class="btn btn-default dropdown-toggle button-name" data-toggle="dropdown">Select Country <span class="caret"></span> </button>
-                                  <ul class="dropdown-menu pull-right">
+                                  <ul class="dropdown-menu">
                                     <?php
                                         $html = '';
                                         $countries = Area::fetchCountryListing();
@@ -124,7 +112,7 @@
                                   </span>
                                   <span class="input-group-btn btn-group ">
                                   <button class="btn btn-default dropdown-toggle button-name" data-toggle="dropdown">USD <span class="caret"></span> </button>
-                                  <ul class="dropdown-menu pull-right">
+                                  <ul class="dropdown-menu">
                                       <?php
                                         $html = '';
                                         $currencies = LookupBaseCurrency::getBaseCurrencyList();
@@ -210,6 +198,7 @@
                         </address>
 
                     </div>
+                    <div class="clearfix"></div>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -223,7 +212,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <div class="col-xs-12 col-md-8 col-sm-8 pull-right">
+                    <div class="col-xs-12 col-md-8 col-sm-8 pull-right modal-right">
                         <div class="col-xs-12 text-left">
                             <span class=" col-xs-1 glyphicon glyphicon-tags"></span>
                             <span class=" label label-success">Tag1</span>
@@ -270,6 +259,7 @@
 
                     </div>
                 </div>
+                <div class="clearfix"></div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
@@ -296,5 +286,5 @@
             </div>
         <?php } ?>
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-    </body></html>
+    </body>
+    </html>
