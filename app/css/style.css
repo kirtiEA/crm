@@ -185,3 +185,6 @@ li {
 	background: #fff !important;
 	background-size: cover;
 }
+.ui-autocomplete {
+    z-index: 5000;
+}
